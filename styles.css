@@ -345,8 +345,8 @@ body {
 }
 .shop-category-card-loading {
     display: inline-block;
-    height: 400px;
-    width: 285px;
+    height: 432px;
+    width: 310px;
     background-color: #313338;
     border-radius: 20px;
     margin-bottom: 4px;
@@ -422,7 +422,7 @@ body {
     color: white;
     font-family: 'gg sans', sans-serif;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.5s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
     height: 432px; /* Fixed height for the entire card */
@@ -451,12 +451,43 @@ body {
     gap: 10px;
 }
 
-/* Bundled Item Image */
-.bundled-item img {
-    border-radius: 5px;
+
+.bundled-item:has([class="effect"]) img {
+    width: 100px; /* Adjust width as needed */
+    height: 150px; /* Adjust height as needed */
+    object-fit: cover;
+    object-position: top;
+    background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/352db5d6852138aabc88.png');
+    background-size: cover; /* Ensures the background image covers the whole element */
+    background-position: top; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    border-radius: 10px;
+}
+
+.bundled-item:has([class="effect"]) {
+    margin-top: -160px;
+    margin-left: -200px;
+    transform: rotate(-10deg);
+    scale: 1.5;
+}
+
+.bundled-item:has([class="deco"]) img {
     width: 100px; /* Adjust width as needed */
     height: 100px; /* Adjust height as needed */
     object-fit: cover;
+    background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/ff84fa219ab7e996ec26.png');
+    background-size: 80%; /* Ensures the background image covers the whole element */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    border-radius: 10px;
+}
+
+.bundled-item:has([class="deco"]) {
+    margin-top: -160px;
+    margin-left: 120px;
+    transform: rotate(10deg);
+    scale: 1.5;
+    z-index: 1;
 }
 
 /* Bundle Card Description */

@@ -49,7 +49,7 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
                         <div class="bundle-items">
                             ${item.bundled_products.map(bundledItem => `
                                 <div class="bundled-item">
-                                    <img src="${bundledItem.static}" data-animated="${bundledItem.animated}" alt="${bundledItem.name}">
+                                    <img src="${bundledItem.static}" class="${bundledItem.item_type}" data-animated="${bundledItem.animated}" alt="${bundledItem.name}">
                                 </div>
                             `).join('')}
                         </div>
@@ -58,31 +58,52 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
                             <p class="bundle-description">${bundleDescription}</p>
                         </div>
                     `;
+
+                    // Add hover effect for the entire card to animate images
+                    card.addEventListener('mouseenter', function () {
+                        const imgs = card.querySelectorAll('img');
+                        imgs.forEach(img => {
+                            if (img.hasAttribute('data-animated')) {
+                                img.dataset.originalSrc = img.src; // Save original src
+                                img.src = img.getAttribute('data-animated'); // Switch to animated src
+                            }
+                        });
+                    });
+
+                    card.addEventListener('mouseleave', function () {
+                        const imgs = card.querySelectorAll('img');
+                        imgs.forEach(img => {
+                            if (img.hasAttribute('data-animated') && img.dataset.originalSrc) {
+                                img.src = img.dataset.originalSrc; // Restore original src
+                            }
+                        });
+                    });
                 } else {
                     card.innerHTML = `
                         <img src="${item.static}" data-animated="${item.animated}" alt="${item.name}">
                         <div class="card-bottom">
+                            <a>${item.credits}</a>
                             <h3>${item.name}</h3>
                             <p>${item.summary}</p>
                         </div>
                     `;
+
+                    // Add hover effect for the entire card to animate images
+                    card.addEventListener('mouseenter', function () {
+                        const img = card.querySelector('img');
+                        if (img && img.hasAttribute('data-animated')) {
+                            img.dataset.originalSrc = img.src; // Save original src
+                            img.src = img.getAttribute('data-animated'); // Switch to animated src
+                        }
+                    });
+
+                    card.addEventListener('mouseleave', function () {
+                        const img = card.querySelector('img');
+                        if (img && img.hasAttribute('data-animated') && img.dataset.originalSrc) {
+                            img.src = img.dataset.originalSrc; // Restore original src
+                        }
+                    });
                 }
-
-                // Add hover effect for image animation
-                card.addEventListener('mouseenter', function () {
-                    const img = card.querySelector('img');
-                    if (img && img.hasAttribute('data-animated')) {
-                        img.dataset.originalSrc = img.src; // Save original src
-                        img.src = img.getAttribute('data-animated'); // Switch to animated src
-                    }
-                });
-
-                card.addEventListener('mouseleave', function () {
-                    const img = card.querySelector('img');
-                    if (img && img.hasAttribute('data-animated') && img.dataset.originalSrc) {
-                        img.src = img.dataset.originalSrc; // Restore original src
-                    }
-                });
 
                 return card;
             }
