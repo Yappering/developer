@@ -462,6 +462,7 @@ body {
     background-position: top; /* Centers the background image */
     background-repeat: no-repeat; /* Prevents the background image from repeating */
     border-radius: 10px;
+    pointer-events: none;
 }
 
 .bundled-item:has([class="effect"]) {
@@ -469,6 +470,7 @@ body {
     margin-left: -200px;
     transform: rotate(-10deg);
     scale: 1.5;
+    pointer-events: none;
 }
 
 .bundled-item:has([class="deco"]) img {
@@ -480,6 +482,7 @@ body {
     background-position: center; /* Centers the background image */
     background-repeat: no-repeat; /* Prevents the background image from repeating */
     border-radius: 10px;
+    pointer-events: none;
 }
 
 .bundled-item:has([class="deco"]) {
@@ -488,6 +491,7 @@ body {
     transform: rotate(10deg);
     scale: 1.5;
     z-index: 1;
+    pointer-events: none;
 }
 
 /* Bundle Card Description */
@@ -521,6 +525,7 @@ body {
     right: 0;
     height: 150px; /* Fixed height for the card bottom */
     box-sizing: border-box; /* Includes padding in height calculation */
+    backdrop-filter: blur(8px);
 }
 
 /* Item Name */
@@ -544,7 +549,7 @@ body {
     background-position: center; /* Centers the background image */
     background-repeat: no-repeat; /* Prevents the background image from repeating */
     scale: 0.9;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 /* Effect Card Image */
@@ -553,7 +558,13 @@ body {
     background-size: cover; /* Ensures the background image covers the whole element */
     background-position: top; /* Centers the background image */
     background-repeat: no-repeat; /* Prevents the background image from repeating */
-    border-radius: 20px;
+    border-radius: 15px;
+    scale: 1.2;
+    margin-top: 25px;
+}
+
+.effect-card .card-bottom {
+    background-color: #1e1f22b7;
 }
 
 /* Container Holding Cards */
@@ -577,6 +588,62 @@ body {
 
 
 
+.shop-category-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-bottom {
+    transition: opacity 0.3s ease; /* Smooth fade transition */
+}
+
+.card-bottom p {
+    margin: 0;
+    transition: opacity 0.3s ease; /* Smooth fade transition */
+}
+
+.card-button-container {
+    position: absolute;
+    bottom: 10px; /* Adjust based on your design */
+    left: 50%;
+    transform: translateX(-50%) translateY(20px); /* Start off-screen */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth fade and slide transition */
+    text-align: center; /* Center buttons horizontally */
+    width: 90%;
+}
+
+.card-button {
+    display: block;
+    margin: 5px 0; /* Space between buttons */
+    padding: 10px 20px;
+    background-color: #615DED; /* Adjust based on your design */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+}
+
+.card-button:hover {
+    background-color: #464FBF;
+}
+
+.shop-category-card:hover .card-button-container {
+    opacity: 1; /* Fade in */
+    transform: translateX(-50%) translateY(0); /* Slide up to final position */
+}
+
+.shop-category-card:hover .shop-card-summary {
+    opacity: 0; /* Fade out description */
+}
+
+
+
+
+
 
 
 
@@ -596,7 +663,7 @@ body {
     font-size: medium;
     font-weight: 600;
     color: black;
-    z-index: 5;
+    pointer-events: none;
 }
 
 .new-item-tag {
@@ -610,6 +677,7 @@ body {
     font-weight: 600;
     color: black;
     z-index: 5;
+    pointer-events: none;
 }
 
 .shop-logo-sway {
@@ -620,6 +688,27 @@ body {
     0% {rotate: -3deg;}
     50% {rotate: 3deg;}
     100% {rotate: -3deg;}
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: none;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #1E1F22;
+    border-radius: 10px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #1E1F22;
 }
 
 .hidden {

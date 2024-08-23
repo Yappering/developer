@@ -64,7 +64,8 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
             function createCard(item, isBundle = false, isNew = false) {
                 const card = document.createElement('div');
                 card.classList.add('shop-category-card');
-
+            
+                // Determine card class based on item type
                 if (item.item_type === 'deco') {
                     card.classList.add('deco-card');
                 } else if (item.item_type === 'effect') {
@@ -72,10 +73,11 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
                 } else if (isBundle) {
                     card.classList.add('bundle-card');
                 }
-
+            
+                // Card content based on item type
                 if (isBundle && item.bundled_products) {
                     const bundleDescription = `Bundle Includes: ${item.bundled_products.filter(product => product.item_type === 'deco').map(deco => deco.name).join(', ')} Decoration & ${item.bundled_products.filter(product => product.item_type === 'effect').map(effect => effect.name).join(', ')} Profile Effect`;
-
+            
                     card.innerHTML = `
                         <div class="bundle-items">
                             ${item.bundled_products.map(bundledItem => `
@@ -86,60 +88,56 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
                         </div>
                         <div class="card-bottom">
                             <h3>${item.name}</h3>
-                            <p class="bundle-description">${bundleDescription}</p>
+                            <p class="bundle-description shop-card-summary">${bundleDescription}</p>
+                        </div>
+                        <div class="card-button-container">
+                            <button class="card-button">Unavailable For Bundles</button>
+                            <button class="card-button">N/A</button>
                         </div>
                         <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
                     `;
-
-                    // Add hover effect for the entire card to animate images
-                    card.addEventListener('mouseenter', function () {
-                        const imgs = card.querySelectorAll('img');
-                        imgs.forEach(img => {
-                            if (img.hasAttribute('data-animated')) {
-                                img.dataset.originalSrc = img.src; // Save original src
-                                img.src = img.getAttribute('data-animated'); // Switch to animated src
-                            }
-                        });
-                    });
-
-                    card.addEventListener('mouseleave', function () {
-                        const imgs = card.querySelectorAll('img');
-                        imgs.forEach(img => {
-                            if (img.hasAttribute('data-animated') && img.dataset.originalSrc) {
-                                img.src = img.dataset.originalSrc; // Restore original src
-                            }
-                        });
-                    });
+            
                 } else {
                     card.innerHTML = `
                         <img src="${item.static}" data-animated="${item.animated}" alt="${item.name}">
                         <div class="card-bottom">
                             <a>${item.credits}</a>
                             <h3>${item.name}</h3>
-                            <p>${item.summary}</p>
+                            <p class="shop-card-summary">${item.summary}</p>
+                        </div>
+                        <div class="card-button-container">
+                            <button class="card-button">N/A</button>
+                            <button class="card-button">N/A</button>
                         </div>
                         <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
                     `;
-
-                    // Add hover effect for the entire card to animate images
-                    card.addEventListener('mouseenter', function () {
-                        const img = card.querySelector('img');
-                        if (img && img.hasAttribute('data-animated')) {
+            
+                }
+            
+                // Add hover effect for the entire card to animate images
+                card.addEventListener('mouseenter', function () {
+                    const imgs = card.querySelectorAll('img');
+                    imgs.forEach(img => {
+                        if (img.hasAttribute('data-animated')) {
                             img.dataset.originalSrc = img.src; // Save original src
                             img.src = img.getAttribute('data-animated'); // Switch to animated src
                         }
                     });
-
-                    card.addEventListener('mouseleave', function () {
-                        const img = card.querySelector('img');
-                        if (img && img.hasAttribute('data-animated') && img.dataset.originalSrc) {
+                });
+            
+                card.addEventListener('mouseleave', function () {
+                    const imgs = card.querySelectorAll('img');
+                    imgs.forEach(img => {
+                        if (img.hasAttribute('data-animated') && img.dataset.originalSrc) {
                             img.src = img.dataset.originalSrc; // Restore original src
                         }
                     });
-                }
-
+                });
+            
                 return card;
             }
+            
+            
 
             // Sort and display the products: Bundle, Decoration, Effect
             const bundleProducts = [];
