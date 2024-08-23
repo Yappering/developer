@@ -428,6 +428,7 @@ body {
     height: 432px; /* Fixed height for the entire card */
     overflow: hidden; /* Prevents content from overflowing */
     position: relative; /* Allows positioning of the card bottom */
+    border: 2px solid #1E1F22;
 }
 
 /* Card Hover Effect */
@@ -629,6 +630,11 @@ body {
 
 .card-button:hover {
     background-color: #464FBF;
+}
+
+.card-button-disabled {
+    background-color: #464FBF;
+    cursor: not-allowed;
 }
 
 .shop-category-card:hover .card-button-container {

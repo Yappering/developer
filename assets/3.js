@@ -91,8 +91,8 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
                             <p class="bundle-description shop-card-summary">${bundleDescription}</p>
                         </div>
                         <div class="card-button-container">
-                            <button class="card-button">Unavailable For Bundles</button>
-                            <button class="card-button">N/A</button>
+                            <p title="Unable to confirm if the item has been added to Profiles Plus">Unable to confirm item availability</p>
+                            <button title="You cannot request bundles" class="card-button card-button-disabled">Unavailable For Bundles</button>
                         </div>
                         <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
                     `;
@@ -106,8 +106,8 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
                             <p class="shop-card-summary">${item.summary}</p>
                         </div>
                         <div class="card-button-container">
-                            <button class="card-button">N/A</button>
-                            <button class="card-button">N/A</button>
+                            <p title="Unable to confirm if the item has been added to Profiles Plus">Unable to confirm item availability</p>
+                            <button title="Requesting has been disabled temporarily" class="card-button card-button-disabled">Requests Disabled</button>
                         </div>
                         <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
                     `;
