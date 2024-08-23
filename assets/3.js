@@ -27,10 +27,41 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
                 category.querySelector("[data-shop-category-logo-image]").classList.add('shop-logo-sway');
             }
 
+            // Handle expiry timer
+            const expiryTimer = category.querySelector(".shop-expiry-timer");
+            const timerElement = category.querySelector("#shop-expiry-timer");
+            const unpublishedAt = new Date(user.unpublished_at);
+
+            if (user.unpublished_at && !isNaN(unpublishedAt.getTime())) {
+                expiryTimer.style.display = 'block';
+
+                function updateTimer() {
+                    const now = new Date();
+                    const timeDiff = unpublishedAt - now;
+
+                    if (timeDiff <= 0) {
+                        timerElement.textContent = "Expired";
+                        clearInterval(timerInterval);
+                    } else {
+                        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                        timerElement.textContent = `${days} DAYS LEFT TO REQUEST`;
+                    }
+                }
+
+                const timerInterval = setInterval(updateTimer, 1000);
+                updateTimer(); // Initial call to display the timer immediately
+            } else {
+                expiryTimer.style.display = 'none';
+            }
+
             const cardHolder = category.querySelector(".shop-category-card-holder");
 
             // Function to create a card
-            function createCard(item, isBundle = false) {
+            function createCard(item, isBundle = false, isNew = false) {
                 const card = document.createElement('div');
                 card.classList.add('shop-category-card');
 
@@ -57,6 +88,7 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
                             <h3>${item.name}</h3>
                             <p class="bundle-description">${bundleDescription}</p>
                         </div>
+                        <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
                     `;
 
                     // Add hover effect for the entire card to animate images
@@ -86,6 +118,7 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
                             <h3>${item.name}</h3>
                             <p>${item.summary}</p>
                         </div>
+                        <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
                     `;
 
                     // Add hover effect for the entire card to animate images
@@ -114,26 +147,28 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
             const effectProducts = [];
 
             user.products.forEach(product => {
+                const isNew = product.isNew === "true";
+
                 // Check if the product is a bundle
                 if (product.bundled_products) {
                     // Add bundle card with bundled items
-                    bundleProducts.push(product);
+                    bundleProducts.push({ product, isNew });
                 } else {
                     // Handle individual items
                     product.items.forEach(item => {
                         if (item.item_type === 'deco') {
-                            decorationProducts.push(item);
+                            decorationProducts.push({ item, isNew });
                         } else if (item.item_type === 'effect') {
-                            effectProducts.push(item);
+                            effectProducts.push({ item, isNew });
                         }
                     });
                 }
             });
 
             // Append Bundle, Decoration, and Effect cards in that order
-            bundleProducts.forEach(product => cardHolder.appendChild(createCard(product, true)));
-            decorationProducts.forEach(item => cardHolder.appendChild(createCard(item)));
-            effectProducts.forEach(item => cardHolder.appendChild(createCard(item)));
+            bundleProducts.forEach(({ product, isNew }) => cardHolder.appendChild(createCard(product, true, isNew)));
+            decorationProducts.forEach(({ item, isNew }) => cardHolder.appendChild(createCard(item, false, isNew)));
+            effectProducts.forEach(({ item, isNew }) => cardHolder.appendChild(createCard(item, false, isNew)));
 
             document.getElementById("shop-category-loading").classList.add('hidden');
             output.append(category);
