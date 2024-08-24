@@ -142,6 +142,28 @@
             </div>
             <div class="shop-container">
                 <div class="shop-category">
+                    <template data-shop-category-template>
+                        <div>
+                            <div class="shop-category-banner">
+                                <img class="shop-category-banner-img" src="" data-shop-category-banner-image>
+                                <div class="shop-category-logo-holder">
+                                    <img class="shop-category-banner-logo" src="" id="shop-banner-logo" data-shop-category-logo-image>
+                                </div>
+                                <div class="shop-category-text-holder">
+                                    <p style="font-size: 18px;" data-shop-category-desc></p>
+                                </div>
+                                <!-- Timer Display -->
+                                <div class="shop-expiry-timer" style="display: none;">
+                                    <p class="shop-expiry-timer-timer" id="shop-expiry-timer"></p>
+                                </div>
+                            </div>
+                            <div class="shop-category-card-holder">
+                            </div>
+                        </div>
+                    </template>
+                    <div style="margin-bottom: 50px;" data-shop-output>
+                    </div>
+                    
                     <div class="shop-category-loading" id="shop-category-loading">
                         <div>
                             <div class="shop-category-banner-loading">
