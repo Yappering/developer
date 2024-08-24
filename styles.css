@@ -376,10 +376,12 @@ body {
     background-color: #313338;
     scale: 0.9;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 32px;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    outline: 2px solid rgba(16, 17, 19, 0.4);
+    outline-offset: -2px;
 }
 
 .shop-category-banner-img {
@@ -398,9 +400,12 @@ body {
 
 .shop-category-banner-logo {
     width: auto;
+    max-width: 530px;
     /* height: 80px; */
     max-height: 160px;
 }
+
+
 
 .shop-category-text-holder {
     position: absolute;
@@ -425,7 +430,7 @@ body {
     transition: transform 0.5s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
-    height: 432px; /* Fixed height for the entire card */
+    height: 400px; /* Fixed height for the entire card */
     overflow: hidden; /* Prevents content from overflowing */
     position: relative; /* Allows positioning of the card bottom */
     border: 2px solid #1E1F22;
@@ -526,7 +531,7 @@ body {
     right: 0;
     height: 150px; /* Fixed height for the card bottom */
     box-sizing: border-box; /* Includes padding in height calculation */
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(50px);
 }
 
 /* Item Name */
@@ -555,13 +560,16 @@ body {
 
 /* Effect Card Image */
 .effect-card img {
+    border-radius: 15px;
+    scale: 1.2;
+    margin-top: 25px;
+}
+
+.effect-card {
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/352db5d6852138aabc88.png');
     background-size: cover; /* Ensures the background image covers the whole element */
     background-position: top; /* Centers the background image */
     background-repeat: no-repeat; /* Prevents the background image from repeating */
-    border-radius: 15px;
-    scale: 1.2;
-    margin-top: 25px;
 }
 
 .effect-card .card-bottom {
@@ -577,6 +585,8 @@ body {
     max-width: 1200px; /* Limit the width of the card holder */
     margin: 0 auto; /* Center the card holder container */
     padding: 20px 0; /* Add some space between the banner and cards */
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /* Adjustments for smaller screens */
@@ -647,6 +657,18 @@ body {
 }
 
 
+.shop-price-container {
+    position: absolute;
+    bottom: 10px; /* Adjust based on your design */
+    width: 90%;
+    opacity: 1; /* Fade in */
+    transition: opacity 0.5s ease;
+}
+
+.shop-category-card:hover .shop-price-container {
+    opacity: 0; /* Fade out description */
+}
+
 
 
 
@@ -678,7 +700,9 @@ body {
     right: 20px;
     background-color: white;
     border-radius: 999px;
-    width: 50px;
+    width: auto;
+    padding-left: 5px;
+    padding-right: 5px;
     font-size: medium;
     font-weight: 600;
     color: black;

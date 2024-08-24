@@ -61,7 +61,7 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
             const cardHolder = category.querySelector(".shop-category-card-holder");
 
             // Function to create a card
-            function createCard(item, isBundle = false, isNew = false) {
+            function createCard(item, credits, isBundle = false, isNew = false) {
                 const card = document.createElement('div');
                 card.classList.add('shop-category-card');
             
@@ -87,12 +87,12 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
                             `).join('')}
                         </div>
                         <div class="card-bottom">
+                            <a class="item-credits">Made By: ${credits}</a>
                             <h3>${item.name}</h3>
                             <p class="bundle-description shop-card-summary">${bundleDescription}</p>
                         </div>
                         <div class="card-button-container">
-                            <p title="Unable to confirm if the item has been added to Profiles Plus">Unable to confirm item availability</p>
-                            <button title="You cannot request bundles" class="card-button card-button-disabled">Unavailable For Bundles</button>
+                            <button title="Unable to confirm if the item has been added to Profiles Plus" class="card-button card-button-disabled">Unable to confirm item availability</button>
                         </div>
                         <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
                     `;
@@ -101,17 +101,15 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
                     card.innerHTML = `
                         <img src="${item.static}" data-animated="${item.animated}" alt="${item.name}">
                         <div class="card-bottom">
-                            <a>${item.credits}</a>
+                            <a class="item-credits">Made By: ${credits}</a>
                             <h3>${item.name}</h3>
                             <p class="shop-card-summary">${item.summary}</p>
                         </div>
                         <div class="card-button-container">
-                            <p title="Unable to confirm if the item has been added to Profiles Plus">Unable to confirm item availability</p>
-                            <button title="Requesting has been disabled temporarily" class="card-button card-button-disabled">Requests Disabled</button>
+                            <button title="Unable to confirm if the item has been added to Profiles Plus" class="card-button card-button-disabled">Unable to confirm item availability</button>
                         </div>
                         <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
                     `;
-            
                 }
             
                 // Add hover effect for the entire card to animate images
@@ -136,8 +134,6 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
             
                 return card;
             }
-            
-            
 
             // Sort and display the products: Bundle, Decoration, Effect
             const bundleProducts = [];
@@ -146,27 +142,28 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/profiles-plus')
 
             user.products.forEach(product => {
                 const isNew = product.isNew === "true";
+                const credits = product.credits || ""; // Get credits from the product
 
                 // Check if the product is a bundle
                 if (product.bundled_products) {
                     // Add bundle card with bundled items
-                    bundleProducts.push({ product, isNew });
+                    bundleProducts.push({ product, credits, isNew });
                 } else {
                     // Handle individual items
                     product.items.forEach(item => {
                         if (item.item_type === 'deco') {
-                            decorationProducts.push({ item, isNew });
+                            decorationProducts.push({ item, credits, isNew });
                         } else if (item.item_type === 'effect') {
-                            effectProducts.push({ item, isNew });
+                            effectProducts.push({ item, credits, isNew });
                         }
                     });
                 }
             });
 
             // Append Bundle, Decoration, and Effect cards in that order
-            bundleProducts.forEach(({ product, isNew }) => cardHolder.appendChild(createCard(product, true, isNew)));
-            decorationProducts.forEach(({ item, isNew }) => cardHolder.appendChild(createCard(item, false, isNew)));
-            effectProducts.forEach(({ item, isNew }) => cardHolder.appendChild(createCard(item, false, isNew)));
+            bundleProducts.forEach(({ product, credits, isNew }) => cardHolder.appendChild(createCard(product, credits, true, isNew)));
+            decorationProducts.forEach(({ item, credits, isNew }) => cardHolder.appendChild(createCard(item, credits, false, isNew)));
+            effectProducts.forEach(({ item, credits, isNew }) => cardHolder.appendChild(createCard(item, credits, false, isNew)));
 
             document.getElementById("shop-category-loading").classList.add('hidden');
             output.append(category);
