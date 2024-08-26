@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base target="_blank">
+    <title>Blog | Shop Archives</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <meta content="Shop Archives" property="og:title" />
+    <meta content="Your one stop place for all Discord Collectibles" property="og:description" />
+    <meta content="https://yapper.shop/blog/" property="og:url" />
+    <meta content="https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/EmbedImage.png" property="og:image" />
+    <meta content="#FF007A" data-react-helmet="true" name="theme-color" />
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .home-tab {
+            background-color: #404248;
+            color: white;
+        }
+
+        .home-tab .dm-new-icon {
+            display: none !important;
+        }
+
+        [alt="Blog"] {
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="housing">
+        <div class="sidebar">
+            <div class="dm-list">
+                <div style="overflow: auto; height: 100%; margin-top: 50px;">
+                    <div class="dm-divider">
+                        Shop Archives
+                    </div>
+                    <button class="dm-button dm-button-selected">
+                        <p class="dm-button-text"># blog</p>
+                    </button>
+                </div>
+            </div>
+            <div class="server-list">
+                <div class="server-avatar">
+                    <button class="server-icon server-home" onclick="location.href='/home';">
+                    </button>
+                </div>
+                <hr style="opacity: 0;">
+                <div data-servers>
+                </div>
+                <template data-servers-template>
+                    <div class="server-avatar" data-servers-button>
+                        <img class="server-icon" src="" data-server-icon>
+                        </img>
+                    </div>
+                </template>
+                <div class="server-pill">
+                </div>
+            </div>
+            <div style="width: 320px;">
+            </div>
+        </div>
+        <div class="top-bar">
+            <h2 style="margin-left: 260px; margin-top: 10px;"># blog</h2>
+        </div>
+        <div class="blog-housing" style="overflow: auto;">
+            <div>
+                <div class="blog-message-holder" style="margin-bottom: 80px;">
+                    <div class="blog-message-message-holder">
+                        <img src="https://cdn.discordapp.com/avatar-decoration-presets/a_90e0dce3cc48c4a9607b6d41209c737e.png?size=4096&passthrough=true" style="height: 60px; scale: 1.3;">
+                        <img src="https://cdn.discordapp.com/avatars/1169899815983915121/a_484412b75e4d51d690b56a4097e82329.webp?size=4096" style="border-radius: 999px; height: 60px; margin-left: -65px;">
+                        <a class="message-author">DTACat</a>
+                        <a class="message-time">Today at Today</a> <div class="new-item-tag-1" style="display: block;">NEW</div>
+                        <p style="margin-top: 10px; margin-left: 80px;">Blog <br> Message <br> Testing <br> <br> This <br> Is <br> Client <br> Side <br> For <br> Now <br> <br> STELLA DO NOT TOUCH &#128544;&#128544;&#128544;&#128544;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-housing hidden" id="modal-housing">
+        <div class="modal">
+            <div class="modal-innder">
+                <h1 class="center-text" style="font-size: 54px; margin-top: 40px;">You Lost?</h1>
+                <h2 style="margin-top: -40px;">We don&#8217;t blame you</h2>
+                <p>The new user interface might confuse you if it&#8217;s you&#8217;re first time here, but don&#8217;t worry, the old user interface is still available.</p>
+                <p>Getting used to a new user interface can be confusing, that&#8217;s why our team has decided to make an up-to-date version of the old user interface so you can use the same layout you&#8217;re used to with even more features.</p>
+                <button class="refresh-button" onclick="location.href='https://old.yapper.shop/';">Use Old UI</button>
+                <p>Or feel free to stay and learn the new user interface with a cleaner look just like Discord!</p>
+                <button class="refresh-button" onclick="closeLostModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="/assets/4.js"></script>
+    <script src="/assets/8.js"></script>
+</body>
+
+</html>

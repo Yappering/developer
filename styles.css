@@ -58,6 +58,7 @@ body {
     background-color: #2B2D31;
     margin-left: 70px;
     box-shadow: 0 0 0 2px #1E1F22;
+    z-index: 5;
 }
 
 .home-housing {
@@ -83,6 +84,15 @@ body {
     margin-left: auto;
     background-color: #404248;
     margin-top: 50px;
+}
+
+.blog-message-bar-holder {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 .modal-housing {
@@ -307,17 +317,42 @@ body {
 }
 
 .blog-message-bar {
-    position: absolute;
-    bottom: 5px;
+    position: relative;
+    bottom: 60px;
+    margin-top: auto;
     color: #676d75;
     background-color: #313338;
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 330px;
     border-radius: 10px;
     width: 100%;
 }
 
 .blog-failed {
     background-color: #E2373E;
+}
+
+.blog-message-holder {
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 97%;
+}
+
+.blog-message-message-holder {
+    margin-top: 50px;
+}
+
+.message-author {
+    display: block;
+    margin-top: -60px;
+    margin-left: 80px;
+    font-size: larger;
+}
+
+.message-time {
+    display: block;
+    margin-top: 0px;
+    margin-left: 80px;
 }
 
 .shop-category-loading {
@@ -410,7 +445,7 @@ body {
 .shop-category-text-holder {
     position: absolute;
     z-index: 1; /* Ensure the text is above the banner */
-    margin-top: 200px; /* Space between the logo and the text */
+    margin-top: 180px; /* Space between the logo and the text */
     text-align: center;
 }
 
@@ -423,14 +458,13 @@ body {
 .shop-category-card {
     background-color: #111214;
     border-radius: 15px;
-    padding: 20px;
     color: white;
     font-family: 'gg sans', sans-serif;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
-    height: 400px; /* Fixed height for the entire card */
+    height: 440px; /* Fixed height for the entire card */
     overflow: hidden; /* Prevents content from overflowing */
     position: relative; /* Allows positioning of the card bottom */
     border: 2px solid #1E1F22;
@@ -493,7 +527,7 @@ body {
 
 .bundled-item:has([class="deco"]) {
     margin-top: -160px;
-    margin-left: 120px;
+    margin-left: 145px;
     transform: rotate(10deg);
     scale: 1.5;
     z-index: 1;
@@ -554,15 +588,13 @@ body {
     background-size: 80%; /* Ensures the background image covers the whole element */
     background-position: center; /* Centers the background image */
     background-repeat: no-repeat; /* Prevents the background image from repeating */
-    scale: 0.9;
+    scale: 0.75;
     border-radius: 15px;
 }
 
 /* Effect Card Image */
 .effect-card img {
     border-radius: 15px;
-    scale: 1.2;
-    margin-top: 25px;
 }
 
 .effect-card {
@@ -697,10 +729,26 @@ body {
 .new-item-tag {
     text-align: center;
     position: absolute;
-    right: 20px;
+    top: 15px;
+    right: 15px;
     background-color: white;
     border-radius: 999px;
     width: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: medium;
+    font-weight: 600;
+    color: black;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.new-item-tag-1 {
+    text-align: center;
+    margin-left: 80px;
+    background-color: white;
+    border-radius: 999px;
+    width: 40px;
     padding-left: 5px;
     padding-right: 5px;
     font-size: medium;
