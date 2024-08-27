@@ -29,6 +29,7 @@
         <div class="sidebar">
             <div class="dm-list">
                 <div style="overflow: auto; height: 100%; margin-top: 50px;">
+                    <p class="center-text" style="font-size: 12px; display: flex;">Discord is a registered trademark of Discord Inc. Shop Archives is not affiliated with, endorsed or sponsored by Discord Inc.</p>
                     <div data-mains-tabs>
                         <template data-mains-template>
                             <button class="dm-button" data-mains-button>
@@ -133,7 +134,7 @@
         <div class="top-bar">
             <h2 style="margin-left: 260px; margin-top: 10px;">Profiles Plus</h2>
         </div>
-        <div class="shop-housing">
+        <div class="shop-housing" style="overflow: auto; margin-top: 0px;">
             <div style="text-align: center; margin-top: 10px;" class="hidden" id="failed-to-load-pplus">
                 <img style="width: 200px;" src="https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/shopuhoh.png">
                 <h2>Well, this is awkward.</h2>
@@ -141,7 +142,10 @@
                 <button class="refresh-button" onclick="reFetchProfilesPlus()">Reload</button>
             </div>
             <div class="shop-container" style="overflow: auto;">
-                <div class="shop-category">
+                <div class="shop-category" style="margin-top: 50px;">
+                    <div class="shop-notice">
+                        <p class="shop-notice-text">Notice: All 'collectibles' on this page have been made by our team NOT by Discord</p>
+                    </div>
                     <template data-shop-category-template>
                         <div>
                             <div class="shop-category-banner">
@@ -219,9 +223,10 @@
             <div class="modal-innder">
                 <h1 class="center-text" style="font-size: 54px; margin-top: 40px;">You Lost?</h1>
                 <h2 style="margin-top: -40px;">We don&#8217;t blame you</h2>
-                <p style="margin-top: 60px;">The new user interface might confuse you if it&#8217;s you&#8217;re first time here.</p>
-                <p>Getting used to a new user interface can be confusing, but we are sorry to say that our team has decided to completely remove the old user interface due to complications.</p>
-                <p>Hope you enjoy the new user interface with a cleaner look just like Discord!</p>
+                <p>The new user interface might confuse you if it&#8217;s you&#8217;re first time here, but don&#8217;t worry, the old user interface is still available.</p>
+                <p>Getting used to a new user interface can be confusing, that&#8217;s why our team has decided to make an up-to-date version of the old user interface so you can use the same layout you&#8217;re used to with even more features.</p>
+                <button class="refresh-button" onclick="location.href='https://old.yapper.shop/';">Use Old UI</button>
+                <p>Or feel free to stay and learn the new user interface with a cleaner look just like Discord!</p>
                 <button class="refresh-button" onclick="closeLostModal()">Close</button>
             </div>
         </div>

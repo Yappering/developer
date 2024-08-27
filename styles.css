@@ -445,7 +445,7 @@ body {
 .shop-category-text-holder {
     position: absolute;
     z-index: 1; /* Ensure the text is above the banner */
-    margin-top: 180px; /* Space between the logo and the text */
+    margin-top: 190px; /* Space between the logo and the text */
     text-align: center;
 }
 
@@ -766,6 +766,30 @@ body {
     0% {rotate: -3deg;}
     50% {rotate: 3deg;}
     100% {rotate: -3deg;}
+}
+
+.shop-notice {
+    text-align: center;
+    background-color: #464ebf63;
+    height: 30px;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    border-radius: 10px;
+    border: 2px solid #464FBF;
+}
+
+.shop-notice-text {
+    margin-top: 5px;
+}
+
+#failed-to-load-shop {
+    margin-top: 80px !important;
+}
+
+#failed-to-load-pplus {
+    margin-top: 80px !important;
 }
 
 /* width */
