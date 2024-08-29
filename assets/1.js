@@ -1,8 +1,3 @@
-if (localStorage.not_found_found == "true") {
-    document.getElementById("404-mains-button").classList.remove('hidden');
-}
-
-
 const mainsTab = document.querySelector("[data-mains-template]");
 const mainsTabsHolder = document.querySelector("[data-mains-tabs]");
 

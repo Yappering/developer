@@ -66,14 +66,18 @@
         </div>
         <div class="blog-housing" style="overflow: auto;">
             <div>
-                <div class="blog-message-holder" style="margin-bottom: 80px;">
+                <template data-blog-message-template>
                     <div class="blog-message-message-holder">
-                        <img src="https://cdn.discordapp.com/avatar-decoration-presets/a_90e0dce3cc48c4a9607b6d41209c737e.png?size=4096&passthrough=true" style="height: 60px; scale: 1.3;">
-                        <img src="https://cdn.discordapp.com/avatars/1169899815983915121/a_484412b75e4d51d690b56a4097e82329.webp?size=4096" style="border-radius: 999px; height: 60px; margin-left: -65px;">
-                        <a class="message-author">DTACat</a>
-                        <a class="message-time">Today at Today</a> <div class="new-item-tag-1" style="display: block;">NEW</div>
-                        <p style="margin-top: 10px; margin-left: 80px;">Blog <br> Message <br> Testing <br> <br> This <br> Is <br> Client <br> Side <br> For <br> Now <br> <br> STELLA DO NOT TOUCH &#128544;&#128544;&#128544;&#128544;</p>
+                        <img src="" style="height: 60px; scale: 1.3;" data-blog-message-deco>
+                        <img src="" style="border-radius: 999px; height: 60px; margin-left: -65px;" data-blog-message-avatar>
+                        <a class="message-author" data-blog-message-username></a>
+                        <a class="message-time" data-blog-message-time></a> <div class="new-item-tag-1" style="display: none;">NEW</div>
+                        <p style="margin-top: 10px; margin-left: 80px;" data-blog-message-content-1></p>
+                        <p style="margin-top: 10px; margin-left: 80px;" data-blog-message-content-2></p>
+                        <p style="margin-top: 10px; margin-left: 80px;" data-blog-message-content-3></p>
                     </div>
+                </template>
+                <div class="blog-message-holder" style="margin-bottom: 80px;" data-blog-messages-output> 
                 </div>
             </div>
         </div>
