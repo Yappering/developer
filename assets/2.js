@@ -40,7 +40,7 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/collectibles')
                     const timeDiff = unpublishedAt - now;
 
                     if (timeDiff <= 0) {
-                        timerElement.textContent = "Expired";
+                        timerElement.textContent = "UNOBTAINABLE";
                         clearInterval(timerInterval);
                     } else {
                         const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
@@ -48,7 +48,7 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/collectibles')
                         const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
                         const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-                        timerElement.textContent = `${days} DAYS LEFT TO REQUEST`;
+                        timerElement.textContent = `${days} DAYS LEFT IN SHOP`;
                     }
                 }
 
@@ -61,7 +61,7 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/collectibles')
             const cardHolder = category.querySelector(".shop-category-card-holder");
 
             // Function to create a card
-            function createCard(item, sku, price, priceNitro, isBundle = false, isNew = false) {
+            function createCard(item, sku, price, priceNitro, emojiCopy, isBundle = false, isNew = false) {
                 const card = document.createElement('div');
                 card.classList.add('shop-category-card');
             
@@ -96,8 +96,8 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/collectibles')
                             </div>
                         </div>
                         <div class="card-button-container">
-                            <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${sku}';">Open In Shop</button>
-                            <button title="Unable to confirm if the item has been added to Profiles Plus" class="card-button card-button-disabled">Unable to confirm item availability</button>
+                            <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${sku}';">Open In Shop</button>
+                            <button class="card-button ${emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${emojiCopy ? `copyEmoji('${emojiCopy}')` : `redirectToGoogle()`}" title="${emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
                         </div>
                         <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
                     `;
@@ -115,8 +115,8 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/collectibles')
                             </div>
                         </div>
                         <div class="card-button-container">
-                            <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${sku}';">Open In Shop</button>
-                            <button title="Unable to confirm if the item has been added to Profiles Plus" class="card-button card-button-disabled">Unable to confirm item availability</button>
+                            <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${sku}';">Open In Shop</button>
+                            <button class="card-button ${emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${emojiCopy ? `copyEmoji('${emojiCopy}')` : `redirectToGoogle()`}" title="${emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
                         </div>
                         <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
                     `;
@@ -155,27 +155,28 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/collectibles')
                 const sku = product.sku_id || ""; // Get credits from the product
                 const price = product.price || "";
                 const priceNitro = product.price_nitro || "";
+                const emojiCopy = product.emojiCopy || ""; // Get emojiCopy from the product
 
                 // Check if the product is a bundle
                 if (product.bundled_products) {
                     // Add bundle card with bundled items
-                    bundleProducts.push({ product, sku, price, priceNitro, isNew });
+                    bundleProducts.push({ product, sku, price, priceNitro, emojiCopy, isNew });
                 } else {
                     // Handle individual items
                     product.items.forEach(item => {
                         if (item.item_type === 'deco') {
-                            decorationProducts.push({ item, sku, price, priceNitro, isNew });
+                            decorationProducts.push({ item, sku, price, priceNitro, emojiCopy, isNew });
                         } else if (item.item_type === 'effect') {
-                            effectProducts.push({ item, sku, price, priceNitro, isNew });
+                            effectProducts.push({ item, sku, price, priceNitro, emojiCopy, isNew });
                         }
                     });
                 }
             });
 
             // Append Bundle, Decoration, and Effect cards in that order
-            bundleProducts.forEach(({ product, sku, price, priceNitro, isNew }) => cardHolder.appendChild(createCard(product, sku, price, priceNitro, true, isNew)));
-            decorationProducts.forEach(({ item, sku, price, priceNitro, isNew }) => cardHolder.appendChild(createCard(item, sku, price, priceNitro, false, isNew)));
-            effectProducts.forEach(({ item, sku, price, priceNitro, isNew }) => cardHolder.appendChild(createCard(item, sku, price, priceNitro, false, isNew)));
+            bundleProducts.forEach(({ product, sku, price, priceNitro, emojiCopy, isNew }) => cardHolder.appendChild(createCard(product, sku, price, priceNitro, emojiCopy, true, isNew)));
+            decorationProducts.forEach(({ item, sku, price, priceNitro, emojiCopy, isNew }) => cardHolder.appendChild(createCard(item, sku, price, priceNitro, emojiCopy, false, isNew)));
+            effectProducts.forEach(({ item, sku, price, priceNitro, emojiCopy, isNew }) => cardHolder.appendChild(createCard(item, sku, price, priceNitro, emojiCopy, false, isNew)));
 
             document.getElementById("shop-category-loading").classList.add('hidden');
             output.append(category);
@@ -186,3 +187,17 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/collectibles')
         document.getElementById("failed-to-load-shop").classList.remove('hidden');
         document.getElementById("shop-category-loading").classList.add('hidden');
     });
+
+// Function to copy emoji to clipboard
+function copyEmoji(emoji) {
+    navigator.clipboard.writeText(emoji).then(() => {
+        console.log('emoji yes');
+    }).catch(err => {
+        console.error("Failed to copy emoji: ", err);
+    });
+}
+
+// Function to redirect to Google
+function redirectToGoogle() {
+    window.location.href = 'https://discord.gg/Mcwh7hGcWb';
+}
