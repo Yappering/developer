@@ -144,15 +144,18 @@
             <h4 class="center-text" style="font-size: 24px; margin-top: -30px;">unpublished items, asset links, (maybe) leaks and more community related things like Profiles Plus!</h4>
         </div>
     </div>
-    <div class="modal-housing hidden" id="modal-housing">
-        <div class="modal">
-            <div class="modal-innder">
-                <h1 class="center-text" style="font-size: 54px; margin-top: 40px;">You Lost?</h1>
-                <h2 style="margin-top: -40px;">We don&#8217;t blame you</h2>
-                <p>The new user interface might confuse you if it&#8217;s you&#8217;re first time here, but don&#8217;t worry, the old user interface is still available.</p>
-                <p>Getting used to a new user interface can be confusing, that&#8217;s why our team has decided to make an up-to-date version of the old user interface so you can use the same layout you&#8217;re used to with even more features.</p>
-                <button class="refresh-button" onclick="location.href='https://old.yapper.shop/';">Use Old UI</button>
-                <p>Or feel free to stay and learn the new user interface with a cleaner look just like Discord!</p>
+    <div class="dev-modal-housing hidden" id="dev-modal-housing">
+        <div class="dev-modal">
+            <div class="dev-modal-innder">
+                <h1 class="center-text" style="font-size: 54px; margin-top: 40px;">Dev Options</h1>
+                <h2 style="margin-top: -40px;">Yappers only</h2>
+                <h2>Experiments</h2>
+                <p>Show 404 Button</p>
+                <button class="refresh-button" onclick="secret404ButtonShow()">Override 1</button> <button class="refresh-button" onclick="secret404ButtonHide()">Clear</button>
+                <hr>
+                <p>Unreleased Profiles Plus Items</p>
+                <button class="refresh-button" onclick="unreleasedProfilesPlusItemsTrue()">Override 1</button> <button class="refresh-button" onclick="unreleasedProfilesPlusItemsFalse()">Clear</button>
+                <hr>
                 <button class="refresh-button" onclick="closeLostModal()">Close</button>
             </div>
         </div>
