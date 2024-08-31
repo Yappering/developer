@@ -1,188 +1,143 @@
-const template = document.querySelector("[data-shop-category-template]");
-const output = document.querySelector("[data-shop-output]");
+function openDevModal() {
+    document.getElementById("dev-modal-housing").classList.remove('hidden');
+}
 
-fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/collectibles')
-    .then(response => response.json())
-    .then(data => {
-        data.forEach(user => {
-            const category = template.content.cloneNode(true).children[0];
+function closeLostModal() {
+    document.getElementById("dev-modal-housing").classList.add('hidden');
+}
 
-            const bannerImage = category.querySelector("[data-shop-category-banner-image]");
-            bannerImage.src = user.banner;
-            bannerImage.alt = user.name;
 
-            const logoImage = category.querySelector("[data-shop-category-logo-image]");
-            logoImage.src = user.logo;
-            logoImage.alt = user.name;
 
-            const summary = category.querySelector("[data-shop-category-desc]");
-            summary.textContent = user.summary;
+if (localStorage.dev == "true") {
+    const dev_tool_button = document.querySelector("#open-dev-tools-button");
+    dev_tool_button.style.display = 'block';
+}
 
-            if (user.summary_black === "true") {
-                category.querySelector(".shop-category-text-holder").style.color = 'black';
-            }
 
-            // Handling the logo sway effect
-            if (user.logo_sway === "true") {
-                category.querySelector("[data-shop-category-logo-image]").classList.add('shop-logo-sway');
-            }
 
-            // Handle expiry timer
-            const expiryTimer = category.querySelector(".shop-expiry-timer");
-            const timerElement = category.querySelector("#shop-expiry-timer");
-            const unpublishedAt = new Date(user.unpublished_at);
+if (localStorage.not_found_found == "true") {
+    document.getElementById("2024-09_not_found-1").classList.add('refresh-button-selected');
+}
 
-            if (user.unpublished_at && !isNaN(unpublishedAt.getTime())) {
-                expiryTimer.style.display = 'block';
+if (localStorage.not_found_found != "true") {
+    document.getElementById("2024-09_not_found-1").classList.remove('refresh-button-selected');
+    document.getElementById("2024-09_not_found-2").classList.add('refresh-button-selected');
+}
 
-                function updateTimer() {
-                    const now = new Date();
-                    const timeDiff = unpublishedAt - now;
 
-                    if (timeDiff <= 0) {
-                        timerElement.textContent = "UNOBTAINABLE";
-                        clearInterval(timerInterval);
-                    } else {
-                        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-                        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-                        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-                        timerElement.textContent = `${days} DAYS LEFT IN SHOP`;
-                    }
-                }
+function secret404ButtonHide() {
+    localStorage.not_found_found = "false"
+    console.log('hide 404 button')
+    document.getElementById("2024-09_not_found-1").classList.remove('refresh-button-selected');
+    document.getElementById("2024-09_not_found-2").classList.add('refresh-button-selected');
+}
 
-                const timerInterval = setInterval(updateTimer, 1000);
-                updateTimer(); // Initial call to display the timer immediately
-            } else {
-                expiryTimer.style.display = 'none';
-            }
+function secret404ButtonShow() {
+    localStorage.not_found_found = "true"
+    console.log('show 404 button')
+    document.getElementById("2024-09_not_found-1").classList.add('refresh-button-selected');
+    document.getElementById("2024-09_not_found-2").classList.remove('refresh-button-selected');
+}
 
-            const cardHolder = category.querySelector(".shop-category-card-holder");
 
-            // Function to create a card
-            function createCard(item, sku, price, priceNitro, isBundle = false, isNew = false) {
-                const card = document.createElement('div');
-                card.classList.add('shop-category-card');
-            
-                // Determine card class based on item type
-                if (item.item_type === 'deco') {
-                    card.classList.add('deco-card');
-                } else if (item.item_type === 'effect') {
-                    card.classList.add('effect-card');
-                } else if (isBundle) {
-                    card.classList.add('bundle-card');
-                }
-            
-                // Card content based on item type
-                if (isBundle && item.bundled_products) {
-                    const bundleDescription = `Bundle Includes: ${item.bundled_products.filter(product => product.item_type === 'deco').map(deco => deco.name).join(', ')} Decoration & ${item.bundled_products.filter(product => product.item_type === 'effect').map(effect => effect.name).join(', ')} Profile Effect`;
-            
-                    card.innerHTML = `
-                        <div class="bundle-items">
-                            ${item.bundled_products.map(bundledItem => `
-                                <div class="bundled-item">
-                                    <img src="${bundledItem.static}" class="${bundledItem.item_type}" data-animated="${bundledItem.animated}" alt="${bundledItem.name}">
-                                </div>
-                            `).join('')}
-                        </div>
-                        <div class="card-bottom">
-                            <a class="item-credits">SKU ID: ${sku}</a>
-                            <h3>${item.name}</h3>
-                            <p class="bundle-description shop-card-summary">${bundleDescription}</p>
-                            <div class="shop-price-container">
-                                <a style="font-size: large; font-weight: 900;">${price}</a>
-                                <a>${priceNitro} with Nitro</a>
-                            </div>
-                        </div>
-                        <div class="card-button-container">
-                            <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${sku}';" title="Open this item in the Discord Shop">Open In Shop</button>
-                            <button title="Unable to confirm if the item has been added to Profiles Plus" class="card-button card-button-disabled">Unable to confirm item availability</button>
-                        </div>
-                        <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
-                    `;
-            
-                } else {
-                    card.innerHTML = `
-                        <img src="${item.static}" data-animated="${item.animated}" alt="${item.name}">
-                        <div class="card-bottom">
-                            <a class="item-credits">SKU ID: ${sku}</a>
-                            <h3>${item.name}</h3>
-                            <p class="shop-card-summary">${item.summary}</p>
-                            <div class="shop-price-container">
-                                <a style="font-size: large; font-weight: 900;">${price}</a>
-                                <a>${priceNitro} with Nitro</a>
-                            </div>
-                        </div>
-                        <div class="card-button-container">
-                            <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${sku}';" title="Open this item in the Discord Shop">Open In Shop</button>
-                            <button title="Unable to confirm if the item has been added to Profiles Plus" class="card-button card-button-disabled">Unable to confirm item availability</button>
-                        </div>
-                        <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
-                    `;
-                }
-            
-                // Add hover effect for the entire card to animate images
-                card.addEventListener('mouseenter', function () {
-                    const imgs = card.querySelectorAll('img');
-                    imgs.forEach(img => {
-                        if (img.hasAttribute('data-animated')) {
-                            img.dataset.originalSrc = img.src; // Save original src
-                            img.src = img.getAttribute('data-animated'); // Switch to animated src
-                        }
-                    });
-                });
-            
-                card.addEventListener('mouseleave', function () {
-                    const imgs = card.querySelectorAll('img');
-                    imgs.forEach(img => {
-                        if (img.hasAttribute('data-animated') && img.dataset.originalSrc) {
-                            img.src = img.dataset.originalSrc; // Restore original src
-                        }
-                    });
-                });
-            
-                return card;
-            }
 
-            // Sort and display the products: Bundle, Decoration, Effect
-            const bundleProducts = [];
-            const decorationProducts = [];
-            const effectProducts = [];
 
-            user.products.forEach(product => {
-                const isNew = product.isNew === "true";
-                const sku = product.sku_id || ""; // Get credits from the product
-                const price = product.price || "";
-                const priceNitro = product.price_nitro || "";
 
-                // Check if the product is a bundle
-                if (product.bundled_products) {
-                    // Add bundle card with bundled items
-                    bundleProducts.push({ product, sku, price, priceNitro, isNew });
-                } else {
-                    // Handle individual items
-                    product.items.forEach(item => {
-                        if (item.item_type === 'deco') {
-                            decorationProducts.push({ item, sku, price, priceNitro, isNew });
-                        } else if (item.item_type === 'effect') {
-                            effectProducts.push({ item, sku, price, priceNitro, isNew });
-                        }
-                    });
-                }
-            });
+if (localStorage.unreleased_profiles_plus == "true") {
+    document.getElementById("2024-09_profiles_plus-1").classList.add('refresh-button-selected');
+}
 
-            // Append Bundle, Decoration, and Effect cards in that order
-            bundleProducts.forEach(({ product, sku, price, priceNitro, isNew }) => cardHolder.appendChild(createCard(product, sku, price, priceNitro, true, isNew)));
-            decorationProducts.forEach(({ item, sku, price, priceNitro, isNew }) => cardHolder.appendChild(createCard(item, sku, price, priceNitro, false, isNew)));
-            effectProducts.forEach(({ item, sku, price, priceNitro, isNew }) => cardHolder.appendChild(createCard(item, sku, price, priceNitro, false, isNew)));
+if (localStorage.unreleased_profiles_plus != "true") {
+    document.getElementById("2024-09_profiles_plus-1").classList.remove('refresh-button-selected');
+    document.getElementById("2024-09_profiles_plus-2").classList.add('refresh-button-selected');
+}
 
-            document.getElementById("shop-category-loading").classList.add('hidden');
-            output.append(category);
-        });
-    })
-    .catch(error => {
-        console.error('Error fetching the API:', error);
-        document.getElementById("failed-to-load-shop").classList.remove('hidden');
-        document.getElementById("shop-category-loading").classList.add('hidden');
-    });
+
+function unreleasedProfilesPlusItemsFalse() {
+    localStorage.unreleased_profiles_plus = "false"
+    console.log('hide Unreleased Profiles Plus Items')
+    document.getElementById("2024-09_profiles_plus-1").classList.remove('refresh-button-selected');
+    document.getElementById("2024-09_profiles_plus-2").classList.add('refresh-button-selected');
+}
+
+function unreleasedProfilesPlusItemsTrue() {
+    localStorage.unreleased_profiles_plus = "true"
+    console.log('show Unreleased Profiles Plus Items')
+    document.getElementById("2024-09_profiles_plus-1").classList.add('refresh-button-selected');
+    document.getElementById("2024-09_profiles_plus-2").classList.remove('refresh-button-selected');
+}
+
+
+
+
+
+function saveToLocalStorage() {
+    // Get the values from the inputs
+    const key = document.getElementById('keyInput').value;
+    const value = document.getElementById('valueInput').value;
+    
+    // Save to local storage
+    localStorage.setItem(key, value);
+    
+    // Refresh the display
+    displayLocalStorage();
+}
+
+function displayLocalStorage() {
+    // Get the container element
+    const storageItems = document.getElementById('storageItems');
+    
+    // Clear the container
+    storageItems.innerHTML = '';
+    
+    // Iterate over all items in local storage
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        
+        // Create a container for each item
+        const itemDiv = document.createElement('div');
+        
+        // Create editable input fields for key and value
+        const keyInput = document.createElement('input');
+        keyInput.type = 'text';
+        keyInput.value = key;
+        keyInput.disabled = true; // Disable key editing
+        keyInput.className = 'dev-local-storage-input-2';
+        
+        const valueInput = document.createElement('input');
+        valueInput.type = 'text';
+        valueInput.value = value;
+        valueInput.className = 'dev-local-storage-input-3';
+        
+        // Save button for each item
+        const saveButton = document.createElement('button');
+        saveButton.textContent = 'Update';
+        saveButton.className = 'refresh-button';
+        saveButton.onclick = function() {
+            localStorage.setItem(key, valueInput.value);
+        };
+        
+        // Delete button for each item
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.className = 'refresh-button';
+        deleteButton.onclick = function() {
+            localStorage.removeItem(key);
+            displayLocalStorage(); // Refresh the display
+        };
+        
+        // Append elements to the item div
+        itemDiv.appendChild(deleteButton);
+        itemDiv.appendChild(keyInput);
+        itemDiv.appendChild(valueInput);
+        itemDiv.appendChild(saveButton);
+        
+        // Append the item div to the container
+        storageItems.appendChild(itemDiv);
+    }
+}
+
+// Display local storage items on page load
+window.onload = displayLocalStorage;
