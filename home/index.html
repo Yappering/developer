@@ -31,6 +31,7 @@
                 <div style="overflow: auto; height: 100%; margin-top: 50px;">
                     <p class="center-text" style="font-size: 12px; display: flex;">Discord is a registered trademark of Discord Inc. Shop Archives is not affiliated with, endorsed or sponsored by Discord Inc.</p>
                     <div data-mains-tabs>
+                        <button class="refresh-button" onclick="openDevModal()" style="display: none;" id="open-dev-tools-button">Open Dev Tools</button>
                         <button class="dm-button hidden" id="404-mains-button" onclick="location.href='/404';" title="Looks like you found the unfound page.">
                             <p class="dm-button-text">Page Not Found</p>
                         </button>
@@ -147,14 +148,34 @@
     <div class="dev-modal-housing hidden" id="dev-modal-housing">
         <div class="dev-modal">
             <div class="dev-modal-innder">
-                <h1 class="center-text" style="font-size: 54px; margin-top: 40px;">Dev Options</h1>
-                <h2 style="margin-top: -40px;">Yappers only</h2>
-                <h2>Experiments</h2>
-                <p>Show 404 Button</p>
-                <button class="refresh-button" onclick="secret404ButtonShow()">Override 1</button> <button class="refresh-button" onclick="secret404ButtonHide()">Clear</button>
+                <h1 class="center-text" style="font-size: 54px; margin-top: 0px;">Dev Options</h1>
+
                 <hr>
+
+                <h2>Experiments</h2>
+
+                <p>Show 404 Button</p>
+                <button class="refresh-button" onclick="secret404ButtonShow()" id="2024-09_not_found-1">Override 1</button>
+                <button class="refresh-button" onclick="secret404ButtonHide()" id="2024-09_not_found-2">No Override</button>
+
                 <p>Unreleased Profiles Plus Items</p>
-                <button class="refresh-button" onclick="unreleasedProfilesPlusItemsTrue()">Override 1</button> <button class="refresh-button" onclick="unreleasedProfilesPlusItemsFalse()">Clear</button>
+                <button class="refresh-button" onclick="unreleasedProfilesPlusItemsTrue()" id="2024-09_profiles_plus-1">Override 1</button>
+                <button class="refresh-button" onclick="unreleasedProfilesPlusItemsFalse()" id="2024-09_profiles_plus-2">No Override</button>
+
+                <hr>
+
+                <h2>Local Storage Overrides</h2>
+
+                <p>Refresh the page for changes to take effect</p>
+
+                <button class="refresh-button" style="opacity: 0; pointer-events: none;" onclick="saveToLocalStorage()">Save</button>
+
+                <input type="text" class="dev-local-storage-input-1" id="keyInput" placeholder="Enter key">
+                <input type="text" class="dev-local-storage-input-1" id="valueInput" placeholder="Enter value">
+
+                <button class="refresh-button" onclick="saveToLocalStorage()">Save</button>
+
+                <div id="storageItems"></div>
                 <hr>
                 <button class="refresh-button" onclick="closeLostModal()">Close</button>
             </div>

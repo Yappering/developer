@@ -116,8 +116,8 @@ body {
     background-color: #313338;
     border-radius: 10px;
     text-align: center;
-    width: 800px;
-    height: 500px;
+    width: 85%;
+    height: 85%;
     animation: modal-popup-anim 0.6s;
 }
 
@@ -134,8 +134,54 @@ body {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    width: 700px;
-    height: 500px;
+    width: 80%;
+    height: 80%;
+    overflow: auto;
+}
+
+.dev-local-storage-input-1 {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    background: #1E1F22;
+    color: white;
+    padding-inline: 5px;
+}
+
+.dev-local-storage-input-1::placeholder {
+    color: #787E85;
+}
+
+.dev-local-storage-input-2 {
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    height: 20px;
+    color: white;
+    background: none;
+    text-align: right;
+    padding-inline: 5px;
+}
+
+.dev-local-storage-input-3 {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    width: 200px;
+    height: 30px;
+    background: #1E1F22;
+    color: white;
+    padding-inline: 5px;
+}
+
+#storageItems div {
+    margin-top: 3px;
+}
+
+#storageItems .refresh-button {
+    margin-left: 3px;
 }
 
 .server-avatar {
@@ -310,6 +356,14 @@ body {
 
 .refresh-button:hover {
     background-color: rgb(71, 81, 192);
+}
+
+.refresh-button-selected {
+    background-color: #05814B;
+}
+
+.refresh-button-selected:hover {
+    background-color: #036338;
 }
 
 .dev-modal-button {

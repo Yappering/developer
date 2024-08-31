@@ -20,6 +20,7 @@
                 <div style="overflow: auto; height: 100%; margin-top: 50px;">
                     <p class="center-text" style="font-size: 12px; display: flex;">Discord is a registered trademark of Discord Inc. Shop Archives is not affiliated with, endorsed or sponsored by Discord Inc.</p>
                     <div data-mains-tabs>
+                        <button class="refresh-button" onclick="openDevModal()" style="display: none;" id="open-dev-tools-button">Open Dev Tools</button>
                         <button class="dm-button dm-button-selected">
                             <p class="dm-button-text">Page Not Found</p>
                         </button>
@@ -132,15 +133,38 @@
             <h4 class="center-text" style="font-size: 24px;">The page you&#8217;re looking for doesn&#8217;t exist.</h4>
         </div>
     </div>
-    <div class="modal-housing hidden" id="modal-housing">
-        <div class="modal">
-            <div class="modal-innder">
-                <h1 class="center-text" style="font-size: 54px; margin-top: 40px;">You Lost?</h1>
-                <h2 style="margin-top: -40px;">We don&#8217;t blame you</h2>
-                <p>The new user interface might confuse you if it&#8217;s you&#8217;re first time here, but don&#8217;t worry, the old user interface is still available.</p>
-                <p>Getting used to a new user interface can be confusing, that&#8217;s why our team has decided to make an up-to-date version of the old user interface so you can use the same layout you&#8217;re used to with even more features.</p>
-                <button class="refresh-button" onclick="location.href='https://old.yapper.shop/';">Use Old UI</button>
-                <p>Or feel free to stay and learn the new user interface with a cleaner look just like Discord!</p>
+    <div class="dev-modal-housing hidden" id="dev-modal-housing">
+        <div class="dev-modal">
+            <div class="dev-modal-innder">
+                <h1 class="center-text" style="font-size: 54px; margin-top: 0px;">Dev Options</h1>
+
+                <hr>
+
+                <h2>Experiments</h2>
+
+                <p>Show 404 Button</p>
+                <button class="refresh-button" onclick="secret404ButtonShow()" id="2024-09_not_found-1">Override 1</button>
+                <button class="refresh-button" onclick="secret404ButtonHide()" id="2024-09_not_found-2">No Override</button>
+
+                <p>Unreleased Profiles Plus Items</p>
+                <button class="refresh-button" onclick="unreleasedProfilesPlusItemsTrue()" id="2024-09_profiles_plus-1">Override 1</button>
+                <button class="refresh-button" onclick="unreleasedProfilesPlusItemsFalse()" id="2024-09_profiles_plus-2">No Override</button>
+
+                <hr>
+
+                <h2>Local Storage Overrides</h2>
+
+                <p>Refresh the page for changes to take effect</p>
+
+                <button class="refresh-button" style="opacity: 0; pointer-events: none;" onclick="saveToLocalStorage()">Save</button>
+
+                <input type="text" class="dev-local-storage-input-1" id="keyInput" placeholder="Enter key">
+                <input type="text" class="dev-local-storage-input-1" id="valueInput" placeholder="Enter value">
+
+                <button class="refresh-button" onclick="saveToLocalStorage()">Save</button>
+
+                <div id="storageItems"></div>
+                <hr>
                 <button class="refresh-button" onclick="closeLostModal()">Close</button>
             </div>
         </div>
