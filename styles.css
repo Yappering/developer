@@ -184,6 +184,22 @@ body {
     margin-left: 3px;
 }
 
+.experiment-card-holder {
+    text-align: center;
+}
+
+.experiment-card {
+    display: inline-block;
+    background-color: #2B2D31;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.experiment-subtext {
+    color: #787E85;
+}
+
 .server-avatar {
     margin-top: 10px;
 }
@@ -894,5 +910,5 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
