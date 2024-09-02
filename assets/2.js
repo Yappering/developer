@@ -1,10 +1,18 @@
-const template = document.querySelector("[data-shop-category-template]");
-const output = document.querySelector("[data-shop-output]");
 
-fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/collectibles')
+let apiUrl = 'https://raw.githubusercontent.com/Yappering/api/main/v1/collectibles';
+
+if (localStorage.items_in_shop == "true") {
+    apiUrl = 'https://raw.githubusercontent.com/Yappering/api/main/v1/collectibles-in-shop';
+}
+
+
+fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
         data.forEach(user => {
+            const template = document.querySelector("[data-shop-category-template]");
+            const output = document.querySelector("[data-shop-output]");
+
             const category = template.content.cloneNode(true).children[0];
 
             const bannerImage = category.querySelector("[data-shop-category-banner-image]");
