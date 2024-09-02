@@ -95,7 +95,7 @@ body {
     height: 100%;
 }
 
-.dev-modal-housing {
+.modal-housing-1 {
     background-color: #0000006e;
     position: fixed;
     display: flex;
@@ -107,10 +107,7 @@ body {
     width: 100vw;
     animation: modal-popup-anim1 1s;
 }
-@keyframes dev-modal-popup-anim1 {
-    0% {background-color: #00000000;}
-    100% {background-color: #0000006e;}
-}
+
 
 .dev-modal {
     background-color: #313338;
@@ -121,13 +118,17 @@ body {
     animation: modal-popup-anim 0.6s;
 }
 
-@keyframes dev-modal-popup-anim {
+@keyframes modal-popup-anim {
     0% {scale: 0;}
-    20% {scale: 0;}
     100% {scale: 1;}
 }
 
-.dev-modal-innder {
+@keyframes modal-popup-anim1 {
+    0% {background-color: #00000000;}
+    100% {background-color: #0000006e;}
+}
+
+.dev-modal-inner {
     text-align: center;
     position: fixed;
     top: 50%;
@@ -137,6 +138,26 @@ body {
     width: 80%;
     height: 80%;
     overflow: auto;
+}
+
+.lost-modal {
+    background-color: #313338;
+    border-radius: 10px;
+    text-align: center;
+    width: 800px;
+    height: 500px;
+    animation: modal-popup-anim 0.6s;
+}
+
+.lost-modal-inner {
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 500px;
 }
 
 .dev-local-storage-input-1 {
