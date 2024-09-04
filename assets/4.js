@@ -43,6 +43,20 @@ function openDevModal() {
                 </div>
                 <hr>
                 <div>
+                    <h2>Modals</h2>
+                    <div class="experiment-card-holder">
+                        <div class="experiment-card">
+                            <p>Lost</p>
+                            <button class="refresh-button" onclick="openLostModal()">Open</button>
+                        </div>
+                        <div class="experiment-card">
+                            <p>Dev</p>
+                            <button class="refresh-button" onclick="openDevModal()">Open</button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div>
                     <h2>Debug</h2>
                     <p class="experiment-subtext">Overrides</p>
                     <div class="experiment-card-holder">
