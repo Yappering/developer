@@ -19,6 +19,26 @@ function openLostModal() {
 `;
 }
 
+function openMobileModal() {
+    const lost_modal = document.getElementById('modal-housing');
+    lost_modal.innerHTML = `
+    <div class="modal-housing-1" id="modal-housing-1">
+        <div class="lost-modal">
+            <div class="lost-modal-inner">
+                <h1 class="center-text" style="font-size: 54px; margin-top: 40px;">Looks like you're on mobile</h1>
+                <p>Would you like to use the mobile client?</p>
+                <button class="refresh-button" onclick="location.href='https://m.yapper.shop/';">Yes</button>
+                <button class="refresh-button" onclick="closeMobileModal()">No</button>
+            </div>
+        </div>
+    </div>
+`;
+}
+
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    openMobileModal()
+}
+
 function openOptionsModal() {
     const options_modal = document.getElementById('modal-housing');
     options_modal.innerHTML = `
@@ -212,6 +232,11 @@ function openDevModal() {
 function closeDevModal() {
     const dev_modal = document.getElementById('modal-housing');
     dev_modal.innerHTML = ``;
+}
+
+function closeMobileModal() {
+    const mobile_modal = document.getElementById('modal-housing');
+    mobile_modal.innerHTML = ``;
 }
 
 function closeLostModal() {
