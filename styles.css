@@ -470,7 +470,11 @@ body {
 }
 
 .blog-message-message-holder {
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-left: 10px;
+    background-color: #313338;
+    padding: 10px;
+    border-radius: 20px;
 }
 
 .message-author {
@@ -480,10 +484,15 @@ body {
     font-size: larger;
 }
 
+.message-title-text {
+    display: block;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
 .message-time {
     display: block;
     margin-top: 0px;
-    margin-left: 80px;
 }
 
 .shop-category-loading {
@@ -889,7 +898,6 @@ body {
 
 .new-item-tag-1 {
     text-align: center;
-    margin-left: 80px;
     background-color: white;
     border-radius: 999px;
     width: 40px;
@@ -900,6 +908,7 @@ body {
     color: black;
     z-index: 5;
     pointer-events: none;
+    margin-bottom: -10px;
 }
 
 .shop-logo-sway {
