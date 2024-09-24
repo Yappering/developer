@@ -396,5 +396,5 @@ function displayLocalStorage() {
 
 
 function fetchData() {
-    console.log('fetchData() has no done anything, you are not in the shop tab')
+    console.log('fetchData() has no done anything, you are not in the shop tab (maybe, this is just here so it doesnt give the error)')
 }
