@@ -1,16 +1,7 @@
-.shop-tab {
-    background-image:
-        url(https://cdn.discordapp.com/assets/content/f43d480493a49313b351c0884ca3ec6c4ad7895104fb82f4a783e511e6290c76.png),
-        linear-gradient(90deg, rgba(43, 45, 49, 0.00) 28.13%, rgba(255, 107, 0, 0.55) 67.3%, #FFFD00 100%);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: right;
-}
-
 .pplus-tab {
     background-image:
         url(https://cdn.yapper.shop/assets/38.png),
-        linear-gradient( 90deg,#00000000, #726809);
+        linear-gradient(90deg, rgba(43, 45, 49, 0.00) 28.13%, rgba(255, 107, 0, 0.55) 67.3%, #FFFD00 100%);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right;
