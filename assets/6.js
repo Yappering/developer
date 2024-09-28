@@ -23,6 +23,8 @@ function openLostModal() {
                 <button class="refresh-button" onclick="location.href='https://www.youtube.com/@DTACat';">Youtube</button>
                 <hr style="opacity: 0">
                 <button class="refresh-button" onclick="closeLostModal()">Close</button>
+                <hr style="opacity: 0">
+                App Version: Dev 63
             </div>
         </div>
     </div>

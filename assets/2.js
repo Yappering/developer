@@ -237,7 +237,7 @@ function copyEmoji(emoji) {
 
 // Redirect to Google if emojiCopy is null
 function redirectToGoogle() {
-    window.location.href = 'https://google.com';
+    window.location.href = 'https://discord.gg/Mcwh7hGcWb';
 }
 
 // Initial data fetch when the page loads
