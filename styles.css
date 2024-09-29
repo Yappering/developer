@@ -984,6 +984,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #1E1F22;
+    height: 640px !important;
+    margin-top: -20px;
+    margin-right: -20px;
 }
 
 .bundled-item img {
@@ -1041,6 +1045,12 @@ body {
     border-radius: 10px;
     pointer-events: none;
 }
+
+* {
+    text-decoration: none !important;
+}
+
+
 
 
 
