@@ -632,7 +632,6 @@ body {
     overflow: hidden; /* Prevents content from overflowing */
     position: relative; /* Allows positioning of the card bottom */
     border: 2px solid #1E1F22;
-    cursor: pointer;
 }
 
 /* Card Hover Effect */

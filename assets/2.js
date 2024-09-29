@@ -169,12 +169,33 @@ function fetchData() {
 
                 // Function to open the modal
                 function openModal(item, sku, price, priceNitro, emojiCopy) {
+                    let description = item.summary; // Default description for non-bundle items
+                
+                    // If the item is a bundle, construct the description
+                    if (item.bundled_products && Array.isArray(item.bundled_products)) {
+                        let decoName = '', effectName = '';
+                        
+                        // Loop through bundled products to find decoration and effect names
+                        item.bundled_products.forEach(bundledItem => {
+                            if (bundledItem.item_type === 'deco') {
+                                decoName = bundledItem.name;
+                            } else if (bundledItem.item_type === 'effect') {
+                                effectName = bundledItem.name;
+                            }
+                        });
+                
+                        // Create bundle description if both decoration and effect exist
+                        if (decoName && effectName) {
+                            description = `Bundle Includes: ${decoName} Decoration & ${effectName} Profile Effect`;
+                        }
+                    }
+                
                     const modalContent = `
                         <div class="modal-content">
                             <div class="modal-left">
                                 <h4>SKU ID: ${sku}</h4>
                                 <h3>${item.name}</h3>
-                                <p>${item.summary}</p>
+                                <p>${description}</p>
                                 <div class="modal-prices">
                                     <p style="font-weight: bold;">${price}</p>
                                     <p>${priceNitro} with Nitro</p>
@@ -192,6 +213,7 @@ function fetchData() {
                                     item.bundled_products.map(bundledItem => `
                                         <div class="bundled-item">
                                             <img src="${bundledItem.static}" 
+                                                 data-static="${bundledItem.static}"
                                                  data-animated="${bundledItem.animated}" 
                                                  alt="${bundledItem.name}" 
                                                  id="${getImageType(bundledItem)}">
@@ -199,6 +221,7 @@ function fetchData() {
                                     `).join('') : 
                                     `<div class="single-item">
                                         <img src="${item.static}" 
+                                             data-static="${item.static}"
                                              data-animated="${item.animated}" 
                                              alt="${item.name}" 
                                              id="${getImageType(item)}">
@@ -227,6 +250,26 @@ function fetchData() {
                         }
                     });
                 
+                    // Add hover effect for animated images
+                    const modalRight = modal.querySelector('.modal-right');
+                    modalRight.addEventListener('mouseenter', () => {
+                        modalRight.querySelectorAll('img').forEach(img => {
+                            const animatedSrc = img.getAttribute('data-animated');
+                            if (animatedSrc) {
+                                img.src = animatedSrc; // Change to animated image
+                            }
+                        });
+                    });
+                
+                    modalRight.addEventListener('mouseleave', () => {
+                        modalRight.querySelectorAll('img').forEach(img => {
+                            const staticSrc = img.getAttribute('data-static');
+                            if (staticSrc) {
+                                img.src = staticSrc; // Revert to static image
+                            }
+                        });
+                    });
+                
                     document.body.appendChild(modal);
                 }
                 
@@ -242,6 +285,7 @@ function fetchData() {
                     }
                     return 'unknown-type'; // Fallback for undefined types
                 }
+                
                 
                 
                 
