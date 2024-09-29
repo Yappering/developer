@@ -177,9 +177,6 @@ fetch('https://raw.githubusercontent.com/Yappering/api/main/v1/miscellaneous')
                             </div>
                             <div class="modal-buttons">
                                 <button title="Unable to confirm if the item has been added to Profiles Plus" class="card-button card-button-disabled">Unable to confirm item availability</button>
-                                <a href="https://raw.githubusercontent.com/Yappering/zipped-data/refs/heads/main/collectibles-products/${sku}.zip">
-                                    <button class="card-button">Download Data</button>
-                                </a>
                             </div>
                         </div>
                         <div class="modal-right">
