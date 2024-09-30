@@ -206,9 +206,17 @@ body {
 
 #open-dev-tools-button {
     margin-top: -50px;
+    right: 180px;
+    cursor: pointer;
+    position: absolute;
+}
+
+#open-downloads-button {
+    margin-top: -50px;
     right: 150px;
     cursor: pointer;
     position: absolute;
+    scale: 0.95;
 }
 
 #open-lost-tools-button {
