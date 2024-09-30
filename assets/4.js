@@ -24,7 +24,7 @@ function openLostModal() {
                 <hr style="opacity: 0">
                 <button class="refresh-button" onclick="closeLostModal()">Close</button>
                 <hr style="opacity: 0">
-                App Version: Dev 74
+                App Version: Dev 75
             </div>
         </div>
     </div>
@@ -122,6 +122,43 @@ function noBundlesInShopIsChecked() {
     }
 }
 
+function openDownloadsModal() {
+    const downloads_modal = document.getElementById('modal-housing');
+    downloads_modal.innerHTML = `
+    <div class="modal-housing-1" id="modal-housing-1">
+        <div class="dev-modal">
+            <div class="dev-modal-inner">
+                <h1 class="center-text" style="font-size: 54px; margin-top: 40px;">Manual Downloads</h1>
+                <div>
+                    <div class="experiment-card-holder">
+                        <div class="experiment-card">
+                            <p>Collctibles Marketing</p>
+                            <p class="experiment-subtext">collectibles-marketing-downloads</p>
+                            <a href="https://raw.githubusercontent.com/Yappering/zipped-data/refs/heads/main/collectibles-marketing/1.zip">
+                                <button class="card-button">1 Valorant Champions</button>
+                            </a>
+                            <a href="https://raw.githubusercontent.com/Yappering/zipped-data/refs/heads/main/collectibles-marketing/2.zip">
+                                <button class="card-button">2 Dojo</button>
+                            </a>
+                            <a href="https://raw.githubusercontent.com/Yappering/zipped-data/refs/heads/main/collectibles-marketing/3.zip">
+                                <button class="card-button">3 The Vault</button>
+                            </a>
+                            <a href="https://raw.githubusercontent.com/Yappering/zipped-data/refs/heads/main/collectibles-marketing/4.zip">
+                                <button class="card-button">4 Autumn Equinox</button>
+                            </a>
+                            <a href="https://raw.githubusercontent.com/Yappering/zipped-data/refs/heads/main/collectibles-marketing/5.zip">
+                                <button class="card-button">5 Street Fighter</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <button class="refresh-button" onclick="closeLostModal()">Close</button>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
 function openDevModal() {
     const dev_modal = document.getElementById('modal-housing');
     dev_modal.innerHTML = `
@@ -160,6 +197,10 @@ function openDevModal() {
                         <div class="experiment-card">
                             <p>Options</p>
                             <button class="refresh-button" onclick="openOptionsModal()">Open</button>
+                        </div>
+                        <div class="experiment-card">
+                            <p>Downloads</p>
+                            <button class="refresh-button" onclick="openDownloadsModal()">Open</button>
                         </div>
                     </div>
                 </div>
