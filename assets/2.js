@@ -28,6 +28,9 @@ function fetchData() {
                 const output = document.querySelector("[data-shop-output]");
     
                 const category = template.content.cloneNode(true).children[0];
+
+                const banner = category.querySelector("[data-shop-category-banner]");
+                banner.id = user.sku_id;
     
                 const bannerImage = category.querySelector("[data-shop-category-banner-image]");
                 bannerImage.src = user.banner;
@@ -343,6 +346,25 @@ function fetchData() {
                 document.getElementById("shop-category-loading").classList.add('hidden');
                 output.append(category);
             });
+            document.getElementById('1285465421339693076').innerHTML = `
+            <img class="shop-category-banner-img" src="https://cdn.discordapp.com/app-assets/1096190356233670716/1285465421356732426.png?size=4096" data-shop-category-banner-image="" alt="Street Fighter 6">
+            <img class="shop-category-banner-img" style="position: absolute;" src="https://cdn.yapper.shop/discord-assets/19.png">
+            <div class="shop-category-text-holder">
+                <p style="font-size: 18px;" data-shop-category-desc="">Hit the streets with Street Fighter.</p>
+            </div>
+            `;
+            document.getElementById('1252404112650407998').innerHTML = `
+            <img class="shop-category-banner-img" src="https://cdn.yapper.shop/discord-assets/15.jpg" data-shop-category-banner-image="" alt="Palworld">
+            <img class="shop-category-banner-img" style="position: absolute;" src="https://cdn.yapper.shop/discord-assets/14.png">
+            <img style="position: absolute; left: 0px; bottom: 0px; width: 400px;" src="https://cdn.yapper.shop/discord-assets/12.png">
+            <img style="position: absolute; right: 0px; bottom: 0px; width: 400px;" src="https://cdn.yapper.shop/discord-assets/13.png">
+            <div class="shop-category-logo-holder">
+                <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/discord-assets/9.png" id="shop-banner-logo" data-shop-category-logo-image="" alt="Palworld">
+            </div>
+            <div class="shop-category-text-holder">
+                <p style="font-size: 18px;" data-shop-category-desc="">New island, new Pals, new adventures!</p>
+            </div>
+            `;
         })
         .catch(error => {
             console.error('Error fetching the API:', error);
@@ -367,5 +389,3 @@ function redirectToGoogle() {
 
 // Initial data fetch when the page loads
 window.onload = fetchData;
-
-
