@@ -88,6 +88,8 @@ function fetchData() {
                 function createCard(item, sku, price, priceNitro, emojiCopy, isBundle = false, isNew = false) {
                     const card = document.createElement('div');
                     card.classList.add('shop-category-card');
+
+                    card.id = sku;
                 
                     // Determine card class based on item type
                     if (item.item_type === 'deco') {
@@ -206,6 +208,9 @@ function fetchData() {
                                 <div class="modal-buttons">
                                     <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${sku}';">Open In Shop</button>
                                     <button class="card-button ${emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${emojiCopy ? `copyEmoji('${emojiCopy}')` : `redirectToGoogle()`}" title="${emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                    <a href="https://raw.githubusercontent.com/Yappering/zipped-data/refs/heads/main/collectibles-products/${sku}.zip">
+                                        <button class="card-button">Download Data</button>
+                                    </a>
                                 </div>
                             </div>
                             <div class="modal-right">
@@ -364,6 +369,36 @@ function fetchData() {
             <div class="shop-category-text-holder">
                 <p style="font-size: 18px;" data-shop-category-desc="">New island, new Pals, new adventures!</p>
             </div>
+            `;
+            document.getElementById('1220513972189663413').innerHTML = `
+            <div class="shop-category-banner-img" style="background: rgb(255, 70, 85);" data-shop-category-banner-image="" alt="VALORANT"></div>
+            <img class="shop-category-banner-img" style="position: absolute;" src="https://cdn.yapper.shop/discord-assets/24.png">
+            <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/20.png">
+            <img style="position: absolute; right: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/22.png">
+            <div class="shop-category-logo-holder">
+                <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/discord-assets/21.png" id="shop-banner-logo" data-shop-category-logo-image="" alt="Palworld">
+            </div>
+            <div class="shop-category-text-holder">
+                <p style="font-size: 18px;" data-shop-category-desc="">DEFY DEFINITION</p>
+            </div>
+            `;
+
+            document.getElementById('1268362891946627103').innerHTML = `
+            <div class="1268362891946627103-image"></div>
+            <img src="https://cdn.discordapp.com/avatar-decoration-presets/a_90e0dce3cc48c4a9607b6d41209c737e.png?size=4096&amp;passthrough=false" data-animated="https://cdn.discordapp.com/avatar-decoration-presets/a_90e0dce3cc48c4a9607b6d41209c737e.png?size=4096&amp;passthrough=true" alt="VALORANT Champions 2024" data-original-src="https://cdn.discordapp.com/avatar-decoration-presets/a_90e0dce3cc48c4a9607b6d41209c737e.png?size=4096&amp;passthrough=false">
+            <div class="card-bottom">
+                <a class="item-credits">SKU ID: 1268362891946627103</a>
+                <h3>VALORANT Champions 2024</h3>
+                <p class="shop-card-summary">All paths end here.</p>
+                <div class="shop-price-container">
+                    <a style="font-size: large; font-weight: 900;">US$15.99</a>
+                    <a>US$11.99 with Nitro</a>
+                </div>
+            </div>
+            <div class="card-button-container">
+                <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=1268362891946627103';">Open In Shop</button>
+            </div>
+            <div class="new-item-tag" style="display: none;">NEW</div>
             `;
         })
         .catch(error => {

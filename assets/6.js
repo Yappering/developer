@@ -24,7 +24,7 @@ function openLostModal() {
                 <hr style="opacity: 0">
                 <button class="refresh-button" onclick="closeLostModal()">Close</button>
                 <hr style="opacity: 0">
-                App Version: Dev 70
+                App Version: Dev 71
             </div>
         </div>
     </div>
