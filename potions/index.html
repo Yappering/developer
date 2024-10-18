@@ -176,11 +176,20 @@
         <div class="shop-housing" style="overflow: auto; margin-top: 0px;">
             <div class="shop-container" style="overflow: auto;">
                 <div class="shop-category" style="margin-top: 50px;">
+                    <div class="shop-notice">
+                        <p class="shop-notice-text">Notice: Discord 'Potions' are in early beta, we only have a limited amount of information about them</p>
+                    </div>
+                    <div class="shop-warning">
+                        <p class="shop-notice-text">Warning: Do not attempt to purchase Discord 'Potions' unless you know what you're doing</p>
+                    </div>
                     <template data-potion-card-template>
                         <div>
                             <div class="potion-card-holder" data-potion-card-holder>
                                 <div class="potion-card-preview-holder">
                                     <img class="potion-card-preview" src="" id="potion-card-preview" data-potion-card-preview-image>
+                                </div>
+                                <div class="potion-card-sku-holder">
+                                    <p style="font-size: 18px;" data-potion-card-sku></p>
                                 </div>
                                 <div class="potion-card-title-holder">
                                     <p style="font-size: 30px;" data-potion-card-title></p>
@@ -191,6 +200,9 @@
                                 <div class="potion-card-price-holder">
                                     <p style="font-size: 25px;" data-potion-card-price></p>
                                 </div>
+                                <div class="potion-card-button-holder">
+                                    <button class="card-button">Open In Shop</button>
+                                </div>
                             </div>
                         </div>
                     </template>
@@ -199,47 +211,13 @@
 
                     <div class="shop-category-loading" id="shop-category-loading">
                         <div>
-                            <div class="shop-category-banner-loading">
+                            <div class="potion-card-loading">
                             </div>
-                            <div class="shop-category-card-holder-loading">
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
+                            <div class="potion-card-loading">
                             </div>
-                        </div>
-                        <div>
-                            <div class="shop-category-banner-loading">
+                            <div class="potion-card-loading">
                             </div>
-                            <div class="shop-category-card-holder-loading">
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
-                                <div class="shop-category-card-loading">
-                                </div>
+                            <div class="potion-card-loading">
                             </div>
                         </div>
                     </div>

@@ -39,6 +39,9 @@ function fetchData() {
                 const price = category.querySelector("[data-potion-card-price]");
                 price.textContent = user.price;
 
+                const sku = category.querySelector("[data-potion-card-sku]");
+                sku.textContent = 'SKU ID: ' + user.sku_id;
+
                 // Append the category to the output section
                 document.getElementById("shop-category-loading").classList.add('hidden');
                 output.append(category);

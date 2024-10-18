@@ -588,7 +588,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 1000px;
-    height: 200px;
+    height: 240px;
     background-color: #313338;
     scale: 0.9;
     object-fit: cover;
@@ -598,6 +598,25 @@ body {
     overflow: hidden;
     outline: 2px solid rgba(16, 17, 19, 0.4);
     outline-offset: -2px;
+}
+
+.potion-card-loading {
+    display: flex;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    height: 240px;
+    background-color: #313338;
+    scale: 0.9;
+    object-fit: cover;
+    border-radius: 32px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    outline: 2px solid rgba(16, 17, 19, 0.4);
+    outline-offset: -2px;
+    animation: shop-fetching-anim 4s infinite;
 }
 
 .shop-category-banner-img {
@@ -616,7 +635,7 @@ body {
 
 .potion-card-preview-holder {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 10%;
     transform: translate(-50%, -50%);
     z-index: 1;
@@ -652,7 +671,7 @@ body {
 .potion-card-text-holder {
     position: absolute;
     z-index: 1; /* Ensure the text is above the banner */
-    margin-top: -20px; /* Space between the logo and the text */
+    margin-top: -60px; /* Space between the logo and the text */
     left: 20%;
     text-align: center;
 }
@@ -660,7 +679,7 @@ body {
 .potion-card-title-holder {
     position: absolute;
     z-index: 1; /* Ensure the text is above the banner */
-    margin-top: -100px; /* Space between the logo and the text */
+    margin-top: -160px; /* Space between the logo and the text */
     left: 20%;
     text-align: center;
 }
@@ -668,16 +687,24 @@ body {
 .potion-card-price-holder {
     position: absolute;
     z-index: 1; /* Ensure the text is above the banner */
-    margin-top: 110px; /* Space between the logo and the text */
-    left: 20%;
+    margin-top: 160px; /* Space between the logo and the text */
+    right: 17%;
+    text-align: center;
+}
+
+.potion-card-sku-holder {
+    position: absolute;
+    z-index: 1; /* Ensure the text is above the banner */
+    margin-top: 170px; /* Space between the logo and the text */
+    left: 3%;
     text-align: center;
 }
 
 .potion-card-button-holder {
     position: absolute;
     z-index: 1; /* Ensure the text is above the banner */
-    margin-top: 110px; /* Space between the logo and the text */
-    right: 5%;
+    margin-top: 160px; /* Space between the logo and the text */
+    right: 3%;
     text-align: center;
 }
 
@@ -1379,6 +1406,18 @@ body {
     margin-top: 60px;
     border-radius: 10px;
     border: 2px solid #464FBF;
+}
+
+.shop-warning {
+    text-align: center;
+    background-color: #bf464663;
+    height: 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 2px solid #bf4646;
 }
 
 .shop-notice-text {
