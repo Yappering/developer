@@ -82,12 +82,14 @@ function fetchData() {
                     expiryTimer.style.display = 'none';
                 }
     
-                const cardHolder = category.querySelector(".shop-category-card-holder");
-    
                 // Function to create a card
-                function createCard(item, sku, price, priceNitro, emojiCopy, isBundle = false, isNew = false) {
+                function createCard(item, sku, price, priceNitro, emojiCopy, popular = false, isBundle = false, isNew = false) {
                     const card = document.createElement('div');
-                    card.classList.add('shop-category-card');
+                    if (localStorage.standard_cards == "true") {
+                        card.classList.add('shop-category-card-standard');
+                    } else {
+                        card.classList.add('shop-category-card');
+                    }
 
                     card.id = sku;
                 
@@ -98,6 +100,10 @@ function fetchData() {
                         card.classList.add('effect-card');
                     } else if (isBundle) {
                         card.classList.add('bundle-card');
+                    }
+
+                    if (popular == "true") {
+                        card.classList.add('shop-category-card-top-selling');
                     }
     
                     // Card content based on item type
@@ -125,6 +131,7 @@ function fetchData() {
                                 <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${sku}';">Open In Shop</button>
                             </div>
                             <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
+                            <div class="top-selling-tag" style="display: ${popular ? 'block' : 'none'};">MOST POPULAR</div>
                         `;
     
                     } else {
@@ -143,6 +150,7 @@ function fetchData() {
                                 <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${sku}';">Open In Shop</button>
                             </div>
                             <div class="new-item-tag" style="display: ${isNew ? 'block' : 'none'};">NEW</div>
+                            <div class="top-selling-tag" style="display: ${popular ? 'block' : 'none'};">MOST POPULAR</div>
                         `;
                     }
     
@@ -209,7 +217,11 @@ function fetchData() {
                                     <div class="modal-buttons">
                                         <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${sku}';">Open In Shop</button>
                                         <button class="card-button ${emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${emojiCopy ? `copyEmoji('${emojiCopy}')` : `redirectToGoogle()`}" title="${emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                        <a href="https://item.yapper.shop/sku/${sku}/data.zip">
+                                            <button class="card-button">Download Data</button>
+                                        </a>
                                     </div>
+                                    <p class="experiment-subtext" style="text-align: center;">Please note that not all collectibles have downloadable data, this button will most likely send you to a 404 page</p>
                                 </div>
                             </div>
                             <div class="modal-right">
@@ -309,18 +321,19 @@ function fetchData() {
                     const price = product.price || "";
                     const priceNitro = product.price_nitro || "";
                     const emojiCopy = product.emojiCopy || ""; // Get emojiCopy from the product
+                    const popular = product.popular || "";
     
                     // Check if the product is a bundle
                     if (product.bundled_products) {
                         // Add bundle card with bundled items
-                        bundleProducts.push({ product, sku, price, priceNitro, emojiCopy, isNew });
+                        bundleProducts.push({ product, sku, price, priceNitro, emojiCopy, popular, isNew });
                     } else {
                         // Handle individual items
                         product.items.forEach(item => {
                             if (item.item_type === 'deco') {
-                                decorationProducts.push({ item, sku, price, priceNitro, emojiCopy, isNew });
+                                decorationProducts.push({ item, sku, price, priceNitro, emojiCopy, popular, isNew });
                             } else if (item.item_type === 'effect') {
-                                effectProducts.push({ item, sku, price, priceNitro, emojiCopy, isNew });
+                                effectProducts.push({ item, sku, price, priceNitro, emojiCopy, popular, isNew });
                             }
                         });
                     }
@@ -328,22 +341,49 @@ function fetchData() {
 
                 // Display bundles first
                 if (localStorage.shop_have_no_bundles != "true") {
-                    bundleProducts.forEach(({ product, sku, price, priceNitro, emojiCopy, isNew }) => {
-                        const card = createCard(product, sku, price, priceNitro, emojiCopy, true, isNew);
-                        cardHolder.append(card);
+                    bundleProducts.forEach(({ product, sku, price, priceNitro, emojiCopy, popular, isNew }) => {
+                        const card = createCard(product, sku, price, priceNitro, emojiCopy, popular, true, isNew);
+
+                        if (localStorage.standard_cards == "true") {
+                            const cardHolder = category.querySelector(".shop-category-card-holder-standard");
+                            cardHolder.append(card);
+                            cardHolder.classList.remove('hidden');
+                        } else {
+                            const cardHolder = category.querySelector(".shop-category-card-holder");
+                            cardHolder.append(card);
+                            cardHolder.classList.remove('hidden');
+                        }
                     });
                 }
 
                 // Then display decoration products
-                decorationProducts.forEach(({ item, sku, price, priceNitro, emojiCopy, isNew }) => {
-                    const card = createCard(item, sku, price, priceNitro, emojiCopy, false, isNew);
-                    cardHolder.append(card);
+                decorationProducts.forEach(({ item, sku, price, priceNitro, emojiCopy, popular, isNew }) => {
+                    const card = createCard(item, sku, price, priceNitro, emojiCopy, popular, false, isNew);
+
+                    if (localStorage.standard_cards == "true") {
+                        const cardHolder = category.querySelector(".shop-category-card-holder-standard");
+                        cardHolder.append(card);
+                        cardHolder.classList.remove('hidden');
+                    } else {
+                        const cardHolder = category.querySelector(".shop-category-card-holder");
+                        cardHolder.append(card);
+                        cardHolder.classList.remove('hidden');
+                    }
                 });
 
                 // Finally, display effect products
-                effectProducts.forEach(({ item, sku, price, priceNitro, emojiCopy, isNew }) => {
-                    const card = createCard(item, sku, price, priceNitro, emojiCopy, false, isNew);
-                    cardHolder.append(card);
+                effectProducts.forEach(({ item, sku, price, priceNitro, emojiCopy, popular, isNew }) => {
+                    const card = createCard(item, sku, price, priceNitro, emojiCopy, popular, false, isNew);
+
+                    if (localStorage.standard_cards == "true") {
+                        const cardHolder = category.querySelector(".shop-category-card-holder-standard");
+                        cardHolder.append(card);
+                        cardHolder.classList.remove('hidden');
+                    } else {
+                        const cardHolder = category.querySelector(".shop-category-card-holder");
+                        cardHolder.append(card);
+                        cardHolder.classList.remove('hidden');
+                    }
                 });
 
                 // Append the category to the output section
