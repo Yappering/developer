@@ -432,12 +432,32 @@ body {
     background-color: rgb(71, 81, 192);
 }
 
+.refresh-button-no {
+    background-color: rgb(71, 81, 192);
+    color: #B1B5BB;
+    height: 30px;
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed;
+}
+
 .refresh-button-selected {
     background-color: #05814B;
 }
 
 .refresh-button-selected:hover {
     background-color: #036338;
+}
+
+.refresh-button-selected-no {
+    background-color: #036338;
+    color: #B1B5BB;
+    height: 30px;
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed;
 }
 
 .dev-modal-button {
