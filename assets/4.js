@@ -30,7 +30,7 @@ function openLostModal() {
                 <hr style="opacity: 0">
                 <button class="refresh-button" onclick="closeLostModal()">Close</button>
                 <hr style="opacity: 0">
-                App Version: Dev 105
+                App Version: Dev 107
             </div>
         </div>
     </div>
@@ -218,8 +218,8 @@ function openDevModal() {
                             <p class="experiment-subtext">2024-11_top_selling_item_tag</p>
                             <button class="refresh-button" onclick="topSellingItemTag2()" id="2024-11_top_selling_item_tag-2" title="show popular tag on all items">Override 2</button>
                             <button class="refresh-button" onclick="topSellingItemTag1()" id="2024-11_top_selling_item_tag-1" title="show popular tag on popular items">Override 1</button>
-                            <button class="refresh-button-no" id="2024-11_top_selling_item_tag-0">No Override</button>
-                            <button class="refresh-button-no" id="2024-11_top_selling_item_tag-00">Override -1</button>
+                            <button class="refresh-button" onclick="topSellingItemTag0()" id="2024-11_top_selling_item_tag-0">No Override</button>
+                            <button class="refresh-button" onclick="topSellingItemTag00()" id="2024-11_top_selling_item_tag-00">Override -1</button>
                         </div>
 
 
@@ -308,7 +308,9 @@ function openDevModal() {
         if (localStorage.top_selling_item != "false") {
             if (localStorage.top_selling_item != "two") {
                 document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_top_selling_item_tag-1").classList.add('refresh-button-selected');
+                document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
+                document.getElementById("2024-11_top_selling_item_tag-0").classList.add('refresh-button-selected');
+                document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
             }
         }
     }
@@ -316,11 +318,22 @@ function openDevModal() {
     if (localStorage.top_selling_item == "two") {
         document.getElementById("2024-11_top_selling_item_tag-2").classList.add('refresh-button-selected');
         document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
     }
     
     if (localStorage.top_selling_item == "true") {
         document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
         document.getElementById("2024-11_top_selling_item_tag-1").classList.add('refresh-button-selected');
+        document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
+    }
+
+    if (localStorage.top_selling_item == "false") {
+        document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_top_selling_item_tag-00").classList.add('refresh-button-selected');
     }
 
 
@@ -383,7 +396,12 @@ function openDevModal() {
     
     
     if (localStorage.not_found_found == "true") {
-        document.getElementById("404-mains-button").classList.remove('hidden');
+        const fourohfour = document.getElementById("404-mains-button");
+    if (fourohfour) {  // Check if element exists
+        if (localStorage.not_found_found == "true") {
+            document.getElementById("404-mains-button").classList.remove('hidden');
+        }
+    }
         document.getElementById("2024-09_not_found-1").classList.add('refresh-button-selected');
     }
     
@@ -428,8 +446,12 @@ if (localStorage.dev == "true") {
     dev_tool_button.style.display = 'block';
 }
 
-if (localStorage.not_found_found == "true") {
-    document.getElementById("404-mains-button").classList.remove('hidden');
+
+const fourohfour = document.getElementById("404-mains-button");
+if (fourohfour) {  // Check if element exists
+    if (localStorage.not_found_found == "true") {
+        document.getElementById("404-mains-button").classList.remove('hidden');
+    }
 }
 
 
@@ -448,12 +470,32 @@ function topSellingItemTag2() {
     localStorage.top_selling_item = "two"
     document.getElementById("2024-11_top_selling_item_tag-2").classList.add('refresh-button-selected');
     document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
+    document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
+    document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
 }
 
 function topSellingItemTag1() {
     localStorage.top_selling_item = "true"
     document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
     document.getElementById("2024-11_top_selling_item_tag-1").classList.add('refresh-button-selected');
+    document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
+    document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
+}
+
+function topSellingItemTag0() {
+    localStorage.top_selling_item = "none"
+    document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
+    document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
+    document.getElementById("2024-11_top_selling_item_tag-0").classList.add('refresh-button-selected');
+    document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
+}
+
+function topSellingItemTag00() {
+    localStorage.top_selling_item = "false"
+    document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
+    document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
+    document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
+    document.getElementById("2024-11_top_selling_item_tag-00").classList.add('refresh-button-selected');
 }
 
 
@@ -557,7 +599,12 @@ function itemsCurrentlyInShop00() {
 
 
 function secret404ButtonHide() {
-    document.getElementById("404-mains-button").classList.add('hidden');
+    const fourohfour = document.getElementById("404-mains-button");
+    if (fourohfour) {  // Check if element exists
+        if (localStorage.not_found_found == "true") {
+            document.getElementById("404-mains-button").classList.add('hidden');
+        }
+    }
     localStorage.not_found_found = "none"
     console.log('hide 404 button')
     document.getElementById("2024-09_not_found-1").classList.remove('refresh-button-selected');
@@ -565,7 +612,12 @@ function secret404ButtonHide() {
 }
 
 function secret404ButtonShow() {
-    document.getElementById("404-mains-button").classList.remove('hidden');
+    const fourohfour = document.getElementById("404-mains-button");
+    if (fourohfour) {  // Check if element exists
+        if (localStorage.not_found_found == "true") {
+            document.getElementById("404-mains-button").classList.remove('hidden');
+        }
+    }
     localStorage.not_found_found = "true"
     console.log('show 404 button')
     document.getElementById("2024-09_not_found-1").classList.add('refresh-button-selected');

@@ -104,8 +104,10 @@ function fetchData() {
                             card.classList.add('bundle-card');
                         }
 
-                        if (popular == "true") {
-                            card.classList.add('shop-category-card-top-selling');
+                        if (localStorage.top_selling_item == "true") {
+                            if (popular == "true") {
+                                card.classList.add('shop-category-card-top-selling');
+                            }
                         }
 
                         if (localStorage.top_selling_item == "two") {
@@ -210,9 +212,11 @@ function fetchData() {
                         } else if (isBundle) {
                             card.classList.add('bundle-card');
                         }
-    
-                        if (popular == "true") {
-                            card.classList.add('shop-category-card-top-selling');
+
+                        if (localStorage.top_selling_item == "true") {
+                            if (popular == "true") {
+                                card.classList.add('shop-category-card-top-selling');
+                            }
                         }
 
                         if (localStorage.top_selling_item == "two") {
