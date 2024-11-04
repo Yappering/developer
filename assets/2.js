@@ -110,6 +110,12 @@ function fetchData() {
                             }
                         }
 
+                        if (localStorage.top_selling_item == "none") {
+                            if (popular == "true") {
+                                card.classList.add('shop-category-card-top-selling');
+                            }
+                        }
+
                         if (localStorage.top_selling_item == "two") {
                             card.classList.add('shop-category-card-top-selling');
                         }
@@ -214,6 +220,12 @@ function fetchData() {
                         }
 
                         if (localStorage.top_selling_item == "true") {
+                            if (popular == "true") {
+                                card.classList.add('shop-category-card-top-selling');
+                            }
+                        }
+
+                        if (localStorage.top_selling_item == "none") {
                             if (popular == "true") {
                                 card.classList.add('shop-category-card-top-selling');
                             }
