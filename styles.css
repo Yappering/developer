@@ -1453,6 +1453,10 @@ body {
     display: unset !important;
 }
 
+.shop-category-card-holder:not(:has(.shop-category-card-top-selling)) .top-selling-tag {
+    display: none !important;
+}
+
 .new-item-tag-1 {
     text-align: center;
     background-color: white;
