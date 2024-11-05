@@ -31,6 +31,9 @@ function fetchData() {
                 const logoImage = category.querySelector("[data-shop-category-logo-image]");
                 logoImage.src = user.logo;
 
+                const logoImage1 = category.querySelector("[data-shop-category-logo-image-1]");
+                logoImage1.src = user.logo;
+
                 const mobile_bg = category.querySelector("[data-shop-category-mobile_bg-image]");
                 mobile_bg.src = user.mobile_bg;
 
@@ -51,6 +54,12 @@ function fetchData() {
                 
                 output.append(category);
             });
+            document.querySelectorAll('.shop-category-assets-holder').forEach(element => {
+                element.addEventListener('click', function() {
+                  this.classList.toggle('expanded');
+                });
+            });
+            document.getElementById("shop-category-loading").classList.add('hidden');
 
         })
         .catch(error => {
