@@ -602,6 +602,32 @@ body {
     outline-offset: -2px;
 }
 
+.shop-category-assets-holder {
+    display: grid;
+    place-content: center;
+    grid-area: 1 / 1;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1280px;
+    background-color: #313338;
+    scale: 0.9;
+    object-fit: cover;
+    overflow: hidden;
+    outline: 2px solid rgba(16, 17, 19, 0.4);
+    outline-offset: -2px;
+}
+
+.shop-category-banner-asset {
+    width: 1280px;
+    background-color: #313338;
+    object-fit: cover;
+    border-radius: 32px;
+    overflow: hidden;
+    outline: 2px solid rgba(16, 17, 19, 0.4);
+    outline-offset: -2px;
+}
+
 .potion-card-holder {
     display: flex;
     position: relative;
@@ -651,6 +677,22 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
+}
+
+.shop-category-banner-logo-asset {
+    width: auto;
+    max-width: 530px;
+    /* height: 80px; */
+    max-height: 160px;
+    object-fit: cover;
+}
+
+.shop-category-mobile_bg-asset {
+    width: auto;
+    max-width: 1030px;
+    /* height: 80px; */
+    max-height: 560px;
+    object-fit: cover;
 }
 
 .potion-card-preview-holder {
