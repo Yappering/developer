@@ -1,4 +1,4 @@
-let apiUrl = 'https://raw.githubusercontent.com/Yappering/api/main/v1/collectibles';
+let apiUrl = 'https://raw.githubusercontent.com/Yappering/api/main/v1/collectible-assets';
 
 // Function to clear the shop data
 function clearShopData() {
