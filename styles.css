@@ -651,7 +651,7 @@ body {
 }
   
 .shop-category-assets-holder.expanded {
-    height: 2300px; /* Height when hovered */
+    height: 2500px; /* Height when hovered */
     scale: 1.03;
     border-radius: 5px;
     z-index: 1;

@@ -31,6 +31,9 @@ function fetchData() {
                 const logoImage = category.querySelector("[data-shop-category-logo-image]");
                 logoImage.src = user.logo;
 
+                const hero_logo = category.querySelector("[data-shop-category-hero_logo-image]");
+                hero_logo.src = user.hero_logo;
+
                 const logoImage1 = category.querySelector("[data-shop-category-logo-image-1]");
                 logoImage1.src = user.logo;
 
