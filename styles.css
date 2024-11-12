@@ -957,6 +957,14 @@ body {
     border: 2px solid #1E1F22;
 }
 
+.shop-category-card-transparent {
+    background-color: #1112149d;
+}
+
+.shop-category-card-transparent .card-bottom {
+    background-color: #1e1f22a8;
+}
+
 .shop-category-card-standard {
     background-color: #111214;
     border-radius: 25px;
@@ -1545,14 +1553,12 @@ body {
 .shop-category-marketing-bg {
     position: absolute;
     height: 100%;
-    width: 1260px;
-    margin-top: 30px;
+    width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     filter: blur(10px);
     object-fit: cover;
-    border-radius: 30px;
 }
 
 

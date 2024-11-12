@@ -24,7 +24,7 @@ fetch(apiUrlWithToken)
                     marketing_bg.src = user.category_bg;
                 }
             }
-            
+
             const banner = category.querySelector("[data-shop-category-banner]");
             banner.id = user.sku_id;
 
@@ -95,6 +95,10 @@ fetch(apiUrlWithToken)
                     card.classList.add('effect-card');
                 } else if (isBundle) {
                     card.classList.add('bundle-card');
+                }
+
+                if (localStorage.epic_pplus_balls == "true") {
+                    card.classList.add('shop-category-card-transparent');
                 }
             
                 // Card content based on item type
@@ -320,6 +324,16 @@ fetch(apiUrlWithToken)
                 `;
             }
     
+            const windowkill2 = document.getElementById('profiles-plus-4');
+            if (windowkill2) {  // Check if element exists
+                document.getElementById('profiles-plus-4').innerHTML = `
+                <img class="shop-category-condensed-banner-img" src="https://cdn.yapper.shop/assets/87.png">
+                <div class="shop-category-condensed-logo-holder" style="right: -15%;">
+                    <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/assets/53.png" id="shop-banner-logo">
+                </div>
+                `;
+            }
+
             const paper_beach = document.getElementById('profiles-plus-3');
             if (paper_beach) {  // Check if element exists
                 document.getElementById('profiles-plus-3').innerHTML = `
@@ -329,13 +343,13 @@ fetch(apiUrlWithToken)
                 </div>
                 `;
             }
-    
-            const windowkill2 = document.getElementById('profiles-plus-4');
-            if (windowkill2) {  // Check if element exists
-                document.getElementById('profiles-plus-4').innerHTML = `
-                <img class="shop-category-condensed-banner-img" src="https://cdn.yapper.shop/assets/87.png">
-                <div class="shop-category-condensed-logo-holder" style="right: -15%;">
-                    <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/assets/53.png" id="shop-banner-logo">
+
+            const bopl_battle = document.getElementById('profiles-plus-2');
+            if (bopl_battle) {  // Check if element exists
+                document.getElementById('profiles-plus-2').innerHTML = `
+                <img class="shop-category-condensed-banner-img" src="https://cdn.yapper.shop/assets/93.png">
+                <div class="shop-category-condensed-logo-holder" style="right: -6%;">
+                    <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/assets/60.png" id="shop-banner-logo">
                 </div>
                 `;
             }
