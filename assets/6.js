@@ -30,11 +30,11 @@ function openLostModal() {
                 <hr style="opacity: 0">
                 <button class="refresh-button" onclick="closeLostModal()">Close</button>
                 <hr style="opacity: 0">
-                App Version: Dev 122
+                App Version: Dev 123
             </div>
         </div>
     </div>
-`;
+    `;
 }
 
 function openMobileModal() {
@@ -215,6 +215,15 @@ function openDevModal() {
 
 
                             <div class="experiment-card">
+                                <p>Client Rework</p>
+                                <p class="experiment-subtext">2024-11_full_client_rework</p>
+                                <button class="refresh-button" onclick="fullClientRework1()" id="2024-11_full_client_rework-1">Override 1</button>
+                                <button class="refresh-button" onclick="fullClientRework0()" id="2024-11_full_client_rework-0">No Override</button>
+                                <button class="refresh-button" onclick="fullClientRework00()" id="2024-11_full_client_rework-00">Override -1</button>
+                            </div>
+
+
+                            <div class="experiment-card">
                                 <p>Epic Profiles Plus Category Changes</p>
                                 <p class="experiment-subtext">2024-11_epic_profiles_plus_category_changes</p>
                                 <button class="refresh-button" onclick="epicProfilesPlusCategoryChanges1()" id="2024-11_epic_profiles_plus_category_changes-1">Override 1</button>
@@ -240,15 +249,6 @@ function openDevModal() {
                                 <button class="refresh-button" onclick="itemDataDownloads1()" id="2024-11_item_data_downloads-1" title="show download button on modal">Override 1</button>
                                 <button class="refresh-button" onclick="itemDataDownloads0()" id="2024-11_item_data_downloads-0">No Override</button>
                                 <button class="refresh-button" onclick="itemDataDownloads00()" id="2024-11_item_data_downloads-00">Override -1</button>
-                            </div>
-    
-    
-                            <div class="experiment-card">
-                                <p>Show Items That Are Currently In The Discord Shop</p>
-                                <p class="experiment-subtext">2024-09_items_in_shop</p>
-                                <button class="refresh-button" onclick="itemsCurrentlyInShop1()" id="2024-09_items_in_shop-1">Override 1</button>
-                                <button class="refresh-button" onclick="itemsCurrentlyInShop0()" id="2024-09_items_in_shop-0">No Override</button>
-                                <button class="refresh-button" onclick="itemsCurrentlyInShop00()" id="2024-09_items_in_shop-00">Override -1</button>
                             </div>
     
                             
@@ -312,6 +312,31 @@ function openDevModal() {
             </div>
         </div>
         `;
+
+
+
+
+        if (localStorage.full_client_rework == "true") {
+            document.getElementById("2024-11_full_client_rework-1").classList.add('refresh-button-selected');
+            document.getElementById("2024-11_full_client_rework-0").classList.remove('refresh-button-selected');
+            document.getElementById("2024-11_full_client_rework-00").classList.remove('refresh-button-selected');
+        }
+        
+        if (localStorage.full_client_rework != "true") {
+            if (localStorage.full_client_rework != "false") {
+                document.getElementById("2024-11_full_client_rework-1").classList.remove('refresh-button-selected');
+                document.getElementById("2024-11_full_client_rework-0").classList.add('refresh-button-selected');
+                document.getElementById("2024-11_full_client_rework-00").classList.remove('refresh-button-selected');
+            }
+        }
+    
+        if (localStorage.full_client_rework == "false") {
+            document.getElementById("2024-11_full_client_rework-1").classList.remove('refresh-button-selected');
+            document.getElementById("2024-11_full_client_rework-0").classList.remove('refresh-button-selected');
+            document.getElementById("2024-11_full_client_rework-00").classList.add('refresh-button-selected');
+        }
+
+
 
 
 
@@ -500,6 +525,31 @@ function dev() {
     localStorage.dev = "true"
     location.reload();
 }
+
+
+
+
+function fullClientRework0() {
+    localStorage.full_client_rework = "none"
+    document.getElementById("2024-11_full_client_rework-1").classList.remove('refresh-button-selected');
+    document.getElementById("2024-11_full_client_rework-0").classList.add('refresh-button-selected');
+    document.getElementById("2024-11_full_client_rework-00").classList.remove('refresh-button-selected');
+}
+
+function fullClientRework1() {
+    localStorage.full_client_rework = "true"
+    document.getElementById("2024-11_full_client_rework-1").classList.add('refresh-button-selected');
+    document.getElementById("2024-11_full_client_rework-0").classList.remove('refresh-button-selected');
+    document.getElementById("2024-11_full_client_rework-00").classList.remove('refresh-button-selected');
+}
+
+function fullClientRework00() {
+    localStorage.full_client_rework = "false"
+    document.getElementById("2024-11_full_client_rework-1").classList.remove('refresh-button-selected');
+    document.getElementById("2024-11_full_client_rework-0").classList.remove('refresh-button-selected');
+    document.getElementById("2024-11_full_client_rework-00").classList.add('refresh-button-selected');
+}
+
 
 
 function epicProfilesPlusCategoryChanges0() {
