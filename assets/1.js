@@ -1,4 +1,4 @@
-if (localStorage.full_client_rework != "true") {
+if (localStorage.full_client_rework === "false") {
     const mainsTab = document.querySelector("[data-mains-template]");
     const mainsTabsHolder = document.querySelector("[data-mains-tabs]");
     
@@ -241,4 +241,6 @@ if (localStorage.full_client_rework != "true") {
         .catch(error => {
             console.error('Error fetching the API:', error);
         });
+} else {
+    location.href='/';
 }

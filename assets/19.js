@@ -1067,7 +1067,7 @@ if (localStorage.full_client_rework != "false") {
             createHomePageElement()
             document.getElementById("home-tab").classList.add('dm-button-selected');
         } else if (params.get("page") === "shop") {
-            document.title = "Discord Shop | Shop Archives";
+            document.title = "Shop | Shop Archives";
             if (localStorage.items_in_shop_yes == "true") {
                 apiUrl = COLLECTIBLES_IN_SHOP;
             } else if (localStorage.unreleased_discord_collectibles == "true") {
@@ -1080,7 +1080,7 @@ if (localStorage.full_client_rework != "false") {
             createMainShopElement()
             document.getElementById("shop-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Shop</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">Discord Shop</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "leaks") {
