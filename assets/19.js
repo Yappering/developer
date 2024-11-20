@@ -1,4 +1,4 @@
-if (localStorage.full_client_rework === "true") {
+if (localStorage.full_client_rework != "false") {
 
     COLLECTIBLES = 'https://raw.githubusercontent.com/Yappering/api/main/v2/collectibles';
     UNPUBLISHED_COLLECTIBLES = 'https://raw.githubusercontent.com/Yappering/private-api/refs/heads/main/v2/unpublished_collectibles';
@@ -1067,7 +1067,7 @@ if (localStorage.full_client_rework === "true") {
             createHomePageElement()
             document.getElementById("home-tab").classList.add('dm-button-selected');
         } else if (params.get("page") === "shop") {
-            document.title = "Shop | Shop Archives";
+            document.title = "Discord Shop | Shop Archives";
             if (localStorage.items_in_shop_yes == "true") {
                 apiUrl = COLLECTIBLES_IN_SHOP;
             } else if (localStorage.unreleased_discord_collectibles == "true") {
@@ -1934,7 +1934,7 @@ if (localStorage.full_client_rework === "true") {
                 <hr style="opacity: 0">
                 <button class="refresh-button" onclick="location.href='https://www.youtube.com/@DTACat';">Youtube</button>
                 <hr style="opacity: 0">
-                App Version: Dev 133
+                App Version: Dev 134
             `;
 
             fetch(DOWNLOADABLE_DATA)
