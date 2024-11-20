@@ -1934,7 +1934,7 @@ if (localStorage.full_client_rework === "true") {
                 <hr style="opacity: 0">
                 <button class="refresh-button" onclick="location.href='https://www.youtube.com/@DTACat';">Youtube</button>
                 <hr style="opacity: 0">
-                App Version: Dev 132
+                App Version: Dev 133
             `;
 
             fetch(DOWNLOADABLE_DATA)
