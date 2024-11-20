@@ -1,16 +1,30 @@
 if (localStorage.full_client_rework === "true") {
 
-    const COLLECTIBLES = 'https://raw.githubusercontent.com/Yappering/api/main/v2/collectibles';
-    const UNPUBLISHED_COLLECTIBLES = 'https://raw.githubusercontent.com/Yappering/private-api/refs/heads/main/v2/unpublished_collectibles';
-    const COLLECTIBLES_IN_SHOP = 'https://raw.githubusercontent.com/Yappering/api/main/v2/collectibles-in-shop';
-    const CONSUMABLES = 'https://raw.githubusercontent.com/Yappering/api/main/v2/consumables';
-    const MISCELLANEOUS = 'https://raw.githubusercontent.com/Yappering/api/main/v2/miscellaneous';
-    const PROFILES_PLUS = 'https://raw.githubusercontent.com/Yappering/api/main/v2/profiles-plus';
-    const PROFILES_PLUS_UNPUBLISHED = 'https://raw.githubusercontent.com/Yappering/private-api/refs/heads/main/v2/profiles-plus-u';
-    const HOME_PAGE_PREVIEW = 'https://raw.githubusercontent.com/Yappering/api/main/v1/home-page-preview';
-    const HOME_PAGE_P_PLUS = 'https://raw.githubusercontent.com/Yappering/api/main/v1/home-page-p-plus';
-    const PROFILE_EFFECTS = 'https://raw.githubusercontent.com/Yappering/api/main/v2/profile-effects';
-    const DOWNLOADABLE_DATA = 'https://raw.githubusercontent.com/Yappering/api/main/v1/downloadable-data';
+    COLLECTIBLES = 'https://raw.githubusercontent.com/Yappering/api/main/v2/collectibles';
+    UNPUBLISHED_COLLECTIBLES = 'https://raw.githubusercontent.com/Yappering/private-api/refs/heads/main/v2/unpublished_collectibles';
+    COLLECTIBLES_IN_SHOP = 'https://raw.githubusercontent.com/Yappering/api/main/v2/collectibles-in-shop';
+    CONSUMABLES = 'https://raw.githubusercontent.com/Yappering/api/main/v2/consumables';
+    MISCELLANEOUS = 'https://raw.githubusercontent.com/Yappering/api/main/v2/miscellaneous';
+    PROFILES_PLUS = 'https://raw.githubusercontent.com/Yappering/api/main/v2/profiles-plus';
+    PROFILES_PLUS_UNPUBLISHED = 'https://raw.githubusercontent.com/Yappering/private-api/refs/heads/main/v2/profiles-plus-u';
+    HOME_PAGE_PREVIEW = 'https://raw.githubusercontent.com/Yappering/api/main/v2/home-page-preview';
+    HOME_PAGE_P_PLUS = 'https://raw.githubusercontent.com/Yappering/api/main/v1/home-page-p-plus';
+    PROFILE_EFFECTS = 'https://raw.githubusercontent.com/Yappering/api/main/v2/profile-effects';
+    DOWNLOADABLE_DATA = 'https://raw.githubusercontent.com/Yappering/api/main/v1/downloadable-data';
+    PROFILES_PLUS_EFFECTS = 'https://raw.githubusercontent.com/Yappering/api/main/v2/profiles-plus-effects';
+    LEAKS = 'https://raw.githubusercontent.com/Yappering/api/main/v2/leaks';
+
+
+    WINDOWKILL = "profiles-plus-1"
+    BOPL_BATTLE = "profiles-plus-2"
+    PAPER_BEACH = "profiles-plus-3"
+    WINDOWKILL_V2 = "profiles-plus-4"
+    FIVE_NIGHTS_AT_FREDDYS = "profiles-plus-5"
+    SPECIAL_EVENT = "profiles-plus-6"
+    GEOMETRY_DASH = "profiles-plus-7"
+    PAPER_BEACH_V2 = "profiles-plus-8"
+
+
 
     FANTASY = "1144003461608906824"
     ANIME = "1144302037593497701"
@@ -121,15 +135,138 @@ if (localStorage.full_client_rework === "true") {
                                 const category = categoryTemplate.content.cloneNode(true).children[0];
                                 category.querySelector("[data-shop-category-banner]").id = apiCategory.sku_id;
             
-                                category.querySelector("[data-shop-category-banner-image]").src = apiCategory.banner;
+                                category.querySelector("[data-shop-category-banner-image]").src = `https://cdn.yapper.shop/assets/${apiCategory.banner}.png`;
                                 category.querySelector("[data-shop-category-banner-image]").alt = apiCategory.name;
             
-                                category.querySelector("[data-shop-category-logo-image]").src = apiCategory.logo;
+                                category.querySelector("[data-shop-category-logo-image]").src = `https://cdn.yapper.shop/assets/${apiCategory.logo}.png`;
                                 category.querySelector("[data-shop-category-logo-image]").alt = apiCategory.name;
             
                                 category.querySelector("[data-shop-category-desc]").textContent = apiCategory.summary;
+
+                                const cardOutput = category.querySelector("[data-shop-category-card-holder]");
+                                if (cardOutput) {
+                                    for (const product of apiCategory.products) {
+                                        const cardTemplate = document.querySelector("[data-shop-item-card-template]");
+                                        const card = cardTemplate.content.cloneNode(true).children[0];
+
+                                        product.items.forEach(item => {
+                                            if (product.type === 0) {
+                                                // Set the innerHTML for the preview holder
+                                                const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
+                                                previewHolder.classList.add('avatar-decoration-image');
+                                                
+                                                // Set the initial image for the deco card
+                                                const imgElement = document.createElement("img");
+                                                imgElement.id = "shop-card-deco-image";
+                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                
+                                                previewHolder.appendChild(imgElement);
+                                        
+                                                // Set the product details
+                                                card.querySelector("[data-product-card-sku-id]").textContent = `Made By: ${product.credits}`;
+                                                card.querySelector("[data-product-card-name]").textContent = product.name;
+                                                card.querySelector("[data-product-card-summary]").textContent = product.summary;
+                                        
+                                                // Hover effect: Change the image src on mouse enter and leave
+                                                card.addEventListener("mouseenter", () => {
+                                                    imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                });
+                                        
+                                                card.addEventListener("mouseleave", () => {
+                                                    imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                });
+                                            }
+                                        });
+
+                                        if (product.type === 1) {
+
+                                            card.querySelector("[data-product-card-sku-id]").textContent = `Made By: ${product.credits}`;
+                                            card.querySelector("[data-product-card-name]").textContent = product.name;
+                                            card.querySelector("[data-product-card-summary]").textContent = product.summary;
+                                            
+                                            // Ensure the item ID is accessible here
+                                            let itemId = undefined;
+                                            if (Array.isArray(product.items)) {
+                                                // If items is an array, find the item with type 1 and get its id
+                                                const item = product.items.find(item => item.type === 1);
+                                                if (item) {
+                                                    itemId = item.id;
+                                                }
+                                            } else if (product.items && product.items.type === 1) {
+                                                // If items is an object and has type 1, get its id
+                                                itemId = product.items.id;
+                                            }
+                                        
+                                        
+                                            // Fetch profile effects API only if not already cached
+                                            if (!profileEffectsCache) {
+                                                const response = await fetch(PROFILES_PLUS_EFFECTS);
+                                                const effectsData = await response.json();
+                                                profileEffectsCache = effectsData.profile_effect_configs;
+                                            }
+                                        
+                                            // Find matching profile effect
+                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                        
+                                            if (matchingEffect) {
+                                                const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
+                                                previewHolder.classList.add('profile-effect-image');
+                                        
+                                                previewHolder.innerHTML = `
+                                                    <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                `;
+                                        
+                                                // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                const imgElement = card.querySelector("img");
+                                        
+                                                card.addEventListener("mouseenter", () => {
+                                                    if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                        const effectUrl = matchingEffect.effects[0]?.src;
+                                                        imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                    }
+                                                });
+                                        
+                                                card.addEventListener("mouseleave", () => {
+                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                });
+                                            }
+                                        }
+
+                                        if (product.type === 1000) {
+                                            card.querySelector("[data-product-card-sku-id]").textContent = `Made By: ${product.credits}`;
+                                            card.querySelector("[data-product-card-name]").textContent = product.name;
+                                            card.querySelector("[data-product-card-summary]").textContent = product.summary;
+                                        }
+
+                                        if (product.type === 2000) {
+                                            card.querySelector("[data-product-card-sku-id]").textContent = `Made By: ${product.credits}`;
+                                            card.querySelector("[data-product-card-name]").textContent = product.name;
+                                            card.querySelector("[data-product-card-summary]").textContent = product.summary;
+                                        }
+
+                                        card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                            <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';" title="Open this item in the Discord Shop">Open In Shop</button>
+                                        `;
+
+                                        // Append card to output
+                                        cardOutput.append(card);
+                                    }
+                                }
             
                                 categoryOutput.append(category);
+
+
+                                const windowkill_banner = document.getElementById(WINDOWKILL);
+                                if (windowkill_banner) {  // Check if element exists
+                                    document.getElementById('profiles-plus-1').innerHTML = `
+                                    <img class="shop-category-banner-img" src="https://cdn.yapper.shop/assets/20.png">
+                                    <div class="shop-category-text-holder">
+                                        <p style="font-size: 18px; color: black;">What&#x2019s wrong with my windows?</p>
+                                    </div>
+                                    `;
+                                }
+
                             } else if (page === "consumables") {
                                 // Existing code for 'consumables' page
                                 const potionCard = potionTemplate.content.cloneNode(true).children[0];
@@ -281,6 +418,10 @@ if (localStorage.full_client_rework === "true") {
                                             priceElementOther.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
                                         }
 
+                                        card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                            <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';" title="Open this item in the Discord Shop">Open In Shop</button>
+                                        `;
+
                                         // Append card to output
                                         cardOutput.append(card);
                                     }
@@ -291,10 +432,7 @@ if (localStorage.full_client_rework === "true") {
                                 const kawaii_mode_banner = document.getElementById(KAWAII_MODE);
                                 if (kawaii_mode_banner) {  // Check if element exists
                                     document.getElementById('1306330663213072494').innerHTML = `
-                                    <video autoplay class="shop-category-banner-img" src="https://cdn.discordapp.com/assets/collectibles/drops/kawaii_mode/banner_animated.webm" loop></video>
-                                    <div class="shop-category-text-holder">
-                                        <p style="font-size: 18px; color: black;">So cute.</p>
-                                    </div>
+                                    <video autoplay muted class="shop-category-banner-img" src="https://cdn.discordapp.com/assets/collectibles/drops/kawaii_mode/banner_animated.webm" loop></video>
                                     `;
                                 }
                                 const arcane_banner = document.getElementById(WARRIOR);
@@ -383,36 +521,165 @@ if (localStorage.full_client_rework === "true") {
         } else {
                 
             apiUrl = HOME_PAGE_PREVIEW;
+
+            let profileEffectsCache = null;
             
             fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
-                data.forEach(user => {
-                    const template = document.querySelector("[data-shop-category-template]");
-                    const output = document.querySelector("[data-shop-output]");
-            
-                    const category = template.content.cloneNode(true).children[0];
-            
-                    const bannerImage = category.querySelector("[data-shop-category-banner-image]");
-                    bannerImage.src = user.hero_banner;
-                    bannerImage.alt = user.name;
-            
-                    const logoImage = category.querySelector("[data-shop-category-logo-image]");
-                    logoImage.src = user.hero_logo;
-                    logoImage.alt = user.name;
-            
-                    const summary = category.querySelector("[data-shop-category-desc]");
-                    summary.textContent = user.summary;
-            
-                    const previewCategoryButton = category.querySelector("[data-preview-new-categoey-button]");
-            
-                    const newCategoryName = user.name;
-            
-                    previewCategoryButton.innerHTML = `
-                        <button class="home-page-preview-button" onclick="location.href='/shop';">Shop the ${newCategoryName} Collection</button>
-                    `;
-            
-                    output.append(category);
+                data.forEach(apiCategory => {
+                    async function processCategories() {
+                        const template = document.querySelector("[data-shop-category-template]");
+                        const output = document.querySelector("[data-shop-output]");
+                
+                        const category = template.content.cloneNode(true).children[0];
+                
+                        category.querySelector("[data-shop-category-banner-image]").src = `https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.hero_banner}.png?size=4096`;
+                        category.querySelector("[data-shop-category-banner-image]").alt = apiCategory.name;
+    
+                        category.querySelector("[data-shop-category-logo-image]").src = `https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.hero_logo}.png?size=4096`;
+                        category.querySelector("[data-shop-category-logo-image]").alt = apiCategory.name;
+                
+                        const summary = category.querySelector("[data-shop-category-desc]");
+                        summary.textContent = apiCategory.summary;
+                
+                        const previewCategoryButton = category.querySelector("[data-preview-new-categoey-button]");
+                
+                        const newCategoryName = apiCategory.name;
+                
+                        previewCategoryButton.innerHTML = `
+                            <button class="home-page-preview-button" onclick="setParams({page: 'shop'}); location.reload();">Shop the ${newCategoryName} Collection</button>
+                        `;
+    
+                        const cardOutput = category.querySelector("[data-shop-category-card-holder]");
+                        if (cardOutput) {
+                            for (const product of apiCategory.products) {
+                                const cardTemplate = document.querySelector("[data-shop-item-card-template]");
+                                const card = cardTemplate.content.cloneNode(true).children[0];
+                                product.items.forEach(item => {
+                                    if (product.type === 0) {
+                                        // Set the innerHTML for the preview holder
+                                        const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
+                                        previewHolder.classList.add('avatar-decoration-image');
+                                        
+                                        // Set the initial image for the deco card
+                                        const imgElement = document.createElement("img");
+                                        imgElement.id = "shop-card-deco-image";
+                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                        
+                                        previewHolder.appendChild(imgElement);
+                                
+                                        // Set the product details
+                                        card.querySelector("[data-product-card-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                        card.querySelector("[data-product-card-name]").textContent = product.name;
+                                        card.querySelector("[data-product-card-summary]").textContent = product.summary;
+                                
+                                        // Hover effect: Change the image src on mouse enter and leave
+                                        card.addEventListener("mouseenter", () => {
+                                            imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                        });
+                                
+                                        card.addEventListener("mouseleave", () => {
+                                            imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                        });
+                                    }
+                                });
+                                if (product.type === 1) {
+                                    card.querySelector("[data-product-card-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                    card.querySelector("[data-product-card-name]").textContent = product.name;
+                                    card.querySelector("[data-product-card-summary]").textContent = product.summary;
+                                    
+                                    // Ensure the item ID is accessible here
+                                    let itemId = undefined;
+                                    if (Array.isArray(product.items)) {
+                                        // If items is an array, find the item with type 1 and get its id
+                                        const item = product.items.find(item => item.type === 1);
+                                        if (item) {
+                                            itemId = item.id;
+                                        }
+                                    } else if (product.items && product.items.type === 1) {
+                                        // If items is an object and has type 1, get its id
+                                        itemId = product.items.id;
+                                    }
+                                
+                                
+                                    // Fetch profile effects API only if not already cached
+                                    if (!profileEffectsCache) {
+                                        const response = await fetch(PROFILE_EFFECTS);
+                                        const effectsData = await response.json();
+                                        profileEffectsCache = effectsData.profile_effect_configs;
+                                    }
+                                
+                                    // Find matching profile effect
+                                    const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                
+                                    if (matchingEffect) {
+                                        const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
+                                        previewHolder.classList.add('profile-effect-image');
+                                
+                                        previewHolder.innerHTML = `
+                                            <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                        `;
+                                
+                                        // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                        const imgElement = card.querySelector("img");
+                                
+                                        card.addEventListener("mouseenter", () => {
+                                            if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                const effectUrl = matchingEffect.effects[0]?.src;
+                                                imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                            }
+                                        });
+                                
+                                        card.addEventListener("mouseleave", () => {
+                                            // Revert back to the original thumbnailPreviewSrc when hover ends
+                                            imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                        });
+                                    }
+                                }
+                                if (product.type === 1000) {
+                                    card.querySelector("[data-product-card-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                    card.querySelector("[data-product-card-name]").textContent = product.name;
+                                    card.querySelector("[data-product-card-summary]").textContent = product.summary;
+                                }
+                                if (product.type === 2000) {
+                                    card.querySelector("[data-product-card-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                    card.querySelector("[data-product-card-name]").textContent = product.name;
+                                    card.querySelector("[data-product-card-summary]").textContent = product.summary;
+                                }
+                                let priceStandard = "N/A";
+                                let priceNitro = "N/A";
+                        
+                                if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices[0]) {
+                                    priceStandard = product.prices["0"].country_prices.prices[0].amount;
+                                }
+                        
+                                if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices[0]) {
+                                    priceNitro = product.prices["4"].country_prices.prices[0].amount;
+                                }
+                        
+                                // Add the prices to the card (adjust the element selectors as needed)
+                                const priceElementUSD = card.querySelector("[data-price-standard]");
+                                if (priceElementUSD) {
+                                    priceElementUSD.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                }
+                        
+                                const priceElementOther = card.querySelector("[data-price-nitro]");
+                                if (priceElementOther) {
+                                    priceElementOther.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
+                                }
+                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                    <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';" title="Open this item in the Discord Shop">Open In Shop</button>
+                                `;
+                                // Append card to output
+                                cardOutput.append(card);
+                            }
+                        }
+
+                        output.append(category);
+                    }
+                    
+                    processCategories()
                 });
             })
             .catch(error => {
@@ -434,7 +701,7 @@ if (localStorage.full_client_rework === "true") {
                     const oneImage = category.querySelector("[data-shop-preview-image-plus]");
                     oneImage.src = user.src;
                     oneImage.alt = user.name;
-            
+
                     output.append(category);
                 });
             
@@ -459,8 +726,10 @@ if (localStorage.full_client_rework === "true") {
         window.location.href = 'https://discord.gg/Mcwh7hGcWb';
     }
     
-    // Initial data fetch when the page loads
-    window.onload = fetchData;
+
+    if (params.get("page") != "item_tool") {
+        window.onload = fetchData;
+    }
 
     const clickable_side_tabs_container = document.getElementById('clickable-side-tabs-container');
     if (clickable_side_tabs_container) {  // Check if element exists
@@ -470,11 +739,17 @@ if (localStorage.full_client_rework === "true") {
             <button class="dm-button" id="home-tab" onclick="setParams({page: 'home'}); location.reload();">
                 <p class="dm-button-text">Home</p>
             </button>
+        </div>
+        <div class="dm-divider">Collectibles</div>
+        <div>
             <button class="dm-button" id="shop-tab" onclick="setParams({page: 'shop'}); location.reload();">
                 <p class="dm-button-text">Shop</p>
             </button>
+            <button class="dm-button" id="leaks-tab" onclick="setParams({page: 'leaks'}); location.reload();">
+                <p class="dm-button-text">Leaks</p>
+            </button>
             <button class="dm-button" id="potions-tab" onclick="setParams({page: 'consumables'}); location.reload();">
-                <p class="dm-button-text">Consumables</p>
+                <p class="dm-button-text">Potions</p>
             </button>
             <button class="dm-button" id="miscellaneous-tab" onclick="setParams({page: 'miscellaneous'}); location.reload();">
                 <p class="dm-button-text">Miscellaneous</p>
@@ -483,11 +758,8 @@ if (localStorage.full_client_rework === "true") {
                 <p class="dm-button-text">Profiles Plus</p>
             </button>
         </div>
-        <div class="dm-divider">Shop</div>
+        <div class="dm-divider">Tools</div>
         <div>
-            <button class="dm-button" id="leaks-tab" onclick="setParams({page: 'leaks'}); location.reload();">
-                <p class="dm-button-text">Leaks</p>
-            </button>
             <button class="dm-button" id="avatar-decorations-debug-tab" onclick="setParams({page: 'item_tool'}); location.reload();">
                 <p class="dm-button-text">Item Debug</p>
             </button>
@@ -526,6 +798,15 @@ if (localStorage.full_client_rework === "true") {
                 <h2 style="margin-left: 260px; margin-top: 10px;">Shop</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
+        } else if (params.get("page") === "leaks") {
+            document.title = "Leaks | Shop Archives";
+            apiUrl = LEAKS;
+            createMainShopElement()
+            document.getElementById("leaks-tab").classList.add('dm-button-selected');
+            document.getElementById("top-bar-container").innerHTML = `
+                <h2 style="margin-left: 260px; margin-top: 10px;">Leaks</h2>
+                <div id="open-help-modals-buttons-holder"></div>
+            `;
         } else if (params.get("page") === "consumables") {
             document.title = "Potions | Shop Archives";
             apiUrl = CONSUMABLES;
@@ -559,6 +840,14 @@ if (localStorage.full_client_rework === "true") {
                 <h2 style="margin-left: 260px; margin-top: 10px;">Profiles Plus</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
+        } else if (params.get("page") === "item_tool") {
+            document.title = "Item Tool | Shop Archives";
+            createItemToolPageElement()
+            document.getElementById("avatar-decorations-debug-tab").classList.add('dm-button-selected');
+            document.getElementById("top-bar-container").innerHTML = `
+                <h2 style="margin-left: 260px; margin-top: 10px;">Item Tool</h2>
+                <div id="open-help-modals-buttons-holder"></div>
+            `;
         } else {
             setParams({page: 'home',err: '404'});
             document.title = "Home | Shop Archives";
@@ -566,16 +855,16 @@ if (localStorage.full_client_rework === "true") {
         }
 
         const open_help_modals_buttons_holder = document.getElementById('open-help-modals-buttons-holder');
-    open_help_modals_buttons_holder.innerHTML = `
-        <svg title="Help" x="0" y="0" onclick="openLostModal()" id="open-lost-tools-button" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.486 2 2 6.487 2 12C2 17.515 6.486 22 12 22C17.514 22 22 17.515 22 12C22 6.487 17.514 2 12 2ZM12 18.25C11.31 18.25 10.75 17.691 10.75 17C10.75 16.31 11.31 15.75 12 15.75C12.69 15.75 13.25 16.31 13.25 17C13.25 17.691 12.69 18.25 12 18.25ZM13 13.875V15H11V12H12C13.104 12 14 11.103 14 10C14 8.896 13.104 8 12 8C10.896 8 10 8.896 10 10H8C8 7.795 9.795 6 12 6C14.205 6 16 7.795 16 10C16 11.861 14.723 13.429 13 13.875Z"></path></svg>
-        <svg title="Dev Tools" x="0" y="0" onclick="openDevModal()" style="display: none;" id="open-dev-tools-button" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M2 20.59V19.4a1 1 0 0 1 .3-.7l2.4-2.42a1 1 0 0 1 .71-.29H6l9-9-.85-.85a1 1 0 0 1-.23-.34l-1.49-3.73a.5.5 0 0 1 .65-.65l3.73 1.5a1 1 0 0 1 .34.22l.64.64a1 1 0 0 1 1.42 0l1 1a1 1 0 0 1 0 1.42l1.58 1.58a1 1 0 0 1 0 1.42l-1.58 1.58a1 1 0 0 1-1.42 0L17 9l-9 9v.59a1 1 0 0 1-.3.7l-2.4 2.42a1 1 0 0 1-.71.29H3.4a1 1 0 0 1-.7-.3l-.42-.4a1 1 0 0 1-.29-.71Z" class=""></path><path fill="currentColor" d="M8.23 10.23c.2.2.51.2.7 0l1.3-1.3a.5.5 0 0 0 0-.7L6.5 4.5l.3-.3a1 1 0 0 0 0-1.4l-.5-.5c-.2-.2-.45-.3-.7-.22-.43.14-1.17.49-2.1 1.42a5.37 5.37 0 0 0-1.42 2.1c-.08.25.03.5.21.7l.5.5a1 1 0 0 0 1.42 0l.29-.3 3.73 3.73ZM13.77 15.06a.5.5 0 0 0 0 .7l1.73 1.74 1.44 2.4a1 1 0 0 0 .15.19l1.73 1.73c.1.1.26.1.36 0l2.64-2.64c.1-.1.1-.26 0-.36L20.1 17.1a1 1 0 0 0-.2-.15L17.5 15.5l-1.73-1.73a.5.5 0 0 0-.7 0l-1.3 1.3Z" class=""></path></svg>
-        <svg title="Options" x="0" y="0" onclick="openOptionsModal()" id="open-options-tools-button" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4483 8.3333H18.3333V11.6667H16.4492C16.2483 12.4425 15.9167 13.165 15.4708 13.8033L16.6667 15 15 16.6667 13.8042 15.47C13.1642 15.9158 12.4433 16.2483 11.6667 16.4483V18.3333H8.3333V16.4483C7.5575 16.2483 6.8358 15.9158 6.1967 15.47L5 16.6667 3.3333 15 4.53 13.8033C4.0842 13.1658 3.7517 12.4433 3.5517 11.6667H1.6667V8.3333H3.5517C3.7517 7.5567 4.0833 6.835 4.53 6.1967L3.3333 5 5 3.3333 6.1967 4.53C6.835 4.0833 7.5567 3.7517 8.3333 3.5517V1.6667H11.6667V3.5508C12.4433 3.7517 13.1642 4.0833 13.8042 4.5292L15 3.3325 16.6667 4.9992 15.47 6.1967C15.9158 6.835 16.2483 7.5575 16.4483 8.3333ZM10 13.3333C11.8409 13.3333 13.3333 11.8409 13.3333 10 13.3333 8.159 11.8409 6.6667 10 6.6667 8.159 6.6667 6.6667 8.159 6.6667 10 6.6667 11.8409 8.159 13.3333 10 13.3333Z")></path></svg>
-        <svg title="Downloads" x="0" y="0" onclick="openDownloadsModal()" id="open-downloads-button" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.3837 15.2952V20.7776H3.61379V15.2952H0.390625V22.3892C0.390625 23.2787 1.11115 24 2.00461 24H21.9929C22.8855 24 23.6068 23.2795 23.6068 22.3892V15.2952H20.3837Z" fill="white"/><path d="M11.7028 14.7516L7.08818 9.17553C7.08818 9.17553 6.38607 8.51264 7.14742 8.51264C7.90878 8.51264 9.74773 8.51264 9.74773 8.51264C9.74773 8.51264 9.74773 8.06672 9.74773 7.37901C9.74773 5.41837 9.74773 1.85016 9.74773 0.39549C9.74773 0.39549 9.64445 0 10.2401 0C10.8405 0 13.4705 0 13.9004 0C14.3295 0 14.3199 0.333044 14.3199 0.333044C14.3199 1.74368 14.3199 5.43519 14.3199 7.33178C14.3199 7.94663 14.3199 8.34532 14.3199 8.34532C14.3199 8.34532 15.7946 8.34532 16.72 8.34532C17.6439 8.34532 16.9482 9.03943 16.9482 9.03943C16.9482 9.03943 13.0221 14.2513 12.4745 14.7981C12.0806 15.1943 11.7028 14.7516 11.7028 14.7516Z" fill="white"/></svg>
-    `;
-    if (localStorage.dev == "true") {
-        const dev_tool_button = document.querySelector("#open-dev-tools-button");
-        dev_tool_button.style.display = 'block';
-    }
+        open_help_modals_buttons_holder.innerHTML = `
+            <svg title="Help" x="0" y="0" onclick="openLostModal()" id="open-lost-tools-button" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.486 2 2 6.487 2 12C2 17.515 6.486 22 12 22C17.514 22 22 17.515 22 12C22 6.487 17.514 2 12 2ZM12 18.25C11.31 18.25 10.75 17.691 10.75 17C10.75 16.31 11.31 15.75 12 15.75C12.69 15.75 13.25 16.31 13.25 17C13.25 17.691 12.69 18.25 12 18.25ZM13 13.875V15H11V12H12C13.104 12 14 11.103 14 10C14 8.896 13.104 8 12 8C10.896 8 10 8.896 10 10H8C8 7.795 9.795 6 12 6C14.205 6 16 7.795 16 10C16 11.861 14.723 13.429 13 13.875Z"></path></svg>
+            <svg title="Dev Tools" x="0" y="0" onclick="openDevModal()" style="display: none;" id="open-dev-tools-button" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M2 20.59V19.4a1 1 0 0 1 .3-.7l2.4-2.42a1 1 0 0 1 .71-.29H6l9-9-.85-.85a1 1 0 0 1-.23-.34l-1.49-3.73a.5.5 0 0 1 .65-.65l3.73 1.5a1 1 0 0 1 .34.22l.64.64a1 1 0 0 1 1.42 0l1 1a1 1 0 0 1 0 1.42l1.58 1.58a1 1 0 0 1 0 1.42l-1.58 1.58a1 1 0 0 1-1.42 0L17 9l-9 9v.59a1 1 0 0 1-.3.7l-2.4 2.42a1 1 0 0 1-.71.29H3.4a1 1 0 0 1-.7-.3l-.42-.4a1 1 0 0 1-.29-.71Z" class=""></path><path fill="currentColor" d="M8.23 10.23c.2.2.51.2.7 0l1.3-1.3a.5.5 0 0 0 0-.7L6.5 4.5l.3-.3a1 1 0 0 0 0-1.4l-.5-.5c-.2-.2-.45-.3-.7-.22-.43.14-1.17.49-2.1 1.42a5.37 5.37 0 0 0-1.42 2.1c-.08.25.03.5.21.7l.5.5a1 1 0 0 0 1.42 0l.29-.3 3.73 3.73ZM13.77 15.06a.5.5 0 0 0 0 .7l1.73 1.74 1.44 2.4a1 1 0 0 0 .15.19l1.73 1.73c.1.1.26.1.36 0l2.64-2.64c.1-.1.1-.26 0-.36L20.1 17.1a1 1 0 0 0-.2-.15L17.5 15.5l-1.73-1.73a.5.5 0 0 0-.7 0l-1.3 1.3Z" class=""></path></svg>
+            <svg title="Options" x="0" y="0" onclick="openOptionsModal()" id="open-options-tools-button" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4483 8.3333H18.3333V11.6667H16.4492C16.2483 12.4425 15.9167 13.165 15.4708 13.8033L16.6667 15 15 16.6667 13.8042 15.47C13.1642 15.9158 12.4433 16.2483 11.6667 16.4483V18.3333H8.3333V16.4483C7.5575 16.2483 6.8358 15.9158 6.1967 15.47L5 16.6667 3.3333 15 4.53 13.8033C4.0842 13.1658 3.7517 12.4433 3.5517 11.6667H1.6667V8.3333H3.5517C3.7517 7.5567 4.0833 6.835 4.53 6.1967L3.3333 5 5 3.3333 6.1967 4.53C6.835 4.0833 7.5567 3.7517 8.3333 3.5517V1.6667H11.6667V3.5508C12.4433 3.7517 13.1642 4.0833 13.8042 4.5292L15 3.3325 16.6667 4.9992 15.47 6.1967C15.9158 6.835 16.2483 7.5575 16.4483 8.3333ZM10 13.3333C11.8409 13.3333 13.3333 11.8409 13.3333 10 13.3333 8.159 11.8409 6.6667 10 6.6667 8.159 6.6667 6.6667 8.159 6.6667 10 6.6667 11.8409 8.159 13.3333 10 13.3333Z")></path></svg>
+            <svg title="Downloads" x="0" y="0" onclick="openDownloadsModal()" id="open-downloads-button" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.3837 15.2952V20.7776H3.61379V15.2952H0.390625V22.3892C0.390625 23.2787 1.11115 24 2.00461 24H21.9929C22.8855 24 23.6068 23.2795 23.6068 22.3892V15.2952H20.3837Z" fill="white"/><path d="M11.7028 14.7516L7.08818 9.17553C7.08818 9.17553 6.38607 8.51264 7.14742 8.51264C7.90878 8.51264 9.74773 8.51264 9.74773 8.51264C9.74773 8.51264 9.74773 8.06672 9.74773 7.37901C9.74773 5.41837 9.74773 1.85016 9.74773 0.39549C9.74773 0.39549 9.64445 0 10.2401 0C10.8405 0 13.4705 0 13.9004 0C14.3295 0 14.3199 0.333044 14.3199 0.333044C14.3199 1.74368 14.3199 5.43519 14.3199 7.33178C14.3199 7.94663 14.3199 8.34532 14.3199 8.34532C14.3199 8.34532 15.7946 8.34532 16.72 8.34532C17.6439 8.34532 16.9482 9.03943 16.9482 9.03943C16.9482 9.03943 13.0221 14.2513 12.4745 14.7981C12.0806 15.1943 11.7028 14.7516 11.7028 14.7516Z" fill="white"/></svg>
+        `;
+        if (localStorage.dev == "true") {
+            const dev_tool_button = document.querySelector("#open-dev-tools-button");
+            dev_tool_button.style.display = 'block';
+        }
     }
 
     pageCheck();
@@ -607,7 +896,25 @@ if (localStorage.full_client_rework === "true") {
                             <p class="shop-expiry-timer-timer" id="shop-expiry-timer"></p>
                         </div>
                     </div>
-                    <div class="shop-category-card-holder">
+                    <div class="shop-category-card-holder" id="shop-category-card-holder" data-shop-category-card-holder>
+                    </div>
+                </div>
+            </template>
+            <template data-shop-item-card-template>
+                <div class="shop-category-card">
+                    <div data-shop-card-preview-holder>
+                    </div>
+                    <div class="card-bottom">
+                        <a class="item-credits" data-product-card-sku-id>Failed To Load Item</a>
+                        <h3 data-product-card-name>Failed To Load Item</h3>
+                        <p class="shop-card-summary" data-product-card-summary>Failed To Load Item</p>
+                        <div class="shop-price-container">
+                            <a style="font-size: large; font-weight: 900;" data-price-standard></a>
+                            <a data-price-nitro></a>
+                        </div>
+                    </div>
+                    <div class="card-button-container"data-product-card-open-in-shop>
+                        <button class="card-button" title="Open this item in the Discord Shop">Open In Shop</button>
                     </div>
                 </div>
             </template>
@@ -672,16 +979,16 @@ if (localStorage.full_client_rework === "true") {
                             <div data-shop-card-preview-holder>
                             </div>
                             <div class="card-bottom">
-                                <a class="item-credits" data-product-card-sku-id></a>
-                                <h3 data-product-card-name>The Anomaly</h3>
-                                <p class="shop-card-summary" data-product-card-summary>Beautiful. Impossible. Inevitable.</p>
+                                <a class="item-credits" data-product-card-sku-id>Failed To Load Item</a>
+                                <h3 data-product-card-name>Failed To Load Item</h3>
+                                <p class="shop-card-summary" data-product-card-summary>Failed To Load Item</p>
                                 <div class="shop-price-container">
-                                    <a style="font-size: large; font-weight: 900;" data-price-standard>US$15.99</a>
-                                    <a data-price-nitro>US$11.99 with Nitro</a>
+                                    <a style="font-size: large; font-weight: 900;" data-price-standard></a>
+                                    <a data-price-nitro></a>
                                 </div>
                             </div>
-                            <div class="card-button-container">
-                                <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=1306752744258011166';" title="Open this item in the Discord Shop">Open In Shop</button>
+                            <div class="card-button-container"data-product-card-open-in-shop>
+                                <button class="card-button" title="Open this item in the Discord Shop">Open In Shop</button>
                             </div>
                         </div>
                     </template>
@@ -800,6 +1107,163 @@ if (localStorage.full_client_rework === "true") {
         `;
     }
 
+    function createItemToolPageElement() {
+        document.getElementById("everything-housing-container").innerHTML = `
+            <div style="display: flex; margin-top: 70px;">
+                <div class="item-tool-card-big">
+                    <h1>Avatar Decoration</h1>
+        
+                    <div class="shop-category-card deco-card" id="deco-preview-card" style="width: 280px;">
+                        <img class="deco-preview-tool-deco" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAtJREFUGFdjYAACAAAFAAGq1chRAAAAAElFTkSuQmCC" id="customDecorationPreview" alt="Deco Preview" />
+                        <div class="card-bottom">
+                            <a class="item-credits" id="deco-skuid-output-text">SKU ID: SKU ID</a>
+                            <h3 id="deco-name-output-text">Decoration Name</h3>
+                            <p class="shop-card-summary" id="deco-desc-output-text">Decoration Description</p>
+                            <div class="shop-price-container">
+                                <a id="deco-price-output-text" style="font-size: large; font-weight: 900;">Price Standard</a>
+                                <a id="deco-price2-output-text">Price Nitro</a>
+                            </div>
+                        </div>
+                        <div class="card-button-container">
+                            <button class="card-button" title="Open item in the Discord shop">Open In Shop</button>
+                        </div>
+                    </div>
+                    <hr style="opacity: 0;">
+        
+                    <div class="input-field">
+                        <input type="text" id="deco-name-intput-box" placeholder="Name">
+                    </div>
+                    
+                    <div class="input-field">
+                        <input type="text" id="deco-desc-intput-box" placeholder="Description">
+                    </div>
+                
+                    <div class="input-field">
+                        <input type="text" id="deco-skuid-input-box" placeholder="SKU ID">
+                    </div>
+                
+                    <div class="input-field">
+                        <input type="text" id="deco-animated-link-input-box" placeholder="Animated Link">
+                    </div>
+                    <p style="display: none;" id="deco-animated-link-output-text"></p>
+                
+                    <div class="input-field">
+                        <input type="text" id="deco-static-link-input-box" placeholder="Static Link">
+                    </div>
+                    <p style="display: none;" id="deco-static-link-output-text"></p>
+                
+                    <div class="input-field">
+                        <input type="text" id="deco-price-input-box" placeholder="Price">
+                    </div>
+                
+                    <div class="input-field">
+                        <input type="text" id="deco-price2-input-box" placeholder="Nitro Price">
+                    </div>
+                
+                    <button id="custom-deco-copy-button">Copy for API</button>
+
+                    <div class="customDecorationDataURLContainer">
+                        <div class="input-field">
+                            <p>Upload Item Asset</p>
+                            <input type="file" id="customDecorationInput" accept="image/*">
+                        </div>
+                        <div class="input-field" style="display: none;">
+                            <input type="text" id="customDecorationUrlInput" placeholder="Enter custom decoration URL">
+                            <button id="loadCustomDecorationUrl">Load Decoration from URL</button>
+                        </div>
+                        <div class="input-field json-input-field" style="display: none;">
+                            <div class="output-section">
+                                <textarea style="width: 100%; height: 200px;" id="deco-dataUrlOutput" readonly placeholder="Data URL will appear here..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="input-field json-input-field">
+                        <p>Load item from JSON</p>
+                        <textarea style="width: 100%; height: 200px;" id="deco-json-input" placeholder='Paste Shop Archives item API here'></textarea>
+                        <button id="deco-load-json-button">Load JSON</button>
+                    </div>
+                </div>
+    
+                <div class="item-tool-card-big">
+                    <h1>Profile Effect</h1>
+    
+                    <div class="shop-category-card effect-card" id="effect-preview-card" style="width: 280px;">
+                        <img class="effect-preview-tool-effect" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAtJREFUGFdjYAACAAAFAAGq1chRAAAAAElFTkSuQmCC" id="customEffectPreview" alt="Effect Preview" />
+                        <div class="card-bottom">
+                            <a class="item-credits" id="effect-skuid-output-text">SKU ID: SKU ID</a>
+                            <h3 id="effect-name-output-text">Effect Name</h3>
+                            <p class="shop-card-summary" id="effect-desc-output-text">Effect Description</p>
+                            <div class="shop-price-container">
+                                <a id="effect-price-output-text" style="font-size: large; font-weight: 900;">Price Standard</a>
+                                <a id="effect-price2-output-text">Price Nitro</a>
+                            </div>
+                        </div>
+                        <div class="card-button-container">
+                            <button class="card-button" title="Open item in the Discord shop">Open In Shop</button>
+                        </div>
+                    </div>
+                    <hr style="opacity: 0;">
+        
+                    <div class="input-field">
+                        <input type="text" id="effect-name-intput-box" placeholder="Name">
+                    </div>
+                    
+                    <div class="input-field">
+                        <input type="text" id="effect-desc-intput-box" placeholder="Description">
+                    </div>
+                
+                    <div class="input-field">
+                        <input type="text" id="effect-skuid-input-box" placeholder="SKU ID">
+                    </div>
+                
+                    <div class="input-field">
+                        <input type="text" id="effect-animated-link-input-box" placeholder="Animated Link">
+                    </div>
+                    <p style="display: none;" id="effect-animated-link-output-text"></p>
+                
+                    <div class="input-field">
+                        <input type="text" id="effect-static-link-input-box" placeholder="Static Link">
+                    </div>
+                    <p style="display: none;" id="effect-static-link-output-text"></p>
+                
+                    <div class="input-field">
+                        <input type="text" id="effect-price-input-box" placeholder="Price">
+                    </div>
+                
+                    <div class="input-field">
+                        <input type="text" id="effect-price2-input-box" placeholder="Nitro Price">
+                    </div>
+                
+                    <button id="custom-effect-copy-button">Copy for API</button>
+
+                    <div class="customEffectsDataURLContainer">
+                        <div class="input-field">
+                            <p>Upload Item Asset</p>
+                            <input type="file" id="customEffectInput" accept="image/*">
+                        </div>
+                        <div class="input-field" style="display: none;">
+                            <input type="text" id="customEffectUrlInput" placeholder="Enter custom effect URL">
+                            <button id="loadCustomEffectUrl">Load Effect from URL</button>
+                        </div>
+                        <div class="input-field json-input-field" style="display: none;">
+                            <div class="output-section">
+                                <textarea style="width: 700px; height: 200px;" id="effect-dataUrlOutput" readonly placeholder="Data URL will appear here..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="input-field json-input-field">
+                        <p>Load item from JSON</p>
+                        <textarea style="width: 100%; height: 200px;" id="effect-json-input" placeholder='Paste Shop Archives item API here'></textarea>
+                        <button id="effect-load-json-button">Load JSON</button>
+                    </div>
+                </div>
+
+            </div>
+        `;
+    }
+
 
 
     function openLostModal() {
@@ -826,7 +1290,7 @@ if (localStorage.full_client_rework === "true") {
                     <hr style="opacity: 0">
                     <button class="refresh-button" onclick="closeLostModal()">Close</button>
                     <hr style="opacity: 0">
-                    App Version: Dev 130
+                    App Version: Dev 131
                 </div>
             </div>
         </div>
