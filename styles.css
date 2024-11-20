@@ -1186,6 +1186,7 @@ body {
     background-repeat: no-repeat; /* Prevents the background image from repeating */
     width: 220px !important;
     height: 220px !important;
+    border-radius: 15px;
 }
 
 .type_1000 .avatar-decoration-image {
