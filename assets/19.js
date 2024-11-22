@@ -1305,12 +1305,6 @@ if (localStorage.full_client_rework != "false") {
             <button class="dm-button" id="avatar-decorations-debug-tab" onclick="setParams({page: 'item_tool'}); location.reload();">
                 <p class="dm-button-text">Item Debug</p>
             </button>
-            <button class="dm-button" id="shop-assets-tab" onclick="setParams({page: 'shop_assets'}); location.reload();">
-                <p class="dm-button-text">Shop Assets</p>
-            </button>
-            <button class="dm-button" id="published-listings-tab" onclick="setParams({page: 'published_listings'}); location.reload();">
-                <p class="dm-button-text">Published Listings</p>
-            </button>
             <button class="dm-button" onclick="location.href='https://old.yapper.shop/';">
                 <p class="dm-button-text">Old UI</p>
             </button>
@@ -1412,6 +1406,7 @@ if (localStorage.full_client_rework != "false") {
     
     function leaksCheck() {
         if (localStorage.override_leaks_button === "true") {
+            console.log(`Valid Leaks Check: Overridden`);
             document.getElementById('leaks-tab-loading').innerHTML = `
                 <button class="dm-button" id="leaks-tab" onclick="setParams({page: 'leaks'}); location.reload();" title="New {apiCategory.name} Leaks">
                     <p class="dm-button-text">Leaks</p>
@@ -2245,7 +2240,7 @@ if (localStorage.full_client_rework != "false") {
                     <button class="card-button" onclick="window.open('https://github.com/Yappering/');">Github</button>
                     <button class="card-button" onclick="window.open('https://www.youtube.com/@DTACat');">DTACat Youtube</button>
                 </div>
-                App Version: Dev 139
+                App Version: Dev 140
             `;
 
             if (localStorage.items_in_shop_yes == "true") {
