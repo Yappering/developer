@@ -1,6 +1,6 @@
 if (localStorage.full_client_rework != "false") {
 
-    api = 'http://api.yapper.shop/v2';
+    api = 'https://raw.githubusercontent.com/Yappering/api/main/v2';
     prvapi = 'https://raw.githubusercontent.com/Yappering/private-api/refs/heads/main/v2';
     discordsupport = 'https://support.discord.com/hc/en-us/articles/';
     discordblog = 'https://discord.com/blog/';
@@ -2203,7 +2203,7 @@ if (localStorage.full_client_rework != "false") {
                     <button class="card-button" onclick="window.open('https://github.com/Yappering/');">Github</button>
                     <button class="card-button" onclick="window.open('https://www.youtube.com/@DTACat');">DTACat Youtube</button>
                 </div>
-                App Version: Dev 137
+                App Version: Dev 138
             `;
 
             if (localStorage.items_in_shop_yes == "true") {
