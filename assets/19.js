@@ -1,18 +1,23 @@
 if (localStorage.full_client_rework != "false") {
 
-    COLLECTIBLES = 'https://raw.githubusercontent.com/Yappering/api/main/v2/collectibles';
-    UNPUBLISHED_COLLECTIBLES = 'https://raw.githubusercontent.com/Yappering/private-api/refs/heads/main/v2/unpublished_collectibles';
-    COLLECTIBLES_IN_SHOP = 'https://raw.githubusercontent.com/Yappering/api/main/v2/collectibles-in-shop';
-    CONSUMABLES = 'https://raw.githubusercontent.com/Yappering/api/main/v1/consumables';
-    MISCELLANEOUS = 'https://raw.githubusercontent.com/Yappering/api/main/v2/miscellaneous';
-    PROFILES_PLUS = 'https://raw.githubusercontent.com/Yappering/api/main/v2/profiles-plus';
-    PROFILES_PLUS_UNPUBLISHED = 'https://raw.githubusercontent.com/Yappering/private-api/refs/heads/main/v2/profiles-plus';
-    HOME_PAGE_PREVIEW = 'https://raw.githubusercontent.com/Yappering/api/main/v2/home-page-preview';
-    HOME_PAGE_P_PLUS = 'https://raw.githubusercontent.com/Yappering/api/main/v1/home-page-p-plus';
-    PROFILE_EFFECTS = 'https://raw.githubusercontent.com/Yappering/api/main/v2/profile-effects';
-    DOWNLOADABLE_DATA = 'https://raw.githubusercontent.com/Yappering/api/main/v2/downloadable-data';
-    PROFILES_PLUS_EFFECTS = 'https://raw.githubusercontent.com/Yappering/api/main/v2/profiles-plus-effects';
-    LEAKS = 'https://raw.githubusercontent.com/Yappering/api/main/v2/leaks';
+    api = 'http://api.yapper.shop/v2';
+    prvapi = 'https://raw.githubusercontent.com/Yappering/private-api/refs/heads/main/v2';
+    discordsupport = 'https://support.discord.com/hc/en-us/articles/';
+    discordblog = 'https://discord.com/blog/';
+
+
+    COLLECTIBLES = '/collectibles-categories.json';
+    COLLECTIBLES_IN_SHOP = '/collectibles-categories-published.json';
+    CONSUMABLES = '/consumables.json';
+    MISCELLANEOUS = '/miscellaneous-categories.json';
+    PROFILES_PLUS = '/profiles-plus-categories.json';
+    HOME_PAGE_PREVIEW = '/preview-1.json';
+    HOME_PAGE_P_PLUS = '/preview-2.json';
+    PROFILE_EFFECTS = '/user-profile-effects.json';
+    DOWNLOADABLE_DATA = '/downloads.json';
+    PROFILES_PLUS_EFFECTS = '/profiles-plus-profile-effects.json';
+    LEAKS = '/leaked-categories.json';
+    COLLECTIBLES_MARKETING = '/collectibles-marketing.json';
 
 
     WINDOWKILL = "profiles-plus-1"
@@ -59,6 +64,35 @@ if (localStorage.full_client_rework != "false") {
     MYTHICAL_CREATURES = "1298033986811068497"
     WARRIOR = "1303490165284802580"
     KAWAII_MODE = "1306330663213072494"
+
+
+    HELP_AVATAR_DECORATIONS = "13410113109911"
+    HELP_SHOP = "17162747936663"
+    HELP_PROFILE_EFFECTS = "17828465914263"
+    HELP_HD_STREAMING_POTION = "27343254089623"
+
+    BLOG_AVATAR_DECORATIONS_PROFILE_EFFECTS = "avatar-decorations-collect-and-keep-the-newest-styles"
+    
+
+
+
+
+    fetch(api + LEAKS)
+    .then(response => response.json())
+    .then((data) => {
+        data.forEach(apiCategory => {
+            console.log(`Valid Leaks Check: True`);
+            document.getElementById('leaks-tab-loading').innerHTML = `
+                <button class="dm-button" id="leaks-tab" onclick="setParams({page: 'leaks'}); location.reload();">
+                    <p class="dm-button-text">Leaks</p>
+                </button>
+            `;
+        });
+    })
+    .catch(error => {
+        console.log(`Valid Leaks Check: False`);
+        document.getElementById('leaks-tab-loading').innerHTML = ``;
+    });
 
 
     const params = new URLSearchParams(window.location.search);
@@ -208,7 +242,7 @@ if (localStorage.full_client_rework != "false") {
                                         
                                             // Fetch profile effects API only if not already cached
                                             if (!profileEffectsCache) {
-                                                const response = await fetch(PROFILES_PLUS_EFFECTS);
+                                                const response = await fetch(api + PROFILES_PLUS_EFFECTS);
                                                 const effectsData = await response.json();
                                                 profileEffectsCache = effectsData.profile_effect_configs;
                                             }
@@ -301,7 +335,7 @@ if (localStorage.full_client_rework != "false") {
                                         
                                                     (async () => {
                                                         if (!profileEffectsCache) {
-                                                            const response = await fetch(PROFILES_PLUS_EFFECTS);
+                                                            const response = await fetch(api + PROFILES_PLUS_EFFECTS);
                                                             const effectsData = await response.json();
                                                             profileEffectsCache = effectsData.profile_effect_configs;
                                                         }
@@ -349,7 +383,15 @@ if (localStorage.full_client_rework != "false") {
                                             `;
                                         }
 
-                                        card.querySelector("[data-product-card-open-in-shop]").innerHTML = ``;
+                                        if (product.emojiCopy === null) {
+                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="Request item in our Discord server">Request to P+</button>
+                                            `;
+                                        } else {
+                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                <button class="card-button" onclick="copyEmoji('${product.emojiCopy}');" title="Request item in our Discord server">Copy P+ Emoji</button>
+                                            `;
+                                        }
 
                                         // Append card to output
                                         cardOutput.append(card);
@@ -401,12 +443,12 @@ if (localStorage.full_client_rework != "false") {
                                 const potionCard = potionTemplate.content.cloneNode(true).children[0];
                                 potionCard.querySelector("[data-potion-card-holder]").id = apiCategory.sku_id;
             
-                                potionCard.querySelector("[data-potion-card-preview-image]").src = apiCategory.preview;
+                                potionCard.querySelector("[data-potion-card-preview-image]").src = `https://cdn.yapper.shop/discord-assets/${apiCategory.src}.png`;
                                 potionCard.querySelector("[data-potion-card-preview-image]").alt = apiCategory.name;
             
                                 potionCard.querySelector("[data-potion-card-desc]").textContent = apiCategory.summary;
                                 potionCard.querySelector("[data-potion-card-title]").textContent = apiCategory.name;
-                                potionCard.querySelector("[data-potion-card-price]").textContent = apiCategory.price;
+                                potionCard.querySelector("[data-potion-card-price]").textContent = `US$${(apiCategory.price.amount / 100).toFixed(2)}`
                                 potionCard.querySelector("[data-potion-card-sku]").textContent = 'SKU ID: ' + apiCategory.sku_id;
             
                                 categoryOutput.append(potionCard);
@@ -484,7 +526,7 @@ if (localStorage.full_client_rework != "false") {
                                         
                                             // Fetch profile effects API only if not already cached
                                             if (!profileEffectsCache) {
-                                                const response = await fetch(PROFILE_EFFECTS);
+                                                const response = await fetch(api + PROFILE_EFFECTS);
                                                 const effectsData = await response.json();
                                                 profileEffectsCache = effectsData.profile_effect_configs;
                                             }
@@ -576,7 +618,7 @@ if (localStorage.full_client_rework != "false") {
                                                     (async () => {
                                                         // Fetch profile effects if not cached
                                                         if (!profileEffectsCache) {
-                                                            const response = await fetch(PROFILE_EFFECTS);
+                                                            const response = await fetch(api + PROFILE_EFFECTS);
                                                             const effectsData = await response.json();
                                                             profileEffectsCache = effectsData.profile_effect_configs;
                                                         }
@@ -664,7 +706,8 @@ if (localStorage.full_client_rework != "false") {
                                     const kawaii_mode_banner = document.getElementById(KAWAII_MODE);
                                     if (kawaii_mode_banner) {  // Check if element exists
                                         document.getElementById('1306330663213072494').innerHTML = `
-                                        <video autoplay muted class="shop-category-banner-img" src="https://cdn.discordapp.com/assets/collectibles/drops/kawaii_mode/banner_animated.webm" loop></video>
+                                        <img class="shop-category-banner-img" style="position: absolute;" src="https://cdn.discordapp.com/app-assets/1096190356233670716/1306330663229718579.png?size=4096">
+                                        <video autoplay muted class="shop-category-banner-img" style="z-index: 1;" src="https://cdn.discordapp.com/assets/collectibles/drops/kawaii_mode/banner_animated.webm" loop></video>
                                         <div class="shop-category-text-holder">
                                             <p style="font-size: 18px; color: black;">When :3 is your game face.</p>
                                         </div>
@@ -867,7 +910,7 @@ if (localStorage.full_client_rework != "false") {
 
         } else {
                 
-            apiUrl = HOME_PAGE_PREVIEW;
+            apiUrl = api + HOME_PAGE_PREVIEW;
 
             let profileEffectsCache = null;
             
@@ -889,15 +932,11 @@ if (localStorage.full_client_rework != "false") {
                 
                         const summary = category.querySelector("[data-shop-category-desc]");
                         summary.textContent = apiCategory.summary;
-                
-                        const previewCategoryButton = category.querySelector("[data-preview-new-categoey-button]");
-                
-                        const newCategoryName = apiCategory.name;
 
                         category.querySelector("[data-preview-banner-container]").id = apiCategory.sku_id;
                 
-                        previewCategoryButton.innerHTML = `
-                            <button class="home-page-preview-button" onclick="setParams({page: 'shop'}); location.reload();">Shop the ${newCategoryName} Collection</button>
+                        category.querySelector("[data-preview-new-categoey-button]").innerHTML = `
+                            <button class="home-page-preview-button" onclick="setParams({page: 'shop'}); location.reload();">Shop the ${apiCategory.name} Collection</button>
                         `;
     
                         const cardOutput = category.querySelector("[data-shop-category-card-holder]");
@@ -961,7 +1000,7 @@ if (localStorage.full_client_rework != "false") {
                                 
                                     // Fetch profile effects API only if not already cached
                                     if (!profileEffectsCache) {
-                                        const response = await fetch(PROFILE_EFFECTS);
+                                        const response = await fetch(api + PROFILE_EFFECTS);
                                         const effectsData = await response.json();
                                         profileEffectsCache = effectsData.profile_effect_configs;
                                     }
@@ -1053,7 +1092,7 @@ if (localStorage.full_client_rework != "false") {
                                             (async () => {
                                                 // Fetch profile effects if not cached
                                                 if (!profileEffectsCache) {
-                                                    const response = await fetch(PROFILE_EFFECTS);
+                                                    const response = await fetch(api + PROFILE_EFFECTS);
                                                     const effectsData = await response.json();
                                                     profileEffectsCache = effectsData.profile_effect_configs;
                                                 }
@@ -1199,7 +1238,7 @@ if (localStorage.full_client_rework != "false") {
             });
             
             
-            apiUrlplus = HOME_PAGE_P_PLUS;
+            apiUrlplus = api + HOME_PAGE_P_PLUS;
             
             fetch(apiUrlplus)
             .then(response => response.json())
@@ -1211,7 +1250,7 @@ if (localStorage.full_client_rework != "false") {
                     const category = template.content.cloneNode(true).children[0];
             
                     const oneImage = category.querySelector("[data-shop-preview-image-plus]");
-                    oneImage.src = user.src;
+                    oneImage.src = `https://cdn.yapper.shop/assets/${user.src}.png`;
                     oneImage.alt = user.name;
 
                     output.append(category);
@@ -1226,11 +1265,7 @@ if (localStorage.full_client_rework != "false") {
     
     // Function to copy the emoji to clipboard
     function copyEmoji(emoji) {
-        navigator.clipboard.writeText(emoji).then(() => {
-            alert('Emoji copied to clipboard!');
-        }).catch(err => {
-            console.error('Failed to copy emoji:', err);
-        });
+        navigator.clipboard.writeText(emoji)
     }
     
     // Redirect to Google if emojiCopy is null
@@ -1257,9 +1292,12 @@ if (localStorage.full_client_rework != "false") {
             <button class="dm-button" id="shop-tab" onclick="setParams({page: 'shop'}); location.reload();">
                 <p class="dm-button-text">Shop</p>
             </button>
-            <button class="dm-button" id="leaks-tab" onclick="setParams({page: 'leaks'}); location.reload();">
-                <p class="dm-button-text">Leaks</p>
-            </button>
+            <div id="leaks-tab-loading">
+                <button class="dm-button dm-button-fetching" style="cursor: default;">
+                    <div class="dm-button-text-fetching dm-button-text-fetching-var-3"></div>
+                    <div class="dm-button-tag-fetching"></div>
+                </button>
+            </div>
             <button class="dm-button" id="potions-tab" onclick="setParams({page: 'consumables'}); location.reload();">
                 <p class="dm-button-text">Potions</p>
             </button>
@@ -1290,13 +1328,13 @@ if (localStorage.full_client_rework != "false") {
         } else if (params.get("page") === "shop") {
             document.title = "Shop | Shop Archives";
             if (localStorage.items_in_shop_yes == "true") {
-                apiUrl = COLLECTIBLES_IN_SHOP;
+                apiUrl = api + COLLECTIBLES_IN_SHOP;
             } else if (localStorage.unreleased_discord_collectibles == "true") {
                 const client_token = localStorage.getItem('token');
-                apiUrlRaw = UNPUBLISHED_COLLECTIBLES;
+                apiUrlRaw = prvapi + COLLECTIBLES;
                 apiUrl = `${apiUrlRaw}?token=${client_token}`;  
             } else {
-                apiUrl = COLLECTIBLES;
+                apiUrl = api + COLLECTIBLES;
             }
             createMainShopElement()
             document.getElementById("shop-tab").classList.add('dm-button-selected');
@@ -1306,7 +1344,7 @@ if (localStorage.full_client_rework != "false") {
             `;
         } else if (params.get("page") === "leaks") {
             document.title = "Leaks | Shop Archives";
-            apiUrl = LEAKS;
+            apiUrl = api + LEAKS;
             createMainShopElement()
             document.getElementById("leaks-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
@@ -1315,7 +1353,7 @@ if (localStorage.full_client_rework != "false") {
             `;
         } else if (params.get("page") === "consumables") {
             document.title = "Potions | Shop Archives";
-            apiUrl = CONSUMABLES;
+            apiUrl = api + CONSUMABLES;
             createMainPotionsElement()
             document.getElementById("potions-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
@@ -1324,7 +1362,7 @@ if (localStorage.full_client_rework != "false") {
             `;
         } else if (params.get("page") === "miscellaneous") {
             document.title = "Miscellaneous | Shop Archives";
-            apiUrl = MISCELLANEOUS;
+            apiUrl = api + MISCELLANEOUS;
             createMainShopElement()
             document.getElementById("miscellaneous-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
@@ -1335,10 +1373,10 @@ if (localStorage.full_client_rework != "false") {
             document.title = "Profiles Plus | Shop Archives";
             if (localStorage.unreleased_profiles_plus == "true") {
                 const client_token = localStorage.getItem('token');
-                apiUrlRaw = PROFILES_PLUS_UNPUBLISHED;
+                apiUrlRaw = prvapi + PROFILES_PLUS;
                 apiUrl = `${apiUrlRaw}?token=${client_token}`;  
             } else {
-                apiUrl = PROFILES_PLUS;
+                apiUrl = api + PROFILES_PLUS;
             }
             createMainShopElement()
             document.getElementById("pplus-tab").classList.add('dm-button-selected');
@@ -1576,9 +1614,6 @@ if (localStorage.full_client_rework != "false") {
                                 </div>
                                 <div class="potion-card-price-holder">
                                     <p style="font-size: 25px;" data-potion-card-price></p>
-                                </div>
-                                <div class="potion-card-button-holder">
-                                    <button class="card-button">Open In Shop</button>
                                 </div>
                             </div>
                         </div>
@@ -2127,7 +2162,7 @@ if (localStorage.full_client_rework != "false") {
         } else {
             document.getElementById('options-sidebar-container').classList.add("options-sidebar-container-expanded");
             document.getElementById('options-sidebar-container').innerHTML = `
-                <h1 class="center-text" style="font-size: 54px; margin-top: 20px; margin-bottom: 0px;">Options</h1>
+                <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px;">Options</h1>
                 <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
                     <div class="experiment-card" id="is-in-shop-box-option">
                         <p>Shop: Hide removed items</p>
@@ -2140,27 +2175,35 @@ if (localStorage.full_client_rework != "false") {
                         <input class="options-toggle-box" onclick="reducedMotionChecked();" style="cursor: pointer; scale: 2; posision: center;" id="reduced-motion-box" type="checkbox">
                     </div>
                 </div>
-                <h2 class="center-text" style="font-size: 54px; margin-top: 20px; margin-bottom: 0px;">Downloads</h2>
-                    <div>
-                        <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
-                        <template id="downloadables-api-template">
-                            <div class="item experiment-card">
-                                <p class="name"></p>
-                                <p class="summary experiment-subtext"></p>
-                                <div class="downloadables"></div>
-                            </div>
-                        </template>
-                        <div class="experiment-card-holder" id="downloadables-output"></div>
+                <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px;">Downloads</h1>
+                <div>
+                    <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
+                    <template id="downloadables-api-template">
+                        <div class="item experiment-card">
+                            <p class="name"></p>
+                            <p class="summary experiment-subtext"></p>
+                            <div class="downloadables"></div>
+                        </div>
+                    </template>
+                    <div class="experiment-card-holder" id="downloadables-output"></div>
+                </div>
+                <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px;">Discord Help Articles</p>
+                <div id="discord-help-articles-output">
+                    <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
+                        <button class="card-button" onclick="window.open('${discordsupport}${HELP_SHOP}');">Shop</button>
+                        <button class="card-button" onclick="window.open('${discordsupport}${HELP_AVATAR_DECORATIONS}');">Avatar Decorations</button>
+                        <button class="card-button" onclick="window.open('${discordsupport}${HELP_PROFILE_EFFECTS}');">Profile Effects</button>
+                        <button class="card-button" onclick="window.open('${discordsupport}${HELP_HD_STREAMING_POTION}');">HD Splash Potion</button>
                     </div>
-                <button class="refresh-button" onclick="location.href='https://old.yapper.shop/';">Old UI</button>
-                <hr style="opacity: 0">
-                <button class="refresh-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb/';">Discord</button>
-                <hr style="opacity: 0">
-                <button class="refresh-button" onclick="location.href='https://github.com/Yappering/';">Github</button>
-                <hr style="opacity: 0">
-                <button class="refresh-button" onclick="location.href='https://www.youtube.com/@DTACat';">Youtube</button>
-                <hr style="opacity: 0">
-                App Version: Dev 136
+                </div>
+                <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px;">Shop Archives</p>
+                <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
+                    <button class="card-button" onclick="window.open('https://old.yapper.shop/');">Old UI</button>
+                    <button class="card-button" onclick="window.open('https://discord.gg/Mcwh7hGcWb/');">Discord Server</button>
+                    <button class="card-button" onclick="window.open('https://github.com/Yappering/');">Github</button>
+                    <button class="card-button" onclick="window.open('https://www.youtube.com/@DTACat');">DTACat Youtube</button>
+                </div>
+                App Version: Dev 137
             `;
 
             if (localStorage.items_in_shop_yes == "true") {
@@ -2175,7 +2218,7 @@ if (localStorage.full_client_rework != "false") {
                 document.getElementById("reduced-motion-box").checked = true;
             }
 
-            fetch(DOWNLOADABLE_DATA)
+            fetch(api + DOWNLOADABLE_DATA)
                 .then(response => response.json())
                 .then(data => {
                     // Call the function to display the data
