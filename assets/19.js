@@ -4,7 +4,7 @@ if (localStorage.full_client_rework != "false") {
     prvapi = 'https://raw.githubusercontent.com/Yappering/private-api/refs/heads/main/v2';
     discordsupport = 'https://support.discord.com/hc/en-us/articles/';
     discordblog = 'https://discord.com/blog/';
-    apidesignedurl = 'http://api.yapper.shop/v2';
+    apidesignedurl = 'https://api.yapper.shop/v2';
 
     if (localStorage.api_designed_url === "true") {
         api = apidesignedurl;
@@ -77,8 +77,6 @@ if (localStorage.full_client_rework != "false") {
     HELP_HD_STREAMING_POTION = "27343254089623"
 
     BLOG_AVATAR_DECORATIONS_PROFILE_EFFECTS = "avatar-decorations-collect-and-keep-the-newest-styles"
-    
-
 
 
     const params = new URLSearchParams(window.location.search);
@@ -2240,7 +2238,7 @@ if (localStorage.full_client_rework != "false") {
                     <button class="card-button" onclick="window.open('https://github.com/Yappering/');">Github</button>
                     <button class="card-button" onclick="window.open('https://www.youtube.com/@DTACat');">DTACat Youtube</button>
                 </div>
-                App Version: Dev 140
+                App Version: Dev 141
             `;
 
             if (localStorage.items_in_shop_yes == "true") {
