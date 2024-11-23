@@ -385,6 +385,13 @@ if (localStorage.full_client_rework != "false") {
 
                                         if (localStorage.premium_type_two_included_with_nitro === "true") {
                                             if (product.premium_type === 2) {
+                                                card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                    <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
+                                                `;
+                                            }
+                                        }
+                                        if (localStorage.premium_type_two_included_with_nitro === "two") {
+                                            if (product.premium_type === 2) {
                                                 card.querySelector("[data-shop-price-container]").innerHTML = `
                                                     <a style="font-size: large; font-weight: 900;" data-price-standard>Included with Nitro</a>
                                                 `;
@@ -393,7 +400,7 @@ if (localStorage.full_client_rework != "false") {
                                                 `;
                                             }
                                         }
-                                        if (localStorage.premium_type_two_included_with_nitro === "two") {
+                                        if (localStorage.premium_type_two_included_with_nitro === "three") {
                                             card.querySelector("[data-shop-price-container]").innerHTML = `
                                                 <a style="font-size: large; font-weight: 900;" data-price-standard>Included with Nitro</a>
                                             `;
@@ -714,6 +721,13 @@ if (localStorage.full_client_rework != "false") {
 
                                         if (localStorage.premium_type_two_included_with_nitro === "true") {
                                             if (product.premium_type === 2) {
+                                                card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                    <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
+                                                `;
+                                            }
+                                        }
+                                        if (localStorage.premium_type_two_included_with_nitro === "two") {
+                                            if (product.premium_type === 2) {
                                                 card.querySelector("[data-shop-price-container]").innerHTML = `
                                                     <a style="font-size: large; font-weight: 900;" data-price-standard>Included with Nitro</a>
                                                 `;
@@ -722,7 +736,7 @@ if (localStorage.full_client_rework != "false") {
                                                 `;
                                             }
                                         }
-                                        if (localStorage.premium_type_two_included_with_nitro === "two") {
+                                        if (localStorage.premium_type_two_included_with_nitro === "three") {
                                             card.querySelector("[data-shop-price-container]").innerHTML = `
                                                 <a style="font-size: large; font-weight: 900;" data-price-standard>Included with Nitro</a>
                                             `;
@@ -944,6 +958,8 @@ if (localStorage.full_client_rework != "false") {
                 });
 
         } else {
+
+            createShopCategoryLoadingElement()
                 
             if (localStorage.unreleased_discord_collectibles == "true") {
                 const client_token = localStorage.getItem('token');
@@ -1217,6 +1233,13 @@ if (localStorage.full_client_rework != "false") {
 
                                 if (localStorage.premium_type_two_included_with_nitro === "true") {
                                     if (product.premium_type === 2) {
+                                        card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                            <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
+                                        `;
+                                    }
+                                }
+                                if (localStorage.premium_type_two_included_with_nitro === "two") {
+                                    if (product.premium_type === 2) {
                                         card.querySelector("[data-shop-price-container]").innerHTML = `
                                             <a style="font-size: large; font-weight: 900;" data-price-standard>Included with Nitro</a>
                                         `;
@@ -1225,7 +1248,7 @@ if (localStorage.full_client_rework != "false") {
                                         `;
                                     }
                                 }
-                                if (localStorage.premium_type_two_included_with_nitro === "two") {
+                                if (localStorage.premium_type_two_included_with_nitro === "three") {
                                     card.querySelector("[data-shop-price-container]").innerHTML = `
                                         <a style="font-size: large; font-weight: 900;" data-price-standard>Included with Nitro</a>
                                     `;
@@ -1239,6 +1262,8 @@ if (localStorage.full_client_rework != "false") {
                             }
                         }
                         output.append(category);
+
+                        document.getElementById("shop-category-loading-container").innerHTML = ``;
 
                         const kawaii_mode_banner = document.getElementById(KAWAII_MODE);
 
@@ -1528,6 +1553,8 @@ if (localStorage.full_client_rework != "false") {
                 </div>
             </template>
             <div data-shop-output>
+            </div>
+            <div style="margin-top: 50px;" id="shop-category-loading-container">
             </div>
             
             <h2 style="margin-left: 60px;">What's new for Profiles Plus</h2>
@@ -2276,7 +2303,7 @@ if (localStorage.full_client_rework != "false") {
                     <button class="card-button" onclick="window.open('https://github.com/Yappering/');">Github</button>
                     <button class="card-button" onclick="window.open('https://www.youtube.com/@DTACat');">DTACat Youtube</button>
                 </div>
-                App Version: Dev 143
+                App Version: Dev 144
             `;
 
             if (localStorage.items_in_shop_yes == "true") {
@@ -2507,8 +2534,7 @@ if (localStorage.full_client_rework != "false") {
     
     function openDevModal() {
         if (localStorage.dev == "true") {
-            const dev_modal = document.getElementById('modal-housing');
-            dev_modal.innerHTML = `
+            document.getElementById('modal-housing').innerHTML = `
             <div class="modal-housing-1" id="modal-housing-1">
                 <div class="dev-modal">
                     <div class="dev-modal-inner">
@@ -2525,9 +2551,11 @@ if (localStorage.full_client_rework != "false") {
                                 <div class="experiment-card">
                                     <p>Premium Type Two Included With Nitro</p>
                                     <p class="experiment-subtext">2024-11_premium_type_two_included_with_nitro</p>
-                                    <button class="refresh-button" onclick="premiumTypeTwoIncludedWithNitro2()" id="2024-11_premium_type_two_included_with_nitro-2" title="show included with nitro tag on all items">Override 2</button>
+                                    <div id="experiment-default-rollout-data-2024-11_premium_type_two_included_with_nitro"></div>
+                                    <button class="refresh-button" onclick="premiumTypeTwoIncludedWithNitro3()" id="2024-11_premium_type_two_included_with_nitro-3" title="show included with nitro tag and price on all items">Override 3</button>
+                                    <button class="refresh-button" onclick="premiumTypeTwoIncludedWithNitro2()" id="2024-11_premium_type_two_included_with_nitro-2" title="show included with nitro tag and price on premium type 2 items">Override 2</button>
                                     <button class="refresh-button" onclick="premiumTypeTwoIncludedWithNitro1()" id="2024-11_premium_type_two_included_with_nitro-1" title="show included with nitro tag on premium type 2 items">Override 1</button>
-                                    <button class="refresh-button" onclick="premiumTypeTwoIncludedWithNitro0()" id="2024-11_premium_type_two_included_with_nitro-0">No Override</button>
+                                    <button class="refresh-button-no">No Override</button>
                                     <button class="refresh-button" onclick="premiumTypeTwoIncludedWithNitro00()" id="2024-11_premium_type_two_included_with_nitro-00">Override -1</button>
                                 </div>
         
@@ -2598,13 +2626,14 @@ if (localStorage.full_client_rework != "false") {
             `;
 
 
-            
-            if (localStorage.premium_type_two_included_with_nitro != "true") {
-                if (localStorage.premium_type_two_included_with_nitro != "false") {
-                    if (localStorage.premium_type_two_included_with_nitro != "two") {
-                        document.getElementById("2024-11_premium_type_two_included_with_nitro-0").classList.add('refresh-button-selected');
-                    }
-                }
+            document.getElementById('experiment-default-rollout-data-2024-11_premium_type_two_included_with_nitro').innerHTML = `
+                <p class="experiment-subtext">default rollout: Override 1</p>
+            `;
+
+
+
+            if (localStorage.premium_type_two_included_with_nitro == "three") {
+                document.getElementById("2024-11_premium_type_two_included_with_nitro-3").classList.add('refresh-button-selected');
             }
 
             if (localStorage.premium_type_two_included_with_nitro == "two") {
@@ -2768,38 +2797,38 @@ if (localStorage.full_client_rework != "false") {
 
 
 
+    function premiumTypeTwoIncludedWithNitro3() {
+        localStorage.premium_type_two_included_with_nitro = "three"
+        document.getElementById("2024-11_premium_type_two_included_with_nitro-3").classList.add('refresh-button-selected');
+        document.getElementById("2024-11_premium_type_two_included_with_nitro-2").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_premium_type_two_included_with_nitro-1").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_premium_type_two_included_with_nitro-00").classList.remove('refresh-button-selected');
+        fetchData(pageCheck());
+    }
+
     function premiumTypeTwoIncludedWithNitro2() {
         localStorage.premium_type_two_included_with_nitro = "two"
+        document.getElementById("2024-11_premium_type_two_included_with_nitro-3").classList.remove('refresh-button-selected');
         document.getElementById("2024-11_premium_type_two_included_with_nitro-2").classList.add('refresh-button-selected');
         document.getElementById("2024-11_premium_type_two_included_with_nitro-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-0").classList.remove('refresh-button-selected');
         document.getElementById("2024-11_premium_type_two_included_with_nitro-00").classList.remove('refresh-button-selected');
         fetchData(pageCheck());
     }
     
     function premiumTypeTwoIncludedWithNitro1() {
         localStorage.premium_type_two_included_with_nitro = "true"
+        document.getElementById("2024-11_premium_type_two_included_with_nitro-3").classList.remove('refresh-button-selected');
         document.getElementById("2024-11_premium_type_two_included_with_nitro-2").classList.remove('refresh-button-selected');
         document.getElementById("2024-11_premium_type_two_included_with_nitro-1").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-0").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-00").classList.remove('refresh-button-selected');
-        fetchData(pageCheck());
-    }
-
-    function premiumTypeTwoIncludedWithNitro0() {
-        localStorage.premium_type_two_included_with_nitro = "none"
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-2").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-0").classList.add('refresh-button-selected');
         document.getElementById("2024-11_premium_type_two_included_with_nitro-00").classList.remove('refresh-button-selected');
         fetchData(pageCheck());
     }
     
     function premiumTypeTwoIncludedWithNitro00() {
         localStorage.premium_type_two_included_with_nitro = "false"
+        document.getElementById("2024-11_premium_type_two_included_with_nitro-3").classList.remove('refresh-button-selected');
         document.getElementById("2024-11_premium_type_two_included_with_nitro-2").classList.remove('refresh-button-selected');
         document.getElementById("2024-11_premium_type_two_included_with_nitro-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-0").classList.remove('refresh-button-selected');
         document.getElementById("2024-11_premium_type_two_included_with_nitro-00").classList.add('refresh-button-selected');
         fetchData(pageCheck());
     }
