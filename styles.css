@@ -985,6 +985,23 @@ body {
     z-index: 200;
 }
 
+.a2024-recap-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(580px, 1fr));
+    gap: 20px;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.a2024-recap-card {
+    cursor: pointer;
+}
+
+.a2024-recap-card img {
+    display: block;
+    width: 600px;
+}
 
 
 
