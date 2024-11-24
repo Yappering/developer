@@ -5,6 +5,8 @@ if (localStorage.full_client_rework != "false") {
     discordsupport = 'https://support.discord.com/hc/en-us/articles/';
     discordblog = 'https://discord.com/blog/';
     apidesignedurl = 'https://api.yapper.shop/v2';
+    yapperblog = 'https://yapper.shop/blog/';
+    cdn = 'https://cdn.yapper.shop/';
 
     if (localStorage.api_designed_url != "false") {
         api = apidesignedurl;
@@ -34,7 +36,6 @@ if (localStorage.full_client_rework != "false") {
     SPECIAL_EVENT = "profiles-plus-6"
     GEOMETRY_DASH = "profiles-plus-7"
     PAPER_BEACH_V2 = "profiles-plus-8"
-
 
 
     FANTASY = "1144003461608906824"
@@ -78,7 +79,14 @@ if (localStorage.full_client_rework != "false") {
     HELP_PROFILE_EFFECTS = "17828465914263"
     HELP_HD_STREAMING_POTION = "27343254089623"
 
+
     BLOG_AVATAR_DECORATIONS_PROFILE_EFFECTS = "avatar-decorations-collect-and-keep-the-newest-styles"
+
+
+    YAPPER_BLOG_2024_RECAP = "2024-recap"
+
+
+    DISMISSIBLE_2024_RECAP = "assets/103.svg"
 
 
     const params = new URLSearchParams(window.location.search);
@@ -121,7 +129,7 @@ if (localStorage.full_client_rework != "false") {
     
     // Function to fetch and display shop data
     function fetchData() {
-        if (params.get("page") != "home") {
+        if (params.get("page") != "home" && params.get("page") != "recap_2024") {
 
             if (params.get("page") === "consumables") {
                 createMainPotionsElement()
@@ -958,7 +966,7 @@ if (localStorage.full_client_rework != "false") {
                     `;
                 });
 
-        } else {
+        } else if (params.get("page") === "home") {
                 
             if (localStorage.unreleased_discord_collectibles == "true") {
                 const client_token = localStorage.getItem('token');
@@ -1308,6 +1316,8 @@ if (localStorage.full_client_rework != "false") {
             .catch(error => {
                 console.error('Error fetching the API:', error);
             });
+        } else if (params.get("page") === "recap_2024") {
+            createRecap2024Element()
         }
     }
     
@@ -1334,6 +1344,8 @@ if (localStorage.full_client_rework != "false") {
             <button class="dm-button" id="home-tab" onclick="setParams({page: 'home'}); location.reload();">
                 <p class="dm-button-text">Home</p>
             </button>
+            <div id="recap-2024-tab-loading">
+            </div>
         </div>
         <div class="dm-divider">Collectibles</div>
         <div>
@@ -1357,6 +1369,12 @@ if (localStorage.full_client_rework != "false") {
             <button class="dm-button" id="avatar-decorations-debug-tab" onclick="setParams({page: 'item_tool'}); location.reload();">
                 <p class="dm-button-text">Item Debug</p>
             </button>
+            <button class="dm-button" id="shop-assets-tab" onclick="setParams({page: 'shop_assets'}); location.reload();">
+                <p class="dm-button-text">Shop Assets</p>
+            </button>
+            <button class="dm-button" id="published-listings-tab" onclick="setParams({page: 'published_listings'}); location.reload();">
+                <p class="dm-button-text">Published Listings</p>
+            </button>
             <button class="dm-button" onclick="location.href='https://old.yapper.shop/';">
                 <p class="dm-button-text">Old UI</p>
             </button>
@@ -1364,11 +1382,27 @@ if (localStorage.full_client_rework != "false") {
         `;
     }
 
+    if (localStorage.recap_items_2024 === "true") {
+        document.getElementById('recap-2024-tab-loading').innerHTML = `
+            <img class="recap-2024-tab-decoration" src="https://cdn.yapper.shop/assets/104.png">
+            <button class="dm-button" id="recap-2024-tab" onclick="setParams({page: 'recap_2024'}); location.reload();">
+                <p class="dm-button-text">2024 Recap</p>
+            </button>
+
+        `;
+        document.getElementById('recap-2024-tab').style.backgroundImage = "linear-gradient(90deg, rgba(200, 91, 241, 0.00) 18.75%, #C85BF1 108.26%)";
+    }
+
     function pageCheck() {
         if (params.get("page") === "home") {
             document.title = "Home | Shop Archives";
             createHomePageElement()
             document.getElementById("home-tab").classList.add('dm-button-selected');
+        } else if (params.get("page") === "recap_2024") {
+            document.title = "2024 Recap | Shop Archives";
+            createRecap2024Element()
+            document.getElementById("recap-2024-tab").classList.add('dm-button-selected');
+            localStorage.dismissible_recap_2024 = "dismissed";
         } else if (params.get("page") === "shop") {
             document.title = "Shop | Shop Archives";
             if (localStorage.items_in_shop_yes == "true") {
@@ -1508,6 +1542,8 @@ if (localStorage.full_client_rework != "false") {
         document.getElementById("everything-housing-container").innerHTML = `
             <div id="home-page-warning-container">
             </div>
+            <div id="home-page-dismissible-content-container">
+            </div>
             <template data-shop-category-template>
                 <div>
                     <div data-preview-banner-container>
@@ -1601,6 +1637,11 @@ if (localStorage.full_client_rework != "false") {
             `;
         }
         if (localStorage.recap_items_2024 === "true") {
+            if (localStorage.dismissible_recap_2024 != "dismissed") {
+                document.getElementById("home-page-dismissible-content-container").innerHTML = `
+                <img class="home-page-dismissible-content-2024-recap" onclick="dismissibleContentRecap2024()" src="${cdn}${DISMISSIBLE_2024_RECAP}" title="Check out everything 2024 had to offer!">
+            `;
+            }
             document.getElementById("recap-support-articles").innerHTML = `
                 <h2 style="margin-left: 60px;">Articles</h2>
                 <div class="a2024-recap-container">
@@ -1616,6 +1657,30 @@ if (localStorage.full_client_rework != "false") {
                 </div>
             `;
         }
+    }
+
+    function dismissibleContentRecap2024() {
+        setParams({page: 'recap_2024'}); location.reload();
+        localStorage.dismissible_recap_2024 = "dismissed";
+    }
+
+    function createRecap2024Element() {
+        document.getElementById("everything-housing-container").innerHTML = `
+            <div id="recap-support-articles" style="margin-top: 70px;">
+                <h2 style="margin-left: 60px;">Articles</h2>
+                <div class="a2024-recap-container">
+                    <div class="a2024-recap-card" onclick="window.open('https://support.discord.com/hc/en-us/articles/27343254089623');">
+                        <img class="a2024-recap-img" src="https://cdn.yapper.shop/assets/98.svg">
+                    </div>
+                    <div class="a2024-recap-card" onclick="window.open('https://support.discord.com/hc/en-us/articles/17828465914263');">
+                        <img class="a2024-recap-img" src="https://cdn.yapper.shop/assets/97.svg">
+                    </div>
+                    <div class="a2024-recap-card" onclick="window.open('https://support.discord.com/hc/en-us/articles/13410113109911');">
+                        <img class="a2024-recap-img" src="https://cdn.yapper.shop/assets/96.svg">
+                    </div>
+                </div>
+            </div>
+        `;
     }
 
 
@@ -2339,7 +2404,7 @@ if (localStorage.full_client_rework != "false") {
                     <button class="card-button" onclick="window.open('https://github.com/Yappering/');">Github</button>
                     <button class="card-button" onclick="window.open('https://www.youtube.com/@DTACat');">DTACat Youtube</button>
                 </div>
-                App Version: Dev 147
+                App Version: Dev 148
             `;
 
             if (localStorage.items_in_shop_yes == "true") {
@@ -2658,6 +2723,18 @@ if (localStorage.full_client_rework != "false") {
                                     <p class="experiment-subtext">2024-09_profiles_plus</p>
                                     <button class="refresh-button" onclick="unreleasedProfilesPlusItemsTrue()" id="2024-09_profiles_plus-1">Override 1</button>
                                     <button class="refresh-button" onclick="unreleasedProfilesPlusItemsFalse()" id="2024-09_profiles_plus-2">No Override</button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h2>Dismissible Content</h2>
+                            <p class="experiment-subtext">Overrides</p>
+                            <div class="experiment-card-holder">
+                                <div class="experiment-card">
+                                    <p>Recap 2024</p>
+                                    <p class="experiment-subtext">dismissible_recap_2024</p>
+                                    <button class="refresh-button" onclick="localStorage.dismissible_recap_2024 = '';">Clear Override</button>
                                 </div>
                             </div>
                         </div>
