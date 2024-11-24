@@ -2465,7 +2465,7 @@ if (localStorage.full_client_rework != "false") {
                     <button class="card-button" onclick="window.open('https://github.com/Yappering/');">Github</button>
                     <button class="card-button" onclick="window.open('https://www.youtube.com/@DTACat');">DTACat Youtube</button>
                 </div>
-                App Version: Dev 151
+                App Version: Dev 152
             `;
 
             if (localStorage.items_in_shop_yes == "true") {

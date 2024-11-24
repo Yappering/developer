@@ -994,13 +994,66 @@ body {
     margin-right: auto;
 }
 
+.home-housing:has(.a2024-recap-text-card-1) {
+    background-color: #1a2081;
+}
+
+.home-housing:has(.a2024-recap-text-card-1) .shop-category-marketing-bg {
+    transition: opacity 0.3s ease-in-out;
+    animation: fb87236b789c9d 1s;
+}
+
+@keyframes fb87236b789c9d {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
 .a2024-recap-card {
     cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.a2024-recap-card:hover {
+    transform: translateY(-5px);
 }
 
 .a2024-recap-card img {
     display: block;
     width: 600px;
+    height: 337px;
+    transition: transform 0.3s ease-in-out;
+    animation: f527b856fdhfjx 1s;
+}
+
+.a2024-recap-text-card-1 {
+    display: block;
+    position: relative;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #404248c4;
+    border: 1px solid #1E1F22;
+    max-width: 1000px;
+    padding: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    transition: transform 0.3s ease-in-out;
+    animation: f527b856fdhfjx 1s;
+}
+
+@keyframes f527b856fdhfjx {
+    0% {transform: translateY(-20px); opacity: 0;}
+    100% {transform: translateY(0px); opacity: 1;}
+}
+
+.a2024-recap-img-1 {
+    width: 80%;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.a2024-recap-text-card-1:hover {
+    transform: translateY(-5px);
 }
 
 
