@@ -1394,9 +1394,12 @@ if (localStorage.full_client_rework != "false") {
             document.getElementById("home-tab").classList.add('dm-button-selected');
         } else if (params.get("page") === "recap_2024") {
             document.title = "2024 Recap | Shop Archives";
-            createRecap2024Element()
             document.getElementById("recap-2024-tab").classList.add('dm-button-selected');
             localStorage.dismissible_recap_2024 = "dismissed";
+            document.getElementById("top-bar-container").innerHTML = `
+                <h2 style="margin-left: 260px; margin-top: 10px;">2024 Recap</h2>
+                <div id="open-help-modals-buttons-holder"></div>
+            `;
         } else if (params.get("page") === "shop") {
             document.title = "Shop | Shop Archives";
             if (localStorage.items_in_shop_yes == "true") {
@@ -1660,16 +1663,80 @@ if (localStorage.full_client_rework != "false") {
 
     function createRecap2024Element() {
         document.getElementById("everything-housing-container").innerHTML = `
-            <div id="recap-support-articles" style="margin-top: 70px;">
-                <h2 style="margin-left: 60px;">Articles</h2>
-                <div class="a2024-recap-container">
-                    <div class="a2024-recap-card" onclick="window.open('https://support.discord.com/hc/en-us/articles/27343254089623');">
+            <div class="thy-shop-category-idk" style="height: auto;">
+                <img class="shop-category-marketing-bg" style="height: 100%; position: absolute; filter: blur(3px);" src="${cdn}assets/110.svg">
+
+                <div style="height: 60px; padding-top: 30px;">
+                </div>
+                
+                <div class="a2024-recap-text-card-1">
+                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">2024 Recap</h1>
+
+                    <p class="center-text" style="font-size: 18px;">Things such as Splash Potions and randomness added to Profile Effects and much more were all nice gifts given to us in 2024!</p>
+                    <p class="center-text" style="font-size: 18px;">The Shop Archives teams has made this article that covers everything that was added to Discord in 2024!</p>
+                </div>
+
+                <hr style="opacity: 0; height: 30px;">
+
+                <div class="a2024-recap-text-card-1">
+                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Winter Nitro Promotion</h1>
+                </div>
+
+                <hr style="opacity: 0; height: 30px;">
+
+                <div class="a2024-recap-text-card-1">
+                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">HD Splash Potions</h1>
+
+                    <img class="a2024-recap-img-1" src="${cdn}assets/109.png">
+
+                    <p class="center-text" style="font-size: 18px;">HD Splash Potion allows everyone in a voice channel to enjoy HD video streaming quality for the next 12 hours for only US$0.99.</p>
+                </div>
+
+                <hr style="opacity: 0; height: 30px;">
+
+                <div class="a2024-recap-text-card-1">
+                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Halloween Nitro Promotion</h1>
+
+                    <img class="a2024-recap-img-1" src="${cdn}assets/108.png">
+
+                    <p class="center-text" style="font-size: 18px;">From October 7th to November 4th, if you buy a Discord Nitro gift, you'll receive the 'Minios' Avatar Decoration of your own to collect and keep!</p>
+                </div>
+
+                <hr style="opacity: 0; height: 30px;">
+
+                <div class="a2024-recap-text-card-1">
+                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Random Profile Effects Outcome</h1>
+
+                    <img class="a2024-recap-img-1" src="${cdn}assets/106.png">
+
+                    <p class="center-text" style="font-size: 18px;">You might have noticed that some Profile Effects don't just have one outcome.</p>
+
+                    <p class="center-text" style="font-size: 18px;">Profile Effects such as 'D20 Roll' and 'Classic Street Fighter' have a chance to play a whole new animation every time you open someone profile!</p>
+                </div>
+
+                <hr style="opacity: 0; height: 30px;">
+
+                <div class="a2024-recap-text-card-1">
+                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Spring Nitro Promotion</h1>
+
+                    <img class="a2024-recap-img-1" src="${cdn}assets/107.png">
+
+                    <p class="center-text" style="font-size: 18px;">During Spring, if you were a first time Nitro subscriber, you would receive the 'Gyoiko Sakura' Avatar Decoration of your own to collect and use with an active Nitro subscription!</p>
+
+                    <p class="center-text" style="font-size: 18px;">But none of that mattered since later on Discord allowed anyone to purchase the 'Gyoiko Sakura' Avatar Decoration from 'The Vault' shop category.</p>
+                </div>
+
+                <hr style="opacity: 0; height: 30px;">
+
+                <h2 style="margin-left: 60px; z-index: 1; position: relative;">Discord Articles</h2>
+                <div class="a2024-recap-container" style="z-index: 1; position: relative;">
+                    <div class="a2024-recap-card" onclick="window.open('${discordsupport}${HELP_HD_STREAMING_POTION}');">
                         <img class="a2024-recap-img" src="https://cdn.yapper.shop/assets/98.svg">
                     </div>
-                    <div class="a2024-recap-card" onclick="window.open('https://support.discord.com/hc/en-us/articles/17828465914263');">
+                    <div class="a2024-recap-card" onclick="window.open('${discordsupport}${HELP_PROFILE_EFFECTS}');">
                         <img class="a2024-recap-img" src="https://cdn.yapper.shop/assets/97.svg">
                     </div>
-                    <div class="a2024-recap-card" onclick="window.open('https://support.discord.com/hc/en-us/articles/13410113109911');">
+                    <div class="a2024-recap-card" onclick="window.open('${discordsupport}${HELP_AVATAR_DECORATIONS}');">
                         <img class="a2024-recap-img" src="https://cdn.yapper.shop/assets/96.svg">
                     </div>
                 </div>
@@ -2398,7 +2465,7 @@ if (localStorage.full_client_rework != "false") {
                     <button class="card-button" onclick="window.open('https://github.com/Yappering/');">Github</button>
                     <button class="card-button" onclick="window.open('https://www.youtube.com/@DTACat');">DTACat Youtube</button>
                 </div>
-                App Version: Dev 149
+                App Version: Dev 151
             `;
 
             if (localStorage.items_in_shop_yes == "true") {
