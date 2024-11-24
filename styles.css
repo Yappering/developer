@@ -1962,6 +1962,30 @@ body {
     100% {transform: translateY(-5px); border: 2px solid #bf4646; background-color: #bf464663;}
 }
 
+.home-page-dismissible-content-2024-recap {
+    transition: transform 0.5s;
+    animation: home-page-dismissible-content-2024-recap-anim 10s;
+    position: absolute;
+    z-index: 10;
+    right: 10px;
+    margin-top: 40px;
+    width: 500px;
+    cursor: pointer;
+}
+
+.recap-2024-tab-decoration {
+    position: absolute;
+    width: 100px;
+    margin-top: -27px;
+    right: 0;
+    pointer-events: none;
+}
+
+@keyframes home-page-dismissible-content-2024-recap-anim {
+    0% {opacity: 0; transform: translateY(-50px);}
+    10% {opacity: 1; transform: translateY(0px);}
+}
+
 .shop-notice-text {
     margin-top: 5px;
 }
