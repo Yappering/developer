@@ -418,6 +418,38 @@ if (localStorage.full_client_rework != "false") {
                                             `;
                                         }
 
+                                        const unpublishedAt = new Date(product.unpublished_at);
+                            
+                                        if (product.unpublished_at && !isNaN(unpublishedAt.getTime())) {
+                            
+                                            function updateTimer() {
+                                                const now = new Date();
+                                                const timeDiff = unpublishedAt - now;
+                            
+                                                if (timeDiff <= 0) {
+                                                    card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                        <div class="unplublished-tag">
+                                                            <p class="unplublished-tag-text">OFF SALE</p>
+                                                        </div>
+                                                    `;
+                                                    clearInterval(timerInterval);
+                                                } else {
+                                                    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                            
+                                                    card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                        <div class="unplublished-tag">
+                                                            <p class="unplublished-tag-text">${days} DAYS LEFT IN SHOP</p>
+                                                        </div>
+                                                    `;
+                                                }
+                                            }
+                            
+                                            const timerInterval = setInterval(updateTimer, 1000);
+                                            updateTimer();
+                                        }
+
                                         // Append card to output
                                         card.classList.add('shop-category-card-transparent')
                                         cardOutput.append(card);
@@ -752,6 +784,38 @@ if (localStorage.full_client_rework != "false") {
                                             card.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                 <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
                                             `;
+                                        }
+
+                                        const unpublishedAt = new Date(product.unpublished_at);
+                            
+                                        if (product.unpublished_at && !isNaN(unpublishedAt.getTime())) {
+                            
+                                            function updateTimer() {
+                                                const now = new Date();
+                                                const timeDiff = unpublishedAt - now;
+                            
+                                                if (timeDiff <= 0) {
+                                                    card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                        <div class="unplublished-tag">
+                                                            <p class="unplublished-tag-text">OFF SALE</p>
+                                                        </div>
+                                                    `;
+                                                    clearInterval(timerInterval);
+                                                } else {
+                                                    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                            
+                                                    card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                        <div class="unplublished-tag">
+                                                            <p class="unplublished-tag-text">${days} DAYS LEFT IN SHOP</p>
+                                                        </div>
+                                                    `;
+                                                }
+                                            }
+                            
+                                            const timerInterval = setInterval(updateTimer, 1000);
+                                            updateTimer();
                                         }
 
                                         // Append card to output
@@ -1369,6 +1433,12 @@ if (localStorage.full_client_rework != "false") {
             <button class="dm-button" id="avatar-decorations-debug-tab" onclick="setParams({page: 'item_tool'}); location.reload();">
                 <p class="dm-button-text">Item Debug</p>
             </button>
+            <button class="dm-button" id="shop-assets-tab" onclick="setParams({page: 'shop_assets'}); location.reload();">
+                <p class="dm-button-text">Shop Assets</p>
+            </button>
+            <button class="dm-button" id="published-listings-tab" onclick="setParams({page: 'published_listings'}); location.reload();">
+                <p class="dm-button-text">Published Listings</p>
+            </button>
             <button class="dm-button" onclick="location.href='https://old.yapper.shop/';">
                 <p class="dm-button-text">Old UI</p>
             </button>
@@ -1636,11 +1706,11 @@ if (localStorage.full_client_rework != "false") {
         if (localStorage.recap_items_2024 === "true") {
             if (localStorage.dismissible_recap_2024 != "dismissed") {
                 document.getElementById("home-page-dismissible-content-container").innerHTML = `
-                <img class="home-page-dismissible-content-2024-recap" onclick="dismissibleContentRecap2024()" src="${cdn}${DISMISSIBLE_2024_RECAP}" title="Check out everything 2024 had to offer!">
-            `;
+                    <img class="home-page-dismissible-content-2024-recap" onclick="dismissibleContentRecap2024()" src="${cdn}${DISMISSIBLE_2024_RECAP}" title="Check out everything 2024 had to offer!">
+                `;
             }
             document.getElementById("recap-support-articles").innerHTML = `
-                <h2 style="margin-left: 60px;">Articles</h2>
+                <h2 style="margin-left: 60px;">Discord Articles</h2>
                 <div class="a2024-recap-container">
                     <div class="a2024-recap-card" onclick="window.open('${discordsupport}${HELP_HD_STREAMING_POTION}');">
                         <img class="a2024-recap-img" src="https://cdn.yapper.shop/assets/98.svg">
@@ -1705,7 +1775,7 @@ if (localStorage.full_client_rework != "false") {
                 <hr style="opacity: 0; height: 30px;">
 
                 <div class="a2024-recap-text-card-1">
-                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Random Profile Effects Outcome</h1>
+                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Random Profile Effect Outcomes</h1>
 
                     <img class="a2024-recap-img-1" src="${cdn}assets/106.png">
 
@@ -1728,18 +1798,15 @@ if (localStorage.full_client_rework != "false") {
 
                 <hr style="opacity: 0; height: 30px;">
 
-                <h2 style="margin-left: 60px; z-index: 1; position: relative;">Discord Articles</h2>
-                <div class="a2024-recap-container" style="z-index: 1; position: relative;">
-                    <div class="a2024-recap-card" onclick="window.open('${discordsupport}${HELP_HD_STREAMING_POTION}');">
-                        <img class="a2024-recap-img" src="https://cdn.yapper.shop/assets/98.svg">
-                    </div>
-                    <div class="a2024-recap-card" onclick="window.open('${discordsupport}${HELP_PROFILE_EFFECTS}');">
-                        <img class="a2024-recap-img" src="https://cdn.yapper.shop/assets/97.svg">
-                    </div>
-                    <div class="a2024-recap-card" onclick="window.open('${discordsupport}${HELP_AVATAR_DECORATIONS}');">
-                        <img class="a2024-recap-img" src="https://cdn.yapper.shop/assets/96.svg">
-                    </div>
+                <div class="a2024-recap-text-card-1" style="padding: 0px;">
+                    <p class="link-text" style="font-size: 18px;" onclick="window.open('${discordsupport}${HELP_HD_STREAMING_POTION}');">HD Splash Potion</p>
+                    <p class="link-text" style="font-size: 18px;" onclick="window.open('${discordsupport}${HELP_PROFILE_EFFECTS}');">Profile Effects</p>
+                    <p class="link-text" style="font-size: 18px;" onclick="window.open('${discordsupport}${HELP_AVATAR_DECORATIONS}');">Avatar Decorations</p>
+                    <p class="link-text" style="font-size: 18px;" onclick="window.open('${discordsupport}${HELP_SHOP}');">Shop</p>
+                    <p class="center-text" style="font-size: 18px;" title="DD/MM/YYYY">This page will be visible until 1/02/2025</p>
                 </div>
+
+                <hr style="opacity: 0; height: 30px;">
             </div>
         `;
     }
@@ -2465,7 +2532,7 @@ if (localStorage.full_client_rework != "false") {
                     <button class="card-button" onclick="window.open('https://github.com/Yappering/');">Github</button>
                     <button class="card-button" onclick="window.open('https://www.youtube.com/@DTACat');">DTACat Youtube</button>
                 </div>
-                App Version: Dev 152
+                App Version: Dev 154
             `;
 
             if (localStorage.items_in_shop_yes == "true") {

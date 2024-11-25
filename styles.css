@@ -458,6 +458,15 @@ body {
     text-align: center;
 }
 
+.link-text {
+    color: #939AF2;
+    cursor: pointer;
+}
+
+.link-text:hover {
+    text-decoration: underline !important;
+}
+
 .refresh-button {
     background-color: rgb(89, 102, 243);
     color: white;
@@ -1855,14 +1864,25 @@ body {
     position: absolute;
     top: 15px;
     right: 15px;
-    border-radius: 999px;
     width: auto;
-    padding-left: 5px;
-    padding-right: 5px;
     font-size: medium;
     font-weight: 600;
     z-index: 3;
     pointer-events: none;
+}
+
+.unplublished-tag-text {
+    color: black !important;
+    height: 21px;
+}
+
+.unplublished-tag {
+    position: relative;
+    background-color: white;
+    top: -15px;
+    border-radius: 999px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .premiumWheelBadge_c23530 {
