@@ -1,3 +1,11 @@
+hrft33n87d = "Discord is a registered trademark of Discord Inc. Shop Archives is not affiliated with, endorsed or sponsored by Discord Inc.";
+n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has everything only available for developers, only use this if you know what you're doing. Don't break anything :)";
+mgx2tmg9tx = "Experiments";
+mn7829t62d = "Test out new features";
+y5n875tx29 = "Dev Options";
+tcbx926n29 = "Dev 156";
+
+
 if (localStorage.full_client_rework != "false") {
 
     api = 'https://raw.githubusercontent.com/Yappering/api/main/v2';
@@ -818,6 +826,38 @@ if (localStorage.full_client_rework != "false") {
                                             updateTimer();
                                         }
 
+                                        const ExpiredAt = new Date(product.expires_at);
+                            
+                                        if (product.expires_at && !isNaN(ExpiredAt.getTime())) {
+                            
+                                            function updateTimer() {
+                                                const now = new Date();
+                                                const timeDiff = ExpiredAt - now;
+                            
+                                                if (timeDiff <= 0) {
+                                                    card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                        <div class="unplublished-tag">
+                                                            <p class="unplublished-tag-text">EXPIRED</p>
+                                                        </div>
+                                                    `;
+                                                    clearInterval(timerInterval);
+                                                } else {
+                                                    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                            
+                                                    card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                        <div class="unplublished-tag">
+                                                            <p class="unplublished-tag-text">EXPIRES IN ${days}D ${hours}H</p>
+                                                        </div>
+                                                    `;
+                                                }
+                                            }
+                            
+                                            const timerInterval = setInterval(updateTimer, 1000);
+                                            updateTimer();
+                                        }
+
                                         // Append card to output
                                         cardOutput.append(card);
                                     }
@@ -1396,14 +1436,14 @@ if (localStorage.full_client_rework != "false") {
     }
     
 
-    if (params.get("page") != "item_tool") {
+    if (params.get("page") != "item_tool" && params.get("page") != "published_listings") {
         window.onload = fetchData;
     }
 
     const clickable_side_tabs_container = document.getElementById('clickable-side-tabs-container');
     if (clickable_side_tabs_container) {  // Check if element exists
         document.getElementById('clickable-side-tabs-container').innerHTML = `
-        <p class="center-text" style="font-size: 12px; display: flex;">Discord is a registered trademark of Discord Inc. Shop Archives is not affiliated with, endorsed or sponsored by Discord Inc.</p>
+        <p class="center-text" style="font-size: 12px; display: flex;">${hrft33n87d}</p>
         <div>
             <button class="dm-button" id="home-tab" onclick="setParams({page: 'home'}); location.reload();">
                 <p class="dm-button-text">Home</p>
@@ -1433,8 +1473,8 @@ if (localStorage.full_client_rework != "false") {
             <button class="dm-button" id="avatar-decorations-debug-tab" onclick="setParams({page: 'item_tool'}); location.reload();">
                 <p class="dm-button-text">Item Debug</p>
             </button>
-            <button class="dm-button" onclick="location.href='https://old.yapper.shop/';">
-                <p class="dm-button-text">Old UI</p>
+            <button class="dm-button" id="published-listings-tab" onclick="setParams({page: 'published_listings'}); location.reload();">
+                <p class="dm-button-text">Published Listings</p>
             </button>
         </div>
         `;
@@ -1530,6 +1570,14 @@ if (localStorage.full_client_rework != "false") {
             document.getElementById("avatar-decorations-debug-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 style="margin-left: 260px; margin-top: 10px;">Item Tool</h2>
+                <div id="open-help-modals-buttons-holder"></div>
+            `;
+        } else if (params.get("page") === "published_listings") {
+            document.title = "Published Listings | Shop Archives";
+            createPublishedListingsPageElement()
+            document.getElementById("published-listings-tab").classList.add('dm-button-selected');
+            document.getElementById("top-bar-container").innerHTML = `
+                <h2 style="margin-left: 260px; margin-top: 10px;">Published Listings</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else {
@@ -1703,20 +1751,6 @@ if (localStorage.full_client_rework != "false") {
                     <img class="home-page-dismissible-content-2024-recap" onclick="dismissibleContentRecap2024()" src="${cdn}${DISMISSIBLE_2024_RECAP}" title="Check out everything 2024 had to offer!">
                 `;
             }
-            document.getElementById("recap-support-articles").innerHTML = `
-                <h2 style="margin-left: 60px;">Discord Articles</h2>
-                <div class="a2024-recap-container">
-                    <div class="a2024-recap-card" onclick="window.open('${discordsupport}${HELP_HD_STREAMING_POTION}');">
-                        <img class="a2024-recap-img" src="https://cdn.yapper.shop/assets/98.svg">
-                    </div>
-                    <div class="a2024-recap-card" onclick="window.open('${discordsupport}${HELP_PROFILE_EFFECTS}');">
-                        <img class="a2024-recap-img" src="https://cdn.yapper.shop/assets/97.svg">
-                    </div>
-                    <div class="a2024-recap-card" onclick="window.open('${discordsupport}${HELP_AVATAR_DECORATIONS}');">
-                        <img class="a2024-recap-img" src="https://cdn.yapper.shop/assets/96.svg">
-                    </div>
-                </div>
-            `;
         }
     }
 
@@ -2479,6 +2513,80 @@ if (localStorage.full_client_rework != "false") {
 
 
 
+    function createPublishedListingsPageElement() {
+        document.getElementById("everything-housing-container").innerHTML = `
+            <div class="published-listings-tester-card">
+
+                <h1>Check Published Listing by SKU ID</h1>
+
+                <div id="sku-is-valid-or-not-container"></div>
+
+                <input type="text" id="sku-id-input" placeholder="Please Input SKU ID">
+
+                <button onclick="checkValidSKUID()">Check</button>
+                
+            </div>
+        `;
+    }
+
+    function checkValidSKUID() {
+        const SKUinput = document.getElementById('sku-id-input').value;
+
+        document.getElementById('sku-is-valid-or-not-container').innerHTML = ``;
+
+        fetch(`https://canary.discord.com/api/v9/store/published-listings/skus/${SKUinput}`)
+            .then(response => response.json())
+            .then((data) => {
+                if (data.sku.price != null) {
+
+                    priceStandard = data.sku.price.amount;
+            
+                    if (data.sku.price.premium != null) {
+                        priceNitro = data.sku.price.premium["2"].amount;
+                    }
+            
+                    priceStandardOutput = `US$${(priceStandard / 100).toFixed(2)}`;
+            
+                    if (data.sku.price.premium != null) {
+                        priceNitroOutput = ` or US$${(priceNitro / 100).toFixed(2)} with Nitro`;
+                    } else {
+                        priceNitroOutput = '';
+                    }
+
+                    document.getElementById('sku-is-valid-or-not-container').innerHTML = `
+                        <div class="shop-success">
+                            <p class="shop-notice-text">The Item '${data.sku.name}' is valid and purchasable for ${priceStandardOutput}${priceNitroOutput}</p>
+                        </div>
+                    `;
+
+                } else {
+                    document.getElementById('sku-is-valid-or-not-container').innerHTML = `
+                        <div class="shop-success">
+                            <p class="shop-notice-text">The Category '${data.sku.name}' is valid and published</p>
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => {
+                if (SKUinput != '') {
+                    document.getElementById('sku-is-valid-or-not-container').innerHTML = `
+                        <div class="shop-warning">
+                            <p class="shop-notice-text">The SKU ID '${SKUinput}' is either invalid or unpublished</p>
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('sku-is-valid-or-not-container').innerHTML = `
+                        <div class="shop-warning">
+                            <p class="shop-notice-text">Please input an SKU ID below</p>
+                        </div>
+                    `;
+                }
+                console.error(error);
+            });
+    }
+
+
+
     function optionsSidebarToggle() {
         if (document.getElementById('options-sidebar-container').classList.contains('options-sidebar-container-expanded')) {
             document.getElementById('options-sidebar-container').classList.remove("options-sidebar-container-expanded");
@@ -2521,12 +2629,11 @@ if (localStorage.full_client_rework != "false") {
                 </div>
                 <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px;">Shop Archives</p>
                 <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
-                    <button class="card-button" onclick="window.open('https://old.yapper.shop/');">Old UI</button>
                     <button class="card-button" onclick="window.open('https://discord.gg/Mcwh7hGcWb/');">Discord Server</button>
                     <button class="card-button" onclick="window.open('https://github.com/Yappering/');">Github</button>
                     <button class="card-button" onclick="window.open('https://www.youtube.com/@DTACat');">DTACat Youtube</button>
                 </div>
-                App Version: Dev 155
+                App Version: ${tcbx926n29}
             `;
 
             if (localStorage.items_in_shop_yes == "true") {
@@ -2762,6 +2869,7 @@ if (localStorage.full_client_rework != "false") {
                 <div class="dev-modal">
                     <div class="dev-modal-inner">
                         <h1 class="center-text" style="font-size: 54px; margin-top: -10px; margin-bottom: -5px;">Dev Options</h1>
+                        <p>Greetings Shop Archives Staff and/or Dataminer! This model has everything only available for developers, only use this if you know what you're doing. Don't break anything :)</p>
                         <button class="refresh-button" onclick="closeDevModal()">Close</button>
                         <button class="refresh-button" onclick="turnOffDevMode()">Safe Mode</button>
                         <hr>
@@ -2856,7 +2964,7 @@ if (localStorage.full_client_rework != "false") {
                                 <div class="experiment-card">
                                     <p>Recap 2024</p>
                                     <p class="experiment-subtext">dismissible_recap_2024</p>
-                                    <button class="refresh-button" onclick="localStorage.dismissible_recap_2024 = '';">Clear Override</button>
+                                    <input class="options-toggle-box" onclick="dismissibleContent_Recap2024Checked();" style="cursor: pointer; scale: 2; posision: center;" id="dismissible_recap_2024-box" type="checkbox">
                                 </div>
                             </div>
                         </div>
@@ -2905,6 +3013,11 @@ if (localStorage.full_client_rework != "false") {
                 if (localStorage.collectibles_variants != "true") {
                     document.getElementById("2024-11_collectibles_variants-00").classList.add('refresh-button-selected');
                 }
+            }
+
+
+            if (localStorage.dismissible_recap_2024 == "dismissed") {
+                document.getElementById("dismissible_recap_2024-box").checked = true;
             }
 
 
@@ -3086,6 +3199,32 @@ if (localStorage.full_client_rework != "false") {
         localStorage.dev = "true"
         location.reload();
     }
+
+
+    function dismissibleContent_Recap2024Checked() {
+        const home_page_dismissible_content_container = document.getElementById("home-page-dismissible-content-container");
+        if (localStorage.dismissible_recap_2024 != "dismissed") {
+            localStorage.dismissible_recap_2024 = "dismissed"
+
+            if (home_page_dismissible_content_container) {
+                if (localStorage.recap_items_2024 === "true") {
+                    document.getElementById("home-page-dismissible-content-container").innerHTML = ``;
+                }
+            }
+        }
+        else {
+            localStorage.dismissible_recap_2024 = ''
+            if (home_page_dismissible_content_container) {
+                if (localStorage.recap_items_2024 === "true") {
+                    document.getElementById("home-page-dismissible-content-container").innerHTML = `
+                        <img class="home-page-dismissible-content-2024-recap" onclick="dismissibleContentRecap2024()" src="${cdn}${DISMISSIBLE_2024_RECAP}" title="Check out everything 2024 had to offer!">
+                    `;
+                }
+            }
+        }
+    }
+
+
 
 
 
