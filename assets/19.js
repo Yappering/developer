@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 156";
+tcbx926n29 = "Dev 159";
 
 
 if (localStorage.full_client_rework != "false") {
@@ -80,6 +80,7 @@ if (localStorage.full_client_rework != "false") {
     MYTHICAL_CREATURES = "1298033986811068497"
     WARRIOR = "1303490165284802580"
     KAWAII_MODE = "1306330663213072494"
+    LOFI_GIRL = "1309668861943218229"
 
 
     HELP_AVATAR_DECORATIONS = "13410113109911"
@@ -472,39 +473,43 @@ if (localStorage.full_client_rework != "false") {
                                 const bopl_battle_banner = document.getElementById(BOPL_BATTLE);
                                 const windowkill_banner = document.getElementById(WINDOWKILL);
 
+                                if (localStorage.disable_client_banner_overrides != "true") {
+                                    if (windowkill2_banner) {
+                                        document.getElementById(WINDOWKILL_V2).innerHTML = `
+                                            <img class="shop-category-condensed-banner-img" src="https://cdn.yapper.shop/assets/86.png">
+                                            <div class="shop-category-condensed-logo-holder" style="left: 23%;">
+                                                <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/assets/53.png" id="shop-banner-logo">
+                                            </div>
+                                        `;
+                                    }
+                                    
+                                    if (paper_beach_banner) {
+                                        document.getElementById(PAPER_BEACH).innerHTML = `
+                                            <img class="shop-category-condensed-banner-img" src="https://cdn.yapper.shop/assets/3.png">
+                                            <div class="shop-category-condensed-logo-holder" style="right: -6%;">
+                                                <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/assets/1.png" id="shop-banner-logo">
+                                            </div>
+                                        `;
+                                    }
+                                    
+                                    if (bopl_battle_banner) {
+                                        document.getElementById(BOPL_BATTLE).innerHTML = `
+                                            <img class="shop-category-condensed-banner-img" src="https://cdn.yapper.shop/assets/92.png">
+                                            <div class="shop-category-condensed-logo-holder" style="left: 15%;">
+                                                <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/assets/60.png" id="shop-banner-logo">
+                                            </div>
+                                        `;
+                                    }
+                                    
+                                    if (windowkill_banner) {
+                                        document.getElementById(`${WINDOWKILL}-discord-watermark-container`).innerHTML = ``;
+                                        document.getElementById(`${WINDOWKILL}-logo-container`).innerHTML = ``;
+                                        document.getElementById(`${WINDOWKILL}-summary`).style.color = 'black';
+                                    }
+                                }
 
-                                if (windowkill2_banner) {
-                                    document.getElementById(WINDOWKILL_V2).innerHTML = `
-                                        <img class="shop-category-condensed-banner-img" src="https://cdn.yapper.shop/assets/86.png">
-                                        <div class="shop-category-condensed-logo-holder" style="left: 23%;">
-                                            <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/assets/53.png" id="shop-banner-logo">
-                                        </div>
-                                    `;
-                                }
+
                                 
-                                if (paper_beach_banner) {
-                                    document.getElementById(PAPER_BEACH).innerHTML = `
-                                        <img class="shop-category-condensed-banner-img" src="https://cdn.yapper.shop/assets/3.png">
-                                        <div class="shop-category-condensed-logo-holder" style="right: -6%;">
-                                            <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/assets/1.png" id="shop-banner-logo">
-                                        </div>
-                                    `;
-                                }
-                                
-                                if (bopl_battle_banner) {
-                                    document.getElementById(BOPL_BATTLE).innerHTML = `
-                                        <img class="shop-category-condensed-banner-img" src="https://cdn.yapper.shop/assets/92.png">
-                                        <div class="shop-category-condensed-logo-holder" style="left: 15%;">
-                                            <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/assets/60.png" id="shop-banner-logo">
-                                        </div>
-                                    `;
-                                }
-                                
-                                if (windowkill_banner) {
-                                    document.getElementById(`${WINDOWKILL}-discord-watermark-container`).innerHTML = ``;
-                                    document.getElementById(`${WINDOWKILL}-logo-container`).innerHTML = ``;
-                                    document.getElementById(`${WINDOWKILL}-summary`).style.color = 'black';
-                                }
 
                             } else if (page === "consumables") {
                                 // Existing code for 'consumables' page
@@ -883,6 +888,90 @@ if (localStorage.full_client_rework != "false") {
                                 const springtoons_banner = document.getElementById(SPRINGTOONS);
                                 const anime_v2_banner = document.getElementById(ANIME_V2);
 
+                                if (localStorage.disable_client_banner_overrides != "true") {
+                                    if (palworld_banner) {
+                                        document.getElementById(`${TIDE}-discord-watermark-container`).innerHTML = ``;
+                                        document.getElementById(`${TIDE}-banner-banner-container`).innerHTML = `
+                                            <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/15.jpg">
+                                            <img style="position: absolute; right: 0px; bottom: 0px; width: 400px;" src="https://cdn.yapper.shop/discord-assets/13.png">
+                                            <img style="position: absolute; left: 0px; bottom: 0px; width: 400px;" src="https://cdn.yapper.shop/discord-assets/12.png">
+                                        `;
+                                        document.getElementById(`${TIDE}-logo-container`).innerHTML = `
+                                            <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/discord-assets/9.png" id="shop-banner-logo">
+                                        `;
+                                    }
+                                    
+                                    if (valorant_banner) {
+                                        document.getElementById(`${SHY}-discord-watermark-container`).innerHTML = ``;
+                                        document.getElementById(`${SHY}-banner-banner-container`).innerHTML = `
+                                            <div class="shop-category-banner-img" style="background: rgb(255, 70, 85); position: absolute; left: 0px; bottom: 0px; width: 1280px;"></div>
+                                            <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/23.png">
+                                            <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/20.png">
+                                            <img style="position: absolute; right: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/22.png">
+                                        `;
+                                        document.getElementById(`${SHY}-logo-container`).innerHTML = `
+                                            <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/discord-assets/21.png" id="shop-banner-logo">
+                                        `;
+                                    }
+
+                                    if (localStorage.reduced_motion != "true") {
+                                        if (kawaii_mode_banner) {
+                                            document.getElementById(`${KAWAII_MODE}-banner-banner-container`).innerHTML = `
+                                                <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.discordapp.com/app-assets/1096190356233670716/1306330663229718579.png?size=4096">
+                                                <video autoplay muted class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px; z-index: 1;" src="https://cdn.discordapp.com/assets/collectibles/drops/kawaii_mode/banner_animated.webm" loop></video>
+                                            `;
+                                        }
+    
+                                        if (arcane_banner) {
+                                            document.getElementById(`${WARRIOR}-banner-banner-container`).innerHTML = `
+                                                <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.discordapp.com/app-assets/1096190356233670716/1303490165297123358.png?size=4096">
+                                                <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/35.png">
+                                            `;
+                                        }
+                                        
+                                        if (dnd_banner) {
+                                            document.getElementById(`${CHANCE}-banner-banner-container`).innerHTML = `
+                                                <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/32.png">
+                                                <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/31.png">
+                                            `;
+                                        }
+                                        
+                                        if (street_fighter_banner) {
+                                            document.getElementById(`${BAND}-banner-banner-container`).innerHTML = `
+                                                <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.discordapp.com/app-assets/1096190356233670716/1285465421356732426.png?size=4096">
+                                                <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/19.png">
+                                            `;
+                                        }
+    
+                                        if (palworld_banner) {
+                                            document.getElementById(`${TIDE}-discord-watermark-container`).innerHTML = ``;
+                                            document.getElementById(`${TIDE}-banner-banner-container`).innerHTML = `
+                                                <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/15.jpg">
+                                                <img style="position: absolute; right: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/14.png">
+                                                <img style="position: absolute; right: 0px; bottom: 0px; width: 400px;" src="https://cdn.yapper.shop/discord-assets/13.png">
+                                                <img style="position: absolute; left: 0px; bottom: 0px; width: 400px;" src="https://cdn.yapper.shop/discord-assets/12.png">
+                                            `;
+                                            document.getElementById(`${TIDE}-logo-container`).innerHTML = `
+                                                <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/discord-assets/9.png" id="shop-banner-logo">
+                                            `;
+                                        }
+    
+                                        if (valorant_banner) {
+                                            document.getElementById(`${SHY}-discord-watermark-container`).innerHTML = ``;
+                                            document.getElementById(`${SHY}-banner-banner-container`).innerHTML = `
+                                                <div class="shop-category-banner-img" style="background: rgb(255, 70, 85); position: absolute; left: 0px; bottom: 0px; width: 1280px;"></div>
+                                                <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/24.png">
+                                                <img style="position: absolute; right: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/22.png">
+                                                <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/20.png">
+                                            `;
+                                            document.getElementById(`${SHY}-logo-container`).innerHTML = `
+                                                <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/discord-assets/21.png" id="shop-banner-logo">
+                                            `;
+                                        }
+                                        
+                                    }
+                                }
+
                                 if (kawaii_mode_banner) {
                                     document.getElementById(`${KAWAII_MODE}-discord-watermark-container`).innerHTML = ``;
                                     document.getElementById(`${KAWAII_MODE}-logo-container`).innerHTML = ``;
@@ -955,31 +1044,6 @@ if (localStorage.full_client_rework != "false") {
                                 if (dark_fantasy_banner) {
                                     document.getElementById(`${DARK_FANTASY}-logo-container`).innerHTML = ``;
                                 }
-
-                                if (palworld_banner) {
-                                    document.getElementById(`${TIDE}-discord-watermark-container`).innerHTML = ``;
-                                    document.getElementById(`${TIDE}-banner-banner-container`).innerHTML = `
-                                        <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/15.jpg">
-                                        <img style="position: absolute; right: 0px; bottom: 0px; width: 400px;" src="https://cdn.yapper.shop/discord-assets/13.png">
-                                        <img style="position: absolute; left: 0px; bottom: 0px; width: 400px;" src="https://cdn.yapper.shop/discord-assets/12.png">
-                                    `;
-                                    document.getElementById(`${TIDE}-logo-container`).innerHTML = `
-                                        <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/discord-assets/9.png" id="shop-banner-logo">
-                                    `;
-                                }
-                                
-                                if (valorant_banner) {
-                                    document.getElementById(`${SHY}-discord-watermark-container`).innerHTML = ``;
-                                    document.getElementById(`${SHY}-banner-banner-container`).innerHTML = `
-                                        <div class="shop-category-banner-img" style="background: rgb(255, 70, 85); position: absolute; left: 0px; bottom: 0px; width: 1280px;"></div>
-                                        <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/23.png">
-                                        <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/20.png">
-                                        <img style="position: absolute; right: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/22.png">
-                                    `;
-                                    document.getElementById(`${SHY}-logo-container`).innerHTML = `
-                                        <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/discord-assets/21.png" id="shop-banner-logo">
-                                    `;
-                                }
                                 
                                 if (springtoons_banner) {
                                     document.getElementById(`${SPRINGTOONS}-summary`).style.color = 'black';
@@ -987,65 +1051,6 @@ if (localStorage.full_client_rework != "false") {
 
                                 if (anime_v2_banner) {
                                     document.getElementById(`${ANIME_V2}-summary`).style.color = 'black';
-                                }
-
-
-
-                                if (localStorage.reduced_motion != "true") {
-                                    if (kawaii_mode_banner) {
-                                        document.getElementById(`${KAWAII_MODE}-banner-banner-container`).innerHTML = `
-                                            <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.discordapp.com/app-assets/1096190356233670716/1306330663229718579.png?size=4096">
-                                            <video autoplay muted class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px; z-index: 1;" src="https://cdn.discordapp.com/assets/collectibles/drops/kawaii_mode/banner_animated.webm" loop></video>
-                                        `;
-                                    }
-
-                                    if (arcane_banner) {
-                                        document.getElementById(`${WARRIOR}-banner-banner-container`).innerHTML = `
-                                            <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.discordapp.com/app-assets/1096190356233670716/1303490165297123358.png?size=4096">
-                                            <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/35.png">
-                                        `;
-                                    }
-                                    
-                                    if (dnd_banner) {
-                                        document.getElementById(`${CHANCE}-banner-banner-container`).innerHTML = `
-                                            <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/32.png">
-                                            <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/31.png">
-                                        `;
-                                    }
-                                    
-                                    if (street_fighter_banner) {
-                                        document.getElementById(`${BAND}-banner-banner-container`).innerHTML = `
-                                            <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.discordapp.com/app-assets/1096190356233670716/1285465421356732426.png?size=4096">
-                                            <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/19.png">
-                                        `;
-                                    }
-
-                                    if (palworld_banner) {
-                                        document.getElementById(`${TIDE}-discord-watermark-container`).innerHTML = ``;
-                                        document.getElementById(`${TIDE}-banner-banner-container`).innerHTML = `
-                                            <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/15.jpg">
-                                            <img style="position: absolute; right: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/14.png">
-                                            <img style="position: absolute; right: 0px; bottom: 0px; width: 400px;" src="https://cdn.yapper.shop/discord-assets/13.png">
-                                            <img style="position: absolute; left: 0px; bottom: 0px; width: 400px;" src="https://cdn.yapper.shop/discord-assets/12.png">
-                                        `;
-                                        document.getElementById(`${TIDE}-logo-container`).innerHTML = `
-                                            <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/discord-assets/9.png" id="shop-banner-logo">
-                                        `;
-                                    }
-
-                                    if (valorant_banner) {
-                                        document.getElementById(`${SHY}-discord-watermark-container`).innerHTML = ``;
-                                        document.getElementById(`${SHY}-banner-banner-container`).innerHTML = `
-                                            <div class="shop-category-banner-img" style="background: rgb(255, 70, 85); position: absolute; left: 0px; bottom: 0px; width: 1280px;"></div>
-                                            <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/24.png">
-                                            <img style="position: absolute; right: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/22.png">
-                                            <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/discord-assets/20.png">
-                                        `;
-                                        document.getElementById(`${SHY}-logo-container`).innerHTML = `
-                                            <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/discord-assets/21.png" id="shop-banner-logo">
-                                        `;
-                                    }
-                                    
                                 }
                             }
                         }
@@ -2555,14 +2560,14 @@ if (localStorage.full_client_rework != "false") {
 
                     document.getElementById('sku-is-valid-or-not-container').innerHTML = `
                         <div class="shop-success">
-                            <p class="shop-notice-text">The Item '${data.sku.name}' is valid and purchasable for ${priceStandardOutput}${priceNitroOutput}</p>
+                            <p class="shop-notice-text">The Item '${data.sku.name}' is valid and purchasable for ${priceStandardOutput}${priceNitroOutput}!</p>
                         </div>
                     `;
 
                 } else {
                     document.getElementById('sku-is-valid-or-not-container').innerHTML = `
                         <div class="shop-success">
-                            <p class="shop-notice-text">The Category '${data.sku.name}' is valid and published</p>
+                            <p class="shop-notice-text">The Category '${data.sku.name}' is valid and published!</p>
                         </div>
                     `;
                 }
@@ -2571,13 +2576,13 @@ if (localStorage.full_client_rework != "false") {
                 if (SKUinput != '') {
                     document.getElementById('sku-is-valid-or-not-container').innerHTML = `
                         <div class="shop-warning">
-                            <p class="shop-notice-text">The SKU ID '${SKUinput}' is either invalid or unpublished</p>
+                            <p class="shop-notice-text">The SKU ID '${SKUinput}' is either invalid or unpublished!</p>
                         </div>
                     `;
                 } else {
                     document.getElementById('sku-is-valid-or-not-container').innerHTML = `
                         <div class="shop-warning">
-                            <p class="shop-notice-text">Please input an SKU ID below</p>
+                            <p class="shop-notice-text">Please input an SKU ID below!</p>
                         </div>
                     `;
                 }
@@ -2604,6 +2609,11 @@ if (localStorage.full_client_rework != "false") {
                         <p>Reduced Motion</p>
                         <p class="experiment-subtext">Stops some things from playing an animation</p>
                         <input class="options-toggle-box" onclick="reducedMotionChecked();" style="cursor: pointer; scale: 2; posision: center;" id="reduced-motion-box" type="checkbox">
+                    </div>
+                    <div class="experiment-card" id="disable-banner-overrides-box-option">
+                        <p>Disable Banner Overrides</p>
+                        <p class="experiment-subtext">Disables some banner elements from being changed by the client</p>
+                        <input class="options-toggle-box" onclick="disableBannerOverridesChecked();" style="cursor: pointer; scale: 2; posision: center;" id="disable-banner-overrides-box" type="checkbox">
                     </div>
                 </div>
                 <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px;">Downloads</h1>
@@ -2646,6 +2656,10 @@ if (localStorage.full_client_rework != "false") {
     
             if (localStorage.reduced_motion == "true") {
                 document.getElementById("reduced-motion-box").checked = true;
+            }
+
+            if (localStorage.disable_client_banner_overrides == "true") {
+                document.getElementById("disable-banner-overrides-box").checked = true;
             }
 
             fetch(api + DOWNLOADABLE_DATA)
@@ -2708,6 +2722,18 @@ if (localStorage.full_client_rework != "false") {
         }
         else {
             localStorage.reduced_motion = "false"
+        }
+        if (typeof fetchData === 'function') {
+            fetchData(pageCheck());
+        }
+    }
+
+    function disableBannerOverridesChecked() {
+        if (localStorage.disable_client_banner_overrides != "true") {
+            localStorage.disable_client_banner_overrides = "true"
+        }
+        else {
+            localStorage.disable_client_banner_overrides = "false"
         }
         if (typeof fetchData === 'function') {
             fetchData(pageCheck());
@@ -2912,20 +2938,22 @@ if (localStorage.full_client_rework != "false") {
                                 <div class="experiment-card">
                                     <p>Top Selling Item Tag</p>
                                     <p class="experiment-subtext">2024-11_top_selling_item_tag</p>
-                                    <button class="refresh-button" onclick="topSellingItemTag2()" id="2024-11_top_selling_item_tag-2" title="show popular tag on all items">Override 2</button>
-                                    <button class="refresh-button" onclick="topSellingItemTag1()" id="2024-11_top_selling_item_tag-1" title="show popular tag on popular items">Override 1</button>
-                                    <button class="refresh-button" onclick="topSellingItemTag0()" id="2024-11_top_selling_item_tag-0">No Override</button>
-                                    <button class="refresh-button" onclick="topSellingItemTag00()" id="2024-11_top_selling_item_tag-00">Override -1</button>
+                                    <p class="experiment-subtext">experiment no longer supported on client</p>
+                                    <button class="refresh-button-no" id="2024-11_top_selling_item_tag-2" title="show popular tag on all items">Override 2</button>
+                                    <button class="refresh-button-no" id="2024-11_top_selling_item_tag-1" title="show popular tag on popular items">Override 1</button>
+                                    <button class="refresh-button-no" id="2024-11_top_selling_item_tag-0">No Override</button>
+                                    <button class="refresh-button-no" id="2024-11_top_selling_item_tag-00">Override -1</button>
                                 </div>
         
         
                                 <div class="experiment-card">
                                     <p>Item Data Downloads</p>
                                     <p class="experiment-subtext">2024-11_item_data_downloads</p>
-                                    <button class="refresh-button" onclick="itemDataDownloads2()" id="2024-11_item_data_downloads-2" title="show download button on modal and card">Override 2</button>
-                                    <button class="refresh-button" onclick="itemDataDownloads1()" id="2024-11_item_data_downloads-1" title="show download button on modal">Override 1</button>
-                                    <button class="refresh-button" onclick="itemDataDownloads0()" id="2024-11_item_data_downloads-0">No Override</button>
-                                    <button class="refresh-button" onclick="itemDataDownloads00()" id="2024-11_item_data_downloads-00">Override -1</button>
+                                    <p class="experiment-subtext">experiment no longer supported on client</p>
+                                    <button class="refresh-button-no" id="2024-11_item_data_downloads-2" title="show download button on modal and card">Override 2</button>
+                                    <button class="refresh-button-no" id="2024-11_item_data_downloads-1" title="show download button on modal">Override 1</button>
+                                    <button class="refresh-button-no" id="2024-11_item_data_downloads-0">No Override</button>
+                                    <button class="refresh-button-no" id="2024-11_item_data_downloads-00">Override -1</button>
                                 </div>
         
                                 
@@ -2958,6 +2986,29 @@ if (localStorage.full_client_rework != "false") {
                         </div>
                         <hr>
                         <div>
+                            <h2>Modals</h2>
+                            <div class="experiment-card-holder">
+                                <div class="experiment-card">
+                                    <p>Lost</p>
+                                    <p class="experiment-subtext">modal no longer supported on client</p>
+                                    <button class="refresh-button" onclick="openLostModal()">Open</button>
+                                </div>
+                                <div class="experiment-card">
+                                    <p>Dev</p>
+                                    <button class="refresh-button" onclick="openDevModal()">Open</button>
+                                </div>
+                                <div class="experiment-card">
+                                    <p>Options</p>
+                                    <button class="refresh-button" onclick="openOptionsModal()">Open</button>
+                                </div>
+                                <div class="experiment-card">
+                                    <p>Downloads</p>
+                                    <button class="refresh-button" onclick="openDownloadsModal()">Open</button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
                             <h2>Dismissible Content</h2>
                             <p class="experiment-subtext">Overrides</p>
                             <div class="experiment-card-holder">
@@ -2977,6 +3028,32 @@ if (localStorage.full_client_rework != "false") {
                             <input type="text" class="dev-local-storage-input-1" id="valueInput" placeholder="Enter value">
                             <button class="refresh-button" onclick="saveToLocalStorage()">Save</button>
                             <div id="storageItems"></div>
+                        </div>
+                        <hr>
+                        <div>
+                            <details>
+                                <summary>endpoints</summary>
+
+                                <p>api: ${api}</p>
+                                <p>private api: ${prvapi}</p>
+                                <p>api designed url: ${apidesignedurl}</p>
+    
+                                <p>collectibles: ${COLLECTIBLES}</p>
+                                <p>published categories: ${COLLECTIBLES_IN_SHOP}</p>
+                                <p>consumables: ${CONSUMABLES}</p>
+                                <p>miscellaneous: ${MISCELLANEOUS}</p>
+                                <p>profiles plus: ${PROFILES_PLUS}</p>
+                                <p>home page preview: ${HOME_PAGE_PREVIEW}</p>
+                                <p>profiles plus home page preview: ${HOME_PAGE_P_PLUS}</p>
+                                <p>profile effects: ${PROFILE_EFFECTS}</p>
+                                <p>downloadable data: ${DOWNLOADABLE_DATA}</p>
+                                <p>profiles plus effects: ${PROFILES_PLUS_EFFECTS}</p>
+                                <p>leaks: ${LEAKS}</p>
+                                <p>collectibles marketing: ${COLLECTIBLES_MARKETING}</p>
+                                <p>collectibles variants: ${COLLECTIBLES_VARIANTS}</p>
+                            </details>
+
+                            <p>App Version: ${tcbx926n29}</p>
                         </div>
                         <hr>
                         <button class="refresh-button" onclick="closeDevModal()">Close</button>
@@ -3057,71 +3134,71 @@ if (localStorage.full_client_rework != "false") {
     
         
         
-            if (localStorage.top_selling_item != "true") {
-                if (localStorage.top_selling_item != "false") {
-                    if (localStorage.top_selling_item != "two") {
-                        document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
-                        document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
-                        document.getElementById("2024-11_top_selling_item_tag-0").classList.add('refresh-button-selected');
-                        document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
-                    }
-                }
-            }
+            // if (localStorage.top_selling_item != "true") {
+            //     if (localStorage.top_selling_item != "false") {
+            //         if (localStorage.top_selling_item != "two") {
+            //             document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
+            //             document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
+            //             document.getElementById("2024-11_top_selling_item_tag-0").classList.add('refresh-button-selected');
+            //             document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
+            //         }
+            //     }
+            // }
         
-            if (localStorage.top_selling_item == "two") {
-                document.getElementById("2024-11_top_selling_item_tag-2").classList.add('refresh-button-selected');
-                document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
-            }
+            // if (localStorage.top_selling_item == "two") {
+            //     document.getElementById("2024-11_top_selling_item_tag-2").classList.add('refresh-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
+            // }
             
-            if (localStorage.top_selling_item == "true") {
-                document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_top_selling_item_tag-1").classList.add('refresh-button-selected');
-                document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
-            }
+            // if (localStorage.top_selling_item == "true") {
+            //     document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-1").classList.add('refresh-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
+            // }
         
-            if (localStorage.top_selling_item == "false") {
-                document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_top_selling_item_tag-00").classList.add('refresh-button-selected');
-            }
+            // if (localStorage.top_selling_item == "false") {
+            //     document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-00").classList.add('refresh-button-selected');
+            // }
         
         
         
-            if (localStorage.item_data_downloads != "true") {
-                if (localStorage.item_data_downloads != "false") {
-                    if (localStorage.item_data_downloads != "two") {
-                        document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
-                        document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
-                        document.getElementById("2024-11_item_data_downloads-0").classList.add('refresh-button-selected');
-                        document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
-                    }
-                }
-            }
+            // if (localStorage.item_data_downloads != "true") {
+            //     if (localStorage.item_data_downloads != "false") {
+            //         if (localStorage.item_data_downloads != "two") {
+            //             document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
+            //             document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
+            //             document.getElementById("2024-11_item_data_downloads-0").classList.add('refresh-button-selected');
+            //             document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
+            //         }
+            //     }
+            // }
         
-            if (localStorage.item_data_downloads == "two") {
-                document.getElementById("2024-11_item_data_downloads-2").classList.add('refresh-button-selected');
-                document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
-            }
+            // if (localStorage.item_data_downloads == "two") {
+            //     document.getElementById("2024-11_item_data_downloads-2").classList.add('refresh-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
+            // }
             
-            if (localStorage.item_data_downloads == "true") {
-                document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_item_data_downloads-1").classList.add('refresh-button-selected');
-                document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
-            }
+            // if (localStorage.item_data_downloads == "true") {
+            //     document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-1").classList.add('refresh-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
+            // }
             
-            if (localStorage.item_data_downloads == "false") {
-                document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_item_data_downloads-00").classList.add('refresh-button-selected');
-            }
+            // if (localStorage.item_data_downloads == "false") {
+            //     document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-00").classList.add('refresh-button-selected');
+            // }
         
         
 
