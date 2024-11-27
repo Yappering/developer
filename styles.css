@@ -1568,6 +1568,100 @@ body {
 
 
 
+.a2024-recap-text-card-1 .json-input-field {
+    background-color: #2B2D31;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 3px;
+}
+
+.a2024-recap-text-card-1 input {
+    background-color: #2B2D31;
+    border: none;
+    padding: 10px;
+    outline: none;
+    caret-color: white;
+    border-radius: 5px;
+    color: white;
+    width: 350px;
+}
+
+.a2024-recap-text-card-1 textarea {
+    background-color: #2B2D31;
+    border: none;
+    outline: none;
+    caret-color: white;
+    border-radius: 5px;
+    color: white;
+}
+
+.a2024-recap-text-card-1 button {
+    background-color: #615DED;
+    border: none;
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.a2024-recap-text-card-1 button:hover {
+    background-color: #464FBF;
+}
+
+
+
+
+
+.output-box {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.box-header {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.subtext {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.box-expandable-content {
+    margin-top: 10px;
+    height: 0px;
+    overflow: hidden;
+}
+
+.box-expandable-content ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.box-expandable-content ul li {
+    margin: 5px 0;
+}
+
+
+.a2024-output-box-expanded {
+    height: auto;
+}
+
+
+
+
 .shop-item-info-modal {
     position: fixed;
     top: 0;

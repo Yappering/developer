@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 159";
+tcbx926n29 = "Dev 160";
 
 
 if (localStorage.full_client_rework != "false") {
@@ -1831,6 +1831,35 @@ if (localStorage.full_client_rework != "false") {
 
                 <hr style="opacity: 0; height: 30px;">
 
+                <div class="a2024-recap-text-card-1">
+                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">See what items you got during 2024</h1>
+
+                    <p class="experiment-subtext" style="font-size: 18px;">This will only display items you currently have, it does not have access to expired/removed items</p>
+
+                    <details>
+                        <summary>How do I find my collectibles-purchases?</summary>
+                        <p>Open discord.com/app on a browser of your choice and make sure you're signed in.</p>
+                        <p>Open Dev Tools by pressing CTRL + SHIFT + I (CMD + OPTION + I on mac) on your keyboard.</p>
+                        <p>At the top of Dev Tools you should see the "Network" tab, if you don't see it click the two right poiting arrows for a dropdown, then click "Network".</p>
+                        <p>On discord.com open your profile tab in user settings.</p>
+                        <p>In the "Network" tab press CTRL + F (CMD + F on mac) on your keyboard and search "collectibles-purchases".</p>
+                        <p>Go to the "Response" tab of the file, copy the contents and paste it below.</p>
+                    </details>
+
+                    <div class="input-field">
+                        <p>Paste Raw collectibles-purchases Text</p>
+                        <textarea style="width: 100%; height: 200px; resize: none;" id="load-raw-collectibles-purchases-by-text-input" placeholder="Paste raw collectibles-purchases text here..."></textarea>
+                        <button id="load-raw-collectibles-purchases-by-text-button">Load Raw Text</button>
+                        <p>Upload collectibles-purchases JSON File</p>
+                        <input type="file" id="load-raw-collectibles-purchases-by-file-input" accept=".json">
+                    </div>
+
+                    <p class="experiment-subtext" style="font-size: 18px;">The file you upload will NOT be stored in any online servers, once the page is refreshed all data is deleted.</p>
+                    <div id="collectibles-purchases-output-div"></div>
+                </div>
+
+                <hr style="opacity: 0; height: 30px;">
+
                 <div class="a2024-recap-text-card-1" style="padding: 0px;">
                     <p class="link-text" style="font-size: 18px;" onclick="window.open('${discordsupport}${HELP_HD_STREAMING_POTION}');">HD Splash Potion</p>
                     <p class="link-text" style="font-size: 18px;" onclick="window.open('${discordsupport}${HELP_PROFILE_EFFECTS}');">Profile Effects</p>
@@ -1842,6 +1871,220 @@ if (localStorage.full_client_rework != "false") {
                 <hr style="opacity: 0; height: 30px;">
             </div>
         `;
+
+
+        function processJsonData(data) {
+            try {
+                const parsedData = JSON.parse(data);
+                console.log("Parsed Data:", parsedData);
+        
+                const totalItems2024 = parsedData.filter(item => new Date(item.purchased_at).getFullYear() === 2024);
+                const totalDecorations = totalItems2024.filter(item => item.type === 0).length;
+                const totalEffects = totalItems2024.filter(item => item.type === 1).length;
+                const totalBundles = totalItems2024.filter(item => item.type === 1000).length;
+        
+                const purchaseTypes = {
+                    1: "Items purchased",
+                    5: "Items claimed for free",
+                    6: "Items claimed from gifts",
+                    7: "Items claimed with Nitro",
+                    9: "Items claimed free with Staff",
+                    10: "Items claimed in Quests",
+                    12: "Items claimed with Orbs"
+                };
+        
+                const purchaseTypeCounts = {};
+                Object.keys(purchaseTypes).forEach(key => {
+                    const type = parseInt(key, 10);
+                    purchaseTypeCounts[type] = totalItems2024.filter(item => item.purchase_type === type).length;
+                });
+        
+                // Generate HTML content with all boxes already included
+                const outputDiv = document.getElementById("collectibles-purchases-output-div");
+                outputDiv.innerHTML = `
+                    <div class="output-box">
+                        <div class="box-header">
+                            <span>Total items:</span><span>${totalItems2024.length}</span>
+                        </div>
+                        <div class="subtext">All items you own.</div>
+                        <div class="box-expandable-content">
+                            <ul>
+                                ${totalItems2024.map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="output-box">
+                        <div class="box-header">
+                            <span>Total Decorations:</span><span>${totalDecorations}</span>
+                        </div>
+                        <div class="subtext">All Avatar Decorations you own.</div>
+                        <div class="box-expandable-content">
+                            <ul>
+                                ${totalItems2024.filter(item => item.type === 0).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="output-box">
+                        <div class="box-header">
+                            <span>Total Effects:</span><span>${totalEffects}</span>
+                        </div>
+                        <div class="subtext">All Profile Effects you own.</div>
+                        <div class="box-expandable-content">
+                            <ul>
+                                ${totalItems2024.filter(item => item.type === 1).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="output-box">
+                        <div class="box-header">
+                            <span>Total Bundles:</span><span>${totalBundles}</span>
+                        </div>
+                        <div class="subtext">All Bundles you own.</div>
+                        <div class="box-expandable-content">
+                            <ul>
+                                ${totalItems2024.filter(item => item.type === 1000).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="output-box">
+                        <div class="box-header">
+                            <span>Items purchased:</span><span>${purchaseTypeCounts[1] || 0}</span>
+                        </div>
+                        <div class="subtext">All items purchased with real money.</div>
+                        <div class="box-expandable-content">
+                            <ul>
+                                ${totalItems2024.filter(item => item.purchase_type === 1).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="output-box">
+                        <div class="box-header">
+                            <span>Items claimed for free:</span><span>${purchaseTypeCounts[5] || 0}</span>
+                        </div>
+                        <div class="subtext">All items claimed with nitro (Such as DISXCORE items) or when gifting Nitro.</div>
+                        <div class="box-expandable-content">
+                            <ul>
+                                ${totalItems2024.filter(item => item.purchase_type === 5).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="output-box">
+                        <div class="box-header">
+                            <span>Items claimed from gifts:</span><span>${purchaseTypeCounts[6] || 0}</span>
+                        </div>
+                        <div class="subtext">All items claimed from a gift sent by a friend.</div>
+                        <div class="box-expandable-content">
+                            <ul>
+                                ${totalItems2024.filter(item => item.purchase_type === 6).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="output-box">
+                        <div class="box-header">
+                            <span>Items claimed with Nitro:</span><span>${purchaseTypeCounts[7] || 0}</span>
+                        </div>
+                        <div class="subtext">All items claimed when purchasing a Nitro Subscription (Such as Gyoiko Sakura).</div>
+                        <div class="box-expandable-content">
+                            <ul>
+                                ${totalItems2024.filter(item => item.purchase_type === 7).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="output-box">
+                        <div class="box-header">
+                            <span>Items claimed free with Staff:</span><span>${purchaseTypeCounts[9] || 0}</span>
+                        </div>
+                        <div class="subtext">All items claimed with Staff Pannel (Or however staff claim their free collectibles).</div>
+                        <div class="box-expandable-content">
+                            <ul>
+                                ${totalItems2024.filter(item => item.purchase_type === 9).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="output-box">
+                        <div class="box-header">
+                            <span>Items claimed Quests:</span><span>${purchaseTypeCounts[10] || 0}</span>
+                        </div>
+                        <div class="subtext">All items claimed when completing a Quest.</div>
+                        <div class="box-expandable-content">
+                            <ul>
+                                ${totalItems2024.filter(item => item.purchase_type === 10).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="output-box">
+                        <div class="box-header">
+                            <span>Items claimed with Orbs:</span><span>${purchaseTypeCounts[12] || 0}</span>
+                        </div>
+                        <div class="subtext">All items purchased with Discord Orbs.</div>
+                        <div class="box-expandable-content">
+                            <ul>
+                                ${totalItems2024.filter(item => item.purchase_type === 12).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+        
+                // Expandable functionality for each box
+                const boxes = document.querySelectorAll('.output-box .box-header');
+                boxes.forEach(box => {
+                    box.addEventListener('click', () => {
+                        const expandableContent = box.nextElementSibling.nextElementSibling; // Grabbing the expandable content
+                        if (expandableContent.classList.contains('a2024-output-box-expanded')) {
+                            expandableContent.classList.remove('a2024-output-box-expanded');
+                        } else {
+                            expandableContent.classList.add('a2024-output-box-expanded');
+                        }
+                    });
+                });
+        
+                // Log results for debugging
+                console.log(`Total items purchased in 2024: ${totalItems2024.length}`);
+                console.log(`Total Decorations: ${totalDecorations}`);
+                console.log(`Total Effects: ${totalEffects}`);
+                console.log(`Total Bundles: ${totalBundles}`);
+                Object.entries(purchaseTypeCounts).forEach(([type, count]) => {
+                    console.log(`${purchaseTypes[type]}: ${count}`);
+                });
+            } catch (error) {
+                console.error("Invalid JSON format:", error.message);
+            }
+        }
+        
+        // Handle JSON from textarea
+        document.getElementById('load-raw-collectibles-purchases-by-text-button').addEventListener('click', () => {
+            const textareaValue = document.getElementById('load-raw-collectibles-purchases-by-text-input').value.trim();
+            if (textareaValue) {
+                processJsonData(textareaValue);
+            } else {
+                console.warn("Textarea is empty.");
+            }
+        });
+        
+        // Handle JSON file upload
+        document.getElementById('load-raw-collectibles-purchases-by-file-input').addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const fileContent = e.target.result;
+                    processJsonData(fileContent);
+                };
+                reader.readAsText(file);
+            } else {
+                console.warn("No file selected.");
+            }
+        });
+        
+        
+        
+        
+        
+        
+        
+
+
+
     }
 
 
