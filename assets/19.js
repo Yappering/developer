@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 160";
+tcbx926n29 = "Dev 162";
 
 
 if (localStorage.full_client_rework != "false") {
@@ -34,6 +34,7 @@ if (localStorage.full_client_rework != "false") {
     LEAKS = '/leaked-categories.json';
     COLLECTIBLES_MARKETING = '/collectibles-marketing.json';
     COLLECTIBLES_VARIANTS = '/collectibles-categories-variants.json';
+    EXPERIMENT_ROLLOUTS = '/rollout-handler.json';
 
 
     WINDOWKILL = "profiles-plus-1"
@@ -870,6 +871,7 @@ if (localStorage.full_client_rework != "false") {
             
                                 categoryOutput.append(category);
 
+                                const lofi_girl_banner = document.getElementById(LOFI_GIRL);
                                 const kawaii_mode_banner = document.getElementById(KAWAII_MODE);
                                 const arcane_banner = document.getElementById(WARRIOR);
                                 const mythical_creatures_banner = document.getElementById(MYTHICAL_CREATURES);
@@ -915,6 +917,12 @@ if (localStorage.full_client_rework != "false") {
                                     }
 
                                     if (localStorage.reduced_motion != "true") {
+                                        if (lofi_girl_banner) {
+                                            document.getElementById(`${LOFI_GIRL}-banner-banner-container`).innerHTML = `
+                                                <video autoplay muted class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px; z-index: 1;" src="https://cdn.discordapp.com/assets/collectibles/drops/lofi_girl/banner_animated.webm" loop></video>
+                                            `;
+                                        }
+
                                         if (kawaii_mode_banner) {
                                             document.getElementById(`${KAWAII_MODE}-banner-banner-container`).innerHTML = `
                                                 <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.discordapp.com/app-assets/1096190356233670716/1306330663229718579.png?size=4096">
@@ -970,6 +978,11 @@ if (localStorage.full_client_rework != "false") {
                                         }
                                         
                                     }
+                                }
+
+                                if (lofi_girl_banner) {
+                                    document.getElementById(`${LOFI_GIRL}-discord-watermark-container`).innerHTML = ``;
+                                    document.getElementById(`${LOFI_GIRL}-logo-container`).innerHTML = ``;
                                 }
 
                                 if (kawaii_mode_banner) {
@@ -1381,9 +1394,16 @@ if (localStorage.full_client_rework != "false") {
 
                         document.getElementById("shop-category-loading-container").innerHTML = ``;
 
+                        const lofi_girl_banner = document.getElementById(LOFI_GIRL);
                         const kawaii_mode_banner = document.getElementById(KAWAII_MODE);
 
                         if (localStorage.reduced_motion != "true") {
+                            if (lofi_girl_banner) {  // Check if element exists
+                                document.getElementById(`${LOFI_GIRL}-preview-banner-container`).innerHTML = `
+                                    <video autoplay muted class="home-page-preview-banner" src="https://cdn.discordapp.com/assets/collectibles/drops/lofi_girl/hero_banner.webm" loop></video>
+                                `;
+                            }
+
                             if (kawaii_mode_banner) {  // Check if element exists
                                 document.getElementById('1306330663213072494-preview-banner-container').innerHTML = `
                                     <video autoplay muted class="home-page-preview-banner" src="https://cdn.discordapp.com/assets/collectibles/drops/kawaii_mode/hero_banner.webm" loop></video>
@@ -1782,12 +1802,6 @@ if (localStorage.full_client_rework != "false") {
                 <hr style="opacity: 0; height: 30px;">
 
                 <div class="a2024-recap-text-card-1">
-                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Winter Nitro Promotion</h1>
-                </div>
-
-                <hr style="opacity: 0; height: 30px;">
-
-                <div class="a2024-recap-text-card-1">
                     <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">HD Splash Potions</h1>
 
                     <img class="a2024-recap-img-1" src="${cdn}assets/109.png">
@@ -1906,7 +1920,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Total items:</span><span>${totalItems2024.length}</span>
                         </div>
-                        <div class="subtext">All items you own.</div>
+                        <div class="subtext">All items you obtained in 2024.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -1917,7 +1931,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Total Decorations:</span><span>${totalDecorations}</span>
                         </div>
-                        <div class="subtext">All Avatar Decorations you own.</div>
+                        <div class="subtext">All Avatar Decorations you obtained in 2024.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.type === 0).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -1928,7 +1942,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Total Effects:</span><span>${totalEffects}</span>
                         </div>
-                        <div class="subtext">All Profile Effects you own.</div>
+                        <div class="subtext">All Profile Effects you obtained in 2024.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.type === 1).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -1939,7 +1953,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Total Bundles:</span><span>${totalBundles}</span>
                         </div>
-                        <div class="subtext">All Bundles you own.</div>
+                        <div class="subtext">All Bundles you obtained in 2024.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.type === 1000).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -1950,7 +1964,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Items purchased:</span><span>${purchaseTypeCounts[1] || 0}</span>
                         </div>
-                        <div class="subtext">All items purchased with real money.</div>
+                        <div class="subtext">All items purchased with real money in 2024.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 1).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -1961,7 +1975,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Items claimed for free:</span><span>${purchaseTypeCounts[5] || 0}</span>
                         </div>
-                        <div class="subtext">All items claimed with nitro (Such as DISXCORE items) or when gifting Nitro.</div>
+                        <div class="subtext">All items claimed with Nitro (Such as DISXCORE items) or when gifting Nitro in 2024.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 5).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -1972,7 +1986,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Items claimed from gifts:</span><span>${purchaseTypeCounts[6] || 0}</span>
                         </div>
-                        <div class="subtext">All items claimed from a gift sent by a friend.</div>
+                        <div class="subtext">All items claimed from a gift sent by a friend in 2024.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 6).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -1983,7 +1997,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Items claimed with Nitro:</span><span>${purchaseTypeCounts[7] || 0}</span>
                         </div>
-                        <div class="subtext">All items claimed when purchasing a Nitro Subscription (Such as Gyoiko Sakura).</div>
+                        <div class="subtext">All items claimed when purchasing a Nitro Subscription (Such as Gyoiko Sakura) in 2024.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 7).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -1994,7 +2008,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Items claimed free with Staff:</span><span>${purchaseTypeCounts[9] || 0}</span>
                         </div>
-                        <div class="subtext">All items claimed with Staff Pannel (Or however staff claim their free collectibles).</div>
+                        <div class="subtext">All items claimed with Staff Pannel (Or however staff claim their free collectibles) in 2024.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 9).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -2003,9 +2017,9 @@ if (localStorage.full_client_rework != "false") {
                     </div>
                     <div class="output-box">
                         <div class="box-header">
-                            <span>Items claimed Quests:</span><span>${purchaseTypeCounts[10] || 0}</span>
+                            <span>Items claimed in Quests:</span><span>${purchaseTypeCounts[10] || 0}</span>
                         </div>
-                        <div class="subtext">All items claimed when completing a Quest.</div>
+                        <div class="subtext">All items claimed when completing a Quest in 2024.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 10).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -2016,7 +2030,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Items claimed with Orbs:</span><span>${purchaseTypeCounts[12] || 0}</span>
                         </div>
-                        <div class="subtext">All items purchased with Discord Orbs.</div>
+                        <div class="subtext">All items purchased with Discord Orbs in 2024.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 12).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -3836,5 +3850,85 @@ if (localStorage.full_client_rework != "false") {
             storageItems.appendChild(itemDiv);
         }
     }
+
+    // fetch(api + EXPERIMENT_ROLLOUTS)
+    // .then(response => response.json())
+    // .then((data) => {
+    //     data.forEach(experiments => {
+    //         if (experiments.id === 1) {
+    //             if (experiments.rolled_out_treatment === 1) {
+    //                 console.log(`exp 1:1`);
+    //                 if (localStorage.items_in_shop != "false") {
+    //                     if (localStorage.items_in_shop != "none") {
+    //                         localStorage.items_in_shop = "true"
+    //                     }
+    //                 }
+    //             } else if (experiments.rolled_out_treatment === 0) {
+    //                 console.log(`exp 1:0`);
+    //                 if (localStorage.items_in_shop != "false") {
+    //                     if (localStorage.items_in_shop != "true") {
+    //                         localStorage.items_in_shop = "none"
+    //                     }
+    //                 }
+    //             } else if (experiments.rolled_out_treatment === -1) {
+    //                 console.log(`exp 1:-1`);
+    //                 if (localStorage.items_in_shop != "none") {
+    //                     if (localStorage.items_in_shop != "true") {
+    //                         localStorage.items_in_shop = "false"
+    //                     }
+    //                 }
+    //             } else {
+    //                 console.warn(`exp 1:?`);
+    //                 console.error(`Failed to load treatment for experiment 1`);
+    //             }
+    //         }
+
+    //         if (experiments.id === 3) {
+    //             if (experiments.rolled_out_treatment === 1) {
+    //                 console.log(`exp 3:2`);
+    //                 if (localStorage.top_selling_item != "false") {
+    //                     if (localStorage.top_selling_item != "none") {
+    //                         if (localStorage.top_selling_item != "true") {
+    //                             localStorage.top_selling_item = "two"
+    //                         }
+    //                     }
+    //                 }
+    //             } else if (experiments.rolled_out_treatment === 1) {
+    //                 console.log(`exp 3:1`);
+    //                 if (localStorage.top_selling_item != "false") {
+    //                     if (localStorage.top_selling_item != "none") {
+    //                         if (localStorage.top_selling_item != "two") {
+    //                             localStorage.top_selling_item = "true"
+    //                         }
+    //                     }
+    //                 }
+    //             } else if (experiments.rolled_out_treatment === 0) {
+    //                 console.log(`exp 3:0`);
+    //                 if (localStorage.top_selling_item != "false") {
+    //                     if (localStorage.top_selling_item != "true") {
+    //                         if (localStorage.top_selling_item != "two") {
+    //                             localStorage.top_selling_item = "none"
+    //                         }
+    //                     }
+    //                 }
+    //             } else if (experiments.rolled_out_treatment === -1) {
+    //                 console.log(`exp 3:-1`);
+    //                 if (localStorage.top_selling_item != "none") {
+    //                     if (localStorage.top_selling_item != "true") {
+    //                         if (localStorage.top_selling_item != "two") {
+    //                             localStorage.top_selling_item = "false"
+    //                         }
+    //                     }
+    //                 }
+    //             } else {
+    //                 console.warn(`exp 3:?`);
+    //                 console.error(`Failed to load treatment for experiment 3`);
+    //             }
+    //         }
+    //     });
+    // })
+    // .catch(error => {
+    //     console.log(`error`);
+    // });
 
 }
