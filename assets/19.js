@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 162";
+tcbx926n29 = "Dev 163";
 
 
 if (localStorage.full_client_rework != "false") {
@@ -919,6 +919,7 @@ if (localStorage.full_client_rework != "false") {
                                     if (localStorage.reduced_motion != "true") {
                                         if (lofi_girl_banner) {
                                             document.getElementById(`${LOFI_GIRL}-banner-banner-container`).innerHTML = `
+                                                <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.discordapp.com/app-assets/1096190356233670716/1309668861964193803.png?size=4096">
                                                 <video autoplay muted class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px; z-index: 1;" src="https://cdn.discordapp.com/assets/collectibles/drops/lofi_girl/banner_animated.webm" loop></video>
                                             `;
                                         }
@@ -1797,6 +1798,12 @@ if (localStorage.full_client_rework != "false") {
 
                     <p class="center-text" style="font-size: 18px;">Things such as Splash Potions and randomness added to Profile Effects and much more were all nice gifts given to us in 2024!</p>
                     <p class="center-text" style="font-size: 18px;">The Shop Archives teams has made this article that covers everything that was added to Discord in 2024!</p>
+                </div>
+
+                <hr style="opacity: 0; height: 30px;">
+
+                <div class="a2024-recap-text-card-1">
+                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Winter Nitro Promotion</h1>
                 </div>
 
                 <hr style="opacity: 0; height: 30px;">
