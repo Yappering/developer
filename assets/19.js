@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 163";
+tcbx926n29 = "Dev 166";
 
 
 if (localStorage.full_client_rework != "false") {
@@ -402,27 +402,7 @@ if (localStorage.full_client_rework != "false") {
                                             `;
                                         }
 
-                                        if (localStorage.premium_type_two_included_with_nitro === "true") {
-                                            if (product.premium_type === 2) {
-                                                card.querySelector("[data-shop-card-tag-container]").innerHTML = `
-                                                    <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
-                                                `;
-                                            }
-                                        }
-                                        if (localStorage.premium_type_two_included_with_nitro === "two") {
-                                            if (product.premium_type === 2) {
-                                                card.querySelector("[data-shop-price-container]").innerHTML = `
-                                                    <a style="font-size: large; font-weight: 900;" data-price-standard>Included with Nitro</a>
-                                                `;
-                                                card.querySelector("[data-shop-card-tag-container]").innerHTML = `
-                                                    <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
-                                                `;
-                                            }
-                                        }
-                                        if (localStorage.premium_type_two_included_with_nitro === "three") {
-                                            card.querySelector("[data-shop-price-container]").innerHTML = `
-                                                <a style="font-size: large; font-weight: 900;" data-price-standard>Included with Nitro</a>
-                                            `;
+                                        if (product.premium_type === 2) {
                                             card.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                 <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
                                             `;
@@ -774,31 +754,15 @@ if (localStorage.full_client_rework != "false") {
                                             <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';" title="Open this item in the Discord Shop">Open In Shop</button>
                                         `;
 
-                                        if (localStorage.premium_type_two_included_with_nitro === "true") {
-                                            if (product.premium_type === 2) {
-                                                card.querySelector("[data-shop-card-tag-container]").innerHTML = `
-                                                    <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
-                                                `;
-                                            }
-                                        }
-                                        if (localStorage.premium_type_two_included_with_nitro === "two") {
-                                            if (product.premium_type === 2) {
-                                                card.querySelector("[data-shop-price-container]").innerHTML = `
-                                                    <a style="font-size: large; font-weight: 900;" data-price-standard>Included with Nitro</a>
-                                                `;
-                                                card.querySelector("[data-shop-card-tag-container]").innerHTML = `
-                                                    <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
-                                                `;
-                                            }
-                                        }
-                                        if (localStorage.premium_type_two_included_with_nitro === "three") {
-                                            card.querySelector("[data-shop-price-container]").innerHTML = `
-                                                <a style="font-size: large; font-weight: 900;" data-price-standard>Included with Nitro</a>
-                                            `;
+                                        if (product.premium_type === 2) {
                                             card.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                 <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
                                             `;
                                         }
+
+                                        card.querySelector("[data-share-product-card-button]").innerHTML = `
+                                            <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${product.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 16V5.41l3.3 3.3a1 1 0 1 0 1.4-1.42l-5-5a1 1 0 0 0-1.4 0l-5 5a1 1 0 0 0 1.4 1.42L11 5.4V16a1 1 0 1 0 2 0Z" class=""></path><path fill="currentColor" d="M4 15a1 1 0 0 1 1-1h2a1 1 0 1 0 0-2H5a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-4a3 3 0 0 0-3-3h-2a1 1 0 1 0 0 2h2a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-4Z" class=""></path></svg>
+                                        `;
 
                                         const unpublishedAt = new Date(product.unpublished_at);
                             
@@ -1361,31 +1325,15 @@ if (localStorage.full_client_rework != "false") {
                                     <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';" title="Open this item in the Discord Shop">Open In Shop</button>
                                 `;
 
-                                if (localStorage.premium_type_two_included_with_nitro === "true") {
-                                    if (product.premium_type === 2) {
-                                        card.querySelector("[data-shop-card-tag-container]").innerHTML = `
-                                            <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
-                                        `;
-                                    }
-                                }
-                                if (localStorage.premium_type_two_included_with_nitro === "two") {
-                                    if (product.premium_type === 2) {
-                                        card.querySelector("[data-shop-price-container]").innerHTML = `
-                                            <a style="font-size: large; font-weight: 900;" data-price-standard>Included with Nitro</a>
-                                        `;
-                                        card.querySelector("[data-shop-card-tag-container]").innerHTML = `
-                                            <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
-                                        `;
-                                    }
-                                }
-                                if (localStorage.premium_type_two_included_with_nitro === "three") {
-                                    card.querySelector("[data-shop-price-container]").innerHTML = `
-                                        <a style="font-size: large; font-weight: 900;" data-price-standard>Included with Nitro</a>
-                                    `;
+                                if (product.premium_type === 2) {
                                     card.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                         <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
                                     `;
                                 }
+
+                                card.querySelector("[data-share-product-card-button]").innerHTML = `
+                                    <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${product.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 16V5.41l3.3 3.3a1 1 0 1 0 1.4-1.42l-5-5a1 1 0 0 0-1.4 0l-5 5a1 1 0 0 0 1.4 1.42L11 5.4V16a1 1 0 1 0 2 0Z" class=""></path><path fill="currentColor" d="M4 15a1 1 0 0 1 1-1h2a1 1 0 1 0 0-2H5a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-4a3 3 0 0 0-3-3h-2a1 1 0 1 0 0 2h2a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-4Z" class=""></path></svg>
+                                `;
 
                                 // Append card to output
                                 cardOutput.append(card);
@@ -1506,7 +1454,7 @@ if (localStorage.full_client_rework != "false") {
         `;
     }
 
-    if (localStorage.recap_items_2024 === "true") {
+    if (localStorage.recap_items_2024 === "true" || localStorage.recap_items_2024 === "true_autorollout") {
         document.getElementById('recap-2024-tab-loading').innerHTML = `
             <img class="recap-2024-tab-decoration" src="https://cdn.yapper.shop/assets/104.png">
             <button class="dm-button" id="recap-2024-tab" onclick="setParams({page: 'recap_2024'}); location.reload();">
@@ -1709,6 +1657,7 @@ if (localStorage.full_client_rework != "false") {
                     <div data-shop-card-preview-holder>
                     </div>
                     <div class="card-bottom">
+                        <div title="Share" data-share-product-card-button></div>
                         <a class="item-credits" data-product-card-sku-id>Failed To Load Item</a>
                         <h3 data-product-card-name>Failed To Load Item</h3>
                         <p class="shop-card-summary" data-product-card-summary>Failed To Load Item</p>
@@ -1771,7 +1720,7 @@ if (localStorage.full_client_rework != "false") {
                 </div>
             `;
         }
-        if (localStorage.recap_items_2024 === "true") {
+        if (localStorage.recap_items_2024 === "true" || localStorage.recap_items_2024 === "true_autorollout") {
             if (localStorage.dismissible_recap_2024 != "dismissed") {
                 document.getElementById("home-page-dismissible-content-container").innerHTML = `
                     <img class="home-page-dismissible-content-2024-recap" onclick="dismissibleContentRecap2024()" src="${cdn}${DISMISSIBLE_2024_RECAP}" title="Check out everything 2024 had to offer!">
@@ -1798,12 +1747,6 @@ if (localStorage.full_client_rework != "false") {
 
                     <p class="center-text" style="font-size: 18px;">Things such as Splash Potions and randomness added to Profile Effects and much more were all nice gifts given to us in 2024!</p>
                     <p class="center-text" style="font-size: 18px;">The Shop Archives teams has made this article that covers everything that was added to Discord in 2024!</p>
-                </div>
-
-                <hr style="opacity: 0; height: 30px;">
-
-                <div class="a2024-recap-text-card-1">
-                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Winter Nitro Promotion</h1>
                 </div>
 
                 <hr style="opacity: 0; height: 30px;">
@@ -1875,7 +1818,7 @@ if (localStorage.full_client_rework != "false") {
                         <input type="file" id="load-raw-collectibles-purchases-by-file-input" accept=".json">
                     </div>
 
-                    <p class="experiment-subtext" style="font-size: 18px;">The file you upload will NOT be stored in any online servers, once the page is refreshed all data is deleted.</p>
+                    <p class="experiment-subtext" style="font-size: 18px;">The file you upload will not be stored in any online servers, once the page is refreshed all data is deleted.</p>
                     <div id="collectibles-purchases-output-div"></div>
                 </div>
 
@@ -2096,15 +2039,6 @@ if (localStorage.full_client_rework != "false") {
                 console.warn("No file selected.");
             }
         });
-        
-        
-        
-        
-        
-        
-        
-
-
 
     }
 
@@ -2143,6 +2077,7 @@ if (localStorage.full_client_rework != "false") {
                             <div data-shop-card-preview-holder>
                             </div>
                             <div class="card-bottom">
+                                <div title="Share" data-share-product-card-button></div>
                                 <a class="item-credits" data-product-card-sku-id>Failed To Load Item</a>
                                 <h3 data-product-card-name>Failed To Load Item</h3>
                                 <p class="shop-card-summary" data-product-card-summary>Failed To Load Item</p>
@@ -3175,6 +3110,7 @@ if (localStorage.full_client_rework != "false") {
                                     <div id="experiment-default-rollout-data-2024-11_collectibles_variants"></div>
                                     <button class="refresh-button" onclick="collectiblesVariants1()" id="2024-11_collectibles_variants-1">Override 1</button>
                                     <button class="refresh-button" onclick="collectiblesVariants00()" id="2024-11_collectibles_variants-00">Override -1</button>
+                                    <button class="refresh-button" onclick="collectiblesVariants0()" id="2024-11_collectibles_variants-0">Clear Override</button>
                                 </div>
 
 
@@ -3184,40 +3120,7 @@ if (localStorage.full_client_rework != "false") {
                                     <div id="experiment-default-rollout-data-2024-11_recap"></div>
                                     <button class="refresh-button" onclick="recap2024Items1()" id="2024-11_recap-1">Override 1</button>
                                     <button class="refresh-button" onclick="recap2024Items00()" id="2024-11_recap-00">Override -1</button>
-                                </div>
-
-
-                                <div class="experiment-card">
-                                    <p>Premium Type Two Included With Nitro</p>
-                                    <p class="experiment-subtext">2024-11_premium_type_two_included_with_nitro</p>
-                                    <div id="experiment-default-rollout-data-2024-11_premium_type_two_included_with_nitro"></div>
-                                    <button class="refresh-button" onclick="premiumTypeTwoIncludedWithNitro3()" id="2024-11_premium_type_two_included_with_nitro-3" title="show included with nitro tag and price on all items">Override 3</button>
-                                    <button class="refresh-button" onclick="premiumTypeTwoIncludedWithNitro2()" id="2024-11_premium_type_two_included_with_nitro-2" title="show included with nitro tag and price on premium type 2 items">Override 2</button>
-                                    <button class="refresh-button" onclick="premiumTypeTwoIncludedWithNitro1()" id="2024-11_premium_type_two_included_with_nitro-1" title="show included with nitro tag on premium type 2 items">Override 1</button>
-                                    <button class="refresh-button-no">No Override</button>
-                                    <button class="refresh-button" onclick="premiumTypeTwoIncludedWithNitro00()" id="2024-11_premium_type_two_included_with_nitro-00">Override -1</button>
-                                </div>
-        
-        
-                                <div class="experiment-card">
-                                    <p>Top Selling Item Tag</p>
-                                    <p class="experiment-subtext">2024-11_top_selling_item_tag</p>
-                                    <p class="experiment-subtext">experiment no longer supported on client</p>
-                                    <button class="refresh-button-no" id="2024-11_top_selling_item_tag-2" title="show popular tag on all items">Override 2</button>
-                                    <button class="refresh-button-no" id="2024-11_top_selling_item_tag-1" title="show popular tag on popular items">Override 1</button>
-                                    <button class="refresh-button-no" id="2024-11_top_selling_item_tag-0">No Override</button>
-                                    <button class="refresh-button-no" id="2024-11_top_selling_item_tag-00">Override -1</button>
-                                </div>
-        
-        
-                                <div class="experiment-card">
-                                    <p>Item Data Downloads</p>
-                                    <p class="experiment-subtext">2024-11_item_data_downloads</p>
-                                    <p class="experiment-subtext">experiment no longer supported on client</p>
-                                    <button class="refresh-button-no" id="2024-11_item_data_downloads-2" title="show download button on modal and card">Override 2</button>
-                                    <button class="refresh-button-no" id="2024-11_item_data_downloads-1" title="show download button on modal">Override 1</button>
-                                    <button class="refresh-button-no" id="2024-11_item_data_downloads-0">No Override</button>
-                                    <button class="refresh-button-no" id="2024-11_item_data_downloads-00">Override -1</button>
+                                    <button class="refresh-button" onclick="recap2024Items0()" id="2024-11_recap-0">Clear Override</button>
                                 </div>
         
                                 
@@ -3315,6 +3218,7 @@ if (localStorage.full_client_rework != "false") {
                                 <p>leaks: ${LEAKS}</p>
                                 <p>collectibles marketing: ${COLLECTIBLES_MARKETING}</p>
                                 <p>collectibles variants: ${COLLECTIBLES_VARIANTS}</p>
+                                <p>experiment rollouts: ${EXPERIMENT_ROLLOUTS}</p>
                             </details>
 
                             <p>App Version: ${tcbx926n29}</p>
@@ -3328,73 +3232,13 @@ if (localStorage.full_client_rework != "false") {
             `;
 
 
-            document.getElementById('experiment-default-rollout-data-2024-11_collectibles_variants').innerHTML = `
-                <p class="experiment-subtext">default rollout: Override -1</p>
-            `;
-
-            document.getElementById('experiment-default-rollout-data-2024-11_recap').innerHTML = `
-                <p class="experiment-subtext">default rollout: Override -1</p>
-            `;
-
-            document.getElementById('experiment-default-rollout-data-2024-11_premium_type_two_included_with_nitro').innerHTML = `
-                <p class="experiment-subtext">default rollout: Override 1</p>
-            `;
-
-
-
-            if (localStorage.collectibles_variants == "true") {
-                document.getElementById("2024-11_collectibles_variants-1").classList.add('refresh-button-selected');
-            }
-        
-            if (localStorage.collectibles_variants == "false") {
-                document.getElementById("2024-11_collectibles_variants-00").classList.add('refresh-button-selected');
-            }
-
-            if (localStorage.collectibles_variants != "false") {
-                if (localStorage.collectibles_variants != "true") {
-                    document.getElementById("2024-11_collectibles_variants-00").classList.add('refresh-button-selected');
-                }
-            }
+            colorButtonsPerRollout()
+            fetchExperimentRolloutData()
 
 
             if (localStorage.dismissible_recap_2024 == "dismissed") {
                 document.getElementById("dismissible_recap_2024-box").checked = true;
             }
-
-
-
-            if (localStorage.recap_items_2024 == "true") {
-                document.getElementById("2024-11_recap-1").classList.add('refresh-button-selected');
-            }
-        
-            if (localStorage.recap_items_2024 == "false") {
-                document.getElementById("2024-11_recap-00").classList.add('refresh-button-selected');
-            }
-
-            if (localStorage.recap_items_2024 != "false") {
-                if (localStorage.recap_items_2024 != "true") {
-                    document.getElementById("2024-11_recap-00").classList.add('refresh-button-selected');
-                }
-            }
-
-
-
-            if (localStorage.premium_type_two_included_with_nitro == "three") {
-                document.getElementById("2024-11_premium_type_two_included_with_nitro-3").classList.add('refresh-button-selected');
-            }
-
-            if (localStorage.premium_type_two_included_with_nitro == "two") {
-                document.getElementById("2024-11_premium_type_two_included_with_nitro-2").classList.add('refresh-button-selected');
-            }
-
-            if (localStorage.premium_type_two_included_with_nitro == "true") {
-                document.getElementById("2024-11_premium_type_two_included_with_nitro-1").classList.add('refresh-button-selected');
-            }
-        
-            if (localStorage.premium_type_two_included_with_nitro == "false") {
-                document.getElementById("2024-11_premium_type_two_included_with_nitro-00").classList.add('refresh-button-selected');
-            }
-
     
         
         
@@ -3503,6 +3347,29 @@ if (localStorage.full_client_rework != "false") {
             console.error('403 (Forbidden)')
         }
     }
+
+    function colorButtonsPerRollout() {
+        if (localStorage.collectibles_variants == "true" || localStorage.collectibles_variants == "true_autorollout") {
+            document.getElementById("2024-11_collectibles_variants-1").classList.add('refresh-button-selected');
+        }
+    
+        if (localStorage.collectibles_variants == "false" || localStorage.collectibles_variants == "false_autorollout") {
+            document.getElementById("2024-11_collectibles_variants-00").classList.add('refresh-button-selected');
+        }
+
+
+
+
+        if (localStorage.recap_items_2024 == "true" || localStorage.recap_items_2024 == "true_autorollout") {
+            document.getElementById("2024-11_recap-1").classList.add('refresh-button-selected');
+        }
+    
+        if (localStorage.recap_items_2024 == "false" || localStorage.recap_items_2024 == "false_autorollout") {
+            document.getElementById("2024-11_recap-00").classList.add('refresh-button-selected');
+        }
+    }
+
+
     
     
     function closeDevModal() {
@@ -3548,7 +3415,7 @@ if (localStorage.full_client_rework != "false") {
             localStorage.dismissible_recap_2024 = "dismissed"
 
             if (home_page_dismissible_content_container) {
-                if (localStorage.recap_items_2024 === "true") {
+                if (localStorage.recap_items_2024 === "true" || localStorage.recap_items_2024 === "true_autorollout") {
                     document.getElementById("home-page-dismissible-content-container").innerHTML = ``;
                 }
             }
@@ -3556,7 +3423,7 @@ if (localStorage.full_client_rework != "false") {
         else {
             localStorage.dismissible_recap_2024 = ''
             if (home_page_dismissible_content_container) {
-                if (localStorage.recap_items_2024 === "true") {
+                if (localStorage.recap_items_2024 === "true" || localStorage.recap_items_2024 === "true_autorollout") {
                     document.getElementById("home-page-dismissible-content-container").innerHTML = `
                         <img class="home-page-dismissible-content-2024-recap" onclick="dismissibleContentRecap2024()" src="${cdn}${DISMISSIBLE_2024_RECAP}" title="Check out everything 2024 had to offer!">
                     `;
@@ -3582,6 +3449,13 @@ if (localStorage.full_client_rework != "false") {
         document.getElementById("2024-11_collectibles_variants-00").classList.add('refresh-button-selected');
     }
 
+    function collectiblesVariants0() {
+        localStorage.collectibles_variants = "pleasesetautorollout"
+        document.getElementById("2024-11_collectibles_variants-1").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_collectibles_variants-00").classList.remove('refresh-button-selected');
+        fetchExperimentRolloutData();
+    }
+
 
 
     function recap2024Items1() {
@@ -3596,149 +3470,14 @@ if (localStorage.full_client_rework != "false") {
         document.getElementById("2024-11_recap-00").classList.add('refresh-button-selected');
     }
 
-
-    function premiumTypeTwoIncludedWithNitro3() {
-        localStorage.premium_type_two_included_with_nitro = "three"
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-3").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-2").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-00").classList.remove('refresh-button-selected');
-        fetchData(pageCheck());
+    function recap2024Items0() {
+        localStorage.recap_items_2024 = "pleasesetautorollout"
+        document.getElementById("2024-11_recap-1").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_recap-00").classList.remove('refresh-button-selected');
+        fetchExperimentRolloutData();
     }
 
-    function premiumTypeTwoIncludedWithNitro2() {
-        localStorage.premium_type_two_included_with_nitro = "two"
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-3").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-2").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-00").classList.remove('refresh-button-selected');
-        fetchData(pageCheck());
-    }
-    
-    function premiumTypeTwoIncludedWithNitro1() {
-        localStorage.premium_type_two_included_with_nitro = "true"
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-3").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-2").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-1").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-00").classList.remove('refresh-button-selected');
-        fetchData(pageCheck());
-    }
-    
-    function premiumTypeTwoIncludedWithNitro00() {
-        localStorage.premium_type_two_included_with_nitro = "false"
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-3").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-2").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_premium_type_two_included_with_nitro-00").classList.add('refresh-button-selected');
-        fetchData(pageCheck());
-    }
-    
-    
-    
-    function topSellingItemTag2() {
-        localStorage.top_selling_item = "two"
-        document.getElementById("2024-11_top_selling_item_tag-2").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
-    }
-    
-    function topSellingItemTag1() {
-        localStorage.top_selling_item = "true"
-        document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_top_selling_item_tag-1").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
-    }
-    
-    function topSellingItemTag0() {
-        localStorage.top_selling_item = "none"
-        document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_top_selling_item_tag-0").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
-    }
-    
-    function topSellingItemTag00() {
-        localStorage.top_selling_item = "false"
-        document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_top_selling_item_tag-00").classList.add('refresh-button-selected');
-    }
-    
-    
-    
-    
-    function itemDataDownloads2() {
-        localStorage.item_data_downloads = "two"
-        document.getElementById("2024-11_item_data_downloads-2").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
-    }
-    
-    function itemDataDownloads1() {
-        localStorage.item_data_downloads = "true"
-        document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-1").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
-    }
-    
-    function itemDataDownloads0() {
-        localStorage.item_data_downloads = "none"
-        document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-0").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
-    }
-    
-    function itemDataDownloads00() {
-        localStorage.item_data_downloads = "false"
-        document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-00").classList.add('refresh-button-selected');
-    }
-    
-    
-    
-    
-    
-    function itemDataDownloads2() {
-        localStorage.item_data_downloads = "two"
-        document.getElementById("2024-11_item_data_downloads-2").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
-    }
-    
-    function itemDataDownloads1() {
-        localStorage.item_data_downloads = "true"
-        document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-1").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
-    }
-    
-    function itemDataDownloads0() {
-        localStorage.item_data_downloads = "none"
-        document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-0").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
-    }
-    
-    function itemDataDownloads00() {
-        localStorage.item_data_downloads = "false"
-        document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_item_data_downloads-00").classList.add('refresh-button-selected');
-    }
-    
-    
+
     
 
     function overrideLeaksButtonHide() {
@@ -3858,84 +3597,79 @@ if (localStorage.full_client_rework != "false") {
         }
     }
 
-    // fetch(api + EXPERIMENT_ROLLOUTS)
-    // .then(response => response.json())
-    // .then((data) => {
-    //     data.forEach(experiments => {
-    //         if (experiments.id === 1) {
-    //             if (experiments.rolled_out_treatment === 1) {
-    //                 console.log(`exp 1:1`);
-    //                 if (localStorage.items_in_shop != "false") {
-    //                     if (localStorage.items_in_shop != "none") {
-    //                         localStorage.items_in_shop = "true"
-    //                     }
-    //                 }
-    //             } else if (experiments.rolled_out_treatment === 0) {
-    //                 console.log(`exp 1:0`);
-    //                 if (localStorage.items_in_shop != "false") {
-    //                     if (localStorage.items_in_shop != "true") {
-    //                         localStorage.items_in_shop = "none"
-    //                     }
-    //                 }
-    //             } else if (experiments.rolled_out_treatment === -1) {
-    //                 console.log(`exp 1:-1`);
-    //                 if (localStorage.items_in_shop != "none") {
-    //                     if (localStorage.items_in_shop != "true") {
-    //                         localStorage.items_in_shop = "false"
-    //                     }
-    //                 }
-    //             } else {
-    //                 console.warn(`exp 1:?`);
-    //                 console.error(`Failed to load treatment for experiment 1`);
-    //             }
-    //         }
+    function fetchExperimentRolloutData() {
+        fetch(api + EXPERIMENT_ROLLOUTS)
+        .then(response => response.json())
+        .then((data) => {
+            data.forEach(experiments => {
+    
+                if (experiments.id === 7) {
+                    if (experiments.rolled_out_treatment === 1) {
+                        console.log(`exp 7:1`);
+                        if (localStorage.recap_items_2024 != "false" && localStorage.recap_items_2024 != "true") {
+                            localStorage.recap_items_2024 = "true_autorollout"
+                        }
+                        try {
+                            document.getElementById('experiment-default-rollout-data-2024-11_recap').innerHTML = `
+                                <p class="experiment-subtext">default rollout: Override 1</p>
+                            `;
+                        } catch (error) {
+                        }
+                    } else if (experiments.rolled_out_treatment === -1) {
+                        console.log(`exp 7:-1`);
+                        if (localStorage.recap_items_2024 != "false" && localStorage.recap_items_2024 != "true") {
+                            localStorage.recap_items_2024 = "false_autorollout"
+                        }
+                        try {
+                            document.getElementById('experiment-default-rollout-data-2024-11_recap').innerHTML = `
+                                <p class="experiment-subtext">default rollout: Override -1</p>
+                            `;
+                        } catch (error) {
+                        }
+                    } else {
+                        console.warn(`exp 7:?`);
+                        console.error(`Failed to load treatment for experiment 7`);
+                    }
+                }
 
-    //         if (experiments.id === 3) {
-    //             if (experiments.rolled_out_treatment === 1) {
-    //                 console.log(`exp 3:2`);
-    //                 if (localStorage.top_selling_item != "false") {
-    //                     if (localStorage.top_selling_item != "none") {
-    //                         if (localStorage.top_selling_item != "true") {
-    //                             localStorage.top_selling_item = "two"
-    //                         }
-    //                     }
-    //                 }
-    //             } else if (experiments.rolled_out_treatment === 1) {
-    //                 console.log(`exp 3:1`);
-    //                 if (localStorage.top_selling_item != "false") {
-    //                     if (localStorage.top_selling_item != "none") {
-    //                         if (localStorage.top_selling_item != "two") {
-    //                             localStorage.top_selling_item = "true"
-    //                         }
-    //                     }
-    //                 }
-    //             } else if (experiments.rolled_out_treatment === 0) {
-    //                 console.log(`exp 3:0`);
-    //                 if (localStorage.top_selling_item != "false") {
-    //                     if (localStorage.top_selling_item != "true") {
-    //                         if (localStorage.top_selling_item != "two") {
-    //                             localStorage.top_selling_item = "none"
-    //                         }
-    //                     }
-    //                 }
-    //             } else if (experiments.rolled_out_treatment === -1) {
-    //                 console.log(`exp 3:-1`);
-    //                 if (localStorage.top_selling_item != "none") {
-    //                     if (localStorage.top_selling_item != "true") {
-    //                         if (localStorage.top_selling_item != "two") {
-    //                             localStorage.top_selling_item = "false"
-    //                         }
-    //                     }
-    //                 }
-    //             } else {
-    //                 console.warn(`exp 3:?`);
-    //                 console.error(`Failed to load treatment for experiment 3`);
-    //             }
-    //         }
-    //     });
-    // })
-    // .catch(error => {
-    //     console.log(`error`);
-    // });
-
+                if (experiments.id === 8) {
+                    if (experiments.rolled_out_treatment === 1) {
+                        console.log(`exp 8:1`);
+                        if (localStorage.collectibles_variants != "false" && localStorage.collectibles_variants != "true") {
+                            localStorage.collectibles_variants = "true_autorollout"
+                        }
+                        try {
+                            document.getElementById('experiment-default-rollout-data-2024-11_collectibles_variants').innerHTML = `
+                                <p class="experiment-subtext">default rollout: Override 1</p>
+                            `;
+                        } catch (error) {
+                        }
+                    } else if (experiments.rolled_out_treatment === -1) {
+                        console.log(`exp 8:-1`);
+                        if (localStorage.collectibles_variants != "false" && localStorage.collectibles_variants != "true") {
+                            localStorage.collectibles_variants = "false_autorollout"
+                        }
+                        try {
+                            document.getElementById('experiment-default-rollout-data-2024-11_collectibles_variants').innerHTML = `
+                                <p class="experiment-subtext">default rollout: Override -1</p>
+                            `;
+                        } catch (error) {
+                        }
+                    } else {
+                        console.warn(`exp 8:?`);
+                        console.error(`Failed to load treatment for experiment 7`);
+                    }
+                }
+    
+            });
+            try {
+                colorButtonsPerRollout()
+            } catch (error) {
+            }
+        })
+        .catch(error => {
+            console.error(error)
+        });
+    }
+    fetchExperimentRolloutData();
 }
