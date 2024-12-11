@@ -1439,6 +1439,15 @@ data-share-product-card-button {
 
 
 
+.plus-more-question-mark {
+    display: block;
+    width: 200px !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 35px;
+}
+
+
 
 
 .shop-category-card {
