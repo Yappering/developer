@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 171";
+tcbx926n29 = "Dev 173";
 
 
 if (localStorage.full_client_rework != "false") {
@@ -446,6 +446,40 @@ if (localStorage.full_client_rework != "false") {
                                             }
                                         }
 
+
+                                        const unpublishedAt = new Date(product.unpublished_at);
+                            
+                                        if (product.unpublished_at && !isNaN(unpublishedAt.getTime())) {
+                            
+                                            function updateTimer() {
+                                                const now = new Date();
+                                                const timeDiff = unpublishedAt - now;
+                            
+                                                if (timeDiff <= 0) {
+                                                    card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                        <div class="unplublished-tag">
+                                                            <p class="unplublished-tag-text">OFF SALE</p>
+                                                        </div>
+                                                    `;
+                                                    clearInterval(timerInterval);
+                                                } else {
+                                                    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                            
+                                                    card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                        <div class="unplublished-tag">
+                                                            <p class="unplublished-tag-text">${days} DAYS LEFT TO REQUEST</p>
+                                                        </div>
+                                                    `;
+                                                }
+                                            }
+                            
+                                            const timerInterval = setInterval(updateTimer, 1000);
+                                            updateTimer();
+                                        }
+
+
                                         const ExpiredAt = new Date(product.expires_at);
                             
                                         if (product.expires_at && !isNaN(ExpiredAt.getTime())) {
@@ -458,6 +492,38 @@ if (localStorage.full_client_rework != "false") {
                                                     card.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                         <div class="unplublished-tag">
                                                             <p class="unplublished-tag-text">EXPIRED</p>
+                                                        </div>
+                                                    `;
+                                                    clearInterval(timerInterval);
+                                                } else {
+                                                    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                            
+                                                    card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                        <div class="unplublished-tag">
+                                                            <p class="unplublished-tag-text">EXPIRES IN ${days}D ${hours}H</p>
+                                                        </div>
+                                                    `;
+                                                }
+                                            }
+                            
+                                            const timerInterval = setInterval(updateTimer, 1000);
+                                            updateTimer();
+                                        }
+
+                                        const ReleasesAt = new Date(product.releases_at);
+                            
+                                        if (product.releases_at && !isNaN(ReleasesAt.getTime())) {
+                            
+                                            function updateTimer() {
+                                                const now = new Date();
+                                                const timeDiff = ReleasesAt - now;
+                            
+                                                if (timeDiff <= 0) {
+                                                    card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                        <div class="unplublished-tag">
+                                                            <p class="unplublished-tag-text">PUBLISHING...</p>
                                                         </div>
                                                     `;
                                                     clearInterval(timerInterval);
@@ -487,6 +553,7 @@ if (localStorage.full_client_rework != "false") {
                                 categoryOutput.append(category);
 
 
+                                const paper_beach2_banner = document.getElementById(PAPER_BEACH_V2);
                                 const windowkill2_banner = document.getElementById(WINDOWKILL_V2);
                                 const paper_beach_banner = document.getElementById(PAPER_BEACH);
                                 const bopl_battle_banner = document.getElementById(BOPL_BATTLE);
@@ -518,6 +585,18 @@ if (localStorage.full_client_rework != "false") {
                                                 <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/assets/60.png" id="shop-banner-logo">
                                             </div>
                                         `;
+                                    }
+
+                                    if (paper_beach2_banner) {
+                                        document.getElementById(`${PAPER_BEACH_V2}-banner-banner-container`).innerHTML = `
+                                            <img style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="https://cdn.yapper.shop/assets/112.png">
+                                            <img class="paper-beach-sun-banner-decoration" src="https://cdn.yapper.shop/assets/116.png">
+                                        `;
+                                        document.getElementById(`${PAPER_BEACH_V2}-discord-watermark-container`).innerHTML = ``;
+                                        document.getElementById(`${PAPER_BEACH_V2}-logo-container`).innerHTML = `
+                                                <img class="shop-category-banner-logo-1 shop-logo-sway" src="https://cdn.yapper.shop/assets/115.png" id="shop-banner-logo">
+                                            `;
+                                        document.getElementById(`${PAPER_BEACH_V2}-summary`).style.color = 'black';
                                     }
                                     
                                     if (windowkill_banner) {
@@ -1822,6 +1901,16 @@ if (localStorage.full_client_rework != "false") {
 
                     <p class="center-text" style="font-size: 18px;">Things such as Splash Potions and randomness added to Profile Effects and much more were all nice gifts given to us in 2024!</p>
                     <p class="center-text" style="font-size: 18px;">The Shop Archives teams has made this article that covers everything that was added to Discord in 2024!</p>
+                </div>
+
+                <hr style="opacity: 0; height: 30px;">
+
+                <div class="a2024-recap-text-card-1">
+                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Winter Nitro Promotion</h1>
+
+                    <img class="a2024-recap-img-1" src="${cdn}assets/117.gif">
+
+                    <p class="center-text" style="font-size: 18px;">This Christmas, up until January 6th, 2025, when you purchase a Nitro gift you can choose 1 of 3 Avatar Decorations of your own to collect and keep!</p>
                 </div>
 
                 <hr style="opacity: 0; height: 30px;">
