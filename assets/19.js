@@ -3,10 +3,19 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 181";
+tcbx926n29 = "Dev 183";
 
-if (localStorage.sa_theme == "neon") {
-    document.body.classList.add('theme-neon');
+if (localStorage.sa_theme == "dark") {
+    document.body.classList.add('theme-dark');
+} else if (localStorage.sa_theme == "light") {
+    document.body.classList.add('theme-light');
+} else if (localStorage.sa_theme == "neongreen") {
+    document.body.classList.add('theme-neongreen');
+} else if (localStorage.sa_theme == "neonpurple") {
+    document.body.classList.add('theme-neonpurple');
+} else {
+    localStorage.sa_theme = "dark";
+    document.body.classList.add('theme-dark');
 }
 
 
@@ -1234,6 +1243,10 @@ if (localStorage.full_client_rework != "false") {
                                             // Function to apply the selected variant
                                             function applyVariant(selectedVariant) {
                                                 card.querySelector("[data-shop-card-var-title]").textContent = `(${selectedVariant.variant_label})`;
+                                                card.querySelector("[data-product-card-sku-id]").textContent = `SKU ID: ${selectedVariant.sku_id}`;
+                                                card.querySelector("[data-share-product-card-button]").innerHTML = `
+                                                    <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
+                                                `;
                                                 if (selectedVariant.type === 0) {
                                                     card.classList.add("type_2000-0");
                                                     previewHolder.innerHTML = ""; // Clear previous decorations
@@ -1898,6 +1911,10 @@ if (localStorage.full_client_rework != "false") {
                                     // Function to apply the selected variant
                                     function applyVariant(selectedVariant) {
                                         card.querySelector("[data-shop-card-var-title]").textContent = `(${selectedVariant.variant_label})`;
+                                        card.querySelector("[data-product-card-sku-id]").textContent = `SKU ID: ${selectedVariant.sku_id}`;
+                                        card.querySelector("[data-share-product-card-button]").innerHTML = `
+                                            <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
+                                        `;
                                         if (selectedVariant.type === 0) {
                                             card.classList.add("type_2000-0");
                                             previewHolder.innerHTML = ""; // Clear previous decorations
@@ -2123,7 +2140,7 @@ if (localStorage.full_client_rework != "false") {
     const clickable_side_tabs_container = document.getElementById('clickable-side-tabs-container');
     if (clickable_side_tabs_container) {  // Check if element exists
         document.getElementById('clickable-side-tabs-container').innerHTML = `
-        <p class="center-text" style="font-size: 12px; display: flex;">${hrft33n87d}</p>
+        <p class="center-text" style="font-size: 12px; display: flex; color: var(--white);">${hrft33n87d}</p>
         <div id="home-section">
             <button class="dm-button" id="home-tab" onclick="setParams({page: 'home'}); location.reload();">
                 <p class="dm-button-text">Home</p>
@@ -3795,26 +3812,26 @@ if (localStorage.full_client_rework != "false") {
         } else {
             document.getElementById('options-sidebar-container').classList.add("options-sidebar-container-expanded");
             document.getElementById('options-sidebar-container').innerHTML = `
-                <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px;">Options</h1>
+                <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Options</h1>
                 <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
                     <div class="experiment-card" id="is-in-shop-box-option">
-                        <p>Shop: Display all Item Variants</p>
+                        <p style="color: var(--white);">Shop: Display all Item Variants</p>
                         <p class="experiment-subtext">This will display all vatiants of an item</p>
                         <input class="options-toggle-box" onclick="inShopIsChecked();" style="cursor: pointer; scale: 2; posision: center;" id="is-in-shop-box" type="checkbox">
                     </div>
                     <div class="experiment-card" id="reduced-motion-box-option">
-                        <p>Reduced Motion</p>
+                        <p style="color: var(--white);">Reduced Motion</p>
                         <p class="experiment-subtext">Stops some things from playing an animation</p>
                         <input class="options-toggle-box" onclick="reducedMotionChecked();" style="cursor: pointer; scale: 2; posision: center;" id="reduced-motion-box" type="checkbox">
                     </div>
                     <div class="experiment-card" id="disable-banner-overrides-box-option">
-                        <p>Disable Banner Overrides</p>
+                        <p style="color: var(--white);">Disable Banner Overrides</p>
                         <p class="experiment-subtext">Disables some banner elements from being changed by the client</p>
                         <input class="options-toggle-box" onclick="disableBannerOverridesChecked();" style="cursor: pointer; scale: 2; posision: center;" id="disable-banner-overrides-box" type="checkbox">
                     </div>
                     <div id="theme-picker-container"></div>
                 </div>
-                <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px;">Downloads</h1>
+                <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Downloads</h1>
                 <div>
                     <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
                     <template id="downloadables-api-template">
@@ -3826,7 +3843,7 @@ if (localStorage.full_client_rework != "false") {
                     </template>
                     <div class="experiment-card-holder" id="downloadables-output"></div>
                 </div>
-                <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px;">Discord Help Articles</p>
+                <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Discord Help Articles</p>
                 <div id="discord-help-articles-output">
                     <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
                         <button class="card-button" onclick="window.open('${discordsupport}${HELP_SHOP}');">Shop</button>
@@ -3835,7 +3852,7 @@ if (localStorage.full_client_rework != "false") {
                         <button class="card-button" onclick="window.open('${discordsupport}${HELP_HD_STREAMING_POTION}');">HD Splash Potion</button>
                     </div>
                 </div>
-                <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px;">Shop Archives</p>
+                <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Shop Archives</p>
                 <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
                     <button class="card-button" onclick="window.open('https://discord.gg/Mcwh7hGcWb/');">Discord Server</button>
                     <button class="card-button" onclick="window.open('https://github.com/Yappering/');">Github</button>
@@ -3846,16 +3863,30 @@ if (localStorage.full_client_rework != "false") {
 
             if (localStorage.experiment_theme_picker == "true") {
                 document.getElementById("theme-picker-container").innerHTML = `
-                    <p class="center-text" style="font-size: 20px; margin-top: 0px; margin-bottom: -10px;">Theme Picker</p>
-                    <p>Neon</p>
-                    <input class="options-toggle-box" onclick="themeNeonChecked();" style="cursor: pointer; scale: 2; posision: center;" id="neon-theme-box" type="checkbox">
+                    <p class="center-text" style="font-size: 20px; margin-top: 0px; margin-bottom: -10px; color: var(--white);">Theme Picker</p>
+                    <div id="theme-selection-box-container">
+                        <div class="theme-selection-box" title="Dark" id="theme-dark-button" onclick="themeDarkChecked();"></div>
+                        <div class="theme-selection-box" title="Light" id="theme-light-button" onclick="themeLightChecked();"></div>
+                        <div class="theme-selection-box" title="Neon Green" id="theme-neongreen-button" onclick="themeNeonGreenChecked();"></div>
+                        <div class="theme-selection-box" title="Neon Purple" id="theme-neonpurple-button" onclick="themeNeonPurpleChecked();"></div>
+                    </div>
                 `;
             }
 
-            if (localStorage.sa_theme == "neon") {
-                document.getElementById("neon-theme-box").checked = true;
-                document.body.classList.add('theme-neon');
+            if (localStorage.sa_theme == "dark") {
+                document.getElementById("theme-dark-button").classList.add('theme-selection-box-selected');
+                document.body.classList.add('theme-dark');
+            } else if (localStorage.sa_theme == "light") {
+                document.getElementById("theme-light-button").classList.add('theme-selection-box-selected');
+                document.body.classList.add('theme-light');
+            } else if (localStorage.sa_theme == "neongreen") {
+                document.getElementById("theme-neongreen-button").classList.add('theme-selection-box-selected');
+                document.body.classList.add('theme-neongreen');
+            } else if (localStorage.sa_theme == "neonpurple") {
+                document.getElementById("theme-neonpurple-button").classList.add('theme-selection-box-selected');
+                document.body.classList.add('theme-neonpurple');
             }
+            
 
             if (localStorage.fetch_collectibles_variants == "true") {
                 document.getElementById("is-in-shop-box").checked = true;
@@ -3931,15 +3962,43 @@ if (localStorage.full_client_rework != "false") {
         }
     }
 
-    function themeNeonChecked() {
-        if (localStorage.sa_theme != "neon") {
-            localStorage.sa_theme = "neon"
-            document.body.classList.add('theme-neon');
-        }
-        else {
-            localStorage.sa_theme = "null"
-            document.body.classList.remove('theme-neon');
-        }
+    function themeDarkChecked() {
+        clearCurrentTheme()
+        localStorage.sa_theme = "dark"
+        document.body.classList.add('theme-dark');
+        document.getElementById("theme-dark-button").classList.add('theme-selection-box-selected');
+    }
+
+    function themeLightChecked() {
+        clearCurrentTheme()
+        localStorage.sa_theme = "light"
+        document.body.classList.add('theme-light');
+        document.getElementById("theme-light-button").classList.add('theme-selection-box-selected');
+    }
+
+    function themeNeonGreenChecked() {
+        clearCurrentTheme()
+        localStorage.sa_theme = "neongreen"
+        document.body.classList.add('theme-neongreen');
+        document.getElementById("theme-neongreen-button").classList.add('theme-selection-box-selected');
+    }
+
+    function themeNeonPurpleChecked() {
+        clearCurrentTheme()
+        localStorage.sa_theme = "neonpurple"
+        document.body.classList.add('theme-neonpurple');
+        document.getElementById("theme-neonpurple-button").classList.add('theme-selection-box-selected');
+    }
+
+    function clearCurrentTheme() {
+        document.getElementById("theme-dark-button").classList.remove('theme-selection-box-selected');
+        document.body.classList.remove('theme-dark');
+        document.getElementById("theme-light-button").classList.remove('theme-selection-box-selected');
+        document.body.classList.remove('theme-light');
+        document.getElementById("theme-neongreen-button").classList.remove('theme-selection-box-selected');
+        document.body.classList.remove('theme-neongreen');
+        document.getElementById("theme-neonpurple-button").classList.remove('theme-selection-box-selected');
+        document.body.classList.remove('theme-neonpurple');
     }
 
     function inShopIsChecked() {
@@ -4196,6 +4255,12 @@ if (localStorage.full_client_rework != "false") {
                             <h2>Debug</h2>
                             <p class="experiment-subtext">Overrides</p>
                             <div class="experiment-card-holder">
+                                <div class="experiment-card">
+                                    <p>Disable Client Reowrk (Possible to re-enable on old client)</p>
+                                    <p class="experiment-subtext">2024-12_disable_client_rework</p>
+                                    <button class="refresh-button" onclick="disableClientReworkTrue()" id="2024-12_disable_client_rework-1">Override 1</button>
+                                    <button class="refresh-button" onclick="disableClientReworkFalse()" id="2024-12_disable_client_rework-2">No Override</button>
+                                </div>
                                 <div class="experiment-card">
                                     <p>Force Private API</p>
                                     <p class="experiment-subtext">2024-12_force_all_api_to_fectch_private_api</p>
