@@ -3,7 +3,11 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 177";
+tcbx926n29 = "Dev 181";
+
+if (localStorage.sa_theme == "neon") {
+    document.body.classList.add('theme-neon');
+}
 
 
 if (localStorage.full_client_rework != "false") {
@@ -811,7 +815,11 @@ if (localStorage.full_client_rework != "false") {
                                 const potionCard = potionTemplate.content.cloneNode(true).children[0];
                                 potionCard.querySelector("[data-potion-card-holder]").id = apiCategory.sku_id;
             
-                                potionCard.querySelector("[data-potion-card-preview-image]").src = `https://cdn.yapper.shop/discord-assets/${apiCategory.src}.png`;
+                                if (apiCategory.src === null) {
+                                    potionCard.querySelector("[data-potion-card-preview-image]").src = `https://cdn.yapper.shop/assets/31.png`;
+                                } else {
+                                    potionCard.querySelector("[data-potion-card-preview-image]").src = `https://cdn.yapper.shop/discord-assets/${apiCategory.src}.png`;
+                                }
                                 potionCard.querySelector("[data-potion-card-preview-image]").alt = apiCategory.name;
             
                                 potionCard.querySelector("[data-potion-card-desc]").textContent = apiCategory.summary;
@@ -938,6 +946,9 @@ if (localStorage.full_client_rework != "false") {
                                     category.querySelector("[data-shop-category-logo-holder]").style.display = 'unset';
                                     category.querySelector("[data-shop-discord-watermark-container]").style.display = 'unset';
                                 }
+                                if (apiCategory.sku_id === DARK_FANTASY) {
+                                    category.querySelector("[data-shop-discord-watermark-container]").style.display = 'unset';
+                                }
                                 if (apiCategory.sku_id === ROBERT) {
                                     category.querySelector("[data-shop-category-desc]").style.color = 'black';
                                 }
@@ -973,7 +984,7 @@ if (localStorage.full_client_rework != "false") {
                     
                                             category.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                 <div class="unplublished-tag">
-                                                    <p class="unplublished-tag-text">${days} DAYS LEFT TO REQUEST</p>
+                                                    <p class="unplublished-tag-text">${days} DAYS LEFT IS SHOP</p>
                                                 </div>
                                             `;
                                         }
@@ -3436,28 +3447,58 @@ if (localStorage.full_client_rework != "false") {
 
     function createPublishedListingsPageElement() {
         document.getElementById("everything-housing-container").innerHTML = `
-            <div class="published-listings-tester-card">
+            <div style="margin-top: 100px;">
+                <div class="published-listings-tester-card">
 
-                <h1>Check Published Listing by SKU ID</h1>
+                    <h1>Check Published Listing by SKU ID</h1>
 
-                <div id="sku-is-valid-or-not-container"></div>
+                    <div class="sku-is-valid-or-not-container" id="sku-is-valid-or-not-container"></div>
 
-                <input type="text" id="sku-id-input" placeholder="Please Input SKU ID">
+                    <input type="text" id="sku-id-input" placeholder="Please Input SKU ID">
 
-                <button onclick="checkValidSKUID()">Check</button>
+                    <button onclick="checkValidSKUID()">Check</button>
 
-                <div id="sku-check-info-container">
-                    <p class="shop-notice-text">SKU ID:</p>
-                    <p class="shop-notice-text">Name:</p>
-                    <p class="shop-notice-text">Summary:</p>
-                    <p class="shop-notice-text">Type:</p>
-                    <p class="shop-notice-text">Slug:</p>
-                    <p class="shop-notice-text">Standard Price:</p>
-                    <p class="shop-notice-text">Nitro Price:</p>
+                    <div class="sku-check-info-container" id="sku-check-info-container">
+                        <p class="shop-notice-text">SKU ID:</p>
+                        <p class="shop-notice-text">Name:</p>
+                        <p class="shop-notice-text">Summary:</p>
+                        <p class="shop-notice-text">Type:</p>
+                        <p class="shop-notice-text">Slug:</p>
+                        <p class="shop-notice-text">Application ID:</p>
+                        <p class="shop-notice-text">Application Name:</p>
+                        <p class="shop-notice-text">Standard Price:</p>
+                        <p class="shop-notice-text">Nitro Price:</p>
+                    </div>
+
                 </div>
-                
+                <div id="secret-published-listings-testers">
+                </div>
             </div>
         `;
+        if (localStorage.fhuiufghdgfdhgfduhfsilfggu === "hfghgdjhgdkjgh") {
+            document.getElementById("secret-published-listings-testers").innerHTML = `
+                <div class="published-listings-tester-card">
+
+                    <h1>Category Items List</h1>
+
+                    <div class="sku-is-valid-or-not-container" id="category-sku-is-valid-or-not-container"></div>
+
+                    <input type="text" id="category-sku-id-input" placeholder="Please Input SKU ID">
+
+                    <button onclick="categoryCheckValidSKUID()">Check</button>
+
+                    <div class="sku-check-info-container" id="category-sku-check-info-container">
+                        <p class="shop-notice-text">SKU ID:</p>
+                        <p class="shop-notice-text">Name:</p>
+                        <p class="shop-notice-text">Summary:</p>
+                        <p class="shop-notice-text">Slug:</p>
+                        <p class="shop-notice-text">Application ID:</p>
+                        <p class="shop-notice-text">Application Name:</p>
+                    </div>
+
+                </div>
+            `;
+        }
     }
 
     function checkValidSKUID() {
@@ -3506,6 +3547,8 @@ if (localStorage.full_client_rework != "false") {
                     <p class="shop-notice-text">Summary: ${data.summary}</p>
                     <p class="shop-notice-text">Type: ${itemTypeOutput} (${itemType})</p>
                     <p class="shop-notice-text">Slug: ${data.sku.slug}</p>
+                    <p class="shop-notice-text">Application ID: ${data.sku.application.id}</p>
+                    <p class="shop-notice-text">Application Name: ${data.sku.application.name}</p>
                     <p class="shop-notice-text">Standard Price: ${priceStandardOutput} (${priceStandard})</p>
                     <p class="shop-notice-text">Nitro Price: ${priceNitroOutput} (${priceNitro})</p>
                 `;
@@ -3523,6 +3566,8 @@ if (localStorage.full_client_rework != "false") {
                         <p class="shop-notice-text">Summary:</p>
                         <p class="shop-notice-text">Type:</p>
                         <p class="shop-notice-text">Slug:</p>
+                        <p class="shop-notice-text">Application ID:</p>
+                        <p class="shop-notice-text">Application Name:</p>
                         <p class="shop-notice-text">Standard Price:</p>
                         <p class="shop-notice-text">Nitro Price:</p>
                     `;
@@ -3538,8 +3583,204 @@ if (localStorage.full_client_rework != "false") {
                         <p class="shop-notice-text">Summary:</p>
                         <p class="shop-notice-text">Type:</p>
                         <p class="shop-notice-text">Slug:</p>
+                        <p class="shop-notice-text">Application ID:</p>
+                        <p class="shop-notice-text">Application Name:</p>
                         <p class="shop-notice-text">Standard Price:</p>
                         <p class="shop-notice-text">Nitro Price:</p>
+                    `;
+                }
+                console.error(error);
+            });
+    }
+
+    function categoryCheckValidSKUID() {
+        const SKUinput = document.getElementById('category-sku-id-input').value;
+
+        document.getElementById('category-sku-is-valid-or-not-container').innerHTML = ``;
+
+        fetch(`https://canary.discord.com/api/v9/store/published-listings/skus/${SKUinput}`)
+            .then(response => response.json())
+            .then((data) => {
+                
+                if (data.child_skus == null) {
+                    if (SKUinput != '') {
+                        document.getElementById('category-sku-is-valid-or-not-container').innerHTML = `
+                            <div class="shop-warning">
+                                <p class="shop-notice-text">The SKU ID '${SKUinput}' has no child SKUs or is unpublished!</p>
+                            </div>
+                        `;
+                        document.getElementById('category-sku-check-info-container').innerHTML = `
+                            <p class="shop-notice-text">SKU ID:</p>
+                            <p class="shop-notice-text">Name:</p>
+                            <p class="shop-notice-text">Summary:</p>
+                            <p class="shop-notice-text">Slug:</p>
+                            <p class="shop-notice-text">Application ID:</p>
+                            <p class="shop-notice-text">Application Name:</p>
+                        `;
+                    } else {
+                        document.getElementById('category-sku-is-valid-or-not-container').innerHTML = `
+                            <div class="shop-warning">
+                                <p class="shop-notice-text">Please input an SKU ID below!</p>
+                            </div>
+                        `;
+                        document.getElementById('category-sku-check-info-container').innerHTML = `
+                            <p class="shop-notice-text">SKU ID:</p>
+                            <p class="shop-notice-text">Name:</p>
+                            <p class="shop-notice-text">Summary:</p>
+                            <p class="shop-notice-text">Slug:</p>
+                            <p class="shop-notice-text">Application ID:</p>
+                            <p class="shop-notice-text">Application Name:</p>
+                        `;
+                    }
+                    document.getElementById('category-sku-check-info-container').innerHTML = `
+                        <p class="shop-notice-text">SKU ID:</p>
+                        <p class="shop-notice-text">Name:</p>
+                        <p class="shop-notice-text">Summary:</p>
+                        <p class="shop-notice-text">Slug:</p>
+                        <p class="shop-notice-text">Application ID:</p>
+                        <p class="shop-notice-text">Application Name:</p>
+                    `;
+                } else {
+                    document.getElementById('category-sku-check-info-container').innerHTML = `
+                        <p class="shop-notice-text">SKU ID: ${data.sku.id}</p>
+                        <p class="shop-notice-text">Name: ${data.sku.name}</p>
+                        <p class="shop-notice-text">Summary: ${data.summary}</p>
+                        <p class="shop-notice-text">Slug: ${data.sku.slug}</p>
+                        <p class="shop-notice-text">Application ID: ${data.sku.application.id}</p>
+                        <p class="shop-notice-text">Application Name: ${data.sku.application.name}</p>
+                        <div data-category-child-sku-output-container></div>
+                    `;
+
+                    const childContainer = document.querySelector("[data-category-child-sku-output-container]");
+
+                    data.child_skus.forEach(item => {
+                        const childBlock = document.createElement("div");
+                        childBlock.classList.add('category-child-sku-output')
+                        itemType = item.type;
+
+                        fetch(`https://canary.discord.com/api/v9/store/published-listings/skus/${item.id}`)
+                        .then(response => response.json())
+                        .then((itemItself) => {
+
+                            itemType = itemItself.sku.type;
+        
+                            if (itemItself.sku.price != null) {
+                                priceStandard = itemItself.sku.price.amount;
+                                priceStandardOutput = `US$${(priceStandard / 100).toFixed(2)}`;
+                            } else {
+                                priceStandard = 'N/A';
+                                priceStandardOutput = 'N/A';
+                            }
+                        
+                            if (itemItself.sku.price != null) {
+                                if (itemItself.sku.price.premium != null) {
+                                    priceNitro = itemItself.sku.price.premium["2"].amount;
+                                    priceNitroOutput = `US$${(priceNitro / 100).toFixed(2)}`;
+                                } else {
+                                    priceNitroOutput = 'N/A';
+                                    priceNitro = 'N/A';
+                                }
+                            } else {
+                                priceNitro = 'N/A';
+                                priceNitroOutput = 'N/A';
+                            }
+                        
+                            if (itemType === 2) {
+                                itemTypeOutput = `Collectible/Category`;
+                            } else if (itemType === 3) {
+                                itemTypeOutput = `Consumable`;
+                            } else if (itemType === 4) {
+                                itemTypeOutput = `Bundle of Collectibles`;
+                            }
+                        
+                            childBlock.innerHTML = `
+                                <p class="shop-notice-text">SKU ID: ${itemItself.sku.id}</p>
+                                <p class="shop-notice-text">Name: ${itemItself.sku.name}</p>
+                                <p class="shop-notice-text">Summary: ${itemItself.summary}</p>
+                                <p class="shop-notice-text">Type: ${itemTypeOutput} (${itemType})</p>
+                                <p class="shop-notice-text">Slug: ${itemItself.sku.slug}</p>
+                                <p class="shop-notice-text">Application ID: ${itemItself.sku.application.id}</p>
+                                <p class="shop-notice-text">Application Name: ${itemItself.sku.application.name}</p>
+                                <p class="shop-notice-text">Standard Price: ${priceStandardOutput} (${priceStandard})</p>
+                                <p class="shop-notice-text">Nitro Price: ${priceNitroOutput} (${priceNitro})</p>
+                            `;
+                        })
+                        .catch(error => {
+                            if (item.price != null) {
+                                priceStandard = item.price.amount;
+                                priceStandardOutput = `US$${(priceStandard / 100).toFixed(2)}`;
+                            } else {
+                                priceStandard = 'N/A';
+                                priceStandardOutput = 'N/A';
+                            }
+                        
+                            if (item.price != null) {
+                                if (item.price.premium != null) {
+                                    priceNitro = item.price.premium["2"].amount;
+                                    priceNitroOutput = `US$${(priceNitro / 100).toFixed(2)}`;
+                                } else {
+                                    priceNitroOutput = 'N/A';
+                                    priceNitro = 'N/A';
+                                }
+                            } else {
+                                priceNitro = 'N/A';
+                                priceNitroOutput = 'N/A';
+                            }
+                        
+                        
+                            if (itemType === 2) {
+                                itemTypeOutput = `Collectible/Category`;
+                            } else if (itemType === 3) {
+                                itemTypeOutput = `Consumable`;
+                            } else if (itemType === 4) {
+                                itemTypeOutput = `Bundle of Collectibles`;
+                            }
+                        
+                            childBlock.innerHTML = `
+                                <div>
+                                    <div class="shop-warning">
+                                        <p class="shop-notice-text">This item is not Published!</p>
+                                    </div>
+                                    <p class="shop-notice-text">SKU ID: ${item.id}</p>
+                                    <p class="shop-notice-text">Name: ${item.name}</p>
+                                    <p class="shop-notice-text">Summary: ${item.summary}</p>
+                                    <p class="shop-notice-text">Type: ${itemTypeOutput} (${itemType})</p>
+                                    <p class="shop-notice-text">Slug: ${item.slug}</p>
+                                    <p class="shop-notice-text">Standard Price: ${priceStandardOutput} (${priceStandard})</p>
+                                    <p class="shop-notice-text">Nitro Price: ${priceNitroOutput} (${priceNitro})</p>
+                                </div>
+                            `;
+                            console.error(error);
+                        });
+
+                        childContainer.appendChild(childBlock); 
+                    }); 
+                }
+            })
+            .catch(error => {
+                if (SKUinput != '') {
+                    document.getElementById('category-sku-is-valid-or-not-container').innerHTML = `
+                        <div class="shop-warning">
+                            <p class="shop-notice-text">The SKU ID '${SKUinput}' is either invalid or unpublished!</p>
+                        </div>
+                    `;
+                    document.getElementById('category-sku-check-info-container').innerHTML = `
+                        <p class="shop-notice-text">SKU ID:</p>
+                        <p class="shop-notice-text">Name:</p>
+                        <p class="shop-notice-text">Summary:</p>
+                        <p class="shop-notice-text">Slug:</p>
+                    `;
+                } else {
+                    document.getElementById('category-sku-is-valid-or-not-container').innerHTML = `
+                        <div class="shop-warning">
+                            <p class="shop-notice-text">Please input an SKU ID below!</p>
+                        </div>
+                    `;
+                    document.getElementById('category-sku-check-info-container').innerHTML = `
+                        <p class="shop-notice-text">SKU ID:</p>
+                        <p class="shop-notice-text">Name:</p>
+                        <p class="shop-notice-text">Summary:</p>
+                        <p class="shop-notice-text">Slug:</p>
                     `;
                 }
                 console.error(error);
@@ -3571,6 +3812,7 @@ if (localStorage.full_client_rework != "false") {
                         <p class="experiment-subtext">Disables some banner elements from being changed by the client</p>
                         <input class="options-toggle-box" onclick="disableBannerOverridesChecked();" style="cursor: pointer; scale: 2; posision: center;" id="disable-banner-overrides-box" type="checkbox">
                     </div>
+                    <div id="theme-picker-container"></div>
                 </div>
                 <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px;">Downloads</h1>
                 <div>
@@ -3601,6 +3843,19 @@ if (localStorage.full_client_rework != "false") {
                 </div>
                 App Version: ${tcbx926n29}
             `;
+
+            if (localStorage.experiment_theme_picker == "true") {
+                document.getElementById("theme-picker-container").innerHTML = `
+                    <p class="center-text" style="font-size: 20px; margin-top: 0px; margin-bottom: -10px;">Theme Picker</p>
+                    <p>Neon</p>
+                    <input class="options-toggle-box" onclick="themeNeonChecked();" style="cursor: pointer; scale: 2; posision: center;" id="neon-theme-box" type="checkbox">
+                `;
+            }
+
+            if (localStorage.sa_theme == "neon") {
+                document.getElementById("neon-theme-box").checked = true;
+                document.body.classList.add('theme-neon');
+            }
 
             if (localStorage.fetch_collectibles_variants == "true") {
                 document.getElementById("is-in-shop-box").checked = true;
@@ -3673,6 +3928,17 @@ if (localStorage.full_client_rework != "false") {
                     content.appendChild(clone);
                 });
             }
+        }
+    }
+
+    function themeNeonChecked() {
+        if (localStorage.sa_theme != "neon") {
+            localStorage.sa_theme = "neon"
+            document.body.classList.add('theme-neon');
+        }
+        else {
+            localStorage.sa_theme = "null"
+            document.body.classList.remove('theme-neon');
         }
     }
 
@@ -3876,11 +4142,23 @@ if (localStorage.full_client_rework != "false") {
                             <p class="experiment-subtext">Test out new features</p>
                             <div class="experiment-card-holder">
 
+                                <div class="experiment-card">
+                                    <p>Theme Picker</p>
+                                    <p class="experiment-subtext">2024-12_theme_picker</p>
+                                    <div id="experiment-default-rollout-data-2024-12_theme_picker">
+                                        <p class="experiment-subtext">default rollout: Loading...</p>
+                                    </div>
+                                    <button class="refresh-button" onclick="themePicker1()" id="2024-12_theme_picker-1">Override 1</button>
+                                    <button class="refresh-button" onclick="themePicker00()" id="2024-12_theme_picker-00">Override -1</button>
+                                    <button class="refresh-button" onclick="themePicker0()" id="2024-12_theme_picker-0">Clear Override</button>
+                                </div>
 
                                 <div class="experiment-card">
                                     <p>Profiles Plus Marketing Variants</p>
                                     <p class="experiment-subtext">2024-12_profiles_plus_marketing_variants</p>
-                                    <div id="experiment-default-rollout-data-2024-12_profiles_plus_marketing_variants"></div>
+                                    <div id="experiment-default-rollout-data-2024-12_profiles_plus_marketing_variants">
+                                        <p class="experiment-subtext">default rollout: Loading...</p>
+                                    </div>
                                     <button class="refresh-button" onclick="profilesPlusMarketingVariants1()" id="2024-12_profiles_plus_marketing_variants-1" title="Paper Beach V2">Override 1</button>
                                     <button class="refresh-button" onclick="profilesPlusMarketingVariants00()" id="2024-12_profiles_plus_marketing_variants-00">Override -1</button>
                                     <button class="refresh-button" onclick="profilesPlusMarketingVariants0()" id="2024-12_profiles_plus_marketing_variants-0">Clear Override</button>
@@ -3890,7 +4168,9 @@ if (localStorage.full_client_rework != "false") {
                                 <div class="experiment-card">
                                     <p>Collectibles Variants</p>
                                     <p class="experiment-subtext">2024-11_collectibles_variants</p>
-                                    <div id="experiment-default-rollout-data-2024-11_collectibles_variants"></div>
+                                    <div id="experiment-default-rollout-data-2024-11_collectibles_variants">
+                                        <p class="experiment-subtext">default rollout: Loading...</p>
+                                    </div>
                                     <button class="refresh-button" onclick="collectiblesVariants1()" id="2024-11_collectibles_variants-1">Override 1</button>
                                     <button class="refresh-button" onclick="collectiblesVariants00()" id="2024-11_collectibles_variants-00">Override -1</button>
                                     <button class="refresh-button" onclick="collectiblesVariants0()" id="2024-11_collectibles_variants-0">Clear Override</button>
@@ -3900,7 +4180,9 @@ if (localStorage.full_client_rework != "false") {
                                 <div class="experiment-card">
                                     <p>2024 Recap</p>
                                     <p class="experiment-subtext">2024-11_recap</p>
-                                    <div id="experiment-default-rollout-data-2024-11_recap"></div>
+                                    <div id="experiment-default-rollout-data-2024-11_recap">
+                                        <p class="experiment-subtext">default rollout: Loading...</p>
+                                    </div>
                                     <button class="refresh-button" onclick="recap2024Items1()" id="2024-11_recap-1">Override 1</button>
                                     <button class="refresh-button" onclick="recap2024Items00()" id="2024-11_recap-00">Override -1</button>
                                     <button class="refresh-button" onclick="recap2024Items0()" id="2024-11_recap-0">Clear Override</button>
@@ -4013,6 +4295,7 @@ if (localStorage.full_client_rework != "false") {
                                 <p>collectibles marketing: ${COLLECTIBLES_MARKETING}</p>
                                 <p>collectibles variants: ${COLLECTIBLES_VARIANTS}</p>
                                 <p>experiment rollouts: ${EXPERIMENT_ROLLOUTS}</p>
+                                <p>collectibles shop home: ${COLLECTIBLES_SHOP_HOME}</p>
                             </details>
 
                             <p>App Version: ${tcbx926n29}</p>
@@ -4159,6 +4442,15 @@ if (localStorage.full_client_rework != "false") {
     }
 
     function colorButtonsPerRollout() {
+
+        if (localStorage.experiment_theme_picker == "true" || localStorage.experiment_theme_picker == "true_autorollout") {
+            document.getElementById("2024-12_theme_picker-1").classList.add('refresh-button-selected');
+        }
+    
+        if (localStorage.experiment_theme_picker == "false" || localStorage.experiment_theme_picker == "false_autorollout") {
+            document.getElementById("2024-12_theme_picker-00").classList.add('refresh-button-selected');
+        }
+
 
         if (localStorage.profiles_plus_marketing_variants == "variant_1" || localStorage.profiles_plus_marketing_variants == "variant_1_autorollout") {
             document.getElementById("2024-12_profiles_plus_marketing_variants-1").classList.add('refresh-button-selected');
@@ -4349,6 +4641,26 @@ if (localStorage.full_client_rework != "false") {
 
 
 
+
+
+    function themePicker1() {
+        localStorage.experiment_theme_picker = "true"
+        document.getElementById("2024-12_theme_picker-1").classList.add('refresh-button-selected');
+        document.getElementById("2024-12_theme_picker-00").classList.remove('refresh-button-selected');
+    }
+
+    function themePicker00() {
+        localStorage.experiment_theme_picker = "false"
+        document.getElementById("2024-12_theme_picker-1").classList.remove('refresh-button-selected');
+        document.getElementById("2024-12_theme_picker-00").classList.add('refresh-button-selected');
+    }
+
+    function themePicker0() {
+        localStorage.experiment_theme_picker = "pleasesetautorollout"
+        document.getElementById("2024-12_theme_picker-1").classList.remove('refresh-button-selected');
+        document.getElementById("2024-12_theme_picker-00").classList.remove('refresh-button-selected');
+        fetchExperimentRolloutData();
+    }
 
 
     function profilesPlusMarketingVariants1() {
@@ -4638,6 +4950,35 @@ if (localStorage.full_client_rework != "false") {
                     } else {
                         console.warn(`exp 9:?`);
                         console.error(`Failed to load treatment for experiment 9`);
+                    }
+                }
+
+                if (experiments.id === 10) {
+                    if (experiments.rolled_out_treatment === 1) {
+                        console.log(`exp 10:1`);
+                        if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true") {
+                            localStorage.experiment_theme_picker = "true_autorollout"
+                        }
+                        try {
+                            document.getElementById('experiment-default-rollout-data-2024-12_theme_picker').innerHTML = `
+                                <p class="experiment-subtext">default rollout: Override 1</p>
+                            `;
+                        } catch (error) {
+                        }
+                    } else if (experiments.rolled_out_treatment === -1) {
+                        console.log(`exp 10:-1`);
+                        if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true") {
+                            localStorage.experiment_theme_picker = "false_autorollout"
+                        }
+                        try {
+                            document.getElementById('experiment-default-rollout-data-2024-12_theme_picker').innerHTML = `
+                                <p class="experiment-subtext">default rollout: Override -1</p>
+                            `;
+                        } catch (error) {
+                        }
+                    } else {
+                        console.warn(`exp 10:?`);
+                        console.error(`Failed to load treatment for experiment 10`);
                     }
                 }
     
