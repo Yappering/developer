@@ -18,6 +18,31 @@
     --5: #1E1F22;
     --7: #0000005d;
     --8: #b1b5bb;
+    --9: #05814B;
+    --10: #036338;
+    --button-secondary-background: #4E5058;
+    --button-secondary-background-hover: #6D6F78;
+    --white: #ffffff;
+}
+
+.theme-midnight {
+    --background-primary: #0c0c0c;
+    --background-secondary: #000000;
+    --background-tertiary: #000000;
+    --input-background: #1E1F22;
+    --shop-card-background: #000000;
+    --interactive-active: #202020;
+    --button-danger-background: #DD383F;
+    --button-outline-danger-border: #DD383F;
+    --status-danger: #F64046;
+    --brand-500: #615DED;
+    --brand-500-hover: #4E4BC0;
+    --2: #000000;
+    --3: #2B2D3196;
+    --4: #1f1f1f;
+    --5: #0f0f0f;
+    --7: #0000005d;
+    --8: #b1b5bb;
     --button-secondary-background: #4E5058;
     --button-secondary-background-hover: #6D6F78;
     --white: #ffffff;
@@ -125,6 +150,9 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
     margin-top: 10px;
     gap: 15px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .theme-selection-box {
@@ -137,19 +165,23 @@ body {
 }
 
 .theme-selection-box:hover {
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .theme-selection-box-selected {
     width: 60px;
     height: 60px;
     border: 2px white solid;
-    border-radius: 10px;
+    border-radius: 10px !important;
     cursor: unset;
 }
 
 #theme-dark-button {
     background-color: #2B2D31;
+}
+
+#theme-midnight-button {
+    background-color: #000000;
 }
 
 #theme-light-button {
@@ -222,16 +254,17 @@ body {
     overflow-x: hidden;
     background-color: var(--background-primary);
     border: 2px solid var(--1);
-    width: 0px;
+    width: 400px;
+    transform: translate(100%);
     right: 0;
     top: 80px;
     height: 80%;
     border-radius: 10px 0 0 10px;
-    transition: width 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
 }
 
 .options-sidebar-container-expanded {
-    width: 400px;
+    transform: translate(0%);
 }
 
 .shop-housing {
@@ -277,7 +310,7 @@ body {
 
 
 .dev-modal {
-    background-color: #313338;
+    background-color: var(--background-primary);
     border-radius: 10px;
     text-align: center;
     width: 85%;
@@ -628,6 +661,66 @@ body {
 .refresh-button:hover {
     background-color: rgb(71, 81, 192);
 }
+
+
+
+.newish-experiment-button {
+    height: 30px;
+    width: 30px;
+    background-color: var(--brand-500);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    color: white;
+}
+
+.newish-experiment-button:hover {
+    background-color: var(--brand-500-hover);
+}
+
+.newish-experiment-button-selected {
+    background-color: var(--9);
+    cursor: unset;
+}
+
+.newish-experiment-button-selected:hover {
+    background-color: var(--9);
+}
+
+
+
+.staff-close-button {
+    height: 40px;
+    width: 90px;
+    background-color: var(--brand-500);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    color: white;
+}
+
+.staff-close-button:hover {
+    background-color: var(--brand-500-hover);
+}
+
+.staff-safe-mode-button {
+    height: 40px;
+    width: 90px;
+    background-color: var(--status-danger);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    color: white;
+}
+
+.staff-safe-mode-button:hover {
+    background-color: var(--button-danger-background);
+}
+
+
 
 .refresh-button-no {
     background-color: rgb(71, 81, 192);
@@ -2230,6 +2323,18 @@ data-share-product-card-button {
 
 
 
+.crash-info-container {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    color: white;
+    position: absolute;
+    text-align: center;
+}
+
+
+
 
 .shop-category-marketing-bg {
     position: absolute;
@@ -2445,6 +2550,11 @@ data-share-product-card-button {
 .premiumWheel_c23530 {
     height: 20px;
     width: 30px;
+}
+
+.circleIcon_db6521 {
+    margin-top: 17px;
+    scale: 1.5;
 }
 
 

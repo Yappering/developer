@@ -3,17 +3,24 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 183";
+tcbx926n29 = "Dev 186";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
-} else if (localStorage.sa_theme == "light") {
+} else
+if (localStorage.sa_theme == "midnight") {
+    document.body.classList.add('theme-midnight');
+} else
+if (localStorage.sa_theme == "light") {
     document.body.classList.add('theme-light');
-} else if (localStorage.sa_theme == "neongreen") {
+} else
+if (localStorage.sa_theme == "neongreen") {
     document.body.classList.add('theme-neongreen');
-} else if (localStorage.sa_theme == "neonpurple") {
+} else
+if (localStorage.sa_theme == "neonpurple") {
     document.body.classList.add('theme-neonpurple');
-} else {
+} else
+{
     localStorage.sa_theme = "dark";
     document.body.classList.add('theme-dark');
 }
@@ -2167,14 +2174,22 @@ if (localStorage.full_client_rework != "false") {
         </div>
         <div class="dm-divider">Tools</div>
         <div id="tools">
-            <button class="dm-button" id="avatar-decorations-debug-tab" onclick="setParams({page: 'item_tool'}); location.reload();">
-                <p class="dm-button-text">Item Debug</p>
-            </button>
             <button class="dm-button" id="published-listings-tab" onclick="setParams({page: 'published_listings'}); location.reload();">
                 <p class="dm-button-text">Published Listings</p>
             </button>
+            <div id="secret-tools">
+            </div>
         </div>
         `;
+
+        if (localStorage.dev === "true") {
+            document.getElementById('secret-tools').innerHTML = `
+                <button class="dm-button" id="avatar-decorations-debug-tab" onclick="setParams({page: 'item_tool'}); location.reload();">
+                    <p class="dm-button-text">Item Debug</p>
+                </button>
+    
+            `;
+        }
     }
 
     if (localStorage.recap_items_2024 === "true" || localStorage.recap_items_2024 === "true_autorollout") {
@@ -2270,7 +2285,7 @@ if (localStorage.full_client_rework != "false") {
             createItemToolPageElement()
             document.getElementById("avatar-decorations-debug-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Item Tool</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">Item Tool | Staff Only</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "published_listings") {
@@ -3492,11 +3507,11 @@ if (localStorage.full_client_rework != "false") {
                 </div>
             </div>
         `;
-        if (localStorage.fhuiufghdgfdhgfduhfsilfggu === "hfghgdjhgdkjgh") {
+        if (localStorage.dev === "true") {
             document.getElementById("secret-published-listings-testers").innerHTML = `
                 <div class="published-listings-tester-card">
 
-                    <h1>Category Items List</h1>
+                    <h1>Category Items List | Staff Only</h1>
 
                     <div class="sku-is-valid-or-not-container" id="category-sku-is-valid-or-not-container"></div>
 
@@ -3804,8 +3819,6 @@ if (localStorage.full_client_rework != "false") {
             });
     }
 
-
-
     function optionsSidebarToggle() {
         if (document.getElementById('options-sidebar-container').classList.contains('options-sidebar-container-expanded')) {
             document.getElementById('options-sidebar-container').classList.remove("options-sidebar-container-expanded");
@@ -3829,8 +3842,9 @@ if (localStorage.full_client_rework != "false") {
                         <p class="experiment-subtext">Disables some banner elements from being changed by the client</p>
                         <input class="options-toggle-box" onclick="disableBannerOverridesChecked();" style="cursor: pointer; scale: 2; posision: center;" id="disable-banner-overrides-box" type="checkbox">
                     </div>
-                    <div id="theme-picker-container"></div>
                 </div>
+                <div id="theme-picker-container"></div>
+                <div id="new-options-experiments-container"></div>
                 <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Downloads</h1>
                 <div>
                     <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
@@ -3861,28 +3875,52 @@ if (localStorage.full_client_rework != "false") {
                 App Version: ${tcbx926n29}
             `;
 
-            if (localStorage.experiment_theme_picker == "true") {
+            if (localStorage.experiment_theme_picker == "true" || localStorage.experiment_theme_picker == "true_autorollout" || localStorage.experiment_theme_picker == "two" || localStorage.experiment_theme_picker == "two_autorollout") {
                 document.getElementById("theme-picker-container").innerHTML = `
-                    <p class="center-text" style="font-size: 20px; margin-top: 0px; margin-bottom: -10px; color: var(--white);">Theme Picker</p>
+                    <p class="center-text" style="font-size: 20px; margin-top: 0px; margin-bottom: -10px; color: var(--white);">Appearance</p>
                     <div id="theme-selection-box-container">
                         <div class="theme-selection-box" title="Dark" id="theme-dark-button" onclick="themeDarkChecked();"></div>
+                        <div class="theme-selection-box" title="Midnight" id="theme-midnight-button" onclick="themeMidnightChecked();"></div>
                         <div class="theme-selection-box" title="Light" id="theme-light-button" onclick="themeLightChecked();"></div>
                         <div class="theme-selection-box" title="Neon Green" id="theme-neongreen-button" onclick="themeNeonGreenChecked();"></div>
                         <div class="theme-selection-box" title="Neon Purple" id="theme-neonpurple-button" onclick="themeNeonPurpleChecked();"></div>
+                        <div id="add-custom-theme-box-container">
+                        </div>
                     </div>
+                `;
+                if (localStorage.experiment_theme_picker == "two" || localStorage.experiment_theme_picker == "two_autorollout") {
+                    document.getElementById("add-custom-theme-box-container").innerHTML = `
+                        <div class="theme-selection-box" title="Add Custon Theme" id="theme-custom-button" onclick="themeAddCustom();">
+                            <svg class="circleIcon_db6521" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z" class=""></path></svg>
+                        </div>
+                    `;
+                }
+            }
+
+            if (localStorage.dev == "true") {
+                document.getElementById("new-options-experiments-container").innerHTML = `
+                    <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Experiments</p>
+                    you are dev, and experiments will soon go here
                 `;
             }
 
             if (localStorage.sa_theme == "dark") {
                 document.getElementById("theme-dark-button").classList.add('theme-selection-box-selected');
                 document.body.classList.add('theme-dark');
-            } else if (localStorage.sa_theme == "light") {
+            } else
+            if (localStorage.sa_theme == "midnight") {
+                document.getElementById("theme-midnight-button").classList.add('theme-selection-box-selected');
+                document.body.classList.add('theme-midnight');
+            } else
+            if (localStorage.sa_theme == "light") {
                 document.getElementById("theme-light-button").classList.add('theme-selection-box-selected');
                 document.body.classList.add('theme-light');
-            } else if (localStorage.sa_theme == "neongreen") {
+            } else
+            if (localStorage.sa_theme == "neongreen") {
                 document.getElementById("theme-neongreen-button").classList.add('theme-selection-box-selected');
                 document.body.classList.add('theme-neongreen');
-            } else if (localStorage.sa_theme == "neonpurple") {
+            } else
+            if (localStorage.sa_theme == "neonpurple") {
                 document.getElementById("theme-neonpurple-button").classList.add('theme-selection-box-selected');
                 document.body.classList.add('theme-neonpurple');
             }
@@ -3969,6 +4007,13 @@ if (localStorage.full_client_rework != "false") {
         document.getElementById("theme-dark-button").classList.add('theme-selection-box-selected');
     }
 
+    function themeMidnightChecked() {
+        clearCurrentTheme()
+        localStorage.sa_theme = "midnight"
+        document.body.classList.add('theme-midnight');
+        document.getElementById("theme-midnight-button").classList.add('theme-selection-box-selected');
+    }
+
     function themeLightChecked() {
         clearCurrentTheme()
         localStorage.sa_theme = "light"
@@ -3993,6 +4038,8 @@ if (localStorage.full_client_rework != "false") {
     function clearCurrentTheme() {
         document.getElementById("theme-dark-button").classList.remove('theme-selection-box-selected');
         document.body.classList.remove('theme-dark');
+        document.getElementById("theme-midnight-button").classList.remove('theme-selection-box-selected');
+        document.body.classList.remove('theme-midnight');
         document.getElementById("theme-light-button").classList.remove('theme-selection-box-selected');
         document.body.classList.remove('theme-light');
         document.getElementById("theme-neongreen-button").classList.remove('theme-selection-box-selected');
@@ -4193,8 +4240,8 @@ if (localStorage.full_client_rework != "false") {
                     <div class="dev-modal-inner">
                         <h1 class="center-text" style="font-size: 54px; margin-top: -10px; margin-bottom: -5px;">Dev Options</h1>
                         <p>Greetings Shop Archives Staff and/or Dataminer! This model has everything only available for developers, only use this if you know what you're doing. Don't break anything :)</p>
-                        <button class="refresh-button" onclick="closeDevModal()">Close</button>
-                        <button class="refresh-button" onclick="turnOffDevMode()">Safe Mode</button>
+                        <button class="staff-close-button" onclick="closeDevModal()">Close</button>
+                        <button class="staff-safe-mode-button" onclick="turnOffDevMode()">Safe Mode</button>
                         <hr>
                         <div>
                             <h2>Experiments</h2>
@@ -4207,9 +4254,10 @@ if (localStorage.full_client_rework != "false") {
                                     <div id="experiment-default-rollout-data-2024-12_theme_picker">
                                         <p class="experiment-subtext">default rollout: Loading...</p>
                                     </div>
-                                    <button class="refresh-button" onclick="themePicker1()" id="2024-12_theme_picker-1">Override 1</button>
-                                    <button class="refresh-button" onclick="themePicker00()" id="2024-12_theme_picker-00">Override -1</button>
-                                    <button class="refresh-button" onclick="themePicker0()" id="2024-12_theme_picker-0">Clear Override</button>
+                                    <button class="newish-experiment-button" onclick="themePicker2()" id="2024-12_theme_picker-2" title="with add custom theme">2</button>
+                                    <button class="newish-experiment-button" onclick="themePicker1()" id="2024-12_theme_picker-1">1</button>
+                                    <button class="newish-experiment-button" onclick="themePicker00()" id="2024-12_theme_picker-00">-1</button>
+                                    <button class="newish-experiment-button" onclick="themePicker0()" id="2024-12_theme_picker-0" title="Clear Experiment Override">C</button>
                                 </div>
 
                                 <div class="experiment-card">
@@ -4218,9 +4266,9 @@ if (localStorage.full_client_rework != "false") {
                                     <div id="experiment-default-rollout-data-2024-12_profiles_plus_marketing_variants">
                                         <p class="experiment-subtext">default rollout: Loading...</p>
                                     </div>
-                                    <button class="refresh-button" onclick="profilesPlusMarketingVariants1()" id="2024-12_profiles_plus_marketing_variants-1" title="Paper Beach V2">Override 1</button>
-                                    <button class="refresh-button" onclick="profilesPlusMarketingVariants00()" id="2024-12_profiles_plus_marketing_variants-00">Override -1</button>
-                                    <button class="refresh-button" onclick="profilesPlusMarketingVariants0()" id="2024-12_profiles_plus_marketing_variants-0">Clear Override</button>
+                                    <button class="newish-experiment-button" onclick="profilesPlusMarketingVariants1()" id="2024-12_profiles_plus_marketing_variants-1" title="Paper Beach V2">1</button>
+                                    <button class="newish-experiment-button" onclick="profilesPlusMarketingVariants00()" id="2024-12_profiles_plus_marketing_variants-00">-1</button>
+                                    <button class="newish-experiment-button" onclick="profilesPlusMarketingVariants0()" id="2024-12_profiles_plus_marketing_variants-0" title="Clear Experiment Override">C</button>
                                 </div>
 
 
@@ -4230,9 +4278,9 @@ if (localStorage.full_client_rework != "false") {
                                     <div id="experiment-default-rollout-data-2024-11_collectibles_variants">
                                         <p class="experiment-subtext">default rollout: Loading...</p>
                                     </div>
-                                    <button class="refresh-button" onclick="collectiblesVariants1()" id="2024-11_collectibles_variants-1">Override 1</button>
-                                    <button class="refresh-button" onclick="collectiblesVariants00()" id="2024-11_collectibles_variants-00">Override -1</button>
-                                    <button class="refresh-button" onclick="collectiblesVariants0()" id="2024-11_collectibles_variants-0">Clear Override</button>
+                                    <button class="newish-experiment-button" onclick="collectiblesVariants1()" id="2024-11_collectibles_variants-1">1</button>
+                                    <button class="newish-experiment-button" onclick="collectiblesVariants00()" id="2024-11_collectibles_variants-00">-1</button>
+                                    <button class="newish-experiment-button" onclick="collectiblesVariants0()" id="2024-11_collectibles_variants-0" title="Clear Experiment Override">C</button>
                                 </div>
 
 
@@ -4242,9 +4290,9 @@ if (localStorage.full_client_rework != "false") {
                                     <div id="experiment-default-rollout-data-2024-11_recap">
                                         <p class="experiment-subtext">default rollout: Loading...</p>
                                     </div>
-                                    <button class="refresh-button" onclick="recap2024Items1()" id="2024-11_recap-1">Override 1</button>
-                                    <button class="refresh-button" onclick="recap2024Items00()" id="2024-11_recap-00">Override -1</button>
-                                    <button class="refresh-button" onclick="recap2024Items0()" id="2024-11_recap-0">Clear Override</button>
+                                    <button class="newish-experiment-button" onclick="recap2024Items1()" id="2024-11_recap-1">1</button>
+                                    <button class="newish-experiment-button" onclick="recap2024Items00()" id="2024-11_recap-00">-1</button>
+                                    <button class="newish-experiment-button" onclick="recap2024Items0()" id="2024-11_recap-0" title="Clear Experiment Override">C</button>
                                 </div>
         
                                 
@@ -4258,32 +4306,32 @@ if (localStorage.full_client_rework != "false") {
                                 <div class="experiment-card">
                                     <p>Disable Client Reowrk (Possible to re-enable on old client)</p>
                                     <p class="experiment-subtext">2024-12_disable_client_rework</p>
-                                    <button class="refresh-button" onclick="disableClientReworkTrue()" id="2024-12_disable_client_rework-1">Override 1</button>
-                                    <button class="refresh-button" onclick="disableClientReworkFalse()" id="2024-12_disable_client_rework-2">No Override</button>
+                                    <button class="newish-experiment-button" onclick="disableClientReworkTrue()" id="2024-12_disable_client_rework-1">1</button>
+                                    <button class="newish-experiment-button" onclick="disableClientReworkFalse()" id="2024-12_disable_client_rework-00">-1</button>
                                 </div>
                                 <div class="experiment-card">
                                     <p>Force Private API</p>
                                     <p class="experiment-subtext">2024-12_force_all_api_to_fectch_private_api</p>
-                                    <button class="refresh-button" onclick="forceAllApiToFectchPrivateApiTrue()" id="2024-12_force_all_api_to_fectch_private_api-1">Override 1</button>
-                                    <button class="refresh-button" onclick="forceAllApiToFectchPrivateApiFalse()" id="2024-12_force_all_api_to_fectch_private_api-2">No Override</button>
+                                    <button class="newish-experiment-button" onclick="forceAllApiToFectchPrivateApiTrue()" id="2024-12_force_all_api_to_fectch_private_api-1">1</button>
+                                    <button class="newish-experiment-button" onclick="forceAllApiToFectchPrivateApiFalse()" id="2024-12_force_all_api_to_fectch_private_api-2">-1</button>
                                 </div>
                                 <div class="experiment-card">
                                     <p>Show Leaks Button</p>
                                     <p class="experiment-subtext">2024-11_override_leaks_button</p>
-                                    <button class="refresh-button" onclick="overrideLeaksButtonShow()" id="2024-11_override_leaks_button-1">Override 1</button>
-                                    <button class="refresh-button" onclick="overrideLeaksButtonHide()" id="2024-11_override_leaks_button-2">No Override</button>
+                                    <button class="newish-experiment-button" onclick="overrideLeaksButtonShow()" id="2024-11_override_leaks_button-1">1</button>
+                                    <button class="newish-experiment-button" onclick="overrideLeaksButtonHide()" id="2024-11_override_leaks_button-2">-1</button>
                                 </div>
                                 <div class="experiment-card">
                                     <p>Project Joshua</p>
                                     <p class="experiment-subtext">2024-11_unreleased_discord_collectibles</p>
-                                    <button class="refresh-button" onclick="unreleasedDiscordCollectiblesTrue()" id="2024-11_unreleased_discord_collectibles-1">Override 1</button>
-                                    <button class="refresh-button" onclick="unreleasedDiscordCollectiblesFalse()" id="2024-11_unreleased_discord_collectibles-2">No Override</button>
+                                    <button class="newish-experiment-button" onclick="unreleasedDiscordCollectiblesTrue()" id="2024-11_unreleased_discord_collectibles-1">1</button>
+                                    <button class="newish-experiment-button" onclick="unreleasedDiscordCollectiblesFalse()" id="2024-11_unreleased_discord_collectibles-2">-1</button>
                                 </div>
                                 <div class="experiment-card">
                                     <p>Unreleased Profiles Plus Items</p>
                                     <p class="experiment-subtext">2024-09_profiles_plus</p>
-                                    <button class="refresh-button" onclick="unreleasedProfilesPlusItemsTrue()" id="2024-09_profiles_plus-1">Override 1</button>
-                                    <button class="refresh-button" onclick="unreleasedProfilesPlusItemsFalse()" id="2024-09_profiles_plus-2">No Override</button>
+                                    <button class="newish-experiment-button" onclick="unreleasedProfilesPlusItemsTrue()" id="2024-09_profiles_plus-1">1</button>
+                                    <button class="newish-experiment-button" onclick="unreleasedProfilesPlusItemsFalse()" id="2024-09_profiles_plus-2">-1</button>
                                 </div>
                             </div>
                         </div>
@@ -4366,8 +4414,8 @@ if (localStorage.full_client_rework != "false") {
                             <p>App Version: ${tcbx926n29}</p>
                         </div>
                         <hr>
-                        <button class="refresh-button" onclick="closeDevModal()">Close</button>
-                        <button class="refresh-button" onclick="turnOffDevMode()">Safe Mode</button>
+                        <button class="staff-close-button" onclick="closeDevModal()">Close</button>
+                        <button class="staff-safe-mode-button" onclick="turnOffDevMode()">Safe Mode</button>
                     </div>
                 </div>
             </div>
@@ -4391,33 +4439,33 @@ if (localStorage.full_client_rework != "false") {
             // if (localStorage.top_selling_item != "true") {
             //     if (localStorage.top_selling_item != "false") {
             //         if (localStorage.top_selling_item != "two") {
-            //             document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
-            //             document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
-            //             document.getElementById("2024-11_top_selling_item_tag-0").classList.add('refresh-button-selected');
-            //             document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
+            //             document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('newish-experiment-button-selected');
+            //             document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('newish-experiment-button-selected');
+            //             document.getElementById("2024-11_top_selling_item_tag-0").classList.add('newish-experiment-button-selected');
+            //             document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('newish-experiment-button-selected');
             //         }
             //     }
             // }
         
             // if (localStorage.top_selling_item == "two") {
-            //     document.getElementById("2024-11_top_selling_item_tag-2").classList.add('refresh-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-2").classList.add('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('newish-experiment-button-selected');
             // }
             
             // if (localStorage.top_selling_item == "true") {
-            //     document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-1").classList.add('refresh-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-1").classList.add('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('newish-experiment-button-selected');
             // }
         
             // if (localStorage.top_selling_item == "false") {
-            //     document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-00").classList.add('refresh-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_top_selling_item_tag-00").classList.add('newish-experiment-button-selected');
             // }
         
         
@@ -4425,79 +4473,91 @@ if (localStorage.full_client_rework != "false") {
             // if (localStorage.item_data_downloads != "true") {
             //     if (localStorage.item_data_downloads != "false") {
             //         if (localStorage.item_data_downloads != "two") {
-            //             document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
-            //             document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
-            //             document.getElementById("2024-11_item_data_downloads-0").classList.add('refresh-button-selected');
-            //             document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
+            //             document.getElementById("2024-11_item_data_downloads-2").classList.remove('newish-experiment-button-selected');
+            //             document.getElementById("2024-11_item_data_downloads-1").classList.remove('newish-experiment-button-selected');
+            //             document.getElementById("2024-11_item_data_downloads-0").classList.add('newish-experiment-button-selected');
+            //             document.getElementById("2024-11_item_data_downloads-00").classList.remove('newish-experiment-button-selected');
             //         }
             //     }
             // }
         
             // if (localStorage.item_data_downloads == "two") {
-            //     document.getElementById("2024-11_item_data_downloads-2").classList.add('refresh-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-2").classList.add('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-1").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-0").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-00").classList.remove('newish-experiment-button-selected');
             // }
             
             // if (localStorage.item_data_downloads == "true") {
-            //     document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-1").classList.add('refresh-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-00").classList.remove('refresh-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-2").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-1").classList.add('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-0").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-00").classList.remove('newish-experiment-button-selected');
             // }
             
             // if (localStorage.item_data_downloads == "false") {
-            //     document.getElementById("2024-11_item_data_downloads-2").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-1").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-0").classList.remove('refresh-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-00").classList.add('refresh-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-2").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-1").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-0").classList.remove('newish-experiment-button-selected');
+            //     document.getElementById("2024-11_item_data_downloads-00").classList.add('newish-experiment-button-selected');
             // }
         
         
 
+            if (localStorage.full_client_rework == "true") {
+                document.getElementById("2024-12_disable_client_rework-1").classList.remove('newish-experiment-button-selected');
+                document.getElementById("2024-12_disable_client_rework-00").classList.add('newish-experiment-button-selected');
+            }
+            
+            if (localStorage.full_client_rework != "true") {
+                document.getElementById("2024-12_disable_client_rework-1").classList.add('newish-experiment-button-selected');
+                document.getElementById("2024-12_disable_client_rework-00").classList.remove('newish-experiment-button-selected');
+            }
+
+
+
             if (localStorage.force_all_api_to_fectch_private_api == "true") {
-                document.getElementById("2024-12_force_all_api_to_fectch_private_api-1").classList.add('refresh-button-selected');
-                document.getElementById("2024-12_force_all_api_to_fectch_private_api-2").classList.remove('refresh-button-selected');
+                document.getElementById("2024-12_force_all_api_to_fectch_private_api-1").classList.add('newish-experiment-button-selected');
+                document.getElementById("2024-12_force_all_api_to_fectch_private_api-2").classList.remove('newish-experiment-button-selected');
             }
             
             if (localStorage.force_all_api_to_fectch_private_api != "true") {
-                document.getElementById("2024-12_force_all_api_to_fectch_private_api-1").classList.remove('refresh-button-selected');
-                document.getElementById("2024-12_force_all_api_to_fectch_private_api-2").classList.add('refresh-button-selected');
+                document.getElementById("2024-12_force_all_api_to_fectch_private_api-1").classList.remove('newish-experiment-button-selected');
+                document.getElementById("2024-12_force_all_api_to_fectch_private_api-2").classList.add('newish-experiment-button-selected');
             }
 
 
 
             if (localStorage.override_leaks_button == "true") {
-                document.getElementById("2024-11_override_leaks_button-1").classList.add('refresh-button-selected');
-                document.getElementById("2024-11_override_leaks_button-2").classList.remove('refresh-button-selected');
+                document.getElementById("2024-11_override_leaks_button-1").classList.add('newish-experiment-button-selected');
+                document.getElementById("2024-11_override_leaks_button-2").classList.remove('newish-experiment-button-selected');
             }
             
             if (localStorage.override_leaks_button != "true") {
-                document.getElementById("2024-11_override_leaks_button-1").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_override_leaks_button-2").classList.add('refresh-button-selected');
+                document.getElementById("2024-11_override_leaks_button-1").classList.remove('newish-experiment-button-selected');
+                document.getElementById("2024-11_override_leaks_button-2").classList.add('newish-experiment-button-selected');
             }
 
 
 
             if (localStorage.unreleased_discord_collectibles == "true") {
-                document.getElementById("2024-11_unreleased_discord_collectibles-1").classList.add('refresh-button-selected');
-                document.getElementById("2024-11_unreleased_discord_collectibles-2").classList.remove('refresh-button-selected');
+                document.getElementById("2024-11_unreleased_discord_collectibles-1").classList.add('newish-experiment-button-selected');
+                document.getElementById("2024-11_unreleased_discord_collectibles-2").classList.remove('newish-experiment-button-selected');
             }
             
             if (localStorage.unreleased_discord_collectibles != "true") {
-                document.getElementById("2024-11_unreleased_discord_collectibles-1").classList.remove('refresh-button-selected');
-                document.getElementById("2024-11_unreleased_discord_collectibles-2").classList.add('refresh-button-selected');
+                document.getElementById("2024-11_unreleased_discord_collectibles-1").classList.remove('newish-experiment-button-selected');
+                document.getElementById("2024-11_unreleased_discord_collectibles-2").classList.add('newish-experiment-button-selected');
             }
             
             
             if (localStorage.unreleased_profiles_plus == "true") {
-                document.getElementById("2024-09_profiles_plus-1").classList.add('refresh-button-selected');
+                document.getElementById("2024-09_profiles_plus-1").classList.add('newish-experiment-button-selected');
             }
             
             if (localStorage.unreleased_profiles_plus != "true") {
-                document.getElementById("2024-09_profiles_plus-1").classList.remove('refresh-button-selected');
-                document.getElementById("2024-09_profiles_plus-2").classList.add('refresh-button-selected');
+                document.getElementById("2024-09_profiles_plus-1").classList.remove('newish-experiment-button-selected');
+                document.getElementById("2024-09_profiles_plus-2").classList.add('newish-experiment-button-selected');
             }
         
             displayLocalStorage();
@@ -4508,42 +4568,46 @@ if (localStorage.full_client_rework != "false") {
 
     function colorButtonsPerRollout() {
 
+        if (localStorage.experiment_theme_picker == "two" || localStorage.experiment_theme_picker == "two_autorollout") {
+            document.getElementById("2024-12_theme_picker-2").classList.add('newish-experiment-button-selected');
+        }
+
         if (localStorage.experiment_theme_picker == "true" || localStorage.experiment_theme_picker == "true_autorollout") {
-            document.getElementById("2024-12_theme_picker-1").classList.add('refresh-button-selected');
+            document.getElementById("2024-12_theme_picker-1").classList.add('newish-experiment-button-selected');
         }
     
         if (localStorage.experiment_theme_picker == "false" || localStorage.experiment_theme_picker == "false_autorollout") {
-            document.getElementById("2024-12_theme_picker-00").classList.add('refresh-button-selected');
+            document.getElementById("2024-12_theme_picker-00").classList.add('newish-experiment-button-selected');
         }
 
 
         if (localStorage.profiles_plus_marketing_variants == "variant_1" || localStorage.profiles_plus_marketing_variants == "variant_1_autorollout") {
-            document.getElementById("2024-12_profiles_plus_marketing_variants-1").classList.add('refresh-button-selected');
+            document.getElementById("2024-12_profiles_plus_marketing_variants-1").classList.add('newish-experiment-button-selected');
         }
     
         if (localStorage.profiles_plus_marketing_variants == "false" || localStorage.profiles_plus_marketing_variants == "false_autorollout") {
-            document.getElementById("2024-12_profiles_plus_marketing_variants-00").classList.add('refresh-button-selected');
+            document.getElementById("2024-12_profiles_plus_marketing_variants-00").classList.add('newish-experiment-button-selected');
         }
 
 
 
         if (localStorage.collectibles_variants == "true" || localStorage.collectibles_variants == "true_autorollout") {
-            document.getElementById("2024-11_collectibles_variants-1").classList.add('refresh-button-selected');
+            document.getElementById("2024-11_collectibles_variants-1").classList.add('newish-experiment-button-selected');
         }
     
         if (localStorage.collectibles_variants == "false" || localStorage.collectibles_variants == "false_autorollout") {
-            document.getElementById("2024-11_collectibles_variants-00").classList.add('refresh-button-selected');
+            document.getElementById("2024-11_collectibles_variants-00").classList.add('newish-experiment-button-selected');
         }
 
 
 
 
         if (localStorage.recap_items_2024 == "true" || localStorage.recap_items_2024 == "true_autorollout") {
-            document.getElementById("2024-11_recap-1").classList.add('refresh-button-selected');
+            document.getElementById("2024-11_recap-1").classList.add('newish-experiment-button-selected');
         }
     
         if (localStorage.recap_items_2024 == "false" || localStorage.recap_items_2024 == "false_autorollout") {
-            document.getElementById("2024-11_recap-00").classList.add('refresh-button-selected');
+            document.getElementById("2024-11_recap-00").classList.add('newish-experiment-button-selected');
         }
     }
 
@@ -4708,62 +4772,72 @@ if (localStorage.full_client_rework != "false") {
 
 
 
+    function themePicker2() {
+        localStorage.experiment_theme_picker = "two"
+        document.getElementById("2024-12_theme_picker-2").classList.add('newish-experiment-button-selected');
+        document.getElementById("2024-12_theme_picker-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-12_theme_picker-00").classList.remove('newish-experiment-button-selected');
+    }
+
     function themePicker1() {
         localStorage.experiment_theme_picker = "true"
-        document.getElementById("2024-12_theme_picker-1").classList.add('refresh-button-selected');
-        document.getElementById("2024-12_theme_picker-00").classList.remove('refresh-button-selected');
+        document.getElementById("2024-12_theme_picker-2").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-12_theme_picker-1").classList.add('newish-experiment-button-selected');
+        document.getElementById("2024-12_theme_picker-00").classList.remove('newish-experiment-button-selected');
     }
 
     function themePicker00() {
         localStorage.experiment_theme_picker = "false"
-        document.getElementById("2024-12_theme_picker-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-12_theme_picker-00").classList.add('refresh-button-selected');
+        document.getElementById("2024-12_theme_picker-2").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-12_theme_picker-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-12_theme_picker-00").classList.add('newish-experiment-button-selected');
     }
 
     function themePicker0() {
         localStorage.experiment_theme_picker = "pleasesetautorollout"
-        document.getElementById("2024-12_theme_picker-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-12_theme_picker-00").classList.remove('refresh-button-selected');
+        document.getElementById("2024-12_theme_picker-2").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-12_theme_picker-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-12_theme_picker-00").classList.remove('newish-experiment-button-selected');
         fetchExperimentRolloutData();
     }
 
 
     function profilesPlusMarketingVariants1() {
         localStorage.profiles_plus_marketing_variants = "variant_1"
-        document.getElementById("2024-12_profiles_plus_marketing_variants-1").classList.add('refresh-button-selected');
-        document.getElementById("2024-12_profiles_plus_marketing_variants-00").classList.remove('refresh-button-selected');
+        document.getElementById("2024-12_profiles_plus_marketing_variants-1").classList.add('newish-experiment-button-selected');
+        document.getElementById("2024-12_profiles_plus_marketing_variants-00").classList.remove('newish-experiment-button-selected');
     }
 
     function profilesPlusMarketingVariants00() {
         localStorage.profiles_plus_marketing_variants = "false"
-        document.getElementById("2024-12_profiles_plus_marketing_variants-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-12_profiles_plus_marketing_variants-00").classList.add('refresh-button-selected');
+        document.getElementById("2024-12_profiles_plus_marketing_variants-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-12_profiles_plus_marketing_variants-00").classList.add('newish-experiment-button-selected');
     }
 
     function profilesPlusMarketingVariants0() {
         localStorage.profiles_plus_marketing_variants = "pleasesetautorollout"
-        document.getElementById("2024-12_profiles_plus_marketing_variants-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-12_profiles_plus_marketing_variants-00").classList.remove('refresh-button-selected');
+        document.getElementById("2024-12_profiles_plus_marketing_variants-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-12_profiles_plus_marketing_variants-00").classList.remove('newish-experiment-button-selected');
         fetchExperimentRolloutData();
     }
 
 
     function collectiblesVariants1() {
         localStorage.collectibles_variants = "true"
-        document.getElementById("2024-11_collectibles_variants-1").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_collectibles_variants-00").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_collectibles_variants-1").classList.add('newish-experiment-button-selected');
+        document.getElementById("2024-11_collectibles_variants-00").classList.remove('newish-experiment-button-selected');
     }
 
     function collectiblesVariants00() {
         localStorage.collectibles_variants = "false"
-        document.getElementById("2024-11_collectibles_variants-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_collectibles_variants-00").classList.add('refresh-button-selected');
+        document.getElementById("2024-11_collectibles_variants-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-11_collectibles_variants-00").classList.add('newish-experiment-button-selected');
     }
 
     function collectiblesVariants0() {
         localStorage.collectibles_variants = "pleasesetautorollout"
-        document.getElementById("2024-11_collectibles_variants-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_collectibles_variants-00").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_collectibles_variants-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-11_collectibles_variants-00").classList.remove('newish-experiment-button-selected');
         fetchExperimentRolloutData();
     }
 
@@ -4771,21 +4845,38 @@ if (localStorage.full_client_rework != "false") {
 
     function recap2024Items1() {
         localStorage.recap_items_2024 = "true"
-        document.getElementById("2024-11_recap-1").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_recap-00").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_recap-1").classList.add('newish-experiment-button-selected');
+        document.getElementById("2024-11_recap-00").classList.remove('newish-experiment-button-selected');
     }
 
     function recap2024Items00() {
         localStorage.recap_items_2024 = "false"
-        document.getElementById("2024-11_recap-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_recap-00").classList.add('refresh-button-selected');
+        document.getElementById("2024-11_recap-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-11_recap-00").classList.add('newish-experiment-button-selected');
     }
 
     function recap2024Items0() {
         localStorage.recap_items_2024 = "pleasesetautorollout"
-        document.getElementById("2024-11_recap-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_recap-00").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_recap-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-11_recap-00").classList.remove('newish-experiment-button-selected');
         fetchExperimentRolloutData();
+    }
+
+
+
+
+    function disableClientReworkTrue() {
+        localStorage.full_client_rework = "false"
+        document.getElementById("2024-12_disable_client_rework-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-12_disable_client_rework-00").classList.add('newish-experiment-button-selected');
+        location.reload();
+    }
+    
+    function disableClientReworkFalse() {
+        localStorage.full_client_rework = "true"
+        document.getElementById("2024-12_disable_client_rework-1").classList.add('newish-experiment-button-selected');
+        document.getElementById("2024-12_disable_client_rework-00").classList.remove('newish-experiment-button-selected');
+        location.reload();
     }
 
 
@@ -4793,15 +4884,15 @@ if (localStorage.full_client_rework != "false") {
 
     function forceAllApiToFectchPrivateApiFalse() {
         localStorage.force_all_api_to_fectch_private_api = "none"
-        document.getElementById("2024-12_force_all_api_to_fectch_private_api-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-12_force_all_api_to_fectch_private_api-2").classList.add('refresh-button-selected');
+        document.getElementById("2024-12_force_all_api_to_fectch_private_api-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-12_force_all_api_to_fectch_private_api-2").classList.add('newish-experiment-button-selected');
         fetchData(pageCheck());
     }
     
     function forceAllApiToFectchPrivateApiTrue() {
         localStorage.force_all_api_to_fectch_private_api = "true"
-        document.getElementById("2024-12_force_all_api_to_fectch_private_api-1").classList.add('refresh-button-selected');
-        document.getElementById("2024-12_force_all_api_to_fectch_private_api-2").classList.remove('refresh-button-selected');
+        document.getElementById("2024-12_force_all_api_to_fectch_private_api-1").classList.add('newish-experiment-button-selected');
+        document.getElementById("2024-12_force_all_api_to_fectch_private_api-2").classList.remove('newish-experiment-button-selected');
         fetchData(pageCheck());
     }
 
@@ -4810,15 +4901,15 @@ if (localStorage.full_client_rework != "false") {
 
     function overrideLeaksButtonHide() {
         localStorage.override_leaks_button = "none"
-        document.getElementById("2024-11_override_leaks_button-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_override_leaks_button-2").classList.add('refresh-button-selected');
+        document.getElementById("2024-11_override_leaks_button-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-11_override_leaks_button-2").classList.add('newish-experiment-button-selected');
         leaksCheck();
     }
     
     function overrideLeaksButtonShow() {
         localStorage.override_leaks_button = "true"
-        document.getElementById("2024-11_override_leaks_button-1").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_override_leaks_button-2").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_override_leaks_button-1").classList.add('newish-experiment-button-selected');
+        document.getElementById("2024-11_override_leaks_button-2").classList.remove('newish-experiment-button-selected');
         leaksCheck();
     }
 
@@ -4826,15 +4917,15 @@ if (localStorage.full_client_rework != "false") {
 
     function unreleasedDiscordCollectiblesFalse() {
         localStorage.unreleased_discord_collectibles = "none"
-        document.getElementById("2024-11_unreleased_discord_collectibles-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-11_unreleased_discord_collectibles-2").classList.add('refresh-button-selected');
+        document.getElementById("2024-11_unreleased_discord_collectibles-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-11_unreleased_discord_collectibles-2").classList.add('newish-experiment-button-selected');
         fetchData(pageCheck());
     }
     
     function unreleasedDiscordCollectiblesTrue() {
         localStorage.unreleased_discord_collectibles = "true"
-        document.getElementById("2024-11_unreleased_discord_collectibles-1").classList.add('refresh-button-selected');
-        document.getElementById("2024-11_unreleased_discord_collectibles-2").classList.remove('refresh-button-selected');
+        document.getElementById("2024-11_unreleased_discord_collectibles-1").classList.add('newish-experiment-button-selected');
+        document.getElementById("2024-11_unreleased_discord_collectibles-2").classList.remove('newish-experiment-button-selected');
         fetchData(pageCheck());
     }
 
@@ -4843,15 +4934,15 @@ if (localStorage.full_client_rework != "false") {
     
     function unreleasedProfilesPlusItemsFalse() {
         localStorage.unreleased_profiles_plus = "none"
-        document.getElementById("2024-09_profiles_plus-1").classList.remove('refresh-button-selected');
-        document.getElementById("2024-09_profiles_plus-2").classList.add('refresh-button-selected');
+        document.getElementById("2024-09_profiles_plus-1").classList.remove('newish-experiment-button-selected');
+        document.getElementById("2024-09_profiles_plus-2").classList.add('newish-experiment-button-selected');
         fetchData(pageCheck());
     }
     
     function unreleasedProfilesPlusItemsTrue() {
         localStorage.unreleased_profiles_plus = "true"
-        document.getElementById("2024-09_profiles_plus-1").classList.add('refresh-button-selected');
-        document.getElementById("2024-09_profiles_plus-2").classList.remove('refresh-button-selected');
+        document.getElementById("2024-09_profiles_plus-1").classList.add('newish-experiment-button-selected');
+        document.getElementById("2024-09_profiles_plus-2").classList.remove('newish-experiment-button-selected');
         fetchData(pageCheck());
     }
     
@@ -5019,9 +5110,20 @@ if (localStorage.full_client_rework != "false") {
                 }
 
                 if (experiments.id === 10) {
-                    if (experiments.rolled_out_treatment === 1) {
+                    if (experiments.rolled_out_treatment === 2) {
+                        console.log(`exp 10:2`);
+                        if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true" && localStorage.experiment_theme_picker != "two") {
+                            localStorage.experiment_theme_picker = "two_autorollout"
+                        }
+                        try {
+                            document.getElementById('experiment-default-rollout-data-2024-12_theme_picker').innerHTML = `
+                                <p class="experiment-subtext">default rollout: Override 2</p>
+                            `;
+                        } catch (error) {
+                        }
+                    } else if (experiments.rolled_out_treatment === 1) {
                         console.log(`exp 10:1`);
-                        if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true") {
+                        if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true" && localStorage.experiment_theme_picker != "two") {
                             localStorage.experiment_theme_picker = "true_autorollout"
                         }
                         try {
@@ -5032,7 +5134,7 @@ if (localStorage.full_client_rework != "false") {
                         }
                     } else if (experiments.rolled_out_treatment === -1) {
                         console.log(`exp 10:-1`);
-                        if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true") {
+                        if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true" && localStorage.experiment_theme_picker != "two") {
                             localStorage.experiment_theme_picker = "false_autorollout"
                         }
                         try {
@@ -5058,4 +5160,115 @@ if (localStorage.full_client_rework != "false") {
         });
     }
     fetchExperimentRolloutData();
+
+
+    function triggerCrash() {
+        if (localStorage.crash_count == null) {
+            document.body.innerHTML = `
+                <div class="crash-info-container">
+                    <p style="font-size: 34px;">Uh Oh! Looks like the app has crashed.</p>
+                    <p style="font-size: 20px;">We have no idea what you did but you did something bad, refresh and don't do it again.</p>
+                </div>
+            `;
+            crashCountIncrease()
+        } else if (localStorage.crash_count == "1") {
+            document.body.innerHTML = `
+                <div class="crash-info-container">
+                    <p style="font-size: 34px;">Uh Oh! Looks like the app has crashed.</p>
+                    <p style="font-size: 20px;">We have no idea what you did but you did something bad, refresh and don't do it again.</p>
+                    <p style="font-size: 20px;">If this keeps happening, contact support or DON'T DO IT AGAIN!</p>
+                </div>
+            `;
+            crashCountIncrease()
+        } else if (localStorage.crash_count == "2") {
+            document.body.innerHTML = `
+                <div class="crash-info-container">
+                    <p style="font-size: 34px;">Uh Oh! Looks like the app has crashed.</p>
+                    <p style="font-size: 20px;">We have no idea what you did but you did something bad, refresh and don't do it again.</p>
+                    <p style="font-size: 20px;">I'm Serious, stop crashing my app.</p>
+                </div>
+            `;
+            crashCountIncrease()
+        } else if (localStorage.crash_count == "3") {
+            document.body.innerHTML = `
+                <div class="crash-info-container">
+                    <p style="font-size: 34px;">Uh Oh! Looks like the app has crashed.</p>
+                    <p style="font-size: 20px;">We have no idea what you did but you did something bad, refresh and don't do it again.</p>
+                    <p style="font-size: 20px;">You just don't know when to quit do you?</p>
+                </div>
+            `;
+            crashCountIncrease()
+        } else if (localStorage.crash_count == "4") {
+            document.body.innerHTML = `
+                <div class="crash-info-container">
+                    <p style="font-size: 34px;">Uh Oh! Looks like the app has crashed.</p>
+                    <p style="font-size: 20px;">We have no idea what you did but you did something bad, refresh and don't do it again.</p>
+                    <p style="font-size: 20px;">Do you want something from me?</p>
+                </div>
+            `;
+            crashCountIncrease()
+        } else if (localStorage.crash_count == "5") {
+            document.body.innerHTML = `
+                <div class="crash-info-container">
+                    <p style="font-size: 34px;">Uh Oh! Looks like the app has crashed.</p>
+                    <p style="font-size: 20px;">We have no idea what you did but you did something bad, refresh and don't do it again.</p>
+                    <p style="font-size: 20px;">What do you achieve by crashing my app so much? Honestly...</p>
+                </div>
+            `;
+            crashCountIncrease()
+        } else if (localStorage.crash_count == "6") {
+            document.body.innerHTML = `
+                <div class="crash-info-container">
+                    <p style="font-size: 34px;">Uh Oh! Looks like the app has crashed.</p>
+                    <p style="font-size: 20px;">We have no idea what you did but you did something bad, refresh and don't do it again.</p>
+                    <p style="font-size: 20px;">Crash my app one more time and I'll make you regret it...</p>
+                </div>
+            `;
+            crashCountIncrease()
+        } else if (localStorage.crash_count == "7") {
+            if (localStorage.dev == "true") {
+                document.body.innerHTML = `
+                    <div class="crash-info-container">
+                        <p style="font-size: 34px;">Uh Oh! Looks like the app has crashed.</p>
+                        <p style="font-size: 20px;">We have no idea what you did but you did something bad, refresh and don't do it again.</p>
+                        <p style="font-size: 20px;">Oh! You're a developer..? I'm so sorry, you're just testing stuff.. Well, go about your day.</p>
+                    </div>
+                `;
+            } else {
+                document.body.innerHTML = `
+                    <div class="crash-info-container">
+                        <p style="font-size: 34px;">Looks like you crashed the app.</p>
+                        <p style="font-size: 20px;">I know exactly what you did.</p>
+                    </div>
+                `;
+            }
+            crashCountIncrease()
+        } else if (localStorage.crash_count == "8") {
+            document.body.innerHTML = `
+                <div class="crash-info-container">
+                    <p style="font-size: 34px;">Uh Oh! Looks like the app has crashed.</p>
+                    <p style="font-size: 20px;">We have no idea what you did but you did something bad, refresh and don't do it again.</p>
+                    <p style="font-size: 20px;">If this keeps happening, contact support.</p>
+                </div>
+            `;
+        }
+    }
+
+    window.addEventListener('error', (event) => {
+        if (event.message.includes("is not defined")) {
+            triggerCrash();
+        }
+    });
+
+    function crashCountIncrease() {
+        // Retrieve the counter from localStorage or initialize it to 0
+        let crashCount = parseInt(localStorage.getItem('crash_count')) || 0;
+    
+        // Increment the counter
+        crashCount++;
+    
+        // Store the updated counter back to localStorage
+        localStorage.setItem('crash_count', crashCount);
+    }
+    
 }
