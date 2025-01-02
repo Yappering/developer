@@ -475,6 +475,34 @@ body {
     color: #787E85;
 }
 
+
+.options-option-card-holder {
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.options-option-card {
+    height: 60px;
+    width: 350px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.option-card-title {
+    position: absolute;
+    left: 10px;
+}
+
+.options-toggle-box {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+}
+
+
 .server-avatar {
     margin-top: 10px;
 }
@@ -2559,7 +2587,7 @@ data-share-product-card-button {
 
 
 .published-listings-tester-card {
-    background-color: #313338;
+    background-color: var(--background-primary);
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -2605,7 +2633,7 @@ data-share-product-card-button {
 }
 
 .sku-check-info-container {
-    background-color: #2B2D31;
+    background-color: var(--background-secondary);
     padding: 10px;
     border-radius: 10px;
     margin-top: 20px;

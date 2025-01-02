@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 186";
+tcbx926n29 = "Dev 187";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -221,6 +221,27 @@ if (localStorage.full_client_rework != "false") {
                                 if (apiCategory.category_bg != null) {
                                     category.querySelector("[data-shop-category-marketing-bg]").src = `https://cdn.yapper.shop/assets/${apiCategory.category_bg}.png`;
                                 }
+
+                                
+                                if (apiCategory.sku_id === PAPER_BEACH) {
+                                    category.querySelector("[data-shop-category-logo-holder]").style.display = 'unset';
+                                }
+                                if (apiCategory.sku_id === WINDOWKILL_V2) {
+                                    category.querySelector("[data-shop-category-logo-holder]").style.display = 'unset';
+                                }
+                                if (apiCategory.sku_id === FIVE_NIGHTS_AT_FREDDYS) {
+                                    category.querySelector("[data-shop-category-logo-holder]").style.display = 'unset';
+                                }
+                                if (apiCategory.sku_id === PLUS_SPECIAL_EVENT) {
+                                    category.querySelector("[data-shop-category-logo-holder]").style.display = 'unset';
+                                }
+                                if (apiCategory.sku_id === GEOMETRY_DASH) {
+                                    category.querySelector("[data-shop-category-logo-holder]").style.display = 'unset';
+                                }
+                                if (apiCategory.sku_id === PAPER_BEACH_V2) {
+                                    category.querySelector("[data-shop-category-logo-holder]").style.display = 'unset';
+                                }
+
 
                                 const cardOutput = category.querySelector("[data-shop-category-card-holder]");
                                 if (cardOutput) {
@@ -770,55 +791,30 @@ if (localStorage.full_client_rework != "false") {
 
                                 if (paper_beach2_banner) {
                                     try {
-                                        document.getElementById(`${PAPER_BEACH_V2}-discord-watermark-container`).innerHTML = ``;
                                         document.getElementById(`${PAPER_BEACH_V2}-summary`).style.color = 'black';
-                                    } catch (error) {}
-                                }
-
-                                if (geometry_dash_banner) {
-                                    try {
-                                        document.getElementById(`${GEOMETRY_DASH}-discord-watermark-container`).innerHTML = ``;
-                                    } catch (error) {}
-                                }
-
-                                if (special_event_plus_banner) {
-                                    try {
-                                        document.getElementById(`${PLUS_SPECIAL_EVENT}-discord-watermark-container`).innerHTML = ``;
-                                    } catch (error) {}
-                                }
-
-                                if (fnaf_banner) {
-                                    try {
-                                        document.getElementById(`${FIVE_NIGHTS_AT_FREDDYS}-discord-watermark-container`).innerHTML = ``;
                                     } catch (error) {}
                                 }
 
                                 if (windowkill2_banner) {
                                     try {
-                                        document.getElementById(`${WINDOWKILL_V2}-discord-watermark-container`).innerHTML = ``;
                                         document.getElementById(`${WINDOWKILL_V2}-summary`).style.color = 'black';
                                     } catch (error) {}
                                 }
 
                                 if (paper_beach_banner) {
                                     try {
-                                        document.getElementById(`${PAPER_BEACH}-discord-watermark-container`).innerHTML = ``;
                                         document.getElementById(`${PAPER_BEACH}-summary`).style.color = 'black';
                                     } catch (error) {}
                                 }
 
                                 if (bopl_battle_banner) {
                                     try {
-                                        document.getElementById(`${BOPL_BATTLE}-discord-watermark-container`).innerHTML = ``;
-                                        document.getElementById(`${BOPL_BATTLE}-logo-container`).innerHTML = ``;
                                         document.getElementById(`${BOPL_BATTLE}-summary`).style.color = 'black';
                                     } catch (error) {}
                                 }
 
                                 if (windowkill_banner) {
                                     try {
-                                        document.getElementById(`${WINDOWKILL}-discord-watermark-container`).innerHTML = ``;
-                                        document.getElementById(`${WINDOWKILL}-logo-container`).innerHTML = ``;
                                         document.getElementById(`${WINDOWKILL}-summary`).style.color = 'black';
                                     } catch (error) {}
                                 }
@@ -2209,6 +2205,10 @@ if (localStorage.full_client_rework != "false") {
             document.title = "Home | Shop Archives";
             createHomePageElement()
             document.getElementById("home-tab").classList.add('dm-button-selected');
+            document.getElementById("top-bar-container").innerHTML = `
+                <h2 style="margin-left: 260px; margin-top: 10px;">Home</h2>
+                <div id="open-help-modals-buttons-holder"></div>
+            `;
         } else if (params.get("page") === "recap_2024") {
             document.title = "2024 Recap | Shop Archives";
             document.getElementById("recap-2024-tab").classList.add('dm-button-selected');
@@ -3826,22 +3826,23 @@ if (localStorage.full_client_rework != "false") {
             document.getElementById('options-sidebar-container').classList.add("options-sidebar-container-expanded");
             document.getElementById('options-sidebar-container').innerHTML = `
                 <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Options</h1>
-                <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
-                    <div class="experiment-card" id="is-in-shop-box-option">
-                        <p style="color: var(--white);">Shop: Display all Item Variants</p>
-                        <p class="experiment-subtext">This will display all vatiants of an item</p>
+                <div class="options-option-card-holder">
+
+                    <div class="options-option-card" id="is-in-shop-box-option">
+                        <p class="option-card-title" style="color: var(--white);">Display all Item Variants</p>
                         <input class="options-toggle-box" onclick="inShopIsChecked();" style="cursor: pointer; scale: 2; posision: center;" id="is-in-shop-box" type="checkbox">
                     </div>
-                    <div class="experiment-card" id="reduced-motion-box-option">
-                        <p style="color: var(--white);">Reduced Motion</p>
-                        <p class="experiment-subtext">Stops some things from playing an animation</p>
+
+                    <div class="options-option-card" id="reduced-motion-box-option">
+                        <p class="option-card-title" style="color: var(--white);">Reduced Motion</p>
                         <input class="options-toggle-box" onclick="reducedMotionChecked();" style="cursor: pointer; scale: 2; posision: center;" id="reduced-motion-box" type="checkbox">
                     </div>
-                    <div class="experiment-card" id="disable-banner-overrides-box-option">
-                        <p style="color: var(--white);">Disable Banner Overrides</p>
-                        <p class="experiment-subtext">Disables some banner elements from being changed by the client</p>
+
+                    <div class="options-option-card" id="disable-banner-overrides-box-option">
+                        <p class="option-card-title" style="color: var(--white);">Disable Banner Overrides</p>
                         <input class="options-toggle-box" onclick="disableBannerOverridesChecked();" style="cursor: pointer; scale: 2; posision: center;" id="disable-banner-overrides-box" type="checkbox">
                     </div>
+
                 </div>
                 <div id="theme-picker-container"></div>
                 <div id="new-options-experiments-container"></div>
@@ -3877,23 +3878,35 @@ if (localStorage.full_client_rework != "false") {
 
             if (localStorage.experiment_theme_picker == "true" || localStorage.experiment_theme_picker == "true_autorollout" || localStorage.experiment_theme_picker == "two" || localStorage.experiment_theme_picker == "two_autorollout") {
                 document.getElementById("theme-picker-container").innerHTML = `
-                    <p class="center-text" style="font-size: 20px; margin-top: 0px; margin-bottom: -10px; color: var(--white);">Appearance</p>
+                    <p class="center-text" style="font-size: 20px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">Appearance</p>
+                    <p class="center-text" id="default-theme-title" style="display: none; font-size: 15px; margin-top: 0px; color: var(--white);">Default</p>
                     <div id="theme-selection-box-container">
                         <div class="theme-selection-box" title="Dark" id="theme-dark-button" onclick="themeDarkChecked();"></div>
                         <div class="theme-selection-box" title="Midnight" id="theme-midnight-button" onclick="themeMidnightChecked();"></div>
                         <div class="theme-selection-box" title="Light" id="theme-light-button" onclick="themeLightChecked();"></div>
+                    </div>
+                    <p class="center-text" id="custom-theme-title" style="display: none; font-size: 15px; margin-top: 0px; color: var(--white);">Custom</p>
+                `;
+                if (localStorage.experiment_theme_picker == "two" || localStorage.experiment_theme_picker == "two_autorollout") {
+                    const themes_container = document.getElementById("theme-picker-container");
+
+                    document.getElementById("default-theme-title").style.display = 'unset';
+                    document.getElementById("custom-theme-title").style.display = 'unset';
+
+                    let custom_themes = document.createElement("div");
+                    custom_themes.id = 'theme-selection-box-container';
+
+                    custom_themes.innerHTML = `
                         <div class="theme-selection-box" title="Neon Green" id="theme-neongreen-button" onclick="themeNeonGreenChecked();"></div>
                         <div class="theme-selection-box" title="Neon Purple" id="theme-neonpurple-button" onclick="themeNeonPurpleChecked();"></div>
                         <div id="add-custom-theme-box-container">
-                        </div>
-                    </div>
-                `;
-                if (localStorage.experiment_theme_picker == "two" || localStorage.experiment_theme_picker == "two_autorollout") {
-                    document.getElementById("add-custom-theme-box-container").innerHTML = `
-                        <div class="theme-selection-box" title="Add Custon Theme" id="theme-custom-button" onclick="themeAddCustom();">
-                            <svg class="circleIcon_db6521" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z" class=""></path></svg>
+                            <div class="theme-selection-box" title="Add Custon Theme" id="theme-custom-button" onclick="themeAddCustom();">
+                                <svg class="circleIcon_db6521" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z" class=""></path></svg>
+                            </div>
                         </div>
                     `;
+
+                    themes_container.appendChild(custom_themes);
                 }
             }
 
@@ -3905,24 +3918,39 @@ if (localStorage.full_client_rework != "false") {
             }
 
             if (localStorage.sa_theme == "dark") {
-                document.getElementById("theme-dark-button").classList.add('theme-selection-box-selected');
-                document.body.classList.add('theme-dark');
+                try {
+                    document.getElementById("theme-dark-button").classList.add('theme-selection-box-selected');
+                    document.body.classList.add('theme-dark');
+                } catch (error) {
+                }
             } else
             if (localStorage.sa_theme == "midnight") {
-                document.getElementById("theme-midnight-button").classList.add('theme-selection-box-selected');
-                document.body.classList.add('theme-midnight');
+                try {
+                    document.getElementById("theme-midnight-button").classList.add('theme-selection-box-selected');
+                    document.body.classList.add('theme-midnight');
+                } catch (error) {
+                }
             } else
             if (localStorage.sa_theme == "light") {
-                document.getElementById("theme-light-button").classList.add('theme-selection-box-selected');
-                document.body.classList.add('theme-light');
+                try {
+                    document.getElementById("theme-light-button").classList.add('theme-selection-box-selected');
+                    document.body.classList.add('theme-light');
+                } catch (error) {
+                }
             } else
             if (localStorage.sa_theme == "neongreen") {
-                document.getElementById("theme-neongreen-button").classList.add('theme-selection-box-selected');
-                document.body.classList.add('theme-neongreen');
+                try {
+                    document.getElementById("theme-neongreen-button").classList.add('theme-selection-box-selected');
+                    document.body.classList.add('theme-neongreen');
+                } catch (error) {
+                }
             } else
             if (localStorage.sa_theme == "neonpurple") {
-                document.getElementById("theme-neonpurple-button").classList.add('theme-selection-box-selected');
-                document.body.classList.add('theme-neonpurple');
+                try {
+                    document.getElementById("theme-neonpurple-button").classList.add('theme-selection-box-selected');
+                    document.body.classList.add('theme-neonpurple');
+                } catch (error) {
+                }
             }
             
 
@@ -4036,16 +4064,19 @@ if (localStorage.full_client_rework != "false") {
     }
 
     function clearCurrentTheme() {
-        document.getElementById("theme-dark-button").classList.remove('theme-selection-box-selected');
-        document.body.classList.remove('theme-dark');
-        document.getElementById("theme-midnight-button").classList.remove('theme-selection-box-selected');
-        document.body.classList.remove('theme-midnight');
-        document.getElementById("theme-light-button").classList.remove('theme-selection-box-selected');
-        document.body.classList.remove('theme-light');
-        document.getElementById("theme-neongreen-button").classList.remove('theme-selection-box-selected');
-        document.body.classList.remove('theme-neongreen');
-        document.getElementById("theme-neonpurple-button").classList.remove('theme-selection-box-selected');
-        document.body.classList.remove('theme-neonpurple');
+        try {
+            document.getElementById("theme-dark-button").classList.remove('theme-selection-box-selected');
+            document.body.classList.remove('theme-dark');
+            document.getElementById("theme-midnight-button").classList.remove('theme-selection-box-selected');
+            document.body.classList.remove('theme-midnight');
+            document.getElementById("theme-light-button").classList.remove('theme-selection-box-selected');
+            document.body.classList.remove('theme-light');
+            document.getElementById("theme-neongreen-button").classList.remove('theme-selection-box-selected');
+            document.body.classList.remove('theme-neongreen');
+            document.getElementById("theme-neonpurple-button").classList.remove('theme-selection-box-selected');
+            document.body.classList.remove('theme-neonpurple');
+        } catch (error) {
+        }
     }
 
     function inShopIsChecked() {
@@ -5017,147 +5048,129 @@ if (localStorage.full_client_rework != "false") {
     }
 
     function fetchExperimentRolloutData() {
-        fetch(api + EXPERIMENT_ROLLOUTS)
-        .then(response => response.json())
-        .then((data) => {
-            data.forEach(experiments => {
-    
-                if (experiments.id === 7) {
-                    if (experiments.rolled_out_treatment === 1) {
-                        console.log(`exp 7:1`);
-                        if (localStorage.recap_items_2024 != "false" && localStorage.recap_items_2024 != "true") {
-                            localStorage.recap_items_2024 = "true_autorollout"
-                        }
-                        try {
-                            document.getElementById('experiment-default-rollout-data-2024-11_recap').innerHTML = `
-                                <p class="experiment-subtext">default rollout: Override 1</p>
-                            `;
-                        } catch (error) {
-                        }
-                    } else if (experiments.rolled_out_treatment === -1) {
-                        console.log(`exp 7:-1`);
-                        if (localStorage.recap_items_2024 != "false" && localStorage.recap_items_2024 != "true") {
-                            localStorage.recap_items_2024 = "false_autorollout"
-                        }
-                        try {
-                            document.getElementById('experiment-default-rollout-data-2024-11_recap').innerHTML = `
-                                <p class="experiment-subtext">default rollout: Override -1</p>
-                            `;
-                        } catch (error) {
-                        }
-                    } else {
-                        console.warn(`exp 7:?`);
-                        console.error(`Failed to load treatment for experiment 7`);
-                    }
-                }
-
-                if (experiments.id === 8) {
-                    if (experiments.rolled_out_treatment === 1) {
-                        console.log(`exp 8:1`);
-                        if (localStorage.collectibles_variants != "false" && localStorage.collectibles_variants != "true") {
-                            localStorage.collectibles_variants = "true_autorollout"
-                        }
-                        try {
-                            document.getElementById('experiment-default-rollout-data-2024-11_collectibles_variants').innerHTML = `
-                                <p class="experiment-subtext">default rollout: Override 1</p>
-                            `;
-                        } catch (error) {
-                        }
-                    } else if (experiments.rolled_out_treatment === -1) {
-                        console.log(`exp 8:-1`);
-                        if (localStorage.collectibles_variants != "false" && localStorage.collectibles_variants != "true") {
-                            localStorage.collectibles_variants = "false_autorollout"
-                        }
-                        try {
-                            document.getElementById('experiment-default-rollout-data-2024-11_collectibles_variants').innerHTML = `
-                                <p class="experiment-subtext">default rollout: Override -1</p>
-                            `;
-                        } catch (error) {
-                        }
-                    } else {
-                        console.warn(`exp 8:?`);
-                        console.error(`Failed to load treatment for experiment 8`);
-                    }
-                }
-
-                if (experiments.id === 9) {
-                    if (experiments.rolled_out_treatment === 1) {
-                        console.log(`exp 9:1`);
-                        if (localStorage.profiles_plus_marketing_variants != "false" && localStorage.profiles_plus_marketing_variants != "variant_1") {
-                            localStorage.profiles_plus_marketing_variants = "variant_1_autorollout"
-                        }
-                        try {
-                            document.getElementById('experiment-default-rollout-data-2024-12_profiles_plus_marketing_variants').innerHTML = `
-                                <p class="experiment-subtext">default rollout: Override 1</p>
-                            `;
-                        } catch (error) {
-                        }
-                    } else if (experiments.rolled_out_treatment === -1) {
-                        console.log(`exp 9:-1`);
-                        if (localStorage.profiles_plus_marketing_variants != "false" && localStorage.profiles_plus_marketing_variants != "variant_1") {
-                            localStorage.profiles_plus_marketing_variants = "false_autorollout"
-                        }
-                        try {
-                            document.getElementById('experiment-default-rollout-data-2024-12_profiles_plus_marketing_variants').innerHTML = `
-                                <p class="experiment-subtext">default rollout: Override -1</p>
-                            `;
-                        } catch (error) {
-                        }
-                    } else {
-                        console.warn(`exp 9:?`);
-                        console.error(`Failed to load treatment for experiment 9`);
-                    }
-                }
-
-                if (experiments.id === 10) {
-                    if (experiments.rolled_out_treatment === 2) {
-                        console.log(`exp 10:2`);
-                        if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true" && localStorage.experiment_theme_picker != "two") {
-                            localStorage.experiment_theme_picker = "two_autorollout"
-                        }
-                        try {
-                            document.getElementById('experiment-default-rollout-data-2024-12_theme_picker').innerHTML = `
-                                <p class="experiment-subtext">default rollout: Override 2</p>
-                            `;
-                        } catch (error) {
-                        }
-                    } else if (experiments.rolled_out_treatment === 1) {
-                        console.log(`exp 10:1`);
-                        if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true" && localStorage.experiment_theme_picker != "two") {
-                            localStorage.experiment_theme_picker = "true_autorollout"
-                        }
-                        try {
-                            document.getElementById('experiment-default-rollout-data-2024-12_theme_picker').innerHTML = `
-                                <p class="experiment-subtext">default rollout: Override 1</p>
-                            `;
-                        } catch (error) {
-                        }
-                    } else if (experiments.rolled_out_treatment === -1) {
-                        console.log(`exp 10:-1`);
-                        if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true" && localStorage.experiment_theme_picker != "two") {
-                            localStorage.experiment_theme_picker = "false_autorollout"
-                        }
-                        try {
-                            document.getElementById('experiment-default-rollout-data-2024-12_theme_picker').innerHTML = `
-                                <p class="experiment-subtext">default rollout: Override -1</p>
-                            `;
-                        } catch (error) {
-                        }
-                    } else {
-                        console.warn(`exp 10:?`);
-                        console.error(`Failed to load treatment for experiment 10`);
-                    }
-                }
-    
-            });
+        if (EXPERIMENT_ID_7 === 1) {
+            console.log(`exp 7:1`);
+            if (localStorage.recap_items_2024 != "false" && localStorage.recap_items_2024 != "true") {
+                localStorage.recap_items_2024 = "true_autorollout"
+            }
             try {
-                colorButtonsPerRollout()
+                document.getElementById('experiment-default-rollout-data-2024-11_recap').innerHTML = `
+                    <p class="experiment-subtext">default rollout: Override 1</p>
+                `;
             } catch (error) {
             }
-        })
-        .catch(error => {
-            console.error(error)
-        });
+        } else if (EXPERIMENT_ID_7 === -1) {
+            console.log(`exp 7:-1`);
+            if (localStorage.recap_items_2024 != "false" && localStorage.recap_items_2024 != "true") {
+                localStorage.recap_items_2024 = "false_autorollout"
+            }
+            try {
+                document.getElementById('experiment-default-rollout-data-2024-11_recap').innerHTML = `
+                    <p class="experiment-subtext">default rollout: Override -1</p>
+                `;
+            } catch (error) {
+            }
+        } else {
+            console.warn(`exp 7:?`);
+            console.error(`Failed to load treatment for experiment 7`);
+        }
+
+        if (EXPERIMENT_ID_8 === 1) {
+            console.log(`exp 8:1`);
+            if (localStorage.collectibles_variants != "false" && localStorage.collectibles_variants != "true") {
+                localStorage.collectibles_variants = "true_autorollout"
+            }
+            try {
+                document.getElementById('experiment-default-rollout-data-2024-11_collectibles_variants').innerHTML = `
+                    <p class="experiment-subtext">default rollout: Override 1</p>
+                `;
+            } catch (error) {
+            }
+        } else if (EXPERIMENT_ID_8 === -1) {
+            console.log(`exp 8:-1`);
+            if (localStorage.collectibles_variants != "false" && localStorage.collectibles_variants != "true") {
+                localStorage.collectibles_variants = "false_autorollout"
+            }
+            try {
+                document.getElementById('experiment-default-rollout-data-2024-11_collectibles_variants').innerHTML = `
+                    <p class="experiment-subtext">default rollout: Override -1</p>
+                `;
+            } catch (error) {
+            }
+        } else {
+            console.warn(`exp 8:?`);
+            console.error(`Failed to load treatment for experiment 8`);
+        }
+
+        if (EXPERIMENT_ID_9 === 1) {
+            console.log(`exp 9:1`);
+            if (localStorage.profiles_plus_marketing_variants != "false" && localStorage.profiles_plus_marketing_variants != "variant_1") {
+                localStorage.profiles_plus_marketing_variants = "variant_1_autorollout"
+            }
+            try {
+                document.getElementById('experiment-default-rollout-data-2024-12_profiles_plus_marketing_variants').innerHTML = `
+                    <p class="experiment-subtext">default rollout: Override 1</p>
+                `;
+            } catch (error) {
+            }
+        } else if (EXPERIMENT_ID_9 === -1) {
+            console.log(`exp 9:-1`);
+            if (localStorage.profiles_plus_marketing_variants != "false" && localStorage.profiles_plus_marketing_variants != "variant_1") {
+                localStorage.profiles_plus_marketing_variants = "false_autorollout"
+            }
+            try {
+                document.getElementById('experiment-default-rollout-data-2024-12_profiles_plus_marketing_variants').innerHTML = `
+                    <p class="experiment-subtext">default rollout: Override -1</p>
+                `;
+            } catch (error) {
+            }
+        } else {
+            console.warn(`exp 9:?`);
+            console.error(`Failed to load treatment for experiment 9`);
+        }
+
+        if (EXPERIMENT_ID_10 === 2) {
+            console.log(`exp 10:2`);
+            if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true" && localStorage.experiment_theme_picker != "two") {
+                localStorage.experiment_theme_picker = "two_autorollout"
+            }
+            try {
+                document.getElementById('experiment-default-rollout-data-2024-12_theme_picker').innerHTML = `
+                    <p class="experiment-subtext">default rollout: Override 2</p>
+                `;
+            } catch (error) {
+            } 
+        } else if (EXPERIMENT_ID_10 === 1) {
+            console.log(`exp 10:1`);
+            if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true" && localStorage.experiment_theme_picker != "two") {
+                localStorage.experiment_theme_picker = "true_autorollout"
+            }
+            try {
+                document.getElementById('experiment-default-rollout-data-2024-12_theme_picker').innerHTML = `
+                    <p class="experiment-subtext">default rollout: Override 1</p>
+                `;
+            } catch (error) {
+            }
+        } else if (EXPERIMENT_ID_10 === -1) {
+            console.log(`exp 10:-1`);
+            if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true" && localStorage.experiment_theme_picker != "two") {
+                localStorage.experiment_theme_picker = "false_autorollout"
+            }
+            try {
+                document.getElementById('experiment-default-rollout-data-2024-12_theme_picker').innerHTML = `
+                    <p class="experiment-subtext">default rollout: Override -1</p>
+                `;
+            } catch (error) {
+            }
+        } else {
+            console.warn(`exp 10:?`);
+            console.error(`Failed to load treatment for experiment 10`);
+        }
+
+        try {
+            colorButtonsPerRollout()
+        } catch (error) {
+        }
     }
     fetchExperimentRolloutData();
 
