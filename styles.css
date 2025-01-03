@@ -156,6 +156,7 @@ body {
 }
 
 .theme-selection-box {
+    position: relative;
     width: 60px;
     height: 60px;
     border: 2px rgb(167, 167, 167) solid;
@@ -491,15 +492,92 @@ body {
     margin-right: auto;
 }
 
+.options-option-card:has(.experiment-treatment-picker) {
+    height: 100px;
+}
+
 .option-card-title {
     position: absolute;
     left: 10px;
+    color: var(--white);
+}
+
+.new-experiment-subtext {
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    color: var(--8);
 }
 
 .options-toggle-box {
     position: absolute;
     right: 10px;
     top: 15px;
+}
+
+.experiment-treatment-picker {
+    position: absolute;
+    left: 10px;
+    top: 70px;
+    width: 72%;
+    height: 30px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: var(--white);
+    background-color: var(--input-background);
+    cursor: pointer;
+}
+
+.new-experiment-clear-button {
+    position: absolute;
+    right: 10px;
+    top: 70px;
+    width: 20%;
+    height: 30px;
+    background-color: var(--brand-500);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.new-experiment-clear-button:hover {
+    background-color: var(--brand-500-hover);
+}
+
+.theme-selection-box:hover .edit-custom-theme-box, .theme-selection-box:hover .delete-custom-theme-box {
+    opacity: 1;
+}
+
+.theme-selection-box {
+    overflow: hidden;
+}
+
+.edit-custom-theme-box {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #615DED;
+    bottom: 0px;
+    left: 0px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.delete-custom-theme-box {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #DD383F;
+    bottom: 0px;
+    right: 0px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
 

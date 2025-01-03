@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 187";
+tcbx926n29 = "Dev 189";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -2188,7 +2188,7 @@ if (localStorage.full_client_rework != "false") {
         }
     }
 
-    if (localStorage.recap_items_2024 === "true" || localStorage.recap_items_2024 === "true_autorollout") {
+    if (localStorage.experiment_2024_11_recap === "Treatment 1: Enabled") {
         document.getElementById('recap-2024-tab-loading').innerHTML = `
             <img class="recap-2024-tab-decoration" src="https://cdn.yapper.shop/assets/104.png">
             <button class="dm-button" id="recap-2024-tab" onclick="setParams({page: 'recap_2024'}); location.reload();">
@@ -2271,7 +2271,7 @@ if (localStorage.full_client_rework != "false") {
             } else {
                 apiUrl = api + PROFILES_PLUS;
             }
-            if (localStorage.profiles_plus_marketing_variants == "variant_1" || localStorage.profiles_plus_marketing_variants == "variant_1_autorollout") {
+            if (localStorage.experiment_2024_12_profiles_plus_marketing_variants == "Treatment 1: Paper Beach V2") {
                 localStorage.dismissible_paper_beach_v2_marketing = "dismissed";
             }
             createMainShopElement()
@@ -2465,7 +2465,7 @@ if (localStorage.full_client_rework != "false") {
                 </div>
             `;
         }
-        if (localStorage.recap_items_2024 === "true" || localStorage.recap_items_2024 === "true_autorollout") {
+        if (localStorage.experiment_2024_11_recap === "Treatment 1: Enabled") {
             if (localStorage.dismissible_recap_2024 != "dismissed") {
                 document.getElementById("home-page-dismissible-content-container").innerHTML = `
                     <img class="home-page-dismissible-content-2024-recap" onclick="dismissibleContentRecap2024()" src="${cdn}${DISMISSIBLE_2024_RECAP}" title="Check out everything 2024 had to offer!">
@@ -3876,7 +3876,7 @@ if (localStorage.full_client_rework != "false") {
                 App Version: ${tcbx926n29}
             `;
 
-            if (localStorage.experiment_theme_picker == "true" || localStorage.experiment_theme_picker == "true_autorollout" || localStorage.experiment_theme_picker == "two" || localStorage.experiment_theme_picker == "two_autorollout") {
+            if (localStorage.experiment_2024_12_theme_picker == "Treatment 1: Enabled" || localStorage.experiment_2024_12_theme_picker == "Treatment 2: Enabled with custom css") {
                 document.getElementById("theme-picker-container").innerHTML = `
                     <p class="center-text" style="font-size: 20px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">Appearance</p>
                     <p class="center-text" id="default-theme-title" style="display: none; font-size: 15px; margin-top: 0px; color: var(--white);">Default</p>
@@ -3887,7 +3887,7 @@ if (localStorage.full_client_rework != "false") {
                     </div>
                     <p class="center-text" id="custom-theme-title" style="display: none; font-size: 15px; margin-top: 0px; color: var(--white);">Custom</p>
                 `;
-                if (localStorage.experiment_theme_picker == "two" || localStorage.experiment_theme_picker == "two_autorollout") {
+                if (localStorage.experiment_2024_12_theme_picker == "Treatment 2: Enabled with custom css") {
                     const themes_container = document.getElementById("theme-picker-container");
 
                     document.getElementById("default-theme-title").style.display = 'unset';
@@ -3897,8 +3897,14 @@ if (localStorage.full_client_rework != "false") {
                     custom_themes.id = 'theme-selection-box-container';
 
                     custom_themes.innerHTML = `
-                        <div class="theme-selection-box" title="Neon Green" id="theme-neongreen-button" onclick="themeNeonGreenChecked();"></div>
-                        <div class="theme-selection-box" title="Neon Purple" id="theme-neonpurple-button" onclick="themeNeonPurpleChecked();"></div>
+                        <div class="theme-selection-box" title="Neon Green" id="theme-neongreen-button" onclick="themeNeonGreenChecked();">
+                            <div class="edit-custom-theme-box"></div>
+                            <div class="delete-custom-theme-box"></div>
+                        </div>
+                        <div class="theme-selection-box" title="Neon Purple" id="theme-neonpurple-button" onclick="themeNeonPurpleChecked();">
+                            <div class="edit-custom-theme-box"></div>
+                            <div class="delete-custom-theme-box"></div>
+                        </div>
                         <div id="add-custom-theme-box-container">
                             <div class="theme-selection-box" title="Add Custon Theme" id="theme-custom-button" onclick="themeAddCustom();">
                                 <svg class="circleIcon_db6521" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z" class=""></path></svg>
@@ -3908,13 +3914,6 @@ if (localStorage.full_client_rework != "false") {
 
                     themes_container.appendChild(custom_themes);
                 }
-            }
-
-            if (localStorage.dev == "true") {
-                document.getElementById("new-options-experiments-container").innerHTML = `
-                    <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Experiments</p>
-                    you are dev, and experiments will soon go here
-                `;
             }
 
             if (localStorage.sa_theme == "dark") {
@@ -4025,8 +4024,226 @@ if (localStorage.full_client_rework != "false") {
                     content.appendChild(clone);
                 });
             }
+
+
+            if (localStorage.dev == "true") {
+                document.getElementById("new-options-experiments-container").innerHTML = `
+
+                    <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Experiments</p>
+
+                    <div class="options-option-card">
+                        <p class="option-card-title" style="color: var(--white);">Disabled Force Rollouts</p>
+                        <input class="options-toggle-box" onclick="disabledExperimentForceRollout();" style="cursor: pointer; scale: 2; posision: center;" id="experiment-force-rollout" type="checkbox">
+                    </div>
+
+                    <div class="options-option-card">
+                        <p class="option-card-title">Theme Picker</p>
+                        <p class="new-experiment-subtext">2024_12_theme_picker</p>
+                        <select id="experiment_2024_12_theme_picker_treatment_container" class="experiment-treatment-picker">
+                        </select>
+                        <button class="new-experiment-clear-button" onclick="experiment_2024_12_theme_picker_treatment_clear()">Clear</button>
+                    </div>
+
+                    <div class="options-option-card">
+                        <p class="option-card-title">Profiles Plus Marketing Variants</p>
+                        <p class="new-experiment-subtext">2024-12_profiles_plus_marketing_variants</p>
+                        <select id="experiment_2024_12_profiles_plus_marketing_variants_treatment_container" class="experiment-treatment-picker">
+                        </select>
+                        <button class="new-experiment-clear-button" onclick="experiment_2024_12_profiles_plus_marketing_variants_treatment_clear()">Clear</button>
+                    </div>
+
+                    <div class="options-option-card">
+                        <p class="option-card-title">2024 Recap</p>
+                        <p class="new-experiment-subtext">2024-11_recap</p>
+                        <select id="experiment_2024_11_recap_treatment_container" class="experiment-treatment-picker">
+                        </select>
+                        <button class="new-experiment-clear-button" onclick="experiment_2024_11_recap_treatment_clear()">Clear</button>
+                    </div>
+
+                `;
+
+                if (localStorage.experiment_force_rollout == "false") {
+                    document.getElementById("experiment-force-rollout").checked = true;
+                }
+
+
+                try {
+                    const experiment_2024_12_theme_picker_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled", "Treatment 2: Enabled with custom css"];
+
+                    const experiment_2024_12_theme_picker_treatment_picker = document.getElementById("experiment_2024_12_theme_picker_treatment_container");
+                    
+
+                    populate_experiment_2024_12_theme_picker();
+                    
+                    const storedTreatment = localStorage.getItem("experiment_2024_12_theme_picker");
+                    if (storedTreatment) {
+                        experiment_2024_12_theme_picker_treatment_picker.value = storedTreatment;
+                    }
+
+                    function populate_experiment_2024_12_theme_picker() {
+                        experiment_2024_12_theme_picker_treatments.forEach((treatments) => {
+                            const optElement = document.createElement("option");
+                            optElement.value = treatments;
+                            optElement.textContent = treatments;
+                            experiment_2024_12_theme_picker_treatment_picker.appendChild(optElement);
+                        });
+                    }
+
+                    experiment_2024_12_theme_picker_treatment_picker.addEventListener("change", () => {
+                        const selectedTreatment = experiment_2024_12_theme_picker_treatment_picker.value;
+                    
+                        // Store the selection
+                        localStorage.setItem("experiment_2024_12_theme_picker", selectedTreatment);
+                    });
+                } catch(error) {
+                }
+
+
+                try {
+                    const experiment_2024_12_profiles_plus_marketing_variants_treatments = ["Treatment -1: Disabled", "Treatment 1: Paper Beach V2"];
+
+                    const experiment_2024_12_profiles_plus_marketing_variants_treatment_picker = document.getElementById("experiment_2024_12_profiles_plus_marketing_variants_treatment_container");
+                    
+
+                    populate_experiment_2024_12_profiles_plus_marketing_variants();
+                    
+                    const storedTreatment = localStorage.getItem("experiment_2024_12_profiles_plus_marketing_variants");
+                    if (storedTreatment) {
+                        experiment_2024_12_profiles_plus_marketing_variants_treatment_picker.value = storedTreatment;
+                    }
+
+                    function populate_experiment_2024_12_profiles_plus_marketing_variants() {
+                        experiment_2024_12_profiles_plus_marketing_variants_treatments.forEach((treatments) => {
+                            const optElement = document.createElement("option");
+                            optElement.value = treatments;
+                            optElement.textContent = treatments;
+                            experiment_2024_12_profiles_plus_marketing_variants_treatment_picker.appendChild(optElement);
+                        });
+                    }
+
+                    experiment_2024_12_profiles_plus_marketing_variants_treatment_picker.addEventListener("change", () => {
+                        const selectedTreatment = experiment_2024_12_profiles_plus_marketing_variants_treatment_picker.value;
+                    
+                        // Store the selection
+                        localStorage.setItem("experiment_2024_12_profiles_plus_marketing_variants", selectedTreatment);
+                    });
+                } catch(error) {
+                }
+                
+
+                try {
+                    const experiment_2024_11_collectibles_variants_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled"];
+
+                    const experiment_2024_11_collectibles_variants_treatment_picker = document.getElementById("experiment_2024_11_collectibles_variants_treatment_container");
+                    
+
+                    populate_experiment_2024_11_collectibles_variants();
+                    
+                    const storedTreatment = localStorage.getItem("experiment_2024_11_collectibles_variants");
+                    if (storedTreatment) {
+                        experiment_2024_11_collectibles_variants_treatment_picker.value = storedTreatment;
+                    }
+
+                    function populate_experiment_2024_11_collectibles_variants() {
+                        experiment_2024_11_collectibles_variants_treatments.forEach((treatments) => {
+                            const optElement = document.createElement("option");
+                            optElement.value = treatments;
+                            optElement.textContent = treatments;
+                            experiment_2024_11_collectibles_variants_treatment_picker.appendChild(optElement);
+                        });
+                    }
+
+                    experiment_2024_11_collectibles_variants_treatment_picker.addEventListener("change", () => {
+                        const selectedTreatment = experiment_2024_11_collectibles_variants_treatment_picker.value;
+                    
+                        // Store the selection
+                        localStorage.setItem("experiment_2024_11_collectibles_variants", selectedTreatment);
+                    });
+                } catch(error) {
+                }
+
+
+                try {
+                    const experiment_2024_11_recap_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled"];
+
+                    const experiment_2024_11_recap_treatment_picker = document.getElementById("experiment_2024_11_recap_treatment_container");
+                    
+
+                    populate_experiment_2024_11_recap();
+                    
+                    const storedTreatment = localStorage.getItem("experiment_2024_11_recap");
+                    if (storedTreatment) {
+                        experiment_2024_11_recap_treatment_picker.value = storedTreatment;
+                    }
+
+                    function populate_experiment_2024_11_recap() {
+                        experiment_2024_11_recap_treatments.forEach((treatments) => {
+                            const optElement = document.createElement("option");
+                            optElement.value = treatments;
+                            optElement.textContent = treatments;
+                            experiment_2024_11_recap_treatment_picker.appendChild(optElement);
+                        });
+                    }
+
+                    experiment_2024_11_recap_treatment_picker.addEventListener("change", () => {
+                        const selectedTreatment = experiment_2024_11_recap_treatment_picker.value;
+                    
+                        // Store the selection
+                        localStorage.setItem("experiment_2024_11_recap", selectedTreatment);
+                    });
+                } catch(error) {
+                }
+            }
+
         }
     }
+
+    if (localStorage.experiment_force_rollout != "false") {
+        localStorage.experiment_2024_12_theme_picker = EXPERIMENT_ID_10;
+        localStorage.experiment_2024_12_profiles_plus_marketing_variants = EXPERIMENT_ID_9;
+        localStorage.experiment_2024_11_collectibles_variants = EXPERIMENT_ID_8;
+        localStorage.experiment_2024_11_recap = EXPERIMENT_ID_7;
+    } else {
+        if (localStorage.experiment_2024_12_theme_picker == null) {
+            localStorage.experiment_2024_12_theme_picker = EXPERIMENT_ID_10;
+        }
+        
+        if (localStorage.experiment_2024_12_profiles_plus_marketing_variants == null) {
+            localStorage.experiment_2024_12_profiles_plus_marketing_variants = EXPERIMENT_ID_9;
+        }
+    
+        if (localStorage.experiment_2024_11_collectibles_variants == null) {
+            localStorage.experiment_2024_11_collectibles_variants = EXPERIMENT_ID_8;
+        }
+    
+        if (localStorage.experiment_2024_11_recap == null) {
+            localStorage.experiment_2024_11_recap = EXPERIMENT_ID_7;
+        }
+    }
+
+
+    function experiment_2024_12_theme_picker_treatment_clear() {
+        localStorage.experiment_2024_12_theme_picker = EXPERIMENT_ID_10;
+        document.getElementById("experiment_2024_12_theme_picker_treatment_container").value = EXPERIMENT_ID_10;
+    };
+
+    function experiment_2024_12_profiles_plus_marketing_variants_treatment_clear() {
+        localStorage.experiment_2024_12_profiles_plus_marketing_variants = EXPERIMENT_ID_9;
+        document.getElementById("experiment_2024_12_profiles_plus_marketing_variants_treatment_container").value = EXPERIMENT_ID_9;
+    };
+
+    function experiment_2024_11_collectibles_variants_treatment_clear() {
+        localStorage.experiment_2024_11_collectibles_variants = EXPERIMENT_ID_8;
+        document.getElementById("experiment_2024_11_collectibles_variants_treatment_container").value = EXPERIMENT_ID_8;
+    };
+    
+    function experiment_2024_11_recap_treatment_clear() {
+        localStorage.experiment_2024_11_recap = EXPERIMENT_ID_8;
+        document.getElementById("experiment_2024_11_recap_treatment_container").value = EXPERIMENT_ID_8;
+    };
+
+
+
 
     function themeDarkChecked() {
         clearCurrentTheme()
@@ -4076,6 +4293,15 @@ if (localStorage.full_client_rework != "false") {
             document.getElementById("theme-neonpurple-button").classList.remove('theme-selection-box-selected');
             document.body.classList.remove('theme-neonpurple');
         } catch (error) {
+        }
+    }
+
+    function disabledExperimentForceRollout() {
+        if (localStorage.experiment_force_rollout != "true") {
+            localStorage.experiment_force_rollout = "true"
+        }
+        else {
+            localStorage.experiment_force_rollout = "false"
         }
     }
 
@@ -4275,62 +4501,6 @@ if (localStorage.full_client_rework != "false") {
                         <button class="staff-safe-mode-button" onclick="turnOffDevMode()">Safe Mode</button>
                         <hr>
                         <div>
-                            <h2>Experiments</h2>
-                            <p class="experiment-subtext">Test out new features</p>
-                            <div class="experiment-card-holder">
-
-                                <div class="experiment-card">
-                                    <p>Theme Picker</p>
-                                    <p class="experiment-subtext">2024-12_theme_picker</p>
-                                    <div id="experiment-default-rollout-data-2024-12_theme_picker">
-                                        <p class="experiment-subtext">default rollout: Loading...</p>
-                                    </div>
-                                    <button class="newish-experiment-button" onclick="themePicker2()" id="2024-12_theme_picker-2" title="with add custom theme">2</button>
-                                    <button class="newish-experiment-button" onclick="themePicker1()" id="2024-12_theme_picker-1">1</button>
-                                    <button class="newish-experiment-button" onclick="themePicker00()" id="2024-12_theme_picker-00">-1</button>
-                                    <button class="newish-experiment-button" onclick="themePicker0()" id="2024-12_theme_picker-0" title="Clear Experiment Override">C</button>
-                                </div>
-
-                                <div class="experiment-card">
-                                    <p>Profiles Plus Marketing Variants</p>
-                                    <p class="experiment-subtext">2024-12_profiles_plus_marketing_variants</p>
-                                    <div id="experiment-default-rollout-data-2024-12_profiles_plus_marketing_variants">
-                                        <p class="experiment-subtext">default rollout: Loading...</p>
-                                    </div>
-                                    <button class="newish-experiment-button" onclick="profilesPlusMarketingVariants1()" id="2024-12_profiles_plus_marketing_variants-1" title="Paper Beach V2">1</button>
-                                    <button class="newish-experiment-button" onclick="profilesPlusMarketingVariants00()" id="2024-12_profiles_plus_marketing_variants-00">-1</button>
-                                    <button class="newish-experiment-button" onclick="profilesPlusMarketingVariants0()" id="2024-12_profiles_plus_marketing_variants-0" title="Clear Experiment Override">C</button>
-                                </div>
-
-
-                                <div class="experiment-card">
-                                    <p>Collectibles Variants</p>
-                                    <p class="experiment-subtext">2024-11_collectibles_variants</p>
-                                    <div id="experiment-default-rollout-data-2024-11_collectibles_variants">
-                                        <p class="experiment-subtext">default rollout: Loading...</p>
-                                    </div>
-                                    <button class="newish-experiment-button" onclick="collectiblesVariants1()" id="2024-11_collectibles_variants-1">1</button>
-                                    <button class="newish-experiment-button" onclick="collectiblesVariants00()" id="2024-11_collectibles_variants-00">-1</button>
-                                    <button class="newish-experiment-button" onclick="collectiblesVariants0()" id="2024-11_collectibles_variants-0" title="Clear Experiment Override">C</button>
-                                </div>
-
-
-                                <div class="experiment-card">
-                                    <p>2024 Recap</p>
-                                    <p class="experiment-subtext">2024-11_recap</p>
-                                    <div id="experiment-default-rollout-data-2024-11_recap">
-                                        <p class="experiment-subtext">default rollout: Loading...</p>
-                                    </div>
-                                    <button class="newish-experiment-button" onclick="recap2024Items1()" id="2024-11_recap-1">1</button>
-                                    <button class="newish-experiment-button" onclick="recap2024Items00()" id="2024-11_recap-00">-1</button>
-                                    <button class="newish-experiment-button" onclick="recap2024Items0()" id="2024-11_recap-0" title="Clear Experiment Override">C</button>
-                                </div>
-        
-                                
-                            </div>
-                        </div>
-                        <hr>
-                        <div>
                             <h2>Debug</h2>
                             <p class="experiment-subtext">Overrides</p>
                             <div class="experiment-card-holder">
@@ -4452,9 +4622,6 @@ if (localStorage.full_client_rework != "false") {
             </div>
             `;
 
-
-            colorButtonsPerRollout()
-            fetchExperimentRolloutData()
 
 
             if (localStorage.dismissible_paper_beach_v2_marketing == "dismissed") {
@@ -4682,7 +4849,7 @@ if (localStorage.full_client_rework != "false") {
     }
 
 
-    if (localStorage.profiles_plus_marketing_variants === "variant_1" || localStorage.profiles_plus_marketing_variants === "variant_1_autorollout") {
+    if (localStorage.experiment_2024_12_profiles_plus_marketing_variants === "Treatment 1: Paper Beach V2") {
 
         function dismissibleContent_PaperBeachV2MarketingChecked() {
             const profiles_plus_tab = document.getElementById("pplus-tab");
@@ -4782,7 +4949,7 @@ if (localStorage.full_client_rework != "false") {
             localStorage.dismissible_recap_2024 = "dismissed"
 
             if (home_page_dismissible_content_container) {
-                if (localStorage.recap_items_2024 === "true" || localStorage.recap_items_2024 === "true_autorollout") {
+                if (localStorage.experiment_2024_11_recap === "Treatment 1: Enabled") {
                     document.getElementById("home-page-dismissible-content-container").innerHTML = ``;
                 }
             }
@@ -4790,7 +4957,7 @@ if (localStorage.full_client_rework != "false") {
         else {
             localStorage.dismissible_recap_2024 = ''
             if (home_page_dismissible_content_container) {
-                if (localStorage.recap_items_2024 === "true" || localStorage.recap_items_2024 === "true_autorollout") {
+                if (localStorage.experiment_2024_11_recap === "Treatment 1: Enabled") {
                     document.getElementById("home-page-dismissible-content-container").innerHTML = `
                         <img class="home-page-dismissible-content-2024-recap" onclick="dismissibleContentRecap2024()" src="${cdn}${DISMISSIBLE_2024_RECAP}" title="Check out everything 2024 had to offer!">
                     `;
@@ -5046,133 +5213,6 @@ if (localStorage.full_client_rework != "false") {
             storageItems.appendChild(itemDiv);
         }
     }
-
-    function fetchExperimentRolloutData() {
-        if (EXPERIMENT_ID_7 === 1) {
-            console.log(`exp 7:1`);
-            if (localStorage.recap_items_2024 != "false" && localStorage.recap_items_2024 != "true") {
-                localStorage.recap_items_2024 = "true_autorollout"
-            }
-            try {
-                document.getElementById('experiment-default-rollout-data-2024-11_recap').innerHTML = `
-                    <p class="experiment-subtext">default rollout: Override 1</p>
-                `;
-            } catch (error) {
-            }
-        } else if (EXPERIMENT_ID_7 === -1) {
-            console.log(`exp 7:-1`);
-            if (localStorage.recap_items_2024 != "false" && localStorage.recap_items_2024 != "true") {
-                localStorage.recap_items_2024 = "false_autorollout"
-            }
-            try {
-                document.getElementById('experiment-default-rollout-data-2024-11_recap').innerHTML = `
-                    <p class="experiment-subtext">default rollout: Override -1</p>
-                `;
-            } catch (error) {
-            }
-        } else {
-            console.warn(`exp 7:?`);
-            console.error(`Failed to load treatment for experiment 7`);
-        }
-
-        if (EXPERIMENT_ID_8 === 1) {
-            console.log(`exp 8:1`);
-            if (localStorage.collectibles_variants != "false" && localStorage.collectibles_variants != "true") {
-                localStorage.collectibles_variants = "true_autorollout"
-            }
-            try {
-                document.getElementById('experiment-default-rollout-data-2024-11_collectibles_variants').innerHTML = `
-                    <p class="experiment-subtext">default rollout: Override 1</p>
-                `;
-            } catch (error) {
-            }
-        } else if (EXPERIMENT_ID_8 === -1) {
-            console.log(`exp 8:-1`);
-            if (localStorage.collectibles_variants != "false" && localStorage.collectibles_variants != "true") {
-                localStorage.collectibles_variants = "false_autorollout"
-            }
-            try {
-                document.getElementById('experiment-default-rollout-data-2024-11_collectibles_variants').innerHTML = `
-                    <p class="experiment-subtext">default rollout: Override -1</p>
-                `;
-            } catch (error) {
-            }
-        } else {
-            console.warn(`exp 8:?`);
-            console.error(`Failed to load treatment for experiment 8`);
-        }
-
-        if (EXPERIMENT_ID_9 === 1) {
-            console.log(`exp 9:1`);
-            if (localStorage.profiles_plus_marketing_variants != "false" && localStorage.profiles_plus_marketing_variants != "variant_1") {
-                localStorage.profiles_plus_marketing_variants = "variant_1_autorollout"
-            }
-            try {
-                document.getElementById('experiment-default-rollout-data-2024-12_profiles_plus_marketing_variants').innerHTML = `
-                    <p class="experiment-subtext">default rollout: Override 1</p>
-                `;
-            } catch (error) {
-            }
-        } else if (EXPERIMENT_ID_9 === -1) {
-            console.log(`exp 9:-1`);
-            if (localStorage.profiles_plus_marketing_variants != "false" && localStorage.profiles_plus_marketing_variants != "variant_1") {
-                localStorage.profiles_plus_marketing_variants = "false_autorollout"
-            }
-            try {
-                document.getElementById('experiment-default-rollout-data-2024-12_profiles_plus_marketing_variants').innerHTML = `
-                    <p class="experiment-subtext">default rollout: Override -1</p>
-                `;
-            } catch (error) {
-            }
-        } else {
-            console.warn(`exp 9:?`);
-            console.error(`Failed to load treatment for experiment 9`);
-        }
-
-        if (EXPERIMENT_ID_10 === 2) {
-            console.log(`exp 10:2`);
-            if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true" && localStorage.experiment_theme_picker != "two") {
-                localStorage.experiment_theme_picker = "two_autorollout"
-            }
-            try {
-                document.getElementById('experiment-default-rollout-data-2024-12_theme_picker').innerHTML = `
-                    <p class="experiment-subtext">default rollout: Override 2</p>
-                `;
-            } catch (error) {
-            } 
-        } else if (EXPERIMENT_ID_10 === 1) {
-            console.log(`exp 10:1`);
-            if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true" && localStorage.experiment_theme_picker != "two") {
-                localStorage.experiment_theme_picker = "true_autorollout"
-            }
-            try {
-                document.getElementById('experiment-default-rollout-data-2024-12_theme_picker').innerHTML = `
-                    <p class="experiment-subtext">default rollout: Override 1</p>
-                `;
-            } catch (error) {
-            }
-        } else if (EXPERIMENT_ID_10 === -1) {
-            console.log(`exp 10:-1`);
-            if (localStorage.experiment_theme_picker != "false" && localStorage.experiment_theme_picker != "true" && localStorage.experiment_theme_picker != "two") {
-                localStorage.experiment_theme_picker = "false_autorollout"
-            }
-            try {
-                document.getElementById('experiment-default-rollout-data-2024-12_theme_picker').innerHTML = `
-                    <p class="experiment-subtext">default rollout: Override -1</p>
-                `;
-            } catch (error) {
-            }
-        } else {
-            console.warn(`exp 10:?`);
-            console.error(`Failed to load treatment for experiment 10`);
-        }
-
-        try {
-            colorButtonsPerRollout()
-        } catch (error) {
-        }
-    }
-    fetchExperimentRolloutData();
 
 
     function triggerCrash() {
