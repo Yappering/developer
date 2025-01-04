@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 189";
+tcbx926n29 = "Dev 190";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -58,6 +58,7 @@ if (localStorage.full_client_rework != "false") {
     PROFILES_PLUS = '/profiles-plus-categories.json';
     HOME_PAGE_PREVIEW = '/preview-1.json';
     HOME_PAGE_P_PLUS = '/preview-2.json';
+    HOME_PAGE_LEAKS = '/preview-3.json';
     PROFILE_EFFECTS = '/user-profile-effects.json';
     DOWNLOADABLE_DATA = '/downloads.json';
     PROFILES_PLUS_EFFECTS = '/profiles-plus-profile-effects.json';
@@ -114,6 +115,7 @@ if (localStorage.full_client_rework != "false") {
     KAWAII_MODE = "1306330663213072494"
     LOFI_GIRL = "1309668861943218229"
     WINTER_WONDERLAND = "1314020997204283476"
+    FANTASY_V2 = "1324454241254903829"
 
 
     HELP_AVATAR_DECORATIONS = "13410113109911"
@@ -129,6 +131,10 @@ if (localStorage.full_client_rework != "false") {
 
 
     DISMISSIBLE_2024_RECAP = "assets/103.svg"
+
+    if (localStorage.experiment_2025_01_show_leaks_on_home_page == "Treatment 1: Enabled") {
+        HOME_PAGE_PREVIEW = HOME_PAGE_LEAKS
+    }
 
 
     const params = new URLSearchParams(window.location.search);
@@ -1653,15 +1659,21 @@ if (localStorage.full_client_rework != "false") {
                             } else if (apiCategory.hero_banner_asset.static != null) {
                                 category.querySelector("[data-shop-category-banner-image]").src = `${apiCategory.hero_banner_asset.static}`;
                             }
-                        } else {
+                        } else if (apiCategory.hero_banner != null) {
                             category.querySelector("[data-shop-category-banner-image]").src = `https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.hero_banner}.png?size=4096`;
+                            category.querySelector("[data-shop-category-banner-image]").alt = apiCategory.name;
+                        } else {
+                            category.querySelector("[data-shop-category-banner-image]").src = `https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.banner}.png?size=4096`;
                             category.querySelector("[data-shop-category-banner-image]").alt = apiCategory.name;
                         }
     
-                        if (apiCategory.hero_logo == null) {
+                        
+                        if (apiCategory.hero_logo != null) {
+                            category.querySelector("[data-shop-category-logo-image]").src = `https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.hero_logo}.png?size=4096`;
+                        } else if (apiCategory.logo != null) {
                             category.querySelector("[data-shop-category-logo-image]").src = `https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096`;
                         } else {
-                            category.querySelector("[data-shop-category-logo-image]").src = `https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.hero_logo}.png?size=4096`;
+                            category.querySelector("[data-shop-category-logo-image]").src = `https://cdn.yapper.shop/assets/31.png`;
                         }
                         category.querySelector("[data-shop-category-logo-image]").alt = apiCategory.name;
 
@@ -1671,9 +1683,15 @@ if (localStorage.full_client_rework != "false") {
                         category.querySelector("[data-preview-banner-container]").id = apiCategory.sku_id;
                         category.querySelector("[data-shop-banner-banner-container]").id = `${apiCategory.sku_id}-preview-banner-container`;
                 
-                        category.querySelector("[data-preview-new-categoey-button]").innerHTML = `
-                            <button class="home-page-preview-button" onclick="setParams({page: 'shop'}); location.reload();">Shop the ${apiCategory.name} Collection</button>
-                        `;
+                        if (apiCategory.leaks_type) {
+                            category.querySelector("[data-preview-new-categoey-button]").innerHTML = `
+                                <button class="home-page-preview-button" onclick="setParams({page: 'leaks'}); location.reload();">Check out New ${apiCategory.name} Leaks</button>
+                            `;
+                        } else {
+                            category.querySelector("[data-preview-new-categoey-button]").innerHTML = `
+                                <button class="home-page-preview-button" onclick="setParams({page: 'shop'}); location.reload();">Shop the ${apiCategory.name} Collection</button>
+                            `;
+                        }
     
                         const cardOutput = category.querySelector("[data-shop-category-card-holder]");
                         if (cardOutput) {
@@ -4037,6 +4055,14 @@ if (localStorage.full_client_rework != "false") {
                     </div>
 
                     <div class="options-option-card">
+                        <p class="option-card-title">Show Leaks on Home Page</p>
+                        <p class="new-experiment-subtext">2025_01_show_leaks_on_home_page</p>
+                        <select id="experiment_2025_01_show_leaks_on_home_page_treatment_container" class="experiment-treatment-picker">
+                        </select>
+                        <button class="new-experiment-clear-button" onclick="experiment_2025_01_show_leaks_on_home_page_clear()">Clear</button>
+                    </div>
+
+                    <div class="options-option-card">
                         <p class="option-card-title">Theme Picker</p>
                         <p class="new-experiment-subtext">2024_12_theme_picker</p>
                         <select id="experiment_2024_12_theme_picker_treatment_container" class="experiment-treatment-picker">
@@ -4064,6 +4090,38 @@ if (localStorage.full_client_rework != "false") {
 
                 if (localStorage.experiment_force_rollout == "false") {
                     document.getElementById("experiment-force-rollout").checked = true;
+                }
+
+
+                try {
+                    const experiment_2025_01_show_leaks_on_home_page_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled"];
+
+                    const experiment_2025_01_show_leaks_on_home_page_treatment_picker = document.getElementById("experiment_2025_01_show_leaks_on_home_page_treatment_container");
+                    
+
+                    populate_experiment_2025_01_show_leaks_on_home_page();
+                    
+                    const storedTreatment = localStorage.getItem("experiment_2025_01_show_leaks_on_home_page");
+                    if (storedTreatment) {
+                        experiment_2025_01_show_leaks_on_home_page_treatment_picker.value = storedTreatment;
+                    }
+
+                    function populate_experiment_2025_01_show_leaks_on_home_page() {
+                        experiment_2025_01_show_leaks_on_home_page_treatments.forEach((treatments) => {
+                            const optElement = document.createElement("option");
+                            optElement.value = treatments;
+                            optElement.textContent = treatments;
+                            experiment_2025_01_show_leaks_on_home_page_treatment_picker.appendChild(optElement);
+                        });
+                    }
+
+                    experiment_2025_01_show_leaks_on_home_page_treatment_picker.addEventListener("change", () => {
+                        const selectedTreatment = experiment_2025_01_show_leaks_on_home_page_treatment_picker.value;
+                    
+                        // Store the selection
+                        localStorage.setItem("experiment_2025_01_show_leaks_on_home_page", selectedTreatment);
+                    });
+                } catch(error) {
                 }
 
 
@@ -4199,11 +4257,17 @@ if (localStorage.full_client_rework != "false") {
     }
 
     if (localStorage.experiment_force_rollout != "false") {
+        localStorage.experiment_2025_01_show_leaks_on_home_page = EXPERIMENT_ID_11;
         localStorage.experiment_2024_12_theme_picker = EXPERIMENT_ID_10;
         localStorage.experiment_2024_12_profiles_plus_marketing_variants = EXPERIMENT_ID_9;
         localStorage.experiment_2024_11_collectibles_variants = EXPERIMENT_ID_8;
         localStorage.experiment_2024_11_recap = EXPERIMENT_ID_7;
     } else {
+
+        if (localStorage.experiment_2025_01_show_leaks_on_home_page == null) {
+            localStorage.experiment_2025_01_show_leaks_on_home_page = EXPERIMENT_ID_11;
+        }
+
         if (localStorage.experiment_2024_12_theme_picker == null) {
             localStorage.experiment_2024_12_theme_picker = EXPERIMENT_ID_10;
         }
@@ -4221,6 +4285,11 @@ if (localStorage.full_client_rework != "false") {
         }
     }
 
+
+    function experiment_2025_01_show_leaks_on_home_page_clear() {
+        localStorage.experiment_2025_01_show_leaks_on_home_page = EXPERIMENT_ID_11;
+        document.getElementById("experiment_2025_01_show_leaks_on_home_page_treatment_container").value = EXPERIMENT_ID_11;
+    };
 
     function experiment_2024_12_theme_picker_treatment_clear() {
         localStorage.experiment_2024_12_theme_picker = EXPERIMENT_ID_10;
