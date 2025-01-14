@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 193";
+tcbx926n29 = "Dev 194";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -124,6 +124,7 @@ if (localStorage.full_client_rework != "false") {
     HELP_SHOP = "17162747936663"
     HELP_PROFILE_EFFECTS = "17828465914263"
     HELP_HD_STREAMING_POTION = "27343254089623"
+    HELP_CONFETTI_POTION = "29133681590679"
 
 
     BLOG_AVATAR_DECORATIONS_PROFILE_EFFECTS = "avatar-decorations-collect-and-keep-the-newest-styles"
