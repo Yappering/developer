@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 199";
+tcbx926n29 = "Dev 200";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -956,8 +956,10 @@ if (localStorage.full_client_rework != "false") {
                                     category.querySelector("[data-shop-discord-watermark-container]").style.display = 'unset';
                                 }
                                 if (apiCategory.sku_id === LUNAR_NEW_YEAR) {
-                                    category.querySelector("[data-shop-category-logo-holder]").style.display = 'unset';
-                                    category.querySelector("[data-shop-discord-watermark-container]").style.display = 'unset';
+                                    if (apiCategory.banner === "1202069953306689626") {
+                                        category.querySelector("[data-shop-category-logo-holder]").style.display = 'unset';
+                                        category.querySelector("[data-shop-discord-watermark-container]").style.display = 'unset';
+                                    }
                                 }
                                 if (apiCategory.sku_id === ELEMENTS) {
                                     category.querySelector("[data-shop-category-logo-holder]").style.display = 'unset';
@@ -3999,6 +4001,7 @@ if (localStorage.full_client_rework != "false") {
                         <button class="card-button" onclick="window.open('${discordsupport}${HELP_AVATAR_DECORATIONS}');">Avatar Decorations</button>
                         <button class="card-button" onclick="window.open('${discordsupport}${HELP_PROFILE_EFFECTS}');">Profile Effects</button>
                         <button class="card-button" onclick="window.open('${discordsupport}${HELP_HD_STREAMING_POTION}');">HD Splash Potion</button>
+                        <button class="card-button" onclick="window.open('${discordsupport}${HELP_CONFETTI_POTION}');">Confetti Potion</button>
                     </div>
                 </div>
                 <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Shop Archives</p>
