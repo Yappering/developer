@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 200";
+tcbx926n29 = "Dev 201";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -860,10 +860,25 @@ if (localStorage.full_client_rework != "false") {
                                     priceStandard = apiCategory.price.amount;
                                 }
                         
-                                // Add the prices to the card (adjust the element selectors as needed)
+                                
                                 const priceElementUSD = potionCard.querySelector("[data-price-standard]");
-                                if (priceElementUSD) {
-                                    priceElementUSD.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                const priceContainer = potionCard.querySelector("[data-shop-price-container]");
+
+                                if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Enabled") {
+                                    if (priceElementUSD) {
+                                        priceElementUSD.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                    }
+
+                                    let orb_icon = document.createElement("div");
+
+                                    orb_icon.classList.add('orb-icon');
+
+                                    priceElementUSD.appendChild(orb_icon);
+
+                                } else {
+                                    if (priceElementUSD) {
+                                        priceElementUSD.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                    }
                                 }
 
                                 potionCard.querySelector("[data-product-card-open-in-shop]").innerHTML = `
@@ -1415,15 +1430,30 @@ if (localStorage.full_client_rework != "false") {
                                             priceNitro = product.prices["4"].country_prices.prices[0].amount;
                                         }
                                 
-                                        // Add the prices to the card (adjust the element selectors as needed)
-                                        const priceElementUSD = card.querySelector("[data-price-standard]");
-                                        if (priceElementUSD) {
-                                            priceElementUSD.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
-                                        }
                                 
                                         const priceElementOther = card.querySelector("[data-price-nitro]");
-                                        if (priceElementOther) {
-                                            priceElementOther.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
+                                        const priceElementUSD = card.querySelector("[data-price-standard]");
+                                        const priceContainer = card.querySelector("[data-shop-price-container]");
+
+                                        if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Enabled") {
+                                            if (priceElementUSD) {
+                                                priceElementUSD.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                            }
+                                        
+                                            let orb_icon = document.createElement("div");
+                                        
+                                            orb_icon.classList.add('orb-icon');
+                                        
+                                            priceElementUSD.appendChild(orb_icon);
+                                        
+                                        } else {
+                                            if (priceElementUSD) {
+                                                priceElementUSD.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                            }
+
+                                            if (priceElementOther) {
+                                                priceElementOther.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
+                                            }
                                         }
 
                                         card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
@@ -1465,6 +1495,32 @@ if (localStorage.full_client_rework != "false") {
                                                 });
                                             }
                                         }
+
+
+                                        function newItemCheck() {
+
+                                            if (N > g) {
+                                            } else {
+                                                card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                    <div class="unplublished-tag">
+                                                        <p class="unplublished-tag-text">NEW</p>
+                                                    </div>
+                                                `;
+                                            }
+                                        }
+                                                                            
+                                        if (m.includes(product.sku_id)) {
+                                            newItemCheck();
+                                        }
+
+                                        function popularItemCheck() {
+                                            card.classList.add('popular-item');
+                                        }
+                                                                            
+                                        if (I.includes(product.sku_id)) {
+                                            popularItemCheck();
+                                        }
+
 
                                         const unpublishedAt = new Date(product.unpublished_at);
                             
@@ -1528,30 +1584,6 @@ if (localStorage.full_client_rework != "false") {
                             
                                             const timerInterval = setInterval(updateTimer, 1000);
                                             updateTimer();
-                                        }
-
-                                        function newItemCheck() {
-
-                                            if (N > g) {
-                                            } else {
-                                                card.querySelector("[data-shop-card-tag-container]").innerHTML = `
-                                                    <div class="unplublished-tag">
-                                                        <p class="unplublished-tag-text">NEW</p>
-                                                    </div>
-                                                `;
-                                            }
-                                        }
-                                                                            
-                                        if (m.includes(product.sku_id)) {
-                                            newItemCheck();
-                                        }
-
-                                        function popularItemCheck() {
-                                            card.classList.add('popular-item');
-                                        }
-                                                                            
-                                        if (I.includes(product.sku_id)) {
-                                            popularItemCheck();
                                         }
 
                                         // Append card to output
@@ -2135,15 +2167,29 @@ if (localStorage.full_client_rework != "false") {
                                         priceNitro = product.prices["4"].country_prices.prices[0].amount;
                                     }
                                 
-                                    // Add the prices to the card (adjust the element selectors as needed)
-                                    const priceElementUSD = card.querySelector("[data-price-standard]");
-                                    if (priceElementUSD) {
-                                        priceElementUSD.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
-                                    }
-                                
                                     const priceElementOther = card.querySelector("[data-price-nitro]");
-                                    if (priceElementOther) {
-                                        priceElementOther.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
+                                    const priceElementUSD = card.querySelector("[data-price-standard]");
+                                    const priceContainer = card.querySelector("[data-shop-price-container]");
+
+                                    if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Enabled") {
+                                        if (priceElementUSD) {
+                                            priceElementUSD.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                        }
+                                    
+                                        let orb_icon = document.createElement("div");
+                                    
+                                        orb_icon.classList.add('orb-icon');
+                                    
+                                        priceElementUSD.appendChild(orb_icon);
+                                    
+                                    } else {
+                                        if (priceElementUSD) {
+                                            priceElementUSD.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                        }
+
+                                        if (priceElementOther) {
+                                            priceElementOther.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
+                                        }
                                     }
 
                                     card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
@@ -4174,6 +4220,14 @@ if (localStorage.full_client_rework != "false") {
                     </div>
 
                     <div class="options-option-card">
+                        <p class="option-card-title">Orb Testing</p>
+                        <p class="new-experiment-subtext">2025_01_orb_testing</p>
+                        <select id="experiment_2025_01_orb_testing_treatment_container" class="experiment-treatment-picker">
+                        </select>
+                        <button class="new-experiment-clear-button" onclick="experiment_2025_01_orb_testing_clear()">Clear</button>
+                    </div>
+
+                    <div class="options-option-card">
                         <p class="option-card-title">Show Leaks on Home Page</p>
                         <p class="new-experiment-subtext">2025_01_show_leaks_on_home_page</p>
                         <select id="experiment_2025_01_show_leaks_on_home_page_treatment_container" class="experiment-treatment-picker">
@@ -4211,6 +4265,37 @@ if (localStorage.full_client_rework != "false") {
                     document.getElementById("experiment-force-rollout").checked = true;
                 }
 
+
+                try {
+                    const experiment_2025_01_orb_testing_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled"];
+
+                    const experiment_2025_01_orb_testing_treatment_picker = document.getElementById("experiment_2025_01_orb_testing_treatment_container");
+                    
+
+                    populate_experiment_2025_01_orb_testing();
+                    
+                    const storedTreatment = localStorage.getItem("experiment_2025_01_orb_testing");
+                    if (storedTreatment) {
+                        experiment_2025_01_orb_testing_treatment_picker.value = storedTreatment;
+                    }
+
+                    function populate_experiment_2025_01_orb_testing() {
+                        experiment_2025_01_orb_testing_treatments.forEach((treatments) => {
+                            const optElement = document.createElement("option");
+                            optElement.value = treatments;
+                            optElement.textContent = treatments;
+                            experiment_2025_01_orb_testing_treatment_picker.appendChild(optElement);
+                        });
+                    }
+
+                    experiment_2025_01_orb_testing_treatment_picker.addEventListener("change", () => {
+                        const selectedTreatment = experiment_2025_01_orb_testing_treatment_picker.value;
+                    
+                        // Store the selection
+                        localStorage.setItem("experiment_2025_01_orb_testing", selectedTreatment);
+                    });
+                } catch(error) {
+                }
 
                 try {
                     const experiment_2025_01_show_leaks_on_home_page_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled"];
@@ -4376,12 +4461,17 @@ if (localStorage.full_client_rework != "false") {
     }
 
     if (localStorage.experiment_force_rollout != "false") {
+        localStorage.experiment_2025_01_orb_testing = EXPERIMENT_ID_12;
         localStorage.experiment_2025_01_show_leaks_on_home_page = EXPERIMENT_ID_11;
         localStorage.experiment_2024_12_theme_picker = EXPERIMENT_ID_10;
         localStorage.experiment_2024_12_profiles_plus_marketing_variants = EXPERIMENT_ID_9;
         localStorage.experiment_2024_11_collectibles_variants = EXPERIMENT_ID_8;
         localStorage.experiment_2024_11_recap = EXPERIMENT_ID_7;
     } else {
+
+        if (localStorage.experiment_2025_01_orb_testing == null) {
+            localStorage.experiment_2025_01_orb_testing = EXPERIMENT_ID_12;
+        }
 
         if (localStorage.experiment_2025_01_show_leaks_on_home_page == null) {
             localStorage.experiment_2025_01_show_leaks_on_home_page = EXPERIMENT_ID_11;
@@ -4404,6 +4494,11 @@ if (localStorage.full_client_rework != "false") {
         }
     }
 
+
+    function experiment_2025_01_orb_testing_clear() {
+        localStorage.experiment_2025_01_orb_testing = EXPERIMENT_ID_12;
+        document.getElementById("experiment_2025_01_orb_testing_treatment_container").value = EXPERIMENT_ID_12;
+    };
 
     function experiment_2025_01_show_leaks_on_home_page_clear() {
         localStorage.experiment_2025_01_show_leaks_on_home_page = EXPERIMENT_ID_11;
