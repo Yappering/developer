@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 201";
+tcbx926n29 = "Dev 202";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -861,23 +861,28 @@ if (localStorage.full_client_rework != "false") {
                                 }
                         
                                 
-                                const priceElementUSD = potionCard.querySelector("[data-price-standard]");
+                                const priceTextNitro = potionCard.querySelector("[data-price-nitro]");
+                                const priceTextStandard = potionCard.querySelector("[data-price-standard]");
+
+                                const priceContainerNitro = potionCard.querySelector("[data-price-nitro-container]");
+                                const priceContainerStandard = potionCard.querySelector("[data-price-standard-container]");
+
                                 const priceContainer = potionCard.querySelector("[data-shop-price-container]");
 
                                 if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Enabled") {
-                                    if (priceElementUSD) {
-                                        priceElementUSD.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                    if (priceTextStandard) {
+                                        priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
                                     }
-
+                                
                                     let orb_icon = document.createElement("div");
-
+                                
                                     orb_icon.classList.add('orb-icon');
-
-                                    priceElementUSD.appendChild(orb_icon);
-
+                                
+                                    priceContainerStandard.appendChild(orb_icon);
+                                
                                 } else {
-                                    if (priceElementUSD) {
-                                        priceElementUSD.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                    if (priceTextStandard) {
+                                        priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
                                     }
                                 }
 
@@ -1431,28 +1436,43 @@ if (localStorage.full_client_rework != "false") {
                                         }
                                 
                                 
-                                        const priceElementOther = card.querySelector("[data-price-nitro]");
-                                        const priceElementUSD = card.querySelector("[data-price-standard]");
+                                        const priceTextNitro = card.querySelector("[data-price-nitro]");
+                                        const priceTextStandard = card.querySelector("[data-price-standard]");
+
+                                        const priceContainerNitro = card.querySelector("[data-price-nitro-container]");
+                                        const priceContainerStandard = card.querySelector("[data-price-standard-container]");
+
                                         const priceContainer = card.querySelector("[data-shop-price-container]");
 
                                         if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Enabled") {
-                                            if (priceElementUSD) {
-                                                priceElementUSD.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                            if (priceTextStandard) {
+                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
                                             }
                                         
                                             let orb_icon = document.createElement("div");
                                         
                                             orb_icon.classList.add('orb-icon');
                                         
-                                            priceElementUSD.appendChild(orb_icon);
+                                            priceContainerStandard.appendChild(orb_icon);
+
+
+                                            if (priceTextNitro) {
+                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "Price (USD): N/A";
+                                            }
+                                        
+                                            let orb_icon_nitro = document.createElement("div");
+                                        
+                                            orb_icon_nitro.classList.add('orb-icon-strike');
+                                        
+                                            priceContainerNitro.appendChild(orb_icon_nitro);
                                         
                                         } else {
-                                            if (priceElementUSD) {
-                                                priceElementUSD.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                            if (priceTextStandard) {
+                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
                                             }
 
-                                            if (priceElementOther) {
-                                                priceElementOther.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
+                                            if (priceTextNitro) {
+                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
                                             }
                                         }
 
@@ -2167,28 +2187,43 @@ if (localStorage.full_client_rework != "false") {
                                         priceNitro = product.prices["4"].country_prices.prices[0].amount;
                                     }
                                 
-                                    const priceElementOther = card.querySelector("[data-price-nitro]");
-                                    const priceElementUSD = card.querySelector("[data-price-standard]");
+                                    const priceTextNitro = card.querySelector("[data-price-nitro]");
+                                    const priceTextStandard = card.querySelector("[data-price-standard]");
+
+                                    const priceContainerNitro = card.querySelector("[data-price-nitro-container]");
+                                    const priceContainerStandard = card.querySelector("[data-price-standard-container]");
+
                                     const priceContainer = card.querySelector("[data-shop-price-container]");
 
                                     if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Enabled") {
-                                        if (priceElementUSD) {
-                                            priceElementUSD.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                        if (priceTextStandard) {
+                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
                                         }
                                     
                                         let orb_icon = document.createElement("div");
                                     
                                         orb_icon.classList.add('orb-icon');
                                     
-                                        priceElementUSD.appendChild(orb_icon);
+                                        priceContainerStandard.appendChild(orb_icon);
+
+
+                                        if (priceTextNitro) {
+                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "Price (USD): N/A";
+                                        }
+                                    
+                                        let orb_icon_nitro = document.createElement("div");
+                                    
+                                        orb_icon_nitro.classList.add('orb-icon-strike');
+                                    
+                                        priceContainerNitro.appendChild(orb_icon_nitro);
                                     
                                     } else {
-                                        if (priceElementUSD) {
-                                            priceElementUSD.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                        if (priceTextStandard) {
+                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
                                         }
 
-                                        if (priceElementOther) {
-                                            priceElementOther.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
+                                        if (priceTextNitro) {
+                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
                                         }
                                     }
 
@@ -2575,8 +2610,12 @@ if (localStorage.full_client_rework != "false") {
                         <h3 data-product-card-name>Failed To Load Item</h3>
                         <p class="shop-card-summary" data-product-card-summary>Failed To Load Item</p>
                         <div class="shop-price-container" data-shop-price-container>
-                            <a style="font-size: large; font-weight: 900;" data-price-standard></a>
-                            <a data-price-nitro></a>
+                            <div data-price-standard-container>
+                                <a style="font-size: large; font-weight: 900;" data-price-standard></a>
+                            </div>
+                            <div data-price-nitro-container>
+                                <a data-price-nitro></a>
+                            </div>
                         </div>
                         <div class="shop-card-var-container" data-shop-card-var-container>
                         </div>
@@ -3010,8 +3049,12 @@ if (localStorage.full_client_rework != "false") {
                                 <h3 data-product-card-name>Failed To Load Item</h3>
                                 <p class="shop-card-summary" data-product-card-summary>Failed To Load Item</p>
                                 <div class="shop-price-container" data-shop-price-container>
-                                    <a style="font-size: large; font-weight: 900;" data-price-standard></a>
-                                    <a data-price-nitro></a>
+                                    <div data-price-standard-container>
+                                        <a style="font-size: large; font-weight: 900;" data-price-standard></a>
+                                    </div>
+                                    <div data-price-nitro-container>
+                                        <a data-price-nitro></a>
+                                    </div>
                                 </div>
                                 <div class="shop-card-var-container" data-shop-card-var-container>
                                 </div>
@@ -3101,8 +3144,12 @@ if (localStorage.full_client_rework != "false") {
                                     <h3 data-product-card-name>Failed To Load Item</h3>
                                     <p class="shop-card-summary" data-product-card-summary>Failed To Load Item</p>
                                     <div class="shop-price-container" data-shop-price-container>
-                                        <a style="font-size: large; font-weight: 900;" data-price-standard></a>
-                                        <a data-price-nitro></a>
+                                        <div data-price-standard-container>
+                                            <a style="font-size: large; font-weight: 900;" data-price-standard></a>
+                                        </div>
+                                        <div data-price-nitro-container>
+                                            <a data-price-nitro></a>
+                                        </div>
                                     </div>
                                     <div class="shop-card-var-container" data-shop-card-var-container>
                                     </div>
