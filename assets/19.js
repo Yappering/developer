@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 202";
+tcbx926n29 = "Dev 203";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -118,6 +118,7 @@ if (localStorage.full_client_rework != "false") {
     WINTER_WONDERLAND = "1314020997204283476"
     FANTASY_V2 = "1324454241254903829"
     STEAMPUNK = "1326333074241486859"
+    PROGRESS = "1333278032999485461"
 
 
     HELP_AVATAR_DECORATIONS = "13410113109911"
@@ -869,9 +870,20 @@ if (localStorage.full_client_rework != "false") {
 
                                 const priceContainer = potionCard.querySelector("[data-shop-price-container]");
 
-                                if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Enabled") {
+                                if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Default Prices") {
                                     if (priceTextStandard) {
                                         priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                    }
+                                
+                                    let orb_icon = document.createElement("div");
+                                
+                                    orb_icon.classList.add('orb-icon');
+                                
+                                    priceContainerStandard.appendChild(orb_icon);
+                                
+                                } else if (localStorage.experiment_2025_01_orb_testing === "Treatment 2: 50 Orbs") {
+                                    if (priceTextStandard) {
+                                        priceTextStandard.textContent = `50`;
                                     }
                                 
                                     let orb_icon = document.createElement("div");
@@ -1444,7 +1456,7 @@ if (localStorage.full_client_rework != "false") {
 
                                         const priceContainer = card.querySelector("[data-shop-price-container]");
 
-                                        if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Enabled") {
+                                        if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Default Prices") {
                                             if (priceTextStandard) {
                                                 priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
                                             }
@@ -1454,8 +1466,8 @@ if (localStorage.full_client_rework != "false") {
                                             orb_icon.classList.add('orb-icon');
                                         
                                             priceContainerStandard.appendChild(orb_icon);
-
-
+    
+    
                                             if (priceTextNitro) {
                                                 priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "Price (USD): N/A";
                                             }
@@ -1466,11 +1478,22 @@ if (localStorage.full_client_rework != "false") {
                                         
                                             priceContainerNitro.appendChild(orb_icon_nitro);
                                         
+                                        } else if (localStorage.experiment_2025_01_orb_testing === "Treatment 2: 50 Orbs") {
+                                            if (priceTextStandard) {
+                                                priceTextStandard.textContent = `50`;
+                                            }
+                                        
+                                            let orb_icon = document.createElement("div");
+                                        
+                                            orb_icon.classList.add('orb-icon');
+                                        
+                                            priceContainerStandard.appendChild(orb_icon);
+                                        
                                         } else {
                                             if (priceTextStandard) {
                                                 priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
                                             }
-
+    
                                             if (priceTextNitro) {
                                                 priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
                                             }
@@ -2195,7 +2218,7 @@ if (localStorage.full_client_rework != "false") {
 
                                     const priceContainer = card.querySelector("[data-shop-price-container]");
 
-                                    if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Enabled") {
+                                    if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Default Prices") {
                                         if (priceTextStandard) {
                                             priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
                                         }
@@ -2216,6 +2239,17 @@ if (localStorage.full_client_rework != "false") {
                                         orb_icon_nitro.classList.add('orb-icon-strike');
                                     
                                         priceContainerNitro.appendChild(orb_icon_nitro);
+                                    
+                                    } else if (localStorage.experiment_2025_01_orb_testing === "Treatment 2: 50 Orbs") {
+                                        if (priceTextStandard) {
+                                            priceTextStandard.textContent = `50`;
+                                        }
+                                    
+                                        let orb_icon = document.createElement("div");
+                                    
+                                        orb_icon.classList.add('orb-icon');
+                                    
+                                        priceContainerStandard.appendChild(orb_icon);
                                     
                                     } else {
                                         if (priceTextStandard) {
@@ -4314,7 +4348,7 @@ if (localStorage.full_client_rework != "false") {
 
 
                 try {
-                    const experiment_2025_01_orb_testing_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled"];
+                    const experiment_2025_01_orb_testing_treatments = ["Treatment -1: Disabled", "Treatment 1: Default Prices", "Treatment 2: 50 Orbs"];
 
                     const experiment_2025_01_orb_testing_treatment_picker = document.getElementById("experiment_2025_01_orb_testing_treatment_container");
                     

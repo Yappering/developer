@@ -17,7 +17,7 @@ EXPERIMENT_ID_5 = 1
 EXPERIMENT_ID_6 = 1
 
 // 2024-11_recap
-EXPERIMENT_ID_7 = "Treatment 1: Enabled"
+EXPERIMENT_ID_7 = "Treatment -1: Disabled"
 
 // 2024_11_collectibles_variants
 EXPERIMENT_ID_8 = "Treatment 1: Enabled"
