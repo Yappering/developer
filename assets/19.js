@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 205";
+tcbx926n29 = "Dev 206";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -847,7 +847,7 @@ if (localStorage.full_client_rework != "false") {
 
                                 potionCard.id = apiCategory.sku_id;
 
-                                potionCard.querySelector("[data-potion-card-holder]").style.backgroundImage = 'linear-gradient(0deg, var(--shop-card-background) 50%,#be00c4 150%)'
+                                potionCard.querySelector("[data-potion-card-holder]").classList.add('potion-card-gradient1');
             
                                 if (apiCategory.src === null) {
                                     potionCard.querySelector("[data-potion-card-preview-image]").src = `https://cdn.yapper.shop/assets/31.png`;
@@ -923,14 +923,22 @@ if (localStorage.full_client_rework != "false") {
 
                                 potionCard.id = apiCategory.sku_id;
 
-                                potionCard.querySelector("[data-potion-card-holder]").style.backgroundImage = 'linear-gradient(0deg, var(--shop-card-background) 50%,#be00c4 150%)'
+                                potionCard.querySelector("[data-potion-card-holder]").classList.add('potion-card-gradient2');
             
                                 if (apiCategory.src === null) {
                                     potionCard.querySelector("[data-potion-card-preview-image]").src = `https://cdn.yapper.shop/assets/31.png`;
                                 } else {
-                                    potionCard.querySelector("[data-potion-card-preview-image]").src = `https://cdn.yapper.shop/discord-assets/${apiCategory.src}.svg`;
+                                    potionCard.querySelector("[data-potion-card-preview-image]").src = `https://cdn.yapper.shop/${apiCategory.endpoint}/${apiCategory.src}.${apiCategory.format}`;
                                 }
                                 potionCard.querySelector("[data-potion-card-preview-image]").alt = apiCategory.name;
+
+                                if (apiCategory.new_text != null) {
+                                    potionCard.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                        <div class="unplublished-tag">
+                                            <p class="unplublished-tag-text">${apiCategory.new_text}</p>
+                                        </div>
+                                    `;
+                                }
             
                                 potionCard.querySelector("[data-product-card-sku-id]").textContent = `SKU ID: ${apiCategory.sku_id}`;
                                 potionCard.querySelector("[data-product-card-name]").textContent = apiCategory.name;
