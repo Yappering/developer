@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 210";
+tcbx926n29 = "Dev 212";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -469,8 +469,10 @@ if (localStorage.full_client_rework != "false") {
                                         
                                             product.variants.forEach((variant, index) => {
                                                 // Create variant color block
-                                                const variantColorBlock = document.createElement("div");
+                                                const variantColorBlockTmp = document.querySelector("[data-shop-varcolorblock-template]");
+                                                const variantColorBlock = variantColorBlockTmp.content.cloneNode(true).children[0];
                                                 variantColorBlock.classList.add("shop-card-var");
+                                                variantColorBlock.id = "shop-card-var";
                                                 variantColorBlock.style.backgroundColor = `${variant.variant_value}`;
                                         
                                                 // Add click event listener to switch variants
@@ -655,8 +657,11 @@ if (localStorage.full_client_rework != "false") {
                                             if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
                                                 card.classList.add('clickable');
 
-                                                card.addEventListener("click", () => {
-                                                    openItemModal();
+                                                card.addEventListener("click", (event) => {
+                                                    if (event.target.matches("[data-shop-card-var]")) {
+                                                    } else {
+                                                        openItemModal();
+                                                    }
                                                 });
 
                                                 async function openItemModal() {
@@ -1509,7 +1514,7 @@ if (localStorage.full_client_rework != "false") {
                                         previewHolder.appendChild(imgElement);
                                         
                                         // Set the product details
-                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU_ID: ${apiCategory.sku_id}`;
+                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${apiCategory.sku_id}`;
                                         modal.querySelector("[data-product-modal-name]").textContent = apiCategory.name;
                                         modal.querySelector("[data-product-modal-summary]").textContent = apiCategory.summary;
 
@@ -1790,7 +1795,7 @@ if (localStorage.full_client_rework != "false") {
                                         previewHolder.appendChild(imgElement);
                                         
                                         // Set the product details
-                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU_ID: ${apiCategory.sku_id}`;
+                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${apiCategory.sku_id}`;
                                         modal.querySelector("[data-product-modal-name]").textContent = apiCategory.name;
                                         modal.querySelector("[data-product-modal-summary]").textContent = apiCategory.summary;
 
@@ -2388,8 +2393,10 @@ if (localStorage.full_client_rework != "false") {
                                         
                                             product.variants.forEach((variant, index) => {
                                                 // Create variant color block
-                                                const variantColorBlock = document.createElement("div");
+                                                const variantColorBlockTmp = document.querySelector("[data-shop-varcolorblock-template]");
+                                                const variantColorBlock = variantColorBlockTmp.content.cloneNode(true).children[0];
                                                 variantColorBlock.classList.add("shop-card-var");
+                                                variantColorBlock.id = "shop-card-var";
                                                 variantColorBlock.style.backgroundColor = `${variant.variant_value}`;
                                         
                                                 // Add click event listener to switch variants
@@ -2419,9 +2426,11 @@ if (localStorage.full_client_rework != "false") {
                                             function applyVariant(selectedVariant) {
                                                 card.querySelector("[data-shop-card-var-title]").textContent = `(${selectedVariant.variant_label})`;
                                                 card.querySelector("[data-product-card-sku-id]").textContent = `SKU ID: ${selectedVariant.sku_id}`;
-                                                card.querySelector("[data-share-product-card-button]").innerHTML = `
-                                                    <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
-                                                `;
+                                                if (localStorage.experiment_2025_02_shop_card_modals != "Treatment 1: Enable modals" && localStorage.experiment_2025_02_shop_card_modals != "Treatment 2: Enable modals with data downloads" && localStorage.experiment_2025_02_shop_card_modals != "Treatment 3: Enable modals with data downloads and p+") {
+                                                    card.querySelector("[data-share-product-card-button]").innerHTML = `
+                                                        <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
+                                                    `;
+                                                }
                                                 if (selectedVariant.type === 0) {
                                                     card.classList.add("type_2000-0");
                                                     previewHolder.innerHTML = ""; // Clear previous decorations
@@ -2633,9 +2642,13 @@ if (localStorage.full_client_rework != "false") {
                                             if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
                                                 card.classList.add('clickable');
 
-                                                card.addEventListener("click", () => {
-                                                    openItemModal();
+                                                card.addEventListener("click", (event) => {
+                                                    if (event.target.matches("[data-shop-card-var]")) {
+                                                    } else {
+                                                        openItemModal();
+                                                    }
                                                 });
+                                                
 
                                                 async function openItemModal() {
                                                     let modal = document.createElement("div");
@@ -3766,8 +3779,10 @@ if (localStorage.full_client_rework != "false") {
                                     
                                         product.variants.forEach((variant, index) => {
                                             // Create variant color block
-                                            const variantColorBlock = document.createElement("div");
+                                            const variantColorBlockTmp = document.querySelector("[data-shop-varcolorblock-template]");
+                                            const variantColorBlock = variantColorBlockTmp.content.cloneNode(true).children[0];
                                             variantColorBlock.classList.add("shop-card-var");
+                                            variantColorBlock.id = "shop-card-var";
                                             variantColorBlock.style.backgroundColor = `${variant.variant_value}`;
                                         
                                             // Add click event listener to switch variants
@@ -3797,9 +3812,11 @@ if (localStorage.full_client_rework != "false") {
                                         function applyVariant(selectedVariant) {
                                             card.querySelector("[data-shop-card-var-title]").textContent = `(${selectedVariant.variant_label})`;
                                             card.querySelector("[data-product-card-sku-id]").textContent = `SKU ID: ${selectedVariant.sku_id}`;
-                                            card.querySelector("[data-share-product-card-button]").innerHTML = `
-                                                <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
-                                            `;
+                                            if (localStorage.experiment_2025_02_shop_card_modals != "Treatment 1: Enable modals" && localStorage.experiment_2025_02_shop_card_modals != "Treatment 2: Enable modals with data downloads" && localStorage.experiment_2025_02_shop_card_modals != "Treatment 3: Enable modals with data downloads and p+") {
+                                                card.querySelector("[data-share-product-card-button]").innerHTML = `
+                                                    <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
+                                                `;
+                                            }
                                             if (selectedVariant.type === 0) {
                                                 card.classList.add("type_2000-0");
                                                 previewHolder.innerHTML = ""; // Clear previous decorations
@@ -3982,8 +3999,11 @@ if (localStorage.full_client_rework != "false") {
                                         if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
                                             card.classList.add('clickable');
 
-                                            card.addEventListener("click", () => {
-                                                openItemModal();
+                                            card.addEventListener("click", (event) => {
+                                                if (event.target.matches("[data-shop-card-var]")) {
+                                                } else {
+                                                    openItemModal();
+                                                }
                                             });
 
                                             async function openItemModal() {
@@ -4743,7 +4763,7 @@ if (localStorage.full_client_rework != "false") {
         if (localStorage.dev === "true") {
             document.getElementById('secret-tools').innerHTML = `
                 <button class="dm-button" id="avatar-decorations-debug-tab" onclick="setParams({page: 'item_tool'}); location.reload();">
-                    <p class="dm-button-text">Item Debug</p>
+                    <p class="dm-button-text">Item Debug | Staff Only</p>
                 </button>
     
             `;
@@ -5368,6 +5388,9 @@ if (localStorage.full_client_rework != "false") {
                             <div class="shop-card-tag-container" data-shop-card-tag-container>
                             </div>
                         </div>
+                    </template>
+                    <template data-shop-varcolorblock-template>
+                        <div data-shop-card-var></div>
                     </template>
                     <div data-shop-output>
                     </div>
