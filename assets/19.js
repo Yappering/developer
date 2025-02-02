@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 206";
+tcbx926n29 = "Dev 207";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -189,7 +189,7 @@ if (localStorage.full_client_rework != "false") {
     
     // Function to fetch and display shop data
     function fetchData() {
-        if (params.get("page") != "home" && params.get("page") != "recap_2024") {
+        if (params.get("page") != "home" && params.get("page") != "year_recap") {
 
             if (params.get("page") === "consumables" || params.get("page") === "orbs") {
                 createMainPotionsElement()
@@ -650,6 +650,71 @@ if (localStorage.full_client_rework != "false") {
                                         }
 
 
+
+                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                            card.classList.add('clickable');
+
+                                            card.addEventListener("click", () => {
+                                                openItemModal();
+                                            });
+
+                                            function openItemModal() {
+                                                let modal = document.createElement("div");
+
+                                                modal.classList.add('modalv2');
+
+                                                if (apiCategory.pdp_bg != null) {
+                                                    pdp = apiCategory.pdp_bg
+                                                } else {
+                                                    pdp = apiCategory.banner
+                                                }
+
+                                                modal.innerHTML = `
+                                                    <div class="modalv2-inner">
+                                                        <div class="modalv2-inner-left">
+                                                            <p>Made By: ${product.credits}</p>
+                                                            <p>${product.name}</p>
+                                                            <p>${product.summary}</p>
+                                                        </div>
+                                                        <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/${pdp}.png">
+                                                            <img class="modalv2-inner-logo" src="https://cdn.yapper.shop/assets/${apiCategory.logo}.png"></img>
+                                                        </img>
+                                                    </div>
+                                                `;
+
+                                                document.body.appendChild(modal);
+
+                                                setTimeout(() => {
+                                                    modal.classList.add('show');
+                                                }, 1);
+
+
+                                                let modal_back = document.createElement("div");
+
+                                                modal_back.classList.add('modalv2-back');
+                                                modal_back.id = 'modalv2-back';
+
+                                                document.body.appendChild(modal_back);
+
+                                                setTimeout(() => {
+                                                    modal_back.classList.add('show');
+                                                }, 1);
+
+
+                                                modal.addEventListener('click', (event) => {
+                                                    if (event.target === modal) {
+                                                        modal.classList.remove('show');
+                                                        modal_back.classList.remove('show');
+                                                        setTimeout(() => {
+                                                            modal.remove();
+                                                            modal_back.remove();
+                                                        }, 300);
+                                                    }
+                                                });
+                                            }
+                                        }
+
+
                                         const unpublishedAt = new Date(product.unpublished_at);
                             
                                         if (product.unpublished_at && !isNaN(unpublishedAt.getTime())) {
@@ -865,6 +930,62 @@ if (localStorage.full_client_rework != "false") {
                                 if (apiCategory.price) {
                                     priceStandard = apiCategory.price.amount;
                                 }
+
+
+                                if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                    potionCard.classList.add('clickable');
+
+                                    potionCard.addEventListener("click", () => {
+                                        openItemModal();
+                                    });
+
+                                    function openItemModal() {
+                                        let modal = document.createElement("div");
+
+                                        modal.classList.add('modalv2');
+
+                                        modal.innerHTML = `
+                                            <div class="modalv2-inner">
+                                                <div class="modalv2-inner-left">
+                                                    <p>SKU ID: ${apiCategory.sku_id}</p>
+                                                    <p>${apiCategory.name}</p>
+                                                    <p>${apiCategory.summary}</p>
+                                                </div>
+                                                <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/110.svg"></img>
+                                            </div>
+                                        `;
+
+                                        document.body.appendChild(modal);
+
+                                        setTimeout(() => {
+                                            modal.classList.add('show');
+                                        }, 1);
+
+
+                                        let modal_back = document.createElement("div");
+
+                                        modal_back.classList.add('modalv2-back');
+                                        modal_back.id = 'modalv2-back';
+
+                                        document.body.appendChild(modal_back);
+
+                                        setTimeout(() => {
+                                            modal_back.classList.add('show');
+                                        }, 1);
+
+
+                                        modal.addEventListener('click', (event) => {
+                                            if (event.target === modal) {
+                                                modal.classList.remove('show');
+                                                modal_back.classList.remove('show');
+                                                setTimeout(() => {
+                                                    modal.remove();
+                                                    modal_back.remove();
+                                                }, 300);
+                                            }
+                                        });
+                                    }
+                                }
                         
                                 
                                 const priceTextNitro = potionCard.querySelector("[data-price-nitro]");
@@ -948,6 +1069,62 @@ if (localStorage.full_client_rework != "false") {
                         
                                 if (apiCategory.price) {
                                     priceStandard = apiCategory.price.amount;
+                                }
+
+
+                                if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                    potionCard.classList.add('clickable');
+
+                                    potionCard.addEventListener("click", () => {
+                                        openItemModal();
+                                    });
+
+                                    function openItemModal() {
+                                        let modal = document.createElement("div");
+
+                                        modal.classList.add('modalv2');
+
+                                        modal.innerHTML = `
+                                            <div class="modalv2-inner">
+                                                <div class="modalv2-inner-left">
+                                                    <p>SKU ID: ${apiCategory.sku_id}</p>
+                                                    <p>${apiCategory.name}</p>
+                                                    <p>${apiCategory.summary}</p>
+                                                </div>
+                                                <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/110.svg"></img>
+                                            </div>
+                                        `;
+
+                                        document.body.appendChild(modal);
+
+                                        setTimeout(() => {
+                                            modal.classList.add('show');
+                                        }, 1);
+
+
+                                        let modal_back = document.createElement("div");
+
+                                        modal_back.classList.add('modalv2-back');
+                                        modal_back.id = 'modalv2-back';
+
+                                        document.body.appendChild(modal_back);
+
+                                        setTimeout(() => {
+                                            modal_back.classList.add('show');
+                                        }, 1);
+
+
+                                        modal.addEventListener('click', (event) => {
+                                            if (event.target === modal) {
+                                                modal.classList.remove('show');
+                                                modal_back.classList.remove('show');
+                                                setTimeout(() => {
+                                                    modal.remove();
+                                                    modal_back.remove();
+                                                }, 300);
+                                            }
+                                        });
+                                    }
                                 }
                         
                                 
@@ -1643,6 +1820,69 @@ if (localStorage.full_client_rework != "false") {
                                                 });
                                                 card.addEventListener("mouseleave", () => {
                                                     plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.png`;
+                                                });
+                                            }
+                                        }
+
+                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                            card.classList.add('clickable');
+
+                                            card.addEventListener("click", () => {
+                                                openItemModal();
+                                            });
+
+                                            function openItemModal() {
+                                                let modal = document.createElement("div");
+
+                                                modal.classList.add('modalv2');
+
+                                                if (apiCategory.pdp_bg != null) {
+                                                    pdp = apiCategory.pdp_bg
+                                                } else {
+                                                    pdp = apiCategory.banner
+                                                }
+
+                                                modal.innerHTML = `
+                                                    <div class="modalv2-inner">
+                                                        <div class="modalv2-inner-left">
+                                                            <p>SKU ID: ${product.sku_id}</p>
+                                                            <p>${product.name}</p>
+                                                            <p>${product.summary}</p>
+                                                        </div>
+                                                        <img class="modalv2-inner-img" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${pdp}.png?size=4096">
+                                                            <img class="modalv2-inner-logo" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096"></img>
+                                                        </img>
+                                                    </div>
+                                                `;
+
+                                                document.body.appendChild(modal);
+
+                                                setTimeout(() => {
+                                                    modal.classList.add('show');
+                                                }, 1);
+
+
+                                                let modal_back = document.createElement("div");
+
+                                                modal_back.classList.add('modalv2-back');
+                                                modal_back.id = 'modalv2-back';
+
+                                                document.body.appendChild(modal_back);
+
+                                                setTimeout(() => {
+                                                    modal_back.classList.add('show');
+                                                }, 1);
+
+
+                                                modal.addEventListener('click', (event) => {
+                                                    if (event.target === modal) {
+                                                        modal.classList.remove('show');
+                                                        modal_back.classList.remove('show');
+                                                        setTimeout(() => {
+                                                            modal.remove();
+                                                            modal_back.remove();
+                                                        }, 300);
+                                                    }
                                                 });
                                             }
                                         }
@@ -2383,6 +2623,70 @@ if (localStorage.full_client_rework != "false") {
                                         <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${product.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
                                     `;
 
+
+                                    if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                        card.classList.add('clickable');
+
+                                        card.addEventListener("click", () => {
+                                            openItemModal();
+                                        });
+
+                                        function openItemModal() {
+                                            let modal = document.createElement("div");
+
+                                            modal.classList.add('modalv2');
+
+                                            if (apiCategory.pdp_bg != null) {
+                                                pdp = apiCategory.pdp_bg
+                                            } else {
+                                                pdp = apiCategory.banner
+                                            }
+
+                                            modal.innerHTML = `
+                                                <div class="modalv2-inner">
+                                                    <div class="modalv2-inner-left">
+                                                        <p>SKU ID: ${product.sku_id}</p>
+                                                        <p>${product.name}</p>
+                                                        <p>${product.summary}</p>
+                                                    </div>
+                                                    <img class="modalv2-inner-img" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${pdp}.png?size=4096">
+                                                        <img class="modalv2-inner-logo" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096"></img>
+                                                    </img>
+                                                </div>
+                                            `;
+
+                                            document.body.appendChild(modal);
+
+                                            setTimeout(() => {
+                                                modal.classList.add('show');
+                                            }, 1);
+
+
+                                            let modal_back = document.createElement("div");
+
+                                            modal_back.classList.add('modalv2-back');
+                                            modal_back.id = 'modalv2-back';
+
+                                            document.body.appendChild(modal_back);
+
+                                            setTimeout(() => {
+                                                modal_back.classList.add('show');
+                                            }, 1);
+
+
+                                            modal.addEventListener('click', (event) => {
+                                                if (event.target === modal) {
+                                                    modal.classList.remove('show');
+                                                    modal_back.classList.remove('show');
+                                                    setTimeout(() => {
+                                                        modal.remove();
+                                                        modal_back.remove();
+                                                    }, 300);
+                                                }
+                                            });
+                                        }
+                                    }
+
                                     function newItemCheck() {
 
                                         if (N > g) {
@@ -2468,7 +2772,7 @@ if (localStorage.full_client_rework != "false") {
             .catch(error => {
                 console.error('Error fetching the API:', error);
             });
-        } else if (params.get("page") === "recap_2024") {
+        } else if (params.get("page") === "year_recap") {
             createRecap2024Element()
         }
     }
@@ -2541,8 +2845,8 @@ if (localStorage.full_client_rework != "false") {
     if (localStorage.experiment_2024_11_recap === "Treatment 1: Enabled") {
         document.getElementById('recap-2024-tab-loading').innerHTML = `
             <img class="recap-2024-tab-decoration" src="https://cdn.yapper.shop/assets/104.png">
-            <button class="dm-button" id="recap-2024-tab" onclick="setParams({page: 'recap_2024'}); location.reload();">
-                <p class="dm-button-text">2024 Recap</p>
+            <button class="dm-button" id="recap-2024-tab" onclick="setParams({page: 'year_recap'}); location.reload();">
+                <p class="dm-button-text">2025 Recap</p>
             </button>
 
         `;
@@ -2559,12 +2863,12 @@ if (localStorage.full_client_rework != "false") {
                 <h2 style="margin-left: 260px; margin-top: 10px;">Home</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
-        } else if (params.get("page") === "recap_2024") {
-            document.title = "2024 Recap | Shop Archives";
+        } else if (params.get("page") === "year_recap") {
+            document.title = "2025 Recap | Shop Archives";
             document.getElementById("recap-2024-tab").classList.add('dm-button-selected');
             localStorage.dismissible_recap_2024 = "dismissed";
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">2024 Recap</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">2025 Recap</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "shop") {
@@ -2849,7 +3153,7 @@ if (localStorage.full_client_rework != "false") {
     }
 
     function dismissibleContentRecap2024() {
-        setParams({page: 'recap_2024'}); location.reload();
+        setParams({page: 'year_recap'}); location.reload();
         localStorage.dismissible_recap_2024 = "dismissed";
     }
 
@@ -2862,7 +3166,7 @@ if (localStorage.full_client_rework != "false") {
                 </div>
                 
                 <div class="a2024-recap-text-card-1">
-                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">2024 Recap</h1>
+                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">2025 Recap</h1>
 
                     <p class="center-text" style="font-size: 18px;">Things such as Splash Potions and randomness added to Profile Effects and much more were all nice gifts given to us in 2024!</p>
                     <p class="center-text" style="font-size: 18px;">The Shop Archives teams has made this article that covers everything that was added to Discord in 2024!</p>
@@ -2871,94 +3175,20 @@ if (localStorage.full_client_rework != "false") {
                 <hr style="opacity: 0; height: 30px;">
 
                 <div class="a2024-recap-text-card-1">
-                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Winter Nitro Promotion</h1>
+                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Placeholder</h1>
 
                     <img class="a2024-recap-img-1" src="${cdn}assets/117.gif">
 
-                    <p class="center-text" style="font-size: 18px;">This Christmas, up until January 6th, 2025, when you purchase a Nitro gift you can choose 1 of 3 Avatar Decorations of your own to collect and keep!</p>
-                </div>
-
-                <hr style="opacity: 0; height: 30px;">
-
-                <div class="a2024-recap-text-card-1">
-                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">HD Splash Potions</h1>
-
-                    <img class="a2024-recap-img-1" src="${cdn}assets/109.png">
-
-                    <p class="center-text" style="font-size: 18px;">HD Splash Potion allows everyone in a voice channel to enjoy HD video streaming quality for the next 12 hours for only US$0.99.</p>
-                </div>
-
-                <hr style="opacity: 0; height: 30px;">
-
-                <div class="a2024-recap-text-card-1">
-                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Halloween Nitro Promotion</h1>
-
-                    <img class="a2024-recap-img-1" src="${cdn}assets/108.png">
-
-                    <p class="center-text" style="font-size: 18px;">From October 7th to November 4th, if you buy a Discord Nitro gift, you'll receive the 'Minios' Avatar Decoration of your own to collect and keep!</p>
-                </div>
-
-                <hr style="opacity: 0; height: 30px;">
-
-                <div class="a2024-recap-text-card-1">
-                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Random Profile Effect Outcomes</h1>
-
-                    <img class="a2024-recap-img-1" src="${cdn}assets/106.png">
-
-                    <p class="center-text" style="font-size: 18px;">You might have noticed that some Profile Effects don't just have one outcome.</p>
-
-                    <p class="center-text" style="font-size: 18px;">Profile Effects such as 'D20 Roll' and 'Classic Street Fighter' have a chance to play a whole new animation every time you open someone profile!</p>
-                </div>
-
-                <hr style="opacity: 0; height: 30px;">
-
-                <div class="a2024-recap-text-card-1">
-                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Spring Nitro Promotion</h1>
-
-                    <img class="a2024-recap-img-1" src="${cdn}assets/107.png">
-
-                    <p class="center-text" style="font-size: 18px;">During Spring, if you were a first time Nitro subscriber, you would receive the 'Gyoiko Sakura' Avatar Decoration of your own to collect and use with an active Nitro subscription!</p>
-
-                    <p class="center-text" style="font-size: 18px;">But none of that mattered since later on Discord allowed anyone to purchase the 'Gyoiko Sakura' Avatar Decoration from 'The Vault' shop category.</p>
-                </div>
-
-                <hr style="opacity: 0; height: 30px;">
-
-                <div class="a2024-recap-text-card-1">
-                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">See what items you got during 2024</h1>
-
-                    <p class="experiment-subtext" style="font-size: 18px;">This will only display items you currently have, it does not have access to expired/removed items</p>
-
-                    <details>
-                        <summary>How do I find my collectibles-purchases?</summary>
-                        <p>Open discord.com/app on a browser of your choice and make sure you're signed in.</p>
-                        <p>Open Dev Tools by pressing CTRL + SHIFT + I (CMD + OPTION + I on mac) on your keyboard.</p>
-                        <p>At the top of Dev Tools you should see the "Network" tab, if you don't see it click the two right poiting arrows for a dropdown, then click "Network".</p>
-                        <p>On discord.com open your profile tab in user settings.</p>
-                        <p>In the "Network" tab press CTRL + F (CMD + F on mac) on your keyboard and search "collectibles-purchases".</p>
-                        <p>Go to the "Response" tab of the file, copy the contents and paste it below.</p>
-                    </details>
-
-                    <div class="input-field">
-                        <p>Paste Raw collectibles-purchases Text</p>
-                        <textarea style="width: 100%; height: 200px; resize: none;" id="load-raw-collectibles-purchases-by-text-input" placeholder="Paste raw collectibles-purchases text here..."></textarea>
-                        <button id="load-raw-collectibles-purchases-by-text-button">Load Raw Text</button>
-                        <p>Upload collectibles-purchases JSON File</p>
-                        <input type="file" id="load-raw-collectibles-purchases-by-file-input" accept=".json">
-                    </div>
-
-                    <p class="experiment-subtext" style="font-size: 18px;">The file you upload will not be stored in any online servers, once the page is refreshed all data is deleted.</p>
-                    <div id="collectibles-purchases-output-div"></div>
+                    <p class="center-text" style="font-size: 18px;">Waiting for 2026</p>
                 </div>
 
                 <hr style="opacity: 0; height: 30px;">
 
                 <div class="a2024-recap-text-card-1" style="padding: 0px;">
-                    <p class="link-text" style="font-size: 18px;" onclick="window.open('${discordsupport}${HELP_HD_STREAMING_POTION}');">HD Splash Potion</p>
                     <p class="link-text" style="font-size: 18px;" onclick="window.open('${discordsupport}${HELP_PROFILE_EFFECTS}');">Profile Effects</p>
                     <p class="link-text" style="font-size: 18px;" onclick="window.open('${discordsupport}${HELP_AVATAR_DECORATIONS}');">Avatar Decorations</p>
                     <p class="link-text" style="font-size: 18px;" onclick="window.open('${discordsupport}${HELP_SHOP}');">Shop</p>
-                    <p class="center-text" style="font-size: 18px;" title="DD/MM/YYYY">This page will be visible until 1/02/2025</p>
+                    <p class="center-text" style="font-size: 18px;" title="DD/MM/YYYY">This page will be visible until 15/01/2026</p>
                 </div>
 
                 <hr style="opacity: 0; height: 30px;">
@@ -2999,7 +3229,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Total items:</span><span>${totalItems2024.length}</span>
                         </div>
-                        <div class="subtext">All items you obtained in 2024.</div>
+                        <div class="subtext">All items you obtained in 2025.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -3010,7 +3240,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Total Decorations:</span><span>${totalDecorations}</span>
                         </div>
-                        <div class="subtext">All Avatar Decorations you obtained in 2024.</div>
+                        <div class="subtext">All Avatar Decorations you obtained in 2025.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.type === 0).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -3021,7 +3251,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Total Effects:</span><span>${totalEffects}</span>
                         </div>
-                        <div class="subtext">All Profile Effects you obtained in 2024.</div>
+                        <div class="subtext">All Profile Effects you obtained in 2025.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.type === 1).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -3032,7 +3262,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Total Bundles:</span><span>${totalBundles}</span>
                         </div>
-                        <div class="subtext">All Bundles you obtained in 2024.</div>
+                        <div class="subtext">All Bundles you obtained in 2025.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.type === 1000).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -3043,7 +3273,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Items purchased:</span><span>${purchaseTypeCounts[1] || 0}</span>
                         </div>
-                        <div class="subtext">All items purchased with real money in 2024.</div>
+                        <div class="subtext">All items purchased with real money in 2025.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 1).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -3054,7 +3284,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Items claimed for free:</span><span>${purchaseTypeCounts[5] || 0}</span>
                         </div>
-                        <div class="subtext">All items claimed with Nitro (Such as DISXCORE items) or when gifting Nitro in 2024.</div>
+                        <div class="subtext">All items claimed with Nitro (Such as DISXCORE items) or when gifting Nitro in 2025.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 5).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -3065,7 +3295,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Items claimed from gifts:</span><span>${purchaseTypeCounts[6] || 0}</span>
                         </div>
-                        <div class="subtext">All items claimed from a gift sent by a friend in 2024.</div>
+                        <div class="subtext">All items claimed from a gift sent by a friend in 2025.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 6).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -3076,7 +3306,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Items claimed with Nitro:</span><span>${purchaseTypeCounts[7] || 0}</span>
                         </div>
-                        <div class="subtext">All items claimed when purchasing a Nitro Subscription (Such as Gyoiko Sakura) in 2024.</div>
+                        <div class="subtext">All items claimed when purchasing a Nitro Subscription (Such as Gyoiko Sakura) in 2025.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 7).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -3087,7 +3317,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Items claimed free with Staff:</span><span>${purchaseTypeCounts[9] || 0}</span>
                         </div>
-                        <div class="subtext">All items claimed with Staff Pannel (Or however staff claim their free collectibles) in 2024.</div>
+                        <div class="subtext">All items claimed with Staff Pannel (Or however staff claim their free collectibles) in 2025.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 9).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -3098,7 +3328,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Items claimed in Quests:</span><span>${purchaseTypeCounts[10] || 0}</span>
                         </div>
-                        <div class="subtext">All items claimed when completing a Quest in 2024.</div>
+                        <div class="subtext">All items claimed when completing a Quest in 2025.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 10).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -3109,7 +3339,7 @@ if (localStorage.full_client_rework != "false") {
                         <div class="box-header">
                             <span>Items claimed with Orbs:</span><span>${purchaseTypeCounts[12] || 0}</span>
                         </div>
-                        <div class="subtext">All items purchased with Discord Orbs in 2024.</div>
+                        <div class="subtext">All items purchased with Discord Orbs in 2025.</div>
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.purchase_type === 12).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
@@ -4431,6 +4661,14 @@ if (localStorage.full_client_rework != "false") {
                     </div>
 
                     <div class="options-option-card">
+                        <p class="option-card-title">Shop Card Modals</p>
+                        <p class="new-experiment-subtext">2025_02_shop_card_modals</p>
+                        <select id="experiment_2025_02_shop_card_modals_treatment_container" class="experiment-treatment-picker">
+                        </select>
+                        <button class="new-experiment-clear-button" onclick="experiment_2025_02_shop_card_modals_clear()">Clear</button>
+                    </div>
+
+                    <div class="options-option-card">
                         <p class="option-card-title">Mobile Render</p>
                         <p class="new-experiment-subtext">2025_02_mobile_render</p>
                         <select id="experiment_2025_02_mobile_render_treatment_container" class="experiment-treatment-picker">
@@ -4484,6 +4722,37 @@ if (localStorage.full_client_rework != "false") {
                     document.getElementById("experiment-force-rollout").checked = true;
                 }
 
+
+                try {
+                    const experiment_2025_02_shop_card_modals_treatments = ["Treatment -1: Disabled", "Treatment 1: Enable modals", "Treatment 2: Enable modals with data downloads"];
+
+                    const experiment_2025_02_shop_card_modals_treatment_picker = document.getElementById("experiment_2025_02_shop_card_modals_treatment_container");
+                    
+
+                    populate_experiment_2025_02_shop_card_modals();
+                    
+                    const storedTreatment = localStorage.getItem("experiment_2025_02_shop_card_modals");
+                    if (storedTreatment) {
+                        experiment_2025_02_shop_card_modals_treatment_picker.value = storedTreatment;
+                    }
+
+                    function populate_experiment_2025_02_shop_card_modals() {
+                        experiment_2025_02_shop_card_modals_treatments.forEach((treatments) => {
+                            const optElement = document.createElement("option");
+                            optElement.value = treatments;
+                            optElement.textContent = treatments;
+                            experiment_2025_02_shop_card_modals_treatment_picker.appendChild(optElement);
+                        });
+                    }
+
+                    experiment_2025_02_shop_card_modals_treatment_picker.addEventListener("change", () => {
+                        const selectedTreatment = experiment_2025_02_shop_card_modals_treatment_picker.value;
+                    
+                        // Store the selection
+                        localStorage.setItem("experiment_2025_02_shop_card_modals", selectedTreatment);
+                    });
+                } catch(error) {
+                }
 
                 try {
                     const experiment_2025_02_mobile_render_treatments = ["Treatment -1: Disabled", "Treatment 1: Use new mobile check", "Treatment 2: Use old mobile check"];
@@ -4742,6 +5011,7 @@ if (localStorage.full_client_rework != "false") {
     }
 
     if (localStorage.experiment_force_rollout != "false") {
+        localStorage.experiment_2025_02_shop_card_modals = EXPERIMENT_ID_15;
         localStorage.experiment_2025_02_mobile_render = EXPERIMENT_ID_14;
         localStorage.experiment_2025_02_orbs_shop = EXPERIMENT_ID_13;
         localStorage.experiment_2025_01_orb_testing = EXPERIMENT_ID_12;
@@ -4751,6 +5021,10 @@ if (localStorage.full_client_rework != "false") {
         localStorage.experiment_2024_11_collectibles_variants = EXPERIMENT_ID_8;
         localStorage.experiment_2024_11_recap = EXPERIMENT_ID_7;
     } else {
+
+        if (localStorage.experiment_2025_02_shop_card_modals == null) {
+            localStorage.experiment_2025_02_shop_card_modals = EXPERIMENT_ID_15;
+        }
 
         if (localStorage.experiment_2025_02_mobile_render == null) {
             localStorage.experiment_2025_02_mobile_render = EXPERIMENT_ID_14;
