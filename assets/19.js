@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 208";
+tcbx926n29 = "Dev 209";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -651,7 +651,7 @@ if (localStorage.full_client_rework != "false") {
 
 
 
-                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
                                             if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
                                                 card.classList.add('clickable');
 
@@ -676,8 +676,29 @@ if (localStorage.full_client_rework != "false") {
                                                                 <p data-product-modal-sku-id></p>
                                                                 <p data-product-modal-name></p>
                                                                 <p data-product-modal-summary></p>
+                                                                <div class="shop-modal-var-container-container" data-shop-modal-var-container-container>
+                                                                    <div class="shop-modal-var-container" data-shop-modal-var-container></div>
+                                                                    <a class="shop-modal-var-title" data-shop-modal-var-title></a>
+                                                                </div>
+                                                                <div class="modal-shop-price-container" data-shop-price-container>
+                                                                    <div data-price-standard-container>
+                                                                        <a style="font-size: large; font-weight: 900;" data-price-standard></a>
+                                                                    </div>
+                                                                    <div data-price-nitro-container>
+                                                                        <a data-price-nitro></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-left-bottom">
+                                                                    <div class="modal-buttons" data-modal-buttons></div>
+                                                                </div>
                                                             </div>
                                                             <img class="modalv2-inner-logo" src="https://cdn.yapper.shop/assets/${apiCategory.logo}.png"></img>
+                                                            <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
+
+                                                            <div title="Close" data-close-product-card-button>
+                                                                <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                            </div>
+
                                                             <div id="modalv2-inner-right" class="modalv2-inner-right">
                                                                 <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/${pdp}.png"></img>
                                                                 <div data-modal-preview-holder></div>
@@ -885,6 +906,284 @@ if (localStorage.full_client_rework != "false") {
                                                         });
                                                     }
 
+                                                    if (product.type === 2000) {
+                                                        modal.querySelector("[data-shop-modal-var-container-container]").classList.add('show');
+                                                        // Update SKU and summary
+                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `Made By: ${product.credits}`;
+                                                        modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
+                                                    
+                                                        // Always display the base variant name
+                                                        modal.querySelector("[data-product-modal-name]").textContent = product.variants[0]?.base_variant_name || "Product";
+                                                    
+                                                        // Render variant color blocks as interactive divs
+                                                        const variantContainer = modal.querySelector("[data-shop-modal-var-container]");
+                                                        variantContainer.innerHTML = ""; // Clear existing variant blocks
+                                                        let currentSelectedVariant = null; // Track selected variant
+                                                    
+                                                        product.variants.forEach((variant, index) => {
+                                                            // Create variant color block
+                                                            const variantColorBlock = document.createElement("div");
+                                                            variantColorBlock.classList.add("shop-card-var");
+                                                            variantColorBlock.style.backgroundColor = `${variant.variant_value}`;
+                                                    
+                                                            // Add click event listener to switch variants
+                                                            variantColorBlock.addEventListener("click", () => {
+                                                                if (currentSelectedVariant) {
+                                                                    currentSelectedVariant.classList.remove("shop-card-var-selected");
+                                                                }
+                                                                variantColorBlock.classList.add("shop-card-var-selected");
+                                                                currentSelectedVariant = variantColorBlock;
+                                                                applyVariant(variant);
+                                                            });
+                                                    
+                                                            // Append the color block to the container
+                                                            variantContainer.appendChild(variantColorBlock);
+                                                    
+                                                            // Set the first variant as the default selected
+                                                            if (index === 0) {
+                                                                currentSelectedVariant = variantColorBlock;
+                                                                variantColorBlock.classList.add("shop-card-var-selected");
+                                                            }
+                                                        });
+            
+                                                        let isFirstTimeLoadingVariant = true;
+                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                    
+                                                        // Function to apply the selected variant
+                                                        function applyVariant(selectedVariant) {
+                                                            modal.querySelector("[data-shop-modal-var-title]").textContent = `(${selectedVariant.variant_label})`;
+                                                            modal.querySelector("[data-product-modal-sku-id]").textContent = `Made By: ${product.credits}`;
+                                                            // modal.querySelector("[data-share-product-card-button]").innerHTML = `
+                                                            //     <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
+                                                            // `;
+                                                            if (selectedVariant.type === 0) {
+                                                                modal.classList.add("modal-2000-0");
+                                                                previewHolder.innerHTML = ""; // Clear previous decorations
+                                                                previewHolder.classList.add('modal-avatar-decoration-img');
+                                                                
+                                                                // Add the avatar decoration based on the selected variant
+                                                                selectedVariant.items?.forEach(item => {
+                                                                    const decoImage = document.createElement("img");
+                                                                    decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                    decoImage.alt = "Avatar Decoration";
+                                                                    decoImage.id = "shop-card-deco-image";
+                                                                    previewHolder.appendChild(decoImage);
+                                                                
+                                                                    // Hover effect for decoration image
+                                                                    if (localStorage.reduced_motion !== "true") {
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                        });
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                        });
+                                                                    }
+                                                                });
+                                                            } else if (selectedVariant.type === 1) {
+                                                                modal.classList.add("modal-2000-1");
+                                                                (async () => {
+                                                                    // Ensure the item ID is accessible here
+                                                                    let itemId = undefined;
+                                                                    if (Array.isArray(selectedVariant.items)) {
+                                                                        // If items is an array, find the item with type 1 and get its id
+                                                                        const item = selectedVariant.items.find(item => item.type === 1);
+                                                                        if (item) {
+                                                                            itemId = item.id;
+                                                                        }
+                                                                    } else if (selectedVariant.items && selectedVariant.items.type === 1) {
+                                                                        // If items is an object and has type 1, get its id
+                                                                        itemId = selectedVariant.items.id;
+                                                                    }
+                                                                
+                                                                
+                                                                    // Fetch profile effects API only if not already cached
+                                                                    if (!profileEffectsCache) {
+                                                                        const response = await fetch(api + PROFILE_EFFECTS);
+                                                                        const effectsData = await response.json();
+                                                                        profileEffectsCache = effectsData.profile_effect_configs;
+                                                                    }
+                                                                
+                                                                    // Find matching profile effect
+                                                                    const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                
+                                                                    if (matchingEffect) {
+                                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                                        previewHolder.classList.add('modal-profile-effect-img');
+                                                                    
+                                                                        previewHolder.innerHTML = `
+                                                                            <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                                        `;
+                                                                    
+                                                                        // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                                        const imgElement = previewHolder.querySelector("img");
+                                                                    
+                                                                        if (localStorage.reduced_motion != "true") {
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                    const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                    imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                                }
+                                                                            });
+                                                                        
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                            });
+                                                                        } else {
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                            });
+                                                                        
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                            });
+                                                                        }
+                                                                    }
+                                                                })();
+                                                            }
+                                                        }
+                                                    
+                                                        // Apply the default variant (first one) initially
+                                                        if (product.variants.length > 0) {
+                                                            applyVariant(product.variants[0]);
+                                                        }
+                                                    }
+
+
+                                                    const button_container = document.querySelector("[data-modal-buttons]");
+                                                    
+                                                    if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                                        button_container.innerHTML = `
+                                                            <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
+                                                                <button class="card-button">Download Data</button>
+                                                            </a>
+                                                        `;
+                                                    } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                                        if (typeof product.emojiCopy != 'undefined') {
+                                                            button_container.innerHTML = `
+                                                                <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
+                                                                    <button class="card-button">Download Data</button>
+                                                                </a>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${product.emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                                            `;
+                                                        } else {
+                                                            button_container.innerHTML = `
+                                                                <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
+                                                                    <button class="card-button">Download Data</button>
+                                                                </a>
+                                                                <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
+                                                            `;
+                                                        }
+                                                    } else {
+                                                        button_container.innerHTML = ``;
+                                                    }
+
+
+                                                    const unpublishedAt = new Date(product.unpublished_at);
+                            
+                                                    if (product.unpublished_at && !isNaN(unpublishedAt.getTime())) {
+                            
+                                                        function updateTimer() {
+                                                            const now = new Date();
+                                                            const timeDiff = unpublishedAt - now;
+                            
+                                                            if (timeDiff <= 0) {
+                                                                modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">OFF SALE</p>
+                                                                    </div>
+                                                                `;
+                                                                clearInterval(timerInterval);
+                                                            } else {
+                                                                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                            
+                                                                modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">${days} DAYS LEFT TO REQUEST</p>
+                                                                    </div>
+                                                                `;
+                                                            }
+                                                        }
+                            
+                                                        const timerInterval = setInterval(updateTimer, 1000);
+                                                        updateTimer();
+                                                    }
+
+
+                                                    const expiresAt = new Date(product.expires_at);
+
+                                                    if (product.expires_at && !isNaN(expiresAt.getTime())) {
+                            
+                                                        function updateTimer() {
+                                                            const now = new Date();
+                                                            const timeDiff = expiresAt - now;
+                            
+                                                            if (timeDiff <= 0) {
+                                                                modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">EXPIRED</p>
+                                                                    </div>
+                                                                `;
+                                                                clearInterval(timerInterval);
+                                                            } else {
+                                                                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                            
+                                                                modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">EXPIRES IN ${days}D ${hours}H</p>
+                                                                    </div>
+                                                                `;
+                                                            }
+                                                        }
+                            
+                                                        const timerInterval = setInterval(updateTimer, 1000);
+                                                        updateTimer();
+                                                    }
+
+                                                    const ReleasesAt = new Date(product.releases_at);
+                            
+                                                    if (product.releases_at && !isNaN(ReleasesAt.getTime())) {
+                            
+                                                        function updateTimer() {
+                                                            const now = new Date();
+                                                            const timeDiff = ReleasesAt - now;
+                            
+                                                            if (timeDiff <= 0) {
+                                                                card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">PUBLISHING...</p>
+                                                                    </div>
+                                                                `;
+                                                                clearInterval(timerInterval);
+                                                            } else {
+                                                                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                            
+                                                                card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">${days}D ${hours}H</p>
+                                                                    </div>
+                                                                `;
+                                                            }
+                                                        }
+                            
+                                                        const timerInterval = setInterval(updateTimer, 1000);
+                                                        updateTimer();
+                                                    }
+
+                                                    if (product.premium_type === 2) {
+                                                        modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                            <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
+                                                        `;
+                                                    }
+                                                    
+
 
                                                     let modal_back = document.createElement("div");
 
@@ -907,6 +1206,15 @@ if (localStorage.full_client_rework != "false") {
                                                                 modal_back.remove();
                                                             }, 300);
                                                         }
+                                                    });
+
+                                                    document.querySelector("[data-close-product-card-button]").addEventListener('click', () => {
+                                                        modal.classList.remove('show');
+                                                        modal_back.classList.remove('show');
+                                                        setTimeout(() => {
+                                                            modal.remove();
+                                                            modal_back.remove();
+                                                        }, 300);
                                                     });
                                                 }
                                             }
@@ -1138,7 +1446,7 @@ if (localStorage.full_client_rework != "false") {
                                 }
 
 
-                                if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
                                     potionCard.classList.add('clickable');
 
                                     potionCard.addEventListener("click", () => {
@@ -1162,7 +1470,21 @@ if (localStorage.full_client_rework != "false") {
                                                     <p data-product-modal-sku-id></p>
                                                     <p data-product-modal-name></p>
                                                     <p data-product-modal-summary></p>
+                                                    <div class="modal-shop-price-container" data-shop-price-container>
+                                                        <div data-price-standard-container>
+                                                            <a style="font-size: large; font-weight: 900;" data-price-standard></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-left-bottom">
+                                                        <div class="modal-buttons" data-modal-buttons></div>
+                                                    </div>
                                                 </div>
+                                                <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
+
+                                                <div title="Close" data-close-product-card-button>
+                                                    <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                </div>
+
                                                 <div id="modalv2-inner-right" class="modalv2-inner-right">
                                                     <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/110.svg"></img>
                                                     <div data-modal-preview-holder></div>
@@ -1176,6 +1498,7 @@ if (localStorage.full_client_rework != "false") {
                                             modal.classList.add('show');
                                         }, 1);
 
+
                                         const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                         previewHolder.classList.add('modal-potion-img');
 
@@ -1184,11 +1507,101 @@ if (localStorage.full_client_rework != "false") {
                                         imgElement.src = `https://cdn.yapper.shop/${apiCategory.endpoint}/${apiCategory.src}.${apiCategory.format}`;
 
                                         previewHolder.appendChild(imgElement);
-                                    
+                                        
                                         // Set the product details
                                         modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU_ID: ${apiCategory.sku_id}`;
                                         modal.querySelector("[data-product-modal-name]").textContent = apiCategory.name;
                                         modal.querySelector("[data-product-modal-summary]").textContent = apiCategory.summary;
+
+
+                                        const button_container = document.querySelector("[data-modal-buttons]");
+                                        
+                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                            button_container.innerHTML = `
+                                                <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
+                                                    <button class="card-button">Download Data</button>
+                                                </a>
+                                            `;
+                                        } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                            button_container.innerHTML = `
+                                                <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
+                                                    <button class="card-button">Download Data</button>
+                                                </a>
+                                            `;
+                                        } else {
+                                            button_container.innerHTML = ``;
+                                        }
+
+
+                                        let priceStandard = "N/A";
+                        
+                                        if (apiCategory.price) {
+                                            priceStandard = apiCategory.price.amount;
+                                        }
+
+
+                                        const priceTextNitro = modal.querySelector("[data-price-nitro]");
+                                        const priceTextStandard = modal.querySelector("[data-price-standard]");
+
+                                        const priceContainerNitro = modal.querySelector("[data-price-nitro-container]");
+                                        const priceContainerStandard = modal.querySelector("[data-price-standard-container]");
+
+                                        const priceContainer = modal.querySelector("[data-shop-price-container]");
+
+                                        if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Default Prices") {
+                                            if (priceTextStandard) {
+                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                            }
+                                        
+                                            let orb_icon = document.createElement("div");
+                                        
+                                            orb_icon.classList.add('orb-icon');
+                                        
+                                            priceContainerStandard.appendChild(orb_icon);
+                                        
+                                        } else if (localStorage.experiment_2025_01_orb_testing === "Treatment 2: 50 Orbs") {
+                                            if (priceTextStandard) {
+                                                priceTextStandard.textContent = `50`;
+                                            }
+                                        
+                                            let orb_icon = document.createElement("div");
+                                        
+                                            orb_icon.classList.add('orb-icon');
+                                        
+                                            priceContainerStandard.appendChild(orb_icon);
+                                        
+                                        } else if (localStorage.experiment_2025_01_orb_testing === "Treatment 3: Dynamic") {
+
+                                            if (apiCategory.price.currency === "discord_orb") {
+                                                if (priceTextStandard) {
+                                                    priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                                }
+                                            
+                                                let orb_icon = document.createElement("div");
+                                            
+                                                orb_icon.classList.add('orb-icon');
+                                            
+                                                priceContainerStandard.appendChild(orb_icon);
+                                            
+                                            } else {
+                                                if (priceTextStandard) {
+                                                    priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                                }
+                                            }
+
+                                        } else {
+                                            if (priceTextStandard) {
+                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                            }
+                                        }
+
+                                        if (apiCategory.new_text != null) {
+                                            modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                <div class="unplublished-tag">
+                                                    <p class="unplublished-tag-text">${apiCategory.new_text}</p>
+                                                </div>
+                                            `;
+                                        }
 
 
                                         document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
@@ -1198,6 +1611,7 @@ if (localStorage.full_client_rework != "false") {
                                         document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
                                             modal.classList.remove('potion-wobble')
                                         });
+                                        
 
 
                                         let modal_back = document.createElement("div");
@@ -1221,6 +1635,15 @@ if (localStorage.full_client_rework != "false") {
                                                     modal_back.remove();
                                                 }, 300);
                                             }
+                                        });
+
+                                        document.querySelector("[data-close-product-card-button]").addEventListener('click', () => {
+                                            modal.classList.remove('show');
+                                            modal_back.classList.remove('show');
+                                            setTimeout(() => {
+                                                modal.remove();
+                                                modal_back.remove();
+                                            }, 300);
                                         });
                                     }
                                 }
@@ -1303,14 +1726,8 @@ if (localStorage.full_client_rework != "false") {
                                 potionCard.querySelector("[data-product-card-name]").textContent = apiCategory.name;
                                 potionCard.querySelector("[data-product-card-summary]").textContent = apiCategory.summary;
 
-                                let priceStandard = "N/A";
-                        
-                                if (apiCategory.price) {
-                                    priceStandard = apiCategory.price.amount;
-                                }
 
-
-                                if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
                                     potionCard.classList.add('clickable');
 
                                     potionCard.addEventListener("click", () => {
@@ -1334,7 +1751,21 @@ if (localStorage.full_client_rework != "false") {
                                                     <p data-product-modal-sku-id></p>
                                                     <p data-product-modal-name></p>
                                                     <p data-product-modal-summary></p>
+                                                    <div class="modal-shop-price-container" data-shop-price-container>
+                                                        <div data-price-standard-container>
+                                                            <a style="font-size: large; font-weight: 900;" data-price-standard></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-left-bottom">
+                                                        <div class="modal-buttons" data-modal-buttons></div>
+                                                    </div>
                                                 </div>
+                                                <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
+
+                                                <div title="Close" data-close-product-card-button>
+                                                    <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                </div>
+
                                                 <div id="modalv2-inner-right" class="modalv2-inner-right">
                                                     <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/110.svg"></img>
                                                     <div data-modal-preview-holder></div>
@@ -1348,6 +1779,7 @@ if (localStorage.full_client_rework != "false") {
                                             modal.classList.add('show');
                                         }, 1);
 
+
                                         const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                         previewHolder.classList.add('modal-potion-img');
 
@@ -1356,11 +1788,101 @@ if (localStorage.full_client_rework != "false") {
                                         imgElement.src = `https://cdn.yapper.shop/${apiCategory.endpoint}/${apiCategory.src}.${apiCategory.format}`;
 
                                         previewHolder.appendChild(imgElement);
-                                    
+                                        
                                         // Set the product details
                                         modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU_ID: ${apiCategory.sku_id}`;
                                         modal.querySelector("[data-product-modal-name]").textContent = apiCategory.name;
                                         modal.querySelector("[data-product-modal-summary]").textContent = apiCategory.summary;
+
+
+                                        const button_container = document.querySelector("[data-modal-buttons]");
+                                        
+                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                            button_container.innerHTML = `
+                                                <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
+                                                    <button class="card-button">Download Data</button>
+                                                </a>
+                                            `;
+                                        } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                            button_container.innerHTML = `
+                                                <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
+                                                    <button class="card-button">Download Data</button>
+                                                </a>
+                                            `;
+                                        } else {
+                                            button_container.innerHTML = ``;
+                                        }
+
+
+                                        let priceStandard = "N/A";
+                        
+                                        if (apiCategory.price) {
+                                            priceStandard = apiCategory.price.amount;
+                                        }
+
+
+                                        const priceTextNitro = modal.querySelector("[data-price-nitro]");
+                                        const priceTextStandard = modal.querySelector("[data-price-standard]");
+
+                                        const priceContainerNitro = modal.querySelector("[data-price-nitro-container]");
+                                        const priceContainerStandard = modal.querySelector("[data-price-standard-container]");
+
+                                        const priceContainer = modal.querySelector("[data-shop-price-container]");
+
+                                        if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Default Prices") {
+                                            if (priceTextStandard) {
+                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                            }
+                                        
+                                            let orb_icon = document.createElement("div");
+                                        
+                                            orb_icon.classList.add('orb-icon');
+                                        
+                                            priceContainerStandard.appendChild(orb_icon);
+                                        
+                                        } else if (localStorage.experiment_2025_01_orb_testing === "Treatment 2: 50 Orbs") {
+                                            if (priceTextStandard) {
+                                                priceTextStandard.textContent = `50`;
+                                            }
+                                        
+                                            let orb_icon = document.createElement("div");
+                                        
+                                            orb_icon.classList.add('orb-icon');
+                                        
+                                            priceContainerStandard.appendChild(orb_icon);
+                                        
+                                        } else if (localStorage.experiment_2025_01_orb_testing === "Treatment 3: Dynamic") {
+
+                                            if (apiCategory.price.currency === "discord_orb") {
+                                                if (priceTextStandard) {
+                                                    priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                                }
+                                            
+                                                let orb_icon = document.createElement("div");
+                                            
+                                                orb_icon.classList.add('orb-icon');
+                                            
+                                                priceContainerStandard.appendChild(orb_icon);
+                                            
+                                            } else {
+                                                if (priceTextStandard) {
+                                                    priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                                }
+                                            }
+
+                                        } else {
+                                            if (priceTextStandard) {
+                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                            }
+                                        }
+
+                                        if (apiCategory.new_text != null) {
+                                            modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                <div class="unplublished-tag">
+                                                    <p class="unplublished-tag-text">${apiCategory.new_text}</p>
+                                                </div>
+                                            `;
+                                        }
 
 
                                         document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
@@ -1370,6 +1892,7 @@ if (localStorage.full_client_rework != "false") {
                                         document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
                                             modal.classList.remove('potion-wobble')
                                         });
+                                        
 
 
                                         let modal_back = document.createElement("div");
@@ -1394,7 +1917,23 @@ if (localStorage.full_client_rework != "false") {
                                                 }, 300);
                                             }
                                         });
+
+                                        document.querySelector("[data-close-product-card-button]").addEventListener('click', () => {
+                                            modal.classList.remove('show');
+                                            modal_back.classList.remove('show');
+                                            setTimeout(() => {
+                                                modal.remove();
+                                                modal_back.remove();
+                                            }, 300);
+                                        });
                                     }
+                                }
+
+
+                                let priceStandard = "N/A";
+                        
+                                if (apiCategory.price) {
+                                    priceStandard = apiCategory.price.amount;
                                 }
                         
                                 
@@ -2064,10 +2603,6 @@ if (localStorage.full_client_rework != "false") {
                                             `;
                                         }
 
-                                        card.querySelector("[data-share-product-card-button]").innerHTML = `
-                                            <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${product.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
-                                        `;
-
 
                                         if (product.type === 'plus_more') {
                                             card.querySelector("[data-product-card-sku-id]").textContent = ``;
@@ -2094,7 +2629,7 @@ if (localStorage.full_client_rework != "false") {
                                             }
                                         }
 
-                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
                                             if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
                                                 card.classList.add('clickable');
 
@@ -2119,8 +2654,31 @@ if (localStorage.full_client_rework != "false") {
                                                                 <p data-product-modal-sku-id></p>
                                                                 <p data-product-modal-name></p>
                                                                 <p data-product-modal-summary></p>
+                                                                <div class="shop-modal-var-container-container" data-shop-modal-var-container-container>
+                                                                    <div class="shop-modal-var-container" data-shop-modal-var-container></div>
+                                                                    <a class="shop-modal-var-title" data-shop-modal-var-title></a>
+                                                                </div>
+                                                                <div class="modal-shop-price-container" data-shop-price-container>
+                                                                    <div data-price-standard-container>
+                                                                        <a style="font-size: large; font-weight: 900;" data-price-standard></a>
+                                                                    </div>
+                                                                    <div data-price-nitro-container>
+                                                                        <a data-price-nitro></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-left-bottom">
+                                                                    <div class="modal-buttons" data-modal-buttons></div>
+                                                                </div>
                                                             </div>
                                                             <img class="modalv2-inner-logo" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096"></img>
+                                                            <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
+                                                            
+                                                            <div title="Copy Link" data-share-product-card-button></div>
+
+                                                            <div title="Close" data-close-product-card-button>
+                                                                <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                            </div>
+
                                                             <div id="modalv2-inner-right" class="modalv2-inner-right">
                                                                 <img class="modalv2-inner-img" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${pdp}.png?size=4096"></img>
                                                                 <div data-modal-preview-holder></div>
@@ -2328,6 +2886,326 @@ if (localStorage.full_client_rework != "false") {
                                                         });
                                                     }
 
+                                                    if (product.type === 2000) {
+                                                        modal.querySelector("[data-shop-modal-var-container-container]").classList.add('show');
+                                                        // Update SKU and summary
+                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                        modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
+                                                    
+                                                        // Always display the base variant name
+                                                        modal.querySelector("[data-product-modal-name]").textContent = product.variants[0]?.base_variant_name || "Product";
+                                                    
+                                                        // Render variant color blocks as interactive divs
+                                                        const variantContainer = modal.querySelector("[data-shop-modal-var-container]");
+                                                        variantContainer.innerHTML = ""; // Clear existing variant blocks
+                                                        let currentSelectedVariant = null; // Track selected variant
+                                                    
+                                                        product.variants.forEach((variant, index) => {
+                                                            // Create variant color block
+                                                            const variantColorBlock = document.createElement("div");
+                                                            variantColorBlock.classList.add("shop-card-var");
+                                                            variantColorBlock.style.backgroundColor = `${variant.variant_value}`;
+                                                    
+                                                            // Add click event listener to switch variants
+                                                            variantColorBlock.addEventListener("click", () => {
+                                                                if (currentSelectedVariant) {
+                                                                    currentSelectedVariant.classList.remove("shop-card-var-selected");
+                                                                }
+                                                                variantColorBlock.classList.add("shop-card-var-selected");
+                                                                currentSelectedVariant = variantColorBlock;
+                                                                applyVariant(variant);
+                                                            });
+                                                    
+                                                            // Append the color block to the container
+                                                            variantContainer.appendChild(variantColorBlock);
+                                                    
+                                                            // Set the first variant as the default selected
+                                                            if (index === 0) {
+                                                                currentSelectedVariant = variantColorBlock;
+                                                                variantColorBlock.classList.add("shop-card-var-selected");
+                                                            }
+                                                        });
+            
+                                                        let isFirstTimeLoadingVariant = true;
+                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                    
+                                                        // Function to apply the selected variant
+                                                        function applyVariant(selectedVariant) {
+                                                            modal.querySelector("[data-shop-modal-var-title]").textContent = `(${selectedVariant.variant_label})`;
+                                                            modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${selectedVariant.sku_id}`;
+                                                            modal.querySelector("[data-share-product-card-button]").innerHTML = `
+                                                                <svg class="shareIcon_modal" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
+                                                            `;
+                                                            if (selectedVariant.type === 0) {
+                                                                modal.classList.add("modal-2000-0");
+                                                                previewHolder.innerHTML = ""; // Clear previous decorations
+                                                                previewHolder.classList.add('modal-avatar-decoration-img');
+                                                                
+                                                                // Add the avatar decoration based on the selected variant
+                                                                selectedVariant.items?.forEach(item => {
+                                                                    const decoImage = document.createElement("img");
+                                                                    decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                    decoImage.alt = "Avatar Decoration";
+                                                                    decoImage.id = "shop-card-deco-image";
+                                                                    previewHolder.appendChild(decoImage);
+                                                                
+                                                                    // Hover effect for decoration image
+                                                                    if (localStorage.reduced_motion !== "true") {
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                        });
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                        });
+                                                                    }
+                                                                });
+                                                            } else if (selectedVariant.type === 1) {
+                                                                modal.classList.add("modal-2000-1");
+                                                                (async () => {
+                                                                    // Ensure the item ID is accessible here
+                                                                    let itemId = undefined;
+                                                                    if (Array.isArray(selectedVariant.items)) {
+                                                                        // If items is an array, find the item with type 1 and get its id
+                                                                        const item = selectedVariant.items.find(item => item.type === 1);
+                                                                        if (item) {
+                                                                            itemId = item.id;
+                                                                        }
+                                                                    } else if (selectedVariant.items && selectedVariant.items.type === 1) {
+                                                                        // If items is an object and has type 1, get its id
+                                                                        itemId = selectedVariant.items.id;
+                                                                    }
+                                                                
+                                                                
+                                                                    // Fetch profile effects API only if not already cached
+                                                                    if (!profileEffectsCache) {
+                                                                        const response = await fetch(api + PROFILE_EFFECTS);
+                                                                        const effectsData = await response.json();
+                                                                        profileEffectsCache = effectsData.profile_effect_configs;
+                                                                    }
+                                                                
+                                                                    // Find matching profile effect
+                                                                    const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                
+                                                                    if (matchingEffect) {
+                                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                                        previewHolder.classList.add('modal-profile-effect-img');
+                                                                    
+                                                                        previewHolder.innerHTML = `
+                                                                            <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                                        `;
+                                                                    
+                                                                        // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                                        const imgElement = previewHolder.querySelector("img");
+                                                                    
+                                                                        if (localStorage.reduced_motion != "true") {
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                    const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                    imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                                }
+                                                                            });
+                                                                        
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                            });
+                                                                        } else {
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                            });
+                                                                        
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                            });
+                                                                        }
+                                                                    }
+                                                                })();
+                                                            }
+                                                        }
+                                                    
+                                                        // Apply the default variant (first one) initially
+                                                        if (product.variants.length > 0) {
+                                                            applyVariant(product.variants[0]);
+                                                        }
+                                                    }
+
+
+                                                    const button_container = document.querySelector("[data-modal-buttons]");
+                                                    
+                                                    if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                                        button_container.innerHTML = `
+                                                            <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                            <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
+                                                                <button class="card-button">Download Data</button>
+                                                            </a>
+                                                        `;
+                                                    } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                                        if (typeof product.emojiCopy != 'undefined') {
+                                                            button_container.innerHTML = `
+                                                                <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                                <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
+                                                                    <button class="card-button">Download Data</button>
+                                                                </a>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${product.emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                                            `;
+                                                        } else {
+                                                            button_container.innerHTML = `
+                                                                <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                                <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
+                                                                    <button class="card-button">Download Data</button>
+                                                                </a>
+                                                                <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
+                                                            `;
+                                                        }
+                                                    } else {
+                                                        button_container.innerHTML = `
+                                                            <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                        `;
+                                                    }
+
+
+                                                    modal.querySelector("[data-share-product-card-button]").innerHTML = `
+                                                        <svg class="shareIcon_modal" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${product.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
+                                                    `;
+
+
+                                                    let priceStandard = "N/A";
+                                                    let priceNitro = "N/A";
+                                
+                                                    if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices[0]) {
+                                                        priceStandard = product.prices["0"].country_prices.prices[0].amount;
+                                                    }
+                                
+                                                    if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices[0]) {
+                                                        priceNitro = product.prices["4"].country_prices.prices[0].amount;
+                                                    }
+                                
+                                
+                                                    const priceTextNitro = modal.querySelector("[data-price-nitro]");
+                                                    const priceTextStandard = modal.querySelector("[data-price-standard]");
+
+                                                    const priceContainerNitro = modal.querySelector("[data-price-nitro-container]");
+                                                    const priceContainerStandard = modal.querySelector("[data-price-standard-container]");
+
+                                                    const priceContainer = modal.querySelector("[data-shop-price-container]");
+
+                                                    if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Default Prices") {
+                                                        if (priceTextStandard) {
+                                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                                        }
+                                                    
+                                                        let orb_icon = document.createElement("div");
+                                                    
+                                                        orb_icon.classList.add('orb-icon');
+                                                    
+                                                        priceContainerStandard.appendChild(orb_icon);
+    
+    
+                                                        if (priceTextNitro) {
+                                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "Price (USD): N/A";
+                                                        }
+                                                    
+                                                        let orb_icon_nitro = document.createElement("div");
+                                                    
+                                                        orb_icon_nitro.classList.add('orb-icon-strike');
+                                                    
+                                                        priceContainerNitro.appendChild(orb_icon_nitro);
+                                                    
+                                                    } else if (localStorage.experiment_2025_01_orb_testing === "Treatment 2: 50 Orbs") {
+                                                        if (priceTextStandard) {
+                                                            priceTextStandard.textContent = `50`;
+                                                        }
+                                                    
+                                                        let orb_icon = document.createElement("div");
+                                                    
+                                                        orb_icon.classList.add('orb-icon');
+                                                    
+                                                        priceContainerStandard.appendChild(orb_icon);
+                                                    
+                                                    } else {
+                                                        if (priceTextStandard) {
+                                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                                        }
+    
+                                                        if (priceTextNitro) {
+                                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
+                                                        }
+                                                    }
+
+
+                                                    const unpublishedAt = new Date(product.unpublished_at);
+                            
+                                                    if (product.unpublished_at && !isNaN(unpublishedAt.getTime())) {
+                            
+                                                        function updateTimer() {
+                                                            const now = new Date();
+                                                            const timeDiff = unpublishedAt - now;
+                            
+                                                            if (timeDiff <= 0) {
+                                                                modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">OFF SALE</p>
+                                                                    </div>
+                                                                `;
+                                                                clearInterval(timerInterval);
+                                                            } else {
+                                                                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                            
+                                                                modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">${days} DAYS LEFT TO REQUEST</p>
+                                                                    </div>
+                                                                `;
+                                                            }
+                                                        }
+                            
+                                                        const timerInterval = setInterval(updateTimer, 1000);
+                                                        updateTimer();
+                                                    }
+
+
+                                                    const expiresAt = new Date(product.expires_at);
+
+                                                    if (product.expires_at && !isNaN(expiresAt.getTime())) {
+                            
+                                                        function updateTimer() {
+                                                            const now = new Date();
+                                                            const timeDiff = expiresAt - now;
+                            
+                                                            if (timeDiff <= 0) {
+                                                                modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">EXPIRED</p>
+                                                                    </div>
+                                                                `;
+                                                                clearInterval(timerInterval);
+                                                            } else {
+                                                                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                            
+                                                                modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">EXPIRES IN ${days}D ${hours}H</p>
+                                                                    </div>
+                                                                `;
+                                                            }
+                                                        }
+                            
+                                                        const timerInterval = setInterval(updateTimer, 1000);
+                                                        updateTimer();
+                                                    }
+
+                                                    if (product.premium_type === 2) {
+                                                        modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                            <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
+                                                        `;
+                                                    }
+                                                    
+
 
                                                     let modal_back = document.createElement("div");
 
@@ -2351,8 +3229,21 @@ if (localStorage.full_client_rework != "false") {
                                                             }, 300);
                                                         }
                                                     });
+
+                                                    document.querySelector("[data-close-product-card-button]").addEventListener('click', () => {
+                                                        modal.classList.remove('show');
+                                                        modal_back.classList.remove('show');
+                                                        setTimeout(() => {
+                                                            modal.remove();
+                                                            modal_back.remove();
+                                                        }, 300);
+                                                    });
                                                 }
                                             }
+                                        } else {
+                                            card.querySelector("[data-share-product-card-button]").innerHTML = `
+                                                <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${product.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
+                                            `;
                                         }
 
 
@@ -3087,72 +3978,621 @@ if (localStorage.full_client_rework != "false") {
                                         `;
                                     }
 
-                                    card.querySelector("[data-share-product-card-button]").innerHTML = `
-                                        <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${product.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
-                                    `;
+                                    if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                        if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
+                                            card.classList.add('clickable');
 
+                                            card.addEventListener("click", () => {
+                                                openItemModal();
+                                            });
 
-                                    if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
-                                        card.classList.add('clickable');
+                                            async function openItemModal() {
+                                                let modal = document.createElement("div");
 
-                                        card.addEventListener("click", () => {
-                                            openItemModal();
-                                        });
+                                                modal.classList.add('modalv2');
 
-                                        function openItemModal() {
-                                            let modal = document.createElement("div");
+                                                if (apiCategory.pdp_bg != null) {
+                                                    pdp = apiCategory.pdp_bg
+                                                } else {
+                                                    pdp = apiCategory.banner
+                                                }
 
-                                            modal.classList.add('modalv2');
-
-                                            if (apiCategory.pdp_bg != null) {
-                                                pdp = apiCategory.pdp_bg
-                                            } else {
-                                                pdp = apiCategory.banner
-                                            }
-
-                                            modal.innerHTML = `
-                                                <div class="modalv2-inner">
-                                                    <div class="modalv2-inner-left">
-                                                        <p>SKU ID: ${product.sku_id}</p>
-                                                        <p>${product.name}</p>
-                                                        <p>${product.summary}</p>
-                                                    </div>
-                                                    <img class="modalv2-inner-img" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${pdp}.png?size=4096">
+                                                modal.innerHTML = `
+                                                    <div class="modalv2-inner">
+                                                        <div class="modalv2-inner-left">
+                                                            <p data-product-modal-sku-id></p>
+                                                            <p data-product-modal-name></p>
+                                                            <p data-product-modal-summary></p>
+                                                            <div class="shop-modal-var-container-container" data-shop-modal-var-container-container>
+                                                                <div class="shop-modal-var-container" data-shop-modal-var-container></div>
+                                                                <a class="shop-modal-var-title" data-shop-modal-var-title></a>
+                                                            </div>
+                                                            <div class="modal-shop-price-container" data-shop-price-container>
+                                                                <div data-price-standard-container>
+                                                                    <a style="font-size: large; font-weight: 900;" data-price-standard></a>
+                                                                </div>
+                                                                <div data-price-nitro-container>
+                                                                    <a data-price-nitro></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-left-bottom">
+                                                                <div class="modal-buttons" data-modal-buttons></div>
+                                                            </div>
+                                                        </div>
                                                         <img class="modalv2-inner-logo" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096"></img>
-                                                    </img>
-                                                </div>
-                                            `;
+                                                        <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
+                                                        
+                                                        <div title="Copy Link" data-share-product-card-button></div>
 
-                                            document.body.appendChild(modal);
+                                                        <div title="Close" data-close-product-card-button>
+                                                            <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                        </div>
 
-                                            setTimeout(() => {
-                                                modal.classList.add('show');
-                                            }, 1);
+                                                        <div id="modalv2-inner-right" class="modalv2-inner-right">
+                                                            <img class="modalv2-inner-img" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${pdp}.png?size=4096"></img>
+                                                            <div data-modal-preview-holder></div>
+                                                        </div>
+                                                    </div>
+                                                `;
+
+                                                document.body.appendChild(modal);
+
+                                                setTimeout(() => {
+                                                    modal.classList.add('show');
+                                                }, 1);
+
+                                                if (product.type === 0) {
+
+                                                    modal.classList.add('modal-0');
+
+                                                    product.items.forEach(item => {
+
+                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                        previewHolder.classList.add('modal-avatar-decoration-img');
+
+                                                        const imgElement = document.createElement("img");
+                                                        imgElement.id = "shop-card-deco-image";
+                                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+
+                                                        previewHolder.appendChild(imgElement);
+                                                    
+                                                        // Set the product details
+                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                        modal.querySelector("[data-product-modal-name]").textContent = product.name;
+                                                        modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
+                                                    
+                                                        // Hover effect: Change the image src on mouse enter and leave
+                                                        if (localStorage.reduced_motion != "true") {
+                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                            });
+                                                        
+                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                            });
+                                                        }
+
+                                                    });
+                                                }
+
+                                                if (product.type === 1) {
+                                                    modal.classList.add('modal-1');
+    
+                                                    modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                    modal.querySelector("[data-product-modal-name]").textContent = product.name;
+                                                    modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
+
+                                                    // Ensure the item ID is accessible here
+                                                    let itemId = undefined;
+                                                    if (Array.isArray(product.items)) {
+                                                        // If items is an array, find the item with type 1 and get its id
+                                                        const item = product.items.find(item => item.type === 1);
+                                                        if (item) {
+                                                            itemId = item.id;
+                                                        }
+                                                    } else if (product.items && product.items.type === 1) {
+                                                        // If items is an object and has type 1, get its id
+                                                        itemId = product.items.id;
+                                                    }
+                                                
+                                                
+                                                    // Fetch profile effects API only if not already cached
+                                                    if (!profileEffectsCache) {
+                                                        const response = await fetch(api + PROFILE_EFFECTS);
+                                                        const effectsData = await response.json();
+                                                        profileEffectsCache = effectsData.profile_effect_configs;
+                                                    }
+                                                
+                                                    // Find matching profile effect
+                                                    const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                
+                                                    if (matchingEffect) {
+                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                        previewHolder.classList.add('modal-profile-effect-img');
+                                                    
+                                                        previewHolder.innerHTML = `
+                                                            <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                        `;
+                                                    
+                                                        // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                        const imgElement = previewHolder.querySelector("img");
+                                                    
+                                                        if (localStorage.reduced_motion != "true") {
+                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                    const effectUrl = matchingEffect.effects[0]?.src;
+                                                                    imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                }
+                                                            });
+                                                        
+                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                            });
+                                                        } else {
+                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                imgElement.src = matchingEffect.reducedMotionSrc;
+                                                            });
+                                                        
+                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                            });
+                                                        }
+                                                    }
+                                                }
+
+                                                if (product.type === 1000) {
+                                                    modal.classList.add('modal-1000');
+
+                                                    const bundledProducts = product.bundled_products || [];
+                                                
+                                                    // Generate the bundle summary from the names of the bundled products
+                                                    const type0Product = bundledProducts.find(item => item.type === 0);
+                                                    const type1Product = bundledProducts.find(item => item.type === 1);
+                                                
+                                                    let bundleSummary = "Bundle Includes: ";
+                                                    if (type0Product) {
+                                                        bundleSummary += `${type0Product.name} Decoration`;
+                                                    }
+                                                    if (type1Product) {
+                                                        bundleSummary += ` & ${type1Product.name} Profile Effect`;
+                                                    }
+                                                
+                                                    // Set the summary text
+                                                    modal.querySelector("[data-product-modal-summary]").textContent = bundleSummary;
+                                                
+                                                    // Set the basic card details
+                                                    modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                    modal.querySelector("[data-product-modal-name]").textContent = product.name;
+                                                
+                                                    // Handle each item in the bundle
+                                                    product.items.forEach(item => {
+                                                        if (item.type === 0) {
+                                                            // Avatar decoration
+                                                            const decoImage = document.createElement("img");
+                                                            decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                            decoImage.alt = "Avatar Decoration";
+                                                            decoImage.classList.add("modal-avatar-decoration-img");
+                                                            modal.querySelector("[data-modal-preview-holder]").appendChild(decoImage);
+                                                
+                                                            // Hover effect for decoration image
+                                                            if (localStorage.reduced_motion != "true") {
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                    decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                });
+
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                    decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                });
+                                                            }
+                                                        } else if (item.type === 1) {
+                                                            // Profile effect
+                                                            (async () => {
+                                                                // Fetch profile effects if not cached
+                                                                if (!profileEffectsCache) {
+                                                                    const response = await fetch(api + PROFILE_EFFECTS);
+                                                                    const effectsData = await response.json();
+                                                                    profileEffectsCache = effectsData.profile_effect_configs;
+                                                                }
+                                                
+                                                                // Find the matching effect
+                                                                const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                
+                                                                if (matchingEffect) {
+                                                                    const effectImage = document.createElement("img");
+                                                                    effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                    effectImage.alt = "Profile Effect";
+                                                                    effectImage.classList.add("modal-profile-effect-img");
+                                                                    modal.querySelector("[data-modal-preview-holder]").appendChild(effectImage);
+                                                
+                                                                    // Hover effect for profile effect
+                                                                    if (localStorage.reduced_motion != "true") {
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                effectImage.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                            }
+                                                                        });
+                                                                    
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                            effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                        });
+                                                                    } else {
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            effectImage.src = matchingEffect.reducedMotionSrc;
+                                                                        });
+                                                                    
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                            effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                        });
+                                                                    }
+                                                                }
+                                                            })();
+                                                        }
+                                                    });
+                                                }
+
+                                                if (product.type === 2000) {
+                                                    modal.querySelector("[data-shop-modal-var-container-container]").classList.add('show');
+                                                    // Update SKU and summary
+                                                    modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                    modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
+                                                
+                                                    // Always display the base variant name
+                                                    modal.querySelector("[data-product-modal-name]").textContent = product.variants[0]?.base_variant_name || "Product";
+                                                
+                                                    // Render variant color blocks as interactive divs
+                                                    const variantContainer = modal.querySelector("[data-shop-modal-var-container]");
+                                                    variantContainer.innerHTML = ""; // Clear existing variant blocks
+                                                    let currentSelectedVariant = null; // Track selected variant
+                                                
+                                                    product.variants.forEach((variant, index) => {
+                                                        // Create variant color block
+                                                        const variantColorBlock = document.createElement("div");
+                                                        variantColorBlock.classList.add("shop-card-var");
+                                                        variantColorBlock.style.backgroundColor = `${variant.variant_value}`;
+                                                
+                                                        // Add click event listener to switch variants
+                                                        variantColorBlock.addEventListener("click", () => {
+                                                            if (currentSelectedVariant) {
+                                                                currentSelectedVariant.classList.remove("shop-card-var-selected");
+                                                            }
+                                                            variantColorBlock.classList.add("shop-card-var-selected");
+                                                            currentSelectedVariant = variantColorBlock;
+                                                            applyVariant(variant);
+                                                        });
+                                                
+                                                        // Append the color block to the container
+                                                        variantContainer.appendChild(variantColorBlock);
+                                                
+                                                        // Set the first variant as the default selected
+                                                        if (index === 0) {
+                                                            currentSelectedVariant = variantColorBlock;
+                                                            variantColorBlock.classList.add("shop-card-var-selected");
+                                                        }
+                                                    });
+        
+                                                    let isFirstTimeLoadingVariant = true;
+                                                    const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                
+                                                    // Function to apply the selected variant
+                                                    function applyVariant(selectedVariant) {
+                                                        modal.querySelector("[data-shop-modal-var-title]").textContent = `(${selectedVariant.variant_label})`;
+                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${selectedVariant.sku_id}`;
+                                                        modal.querySelector("[data-share-product-card-button]").innerHTML = `
+                                                            <svg class="shareIcon_modal" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
+                                                        `;
+                                                        if (selectedVariant.type === 0) {
+                                                            modal.classList.add("modal-2000-0");
+                                                            previewHolder.innerHTML = ""; // Clear previous decorations
+                                                            previewHolder.classList.add('modal-avatar-decoration-img');
+                                                            
+                                                            // Add the avatar decoration based on the selected variant
+                                                            selectedVariant.items?.forEach(item => {
+                                                                const decoImage = document.createElement("img");
+                                                                decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                decoImage.alt = "Avatar Decoration";
+                                                                decoImage.id = "shop-card-deco-image";
+                                                                previewHolder.appendChild(decoImage);
+                                                            
+                                                                // Hover effect for decoration image
+                                                                if (localStorage.reduced_motion !== "true") {
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                        decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                    });
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                        decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                    });
+                                                                }
+                                                            });
+                                                        } else if (selectedVariant.type === 1) {
+                                                            modal.classList.add("modal-2000-1");
+                                                            (async () => {
+                                                                // Ensure the item ID is accessible here
+                                                                let itemId = undefined;
+                                                                if (Array.isArray(selectedVariant.items)) {
+                                                                    // If items is an array, find the item with type 1 and get its id
+                                                                    const item = selectedVariant.items.find(item => item.type === 1);
+                                                                    if (item) {
+                                                                        itemId = item.id;
+                                                                    }
+                                                                } else if (selectedVariant.items && selectedVariant.items.type === 1) {
+                                                                    // If items is an object and has type 1, get its id
+                                                                    itemId = selectedVariant.items.id;
+                                                                }
+                                                            
+                                                            
+                                                                // Fetch profile effects API only if not already cached
+                                                                if (!profileEffectsCache) {
+                                                                    const response = await fetch(api + PROFILE_EFFECTS);
+                                                                    const effectsData = await response.json();
+                                                                    profileEffectsCache = effectsData.profile_effect_configs;
+                                                                }
+                                                            
+                                                                // Find matching profile effect
+                                                                const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                            
+                                                                if (matchingEffect) {
+                                                                    const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                                    previewHolder.classList.add('modal-profile-effect-img');
+                                                                
+                                                                    previewHolder.innerHTML = `
+                                                                        <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                                    `;
+                                                                
+                                                                    // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                                    const imgElement = previewHolder.querySelector("img");
+                                                                
+                                                                    if (localStorage.reduced_motion != "true") {
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                            }
+                                                                        });
+                                                                    
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                            imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                        });
+                                                                    } else {
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                        });
+                                                                    
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                            imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                        });
+                                                                    }
+                                                                }
+                                                            })();
+                                                        }
+                                                    }
+                                                
+                                                    // Apply the default variant (first one) initially
+                                                    if (product.variants.length > 0) {
+                                                        applyVariant(product.variants[0]);
+                                                    }
+                                                }
 
 
-                                            let modal_back = document.createElement("div");
+                                                const button_container = document.querySelector("[data-modal-buttons]");
+                                                
+                                                if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                                    button_container.innerHTML = `
+                                                        <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                        <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
+                                                            <button class="card-button">Download Data</button>
+                                                        </a>
+                                                    `;
+                                                } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                                    if (typeof emojiCopy != 'undefined') {
+                                                        button_container.innerHTML = `
+                                                            <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                            <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
+                                                                <button class="card-button">Download Data</button>
+                                                            </a>
+                                                            <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                                        `;
+                                                    } else {
+                                                        button_container.innerHTML = `
+                                                            <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                            <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
+                                                                <button class="card-button">Download Data</button>
+                                                            </a>
+                                                            <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
+                                                        `;
+                                                    }
+                                                } else {
+                                                    button_container.innerHTML = `
+                                                        <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                    `;
+                                                }
 
-                                            modal_back.classList.add('modalv2-back');
-                                            modal_back.id = 'modalv2-back';
 
-                                            document.body.appendChild(modal_back);
-
-                                            setTimeout(() => {
-                                                modal_back.classList.add('show');
-                                            }, 1);
+                                                modal.querySelector("[data-share-product-card-button]").innerHTML = `
+                                                    <svg class="shareIcon_modal" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${product.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
+                                                `;
 
 
-                                            modal.addEventListener('click', (event) => {
-                                                if (event.target === modal) {
+                                                let priceStandard = "N/A";
+                                                let priceNitro = "N/A";
+                            
+                                                if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices[0]) {
+                                                    priceStandard = product.prices["0"].country_prices.prices[0].amount;
+                                                }
+                            
+                                                if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices[0]) {
+                                                    priceNitro = product.prices["4"].country_prices.prices[0].amount;
+                                                }
+                            
+                            
+                                                const priceTextNitro = modal.querySelector("[data-price-nitro]");
+                                                const priceTextStandard = modal.querySelector("[data-price-standard]");
+
+                                                const priceContainerNitro = modal.querySelector("[data-price-nitro-container]");
+                                                const priceContainerStandard = modal.querySelector("[data-price-standard-container]");
+
+                                                const priceContainer = modal.querySelector("[data-shop-price-container]");
+
+                                                if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Default Prices") {
+                                                    if (priceTextStandard) {
+                                                        priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                                    }
+                                                
+                                                    let orb_icon = document.createElement("div");
+                                                
+                                                    orb_icon.classList.add('orb-icon');
+                                                
+                                                    priceContainerStandard.appendChild(orb_icon);
+
+
+                                                    if (priceTextNitro) {
+                                                        priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "Price (USD): N/A";
+                                                    }
+                                                
+                                                    let orb_icon_nitro = document.createElement("div");
+                                                
+                                                    orb_icon_nitro.classList.add('orb-icon-strike');
+                                                
+                                                    priceContainerNitro.appendChild(orb_icon_nitro);
+                                                
+                                                } else if (localStorage.experiment_2025_01_orb_testing === "Treatment 2: 50 Orbs") {
+                                                    if (priceTextStandard) {
+                                                        priceTextStandard.textContent = `50`;
+                                                    }
+                                                
+                                                    let orb_icon = document.createElement("div");
+                                                
+                                                    orb_icon.classList.add('orb-icon');
+                                                
+                                                    priceContainerStandard.appendChild(orb_icon);
+                                                
+                                                } else {
+                                                    if (priceTextStandard) {
+                                                        priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                                    }
+
+                                                    if (priceTextNitro) {
+                                                        priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
+                                                    }
+                                                }
+
+
+                                                const unpublishedAt = new Date(product.unpublished_at);
+                        
+                                                if (product.unpublished_at && !isNaN(unpublishedAt.getTime())) {
+                        
+                                                    function updateTimer() {
+                                                        const now = new Date();
+                                                        const timeDiff = unpublishedAt - now;
+                        
+                                                        if (timeDiff <= 0) {
+                                                            modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                <div class="unplublished-tag">
+                                                                    <p class="unplublished-tag-text">OFF SALE</p>
+                                                                </div>
+                                                            `;
+                                                            clearInterval(timerInterval);
+                                                        } else {
+                                                            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                        
+                                                            modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                <div class="unplublished-tag">
+                                                                    <p class="unplublished-tag-text">${days} DAYS LEFT TO REQUEST</p>
+                                                                </div>
+                                                            `;
+                                                        }
+                                                    }
+                        
+                                                    const timerInterval = setInterval(updateTimer, 1000);
+                                                    updateTimer();
+                                                }
+
+
+                                                const expiresAt = new Date(product.expires_at);
+
+                                                if (product.expires_at && !isNaN(expiresAt.getTime())) {
+                        
+                                                    function updateTimer() {
+                                                        const now = new Date();
+                                                        const timeDiff = expiresAt - now;
+                        
+                                                        if (timeDiff <= 0) {
+                                                            modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                <div class="unplublished-tag">
+                                                                    <p class="unplublished-tag-text">EXPIRED</p>
+                                                                </div>
+                                                            `;
+                                                            clearInterval(timerInterval);
+                                                        } else {
+                                                            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                        
+                                                            modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                <div class="unplublished-tag">
+                                                                    <p class="unplublished-tag-text">EXPIRES IN ${days}D ${hours}H</p>
+                                                                </div>
+                                                            `;
+                                                        }
+                                                    }
+                        
+                                                    const timerInterval = setInterval(updateTimer, 1000);
+                                                    updateTimer();
+                                                }
+
+                                                if (product.premium_type === 2) {
+                                                    modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                        <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
+                                                    `;
+                                                }
+                                                
+
+
+                                                let modal_back = document.createElement("div");
+
+                                                modal_back.classList.add('modalv2-back');
+                                                modal_back.id = 'modalv2-back';
+
+                                                document.body.appendChild(modal_back);
+
+                                                setTimeout(() => {
+                                                    modal_back.classList.add('show');
+                                                }, 1);
+
+
+                                                modal.addEventListener('click', (event) => {
+                                                    if (event.target === modal) {
+                                                        modal.classList.remove('show');
+                                                        modal_back.classList.remove('show');
+                                                        setTimeout(() => {
+                                                            modal.remove();
+                                                            modal_back.remove();
+                                                        }, 300);
+                                                    }
+                                                });
+
+                                                document.querySelector("[data-close-product-card-button]").addEventListener('click', () => {
                                                     modal.classList.remove('show');
                                                     modal_back.classList.remove('show');
                                                     setTimeout(() => {
                                                         modal.remove();
                                                         modal_back.remove();
                                                     }, 300);
-                                                }
-                                            });
+                                                });
+                                            }
                                         }
+                                    } else {
+                                        card.querySelector("[data-share-product-card-button]").innerHTML = `
+                                            <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${product.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
+                                        `;
                                     }
 
                                     function newItemCheck() {
@@ -5192,7 +6632,7 @@ if (localStorage.full_client_rework != "false") {
 
 
                 try {
-                    const experiment_2025_02_shop_card_modals_treatments = ["Treatment -1: Disabled", "Treatment 1: Enable modals", "Treatment 2: Enable modals with data downloads"];
+                    const experiment_2025_02_shop_card_modals_treatments = ["Treatment -1: Disabled", "Treatment 1: Enable modals", "Treatment 2: Enable modals with data downloads", "Treatment 3: Enable modals with data downloads and p+"];
 
                     const experiment_2025_02_shop_card_modals_treatment_picker = document.getElementById("experiment_2025_02_shop_card_modals_treatment_container");
                     

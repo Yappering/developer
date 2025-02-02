@@ -2643,6 +2643,7 @@ data-share-product-card-button {
 }
 
 .modalv2-inner-left {
+    margin-top: 20px;
     flex: 1;
     overflow-y: auto; /* Allow scrolling for content */
     max-height: 100%; /* Make sure it doesn't exceed modal height */
@@ -2673,11 +2674,48 @@ data-share-product-card-button {
 
 .modalv2-inner-logo {
     position: absolute;
-    height: 25px !important;
-    width: auto !important;
+    max-height: 30px !important;
+    max-width: 130px !important;
     margin-left: 440px;
     margin-top: 0px;
 }
+
+.shop-modal-tag-container {
+    text-align: center;
+    position: absolute;
+    margin-right: 40px;
+    margin-top: 0px;
+    width: auto;
+    font-size: medium;
+    font-weight: 600;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.shareIcon_modal {
+    position: absolute;
+    margin-left: 300px;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    border-radius: 50px;
+    color: white;
+    background-color: #0000005d;
+}
+
+.closeIcon_modal {
+    position: absolute;
+    margin-left: 350px;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    border-radius: 50px;
+    color: white;
+    background-color: #0000005d;
+}
+
 
 .modal-avatar-decoration-img {
     position: absolute;
@@ -2735,6 +2773,44 @@ data-share-product-card-button {
     height: 300px !important;
     border-radius: 15px;
 }
+
+
+.modal-shop-price-container {
+    position: absolute;
+    display: flex;
+    width: 90%;
+    opacity: 1; /* Fade in */
+    transition: opacity 0.5s ease;
+    color: var(--white);
+}
+
+.modal-shop-price-container:has([class*="orb"]) {
+    margin-left: 5px;
+}
+
+
+.shop-modal-var-title {
+    position: absolute;
+    right: 10px;
+    color: #b1b5bb;
+    pointer-events: none;
+}
+
+
+.shop-modal-var-container {
+    position: absolute;
+    display: grid;
+    width: 251px;
+    gap: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
+}
+
+.shop-modal-var-container-container.show {
+    margin-bottom: 10px;
+    height: 25px;
+}
+
+
 
 
 .modal-1000 .modal-avatar-decoration-img {
