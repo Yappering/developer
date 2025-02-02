@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 207";
+tcbx926n29 = "Dev 208";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -652,65 +652,263 @@ if (localStorage.full_client_rework != "false") {
 
 
                                         if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
-                                            card.classList.add('clickable');
+                                            if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
+                                                card.classList.add('clickable');
 
-                                            card.addEventListener("click", () => {
-                                                openItemModal();
-                                            });
-
-                                            function openItemModal() {
-                                                let modal = document.createElement("div");
-
-                                                modal.classList.add('modalv2');
-
-                                                if (apiCategory.pdp_bg != null) {
-                                                    pdp = apiCategory.pdp_bg
-                                                } else {
-                                                    pdp = apiCategory.banner
-                                                }
-
-                                                modal.innerHTML = `
-                                                    <div class="modalv2-inner">
-                                                        <div class="modalv2-inner-left">
-                                                            <p>Made By: ${product.credits}</p>
-                                                            <p>${product.name}</p>
-                                                            <p>${product.summary}</p>
-                                                        </div>
-                                                        <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/${pdp}.png">
-                                                            <img class="modalv2-inner-logo" src="https://cdn.yapper.shop/assets/${apiCategory.logo}.png"></img>
-                                                        </img>
-                                                    </div>
-                                                `;
-
-                                                document.body.appendChild(modal);
-
-                                                setTimeout(() => {
-                                                    modal.classList.add('show');
-                                                }, 1);
-
-
-                                                let modal_back = document.createElement("div");
-
-                                                modal_back.classList.add('modalv2-back');
-                                                modal_back.id = 'modalv2-back';
-
-                                                document.body.appendChild(modal_back);
-
-                                                setTimeout(() => {
-                                                    modal_back.classList.add('show');
-                                                }, 1);
-
-
-                                                modal.addEventListener('click', (event) => {
-                                                    if (event.target === modal) {
-                                                        modal.classList.remove('show');
-                                                        modal_back.classList.remove('show');
-                                                        setTimeout(() => {
-                                                            modal.remove();
-                                                            modal_back.remove();
-                                                        }, 300);
-                                                    }
+                                                card.addEventListener("click", () => {
+                                                    openItemModal();
                                                 });
+
+                                                async function openItemModal() {
+                                                    let modal = document.createElement("div");
+
+                                                    modal.classList.add('modalv2');
+
+                                                    if (apiCategory.pdp_bg != null) {
+                                                        pdp = apiCategory.pdp_bg
+                                                    } else {
+                                                        pdp = apiCategory.banner
+                                                    }
+
+                                                    modal.innerHTML = `
+                                                        <div class="modalv2-inner">
+                                                            <div class="modalv2-inner-left">
+                                                                <p data-product-modal-sku-id></p>
+                                                                <p data-product-modal-name></p>
+                                                                <p data-product-modal-summary></p>
+                                                            </div>
+                                                            <img class="modalv2-inner-logo" src="https://cdn.yapper.shop/assets/${apiCategory.logo}.png"></img>
+                                                            <div id="modalv2-inner-right" class="modalv2-inner-right">
+                                                                <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/${pdp}.png"></img>
+                                                                <div data-modal-preview-holder></div>
+                                                            </div>
+                                                        </div>
+                                                    `;
+
+                                                    document.body.appendChild(modal);
+
+                                                    setTimeout(() => {
+                                                        modal.classList.add('show');
+                                                    }, 1);
+
+                                                    if (product.type === 0) {
+
+                                                        modal.classList.add('modal-0');
+
+                                                        product.items.forEach(item => {
+
+                                                            const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                            previewHolder.classList.add('modal-avatar-decoration-img');
+
+                                                            const imgElement = document.createElement("img");
+                                                            imgElement.id = "shop-card-deco-image";
+                                                            imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+
+                                                            previewHolder.appendChild(imgElement);
+                                                        
+                                                            // Set the product details
+                                                            modal.querySelector("[data-product-modal-sku-id]").textContent = `Made By: ${product.credits}`;
+                                                            modal.querySelector("[data-product-modal-name]").textContent = product.name;
+                                                            modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
+                                                        
+                                                            // Hover effect: Change the image src on mouse enter and leave
+                                                            if (localStorage.reduced_motion != "true") {
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                    imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                });
+                                                            
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                    imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                });
+                                                            }
+
+                                                        });
+                                                    }
+
+                                                    if (product.type === 1) {
+                                                        modal.classList.add('modal-1');
+        
+                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `Made By: ${product.credits}`;
+                                                        modal.querySelector("[data-product-modal-name]").textContent = product.name;
+                                                        modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
+
+                                                        // Ensure the item ID is accessible here
+                                                        let itemId = undefined;
+                                                        if (Array.isArray(product.items)) {
+                                                            // If items is an array, find the item with type 1 and get its id
+                                                            const item = product.items.find(item => item.type === 1);
+                                                            if (item) {
+                                                                itemId = item.id;
+                                                            }
+                                                        } else if (product.items && product.items.type === 1) {
+                                                            // If items is an object and has type 1, get its id
+                                                            itemId = product.items.id;
+                                                        }
+                                                    
+                                                    
+                                                        // Fetch profile effects API only if not already cached
+                                                        if (!profileEffectsCache) {
+                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                            const effectsData = await response.json();
+                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                        }
+                                                    
+                                                        // Find matching profile effect
+                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                    
+                                                        if (matchingEffect) {
+                                                            const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                            previewHolder.classList.add('modal-profile-effect-img');
+                                                        
+                                                            previewHolder.innerHTML = `
+                                                                <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                            `;
+                                                        
+                                                            // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                            const imgElement = previewHolder.querySelector("img");
+                                                        
+                                                            if (localStorage.reduced_motion != "true") {
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                    if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                        const effectUrl = matchingEffect.effects[0]?.src;
+                                                                        imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                    }
+                                                                });
+                                                            
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                });
+                                                            } else {
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                    imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                });
+                                                            
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                });
+                                                            }
+                                                        }
+                                                    }
+
+                                                    if (product.type === 1000) {
+                                                        modal.classList.add('modal-1000');
+
+                                                        const bundledProducts = product.bundled_products || [];
+                                                    
+                                                        // Generate the bundle summary from the names of the bundled products
+                                                        const type0Product = bundledProducts.find(item => item.type === 0);
+                                                        const type1Product = bundledProducts.find(item => item.type === 1);
+                                                    
+                                                        let bundleSummary = "Bundle Includes: ";
+                                                        if (type0Product) {
+                                                            bundleSummary += `${type0Product.name} Decoration`;
+                                                        }
+                                                        if (type1Product) {
+                                                            bundleSummary += ` & ${type1Product.name} Profile Effect`;
+                                                        }
+                                                    
+                                                        // Set the summary text
+                                                        modal.querySelector("[data-product-modal-summary]").textContent = bundleSummary;
+                                                    
+                                                        // Set the basic card details
+                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `Made By: ${product.credits}`;
+                                                        modal.querySelector("[data-product-modal-name]").textContent = product.name;
+                                                    
+                                                        // Handle each item in the bundle
+                                                        product.items.forEach(item => {
+                                                            if (item.type === 0) {
+                                                                // Avatar decoration
+                                                                const decoImage = document.createElement("img");
+                                                                decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                decoImage.alt = "Avatar Decoration";
+                                                                decoImage.classList.add("modal-avatar-decoration-img");
+                                                                modal.querySelector("[data-modal-preview-holder]").appendChild(decoImage);
+                                                    
+                                                                // Hover effect for decoration image
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                        decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                    });
+
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                        decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                    });
+                                                                }
+                                                            } else if (item.type === 1) {
+                                                                // Profile effect
+                                                                (async () => {
+                                                                    // Fetch profile effects if not cached
+                                                                    if (!profileEffectsCache) {
+                                                                        const response = await fetch(api + PROFILE_EFFECTS);
+                                                                        const effectsData = await response.json();
+                                                                        profileEffectsCache = effectsData.profile_effect_configs;
+                                                                    }
+                                                    
+                                                                    // Find the matching effect
+                                                                    const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                    
+                                                                    if (matchingEffect) {
+                                                                        const effectImage = document.createElement("img");
+                                                                        effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                        effectImage.alt = "Profile Effect";
+                                                                        effectImage.classList.add("modal-profile-effect-img");
+                                                                        modal.querySelector("[data-modal-preview-holder]").appendChild(effectImage);
+                                                    
+                                                                        // Hover effect for profile effect
+                                                                        if (localStorage.reduced_motion != "true") {
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                    const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                    effectImage.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                                }
+                                                                            });
+                                                                        
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                            });
+                                                                        } else {
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                effectImage.src = matchingEffect.reducedMotionSrc;
+                                                                            });
+                                                                        
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                            });
+                                                                        }
+                                                                    }
+                                                                })();
+                                                            }
+                                                        });
+                                                    }
+
+
+                                                    let modal_back = document.createElement("div");
+
+                                                    modal_back.classList.add('modalv2-back');
+                                                    modal_back.id = 'modalv2-back';
+
+                                                    document.body.appendChild(modal_back);
+
+                                                    setTimeout(() => {
+                                                        modal_back.classList.add('show');
+                                                    }, 1);
+
+
+                                                    modal.addEventListener('click', (event) => {
+                                                        if (event.target === modal) {
+                                                            modal.classList.remove('show');
+                                                            modal_back.classList.remove('show');
+                                                            setTimeout(() => {
+                                                                modal.remove();
+                                                                modal_back.remove();
+                                                            }, 300);
+                                                        }
+                                                    });
+                                                }
                                             }
                                         }
 
@@ -917,9 +1115,17 @@ if (localStorage.full_client_rework != "false") {
                                 if (apiCategory.src === null) {
                                     potionCard.querySelector("[data-potion-card-preview-image]").src = `https://cdn.yapper.shop/assets/31.png`;
                                 } else {
-                                    potionCard.querySelector("[data-potion-card-preview-image]").src = `https://cdn.yapper.shop/discord-assets/${apiCategory.src}.svg`;
+                                    potionCard.querySelector("[data-potion-card-preview-image]").src = `https://cdn.yapper.shop/${apiCategory.endpoint}/${apiCategory.src}.${apiCategory.format}`;
                                 }
                                 potionCard.querySelector("[data-potion-card-preview-image]").alt = apiCategory.name;
+
+                                if (apiCategory.new_text != null) {
+                                    potionCard.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                        <div class="unplublished-tag">
+                                            <p class="unplublished-tag-text">${apiCategory.new_text}</p>
+                                        </div>
+                                    `;
+                                }
             
                                 potionCard.querySelector("[data-product-card-sku-id]").textContent = `SKU ID: ${apiCategory.sku_id}`;
                                 potionCard.querySelector("[data-product-card-name]").textContent = apiCategory.name;
@@ -939,19 +1145,28 @@ if (localStorage.full_client_rework != "false") {
                                         openItemModal();
                                     });
 
-                                    function openItemModal() {
+                                    async function openItemModal() {
                                         let modal = document.createElement("div");
 
                                         modal.classList.add('modalv2');
 
+                                        if (apiCategory.pdp_bg != null) {
+                                            pdp = apiCategory.pdp_bg
+                                        } else {
+                                            pdp = apiCategory.banner
+                                        }
+
                                         modal.innerHTML = `
                                             <div class="modalv2-inner">
                                                 <div class="modalv2-inner-left">
-                                                    <p>SKU ID: ${apiCategory.sku_id}</p>
-                                                    <p>${apiCategory.name}</p>
-                                                    <p>${apiCategory.summary}</p>
+                                                    <p data-product-modal-sku-id></p>
+                                                    <p data-product-modal-name></p>
+                                                    <p data-product-modal-summary></p>
                                                 </div>
-                                                <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/110.svg"></img>
+                                                <div id="modalv2-inner-right" class="modalv2-inner-right">
+                                                    <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/110.svg"></img>
+                                                    <div data-modal-preview-holder></div>
+                                                </div>
                                             </div>
                                         `;
 
@@ -960,6 +1175,29 @@ if (localStorage.full_client_rework != "false") {
                                         setTimeout(() => {
                                             modal.classList.add('show');
                                         }, 1);
+
+                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                        previewHolder.classList.add('modal-potion-img');
+
+                                        const imgElement = document.createElement("img");
+                                        imgElement.classList.add('potion-card-preview');
+                                        imgElement.src = `https://cdn.yapper.shop/${apiCategory.endpoint}/${apiCategory.src}.${apiCategory.format}`;
+
+                                        previewHolder.appendChild(imgElement);
+                                    
+                                        // Set the product details
+                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU_ID: ${apiCategory.sku_id}`;
+                                        modal.querySelector("[data-product-modal-name]").textContent = apiCategory.name;
+                                        modal.querySelector("[data-product-modal-summary]").textContent = apiCategory.summary;
+
+
+                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                            modal.classList.add('potion-wobble')
+                                        });
+                                
+                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                            modal.classList.remove('potion-wobble')
+                                        });
 
 
                                         let modal_back = document.createElement("div");
@@ -1079,19 +1317,28 @@ if (localStorage.full_client_rework != "false") {
                                         openItemModal();
                                     });
 
-                                    function openItemModal() {
+                                    async function openItemModal() {
                                         let modal = document.createElement("div");
 
                                         modal.classList.add('modalv2');
 
+                                        if (apiCategory.pdp_bg != null) {
+                                            pdp = apiCategory.pdp_bg
+                                        } else {
+                                            pdp = apiCategory.banner
+                                        }
+
                                         modal.innerHTML = `
                                             <div class="modalv2-inner">
                                                 <div class="modalv2-inner-left">
-                                                    <p>SKU ID: ${apiCategory.sku_id}</p>
-                                                    <p>${apiCategory.name}</p>
-                                                    <p>${apiCategory.summary}</p>
+                                                    <p data-product-modal-sku-id></p>
+                                                    <p data-product-modal-name></p>
+                                                    <p data-product-modal-summary></p>
                                                 </div>
-                                                <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/110.svg"></img>
+                                                <div id="modalv2-inner-right" class="modalv2-inner-right">
+                                                    <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/110.svg"></img>
+                                                    <div data-modal-preview-holder></div>
+                                                </div>
                                             </div>
                                         `;
 
@@ -1100,6 +1347,29 @@ if (localStorage.full_client_rework != "false") {
                                         setTimeout(() => {
                                             modal.classList.add('show');
                                         }, 1);
+
+                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                        previewHolder.classList.add('modal-potion-img');
+
+                                        const imgElement = document.createElement("img");
+                                        imgElement.classList.add('potion-card-preview');
+                                        imgElement.src = `https://cdn.yapper.shop/${apiCategory.endpoint}/${apiCategory.src}.${apiCategory.format}`;
+
+                                        previewHolder.appendChild(imgElement);
+                                    
+                                        // Set the product details
+                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU_ID: ${apiCategory.sku_id}`;
+                                        modal.querySelector("[data-product-modal-name]").textContent = apiCategory.name;
+                                        modal.querySelector("[data-product-modal-summary]").textContent = apiCategory.summary;
+
+
+                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                            modal.classList.add('potion-wobble')
+                                        });
+                                
+                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                            modal.classList.remove('potion-wobble')
+                                        });
 
 
                                         let modal_back = document.createElement("div");
@@ -1825,65 +2095,263 @@ if (localStorage.full_client_rework != "false") {
                                         }
 
                                         if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
-                                            card.classList.add('clickable');
+                                            if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
+                                                card.classList.add('clickable');
 
-                                            card.addEventListener("click", () => {
-                                                openItemModal();
-                                            });
-
-                                            function openItemModal() {
-                                                let modal = document.createElement("div");
-
-                                                modal.classList.add('modalv2');
-
-                                                if (apiCategory.pdp_bg != null) {
-                                                    pdp = apiCategory.pdp_bg
-                                                } else {
-                                                    pdp = apiCategory.banner
-                                                }
-
-                                                modal.innerHTML = `
-                                                    <div class="modalv2-inner">
-                                                        <div class="modalv2-inner-left">
-                                                            <p>SKU ID: ${product.sku_id}</p>
-                                                            <p>${product.name}</p>
-                                                            <p>${product.summary}</p>
-                                                        </div>
-                                                        <img class="modalv2-inner-img" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${pdp}.png?size=4096">
-                                                            <img class="modalv2-inner-logo" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096"></img>
-                                                        </img>
-                                                    </div>
-                                                `;
-
-                                                document.body.appendChild(modal);
-
-                                                setTimeout(() => {
-                                                    modal.classList.add('show');
-                                                }, 1);
-
-
-                                                let modal_back = document.createElement("div");
-
-                                                modal_back.classList.add('modalv2-back');
-                                                modal_back.id = 'modalv2-back';
-
-                                                document.body.appendChild(modal_back);
-
-                                                setTimeout(() => {
-                                                    modal_back.classList.add('show');
-                                                }, 1);
-
-
-                                                modal.addEventListener('click', (event) => {
-                                                    if (event.target === modal) {
-                                                        modal.classList.remove('show');
-                                                        modal_back.classList.remove('show');
-                                                        setTimeout(() => {
-                                                            modal.remove();
-                                                            modal_back.remove();
-                                                        }, 300);
-                                                    }
+                                                card.addEventListener("click", () => {
+                                                    openItemModal();
                                                 });
+
+                                                async function openItemModal() {
+                                                    let modal = document.createElement("div");
+
+                                                    modal.classList.add('modalv2');
+
+                                                    if (apiCategory.pdp_bg != null) {
+                                                        pdp = apiCategory.pdp_bg
+                                                    } else {
+                                                        pdp = apiCategory.banner
+                                                    }
+
+                                                    modal.innerHTML = `
+                                                        <div class="modalv2-inner">
+                                                            <div class="modalv2-inner-left">
+                                                                <p data-product-modal-sku-id></p>
+                                                                <p data-product-modal-name></p>
+                                                                <p data-product-modal-summary></p>
+                                                            </div>
+                                                            <img class="modalv2-inner-logo" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096"></img>
+                                                            <div id="modalv2-inner-right" class="modalv2-inner-right">
+                                                                <img class="modalv2-inner-img" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${pdp}.png?size=4096"></img>
+                                                                <div data-modal-preview-holder></div>
+                                                            </div>
+                                                        </div>
+                                                    `;
+
+                                                    document.body.appendChild(modal);
+
+                                                    setTimeout(() => {
+                                                        modal.classList.add('show');
+                                                    }, 1);
+
+                                                    if (product.type === 0) {
+
+                                                        modal.classList.add('modal-0');
+
+                                                        product.items.forEach(item => {
+
+                                                            const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                            previewHolder.classList.add('modal-avatar-decoration-img');
+
+                                                            const imgElement = document.createElement("img");
+                                                            imgElement.id = "shop-card-deco-image";
+                                                            imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+
+                                                            previewHolder.appendChild(imgElement);
+                                                        
+                                                            // Set the product details
+                                                            modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                            modal.querySelector("[data-product-modal-name]").textContent = product.name;
+                                                            modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
+                                                        
+                                                            // Hover effect: Change the image src on mouse enter and leave
+                                                            if (localStorage.reduced_motion != "true") {
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                    imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                });
+                                                            
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                    imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                });
+                                                            }
+
+                                                        });
+                                                    }
+
+                                                    if (product.type === 1) {
+                                                        modal.classList.add('modal-1');
+        
+                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                        modal.querySelector("[data-product-modal-name]").textContent = product.name;
+                                                        modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
+
+                                                        // Ensure the item ID is accessible here
+                                                        let itemId = undefined;
+                                                        if (Array.isArray(product.items)) {
+                                                            // If items is an array, find the item with type 1 and get its id
+                                                            const item = product.items.find(item => item.type === 1);
+                                                            if (item) {
+                                                                itemId = item.id;
+                                                            }
+                                                        } else if (product.items && product.items.type === 1) {
+                                                            // If items is an object and has type 1, get its id
+                                                            itemId = product.items.id;
+                                                        }
+                                                    
+                                                    
+                                                        // Fetch profile effects API only if not already cached
+                                                        if (!profileEffectsCache) {
+                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                            const effectsData = await response.json();
+                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                        }
+                                                    
+                                                        // Find matching profile effect
+                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                    
+                                                        if (matchingEffect) {
+                                                            const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                            previewHolder.classList.add('modal-profile-effect-img');
+                                                        
+                                                            previewHolder.innerHTML = `
+                                                                <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                            `;
+                                                        
+                                                            // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                            const imgElement = previewHolder.querySelector("img");
+                                                        
+                                                            if (localStorage.reduced_motion != "true") {
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                    if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                        const effectUrl = matchingEffect.effects[0]?.src;
+                                                                        imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                    }
+                                                                });
+                                                            
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                });
+                                                            } else {
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                    imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                });
+                                                            
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                });
+                                                            }
+                                                        }
+                                                    }
+
+                                                    if (product.type === 1000) {
+                                                        modal.classList.add('modal-1000');
+
+                                                        const bundledProducts = product.bundled_products || [];
+                                                    
+                                                        // Generate the bundle summary from the names of the bundled products
+                                                        const type0Product = bundledProducts.find(item => item.type === 0);
+                                                        const type1Product = bundledProducts.find(item => item.type === 1);
+                                                    
+                                                        let bundleSummary = "Bundle Includes: ";
+                                                        if (type0Product) {
+                                                            bundleSummary += `${type0Product.name} Decoration`;
+                                                        }
+                                                        if (type1Product) {
+                                                            bundleSummary += ` & ${type1Product.name} Profile Effect`;
+                                                        }
+                                                    
+                                                        // Set the summary text
+                                                        modal.querySelector("[data-product-modal-summary]").textContent = bundleSummary;
+                                                    
+                                                        // Set the basic card details
+                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                        modal.querySelector("[data-product-modal-name]").textContent = product.name;
+                                                    
+                                                        // Handle each item in the bundle
+                                                        product.items.forEach(item => {
+                                                            if (item.type === 0) {
+                                                                // Avatar decoration
+                                                                const decoImage = document.createElement("img");
+                                                                decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                decoImage.alt = "Avatar Decoration";
+                                                                decoImage.classList.add("modal-avatar-decoration-img");
+                                                                modal.querySelector("[data-modal-preview-holder]").appendChild(decoImage);
+                                                    
+                                                                // Hover effect for decoration image
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                        decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                    });
+
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                        decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                    });
+                                                                }
+                                                            } else if (item.type === 1) {
+                                                                // Profile effect
+                                                                (async () => {
+                                                                    // Fetch profile effects if not cached
+                                                                    if (!profileEffectsCache) {
+                                                                        const response = await fetch(api + PROFILE_EFFECTS);
+                                                                        const effectsData = await response.json();
+                                                                        profileEffectsCache = effectsData.profile_effect_configs;
+                                                                    }
+                                                    
+                                                                    // Find the matching effect
+                                                                    const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                    
+                                                                    if (matchingEffect) {
+                                                                        const effectImage = document.createElement("img");
+                                                                        effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                        effectImage.alt = "Profile Effect";
+                                                                        effectImage.classList.add("modal-profile-effect-img");
+                                                                        modal.querySelector("[data-modal-preview-holder]").appendChild(effectImage);
+                                                    
+                                                                        // Hover effect for profile effect
+                                                                        if (localStorage.reduced_motion != "true") {
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                    const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                    effectImage.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                                }
+                                                                            });
+                                                                        
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                            });
+                                                                        } else {
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                effectImage.src = matchingEffect.reducedMotionSrc;
+                                                                            });
+                                                                        
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                            });
+                                                                        }
+                                                                    }
+                                                                })();
+                                                            }
+                                                        });
+                                                    }
+
+
+                                                    let modal_back = document.createElement("div");
+
+                                                    modal_back.classList.add('modalv2-back');
+                                                    modal_back.id = 'modalv2-back';
+
+                                                    document.body.appendChild(modal_back);
+
+                                                    setTimeout(() => {
+                                                        modal_back.classList.add('show');
+                                                    }, 1);
+
+
+                                                    modal.addEventListener('click', (event) => {
+                                                        if (event.target === modal) {
+                                                            modal.classList.remove('show');
+                                                            modal_back.classList.remove('show');
+                                                            setTimeout(() => {
+                                                                modal.remove();
+                                                                modal_back.remove();
+                                                            }, 300);
+                                                        }
+                                                    });
+                                                }
                                             }
                                         }
 
