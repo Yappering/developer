@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 212";
+tcbx926n29 = "Dev 213";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -653,7 +653,7 @@ if (localStorage.full_client_rework != "false") {
 
 
 
-                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                             if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
                                                 card.classList.add('clickable');
 
@@ -1058,13 +1058,49 @@ if (localStorage.full_client_rework != "false") {
 
                                                     const button_container = document.querySelector("[data-modal-buttons]");
                                                     
-                                                    if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                                    if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads") {
                                                         button_container.innerHTML = `
                                                             <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
                                                                 <button class="card-button">Download Data</button>
                                                             </a>
                                                         `;
-                                                    } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                                    } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+") {
+                                                        if (typeof product.emojiCopy != 'undefined') {
+                                                            button_container.innerHTML = `
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${product.emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                                            `;
+                                                        } else {
+                                                            button_container.innerHTML = `
+                                                                <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
+                                                            `;
+                                                        }
+                                                    } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page") {
+                                                        if (typeof product.emojiCopy != 'undefined') {
+                                                            button_container.innerHTML = `
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${product.emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                                            `;
+                                                        } else {
+                                                            button_container.innerHTML = `
+                                                                <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
+                                                            `;
+                                                        }
+                                                    } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+") {
+                                                        if (typeof product.emojiCopy != 'undefined') {
+                                                            button_container.innerHTML = `
+                                                                <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
+                                                                    <button class="card-button">Download Data</button>
+                                                                </a>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${product.emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                                            `;
+                                                        } else {
+                                                            button_container.innerHTML = `
+                                                                <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
+                                                                    <button class="card-button">Download Data</button>
+                                                                </a>
+                                                                <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
+                                                            `;
+                                                        }
+                                                    } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
                                                                 <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
@@ -1451,7 +1487,7 @@ if (localStorage.full_client_rework != "false") {
                                 }
 
 
-                                if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                     potionCard.classList.add('clickable');
 
                                     potionCard.addEventListener("click", () => {
@@ -1521,20 +1557,31 @@ if (localStorage.full_client_rework != "false") {
 
                                         const button_container = document.querySelector("[data-modal-buttons]");
                                         
-                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads") {
                                             button_container.innerHTML = `
+                                                <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
                                                 <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
                                                     <button class="card-button">Download Data</button>
                                                 </a>
                                             `;
-                                        } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                        } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+") {
                                             button_container.innerHTML = `
+                                                <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
+                                                <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
+                                                    <button class="card-button">Download Data</button>
+                                                </a>
+                                            `;
+                                        } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
+                                            button_container.innerHTML = `
+                                                <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
                                                 <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
                                                     <button class="card-button">Download Data</button>
                                                 </a>
                                             `;
                                         } else {
-                                            button_container.innerHTML = ``;
+                                            button_container.innerHTML = `
+                                                <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
+                                            `;
                                         }
 
 
@@ -1732,7 +1779,7 @@ if (localStorage.full_client_rework != "false") {
                                 potionCard.querySelector("[data-product-card-summary]").textContent = apiCategory.summary;
 
 
-                                if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                     potionCard.classList.add('clickable');
 
                                     potionCard.addEventListener("click", () => {
@@ -1802,20 +1849,31 @@ if (localStorage.full_client_rework != "false") {
 
                                         const button_container = document.querySelector("[data-modal-buttons]");
                                         
-                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads") {
                                             button_container.innerHTML = `
+                                                <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
                                                 <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
                                                     <button class="card-button">Download Data</button>
                                                 </a>
                                             `;
-                                        } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                        } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+") {
                                             button_container.innerHTML = `
+                                                <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
+                                                <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
+                                                    <button class="card-button">Download Data</button>
+                                                </a>
+                                            `;
+                                        } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
+                                            button_container.innerHTML = `
+                                                <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
                                                 <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
                                                     <button class="card-button">Download Data</button>
                                                 </a>
                                             `;
                                         } else {
-                                            button_container.innerHTML = ``;
+                                            button_container.innerHTML = `
+                                                <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
+                                            `;
                                         }
 
 
@@ -2638,7 +2696,7 @@ if (localStorage.full_client_rework != "false") {
                                             }
                                         }
 
-                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                             if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
                                                 card.classList.add('clickable');
 
@@ -3046,14 +3104,26 @@ if (localStorage.full_client_rework != "false") {
 
                                                     const button_container = document.querySelector("[data-modal-buttons]");
                                                     
-                                                    if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                                    if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads") {
                                                         button_container.innerHTML = `
                                                             <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
                                                             <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
                                                                 <button class="card-button">Download Data</button>
                                                             </a>
                                                         `;
-                                                    } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                                    } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+") {
+                                                        if (typeof product.emojiCopy != 'undefined') {
+                                                            button_container.innerHTML = `
+                                                                <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${product.emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                                            `;
+                                                        } else {
+                                                            button_container.innerHTML = `
+                                                                <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                                <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
+                                                            `;
+                                                        }
+                                                    } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
                                                                 <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
@@ -3071,6 +3141,13 @@ if (localStorage.full_client_rework != "false") {
                                                                 <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
                                                             `;
                                                         }
+                                                    } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
+                                                        button_container.innerHTML = `
+                                                            <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                            <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
+                                                                <button class="card-button">Download Data</button>
+                                                            </a>
+                                                        `;
                                                     } else {
                                                         button_container.innerHTML = `
                                                             <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
@@ -3995,7 +4072,7 @@ if (localStorage.full_client_rework != "false") {
                                         `;
                                     }
 
-                                    if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
+                                    if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                         if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
                                             card.classList.add('clickable');
 
@@ -4005,6 +4082,7 @@ if (localStorage.full_client_rework != "false") {
                                                     openItemModal();
                                                 }
                                             });
+                                            
 
                                             async function openItemModal() {
                                                 let modal = document.createElement("div");
@@ -4402,21 +4480,33 @@ if (localStorage.full_client_rework != "false") {
 
                                                 const button_container = document.querySelector("[data-modal-buttons]");
                                                 
-                                                if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals with data downloads") {
+                                                if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads") {
                                                     button_container.innerHTML = `
                                                         <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
                                                         <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
                                                             <button class="card-button">Download Data</button>
                                                         </a>
                                                     `;
-                                                } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals with data downloads and p+") {
-                                                    if (typeof emojiCopy != 'undefined') {
+                                                } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+") {
+                                                    if (typeof product.emojiCopy != 'undefined') {
+                                                        button_container.innerHTML = `
+                                                            <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                            <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${product.emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                                        `;
+                                                    } else {
+                                                        button_container.innerHTML = `
+                                                            <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                            <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
+                                                        `;
+                                                    }
+                                                } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+") {
+                                                    if (typeof product.emojiCopy != 'undefined') {
                                                         button_container.innerHTML = `
                                                             <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
                                                             <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
                                                                 <button class="card-button">Download Data</button>
                                                             </a>
-                                                            <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                                            <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${product.emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
                                                         `;
                                                     } else {
                                                         button_container.innerHTML = `
@@ -4427,6 +4517,13 @@ if (localStorage.full_client_rework != "false") {
                                                             <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
                                                         `;
                                                     }
+                                                } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
+                                                    button_container.innerHTML = `
+                                                        <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
+                                                        <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
+                                                            <button class="card-button">Download Data</button>
+                                                        </a>
+                                                    `;
                                                 } else {
                                                     button_container.innerHTML = `
                                                         <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
@@ -6655,7 +6752,7 @@ if (localStorage.full_client_rework != "false") {
 
 
                 try {
-                    const experiment_2025_02_shop_card_modals_treatments = ["Treatment -1: Disabled", "Treatment 1: Enable modals", "Treatment 2: Enable modals with data downloads", "Treatment 3: Enable modals with data downloads and p+"];
+                    const experiment_2025_02_shop_card_modals_treatments = ["Treatment -1: Disabled", "Treatment 1: Enable modals", "Treatment 2: Enable modals w/ data downloads", "Treatment 3: Enable modals w/ p+", "Treatment 4: Enable modals w/ p+ on p+ page", "Treatment 5: Enable modals w/ data downloads and p+", "Treatment 6: Enable modals w/ data downloads and p+ on p+ page"];
 
                     const experiment_2025_02_shop_card_modals_treatment_picker = document.getElementById("experiment_2025_02_shop_card_modals_treatment_container");
                     
