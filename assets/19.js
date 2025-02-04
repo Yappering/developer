@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 213";
+tcbx926n29 = "Dev 214";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -679,8 +679,9 @@ if (localStorage.full_client_rework != "false") {
                                                         <div class="modalv2-inner">
                                                             <div class="modalv2-inner-left">
                                                                 <p data-product-modal-sku-id></p>
-                                                                <p data-product-modal-name></p>
-                                                                <p data-product-modal-summary></p>
+                                                                <p data-product-modal-credits></p>
+                                                                <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
+                                                                <p style="color: var(--8)" data-product-modal-summary></p>
                                                                 <div class="shop-modal-var-container-container" data-shop-modal-var-container-container>
                                                                     <div class="shop-modal-var-container" data-shop-modal-var-container></div>
                                                                     <a class="shop-modal-var-title" data-shop-modal-var-title></a>
@@ -700,8 +701,11 @@ if (localStorage.full_client_rework != "false") {
                                                             <img class="modalv2-inner-logo" src="https://cdn.yapper.shop/assets/${apiCategory.logo}.png"></img>
                                                             <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
 
-                                                            <div title="Close" data-close-product-card-button>
-                                                                <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                            <div data-modal-top-product-buttons>
+                                                                <div title="Close" data-close-product-card-button>
+                                                                    <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                                </div>
+                                                                <div title="Download Data" data-download-product-card-button></div>
                                                             </div>
 
                                                             <div id="modalv2-inner-right" class="modalv2-inner-right">
@@ -733,7 +737,8 @@ if (localStorage.full_client_rework != "false") {
                                                             previewHolder.appendChild(imgElement);
                                                         
                                                             // Set the product details
-                                                            modal.querySelector("[data-product-modal-sku-id]").textContent = `Made By: ${product.credits}`;
+                                                            modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                            modal.querySelector("[data-product-modal-credits]").textContent = `Made By: ${product.credits}`;
                                                             modal.querySelector("[data-product-modal-name]").textContent = product.name;
                                                             modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
                                                         
@@ -754,7 +759,8 @@ if (localStorage.full_client_rework != "false") {
                                                     if (product.type === 1) {
                                                         modal.classList.add('modal-1');
         
-                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `Made By: ${product.credits}`;
+                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                        modal.querySelector("[data-product-modal-credits]").textContent = `Made By: ${product.credits}`;
                                                         modal.querySelector("[data-product-modal-name]").textContent = product.name;
                                                         modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
 
@@ -839,7 +845,8 @@ if (localStorage.full_client_rework != "false") {
                                                         modal.querySelector("[data-product-modal-summary]").textContent = bundleSummary;
                                                     
                                                         // Set the basic card details
-                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `Made By: ${product.credits}`;
+                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                        modal.querySelector("[data-product-modal-credits]").textContent = `Made By: ${product.credits}`;
                                                         modal.querySelector("[data-product-modal-name]").textContent = product.name;
                                                     
                                                         // Handle each item in the bundle
@@ -914,7 +921,8 @@ if (localStorage.full_client_rework != "false") {
                                                     if (product.type === 2000) {
                                                         modal.querySelector("[data-shop-modal-var-container-container]").classList.add('show');
                                                         // Update SKU and summary
-                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `Made By: ${product.credits}`;
+                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                        modal.querySelector("[data-product-modal-credits]").textContent = `Made By: ${product.credits}`;
                                                         modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
                                                     
                                                         // Always display the base variant name
@@ -957,10 +965,16 @@ if (localStorage.full_client_rework != "false") {
                                                         // Function to apply the selected variant
                                                         function applyVariant(selectedVariant) {
                                                             modal.querySelector("[data-shop-modal-var-title]").textContent = `(${selectedVariant.variant_label})`;
-                                                            modal.querySelector("[data-product-modal-sku-id]").textContent = `Made By: ${product.credits}`;
+                                                            modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${selectedVariant.sku_id}`;
+                                                            modal.querySelector("[data-product-modal-credits]").textContent = `Made By: ${selectedVariant.credits}`;
                                                             // modal.querySelector("[data-share-product-card-button]").innerHTML = `
                                                             //     <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
                                                             // `;
+                                                            if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
+                                                                modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                                    <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
+                                                                `;
+                                                            }
                                                             if (selectedVariant.type === 0) {
                                                                 modal.classList.add("modal-2000-0");
                                                                 previewHolder.innerHTML = ""; // Clear previous decorations
@@ -1059,10 +1073,8 @@ if (localStorage.full_client_rework != "false") {
                                                     const button_container = document.querySelector("[data-modal-buttons]");
                                                     
                                                     if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads") {
-                                                        button_container.innerHTML = `
-                                                            <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
-                                                                <button class="card-button">Download Data</button>
-                                                            </a>
+                                                        modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                            <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                         `;
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+") {
                                                         if (typeof product.emojiCopy != 'undefined') {
@@ -1087,38 +1099,268 @@ if (localStorage.full_client_rework != "false") {
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
-                                                                    <button class="card-button">Download Data</button>
-                                                                </a>
                                                                 <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${product.emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                                            `;
+                                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                                <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                             `;
                                                         } else {
                                                             button_container.innerHTML = `
-                                                                <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
-                                                                    <button class="card-button">Download Data</button>
-                                                                </a>
                                                                 <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
+                                                            `;
+                                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                                <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                             `;
                                                         }
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
-                                                                    <button class="card-button">Download Data</button>
-                                                                </a>
                                                                 <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${product.emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                                            `;
+                                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                                <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                             `;
                                                         } else {
                                                             button_container.innerHTML = `
-                                                                <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
-                                                                    <button class="card-button">Download Data</button>
-                                                                </a>
                                                                 <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
+                                                            `;
+                                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                                <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                             `;
                                                         }
                                                     } else {
                                                         button_container.innerHTML = ``;
                                                     }
+
+
+                                                    const unpublishedAt = new Date(product.unpublished_at);
+                            
+                                                    if (product.unpublished_at && !isNaN(unpublishedAt.getTime())) {
+                            
+                                                        function updateTimer() {
+                                                            const now = new Date();
+                                                            const timeDiff = unpublishedAt - now;
+                            
+                                                            if (timeDiff <= 0) {
+                                                                modal.querySelector("[shop-modal-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">OFF SALE</p>
+                                                                    </div>
+                                                                `;
+                                                                clearInterval(timerInterval);
+                                                            } else {
+                                                                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                            
+                                                                modal.querySelector("[shop-modal-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">${days} DAYS LEFT TO REQUEST</p>
+                                                                    </div>
+                                                                `;
+                                                            }
+                                                        }
+                            
+                                                        const timerInterval = setInterval(updateTimer, 1000);
+                                                        updateTimer();
+                                                    }
+
+
+                                                    const expiresAt = new Date(product.expires_at);
+
+                                                    if (product.expires_at && !isNaN(expiresAt.getTime())) {
+                            
+                                                        function updateTimer() {
+                                                            const now = new Date();
+                                                            const timeDiff = expiresAt - now;
+                            
+                                                            if (timeDiff <= 0) {
+                                                                modal.querySelector("[shop-modal-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">EXPIRED</p>
+                                                                    </div>
+                                                                `;
+                                                                clearInterval(timerInterval);
+                                                            } else {
+                                                                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                            
+                                                                modal.querySelector("[shop-modal-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">EXPIRES IN ${days}D ${hours}H</p>
+                                                                    </div>
+                                                                `;
+                                                            }
+                                                        }
+                            
+                                                        const timerInterval = setInterval(updateTimer, 1000);
+                                                        updateTimer();
+                                                    }
+
+                                                    const ReleasesAt = new Date(product.releases_at);
+                            
+                                                    if (product.releases_at && !isNaN(ReleasesAt.getTime())) {
+                            
+                                                        function updateTimer() {
+                                                            const now = new Date();
+                                                            const timeDiff = ReleasesAt - now;
+                            
+                                                            if (timeDiff <= 0) {
+                                                                modal.querySelector("[shop-modal-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">PUBLISHING...</p>
+                                                                    </div>
+                                                                `;
+                                                                clearInterval(timerInterval);
+                                                            } else {
+                                                                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                                                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
+                            
+                                                                modal.querySelector("[shop-modal-tag-container]").innerHTML = `
+                                                                    <div class="unplublished-tag">
+                                                                        <p class="unplublished-tag-text">${days}D ${hours}H</p>
+                                                                    </div>
+                                                                `;
+                                                            }
+                                                        }
+                            
+                                                        const timerInterval = setInterval(updateTimer, 1000);
+                                                        updateTimer();
+                                                    }
+
+                                                    if (product.premium_type === 2) {
+                                                        modal.querySelector("[shop-modal-tag-container]").innerHTML = `
+                                                            <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
+                                                        `;
+                                                    }
+                                                    
+
+
+                                                    let modal_back = document.createElement("div");
+
+                                                    modal_back.classList.add('modalv2-back');
+                                                    modal_back.id = 'modalv2-back';
+
+                                                    document.body.appendChild(modal_back);
+
+                                                    setTimeout(() => {
+                                                        modal_back.classList.add('show');
+                                                    }, 1);
+
+
+                                                    modal.addEventListener('click', (event) => {
+                                                        if (event.target === modal) {
+                                                            modal.classList.remove('show');
+                                                            modal_back.classList.remove('show');
+                                                            setTimeout(() => {
+                                                                modal.remove();
+                                                                modal_back.remove();
+                                                            }, 300);
+                                                        }
+                                                    });
+
+                                                    document.querySelector("[data-close-product-card-button]").addEventListener('click', () => {
+                                                        modal.classList.remove('show');
+                                                        modal_back.classList.remove('show');
+                                                        setTimeout(() => {
+                                                            modal.remove();
+                                                            modal_back.remove();
+                                                        }, 300);
+                                                    });
+                                                }
+                                            } else if (product.type === "plus_more") {
+                                                card.classList.add('clickable');
+
+                                                card.addEventListener("click", (event) => {
+                                                    if (event.target.matches("[data-shop-card-var]")) {
+                                                    } else {
+                                                        openItemModal();
+                                                    }
+                                                });
+
+                                                async function openItemModal() {
+                                                    let modal = document.createElement("div");
+
+                                                    modal.classList.add('modalv2');
+
+                                                    if (apiCategory.pdp_bg != null) {
+                                                        pdp = apiCategory.pdp_bg
+                                                    } else {
+                                                        pdp = apiCategory.banner
+                                                    }
+
+                                                    modal.innerHTML = `
+                                                        <div class="modalv2-inner">
+                                                            <div class="modalv2-inner-left">
+                                                                <p data-product-modal-sku-id></p>
+                                                                <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
+                                                                <p style="color: var(--8)" data-product-modal-summary></p>
+                                                                <div class="shop-modal-var-container-container" data-shop-modal-var-container-container>
+                                                                    <div class="shop-modal-var-container" data-shop-modal-var-container></div>
+                                                                    <a class="shop-modal-var-title" data-shop-modal-var-title></a>
+                                                                </div>
+                                                                <div class="modal-shop-price-container" data-shop-price-container>
+                                                                    <div data-price-standard-container>
+                                                                        <a style="font-size: large; font-weight: 900;" data-price-standard></a>
+                                                                    </div>
+                                                                    <div data-price-nitro-container>
+                                                                        <a data-price-nitro></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-left-bottom">
+                                                                    <div class="modal-buttons" data-modal-buttons></div>
+                                                                </div>
+                                                            </div>
+                                                            <img class="modalv2-inner-logo" src="https://cdn.yapper.shop/assets/${apiCategory.logo}.png"></img>
+                                                            <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
+
+                                                            <div data-modal-top-product-buttons>
+                                                                <div title="Close" data-close-product-card-button>
+                                                                    <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                                </div>
+                                                                <div title="Download Data" data-download-product-card-button></div>
+                                                            </div>
+
+                                                            <div id="modalv2-inner-right" class="modalv2-inner-right">
+                                                                <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/${pdp}.png"></img>
+                                                                <div data-modal-preview-holder></div>
+                                                            </div>
+                                                        </div>
+                                                    `;
+
+                                                    document.body.appendChild(modal);
+
+                                                    setTimeout(() => {
+                                                        modal.classList.add('show');
+                                                    }, 1);
+
+                                                    modal.querySelector("[data-product-modal-name]").textContent = `Plus More...`;
+                                                    modal.querySelector("[data-product-modal-summary]").textContent = `There are more items in this category that are coming soon.`;
+
+                                                    const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                    previewHolder.classList.add('modal-plus-more-question-mark-img');
+
+                                                    const plusMoreQuestionMark = document.createElement("img");
+                                                    plusMoreQuestionMark.classList.add("plus-more-question-mark");
+                                                    plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.png`;
+
+                                                    previewHolder.appendChild(plusMoreQuestionMark);
+
+                                                    if (localStorage.reduced_motion != "true") {
+                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                            plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.gif`;
+                                                        });
+                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                            plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.png`;
+                                                        });
+                                                    }
+
+
+                                                    const button_container = document.querySelector("[data-modal-buttons]");
+
+                                                    button_container.innerHTML = ``;
 
 
                                                     const unpublishedAt = new Date(product.unpublished_at);
@@ -1195,7 +1437,7 @@ if (localStorage.full_client_rework != "false") {
                                                             const timeDiff = ReleasesAt - now;
                             
                                                             if (timeDiff <= 0) {
-                                                                card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                                     <div class="unplublished-tag">
                                                                         <p class="unplublished-tag-text">PUBLISHING...</p>
                                                                     </div>
@@ -1206,7 +1448,7 @@ if (localStorage.full_client_rework != "false") {
                                                                 const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                                                                 const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / 1000);
                             
-                                                                card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                                     <div class="unplublished-tag">
                                                                         <p class="unplublished-tag-text">${days}D ${hours}H</p>
                                                                     </div>
@@ -1509,8 +1751,8 @@ if (localStorage.full_client_rework != "false") {
                                             <div class="modalv2-inner">
                                                 <div class="modalv2-inner-left">
                                                     <p data-product-modal-sku-id></p>
-                                                    <p data-product-modal-name></p>
-                                                    <p data-product-modal-summary></p>
+                                                    <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
+                                                    <p style="color: var(--8)" data-product-modal-summary></p>
                                                     <div class="modal-shop-price-container" data-shop-price-container>
                                                         <div data-price-standard-container>
                                                             <a style="font-size: large; font-weight: 900;" data-price-standard></a>
@@ -1520,11 +1762,15 @@ if (localStorage.full_client_rework != "false") {
                                                         <div class="modal-buttons" data-modal-buttons></div>
                                                     </div>
                                                 </div>
-                                                <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
-
-                                                <div title="Close" data-close-product-card-button>
-                                                    <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                
+                                                <div data-modal-top-product-buttons>
+                                                    <div title="Close" data-close-product-card-button>
+                                                        <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                    </div>
+                                                    <div title="Download Data" data-download-product-card-button></div>
                                                 </div>
+
+                                                <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
 
                                                 <div id="modalv2-inner-right" class="modalv2-inner-right">
                                                     <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/110.svg"></img>
@@ -1560,23 +1806,23 @@ if (localStorage.full_client_rework != "false") {
                                         if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads") {
                                             button_container.innerHTML = `
                                                 <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
-                                                <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
-                                                    <button class="card-button">Download Data</button>
-                                                </a>
+                                            `;
+                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                             `;
                                         } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+") {
                                             button_container.innerHTML = `
                                                 <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
-                                                <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
-                                                    <button class="card-button">Download Data</button>
-                                                </a>
+                                            `;
+                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                             `;
                                         } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                             button_container.innerHTML = `
                                                 <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
-                                                <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
-                                                    <button class="card-button">Download Data</button>
-                                                </a>
+                                            `;
+                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                             `;
                                         } else {
                                             button_container.innerHTML = `
@@ -1801,8 +2047,8 @@ if (localStorage.full_client_rework != "false") {
                                             <div class="modalv2-inner">
                                                 <div class="modalv2-inner-left">
                                                     <p data-product-modal-sku-id></p>
-                                                    <p data-product-modal-name></p>
-                                                    <p data-product-modal-summary></p>
+                                                    <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
+                                                    <p style="color: var(--8)" data-product-modal-summary></p>
                                                     <div class="modal-shop-price-container" data-shop-price-container>
                                                         <div data-price-standard-container>
                                                             <a style="font-size: large; font-weight: 900;" data-price-standard></a>
@@ -1812,11 +2058,15 @@ if (localStorage.full_client_rework != "false") {
                                                         <div class="modal-buttons" data-modal-buttons></div>
                                                     </div>
                                                 </div>
-                                                <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
-
-                                                <div title="Close" data-close-product-card-button>
-                                                    <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                
+                                                <div data-modal-top-product-buttons>
+                                                    <div title="Close" data-close-product-card-button>
+                                                        <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                    </div>
+                                                    <div title="Download Data" data-download-product-card-button></div>
                                                 </div>
+
+                                                <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
 
                                                 <div id="modalv2-inner-right" class="modalv2-inner-right">
                                                     <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/110.svg"></img>
@@ -1852,23 +2102,23 @@ if (localStorage.full_client_rework != "false") {
                                         if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads") {
                                             button_container.innerHTML = `
                                                 <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
-                                                <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
-                                                    <button class="card-button">Download Data</button>
-                                                </a>
+                                            `;
+                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                             `;
                                         } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+") {
                                             button_container.innerHTML = `
                                                 <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
-                                                <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
-                                                    <button class="card-button">Download Data</button>
-                                                </a>
+                                            `;
+                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                             `;
                                         } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                             button_container.innerHTML = `
                                                 <button class="card-button" title="Open this Potion's support article" onclick="location.href='${discordsupport}${apiCategory.support_id}';">Open Support Article</button>
-                                                <a href="https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip">
-                                                    <button class="card-button">Download Data</button>
-                                                </a>
+                                            `;
+                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                             `;
                                         } else {
                                             button_container.innerHTML = `
@@ -2723,8 +2973,8 @@ if (localStorage.full_client_rework != "false") {
                                                         <div class="modalv2-inner">
                                                             <div class="modalv2-inner-left">
                                                                 <p data-product-modal-sku-id></p>
-                                                                <p data-product-modal-name></p>
-                                                                <p data-product-modal-summary></p>
+                                                                <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
+                                                                <p style="color: var(--8)" data-product-modal-summary></p>
                                                                 <div class="shop-modal-var-container-container" data-shop-modal-var-container-container>
                                                                     <div class="shop-modal-var-container" data-shop-modal-var-container></div>
                                                                     <a class="shop-modal-var-title" data-shop-modal-var-title></a>
@@ -2743,11 +2993,13 @@ if (localStorage.full_client_rework != "false") {
                                                             </div>
                                                             <img class="modalv2-inner-logo" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096"></img>
                                                             <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
-                                                            
-                                                            <div title="Copy Link" data-share-product-card-button></div>
 
-                                                            <div title="Close" data-close-product-card-button>
-                                                                <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                            <div data-modal-top-product-buttons>
+                                                                <div title="Close" data-close-product-card-button>
+                                                                    <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                                </div>
+                                                                <div title="Copy Link" data-share-product-card-button></div>
+                                                                <div title="Download Data" data-download-product-card-button></div>
                                                             </div>
 
                                                             <div id="modalv2-inner-right" class="modalv2-inner-right">
@@ -3007,6 +3259,11 @@ if (localStorage.full_client_rework != "false") {
                                                             modal.querySelector("[data-share-product-card-button]").innerHTML = `
                                                                 <svg class="shareIcon_modal" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
                                                             `;
+                                                            if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
+                                                                modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                                    <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
+                                                                `;
+                                                            }
                                                             if (selectedVariant.type === 0) {
                                                                 modal.classList.add("modal-2000-0");
                                                                 previewHolder.innerHTML = ""; // Clear previous decorations
@@ -3107,9 +3364,9 @@ if (localStorage.full_client_rework != "false") {
                                                     if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads") {
                                                         button_container.innerHTML = `
                                                             <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
-                                                            <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
-                                                                <button class="card-button">Download Data</button>
-                                                            </a>
+                                                        `;
+                                                        modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                            <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                         `;
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+") {
                                                         if (typeof product.emojiCopy != 'undefined') {
@@ -3127,26 +3384,26 @@ if (localStorage.full_client_rework != "false") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
                                                                 <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
-                                                                <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
-                                                                    <button class="card-button">Download Data</button>
-                                                                </a>
                                                                 <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${product.emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                                            `;
+                                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                                <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                             `;
                                                         } else {
                                                             button_container.innerHTML = `
                                                                 <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
-                                                                <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
-                                                                    <button class="card-button">Download Data</button>
-                                                                </a>
                                                                 <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
+                                                            `;
+                                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                                <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                             `;
                                                         }
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                         button_container.innerHTML = `
                                                             <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
-                                                            <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
-                                                                <button class="card-button">Download Data</button>
-                                                            </a>
+                                                        `;
+                                                        modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                            <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                         `;
                                                     } else {
                                                         button_container.innerHTML = `
@@ -4099,8 +4356,8 @@ if (localStorage.full_client_rework != "false") {
                                                     <div class="modalv2-inner">
                                                         <div class="modalv2-inner-left">
                                                             <p data-product-modal-sku-id></p>
-                                                            <p data-product-modal-name></p>
-                                                            <p data-product-modal-summary></p>
+                                                            <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
+                                                            <p style="color: var(--8)" data-product-modal-summary></p>
                                                             <div class="shop-modal-var-container-container" data-shop-modal-var-container-container>
                                                                 <div class="shop-modal-var-container" data-shop-modal-var-container></div>
                                                                 <a class="shop-modal-var-title" data-shop-modal-var-title></a>
@@ -4119,11 +4376,13 @@ if (localStorage.full_client_rework != "false") {
                                                         </div>
                                                         <img class="modalv2-inner-logo" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096"></img>
                                                         <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
-                                                        
-                                                        <div title="Copy Link" data-share-product-card-button></div>
 
-                                                        <div title="Close" data-close-product-card-button>
-                                                            <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                        <div data-modal-top-product-buttons>
+                                                            <div title="Close" data-close-product-card-button>
+                                                                <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                            </div>
+                                                            <div title="Copy Link" data-share-product-card-button></div>
+                                                            <div title="Download Data" data-download-product-card-button></div>
                                                         </div>
 
                                                         <div id="modalv2-inner-right" class="modalv2-inner-right">
@@ -4383,6 +4642,11 @@ if (localStorage.full_client_rework != "false") {
                                                         modal.querySelector("[data-share-product-card-button]").innerHTML = `
                                                             <svg class="shareIcon_modal" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
                                                         `;
+                                                        if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
+                                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                                <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
+                                                            `;
+                                                        }
                                                         if (selectedVariant.type === 0) {
                                                             modal.classList.add("modal-2000-0");
                                                             previewHolder.innerHTML = ""; // Clear previous decorations
@@ -4483,9 +4747,9 @@ if (localStorage.full_client_rework != "false") {
                                                 if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads") {
                                                     button_container.innerHTML = `
                                                         <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
-                                                        <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
-                                                            <button class="card-button">Download Data</button>
-                                                        </a>
+                                                    `;
+                                                    modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                        <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                     `;
                                                 } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+") {
                                                     if (typeof product.emojiCopy != 'undefined') {
@@ -4503,26 +4767,26 @@ if (localStorage.full_client_rework != "false") {
                                                     if (typeof product.emojiCopy != 'undefined') {
                                                         button_container.innerHTML = `
                                                             <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
-                                                            <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
-                                                                <button class="card-button">Download Data</button>
-                                                            </a>
                                                             <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? 'Copy P+ emoji to clipboard' : 'Request item in our Discord server'}">${product.emojiCopy ? 'Copy P+ Emoji' : 'Request to P+'}</button>
+                                                        `;
+                                                        modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                            <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                         `;
                                                     } else {
                                                         button_container.innerHTML = `
                                                             <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
-                                                            <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
-                                                                <button class="card-button">Download Data</button>
-                                                            </a>
                                                             <button class="card-button card-button-no-emoji" title="There was an error fetching emojiCopy">Error</button>
+                                                        `;
+                                                        modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                            <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                         `;
                                                     }
                                                 } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                     button_container.innerHTML = `
                                                         <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
-                                                        <a href="https://item.yapper.shop/sku/${product.sku_id}/data.zip">
-                                                            <button class="card-button">Download Data</button>
-                                                        </a>
+                                                    `;
+                                                    modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                        <svg class="downloadIcon_modal" onclick="window.open("https://item.yapper.shop/sku/${product.sku_id}/data.zip");" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                     `;
                                                 } else {
                                                     button_container.innerHTML = `
