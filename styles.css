@@ -2726,10 +2726,6 @@ data-share-product-card-button {
     background-color: #0000005d;
 }
 
-.downloadIcon_modal {
-    color: #B1B5BB;
-}
-
 .downloadIcon_modal:hover {
     color: white;
 }

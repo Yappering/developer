@@ -41,4 +41,4 @@ EXPERIMENT_ID_13 = "Treatment -1: Disabled"
 EXPERIMENT_ID_14 = "Treatment -1: Disabled"
 
 // 2025-02_shop_card_modals
-EXPERIMENT_ID_15 = "Treatment 4: Enable modals w/ p+ on p+ page"
+EXPERIMENT_ID_15 = "Treatment -1: Disabled"
