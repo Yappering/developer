@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 216";
+tcbx926n29 = "Dev 217";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -124,6 +124,7 @@ if (localStorage.full_client_rework != "false") {
     FANTASY_V2 = "1324454241254903829"
     STEAMPUNK = "1326333074241486859"
     PROGRESS = "1333278032999485461"
+    RADIATE = "1336483992429658112"
     VALENTINES = "1333866045521395723"
     ORB = "1332505418219655258"
 
@@ -224,6 +225,10 @@ if (localStorage.full_client_rework != "false") {
                                 // Existing code for 'pplus' page
                                 const category = categoryTemplate.content.cloneNode(true).children[0];
                                 category.querySelector("[data-shop-category-banner]").id = apiCategory.sku_id;
+
+                                if (localStorage.experiment_2025_02_shop_category_modals === "Treatment 1: Enable category modals" || localStorage.experiment_2025_02_shop_category_modals === "Treatment 2: Enable category modals w/ data downloads") {
+                                    category.querySelector("[data-shop-category-banner]").classList.add('clickable')
+                                }
             
                                 category.querySelector("[data-shop-category-banner-image]").src = `https://cdn.yapper.shop/assets/${apiCategory.banner}.png`;
                                 category.querySelector("[data-shop-category-banner-image]").alt = apiCategory.name;
@@ -2335,6 +2340,10 @@ if (localStorage.full_client_rework != "false") {
                                 // Default page handling
                                 const category = categoryTemplate.content.cloneNode(true).children[0];
                                 category.querySelector("[data-shop-category-banner]").id = apiCategory.sku_id;
+
+                                if (localStorage.experiment_2025_02_shop_category_modals === "Treatment 1: Enable category modals" || localStorage.experiment_2025_02_shop_category_modals === "Treatment 2: Enable category modals w/ data downloads") {
+                                    category.querySelector("[data-shop-category-banner]").classList.add('clickable')
+                                }
             
                                 if (apiCategory.banner_asset) {
                                     if (apiCategory.banner_asset.animated != null) {
@@ -5166,11 +5175,11 @@ if (localStorage.full_client_rework != "false") {
             </button>
             <div id="leaks-tab-loading">
             </div>
+            <div id="orbs-shop-tab-loading">
+            </div>
             <button class="dm-button" id="potions-tab" onclick="setParams({page: 'consumables'}); location.reload();">
                 <p class="dm-button-text">Potions</p>
             </button>
-            <div id="orbs-shop-tab-loading">
-            </div>
             <button class="dm-button" id="miscellaneous-tab" onclick="setParams({page: 'miscellaneous'}); location.reload();">
                 <p class="dm-button-text">Miscellaneous</p>
             </button>
@@ -6829,6 +6838,7 @@ if (localStorage.full_client_rework != "false") {
                 </div>
                 <div id="theme-picker-container"></div>
                 <div id="new-options-experiments-container"></div>
+                <div id="new-options-dismissible-content-container"></div>
                 <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Downloads</h1>
                 <div>
                     <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
@@ -7021,6 +7031,14 @@ if (localStorage.full_client_rework != "false") {
                     </div>
 
                     <div class="options-option-card">
+                        <p class="option-card-title">Shop Category Modals</p>
+                        <p class="new-experiment-subtext">2025_02_shop_category_modals</p>
+                        <select id="experiment_2025_02_shop_category_modals_treatment_container" class="experiment-treatment-picker">
+                        </select>
+                        <button class="new-experiment-clear-button" onclick="experiment_2025_02_shop_category_modals_clear()">Clear</button>
+                    </div>
+
+                    <div class="options-option-card">
                         <p class="option-card-title">Shop Card Modals</p>
                         <p class="new-experiment-subtext">2025_02_shop_card_modals</p>
                         <select id="experiment_2025_02_shop_card_modals_treatment_container" class="experiment-treatment-picker">
@@ -7082,6 +7100,37 @@ if (localStorage.full_client_rework != "false") {
                     document.getElementById("experiment-force-rollout").checked = true;
                 }
 
+
+                try {
+                    const experiment_2025_02_shop_category_modals_treatments = ["Treatment -1: Disabled", "Treatment 1: Enable category modals", "Treatment 2: Enable category modals w/ data downloads"];
+
+                    const experiment_2025_02_shop_category_modals_treatment_picker = document.getElementById("experiment_2025_02_shop_category_modals_treatment_container");
+                    
+
+                    populate_experiment_2025_02_shop_category_modals();
+                    
+                    const storedTreatment = localStorage.getItem("experiment_2025_02_shop_category_modals");
+                    if (storedTreatment) {
+                        experiment_2025_02_shop_category_modals_treatment_picker.value = storedTreatment;
+                    }
+
+                    function populate_experiment_2025_02_shop_category_modals() {
+                        experiment_2025_02_shop_category_modals_treatments.forEach((treatments) => {
+                            const optElement = document.createElement("option");
+                            optElement.value = treatments;
+                            optElement.textContent = treatments;
+                            experiment_2025_02_shop_category_modals_treatment_picker.appendChild(optElement);
+                        });
+                    }
+
+                    experiment_2025_02_shop_category_modals_treatment_picker.addEventListener("change", () => {
+                        const selectedTreatment = experiment_2025_02_shop_category_modals_treatment_picker.value;
+                    
+                        // Store the selection
+                        localStorage.setItem("experiment_2025_02_shop_category_modals", selectedTreatment);
+                    });
+                } catch(error) {
+                }
 
                 try {
                     const experiment_2025_02_shop_card_modals_treatments = ["Treatment -1: Disabled", "Treatment 1: Enable modals", "Treatment 2: Enable modals w/ data downloads", "Treatment 3: Enable modals w/ p+", "Treatment 4: Enable modals w/ p+ on p+ page", "Treatment 5: Enable modals w/ data downloads and p+", "Treatment 6: Enable modals w/ data downloads and p+ on p+ page"];
@@ -7365,12 +7414,34 @@ if (localStorage.full_client_rework != "false") {
                     });
                 } catch(error) {
                 }
+
+
+
+
+
+
+
+                document.getElementById("new-options-dismissible-content-container").innerHTML = `
+
+                    <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Dismissible Content (WIP)</p>
+
+                    <div class="options-option-card" id="reduced-motion-box-option">
+                        <p class="option-card-title" style="color: var(--white);">Paper Beach V2 Marketing</p>
+                        <input class="options-toggle-box" onclick="reducedMotionChecked();" style="cursor: pointer; scale: 2; posision: center;" id="reduced-motion-box" type="checkbox">
+                    </div>
+
+                    <div class="options-option-card" id="disable-banner-overrides-box-option">
+                        <p class="option-card-title" style="color: var(--white);">Recap 2024</p>
+                        <input class="options-toggle-box" onclick="disableBannerOverridesChecked();" style="cursor: pointer; scale: 2; posision: center;" id="disable-banner-overrides-box" type="checkbox">
+                    </div>
+                `;
             }
 
         }
     }
 
     if (localStorage.experiment_force_rollout != "false") {
+        localStorage.experiment_2025_02_shop_category_modals = EXPERIMENT_ID_16;
         localStorage.experiment_2025_02_shop_card_modals = EXPERIMENT_ID_15;
         localStorage.experiment_2025_02_mobile_render = EXPERIMENT_ID_14;
         localStorage.experiment_2025_02_orbs_shop = EXPERIMENT_ID_13;
@@ -7381,6 +7452,10 @@ if (localStorage.full_client_rework != "false") {
         localStorage.experiment_2024_11_collectibles_variants = EXPERIMENT_ID_8;
         localStorage.experiment_2024_11_recap = EXPERIMENT_ID_7;
     } else {
+
+        if (localStorage.experiment_2025_02_category_card_modals == null) {
+            localStorage.experiment_2025_02_category_card_modals = EXPERIMENT_ID_16;
+        }
 
         if (localStorage.experiment_2025_02_shop_card_modals == null) {
             localStorage.experiment_2025_02_shop_card_modals = EXPERIMENT_ID_15;
@@ -7418,6 +7493,11 @@ if (localStorage.full_client_rework != "false") {
             localStorage.experiment_2024_11_recap = EXPERIMENT_ID_7;
         }
     }
+
+    function experiment_2025_02_shop_category_modals_clear() {
+        localStorage.experiment_2025_02_shop_category_modals = EXPERIMENT_ID_16;
+        document.getElementById("experiment_2025_02_shop_category_modals_treatment_container").value = EXPERIMENT_ID_16;
+    };
 
     function experiment_2025_02_shop_card_modals_clear() {
         localStorage.experiment_2025_02_shop_card_modals = EXPERIMENT_ID_15;
