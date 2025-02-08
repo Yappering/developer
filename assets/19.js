@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 218";
+tcbx926n29 = "Dev 220";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -61,7 +61,7 @@ if (localStorage.full_client_rework != "false") {
     PROFILES_PLUS = '/profiles-plus-categories.json';
     HOME_PAGE_PREVIEW = '/preview-1.json';
     HOME_PAGE_P_PLUS = '/preview-2.json';
-    HOME_PAGE_P_PLUS_PREVIEW = '/preview-3.json';
+    HOME_PAGE_LEAKS = '/preview-3.json';
     PROFILE_EFFECTS = '/user-profile-effects.json';
     DOWNLOADABLE_DATA = '/downloads.json';
     PROFILES_PLUS_EFFECTS = '/profiles-plus-profile-effects.json';
@@ -321,9 +321,7 @@ if (localStorage.full_client_rework != "false") {
                                                     });
                                                 }
                                             });
-                                        }
-
-                                        if (product.type === 1) {
+                                        } else if (product.type === 1) {
                                             card.classList.add("type_1");
 
                                             card.querySelector("[data-product-card-sku-id]").textContent = `Made By: ${product.credits}`;
@@ -388,9 +386,7 @@ if (localStorage.full_client_rework != "false") {
                                                     });
                                                 }
                                             }
-                                        }
-
-                                        if (product.type === 1000) {
+                                        } else if (product.type === 1000) {
                                             card.classList.add("type_1000");
                                             // Fetch the bundled products for the bundle summary
                                             const bundledProducts = product.bundled_products || [];
@@ -475,9 +471,7 @@ if (localStorage.full_client_rework != "false") {
                                                     })();
                                                 }
                                             });
-                                        }
-
-                                        if (product.type === 2000) {
+                                        } else if (product.type === 2000) {
                                             // Update SKU and summary
                                             card.querySelector("[data-product-card-sku-id]").textContent = `Made By: ${product.credits}`;
                                             card.querySelector("[data-product-card-summary]").textContent = product.summary;
@@ -628,28 +622,7 @@ if (localStorage.full_client_rework != "false") {
                                             if (product.variants.length > 0) {
                                                 applyVariant(product.variants[0]);
                                             }
-                                        }
-
-
-
-                                        if (product.emojiCopy === null) {
-                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="Request item in our Discord server">Request to P+</button>
-                                            `;
-                                        } else {
-                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                <button class="card-button" onclick="copyEmoji('${product.emojiCopy}');" title="Request item in our Discord server">Copy P+ Emoji</button>
-                                            `;
-                                        }
-
-                                        if (product.premium_type === 2) {
-                                            card.querySelector("[data-shop-card-tag-container]").innerHTML = `
-                                                <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
-                                            `;
-                                        }
-
-
-                                        if (product.type === 'plus_more') {
+                                        } else if (product.type === 'plus_more') {
                                             card.querySelector("[data-product-card-sku-id]").textContent = ``;
                                             card.querySelector("[data-product-card-name]").textContent = `Plus More...`;
                                             card.querySelector("[data-product-card-summary]").textContent = `There are more items in this category that are coming soon.`;
@@ -672,8 +645,27 @@ if (localStorage.full_client_rework != "false") {
                                                     plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.png`;
                                                 });
                                             }
+                                        } else {
+                                            card.classList.add('hidden')
                                         }
 
+
+
+                                        if (product.emojiCopy === null) {
+                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="Request item in our Discord server">Request to P+</button>
+                                            `;
+                                        } else {
+                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                <button class="card-button" onclick="copyEmoji('${product.emojiCopy}');" title="Request item in our Discord server">Copy P+ Emoji</button>
+                                            `;
+                                        }
+
+                                        if (product.premium_type === 2) {
+                                            card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
+                                            `;
+                                        }
 
 
                                         if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
@@ -2568,9 +2560,7 @@ if (localStorage.full_client_rework != "false") {
                                                 }
                                                 
                                             });
-                                        }
-
-                                        if (product.type === 1) {
+                                        } else if (product.type === 1) {
                                             card.classList.add("type_1");
 
                                             if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
@@ -2639,9 +2629,7 @@ if (localStorage.full_client_rework != "false") {
                                                     });
                                                 }
                                             }
-                                        }
-
-                                        if (product.type === 1000) {
+                                        } else if (product.type === 1000) {
                                             card.classList.add("type_1000");
                                             // Fetch the bundled products for the bundle summary
                                             const bundledProducts = product.bundled_products || [];
@@ -2730,9 +2718,7 @@ if (localStorage.full_client_rework != "false") {
                                                     })();
                                                 }
                                             });
-                                        }
-
-                                        if (product.type === 2000) {
+                                        } else if (product.type === 2000) {
                                             // Update SKU and summary
                                             if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                 card.querySelector("[data-product-card-sku-id]").textContent = ``;
@@ -2900,6 +2886,31 @@ if (localStorage.full_client_rework != "false") {
                                             if (product.variants.length > 0) {
                                                 applyVariant(product.variants[0]);
                                             }
+                                        } else if (product.type === 'plus_more') {
+                                            card.querySelector("[data-product-card-sku-id]").textContent = ``;
+                                            card.querySelector("[data-product-card-name]").textContent = `Plus More...`;
+                                            card.querySelector("[data-product-card-summary]").textContent = `There are more items in this category that are coming soon.`;
+
+                                            card.querySelector("[data-shop-price-container]").innerHTML = ``;
+                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = ``;
+                                            card.querySelector("[data-share-product-card-button]").innerHTML = ``;
+
+                                            const plusMoreQuestionMark = document.createElement("img");
+                                            plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.png`;
+                                            plusMoreQuestionMark.classList.add("plus-more-question-mark");
+                                            card.querySelector("[data-shop-card-preview-holder]").appendChild(plusMoreQuestionMark);
+                                
+                                            // Hover effect for decoration image
+                                            if (localStorage.reduced_motion != "true") {
+                                                card.addEventListener("mouseenter", () => {
+                                                    plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.gif`;
+                                                });
+                                                card.addEventListener("mouseleave", () => {
+                                                    plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.png`;
+                                                });
+                                            }
+                                        } else {
+                                            card.classList.add('hidden')
                                         }
                                         
                                         
@@ -2975,32 +2986,6 @@ if (localStorage.full_client_rework != "false") {
                                             card.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                 <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
                                             `;
-                                        }
-
-
-                                        if (product.type === 'plus_more') {
-                                            card.querySelector("[data-product-card-sku-id]").textContent = ``;
-                                            card.querySelector("[data-product-card-name]").textContent = `Plus More...`;
-                                            card.querySelector("[data-product-card-summary]").textContent = `There are more items in this category that are coming soon.`;
-
-                                            card.querySelector("[data-shop-price-container]").innerHTML = ``;
-                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = ``;
-                                            card.querySelector("[data-share-product-card-button]").innerHTML = ``;
-
-                                            const plusMoreQuestionMark = document.createElement("img");
-                                            plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.png`;
-                                            plusMoreQuestionMark.classList.add("plus-more-question-mark");
-                                            card.querySelector("[data-shop-card-preview-holder]").appendChild(plusMoreQuestionMark);
-                                
-                                            // Hover effect for decoration image
-                                            if (localStorage.reduced_motion != "true") {
-                                                card.addEventListener("mouseenter", () => {
-                                                    plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.gif`;
-                                                });
-                                                card.addEventListener("mouseleave", () => {
-                                                    plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.png`;
-                                                });
-                                            }
                                         }
 
                                         if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
@@ -5313,6 +5298,8 @@ if (localStorage.full_client_rework != "false") {
             }
             if (localStorage.experiment_2024_12_profiles_plus_marketing_variants == "Treatment 1: Paper Beach V2") {
                 localStorage.dismissible_paper_beach_v2_marketing = "dismissed";
+            } else if (localStorage.experiment_2024_12_profiles_plus_marketing_variants == "Treatment 2: Roblox Doors") {
+                localStorage.dismissible_roblox_doors_marketing = "dismissed";
             }
             createMainShopElement()
             document.getElementById("pplus-tab").classList.add('dm-button-selected');
@@ -7337,7 +7324,7 @@ if (localStorage.full_client_rework != "false") {
 
 
                 try {
-                    const experiment_2024_12_profiles_plus_marketing_variants_treatments = ["Treatment -1: Disabled", "Treatment 1: Paper Beach V2"];
+                    const experiment_2024_12_profiles_plus_marketing_variants_treatments = ["Treatment -1: Disabled", "Treatment 1: Paper Beach V2", "Treatment 2: Roblox Doors"];
 
                     const experiment_2024_12_profiles_plus_marketing_variants_treatment_picker = document.getElementById("experiment_2024_12_profiles_plus_marketing_variants_treatment_container");
                     
@@ -7439,18 +7426,35 @@ if (localStorage.full_client_rework != "false") {
 
                 document.getElementById("new-options-dismissible-content-container").innerHTML = `
 
-                    <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Dismissible Content (WIP)</p>
+                    <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Dismissible Content</p>
+
+                    <div class="options-option-card" id="reduced-motion-box-option">
+                        <p class="option-card-title" style="color: var(--white);">Roblox Doors Marketing</p>
+                        <input class="options-toggle-box" onclick="dismissibleContent_RobloxDoorsMarketingChecked();" style="cursor: pointer; scale: 2; posision: center;" id="dismissible_roblox_doors_marketing-box" type="checkbox">
+                    </div>
 
                     <div class="options-option-card" id="reduced-motion-box-option">
                         <p class="option-card-title" style="color: var(--white);">Paper Beach V2 Marketing</p>
-                        <input class="options-toggle-box" onclick="reducedMotionChecked();" style="cursor: pointer; scale: 2; posision: center;" id="reduced-motion-box" type="checkbox">
+                        <input class="options-toggle-box" onclick="dismissibleContent_PaperBeachV2MarketingChecked();" style="cursor: pointer; scale: 2; posision: center;" id="dismissible_paper_beach_v2_marketing-box" type="checkbox">
                     </div>
 
                     <div class="options-option-card" id="disable-banner-overrides-box-option">
                         <p class="option-card-title" style="color: var(--white);">Recap 2024</p>
-                        <input class="options-toggle-box" onclick="disableBannerOverridesChecked();" style="cursor: pointer; scale: 2; posision: center;" id="disable-banner-overrides-box" type="checkbox">
+                        <input class="options-toggle-box" onclick="dismissibleContent_Recap2024Checked();" style="cursor: pointer; scale: 2; posision: center;" id="dismissible_recap_2024-box" type="checkbox">
                     </div>
                 `;
+
+                if (localStorage.dismissible_roblox_doors_marketing == "dismissed") {
+                    document.getElementById("dismissible_roblox_doors_marketing-box").checked = true;
+                }
+
+                if (localStorage.dismissible_paper_beach_v2_marketing == "dismissed") {
+                    document.getElementById("dismissible_paper_beach_v2_marketing-box").checked = true;
+                }
+    
+                if (localStorage.dismissible_recap_2024 == "dismissed") {
+                    document.getElementById("dismissible_recap_2024-box").checked = true;
+                }
             }
 
         }
@@ -7559,6 +7563,226 @@ if (localStorage.full_client_rework != "false") {
         localStorage.experiment_2024_11_recap = EXPERIMENT_ID_8;
         document.getElementById("experiment_2024_11_recap_treatment_container").value = EXPERIMENT_ID_8;
     };
+
+
+
+
+
+    if (localStorage.experiment_2024_12_profiles_plus_marketing_variants === "Treatment 1: Paper Beach V2") {
+
+        function dismissibleContent_PaperBeachV2MarketingChecked() {
+            const profiles_plus_tab = document.getElementById("pplus-tab");
+            if (localStorage.dismissible_paper_beach_v2_marketing != "dismissed") {
+                localStorage.dismissible_paper_beach_v2_marketing = "dismissed"
+    
+                if (profiles_plus_tab) {
+                    profiles_plus_tab.innerHTML = `
+                        <p class="dm-button-text">Profiles Plus</p>
+                    `;
+                    profiles_plus_tab.classList.remove('paper_beach_v2_marketing_tab');
+                }
+            } else {
+                localStorage.dismissible_paper_beach_v2_marketing = ''
+                if (profiles_plus_tab) {
+                    profiles_plus_tab.innerHTML = `
+                        <p class="dm-button-text">Profiles Plus</p>
+                        <div class="dm-new-icon">
+                            NEW
+                        </div>
+                        <img class="paper-beach-v2-greeting-catgirl-1" src="https://cdn.yapper.shop/assets/null.png">
+                        <div class="dm-tab-preview-avatar-decoration-rotate">
+                            <div class="dm-tab-preview-avatar-decoration-container" id="dm-tab-preview-avatar-decoration-container">
+                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
+                            </div>
+                            <div class="dm-tab-preview-avatar-decoration-back"></div>
+                        </div>
+                        <p class="dm-button-text dm-button-text-marketing-1">Paper Beach Styles</p>
+                    `;
+                    profiles_plus_tab.classList.add('paper_beach_v2_marketing_tab');
+        
+                    profiles_plus_tab.addEventListener("mouseenter", () => {
+                        if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png") {
+                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
+                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png">
+                            `;
+                        } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png") {
+                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
+                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
+                            `;
+                        } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png") {
+                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
+                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png">
+                            `;
+                        }
+                    });
+                }
+            }
+        }
+
+
+        if (localStorage.dismissible_paper_beach_v2_marketing != "dismissed") {
+            const profiles_plus_tab = document.getElementById("pplus-tab");
+            if (profiles_plus_tab) {
+                profiles_plus_tab.innerHTML = `
+                    <img class="paper-beach-v2-greeting-catgirl-1" src="https://cdn.yapper.shop/assets/null.png">
+                    <p class="dm-button-text">Profiles Plus</p>
+                    <div class="dm-new-icon">
+                        NEW
+                    </div>
+                    <div class="dm-tab-preview-avatar-decoration-rotate">
+                        <div class="dm-tab-preview-avatar-decoration-container" id="dm-tab-preview-avatar-decoration-container">
+                            <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
+                        </div>
+                        <div class="dm-tab-preview-avatar-decoration-back"></div>
+                    </div>
+                    <p class="dm-button-text dm-button-text-marketing-1">Paper Beach Styles</p>
+                `;
+                profiles_plus_tab.classList.add('paper_beach_v2_marketing_tab');
+    
+                profiles_plus_tab.addEventListener("mouseenter", () => {
+                    if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png") {
+                        document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
+                            <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png">
+                        `;
+                    } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png") {
+                        document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
+                            <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
+                        `;
+                    } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png") {
+                        document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
+                            <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png">
+                        `;
+                    }
+                });
+            }
+        }
+    } else {
+        function dismissibleContent_PaperBeachV2MarketingChecked() {
+            console.error('Invalid Profiles Plus Marketing');
+        }
+    }
+
+
+    if (localStorage.experiment_2024_12_profiles_plus_marketing_variants === "Treatment 2: Roblox Doors") {
+
+        function dismissibleContent_RobloxDoorsMarketingChecked() {
+            const profiles_plus_tab = document.getElementById("pplus-tab");
+            if (localStorage.dismissible_roblox_doors_marketing != "dismissed") {
+                localStorage.dismissible_roblox_doors_marketing = "dismissed"
+    
+                if (profiles_plus_tab) {
+                    profiles_plus_tab.innerHTML = `
+                        <p class="dm-button-text">Profiles Plus</p>
+                    `;
+                    profiles_plus_tab.classList.remove('roblox_doors_marketing_tab');
+                }
+            } else {
+                localStorage.dismissible_roblox_doors_marketing = ''
+                if (profiles_plus_tab) {
+                    profiles_plus_tab.innerHTML = `
+                        <p class="dm-button-text">Profiles Plus</p>
+                        <div class="dm-new-icon">
+                            NEW
+                        </div>
+                        <img class="paper-beach-v2-greeting-catgirl-1" src="https://cdn.yapper.shop/assets/null.png">
+                        <div class="dm-tab-preview-avatar-decoration-rotate">
+                            <div class="dm-tab-preview-avatar-decoration-container" id="dm-tab-preview-avatar-decoration-container">
+                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
+                            </div>
+                            <div class="dm-tab-preview-avatar-decoration-back"></div>
+                        </div>
+                        <p class="dm-button-text dm-button-text-marketing-1">Doors Styles</p>
+                    `;
+                    profiles_plus_tab.classList.add('roblox_doors_marketing_tab');
+        
+                    profiles_plus_tab.addEventListener("mouseenter", () => {
+                        if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png") {
+                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
+                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png">
+                            `;
+                        } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png") {
+                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
+                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
+                            `;
+                        } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png") {
+                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
+                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png">
+                            `;
+                        }
+                    });
+                }
+            }
+        }
+
+
+        if (localStorage.dismissible_roblox_doors_marketing != "dismissed") {
+            const profiles_plus_tab = document.getElementById("pplus-tab");
+            if (profiles_plus_tab) {
+                profiles_plus_tab.innerHTML = `
+                    <img class="paper-beach-v2-greeting-catgirl-1" src="https://cdn.yapper.shop/assets/null.png">
+                    <p class="dm-button-text">Profiles Plus</p>
+                    <div class="dm-new-icon">
+                        NEW
+                    </div>
+                    <div class="dm-tab-preview-avatar-decoration-rotate">
+                        <div class="dm-tab-preview-avatar-decoration-container" id="dm-tab-preview-avatar-decoration-container">
+                            <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
+                        </div>
+                        <div class="dm-tab-preview-avatar-decoration-back"></div>
+                    </div>
+                    <p class="dm-button-text dm-button-text-marketing-1">Doors Styles</p>
+                `;
+                profiles_plus_tab.classList.add('roblox_doors_marketing_tab');
+    
+                profiles_plus_tab.addEventListener("mouseenter", () => {
+                    if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png") {
+                        document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
+                            <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png">
+                        `;
+                    } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png") {
+                        document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
+                            <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
+                        `;
+                    } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png") {
+                        document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
+                            <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png">
+                        `;
+                    }
+                });
+            }
+        }
+    } else {
+        function dismissibleContent_RobloxDoorsMarketingChecked() {
+            console.error('Invalid Profiles Plus Marketing');
+        }
+    }
+
+
+
+
+    function dismissibleContent_Recap2024Checked() {
+        const home_page_dismissible_content_container = document.getElementById("home-page-dismissible-content-container");
+        if (localStorage.dismissible_recap_2024 != "dismissed") {
+            localStorage.dismissible_recap_2024 = "dismissed"
+
+            if (home_page_dismissible_content_container) {
+                if (localStorage.experiment_2024_11_recap === "Treatment 1: Enabled") {
+                    document.getElementById("home-page-dismissible-content-container").innerHTML = ``;
+                }
+            }
+        }
+        else {
+            localStorage.dismissible_recap_2024 = ''
+            if (home_page_dismissible_content_container) {
+                if (localStorage.experiment_2024_11_recap === "Treatment 1: Enabled") {
+                    document.getElementById("home-page-dismissible-content-container").innerHTML = `
+                        <img class="home-page-dismissible-content-2024-recap" onclick="dismissibleContentRecap2024()" src="${cdn}${DISMISSIBLE_2024_RECAP}" title="Check out everything 2024 had to offer!">
+                    `;
+                }
+            }
+        }
+    }
+
 
 
 
@@ -7883,23 +8107,6 @@ if (localStorage.full_client_rework != "false") {
                         </div>
                         <hr>
                         <div>
-                            <h2>Dismissible Content</h2>
-                            <p class="experiment-subtext">Overrides</p>
-                            <div class="experiment-card-holder">
-                            <div class="experiment-card">
-                                    <p>Paper Beach V2 Marketing</p>
-                                    <p class="experiment-subtext">dismissible_paper_beach_v2_marketing</p>
-                                    <input class="options-toggle-box" onclick="dismissibleContent_PaperBeachV2MarketingChecked();" style="cursor: pointer; scale: 2; posision: center;" id="dismissible_paper_beach_v2_marketing-box" type="checkbox">
-                                </div>
-                                <div class="experiment-card">
-                                    <p>Recap 2024</p>
-                                    <p class="experiment-subtext">dismissible_recap_2024</p>
-                                    <input class="options-toggle-box" onclick="dismissibleContent_Recap2024Checked();" style="cursor: pointer; scale: 2; posision: center;" id="dismissible_recap_2024-box" type="checkbox">
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div>
                             <h2>Local Storage Overrides</h2>
                             <p class="experiment-subtext">Refresh the page for changes to take effect</p>
                             <button class="refresh-button" style="opacity: 0; pointer-events: none;">Save</button>
@@ -7944,16 +8151,6 @@ if (localStorage.full_client_rework != "false") {
                 </div>
             </div>
             `;
-
-
-
-            if (localStorage.dismissible_paper_beach_v2_marketing == "dismissed") {
-                document.getElementById("dismissible_paper_beach_v2_marketing-box").checked = true;
-            }
-
-            if (localStorage.dismissible_recap_2024 == "dismissed") {
-                document.getElementById("dismissible_recap_2024-box").checked = true;
-            }
     
         
         
@@ -8170,125 +8367,6 @@ if (localStorage.full_client_rework != "false") {
         localStorage.dev = "true"
         location.reload();
     }
-
-
-    if (localStorage.experiment_2024_12_profiles_plus_marketing_variants === "Treatment 1: Paper Beach V2") {
-
-        function dismissibleContent_PaperBeachV2MarketingChecked() {
-            const profiles_plus_tab = document.getElementById("pplus-tab");
-            if (localStorage.dismissible_paper_beach_v2_marketing != "dismissed") {
-                localStorage.dismissible_paper_beach_v2_marketing = "dismissed"
-    
-                if (profiles_plus_tab) {
-                    document.getElementById("pplus-tab").innerHTML = `
-                        <p class="dm-button-text">Profiles Plus</p>
-                    `;
-                }
-            } else {
-                localStorage.dismissible_paper_beach_v2_marketing = ''
-                if (profiles_plus_tab) {
-                    profiles_plus_tab.innerHTML = `
-                        <p class="dm-button-text">Profiles Plus</p>
-                        <div class="dm-new-icon">
-                            NEW
-                        </div>
-                        <img class="paper-beach-v2-greeting-catgirl-1" src="https://cdn.yapper.shop/assets/null.png">
-                        <div class="dm-tab-preview-avatar-decoration-rotate">
-                            <div class="dm-tab-preview-avatar-decoration-container" id="dm-tab-preview-avatar-decoration-container">
-                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
-                            </div>
-                            <div class="dm-tab-preview-avatar-decoration-back"></div>
-                        </div>
-                        <p class="dm-button-text dm-button-text-marketing-1">Paper Beach Styles</p>
-                    `;
-                    profiles_plus_tab.classList.add('paper_beach_v2_marketing_tab');
-        
-                    profiles_plus_tab.addEventListener("mouseenter", () => {
-                        if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png") {
-                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
-                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png">
-                            `;
-                        } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png") {
-                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
-                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
-                            `;
-                        } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png") {
-                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
-                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png">
-                            `;
-                        }
-                    });
-                }
-            }
-        }
-
-
-        if (localStorage.dismissible_paper_beach_v2_marketing != "dismissed") {
-            const profiles_plus_tab = document.getElementById("pplus-tab");
-            if (profiles_plus_tab) {
-                profiles_plus_tab.innerHTML = `
-                    <img class="paper-beach-v2-greeting-catgirl-1" src="https://cdn.yapper.shop/assets/null.png">
-                    <p class="dm-button-text">Profiles Plus</p>
-                    <div class="dm-new-icon">
-                        NEW
-                    </div>
-                    <div class="dm-tab-preview-avatar-decoration-rotate">
-                        <div class="dm-tab-preview-avatar-decoration-container" id="dm-tab-preview-avatar-decoration-container">
-                            <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
-                        </div>
-                        <div class="dm-tab-preview-avatar-decoration-back"></div>
-                    </div>
-                    <p class="dm-button-text dm-button-text-marketing-1">Paper Beach Styles</p>
-                `;
-                profiles_plus_tab.classList.add('paper_beach_v2_marketing_tab');
-    
-                profiles_plus_tab.addEventListener("mouseenter", () => {
-                    if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png") {
-                        document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
-                            <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png">
-                        `;
-                    } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png") {
-                        document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
-                            <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
-                        `;
-                    } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png") {
-                        document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
-                            <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png">
-                        `;
-                    }
-                });
-            }
-        }
-    } else {
-        function dismissibleContent_PaperBeachV2MarketingChecked() {
-            console.error('Invalid Profiles Plus Marketing');
-        }
-    }
-
-
-    function dismissibleContent_Recap2024Checked() {
-        const home_page_dismissible_content_container = document.getElementById("home-page-dismissible-content-container");
-        if (localStorage.dismissible_recap_2024 != "dismissed") {
-            localStorage.dismissible_recap_2024 = "dismissed"
-
-            if (home_page_dismissible_content_container) {
-                if (localStorage.experiment_2024_11_recap === "Treatment 1: Enabled") {
-                    document.getElementById("home-page-dismissible-content-container").innerHTML = ``;
-                }
-            }
-        }
-        else {
-            localStorage.dismissible_recap_2024 = ''
-            if (home_page_dismissible_content_container) {
-                if (localStorage.experiment_2024_11_recap === "Treatment 1: Enabled") {
-                    document.getElementById("home-page-dismissible-content-container").innerHTML = `
-                        <img class="home-page-dismissible-content-2024-recap" onclick="dismissibleContentRecap2024()" src="${cdn}${DISMISSIBLE_2024_RECAP}" title="Check out everything 2024 had to offer!">
-                    `;
-                }
-            }
-        }
-    }
-
 
 
 

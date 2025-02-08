@@ -1350,6 +1350,30 @@ data-share-product-card-button {
     opacity: 0;
 }
 
+
+.roblox_doors_marketing_tab {
+    position: relative;
+    background-image: url(https://cdn.yapper.shop/assets/140.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    transition: height 0.4s ease;
+    overflow: hidden !important;
+}
+
+.roblox_doors_marketing_tab:hover {
+    height: 250px;
+}
+
+.roblox_doors_marketing_tab .dm-new-icon {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.roblox_doors_marketing_tab:hover .dm-new-icon {
+    opacity: 0;
+}
+
 .dm-button-text-marketing-1 {
     color: white;
     position: absolute;
