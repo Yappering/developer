@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 222";
+tcbx926n29 = "Dev 223";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -61,9 +61,8 @@ if (localStorage.full_client_rework != "false") {
         CONSUMABLES = "/consumables.json",
         MISCELLANEOUS = "/miscellaneous-categories.json",
         PROFILES_PLUS = "/profiles-plus-categories.json",
-        HOME_PAGE_PREVIEW = "/preview-1.json",
-        HOME_PAGE_P_PLUS = "/preview-2.json",
-        HOME_PAGE_ALL = "/preview-3.json",
+        HOME_PAGE_ALL = "/preview-1.json",
+        HOME_PAGE_LEAKS = "/preview-2.json",
         PROFILE_EFFECTS = "/user-profile-effects.json",
         DOWNLOADABLE_DATA = "/downloads.json",
         PROFILES_PLUS_EFFECTS = "/profiles-plus-profile-effects.json",
@@ -3906,22 +3905,22 @@ if (localStorage.full_client_rework != "false") {
                 apiUrlRaw = prvapi + HOME_PAGE_ALL;
                 apiUrl = `${apiUrlRaw}?token=${client_token}`;
                 fetchFirstHomeData();
-            // } else if (localStorage.experiment_2025_01_show_leaks_on_home_page == "Treatment 1: Enabled") {
-            //     fetch(api + LEAKS)
-            //     .then(response => response.json())
-            //     .then((data) => {
-            //         data.forEach(apiCategory => {
-            //             console.log(`${apiCategory.name} shown on home page`);
-            //             HOME_PAGE_ALL = LEAKS;
-            //             apiUrl = api + HOME_PAGE_ALL;
-            //             fetchFirstHomeData();
-            //         });
-            //     })
-            //     .catch(error => {
-            //         console.log(`Leaks not shown on home page`);
-            //         apiUrl = api + HOME_PAGE_ALL;
-            //         fetchFirstHomeData();
-            //     });
+            } else if (localStorage.experiment_2025_01_show_leaks_on_home_page == "Treatment 1: Enabled") {
+                fetch(api + LEAKS)
+                .then(response => response.json())
+                .then((data) => {
+                    data.forEach(apiCategory => {
+                        console.log(`${apiCategory.name} shown on home page`);
+                        HOME_PAGE_ALL = LEAKS;
+                        apiUrl = api + HOME_PAGE_LEAKS;
+                        fetchFirstHomeData();
+                    });
+                })
+                .catch(error => {
+                    console.log(`Leaks not shown on home page`);
+                    apiUrl = api + HOME_PAGE_ALL;
+                    fetchFirstHomeData();
+                });
             } else {
                 apiUrl = api + HOME_PAGE_ALL;
                 fetchFirstHomeData();
@@ -5159,6 +5158,8 @@ if (localStorage.full_client_rework != "false") {
                                     oneImage.src = subblock.banner_url;
                                     oneImage.alt = subblock.name;
 
+                                    featureblock.setAttribute("onclick",`setParams({page: '${subblock.page}'}); location.reload();`);
+
                                     featureBlockContainer.append(featureblock);
 
                                 });
@@ -5182,6 +5183,12 @@ if (localStorage.full_client_rework != "false") {
                                 const desc = category.querySelector("[data-shop-output-wide-desc]");
                                 desc.textContent = apiCategory.body;
                                 desc.style.color = apiCategory.banner_text_color;
+
+                                if (apiCategory.disable_cta != true) {
+                                    category.classList.add('clickable');
+                                }
+
+                                category.setAttribute("onclick",`setParams({page: '${apiCategory.page}'}); location.reload();`);
 
                                 output.append(category);
                             }
@@ -5551,20 +5558,20 @@ if (localStorage.full_client_rework != "false") {
 
 
             <template data-shop-category-template-wide>
-                <div onclick="setParams({page: 'shop'}); location.reload();" style="width: 1300px; height: 103px; margin-left: auto; margin-right: auto; margin-top: 20px; cursor: pointer; position: relative;">
-                    <img style="width: 1300px; position: absolute; border-radius: 20px" src="" data-shop-preview-image-wide>
-                    <p style="position: absolute; font-size: 24px; margin-left: 20px; margin-top: 20px; z-index: 1;" data-shop-output-wide-title></p>
-                    <p style="position: absolute; font-size: 18px; margin-left: 20px; margin-top: 60px; z-index: 1;" data-shop-output-wide-desc></p>
+                <div class="shop-wide-banner">
+                    <img src="" data-shop-preview-image-wide>
+                    <p style="font-size: 24px; margin-top: 20px;" data-shop-output-wide-title></p>
+                    <p style="margin-top: 60px; font-size: 18px;" data-shop-output-wide-desc></p>
                 </div>
             </template>
 
             <template data-shop-subblock-container-template>
-                <div style="display: flex; width: 1200px; margin-left: auto; margin-right: auto; margin-top: 20px;" data-shop-output-sub></div>
+                <div class="shop-feature-block-container" data-shop-output-sub></div>
             </template>
 
             <template data-shop-category-template-sub>
-                <div onclick="setParams({page: 'shop'}); location.reload();" style="width: 550px; margin-left: auto; margin-right: auto; cursor: pointer;">
-                    <img style="width: 550px;" src="" data-shop-preview-image-sub>
+                <div class="shop-feature-block">
+                    <img src="" data-shop-preview-image-sub>
                 </div>
             </template>
 
@@ -7148,6 +7155,14 @@ if (localStorage.full_client_rework != "false") {
                     </div>
 
                     <div class="options-option-card">
+                        <p class="option-card-title">Leaks on Home Page</p>
+                        <p class="new-experiment-subtext">2025_01_show_leaks_on_home_page</p>
+                        <select id="experiment_2025_01_show_leaks_on_home_page_treatment_container" class="experiment-treatment-picker">
+                        </select>
+                        <button class="new-experiment-clear-button" onclick="experiment_2025_01_show_leaks_on_home_page_clear()">Clear</button>
+                    </div>
+
+                    <div class="options-option-card">
                         <p class="option-card-title">Theme Picker</p>
                         <p class="new-experiment-subtext">2024_12_theme_picker</p>
                         <select id="experiment_2024_12_theme_picker_treatment_container" class="experiment-treatment-picker">
@@ -7333,36 +7348,36 @@ if (localStorage.full_client_rework != "false") {
                 } catch(error) {
                 }
 
-                // try {
-                //     const experiment_2025_01_show_leaks_on_home_page_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled"];
+                try {
+                    const experiment_2025_01_show_leaks_on_home_page_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled"];
 
-                //     const experiment_2025_01_show_leaks_on_home_page_treatment_picker = document.getElementById("experiment_2025_01_show_leaks_on_home_page_treatment_container");
-                    
+                    const experiment_2025_01_show_leaks_on_home_page_treatment_picker = document.getElementById("experiment_2025_01_show_leaks_on_home_page_treatment_container");
+                 
 
-                //     populate_experiment_2025_01_show_leaks_on_home_page();
-                    
-                //     const storedTreatment = localStorage.getItem("experiment_2025_01_show_leaks_on_home_page");
-                //     if (storedTreatment) {
-                //         experiment_2025_01_show_leaks_on_home_page_treatment_picker.value = storedTreatment;
-                //     }
+                    populate_experiment_2025_01_show_leaks_on_home_page();
+                 
+                    const storedTreatment = localStorage.getItem("experiment_2025_01_show_leaks_on_home_page");
+                    if (storedTreatment) {
+                        experiment_2025_01_show_leaks_on_home_page_treatment_picker.value = storedTreatment;
+                    }
 
-                //     function populate_experiment_2025_01_show_leaks_on_home_page() {
-                //         experiment_2025_01_show_leaks_on_home_page_treatments.forEach((treatments) => {
-                //             const optElement = document.createElement("option");
-                //             optElement.value = treatments;
-                //             optElement.textContent = treatments;
-                //             experiment_2025_01_show_leaks_on_home_page_treatment_picker.appendChild(optElement);
-                //         });
-                //     }
+                    function populate_experiment_2025_01_show_leaks_on_home_page() {
+                        experiment_2025_01_show_leaks_on_home_page_treatments.forEach((treatments) => {
+                            const optElement = document.createElement("option");
+                            optElement.value = treatments;
+                            optElement.textContent = treatments;
+                            experiment_2025_01_show_leaks_on_home_page_treatment_picker.appendChild(optElement);
+                        });
+                    }
 
-                //     experiment_2025_01_show_leaks_on_home_page_treatment_picker.addEventListener("change", () => {
-                //         const selectedTreatment = experiment_2025_01_show_leaks_on_home_page_treatment_picker.value;
-                    
-                //         // Store the selection
-                //         localStorage.setItem("experiment_2025_01_show_leaks_on_home_page", selectedTreatment);
-                //     });
-                // } catch(error) {
-                // }
+                    experiment_2025_01_show_leaks_on_home_page_treatment_picker.addEventListener("change", () => {
+                        const selectedTreatment = experiment_2025_01_show_leaks_on_home_page_treatment_picker.value;
+                 
+                        // Store the selection
+                        localStorage.setItem("experiment_2025_01_show_leaks_on_home_page", selectedTreatment);
+                    });
+                } catch(error) {
+                }
 
 
                 try {
@@ -7613,10 +7628,10 @@ if (localStorage.full_client_rework != "false") {
         document.getElementById("experiment_2025_01_orb_testing_treatment_container").value = EXPERIMENT_ID_12;
     };
 
-    // function experiment_2025_01_show_leaks_on_home_page_clear() {
-    //     localStorage.experiment_2025_01_show_leaks_on_home_page = EXPERIMENT_ID_11;
-    //     document.getElementById("experiment_2025_01_show_leaks_on_home_page_treatment_container").value = EXPERIMENT_ID_11;
-    // };
+    function experiment_2025_01_show_leaks_on_home_page_clear() {
+        localStorage.experiment_2025_01_show_leaks_on_home_page = EXPERIMENT_ID_11;
+        document.getElementById("experiment_2025_01_show_leaks_on_home_page_treatment_container").value = EXPERIMENT_ID_11;
+    };
 
     function experiment_2024_12_theme_picker_treatment_clear() {
         localStorage.experiment_2024_12_theme_picker = EXPERIMENT_ID_10;
