@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 221";
+tcbx926n29 = "Dev 222";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -23,6 +23,8 @@ if (localStorage.sa_theme == "neonpurple") {
     localStorage.sa_theme = "dark";
     document.body.classList.add('theme-dark');
 }
+
+
 
 
 if (localStorage.full_client_rework != "false") {
@@ -3933,9 +3935,9 @@ if (localStorage.full_client_rework != "false") {
                 .then(data => {
                     data.forEach(apiCategory => {
                         async function processCategories() {
+                            const output = document.querySelector("[data-shop-output]");
                             if (apiCategory.type === 0) {
                                 const template = document.querySelector("[data-shop-category-template]");
-                                const output = document.querySelector("[data-shop-output]");
                             
                                 const category = template.content.cloneNode(true).children[0];
                             
@@ -5118,6 +5120,8 @@ if (localStorage.full_client_rework != "false") {
                                 output.append(category);
     
                                 document.getElementById("shop-category-loading-container").innerHTML = ``;
+                                document.getElementById("shop-category-loading-container").style.display = 'none';
+
     
                                 const lofi_girl_banner = document.getElementById(LOFI_GIRL);
                                 const kawaii_mode_banner = document.getElementById(KAWAII_MODE);
@@ -5141,24 +5145,29 @@ if (localStorage.full_client_rework != "false") {
                                 }
                             } else if (apiCategory.type === 1) {
 
+                                const featureContainerTemplate = document.querySelector("[data-shop-subblock-container-template]");
+            
+                                const featureBlockContainer = featureContainerTemplate.content.cloneNode(true).children[0];
+
                                 apiCategory.subblocks.forEach(subblock => {
 
                                     const template = document.querySelector("[data-shop-category-template-sub]");
-                                    const output = document.querySelector("[data-shop-output-sub]");
             
-                                    const category = template.content.cloneNode(true).children[0];
+                                    const featureblock = template.content.cloneNode(true).children[0];
             
-                                    const oneImage = category.querySelector("[data-shop-preview-image-sub]");
+                                    const oneImage = featureblock.querySelector("[data-shop-preview-image-sub]");
                                     oneImage.src = subblock.banner_url;
                                     oneImage.alt = subblock.name;
 
-                                    output.append(category);
+                                    featureBlockContainer.append(featureblock);
 
                                 });
+
+                            output.append(featureBlockContainer);
+                            
                             } else if (apiCategory.type === 3) {
 
                                 const template = document.querySelector("[data-shop-category-template-wide]");
-                                const output = document.querySelector("[data-shop-output-wide]");
             
                                 const category = template.content.cloneNode(true).children[0];
             
@@ -5171,42 +5180,6 @@ if (localStorage.full_client_rework != "false") {
                                 title.style.color = apiCategory.banner_text_color;
 
                                 const desc = category.querySelector("[data-shop-output-wide-desc]");
-                                desc.textContent = apiCategory.body;
-                                desc.style.color = apiCategory.banner_text_color;
-
-                                output.append(category);
-                            } else if (apiCategory.type === "plus1") {
-
-                                apiCategory.subblocks.forEach(subblock => {
-
-                                    const template = document.querySelector("[data-shop-category-template-plus]");
-                                    const output = document.querySelector("[data-shop-output-plus]");
-            
-                                    const category = template.content.cloneNode(true).children[0];
-            
-                                    const oneImage = category.querySelector("[data-shop-preview-image-plus]");
-                                    oneImage.src = subblock.banner_url;
-                                    oneImage.alt = subblock.name;
-
-                                    output.append(category);
-
-                                });
-                            } else if (apiCategory.type === "plus3") {
-
-                                const template = document.querySelector("[data-shop-category-template-wide-plus]");
-                                const output = document.querySelector("[data-shop-output-wide-plus]");
-            
-                                const category = template.content.cloneNode(true).children[0];
-            
-                                const oneImage = category.querySelector("[data-shop-preview-image-wide-plus]");
-                                oneImage.src = apiCategory.banner_url;
-                                oneImage.alt = apiCategory.name;
-
-                                const title = category.querySelector("[data-shop-output-wide-title-plus]");
-                                title.textContent = apiCategory.title;
-                                title.style.color = apiCategory.banner_text_color;
-
-                                const desc = category.querySelector("[data-shop-output-wide-desc-plus]");
                                 desc.textContent = apiCategory.body;
                                 desc.style.color = apiCategory.banner_text_color;
 
@@ -5554,8 +5527,6 @@ if (localStorage.full_client_rework != "false") {
             <template data-shop-varcolorblock-template>
                 <div data-shop-card-var></div>
             </template>
-            <div data-shop-output>
-            </div>
             <div style="margin-top: 50px;" id="shop-category-loading-container">
                 <div class="shop-category-loading" id="shop-category-loading">
                     <div>
@@ -5575,45 +5546,27 @@ if (localStorage.full_client_rework != "false") {
                 </div>
             </div>
 
-            <h2 style="margin-left: 60px;">What's new for Discord</h2>
-
-            <div style="display: flex; width: 1300px; margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom: 30px;" data-shop-output-wide>
-                <template data-shop-category-template-wide>
-                    <div onclick="setParams({page: 'shop'}); location.reload();" style="width: 1300px; height: 103px; margin-left: auto; margin-right: auto; cursor: pointer; position: relative;">
-                        <img style="width: 1300px; position: absolute; border-radius: 20px" src="" data-shop-preview-image-wide>
-                        <p style="position: absolute; font-size: 24px; margin-left: 20px; margin-top: 20px; z-index: 1;" data-shop-output-wide-title></p>
-                        <p style="position: absolute; font-size: 18px; margin-left: 20px; margin-top: 60px; z-index: 1;" data-shop-output-wide-desc></p>
-                    </div>
-                </template>
+            <div data-shop-output>
             </div>
 
-            <div style="display: flex; width: 1300px; margin-left: auto; margin-right: auto;" data-shop-output-sub>
-                <template data-shop-category-template-sub>
-                    <div onclick="setParams({page: 'shop'}); location.reload();" style="width: 550px; margin-left: auto; margin-right: auto; cursor: pointer;">
-                        <img style="width: 550px;" src="" data-shop-preview-image-sub>
-                    </div>
-                </template>
-            </div>
-            
-            <h2 style="margin-left: 60px;">What's new for Profiles Plus</h2>
 
-            <div style="display: flex; width: 1300px; margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom: 30px;" data-shop-output-wide-plus>
-                <template data-shop-category-template-wide-plus>
-                    <div onclick="setParams({page: 'pplus'}); location.reload();" style="width: 1300px; height: 103px; margin-left: auto; margin-right: auto; cursor: pointer; position: relative;">
-                        <img style="width: 1300px; position: absolute; border-radius: 20px" src="" data-shop-preview-image-wide-plus>
-                        <p style="position: absolute; font-size: 24px; margin-left: 20px; margin-top: 20px; z-index: 1;" data-shop-output-wide-title-plus></p>
-                        <p style="position: absolute; font-size: 18px; margin-left: 20px; margin-top: 60px; z-index: 1;" data-shop-output-wide-desc-plus></p>
-                    </div>
-                </template>
-            </div>
+            <template data-shop-category-template-wide>
+                <div onclick="setParams({page: 'shop'}); location.reload();" style="width: 1300px; height: 103px; margin-left: auto; margin-right: auto; margin-top: 20px; cursor: pointer; position: relative;">
+                    <img style="width: 1300px; position: absolute; border-radius: 20px" src="" data-shop-preview-image-wide>
+                    <p style="position: absolute; font-size: 24px; margin-left: 20px; margin-top: 20px; z-index: 1;" data-shop-output-wide-title></p>
+                    <p style="position: absolute; font-size: 18px; margin-left: 20px; margin-top: 60px; z-index: 1;" data-shop-output-wide-desc></p>
+                </div>
+            </template>
 
-            <div style="display: flex; width: 1300px; margin-left: auto; margin-right: auto;" data-shop-output-plus>
-                <template data-shop-category-template-plus>
-                    <div onclick="setParams({page: 'pplus'}); location.reload();" style="width: 550px; margin-left: auto; margin-right: auto; cursor: pointer;">
-                        <img style="width: 550px;" src="" data-shop-preview-image-plus>
-                    </div>
-                </template>
-            </div>
+            <template data-shop-subblock-container-template>
+                <div style="display: flex; width: 1200px; margin-left: auto; margin-right: auto; margin-top: 20px;" data-shop-output-sub></div>
+            </template>
+
+            <template data-shop-category-template-sub>
+                <div onclick="setParams({page: 'shop'}); location.reload();" style="width: 550px; margin-left: auto; margin-right: auto; cursor: pointer;">
+                    <img style="width: 550px;" src="" data-shop-preview-image-sub>
+                </div>
+            </template>
 
             <div id="recap-support-articles">
             </div>
