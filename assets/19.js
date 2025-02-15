@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 223";
+tcbx926n29 = "Dev 225";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -133,6 +133,15 @@ if (localStorage.full_client_rework != "false") {
         RADIATE = "1336483992429658112",
         VALENTINES = "1333866045521395723",
         ORB = "1332505418219655258"
+    ]
+
+    item_types = [
+        NONE = 100,
+        AVATAR_DECORATION = 0,
+        PROFILE_EFFECT = 1,
+        NAMEPLATE = 2,
+        BUNDLE = 1e3,
+        VARIANTS_GROUP = 2e3
     ]
 
 
@@ -401,6 +410,19 @@ if (localStorage.full_client_rework != "false") {
                                                     });
                                                 }
                                             }
+                                        } else if (product.type === 2) {
+                                            card.classList.add("type_2");
+
+                                            card.querySelector("[data-product-card-sku-id]").textContent = `Made By: ${product.credits}`;
+                                            card.querySelector("[data-product-card-name]").textContent = product.name;
+                                            card.querySelector("[data-product-card-summary]").textContent = product.summary;
+
+                                            const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
+
+                                            previewHolder.innerHTML = `
+                                                <p>item type 2 (NAMEPLATE) is not yet defined on the client, please remove it from the api</p>
+                                            `;
+                                            
                                         } else if (product.type === 1000) {
                                             card.classList.add("type_1000");
                                             // Fetch the bundled products for the bundle summary
@@ -2666,6 +2688,23 @@ if (localStorage.full_client_rework != "false") {
                                                     });
                                                 }
                                             }
+                                        } else if (product.type === 2) {
+                                            card.classList.add("type_2");
+
+                                            if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
+                                                card.querySelector("[data-product-card-sku-id]").textContent = ``;
+                                            } else {
+                                                card.querySelector("[data-product-card-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                            }
+                                            card.querySelector("[data-product-card-name]").textContent = product.name;
+                                            card.querySelector("[data-product-card-summary]").textContent = product.summary;
+
+                                            const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
+
+                                            previewHolder.innerHTML = `
+                                                <p>item type 2 (NAMEPLATE) is not yet defined on the client, please remove it from the api</p>
+                                            `;
+                                            
                                         } else if (product.type === 1000) {
                                             card.classList.add("type_1000");
                                             // Fetch the bundled products for the bundle summary
@@ -2951,19 +2990,6 @@ if (localStorage.full_client_rework != "false") {
                                         }
                                         
                                         
-
-                                        let priceStandard = "N/A";
-                                        let priceNitro = "N/A";
-                                
-                                        if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices[0]) {
-                                            priceStandard = product.prices["0"].country_prices.prices[0].amount;
-                                        }
-                                
-                                        if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices[0]) {
-                                            priceNitro = product.prices["4"].country_prices.prices[0].amount;
-                                        }
-                                
-                                
                                         const priceTextNitro = card.querySelector("[data-price-nitro]");
                                         const priceTextStandard = card.querySelector("[data-price-standard]");
 
@@ -2972,9 +2998,28 @@ if (localStorage.full_client_rework != "false") {
 
                                         const priceContainer = card.querySelector("[data-shop-price-container]");
 
-                                        if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Default Prices") {
+                                        let priceStandard = "N/A";
+                                        let priceNitro = "N/A";
+
+                                        if (localStorage.currency === "Discord Orb") {
+                                            if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
+                                                product.prices["0"].country_prices.prices.forEach(price => {
+                                                    if (price.currency === "discord_orb") {
+                                                        priceStandard = price.amount;
+                                                    }
+                                                });
+                                            }
+                                    
+                                            if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
+                                                product.prices["4"].country_prices.prices.forEach(price => {
+                                                    if (price.currency === "discord_orb") {
+                                                        priceNitro = price.amount;
+                                                    }
+                                                });
+                                            }
+
                                             if (priceTextStandard) {
-                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "null";
                                             }
                                         
                                             let orb_icon = document.createElement("div");
@@ -2985,7 +3030,7 @@ if (localStorage.full_client_rework != "false") {
     
     
                                             if (priceTextNitro) {
-                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "Price (USD): N/A";
+                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "null";
                                             }
                                         
                                             let orb_icon_nitro = document.createElement("div");
@@ -2993,26 +3038,66 @@ if (localStorage.full_client_rework != "false") {
                                             orb_icon_nitro.classList.add('orb-icon-strike');
                                         
                                             priceContainerNitro.appendChild(orb_icon_nitro);
-                                        
-                                        } else if (localStorage.experiment_2025_01_orb_testing === "Treatment 2: 50 Orbs") {
-                                            if (priceTextStandard) {
-                                                priceTextStandard.textContent = `50`;
+
+                                        } else if (localStorage.currency === "NZD (Mobile)") {
+                                            if (product.prices && product.prices["5"] && product.prices["5"].country_prices && product.prices["5"].country_prices.prices) {
+                                                product.prices["5"].country_prices.prices.forEach(price => {
+                                                    if (price.currency === "nzd") {
+                                                        priceStandard = price.amount;
+                                                    }
+                                                });
                                             }
-                                        
-                                            let orb_icon = document.createElement("div");
-                                        
-                                            orb_icon.classList.add('orb-icon');
-                                        
-                                            priceContainerStandard.appendChild(orb_icon);
-                                        
-                                        } else {
+                                    
+                                            if (product.prices && product.prices["7"] && product.prices["7"].country_prices && product.prices["7"].country_prices.prices) {
+                                                product.prices["7"].country_prices.prices.forEach(price => {
+                                                    if (price.currency === "nzd") {
+                                                        priceNitro = price.amount;
+                                                    }
+                                                });
+                                            }
+
                                             if (priceTextStandard) {
-                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `NZ$${(priceStandard / 100).toFixed(2)}` : "null";
                                             }
     
                                             if (priceTextNitro) {
-                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
+                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `NZ$${(priceNitro / 100).toFixed(2)} with Nitro` : "null";
                                             }
+                                        } else {
+                                            if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
+                                                product.prices["0"].country_prices.prices.forEach(price => {
+                                                    if (price.currency === "usd") {
+                                                        priceStandard = price.amount;
+                                                    }
+                                                });
+                                            }
+                                    
+                                            if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
+                                                product.prices["4"].country_prices.prices.forEach(price => {
+                                                    if (price.currency === "usd") {
+                                                        priceNitro = price.amount;
+                                                    }
+                                                });
+                                            }
+
+                                            if (priceTextStandard) {
+                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "null";
+                                            }
+    
+                                            if (priceTextNitro) {
+                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "null";
+                                            }
+                                        }
+
+                                        if (priceTextStandard.textContent === "null" || priceTextNitro.textContent === "null") {
+                                            let error_warning = document.createElement("div");
+
+                                            error_warning.classList.add('card_error');
+                                            error_warning.innerHTML = `
+                                                <p>ERROR</p>
+                                            `;
+                                                     
+                                            card.appendChild(error_warning);
                                         }
 
                                         card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
@@ -3500,18 +3585,6 @@ if (localStorage.full_client_rework != "false") {
                                                     `;
 
 
-                                                    let priceStandard = "N/A";
-                                                    let priceNitro = "N/A";
-                                
-                                                    if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices[0]) {
-                                                        priceStandard = product.prices["0"].country_prices.prices[0].amount;
-                                                    }
-                                
-                                                    if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices[0]) {
-                                                        priceNitro = product.prices["4"].country_prices.prices[0].amount;
-                                                    }
-                                
-                                
                                                     const priceTextNitro = modal.querySelector("[data-price-nitro]");
                                                     const priceTextStandard = modal.querySelector("[data-price-standard]");
 
@@ -3520,9 +3593,28 @@ if (localStorage.full_client_rework != "false") {
 
                                                     const priceContainer = modal.querySelector("[data-shop-price-container]");
 
-                                                    if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Default Prices") {
+                                                    let priceStandard = "N/A";
+                                                    let priceNitro = "N/A";
+
+                                                    if (localStorage.currency === "Discord Orb") {
+                                                        if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
+                                                            product.prices["0"].country_prices.prices.forEach(price => {
+                                                                if (price.currency === "discord_orb") {
+                                                                    priceStandard = price.amount;
+                                                                }
+                                                            });
+                                                        }
+                                                
+                                                        if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
+                                                            product.prices["4"].country_prices.prices.forEach(price => {
+                                                                if (price.currency === "discord_orb") {
+                                                                    priceNitro = price.amount;
+                                                                }
+                                                            });
+                                                        }
+            
                                                         if (priceTextStandard) {
-                                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "null";
                                                         }
                                                     
                                                         let orb_icon = document.createElement("div");
@@ -3530,10 +3622,10 @@ if (localStorage.full_client_rework != "false") {
                                                         orb_icon.classList.add('orb-icon');
                                                     
                                                         priceContainerStandard.appendChild(orb_icon);
-    
-    
+                
+                
                                                         if (priceTextNitro) {
-                                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "Price (USD): N/A";
+                                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "null";
                                                         }
                                                     
                                                         let orb_icon_nitro = document.createElement("div");
@@ -3541,26 +3633,75 @@ if (localStorage.full_client_rework != "false") {
                                                         orb_icon_nitro.classList.add('orb-icon-strike');
                                                     
                                                         priceContainerNitro.appendChild(orb_icon_nitro);
-                                                    
-                                                    } else if (localStorage.experiment_2025_01_orb_testing === "Treatment 2: 50 Orbs") {
-                                                        if (priceTextStandard) {
-                                                            priceTextStandard.textContent = `50`;
+            
+                                                    } else if (localStorage.currency === "NZD (Mobile)") {
+                                                        if (product.prices && product.prices["5"] && product.prices["5"].country_prices && product.prices["5"].country_prices.prices) {
+                                                            product.prices["5"].country_prices.prices.forEach(price => {
+                                                                if (price.currency === "nzd") {
+                                                                    priceStandard = price.amount;
+                                                                }
+                                                            });
                                                         }
-                                                    
-                                                        let orb_icon = document.createElement("div");
-                                                    
-                                                        orb_icon.classList.add('orb-icon');
-                                                    
-                                                        priceContainerStandard.appendChild(orb_icon);
-                                                    
-                                                    } else {
-                                                        if (priceTextStandard) {
-                                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                                
+                                                        if (product.prices && product.prices["7"] && product.prices["7"].country_prices && product.prices["7"].country_prices.prices) {
+                                                            product.prices["7"].country_prices.prices.forEach(price => {
+                                                                if (price.currency === "nzd") {
+                                                                    priceNitro = price.amount;
+                                                                }
+                                                            });
                                                         }
-    
+            
+                                                        if (priceTextStandard) {
+                                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `NZ$${(priceStandard / 100).toFixed(2)}` : "null";
+                                                        }
+                
                                                         if (priceTextNitro) {
-                                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
+                                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `NZ$${(priceNitro / 100).toFixed(2)} with Nitro` : "null";
                                                         }
+                                                    } else {
+                                                        if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
+                                                            product.prices["0"].country_prices.prices.forEach(price => {
+                                                                if (price.currency === "usd") {
+                                                                    priceStandard = price.amount;
+                                                                }
+                                                            });
+                                                        }
+                                                
+                                                        if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
+                                                            product.prices["4"].country_prices.prices.forEach(price => {
+                                                                if (price.currency === "usd") {
+                                                                    priceNitro = price.amount;
+                                                                }
+                                                            });
+                                                        }
+            
+                                                        if (priceTextStandard) {
+                                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "null";
+                                                        }
+                
+                                                        if (priceTextNitro) {
+                                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "null";
+                                                        }
+                                                    }
+
+                                                    if (priceTextStandard.textContent === "null" && priceTextNitro.textContent === "null") {
+                                                        let error_warning = document.createElement("div");
+
+                                                        error_warning.classList.add('invalid_currency_warning');
+                                                        error_warning.innerHTML = `
+                                                            <p>This item does not support this currency!</p>
+                                                        `;
+                                                                    
+                                                        priceContainer.appendChild(error_warning);
+                                                    } else if (priceTextStandard.textContent === "null" || priceTextNitro.textContent === "null") {
+                                                        let error_warning = document.createElement("div");
+
+                                                        error_warning.classList.add('invalid_currency_warning');
+                                                        error_warning.innerHTML = `
+                                                            <p>This item does not fully support this currency!</p>
+                                                        `;
+                                                                    
+                                                        priceContainer.appendChild(error_warning);
                                                     }
 
 
@@ -3911,7 +4052,6 @@ if (localStorage.full_client_rework != "false") {
                 .then((data) => {
                     data.forEach(apiCategory => {
                         console.log(`${apiCategory.name} shown on home page`);
-                        HOME_PAGE_ALL = LEAKS;
                         apiUrl = api + HOME_PAGE_LEAKS;
                         fetchFirstHomeData();
                     });
@@ -4031,11 +4171,9 @@ if (localStorage.full_client_rework != "false") {
                                                 }
                                                 
                                             });
-                                        }
-    
-                                        if (product.type === 1) {
+                                        } else if (product.type === 1) {
                                             card.classList.add("type_1");
-    
+
                                             if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                 card.querySelector("[data-product-card-sku-id]").textContent = ``;
                                             } else {
@@ -4102,9 +4240,24 @@ if (localStorage.full_client_rework != "false") {
                                                     });
                                                 }
                                             }
-                                        }
-    
-                                        if (product.type === 1000) {
+                                        } else if (product.type === 2) {
+                                            card.classList.add("type_2");
+
+                                            if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
+                                                card.querySelector("[data-product-card-sku-id]").textContent = ``;
+                                            } else {
+                                                card.querySelector("[data-product-card-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                            }
+                                            card.querySelector("[data-product-card-name]").textContent = product.name;
+                                            card.querySelector("[data-product-card-summary]").textContent = product.summary;
+
+                                            const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
+
+                                            previewHolder.innerHTML = `
+                                                <p>item type 2 (NAMEPLATE) is not yet defined on the client, please remove it from the api</p>
+                                            `;
+                                            
+                                        } else if (product.type === 1000) {
                                             card.classList.add("type_1000");
                                             // Fetch the bundled products for the bundle summary
                                             const bundledProducts = product.bundled_products || [];
@@ -4193,9 +4346,7 @@ if (localStorage.full_client_rework != "false") {
                                                     })();
                                                 }
                                             });
-                                        }
-    
-                                        if (product.type === 2000) {
+                                        } else if (product.type === 2000) {
                                             // Update SKU and summary
                                             if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                 card.querySelector("[data-product-card-sku-id]").textContent = ``;
@@ -4239,26 +4390,26 @@ if (localStorage.full_client_rework != "false") {
                                                     variantColorBlock.classList.add("shop-card-var-selected");
                                                 }
                                             });
-    
+
                                             let isFirstTimeLoadingVariant = true;
                                             const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
                                         
                                             // Function to apply the selected variant
                                             function applyVariant(selectedVariant) {
                                                 card.querySelector("[data-shop-card-var-title]").textContent = `(${selectedVariant.variant_label})`;
-    
+
                                                 if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                     card.querySelector("[data-product-card-sku-id]").textContent = ``;
                                                 } else {
                                                     card.querySelector("[data-product-card-sku-id]").textContent = `SKU ID: ${selectedVariant.sku_id}`;
                                                 }
-    
+
                                                 if (localStorage.experiment_2025_02_shop_card_modals != "Treatment 1: Enable modals" && localStorage.experiment_2025_02_shop_card_modals != "Treatment 2: Enable modals w/ data downloads" && localStorage.experiment_2025_02_shop_card_modals != "Treatment 3: Enable modals w/ p+" && localStorage.experiment_2025_02_shop_card_modals != "Treatment 4: Enable modals w/ p+ on p+ page" && localStorage.experiment_2025_02_shop_card_modals != "Treatment 5: Enable modals w/ data downloads and p+" && localStorage.experiment_2025_02_shop_card_modals != "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                     card.querySelector("[data-share-product-card-button]").innerHTML = `
                                                         <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
                                                     `;
                                                 }
-    
+
                                                 if (selectedVariant.type === 0) {
                                                     card.classList.add("type_2000-0");
                                                     previewHolder.innerHTML = ""; // Clear previous decorations
@@ -4363,30 +4514,63 @@ if (localStorage.full_client_rework != "false") {
                                             if (product.variants.length > 0) {
                                                 applyVariant(product.variants[0]);
                                             }
+                                        } else if (product.type === 'plus_more') {
+                                            card.querySelector("[data-product-card-sku-id]").textContent = ``;
+                                            card.querySelector("[data-product-card-name]").textContent = `Plus More...`;
+                                            card.querySelector("[data-product-card-summary]").textContent = `There are more items in this category that are coming soon.`;
+
+                                            card.querySelector("[data-shop-price-container]").innerHTML = ``;
+                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = ``;
+                                            card.querySelector("[data-share-product-card-button]").innerHTML = ``;
+
+                                            const plusMoreQuestionMark = document.createElement("img");
+                                            plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.png`;
+                                            plusMoreQuestionMark.classList.add("plus-more-question-mark");
+                                            card.querySelector("[data-shop-card-preview-holder]").appendChild(plusMoreQuestionMark);
+                                
+                                            // Hover effect for decoration image
+                                            if (localStorage.reduced_motion != "true") {
+                                                card.addEventListener("mouseenter", () => {
+                                                    plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.gif`;
+                                                });
+                                                card.addEventListener("mouseleave", () => {
+                                                    plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.png`;
+                                                });
+                                            }
+                                        } else {
+                                            card.classList.add('hidden')
                                         }
     
-                                        let priceStandard = "N/A";
-                                        let priceNitro = "N/A";
-                                    
-                                        if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices[0]) {
-                                            priceStandard = product.prices["0"].country_prices.prices[0].amount;
-                                        }
-                                    
-                                        if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices[0]) {
-                                            priceNitro = product.prices["4"].country_prices.prices[0].amount;
-                                        }
-                                    
                                         const priceTextNitro = card.querySelector("[data-price-nitro]");
                                         const priceTextStandard = card.querySelector("[data-price-standard]");
-    
+
                                         const priceContainerNitro = card.querySelector("[data-price-nitro-container]");
                                         const priceContainerStandard = card.querySelector("[data-price-standard-container]");
-    
+
                                         const priceContainer = card.querySelector("[data-shop-price-container]");
-    
-                                        if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Default Prices") {
+
+                                        let priceStandard = "N/A";
+                                        let priceNitro = "N/A";
+
+                                        if (localStorage.currency === "Discord Orb") {
+                                            if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
+                                                product.prices["0"].country_prices.prices.forEach(price => {
+                                                    if (price.currency === "discord_orb") {
+                                                        priceStandard = price.amount;
+                                                    }
+                                                });
+                                            }
+                                    
+                                            if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
+                                                product.prices["4"].country_prices.prices.forEach(price => {
+                                                    if (price.currency === "discord_orb") {
+                                                        priceNitro = price.amount;
+                                                    }
+                                                });
+                                            }
+
                                             if (priceTextStandard) {
-                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "null";
                                             }
                                         
                                             let orb_icon = document.createElement("div");
@@ -4397,7 +4581,7 @@ if (localStorage.full_client_rework != "false") {
     
     
                                             if (priceTextNitro) {
-                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "Price (USD): N/A";
+                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "null";
                                             }
                                         
                                             let orb_icon_nitro = document.createElement("div");
@@ -4405,26 +4589,66 @@ if (localStorage.full_client_rework != "false") {
                                             orb_icon_nitro.classList.add('orb-icon-strike');
                                         
                                             priceContainerNitro.appendChild(orb_icon_nitro);
-                                        
-                                        } else if (localStorage.experiment_2025_01_orb_testing === "Treatment 2: 50 Orbs") {
-                                            if (priceTextStandard) {
-                                                priceTextStandard.textContent = `50`;
+
+                                        } else if (localStorage.currency === "NZD (Mobile)") {
+                                            if (product.prices && product.prices["5"] && product.prices["5"].country_prices && product.prices["5"].country_prices.prices) {
+                                                product.prices["5"].country_prices.prices.forEach(price => {
+                                                    if (price.currency === "nzd") {
+                                                        priceStandard = price.amount;
+                                                    }
+                                                });
                                             }
-                                        
-                                            let orb_icon = document.createElement("div");
-                                        
-                                            orb_icon.classList.add('orb-icon');
-                                        
-                                            priceContainerStandard.appendChild(orb_icon);
-                                        
-                                        } else {
+                                    
+                                            if (product.prices && product.prices["7"] && product.prices["7"].country_prices && product.prices["7"].country_prices.prices) {
+                                                product.prices["7"].country_prices.prices.forEach(price => {
+                                                    if (price.currency === "nzd") {
+                                                        priceNitro = price.amount;
+                                                    }
+                                                });
+                                            }
+
                                             if (priceTextStandard) {
-                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `NZ$${(priceStandard / 100).toFixed(2)}` : "null";
                                             }
     
                                             if (priceTextNitro) {
-                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
+                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `NZ$${(priceNitro / 100).toFixed(2)} with Nitro` : "null";
                                             }
+                                        } else {
+                                            if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
+                                                product.prices["0"].country_prices.prices.forEach(price => {
+                                                    if (price.currency === "usd") {
+                                                        priceStandard = price.amount;
+                                                    }
+                                                });
+                                            }
+                                    
+                                            if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
+                                                product.prices["4"].country_prices.prices.forEach(price => {
+                                                    if (price.currency === "usd") {
+                                                        priceNitro = price.amount;
+                                                    }
+                                                });
+                                            }
+
+                                            if (priceTextStandard) {
+                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "null";
+                                            }
+    
+                                            if (priceTextNitro) {
+                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "null";
+                                            }
+                                        }
+
+                                        if (priceTextStandard.textContent === "null" || priceTextNitro.textContent === "null") {
+                                            let error_warning = document.createElement("div");
+
+                                            error_warning.classList.add('card_error');
+                                            error_warning.innerHTML = `
+                                                <p>ERROR</p>
+                                            `;
+                                                     
+                                            card.appendChild(error_warning);
                                         }
     
                                         card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
@@ -4440,7 +4664,7 @@ if (localStorage.full_client_rework != "false") {
                                         if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                             if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
                                                 card.classList.add('clickable');
-    
+
                                                 card.addEventListener("click", (event) => {
                                                     if (event.target.matches("[data-shop-card-var]")) {
                                                     } else {
@@ -4448,18 +4672,18 @@ if (localStorage.full_client_rework != "false") {
                                                     }
                                                 });
                                                 
-    
+
                                                 async function openItemModal() {
                                                     let modal = document.createElement("div");
-    
+
                                                     modal.classList.add('modalv2');
-    
+
                                                     if (apiCategory.pdp_bg != null) {
                                                         pdp = apiCategory.pdp_bg
                                                     } else {
                                                         pdp = apiCategory.banner
                                                     }
-    
+
                                                     modal.innerHTML = `
                                                         <div class="modalv2-inner">
                                                             <div class="modalv2-inner-left">
@@ -4484,7 +4708,7 @@ if (localStorage.full_client_rework != "false") {
                                                             </div>
                                                             <img class="modalv2-inner-logo" src="https://cdn.yapper.shop/assets/31.png" data-modalv2-inner-logo></img>
                                                             <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
-    
+
                                                             <div data-modal-top-product-buttons>
                                                                 <div title="Close" data-close-product-card-button>
                                                                     <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
@@ -4492,37 +4716,37 @@ if (localStorage.full_client_rework != "false") {
                                                                 <div title="Copy Link" data-share-product-card-button></div>
                                                                 <div title="Download Data" data-download-product-card-button></div>
                                                             </div>
-    
+
                                                             <div id="modalv2-inner-right" class="modalv2-inner-right">
                                                                 <img class="modalv2-inner-img" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${pdp}.png?size=4096"></img>
                                                                 <div data-modal-preview-holder></div>
                                                             </div>
                                                         </div>
                                                     `;
-    
+
                                                     document.body.appendChild(modal);
-    
+
                                                     setTimeout(() => {
                                                         modal.classList.add('show');
                                                     }, 1);
-    
+
                                                     if (apiCategory.logo != null) {
                                                         modal.querySelector("[data-modalv2-inner-logo]").src = `https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096`;
                                                     }
-    
+
                                                     if (product.type === 0) {
-    
+
                                                         modal.classList.add('modal-0');
-    
+
                                                         product.items.forEach(item => {
-    
+
                                                             const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                                             previewHolder.classList.add('modal-avatar-decoration-img');
-    
+
                                                             const imgElement = document.createElement("img");
                                                             imgElement.id = "shop-card-deco-image";
                                                             imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
-    
+
                                                             previewHolder.appendChild(imgElement);
                                                         
                                                             // Set the product details
@@ -4540,17 +4764,17 @@ if (localStorage.full_client_rework != "false") {
                                                                     imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
                                                                 });
                                                             }
-    
+
                                                         });
                                                     }
-    
+
                                                     if (product.type === 1) {
                                                         modal.classList.add('modal-1');
         
                                                         modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
                                                         modal.querySelector("[data-product-modal-name]").textContent = product.name;
                                                         modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
-    
+
                                                         // Ensure the item ID is accessible here
                                                         let itemId = undefined;
                                                         if (Array.isArray(product.items)) {
@@ -4610,10 +4834,10 @@ if (localStorage.full_client_rework != "false") {
                                                             }
                                                         }
                                                     }
-    
+
                                                     if (product.type === 1000) {
                                                         modal.classList.add('modal-1000');
-    
+
                                                         const bundledProducts = product.bundled_products || [];
                                                     
                                                         // Generate the bundle summary from the names of the bundled products
@@ -4650,7 +4874,7 @@ if (localStorage.full_client_rework != "false") {
                                                                     document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
                                                                         decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
                                                                     });
-    
+
                                                                     document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
                                                                         decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
                                                                     });
@@ -4703,7 +4927,7 @@ if (localStorage.full_client_rework != "false") {
                                                             }
                                                         });
                                                     }
-    
+
                                                     if (product.type === 2000) {
                                                         modal.querySelector("[data-shop-modal-var-container-container]").classList.add('show');
                                                         // Update SKU and summary
@@ -4852,8 +5076,8 @@ if (localStorage.full_client_rework != "false") {
                                                             applyVariant(product.variants[0]);
                                                         }
                                                     }
-    
-    
+
+
                                                     const button_container = document.querySelector("[data-modal-buttons]");
                                                     
                                                     if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads") {
@@ -4905,36 +5129,43 @@ if (localStorage.full_client_rework != "false") {
                                                             <button class="card-button" title="Open item in the Discord shop" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';">Open In Shop</button>
                                                         `;
                                                     }
-    
-    
+
+
                                                     modal.querySelector("[data-share-product-card-button]").innerHTML = `
                                                         <svg class="shareIcon_modal" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${product.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
                                                     `;
-    
-    
-                                                    let priceStandard = "N/A";
-                                                    let priceNitro = "N/A";
-                                
-                                                    if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices[0]) {
-                                                        priceStandard = product.prices["0"].country_prices.prices[0].amount;
-                                                    }
-                                
-                                                    if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices[0]) {
-                                                        priceNitro = product.prices["4"].country_prices.prices[0].amount;
-                                                    }
-                                
-                                
+
+
                                                     const priceTextNitro = modal.querySelector("[data-price-nitro]");
                                                     const priceTextStandard = modal.querySelector("[data-price-standard]");
-    
+
                                                     const priceContainerNitro = modal.querySelector("[data-price-nitro-container]");
                                                     const priceContainerStandard = modal.querySelector("[data-price-standard-container]");
-    
+
                                                     const priceContainer = modal.querySelector("[data-shop-price-container]");
-    
-                                                    if (localStorage.experiment_2025_01_orb_testing === "Treatment 1: Default Prices") {
+
+                                                    let priceStandard = "N/A";
+                                                    let priceNitro = "N/A";
+
+                                                    if (localStorage.currency === "Discord Orb") {
+                                                        if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
+                                                            product.prices["0"].country_prices.prices.forEach(price => {
+                                                                if (price.currency === "discord_orb") {
+                                                                    priceStandard = price.amount;
+                                                                }
+                                                            });
+                                                        }
+                                                
+                                                        if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
+                                                            product.prices["4"].country_prices.prices.forEach(price => {
+                                                                if (price.currency === "discord_orb") {
+                                                                    priceNitro = price.amount;
+                                                                }
+                                                            });
+                                                        }
+            
                                                         if (priceTextStandard) {
-                                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "Price (USD): N/A";
+                                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "null";
                                                         }
                                                     
                                                         let orb_icon = document.createElement("div");
@@ -4942,10 +5173,10 @@ if (localStorage.full_client_rework != "false") {
                                                         orb_icon.classList.add('orb-icon');
                                                     
                                                         priceContainerStandard.appendChild(orb_icon);
-    
-    
+                
+                
                                                         if (priceTextNitro) {
-                                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "Price (USD): N/A";
+                                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "null";
                                                         }
                                                     
                                                         let orb_icon_nitro = document.createElement("div");
@@ -4953,29 +5184,78 @@ if (localStorage.full_client_rework != "false") {
                                                         orb_icon_nitro.classList.add('orb-icon-strike');
                                                     
                                                         priceContainerNitro.appendChild(orb_icon_nitro);
-                                                    
-                                                    } else if (localStorage.experiment_2025_01_orb_testing === "Treatment 2: 50 Orbs") {
-                                                        if (priceTextStandard) {
-                                                            priceTextStandard.textContent = `50`;
+            
+                                                    } else if (localStorage.currency === "NZD (Mobile)") {
+                                                        if (product.prices && product.prices["5"] && product.prices["5"].country_prices && product.prices["5"].country_prices.prices) {
+                                                            product.prices["5"].country_prices.prices.forEach(price => {
+                                                                if (price.currency === "nzd") {
+                                                                    priceStandard = price.amount;
+                                                                }
+                                                            });
                                                         }
-                                                    
-                                                        let orb_icon = document.createElement("div");
-                                                    
-                                                        orb_icon.classList.add('orb-icon');
-                                                    
-                                                        priceContainerStandard.appendChild(orb_icon);
-                                                    
-                                                    } else {
-                                                        if (priceTextStandard) {
-                                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "Price (USD): N/A";
+                                                
+                                                        if (product.prices && product.prices["7"] && product.prices["7"].country_prices && product.prices["7"].country_prices.prices) {
+                                                            product.prices["7"].country_prices.prices.forEach(price => {
+                                                                if (price.currency === "nzd") {
+                                                                    priceNitro = price.amount;
+                                                                }
+                                                            });
                                                         }
-    
+            
+                                                        if (priceTextStandard) {
+                                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `NZ$${(priceStandard / 100).toFixed(2)}` : "null";
+                                                        }
+                
                                                         if (priceTextNitro) {
-                                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "Price (Other): N/A";
+                                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `NZ$${(priceNitro / 100).toFixed(2)} with Nitro` : "null";
+                                                        }
+                                                    } else {
+                                                        if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
+                                                            product.prices["0"].country_prices.prices.forEach(price => {
+                                                                if (price.currency === "usd") {
+                                                                    priceStandard = price.amount;
+                                                                }
+                                                            });
+                                                        }
+                                                
+                                                        if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
+                                                            product.prices["4"].country_prices.prices.forEach(price => {
+                                                                if (price.currency === "usd") {
+                                                                    priceNitro = price.amount;
+                                                                }
+                                                            });
+                                                        }
+            
+                                                        if (priceTextStandard) {
+                                                            priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "null";
+                                                        }
+                
+                                                        if (priceTextNitro) {
+                                                            priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "null";
                                                         }
                                                     }
-    
-    
+
+                                                    if (priceTextStandard.textContent === "null" && priceTextNitro.textContent === "null") {
+                                                        let error_warning = document.createElement("div");
+
+                                                        error_warning.classList.add('invalid_currency_warning');
+                                                        error_warning.innerHTML = `
+                                                            <p>This item does not support this currency!</p>
+                                                        `;
+                                                                    
+                                                        priceContainer.appendChild(error_warning);
+                                                    } else if (priceTextStandard.textContent === "null" || priceTextNitro.textContent === "null") {
+                                                        let error_warning = document.createElement("div");
+
+                                                        error_warning.classList.add('invalid_currency_warning');
+                                                        error_warning.innerHTML = `
+                                                            <p>This item does not fully support this currency!</p>
+                                                        `;
+                                                                    
+                                                        priceContainer.appendChild(error_warning);
+                                                    }
+
+
                                                     const unpublishedAt = new Date(product.unpublished_at);
                             
                                                     if (product.unpublished_at && !isNaN(unpublishedAt.getTime())) {
@@ -5007,10 +5287,10 @@ if (localStorage.full_client_rework != "false") {
                                                         const timerInterval = setInterval(updateTimer, 1000);
                                                         updateTimer();
                                                     }
-    
-    
+
+
                                                     const expiresAt = new Date(product.expires_at);
-    
+
                                                     if (product.expires_at && !isNaN(expiresAt.getTime())) {
                             
                                                         function updateTimer() {
@@ -5040,27 +5320,27 @@ if (localStorage.full_client_rework != "false") {
                                                         const timerInterval = setInterval(updateTimer, 1000);
                                                         updateTimer();
                                                     }
-    
+
                                                     if (product.premium_type === 2) {
                                                         modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                             <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
                                                         `;
                                                     }
                                                     
-    
-    
+
+
                                                     let modal_back = document.createElement("div");
-    
+
                                                     modal_back.classList.add('modalv2-back');
                                                     modal_back.id = 'modalv2-back';
-    
+
                                                     document.body.appendChild(modal_back);
-    
+
                                                     setTimeout(() => {
                                                         modal_back.classList.add('show');
                                                     }, 1);
-    
-    
+
+
                                                     modal.addEventListener('click', (event) => {
                                                         if (event.target === modal) {
                                                             modal.classList.remove('show');
@@ -5071,7 +5351,7 @@ if (localStorage.full_client_rework != "false") {
                                                             }, 300);
                                                         }
                                                     });
-    
+
                                                     document.querySelector("[data-close-product-card-button]").addEventListener('click', () => {
                                                         modal.classList.remove('show');
                                                         modal_back.classList.remove('show');
@@ -5217,7 +5497,7 @@ if (localStorage.full_client_rework != "false") {
     }
     
 
-    if (params.get("page") != "item_tool" && params.get("page") != "published_listings") {
+    if (params.get("page") != "item_tool" && params.get("page") != "published_listings" && params.get("page") != "orb_converter") {
         window.onload = fetchData;
     }
 
@@ -5227,19 +5507,19 @@ if (localStorage.full_client_rework != "false") {
         <p class="center-text" style="font-size: 12px; display: flex; color: var(--white);">${hrft33n87d}</p>
         <div id="home-section">
             <button class="dm-button" id="home-tab" onclick="setParams({page: 'home'}); location.reload();">
-                <p class="dm-button-text">Home</p>
+                <p class="dm-button-text">Featured</p>
             </button>
             <div id="recap-2024-tab-loading">
             </div>
         </div>
-        <div class="dm-divider">Collectibles</div>
+        <div class="dm-divider">Shop</div>
         <div id="collectibles-section">
             <button class="dm-button" id="shop-tab" onclick="setParams({page: 'shop'}); location.reload();">
-                <p class="dm-button-text">Shop</p>
+                <p class="dm-button-text">Shop All</p>
             </button>
-            <div id="leaks-tab-loading">
-            </div>
             <div id="orbs-shop-tab-loading">
+            </div>
+            <div id="leaks-tab-loading">
             </div>
             <button class="dm-button" id="potions-tab" onclick="setParams({page: 'consumables'}); location.reload();">
                 <p class="dm-button-text">Potions</p>
@@ -5256,17 +5536,26 @@ if (localStorage.full_client_rework != "false") {
             <button class="dm-button" id="published-listings-tab" onclick="setParams({page: 'published_listings'}); location.reload();">
                 <p class="dm-button-text">Published Listings</p>
             </button>
+            <div id="orb-converter">
+            </div>
             <div id="secret-tools">
             </div>
         </div>
         `;
+
+        if (localStorage.experiment_2025_01_orb_testing === "Treatment 4: Orb Converter") {
+            document.getElementById('orb-converter').innerHTML = `
+                <button class="dm-button" id="orb-converter-tab" onclick="setParams({page: 'orb_converter'}); location.reload();">
+                    <p class="dm-button-text">Orb Converter</p>
+                </button>
+            `;
+        }
 
         if (localStorage.dev === "true") {
             document.getElementById('secret-tools').innerHTML = `
                 <button class="dm-button" id="avatar-decorations-debug-tab" onclick="setParams({page: 'item_tool'}); location.reload();">
                     <p class="dm-button-text">Item Debug | Staff Only</p>
                 </button>
-    
             `;
         }
     }
@@ -5289,7 +5578,7 @@ if (localStorage.full_client_rework != "false") {
             createHomePageElement()
             document.getElementById("home-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Home</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">Featured</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "year_recap") {
@@ -5316,7 +5605,7 @@ if (localStorage.full_client_rework != "false") {
             createMainShopElement()
             document.getElementById("shop-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Discord Shop</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">Shop All</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "leaks") {
@@ -5345,7 +5634,7 @@ if (localStorage.full_client_rework != "false") {
             }
             createMainPotionsElement()
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Orbs Shop</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">Orbs</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "miscellaneous") {
@@ -5377,20 +5666,28 @@ if (localStorage.full_client_rework != "false") {
                 <h2 style="margin-left: 260px; margin-top: 10px;">Profiles Plus</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
-        } else if (params.get("page") === "item_tool") {
-            document.title = "Item Tool | Shop Archives";
-            createItemToolPageElement()
-            document.getElementById("avatar-decorations-debug-tab").classList.add('dm-button-selected');
-            document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Item Tool | Staff Only</h2>
-                <div id="open-help-modals-buttons-holder"></div>
-            `;
         } else if (params.get("page") === "published_listings") {
             document.title = "Published Listings | Shop Archives";
             createPublishedListingsPageElement()
             document.getElementById("published-listings-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 style="margin-left: 260px; margin-top: 10px;">Published Listings</h2>
+                <div id="open-help-modals-buttons-holder"></div>
+            `;
+        } else if (params.get("page") === "orb_converter") {
+            document.title = "Orb Converter | Shop Archives";
+            createOrbConverterPageElement()
+            document.getElementById("orb-converter-tab").classList.add('dm-button-selected');
+            document.getElementById("top-bar-container").innerHTML = `
+                <h2 style="margin-left: 260px; margin-top: 10px;">Orb Converter</h2>
+                <div id="open-help-modals-buttons-holder"></div>
+            `;
+        } else if (params.get("page") === "item_tool") {
+            document.title = "Item Tool | Shop Archives";
+            createItemToolPageElement()
+            document.getElementById("avatar-decorations-debug-tab").classList.add('dm-button-selected');
+            document.getElementById("top-bar-container").innerHTML = `
+                <h2 style="margin-left: 260px; margin-top: 10px;">Item Tool | Staff Only</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else {
@@ -5462,7 +5759,7 @@ if (localStorage.full_client_rework != "false") {
     if (localStorage.experiment_2025_02_orbs_shop === "Treatment 1: Orb Shop done like Potions" || localStorage.experiment_2025_02_orbs_shop === "Treatment 2: Orb Shop done like default") {
         document.getElementById('orbs-shop-tab-loading').innerHTML = `
             <button class="dm-button" id="orbs-shop-tab" onclick="setParams({page: 'orbs'}); location.reload();">
-                <p class="dm-button-text">Orbs Shop</p>
+                <p class="dm-button-text">Orbs</p>
             </button>
         `;
         if (params.get("page") === "orbs") {
@@ -6558,6 +6855,21 @@ if (localStorage.full_client_rework != "false") {
 
 
 
+    function createOrbConverterPageElement() {
+        document.getElementById("everything-housing-container").innerHTML = `
+            <div style="margin-top: 70px; text-align: center;">
+                <div class="orb-converter-container">
+                    <span>USD</span>
+                    <input type="text" id="usdAmount" value="1" oninput="convertToOrbs()">
+                    <input type="text" id="orbsAmount" value="0" oninput="convertToUSD()">
+                    <span>Orbs</span>
+                </div>
+            </div>
+        `;
+    }
+
+
+
     function createPublishedListingsPageElement() {
         document.getElementById("everything-housing-container").innerHTML = `
             <div style="margin-top: 100px;">
@@ -6909,6 +7221,8 @@ if (localStorage.full_client_rework != "false") {
                 <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Options</h1>
                 <div class="options-option-card-holder">
 
+                    <div id="currency-picker-container-dev"></div>
+
                     <div class="options-option-card" id="reduced-motion-box-option">
                         <p class="option-card-title" style="color: var(--white);">Reduced Motion</p>
                         <input class="options-toggle-box" onclick="reducedMotionChecked();" style="cursor: pointer; scale: 2; posision: center;" id="reduced-motion-box" type="checkbox">
@@ -6953,6 +7267,55 @@ if (localStorage.full_client_rework != "false") {
                 </div>
                 App Version: ${tcbx926n29}
             `;
+
+            if (localStorage.dev === "true") {
+                document.getElementById("currency-picker-container-dev").innerHTML = `
+                    <div class="options-option-card">
+                        <p class="option-card-title" style="color: var(--white);">Currency</p>
+                        <select id="currency_picker_container" class="options-dropdown">
+                        </select>
+                    </div>
+                `;
+            } else {
+                document.getElementById("currency-picker-container-dev").innerHTML = `
+                    <div class="options-option-card">
+                        <p class="option-card-title" style="color: var(--white);">Currency</p>
+                        <select id="currency_picker_container" class="options-dropdown" title="Other currencies coming soon!" disabled>
+                        </select>
+                    </div>
+                `;
+            }
+
+            try {
+                const currency_picker_currencies = ["USD", "NZD (Mobile)", "Discord Orb"];
+
+                const currency_picker_currencies_picker = document.getElementById("currency_picker_container");
+                
+
+                populate_currency_picker();
+                
+                const storedTreatment = localStorage.getItem("currency");
+                if (storedTreatment) {
+                    currency_picker_currencies_picker.value = storedTreatment;
+                }
+
+                function populate_currency_picker() {
+                    currency_picker_currencies.forEach((treatments) => {
+                        const optElement = document.createElement("option");
+                        optElement.value = treatments;
+                        optElement.textContent = treatments;
+                        currency_picker_currencies_picker.appendChild(optElement);
+                    });
+                }
+
+                currency_picker_currencies_picker.addEventListener("change", () => {
+                    const selectedTreatment = currency_picker_currencies_picker.value;
+                
+                    // Store the selection
+                    localStorage.setItem("currency", selectedTreatment);
+                });
+            } catch(error) {
+            }
 
             if (localStorage.experiment_2024_12_theme_picker == "Treatment 1: Enabled" || localStorage.experiment_2024_12_theme_picker == "Treatment 2: Enabled with custom css") {
                 document.getElementById("theme-picker-container").innerHTML = `
@@ -7139,7 +7502,7 @@ if (localStorage.full_client_rework != "false") {
                     </div>
 
                     <div class="options-option-card">
-                        <p class="option-card-title">Orbs Shop</p>
+                        <p class="option-card-title">Orbs</p>
                         <p class="new-experiment-subtext">2025_02_orbs_shop</p>
                         <select id="experiment_2025_02_orbs_shop_treatment_container" class="experiment-treatment-picker">
                         </select>
@@ -7318,7 +7681,7 @@ if (localStorage.full_client_rework != "false") {
                 }
 
                 try {
-                    const experiment_2025_01_orb_testing_treatments = ["Treatment -1: Disabled", "Treatment 1: Default Prices", "Treatment 2: 50 Orbs", "Treatment 3: Dynamic"];
+                    const experiment_2025_01_orb_testing_treatments = ["Treatment -1: Disabled", "Treatment 4: Orb Converter"];
 
                     const experiment_2025_01_orb_testing_treatment_picker = document.getElementById("experiment_2025_01_orb_testing_treatment_container");
                     

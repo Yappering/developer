@@ -515,6 +515,20 @@ body {
     top: 15px;
 }
 
+.options-dropdown {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    width: 60%;
+    height: 30px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: var(--white);
+    background-color: var(--input-background);
+    cursor: pointer;
+}
+
 .experiment-treatment-picker {
     position: absolute;
     left: 10px;
@@ -580,6 +594,43 @@ body {
     transition: opacity 0.2s ease;
 }
 
+
+.invalid_currency_warning {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background-color: var(--button-danger-background);
+    top: 50px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.invalid_currency_warning p {
+    color: var(--white);
+    margin-top: 15px;
+}
+
+.card_error {
+    position: absolute;
+    width: auto;
+    height: 21px;
+    background-color: var(--button-danger-background);
+    top: 15px;
+    left: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: medium;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.card_error p {
+    position: relative;
+    color: var(--white) !important;
+    top: -16px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
 
 .server-avatar {
     margin-top: 10px;
@@ -3088,6 +3139,14 @@ data-share-product-card-button {
     scale: 1.5;
 }
 
+.orb-converter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
 
 .published-listings-tester-card {
     background-color: var(--background-primary);
@@ -3408,6 +3467,10 @@ data-share-product-card-button {
 
 .clickable {
     cursor: pointer;
+}
+
+[disabled] {
+    cursor: not-allowed;
 }
 
 .hidden {
