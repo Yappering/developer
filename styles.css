@@ -760,6 +760,7 @@ body {
     background-color: #E2373E;
     border-radius: 999px;
     width: 50px;
+    height: 18px;
     font-size: medium;
     font-weight: 600;
     color: white;
@@ -819,6 +820,91 @@ body {
     background-color: rgb(71, 81, 192);
 }
 
+
+.nameplate-null-user {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin-top: 14px;
+}
+
+.nameplate-null-user-avatar {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background-color: var(--3);
+    border-radius: 50px;
+    margin-left: 20px;
+}
+
+
+.nameplate-null-user-name {
+    position: absolute;
+    height: 20px;
+    background-color: var(--3);
+    border-radius: 50px;
+    top: 25%;
+    margin-left: 70px;
+}
+
+.nameplate-null-user-name._1 {
+    width: 80px;
+}
+
+
+.nameplate-null-user-name._2 {
+    width: 180px;
+}
+
+.nameplate-null-user-name._3 {
+    width: 160px;
+}
+
+.nameplate-null-user-name._4 {
+    width: 100px;
+}
+
+
+.nameplate-user-avatar {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background-color: var(--3);
+    border-radius: 50px;
+    margin-left: 20px;
+    background-image: url(data:image/webp;base64,UklGRtQDAABXRUJQVlA4WAoAAAAQAAAAXwAAXwAAQUxQSCYBAAABD9D/iAhIjiVJkpVXRRmWxqnsnzgmO8cvQv5FsGRHjC8OinWxKRDRf4Vp2zB1p/vJAixudjLZJWxXnhyZDH/AGAwNcDzW8VUJPwe+AlpeXIGGDeiCdCdggTrpLQFhAApQYCC9JpfH2ZjCo/urDrkRDMCEnyBdWAXDQIMNSBoCaCdmMwCkBCAcietYztRvcvkzllMbNpDTcXJtk30NPf0XEpABfbAh0d7G8d8k7OkvOMkB9G8Oec4Z5yUMf0IdI/0Jv5mEBqDYh6MAmFoywta3wMQSaCdmBbCBX5tkAIiGl3gEYgVYCvVMDr1BbaYhWGwUEHBRT9REYvEZKy3YrjySsHkBEAGzmmViwFftQLEpTUEAbvWnAnPEAPAcoLABfIQAbiDhZABWUDggiAIAAJAOAJ0BKmAAYAA+kUKaSKWkIqEtWIjAsBIJQBiHIzbgDzquoA9ADpbvJAaIK2GWXU+ulfLsFNiQwvqprIh1Eq3LkeaZnyOqhP+BjbpKzzM3+2/wWUAZ7NASpL9zGWKl70y0uXeVdg9BRUduTGE2paYGLX1lRd+HxIfbcCwAAP7PgK//npn/3L/9bexnyzm/kOKVzGvdWOUO/7WtN0oal0+yTnHTkPZxorG/gwz7DKR9jJXHnIZukSNofgl1pVLeZ43IMEAalg+xHOz24rrrNuNlZP7LkRHA2Mel5GTga2ezNVMvCvF5rSxF/VpJicGS16YHYSSXeQwhQvWVYjQ4z0LODTvfExSfnjEkOII/hNc5ZNt8dLlFFyCgzCC1ZgjI2m56WRZbLVqdflO80IJHvpTzf960fz3NW+VVPEs5rKgfJgu4bMJQb0JEXfkAz4Ul0NgFTyO3jetlzvEbivwnGdZkwHZQ9yqvTBBMqO8l76ZYHcfmvhuTufJ2CK892oouf8nf896TzfBfxUuYIDxM9+0brdNfJroHlPzYanKA15Siqkbw5Y01sn+0NSq56lk97MebULxWtBssRoVs/vWr9Dn5RwDz5K6jASQZ/+MJuGGDp5iE7Qj7TevSb73fjohj3ta/ghE6Gsh1HHgTqwdjkL26HlkoT97QKQ0Ep8JzwFxX7L9etLjf42ft9fSFUV0MfSOI0V8Jeehqp8xbDrra3XNs+UQT1qYkX19A3FQwORbaJ8Mw0/Fv5WuUzrH8VHbJqSH+n+Veuoz2Q6+PiLqkhZDKPgvj8M9FtorJcxwvJgYmBtT6BIl/1OXxee33wv+ROFX9lXonnmsyfFlSCfV50UBlmpdYwAAAAA==);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.nameplate-user-name {
+    position: absolute;
+    height: 20px;
+    margin-left: 70px;
+    margin-top: 10px;
+    color: var(--white) !important;
+}
+
+
+.nameplate-modal-preview {
+    position: absolute;
+    height: 300px;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #000;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.nameplate-modal-preview .nameplate-user-avatar, .nameplate-modal-preview .nameplate-null-user-avatar {
+    margin-left: 10px;
+}
+
+.nameplate-modal-preview .nameplate-user-name, .nameplate-modal-preview .nameplate-null-user-name {
+    margin-left: 60px;
+}
 
 
 .newish-experiment-button {

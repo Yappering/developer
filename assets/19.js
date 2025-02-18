@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 225";
+tcbx926n29 = "Dev 226";
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -135,6 +135,13 @@ if (localStorage.full_client_rework != "false") {
         ORB = "1332505418219655258"
     ]
 
+    category_types = [
+        HERO = 0,
+        FEATURED = 1,
+        FEED = 2,
+        WIDE_BANNER = 3
+    ]
+
     item_types = [
         NONE = 100,
         AVATAR_DECORATION = 0,
@@ -221,7 +228,7 @@ if (localStorage.full_client_rework != "false") {
             if (params.get("page") === "orbs" && localStorage.experiment_2025_02_orbs_shop != "Treatment 2: Orb Shop done like default") {
                 createMainPotionsElement()
                 createPotionsCategoryLoadingElement()
-            } else if (localStorage.experiment_2025_02_orbs_shop === "Treatment 2: Orb Shop done like default") {
+            } else if (params.get("page") === "orbs" && localStorage.experiment_2025_02_orbs_shop === "Treatment 2: Orb Shop done like default") {
                 createMainShopElement()
                 createShopCategoryLoadingElement()
             }
@@ -315,7 +322,10 @@ if (localStorage.full_client_rework != "false") {
                                         const cardTemplate = document.querySelector("[data-shop-item-card-template]");
                                         const card = cardTemplate.content.cloneNode(true).children[0];
 
-                                        if (product.type === 0) {
+                                        if (product.type === NONE) {
+                                            card.classList.add("type_100");
+                                            card.classList.add('hidden')
+                                        } else if (product.type === AVATAR_DECORATION) {
                                             product.items.forEach(item => {
                                                 card.classList.add("type_0");
                                                 // Set the innerHTML for the preview holder
@@ -345,7 +355,7 @@ if (localStorage.full_client_rework != "false") {
                                                     });
                                                 }
                                             });
-                                        } else if (product.type === 1) {
+                                        } else if (product.type === PROFILE_EFFECT) {
                                             card.classList.add("type_1");
 
                                             card.querySelector("[data-product-card-sku-id]").textContent = `Made By: ${product.credits}`;
@@ -410,7 +420,7 @@ if (localStorage.full_client_rework != "false") {
                                                     });
                                                 }
                                             }
-                                        } else if (product.type === 2) {
+                                        } else if (product.type === NAMEPLATE) {
                                             card.classList.add("type_2");
 
                                             card.querySelector("[data-product-card-sku-id]").textContent = `Made By: ${product.credits}`;
@@ -423,7 +433,7 @@ if (localStorage.full_client_rework != "false") {
                                                 <p>item type 2 (NAMEPLATE) is not yet defined on the client, please remove it from the api</p>
                                             `;
                                             
-                                        } else if (product.type === 1000) {
+                                        } else if (product.type === BUNDLE) {
                                             card.classList.add("type_1000");
                                             // Fetch the bundled products for the bundle summary
                                             const bundledProducts = product.bundled_products || [];
@@ -508,7 +518,7 @@ if (localStorage.full_client_rework != "false") {
                                                     })();
                                                 }
                                             });
-                                        } else if (product.type === 2000) {
+                                        } else if (product.type === VARIANTS_GROUP) {
                                             // Update SKU and summary
                                             card.querySelector("[data-product-card-sku-id]").textContent = `Made By: ${product.credits}`;
                                             card.querySelector("[data-product-card-summary]").textContent = product.summary;
@@ -2583,7 +2593,10 @@ if (localStorage.full_client_rework != "false") {
                                         const cardTemplate = document.querySelector("[data-shop-item-card-template]");
                                         const card = cardTemplate.content.cloneNode(true).children[0];
 
-                                        if (product.type === 0) {
+                                        if (product.type === NONE) {
+                                            card.classList.add("type_100");
+                                            card.classList.add('hidden')
+                                        } else if (product.type === AVATAR_DECORATION) {
                                             product.items.forEach(item => {
                                                 
                                                 card.classList.add("type_0");
@@ -2619,7 +2632,7 @@ if (localStorage.full_client_rework != "false") {
                                                 }
                                                 
                                             });
-                                        } else if (product.type === 1) {
+                                        } else if (product.type === PROFILE_EFFECT) {
                                             card.classList.add("type_1");
 
                                             if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
@@ -2688,7 +2701,7 @@ if (localStorage.full_client_rework != "false") {
                                                     });
                                                 }
                                             }
-                                        } else if (product.type === 2) {
+                                        } else if (product.type === NAMEPLATE) {
                                             card.classList.add("type_2");
 
                                             if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
@@ -2702,10 +2715,29 @@ if (localStorage.full_client_rework != "false") {
                                             const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
 
                                             previewHolder.innerHTML = `
-                                                <p>item type 2 (NAMEPLATE) is not yet defined on the client, please remove it from the api</p>
+                                                <div class="nameplate-null-user">
+                                                    <div class="nameplate-null-user-avatar"></div>
+                                                    <div class="nameplate-null-user-name _1"></div>
+                                                </div>
+                                                <div class="nameplate-null-user">
+                                                    <div class="nameplate-null-user-avatar"></div>
+                                                    <div class="nameplate-null-user-name _2"></div>
+                                                </div>
+                                                <div class="nameplate-null-user">
+                                                    <div class="nameplate-user-avatar"></div>
+                                                    <p class="nameplate-user-name">Discord User</p>
+                                                </div>
+                                                <div class="nameplate-null-user">
+                                                    <div class="nameplate-null-user-avatar"></div>
+                                                    <div class="nameplate-null-user-name _3"></div>
+                                                </div>
+                                                <div class="nameplate-null-user">
+                                                    <div class="nameplate-null-user-avatar"></div>
+                                                    <div class="nameplate-null-user-name _4"></div>
+                                                </div>
                                             `;
                                             
-                                        } else if (product.type === 1000) {
+                                        } else if (product.type === BUNDLE) {
                                             card.classList.add("type_1000");
                                             // Fetch the bundled products for the bundle summary
                                             const bundledProducts = product.bundled_products || [];
@@ -2794,7 +2826,7 @@ if (localStorage.full_client_rework != "false") {
                                                     })();
                                                 }
                                             });
-                                        } else if (product.type === 2000) {
+                                        } else if (product.type === VARIANTS_GROUP) {
                                             // Update SKU and summary
                                             if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                 card.querySelector("[data-product-card-sku-id]").textContent = ``;
@@ -3111,7 +3143,7 @@ if (localStorage.full_client_rework != "false") {
                                         }
 
                                         if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
-                                            if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
+                                            if (product.type === AVATAR_DECORATION || product.type === PROFILE_EFFECT || product.type === NAMEPLATE || product.type === BUNDLE || product.type === VARIANTS_GROUP) {
                                                 card.classList.add('clickable');
 
                                                 card.addEventListener("click", (event) => {
@@ -3183,7 +3215,7 @@ if (localStorage.full_client_rework != "false") {
                                                         modal.querySelector("[data-modalv2-inner-logo]").src = `https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096`;
                                                     }
 
-                                                    if (product.type === 0) {
+                                                    if (product.type === AVATAR_DECORATION) {
 
                                                         modal.classList.add('modal-0');
 
@@ -3215,9 +3247,7 @@ if (localStorage.full_client_rework != "false") {
                                                             }
 
                                                         });
-                                                    }
-
-                                                    if (product.type === 1) {
+                                                    } else if (product.type === PROFILE_EFFECT) {
                                                         modal.classList.add('modal-1');
         
                                                         modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
@@ -3282,9 +3312,41 @@ if (localStorage.full_client_rework != "false") {
                                                                 });
                                                             }
                                                         }
-                                                    }
+                                                    } else if (product.type === NAMEPLATE) {
+                                                        modal.classList.add('modal-2');
+        
+                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                        modal.querySelector("[data-product-modal-name]").textContent = product.name;
+                                                        modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
 
-                                                    if (product.type === 1000) {
+                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                        previewHolder.classList.add('nameplate-modal-preview');
+
+                                                        previewHolder.innerHTML = `
+                                                            <div class="nameplate-null-user">
+                                                                <div class="nameplate-null-user-avatar"></div>
+                                                                <div class="nameplate-null-user-name _1"></div>
+                                                            </div>
+                                                            <div class="nameplate-null-user">
+                                                                <div class="nameplate-null-user-avatar"></div>
+                                                                <div class="nameplate-null-user-name _2"></div>
+                                                            </div>
+                                                            <div class="nameplate-null-user">
+                                                                <div class="nameplate-user-avatar"></div>
+                                                                <p class="nameplate-user-name">Discord User</p>
+                                                            </div>
+                                                            <div class="nameplate-null-user">
+                                                                <div class="nameplate-null-user-avatar"></div>
+                                                                <div class="nameplate-null-user-name _3"></div>
+                                                            </div>
+                                                            <div class="nameplate-null-user">
+                                                                <div class="nameplate-null-user-avatar"></div>
+                                                                <div class="nameplate-null-user-name _4"></div>
+                                                            </div>
+                                                        `;
+
+                                                        
+                                                    } else if (product.type === BUNDLE) {
                                                         modal.classList.add('modal-1000');
 
                                                         const bundledProducts = product.bundled_products || [];
@@ -3375,9 +3437,7 @@ if (localStorage.full_client_rework != "false") {
                                                                 })();
                                                             }
                                                         });
-                                                    }
-
-                                                    if (product.type === 2000) {
+                                                    } else if (product.type === VARIANTS_GROUP) {
                                                         modal.querySelector("[data-shop-modal-var-container-container]").classList.add('show');
                                                         // Update SKU and summary
                                                         modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
@@ -4075,7 +4135,7 @@ if (localStorage.full_client_rework != "false") {
                     data.forEach(apiCategory => {
                         async function processCategories() {
                             const output = document.querySelector("[data-shop-output]");
-                            if (apiCategory.type === 0) {
+                            if (apiCategory.type === HERO) {
                                 const template = document.querySelector("[data-shop-category-template]");
                             
                                 const category = template.content.cloneNode(true).children[0];
@@ -4135,7 +4195,10 @@ if (localStorage.full_client_rework != "false") {
                                         const cardTemplate = document.querySelector("[data-shop-item-card-template]");
                                         const card = cardTemplate.content.cloneNode(true).children[0];
     
-                                        if (product.type === 0) {
+                                        if (product.type === NONE) {
+                                            card.classList.add("type_100");
+                                            card.classList.add('hidden')
+                                        } else if (product.type === AVATAR_DECORATION) {
                                             product.items.forEach(item => {
                                                 
                                                 card.classList.add("type_0");
@@ -4171,7 +4234,7 @@ if (localStorage.full_client_rework != "false") {
                                                 }
                                                 
                                             });
-                                        } else if (product.type === 1) {
+                                        } else if (product.type === PROFILE_EFFECT) {
                                             card.classList.add("type_1");
 
                                             if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
@@ -4240,7 +4303,7 @@ if (localStorage.full_client_rework != "false") {
                                                     });
                                                 }
                                             }
-                                        } else if (product.type === 2) {
+                                        } else if (product.type === NAMEPLATE) {
                                             card.classList.add("type_2");
 
                                             if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
@@ -4257,7 +4320,7 @@ if (localStorage.full_client_rework != "false") {
                                                 <p>item type 2 (NAMEPLATE) is not yet defined on the client, please remove it from the api</p>
                                             `;
                                             
-                                        } else if (product.type === 1000) {
+                                        } else if (product.type === BUNDLE) {
                                             card.classList.add("type_1000");
                                             // Fetch the bundled products for the bundle summary
                                             const bundledProducts = product.bundled_products || [];
@@ -4346,7 +4409,7 @@ if (localStorage.full_client_rework != "false") {
                                                     })();
                                                 }
                                             });
-                                        } else if (product.type === 2000) {
+                                        } else if (product.type === VARIANTS_GROUP) {
                                             // Update SKU and summary
                                             if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                 card.querySelector("[data-product-card-sku-id]").textContent = ``;
@@ -4662,7 +4725,7 @@ if (localStorage.full_client_rework != "false") {
                                         }
     
                                         if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
-                                            if (product.type === 0 || product.type === 1 || product.type === 1000 || product.type === 2000) {
+                                            if (product.type === AVATAR_DECORATION || product.type === PROFILE_EFFECT || product.type === NAMEPLATE || product.type === BUNDLE || product.type === VARIANTS_GROUP) {
                                                 card.classList.add('clickable');
 
                                                 card.addEventListener("click", (event) => {
@@ -4734,7 +4797,7 @@ if (localStorage.full_client_rework != "false") {
                                                         modal.querySelector("[data-modalv2-inner-logo]").src = `https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096`;
                                                     }
 
-                                                    if (product.type === 0) {
+                                                    if (product.type === AVATAR_DECORATION) {
 
                                                         modal.classList.add('modal-0');
 
@@ -4766,9 +4829,7 @@ if (localStorage.full_client_rework != "false") {
                                                             }
 
                                                         });
-                                                    }
-
-                                                    if (product.type === 1) {
+                                                    } else if (product.type === PROFILE_EFFECT) {
                                                         modal.classList.add('modal-1');
         
                                                         modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
@@ -4833,9 +4894,41 @@ if (localStorage.full_client_rework != "false") {
                                                                 });
                                                             }
                                                         }
-                                                    }
+                                                    } else if (product.type === NAMEPLATE) {
+                                                        modal.classList.add('modal-2');
+        
+                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
+                                                        modal.querySelector("[data-product-modal-name]").textContent = product.name;
+                                                        modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
 
-                                                    if (product.type === 1000) {
+                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                        previewHolder.classList.add('nameplate-modal-preview');
+
+                                                        previewHolder.innerHTML = `
+                                                            <div class="nameplate-null-user">
+                                                                <div class="nameplate-null-user-avatar"></div>
+                                                                <div class="nameplate-null-user-name _1"></div>
+                                                            </div>
+                                                            <div class="nameplate-null-user">
+                                                                <div class="nameplate-null-user-avatar"></div>
+                                                                <div class="nameplate-null-user-name _2"></div>
+                                                            </div>
+                                                            <div class="nameplate-null-user">
+                                                                <div class="nameplate-user-avatar"></div>
+                                                                <p class="nameplate-user-name">Discord User</p>
+                                                            </div>
+                                                            <div class="nameplate-null-user">
+                                                                <div class="nameplate-null-user-avatar"></div>
+                                                                <div class="nameplate-null-user-name _3"></div>
+                                                            </div>
+                                                            <div class="nameplate-null-user">
+                                                                <div class="nameplate-null-user-avatar"></div>
+                                                                <div class="nameplate-null-user-name _4"></div>
+                                                            </div>
+                                                        `;
+
+                                                        
+                                                    } else if (product.type === BUNDLE) {
                                                         modal.classList.add('modal-1000');
 
                                                         const bundledProducts = product.bundled_products || [];
@@ -4926,9 +5019,7 @@ if (localStorage.full_client_rework != "false") {
                                                                 })();
                                                             }
                                                         });
-                                                    }
-
-                                                    if (product.type === 2000) {
+                                                    } else if (product.type === VARIANTS_GROUP) {
                                                         modal.querySelector("[data-shop-modal-var-container-container]").classList.add('show');
                                                         // Update SKU and summary
                                                         modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
@@ -5422,7 +5513,7 @@ if (localStorage.full_client_rework != "false") {
                                 if (kawaii_mode_banner) {  // Check if element exists
                                     document.getElementById('1306330663213072494-summary').style.color = 'black';
                                 }
-                            } else if (apiCategory.type === 1) {
+                            } else if (apiCategory.type === FEATURED) {
 
                                 const featureContainerTemplate = document.querySelector("[data-shop-subblock-container-template]");
             
@@ -5446,7 +5537,7 @@ if (localStorage.full_client_rework != "false") {
 
                             output.append(featureBlockContainer);
                             
-                            } else if (apiCategory.type === 3) {
+                            } else if (apiCategory.type === WIDE_BANNER) {
 
                                 const template = document.querySelector("[data-shop-category-template-wide]");
             
