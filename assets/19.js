@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 228";
+tcbx926n29 = "Dev 229";
 
 defaultAvatar1 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAY1BMVEVYZfJib/OMlfahqPeWn/eBi/XLz/vq6/7////19f5tePTq7P22vPnV2Pyrsvirsvl3gvT09f7Axfp3gfRtePNsePPg4v22vPq2u/qCi/WhqPjf4/zf4v2Xn/essvjLzvuXnvdbidFTAAAETElEQVR4AezBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAIDZudMtV1UlDuCFRKlWIEJ6uOwbzXn/lzzzYc/GWiT6zya/79WrLeYSc5Vq9IFWa3Sr6JehWt0ZZn5RtFJvmHnodPsrPLx1/B9PKx1ziLOPnIRRO84EXaAP/CWnR3pArTWcybpA5G8NsX20pw+cSbpAngEeOQenY+Cf8KIZ4FuDfSV4Ko/7hS7wNjYH7W3MvNeHtn2jvxn+OXcgaP0x8KJo43vgnwqu85EXDfGVULWON9G1BOmDN/M/AnTgDSWC0xve0KAITeSsykFw4qzOQWB4YwNBOfLmPAHpeXsvr5XOgJkjGA3vIlU6A2bvOHvAnXwiCMrwTl5UpUtg5us7BAB2gcg78nXugaC6QORd+bo7AEAXiLwzX+8SANEFNHPdXcAwV90FDgxA037+zwAc7aZlCKnSNTDrADZBdU6DBwbha5wCAabBkWGkSqfAzFa6C8xeADYB9Y2ByEBsbSMAYAy0zHWPActQLPQuKBh3DiwiDRlwzwFOv9JfTpORh5x5rVfQc8CQiLLJiEMaA1oW6XgVq+grVh4yY56JA68x07fm8hCIhXCUPn823zgkG/HK4Rf6kYv8YBt5BQ03BQyv9CMq8M/JQ7IItw+e6cd8QQjKTqCX3OMTtOdCCNZOoCnqkrYgZEFD2/FF/08qDAE4Dji+TtHPKHknVmBboVB2i9HI9zIGahZUhaVqVxCyQEEVQ7rSBMj3QiPUUTCWJkC+8zrQVjzmELBYG2H5jDYUFqAiQDlMtAwKQgjr+nwoq9O2BSEQJQFVWKeNBSEQ6+BYeG3BFIUAHIfasmsLh7IQgLcjDZd0AWXEIZRDMDYCuuj73g95yJGxEuBLPmr6VBSyzMO9Fpzko3kqeA1r8W4GHOWNKQ/JIl4COL4SZf2lPAQhAY4lYrv860rlIVmHlYAsuBhjFwpCwO4LOkb0TMAzAc8EPBPwTMAGngl4JuCZgMig4jMB27AMykJUhCr4ekwzKI10T9hpwzcz6DNSUbRdORzThW/CJSKagd4LjKurof1suFCYVR54MDckpsBXDLk3pliQgxBTHneBrwiaNtOfeUUKCnMQYlKC32x2r7SlmSUpoOQdi5xtoqx1DNP8WW9kKSCVvAu8QnC2USR4/I2bP5vDmhS80pdOjXULw8dc7HSiL6ljYLTmz/ooKvJTdkqTt9G5s/mHczH6qXlV9I32Ehi0+QVfQbn7HryHhvY033V1Tuu3CRncOIj3rL3EV9pf7+53ced0bY+MIZm7ndEt9uNnkxN8OSWhAvjjZ8ktnIoKaMDHF0yH8S416C4Rpv7bU094pWJ9QFv4BJOBvnkFzjWKMvhu4G78IibMIz2EFM3KFUAwCEI+ID9MDia6kd/+enpFj+YE+af+aA8OZAAAAAAG+Vvf46sAAAAAAAAAAAAAAAAAAAAAAFYCeHSjWah9hFcAAAAASUVORK5CYII=`;
 defaultAvatar2 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAhFBMVEV1fop9hpGgpq+ytr2prraXnqfT19vu7/H////29/iGjpju7/DCxszc3+K6vsS6v8WOlqD39/fLztPLz9OPlqDl5+nDx8ygpq6xtr6xtr3m5+iOlp/Dxsvc3+Hd3+GorraGjpnT19rT1tv29/eOlqHU19p+hpGprrWxt72or7bLz9Kfpq+ibmTzAAAEY0lEQVR4AezBAQEAAAQAIPB/swkMqAIAAAAAAAAAAAAAAAAAAAAAgBNZPfFWy86dLimOw3AAV5qYEXFicMKxHIFs03e///PtvaouagjRGMKfNr/vmhorsiMbpwcm+UZjN4PhD2YedR5TZpnZDgfmOww+L/h/jjoaS0iRG7pdk0HBQlECmeevisGEbpDJf7DQlUDJh2xlbm30noWmBGQFuOUcTMeej3CqFeCQzTOCl8i8bymBbPKQDlxeCecGqTH/Dc/ycUVK0LKx51ZVXs08H+WLoSu5la0yQmUK7sXQEKQ592ZOgFLukSE4meUe2YTQlCyinARTFnFOAss9swRlzL1zBCTj/o2ySFdAURCMBV+FiXQFFLP4esADvxGExPKVjJJIX4HCxbcJACyBkq/IxdkDQZVAyVfl4i4AgBIo+cpcvK8AiBJYMsddApY56hJIGcCSrmfFAAq6GsMQTKTvQDEEaILiXAZTBuEAlsAYl8E1wzCRLoEij7QLFKNYmwBhIp0BIo9tBgDMAcMc9xzYMJQcugvytl55VtCHWNx9wHaZ0d+mO6sP6Z7mBnQfYA2R2Fl1yMKCHov8zp3kycHKoQ9x3Mkj9Wv/i9s0FxCC9CJca8cv3JlDxBPecfgz/cwzt9j+etO5hFsCbEM/89I2e/QhoqI+2YBzGnfWEGHRuoBRQ6R9nu0hQJ3AIqgkNwEhLR6oPy7o/2MCQwC2AwWfltAxL/oifgFrhfZhtxitvpexAKug7nnU+gKqw2sO6DDk8bwJKKF6wZRPq8IToO28XqkvDnMK5FiNMB1n9SErqGZ4xeGvQV0IYV2f34ed05qgEIAjgZfAc9oyIATiPbgOvLZgA0IgtkMm7NpCGhCC8evIgkNKILHqEJIQjEZgGfR971wfMmasBLiQj5regkLaObifBd/p0Ls+xHBXOd7NgLH+YepDRIWXAK4yIpE9B4QAJaBgjcq0/3Wl8BDxiJUA4Yuqqob+YiGi7i0BiO4JuCfgnoB7Au4J6ME9AfcE3BNQMqjqnoAYrgkDnAc4BuWoH0sGtUS6J7xdWj4bu5wBHIqqL+yYZz6Lrek47wzOL0M7+kfjLAfyLpGJB3NDYrfnE2wq5VLagNF/GJl3nk/wS+pNM+PuKZAc6EefKP5m87ahPjnWpICMq1lllRsSpmCYxy8aq0sBJcbVnjvw23yR0OHwcR6/cPsuKcjoq+kir1d8lH3O0yl9lYw9oz1+0ZSqQ34SU5O6/KOuV/Zfdf3x4dJFltAB8+wZ9PErvoKqL7vxtp90TY5Pmlyy5ZI2QcDNg+qSZy9VQ9fX1Je7uDM91SNjMPZie/QN9vDFrtZ8OaXwsgcfvjB1y64owBJp+PrlsLrIGfSzIUzN4a7HNxSs2cO8+PSLwfLsJ3Dbh4QEfBlsz/xDjHcTQicHAPIGONck8LJBvpkc7OhMduxzk9CtmUL+U3+2BwcyAAAAAIP8re/xVQAAAAAAAAAAAAAAAAAAAAAAKwFiKavpSRGzHgAAAABJRU5ErkJggg==`;
@@ -7695,22 +7695,31 @@ if (localStorage.full_client_rework != "false") {
                 <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Options</h1>
                 <div class="options-option-card-holder">
 
-                    <div id="currency-picker-container-dev"></div>
+                    <div id="old-options-container-dev">
+                        <div id="currency-picker-container-dev">
+                            <div class="options-option-card">
+                                <p class="option-card-title" style="color: var(--white);">Currency</p>
+                                <select id="currency_picker_container" class="options-dropdown" title="Other currencies coming soon!" disabled>
+                                </select>
+                            </div>
+                        </div>
 
-                    <div class="options-option-card" id="reduced-motion-box-option">
-                        <p class="option-card-title" style="color: var(--white);">Reduced Motion</p>
-                        <input class="options-toggle-box" onclick="reducedMotionChecked();" style="cursor: pointer; scale: 2; posision: center;" id="reduced-motion-box" type="checkbox">
-                    </div>
+                        <div class="options-option-card" id="reduced-motion-box-option">
+                            <p class="option-card-title" style="color: var(--white);">Reduced Motion</p>
+                            <input class="options-toggle-box" onclick="reducedMotionChecked();" style="cursor: pointer; scale: 2; posision: center;" id="reduced-motion-box" type="checkbox">
+                        </div>
 
-                    <div class="options-option-card" id="disable-banner-overrides-box-option">
-                        <p class="option-card-title" style="color: var(--white);">Disable Banner Overrides</p>
-                        <input class="options-toggle-box" onclick="disableBannerOverridesChecked();" style="cursor: pointer; scale: 2; posision: center;" id="disable-banner-overrides-box" type="checkbox">
+                        <div class="options-option-card" id="disable-banner-overrides-box-option">
+                            <p class="option-card-title" style="color: var(--white);">Disable Banner Overrides</p>
+                            <input class="options-toggle-box" onclick="disableBannerOverridesChecked();" style="cursor: pointer; scale: 2; posision: center;" id="disable-banner-overrides-box" type="checkbox">
+                        </div>
                     </div>
 
                     <div id="username-picker-container-dev"></div>
 
                 </div>
                 <div id="theme-picker-container"></div>
+                <div id="accessibility-options-container"></div>
                 <div id="new-options-experiments-container"></div>
                 <div id="new-options-dismissible-content-container"></div>
                 <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Downloads</h1>
@@ -7744,28 +7753,32 @@ if (localStorage.full_client_rework != "false") {
                 App Version: ${tcbx926n29}
             `;
 
-            if (localStorage.dev === "true") {
-                document.getElementById("currency-picker-container-dev").innerHTML = `
+            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled") {
+                document.getElementById("username-picker-container-dev").innerHTML = `
+                    <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Profile</p>
+                    <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">Your Profile will be seen around the website.</p>
+                    <div class="options-option-card" id="options-text-input-option">
+                        <p class="option-card-title" style="color: var(--white);">Username</p>
+                        <input class="options-text-input" oninput="changeUsernameFromInput();" style="posision: center;" id="profile-username-text-input" value="${localStorage.discord_username}" type="text">
+                    </div>
+                    <div class="options-option-card" id="options-text-input-option">
+                        <p class="option-card-title" style="color: var(--white);">Avatar (Data URL)</p>
+                        <input class="options-text-input" oninput="changeAvatarFromInput();" style="posision: center;" id="profile-avatar-text-input" value="${localStorage.discord_avatar}" type="text">
+                    </div>
+                `;
+                document.getElementById("accessibility-options-container").innerHTML = `
+                    <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Accessibility</p>
                     <div class="options-option-card">
                         <p class="option-card-title" style="color: var(--white);">Currency</p>
                         <select id="currency_picker_container" class="options-dropdown">
                         </select>
                     </div>
+                    <div class="options-option-card" id="reduced-motion-box-option">
+                        <p class="option-card-title" style="color: var(--white);">Reduced Motion</p>
+                        <input class="options-toggle-box" onclick="reducedMotionChecked();" style="cursor: pointer; scale: 2; posision: center;" id="reduced-motion-box" type="checkbox">
+                    </div>
                 `; 
-                document.getElementById("username-picker-container-dev").innerHTML = `
-                    <div class="options-option-card" id="options-text-input-option">
-                        <p class="option-card-title" style="color: var(--white);">Username</p>
-                        <input class="options-text-input" oninput="changeUsernameFromInput();" style="posision: center;" id="options-text-input" value="${localStorage.discord_username}" type="text">
-                    </div>
-                `;
-            } else {
-                document.getElementById("currency-picker-container-dev").innerHTML = `
-                    <div class="options-option-card">
-                        <p class="option-card-title" style="color: var(--white);">Currency</p>
-                        <select id="currency_picker_container" class="options-dropdown" title="Other currencies coming soon!" disabled>
-                        </select>
-                    </div>
-                `;
+                document.getElementById("old-options-container-dev").innerHTML = ``;
             }
 
             try {
@@ -7960,6 +7973,14 @@ if (localStorage.full_client_rework != "false") {
                     </div>
 
                     <div class="options-option-card">
+                        <p class="option-card-title">Extra Options</p>
+                        <p class="new-experiment-subtext">2025_02_extra_options</p>
+                        <select id="experiment_2025_02_extra_options_treatment_container" class="experiment-treatment-picker">
+                        </select>
+                        <button class="new-experiment-clear-button" onclick="experiment_2025_02_shop_extra_options_clear()">Clear</button>
+                    </div>
+
+                    <div class="options-option-card">
                         <p class="option-card-title">Shop Category Modals</p>
                         <p class="new-experiment-subtext">2025_02_shop_category_modals</p>
                         <select id="experiment_2025_02_shop_category_modals_treatment_container" class="experiment-treatment-picker">
@@ -8037,6 +8058,37 @@ if (localStorage.full_client_rework != "false") {
                     document.getElementById("experiment-force-rollout").checked = true;
                 }
 
+
+                try {
+                    const experiment_2025_02_extra_options_treatments = ["Treatment -1: Disabled", "Treatment 4: Enabled"];
+
+                    const experiment_2025_02_extra_options_treatment_picker = document.getElementById("experiment_2025_02_extra_options_treatment_container");
+                    
+
+                    populate_experiment_2025_02_extra_options();
+                    
+                    const storedTreatment = localStorage.getItem("experiment_2025_02_extra_options");
+                    if (storedTreatment) {
+                        experiment_2025_02_extra_options_treatment_picker.value = storedTreatment;
+                    }
+
+                    function populate_experiment_2025_02_extra_options() {
+                        experiment_2025_02_extra_options_treatments.forEach((treatments) => {
+                            const optElement = document.createElement("option");
+                            optElement.value = treatments;
+                            optElement.textContent = treatments;
+                            experiment_2025_02_extra_options_treatment_picker.appendChild(optElement);
+                        });
+                    }
+
+                    experiment_2025_02_extra_options_treatment_picker.addEventListener("change", () => {
+                        const selectedTreatment = experiment_2025_02_extra_options_treatment_picker.value;
+                    
+                        // Store the selection
+                        localStorage.setItem("experiment_2025_02_extra_options", selectedTreatment);
+                    });
+                } catch(error) {
+                }
 
                 try {
                     const experiment_2025_02_shop_category_modals_treatments = ["Treatment -1: Disabled", "Treatment 1: Enable category modals", "Treatment 2: Enable category modals w/ data downloads"];
@@ -8395,6 +8447,7 @@ if (localStorage.full_client_rework != "false") {
     }
 
     if (localStorage.experiment_force_rollout != "false") {
+        localStorage.experiment_2025_02_extra_options = EXPERIMENT_ID_18;
         localStorage.experiment_2025_02_shop_category_modals = EXPERIMENT_ID_16;
         localStorage.experiment_2025_02_shop_card_modals = EXPERIMENT_ID_15;
         localStorage.experiment_2025_02_mobile_render = EXPERIMENT_ID_14;
@@ -8406,6 +8459,10 @@ if (localStorage.full_client_rework != "false") {
         localStorage.experiment_2024_11_collectibles_variants = EXPERIMENT_ID_8;
         localStorage.experiment_2024_11_recap = EXPERIMENT_ID_7;
     } else {
+
+        if (localStorage.experiment_2025_02_extra_options == null) {
+            localStorage.experiment_2025_02_extra_options = EXPERIMENT_ID_18;
+        }
 
         if (localStorage.experiment_2025_02_category_card_modals == null) {
             localStorage.experiment_2025_02_category_card_modals = EXPERIMENT_ID_16;
@@ -8447,6 +8504,11 @@ if (localStorage.full_client_rework != "false") {
             localStorage.experiment_2024_11_recap = EXPERIMENT_ID_7;
         }
     }
+
+    function experiment_2025_02_extra_options_clear() {
+        localStorage.experiment_2025_02_extra_options = EXPERIMENT_ID_18;
+        document.getElementById("experiment_2025_02_extra_options_treatment_container").value = EXPERIMENT_ID_18;
+    };
 
     function experiment_2025_02_shop_category_modals_clear() {
         localStorage.experiment_2025_02_shop_category_modals = EXPERIMENT_ID_16;
@@ -8500,9 +8562,15 @@ if (localStorage.full_client_rework != "false") {
 
 
     function changeUsernameFromInput() {
-        const input = document.getElementById('options-text-input')
+        const input = document.getElementById('profile-username-text-input')
 
         localStorage.discord_username = input.value;
+    }
+
+    function changeAvatarFromInput() {
+        const input = document.getElementById('profile-avatar-text-input')
+
+        localStorage.discord_avatar = input.value;
     }
 
 
