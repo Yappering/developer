@@ -529,6 +529,71 @@ body {
 }
 
 
+.options-preview-profile {
+    position: relative;
+    width: 300px;
+    height: 210px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #111214;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.options-preview-profile-banner {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(130, 159, 244);
+}
+
+.profile-avatar-preview-bg {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    width: 110px;
+    height: 110px;
+    border-radius: 999px;
+    object-fit: cover;
+    display: block;
+    background-color: #111214;
+}
+
+.profile-avatar-deco-preview {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-profile-effect-preview {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.options-preview-profile-displayname {
+    position: absolute;
+    top: 130px;
+    left: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.options-preview-profile-username {
+    position: absolute;
+    top: 160px;
+    left: 20px;
+    font-size: 16px;
+}
+
 
 .upload-container {
     background: white;
@@ -540,14 +605,13 @@ body {
 
 .profile-avatar-preview {
     position: absolute;
-    right: 10px;
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
+    top: 50px;
+    left: 20px;
+    width: 90px;
+    height: 90px;
+    border-radius: 999px;
     object-fit: cover;
     display: block;
-    margin: 10px auto;
-    border: 2px solid #ddd;
 }
 
 .profile-avatar-file-input {
