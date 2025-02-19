@@ -528,6 +528,64 @@ body {
     background-color: var(--input-background);
 }
 
+
+
+.upload-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+.profile-avatar-preview {
+    position: absolute;
+    right: 10px;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    margin: 10px auto;
+    border: 2px solid #ddd;
+}
+
+.profile-avatar-file-input {
+    display: none;
+}
+
+.profile-avatar-upload-label, .profile-avatar-remove-button {
+    position: absolute;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.profile-avatar-upload-label {
+    background-color: var(--brand-500);
+    left: 10px;
+}
+
+.profile-avatar-upload-label:hover {
+    background-color: var(--brand-500-hover);
+}
+
+.profile-avatar-remove-button {
+    background-color: var(--status-danger);
+    border: none;
+    right: 10px;
+    height: 40px;
+    width: 140px;
+}
+
+.profile-avatar-remove-button:hover {
+    background-color: var(--button-danger-background);
+}
+
+
+
 .options-dropdown {
     position: absolute;
     right: 10px;
