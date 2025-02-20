@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 234";
+tcbx926n29 = "Dev 235";
 
 defaultAvatar1 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAY1BMVEVYZfJib/OMlfahqPeWn/eBi/XLz/vq6/7////19f5tePTq7P22vPnV2Pyrsvirsvl3gvT09f7Axfp3gfRtePNsePPg4v22vPq2u/qCi/WhqPjf4/zf4v2Xn/essvjLzvuXnvdbidFTAAAETElEQVR4AezBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAIDZudMtV1UlDuCFRKlWIEJ6uOwbzXn/lzzzYc/GWiT6zya/79WrLeYSc5Vq9IFWa3Sr6JehWt0ZZn5RtFJvmHnodPsrPLx1/B9PKx1ziLOPnIRRO84EXaAP/CWnR3pArTWcybpA5G8NsX20pw+cSbpAngEeOQenY+Cf8KIZ4FuDfSV4Ko/7hS7wNjYH7W3MvNeHtn2jvxn+OXcgaP0x8KJo43vgnwqu85EXDfGVULWON9G1BOmDN/M/AnTgDSWC0xve0KAITeSsykFw4qzOQWB4YwNBOfLmPAHpeXsvr5XOgJkjGA3vIlU6A2bvOHvAnXwiCMrwTl5UpUtg5us7BAB2gcg78nXugaC6QORd+bo7AEAXiLwzX+8SANEFNHPdXcAwV90FDgxA037+zwAc7aZlCKnSNTDrADZBdU6DBwbha5wCAabBkWGkSqfAzFa6C8xeADYB9Y2ByEBsbSMAYAy0zHWPActQLPQuKBh3DiwiDRlwzwFOv9JfTpORh5x5rVfQc8CQiLLJiEMaA1oW6XgVq+grVh4yY56JA68x07fm8hCIhXCUPn823zgkG/HK4Rf6kYv8YBt5BQ03BQyv9CMq8M/JQ7IItw+e6cd8QQjKTqCX3OMTtOdCCNZOoCnqkrYgZEFD2/FF/08qDAE4Dji+TtHPKHknVmBboVB2i9HI9zIGahZUhaVqVxCyQEEVQ7rSBMj3QiPUUTCWJkC+8zrQVjzmELBYG2H5jDYUFqAiQDlMtAwKQgjr+nwoq9O2BSEQJQFVWKeNBSEQ6+BYeG3BFIUAHIfasmsLh7IQgLcjDZd0AWXEIZRDMDYCuuj73g95yJGxEuBLPmr6VBSyzMO9Fpzko3kqeA1r8W4GHOWNKQ/JIl4COL4SZf2lPAQhAY4lYrv860rlIVmHlYAsuBhjFwpCwO4LOkb0TMAzAc8EPBPwTMAGngl4JuCZgMig4jMB27AMykJUhCr4ekwzKI10T9hpwzcz6DNSUbRdORzThW/CJSKagd4LjKurof1suFCYVR54MDckpsBXDLk3pliQgxBTHneBrwiaNtOfeUUKCnMQYlKC32x2r7SlmSUpoOQdi5xtoqx1DNP8WW9kKSCVvAu8QnC2USR4/I2bP5vDmhS80pdOjXULw8dc7HSiL6ljYLTmz/ooKvJTdkqTt9G5s/mHczH6qXlV9I32Ehi0+QVfQbn7HryHhvY033V1Tuu3CRncOIj3rL3EV9pf7+53ced0bY+MIZm7ndEt9uNnkxN8OSWhAvjjZ8ktnIoKaMDHF0yH8S416C4Rpv7bU094pWJ9QFv4BJOBvnkFzjWKMvhu4G78IibMIz2EFM3KFUAwCEI+ID9MDia6kd/+enpFj+YE+af+aA8OZAAAAAAG+Vvf46sAAAAAAAAAAAAAAAAAAAAAAFYCeHSjWah9hFcAAAAASUVORK5CYII=`;
 defaultAvatar2 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAhFBMVEV1fop9hpGgpq+ytr2prraXnqfT19vu7/H////29/iGjpju7/DCxszc3+K6vsS6v8WOlqD39/fLztPLz9OPlqDl5+nDx8ygpq6xtr6xtr3m5+iOlp/Dxsvc3+Hd3+GorraGjpnT19rT1tv29/eOlqHU19p+hpGprrWxt72or7bLz9Kfpq+ibmTzAAAEY0lEQVR4AezBAQEAAAQAIPB/swkMqAIAAAAAAAAAAAAAAAAAAAAAgBNZPfFWy86dLimOw3AAV5qYEXFicMKxHIFs03e///PtvaouagjRGMKfNr/vmhorsiMbpwcm+UZjN4PhD2YedR5TZpnZDgfmOww+L/h/jjoaS0iRG7pdk0HBQlECmeevisGEbpDJf7DQlUDJh2xlbm30noWmBGQFuOUcTMeej3CqFeCQzTOCl8i8bymBbPKQDlxeCecGqTH/Dc/ycUVK0LKx51ZVXs08H+WLoSu5la0yQmUK7sXQEKQ592ZOgFLukSE4meUe2YTQlCyinARTFnFOAss9swRlzL1zBCTj/o2ySFdAURCMBV+FiXQFFLP4esADvxGExPKVjJJIX4HCxbcJACyBkq/IxdkDQZVAyVfl4i4AgBIo+cpcvK8AiBJYMsddApY56hJIGcCSrmfFAAq6GsMQTKTvQDEEaILiXAZTBuEAlsAYl8E1wzCRLoEij7QLFKNYmwBhIp0BIo9tBgDMAcMc9xzYMJQcugvytl55VtCHWNx9wHaZ0d+mO6sP6Z7mBnQfYA2R2Fl1yMKCHov8zp3kycHKoQ9x3Mkj9Wv/i9s0FxCC9CJca8cv3JlDxBPecfgz/cwzt9j+etO5hFsCbEM/89I2e/QhoqI+2YBzGnfWEGHRuoBRQ6R9nu0hQJ3AIqgkNwEhLR6oPy7o/2MCQwC2AwWfltAxL/oifgFrhfZhtxitvpexAKug7nnU+gKqw2sO6DDk8bwJKKF6wZRPq8IToO28XqkvDnMK5FiNMB1n9SErqGZ4xeGvQV0IYV2f34ed05qgEIAjgZfAc9oyIATiPbgOvLZgA0IgtkMm7NpCGhCC8evIgkNKILHqEJIQjEZgGfR971wfMmasBLiQj5regkLaObifBd/p0Ls+xHBXOd7NgLH+YepDRIWXAK4yIpE9B4QAJaBgjcq0/3Wl8BDxiJUA4Yuqqob+YiGi7i0BiO4JuCfgnoB7Au4J6ME9AfcE3BNQMqjqnoAYrgkDnAc4BuWoH0sGtUS6J7xdWj4bu5wBHIqqL+yYZz6Lrek47wzOL0M7+kfjLAfyLpGJB3NDYrfnE2wq5VLagNF/GJl3nk/wS+pNM+PuKZAc6EefKP5m87ahPjnWpICMq1lllRsSpmCYxy8aq0sBJcbVnjvw23yR0OHwcR6/cPsuKcjoq+kir1d8lH3O0yl9lYw9oz1+0ZSqQ34SU5O6/KOuV/Zfdf3x4dJFltAB8+wZ9PErvoKqL7vxtp90TY5Pmlyy5ZI2QcDNg+qSZy9VQ9fX1Je7uDM91SNjMPZie/QN9vDFrtZ8OaXwsgcfvjB1y64owBJp+PrlsLrIGfSzIUzN4a7HNxSs2cO8+PSLwfLsJ3Dbh4QEfBlsz/xDjHcTQicHAPIGONck8LJBvpkc7OhMduxzk9CtmUL+U3+2BwcyAAAAAIP8re/xVQAAAAAAAAAAAAAAAAAAAAAAKwFiKavpSRGzHgAAAABJRU5ErkJggg==`;
@@ -27,6 +27,7 @@ if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
 }
 
+localStorage.discord_banner = ``;
 
 if (localStorage.discord_avatar && localStorage.discord_avatar != '') {
 
@@ -3559,69 +3560,82 @@ if (localStorage.full_client_rework != "false") {
 
                                         let priceStandard = "N/A";
                                         let priceNitro = "N/A";
+                                        let priceOrb = "N/A";
 
-                                        if (localStorage.currency === "Discord Orb") {
-                                            if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
-                                                product.prices["0"].country_prices.prices.forEach(price => {
-                                                    if (price.currency === "discord_orb") {
-                                                        priceStandard = price.amount;
-                                                    }
-                                                });
-                                            }
-                                    
-                                            if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
-                                                product.prices["4"].country_prices.prices.forEach(price => {
-                                                    if (price.currency === "discord_orb") {
-                                                        priceNitro = price.amount;
-                                                    }
-                                                });
-                                            }
-
-                                            if (priceTextStandard) {
-                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `${priceStandard}` : "null";
-                                            }
+                                        if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled") {
+                                            if (localStorage.is_nitro_user === "true") {
+                                                if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
+                                                    product.prices["4"].country_prices.prices.forEach(price => {
+                                                        if (price.currency === "discord_orb") {
+                                                            priceOrb = price.amount;
+                                                        }
+                                                    });
+                                                }
                                         
-                                            let orb_icon = document.createElement("div");
-                                        
-                                            orb_icon.classList.add('orb-icon');
-                                        
-                                            priceContainerStandard.appendChild(orb_icon);
+                                                if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
+                                                    product.prices["4"].country_prices.prices.forEach(price => {
+                                                        if (price.currency === "usd") {
+                                                            priceStandard = price.amount;
+                                                        }
+                                                    });
+                                                }
     
-    
-                                            if (priceTextNitro) {
-                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `${priceNitro}` : "null";
-                                            }
-                                        
-                                            let orb_icon_nitro = document.createElement("div");
-                                        
-                                            orb_icon_nitro.classList.add('orb-icon-strike');
-                                        
-                                            priceContainerNitro.appendChild(orb_icon_nitro);
+                                                if (priceTextStandard) {
+                                                    standardPriceOutput = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "null";
+                                                }
 
-                                        } else if (localStorage.currency === "NZD (Mobile)") {
-                                            if (product.prices && product.prices["5"] && product.prices["5"].country_prices && product.prices["5"].country_prices.prices) {
-                                                product.prices["5"].country_prices.prices.forEach(price => {
-                                                    if (price.currency === "nzd") {
-                                                        priceStandard = price.amount;
-                                                    }
-                                                });
-                                            }
-                                    
-                                            if (product.prices && product.prices["7"] && product.prices["7"].country_prices && product.prices["7"].country_prices.prices) {
-                                                product.prices["7"].country_prices.prices.forEach(price => {
-                                                    if (price.currency === "nzd") {
-                                                        priceNitro = price.amount;
-                                                    }
-                                                });
+                                                priceContainerStandard.innerHTML = `
+                                                    <a style="font-size: large; font-weight: 900; margin-left: 23px">${standardPriceOutput}</a>
+                                                    <div class="nitro-icon" style="margin-left: -5px"></div>
+                                                `;
+    
+                                                let orb_price = document.createElement("div");
+                                            
+                                                orb_price.innerHTML = `
+                                                    <a style="font-size: large; font-weight: 900;">${priceOrb}</a>
+                                                    <div class="orb-icon" style="margin-left: -25px"></div>
+                                                `;
+                                                orb_price.style.position = `absolute`;
+                                                orb_price.style.right = `0px`;
+    
+                                                if (priceOrb != 'N/A') {
+                                                    priceContainer.appendChild(orb_price);
+                                                }
+                                            } else {
+                                                if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
+                                                    product.prices["0"].country_prices.prices.forEach(price => {
+                                                        if (price.currency === "discord_orb") {
+                                                            priceOrb = price.amount;
+                                                        }
+                                                    });
+                                                }
+                                        
+                                                if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
+                                                    product.prices["0"].country_prices.prices.forEach(price => {
+                                                        if (price.currency === "usd") {
+                                                            priceStandard = price.amount;
+                                                        }
+                                                    });
+                                                }
+    
+                                                if (priceTextStandard) {
+                                                    priceTextStandard.textContent = priceStandard !== "N/A" ? `US$${(priceStandard / 100).toFixed(2)}` : "null";
+                                                }
+    
+                                                let orb_price = document.createElement("div");
+                                            
+                                                orb_price.innerHTML = `
+                                                    <a style="font-size: large; font-weight: 900;">${priceOrb}</a>
+                                                    <div class="orb-icon" style="margin-left: -25px"></div>
+                                                `;
+                                                orb_price.style.position = `absolute`;
+                                                orb_price.style.right = `0px`;
+    
+                                                if (priceOrb != 'N/A') {
+                                                    priceContainer.appendChild(orb_price);
+                                                }
                                             }
 
-                                            if (priceTextStandard) {
-                                                priceTextStandard.textContent = priceStandard !== "N/A" ? `NZ$${(priceStandard / 100).toFixed(2)}` : "null";
-                                            }
-    
-                                            if (priceTextNitro) {
-                                                priceTextNitro.textContent = priceNitro !== "N/A" ? `NZ$${(priceNitro / 100).toFixed(2)} with Nitro` : "null";
-                                            }
                                         } else {
                                             if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
                                                 product.prices["0"].country_prices.prices.forEach(price => {
@@ -8619,6 +8633,10 @@ if (localStorage.full_client_rework != "false") {
                             <select id="currency_picker_container" class="options-dropdown">
                             </select>
                         </div>
+                        <div class="options-option-card" id="has-nitro-box-option">
+                            <p class="option-card-title" style="color: var(--white);">Display Nitro Discount</p>
+                            <input class="options-toggle-box" onclick="optionsHasNitroChecked();" style="cursor: pointer; scale: 2; posision: center;" id="options-has-nitro-box" type="checkbox">
+                        </div>
                     `;
                 }
 
@@ -8832,6 +8850,10 @@ if (localStorage.full_client_rework != "false") {
     
             if (localStorage.reduced_motion == "true") {
                 document.getElementById("reduced-motion-box").checked = true;
+            }
+
+            if (localStorage.is_nitro_user == "true") {
+                document.getElementById("options-has-nitro-box").checked = true;
             }
 
             if (localStorage.disable_client_banner_overrides == "true") {
@@ -9873,6 +9895,17 @@ if (localStorage.full_client_rework != "false") {
         }
         else {
             localStorage.reduced_motion = "false"
+        }
+        if (typeof fetchData === 'function') {
+            fetchData(pageCheck());
+        }
+    }
+
+    function optionsHasNitroChecked() {
+        if (localStorage.is_nitro_user != "true") {
+            localStorage.is_nitro_user = "true"
+        } else {
+            localStorage.is_nitro_user = "false"
         }
         if (typeof fetchData === 'function') {
             fetchData(pageCheck());
