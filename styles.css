@@ -533,6 +533,20 @@ body {
     background-color: var(--input-background);
 }
 
+.newProfileSettingsDismissible {
+    position: fixed;
+    right: 50px;
+    width: 430px;
+    height: 200px;
+    background-image: url(https://cdn.yapper.shop/assets/156.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 100;
+    transition: transform 0.5s;
+    animation: home-page-dismissible-content-2024-recap-anim 10s;
+    cursor: pointer;
+}
 
 .options-preview-profile {
     position: relative;
