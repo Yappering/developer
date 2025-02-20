@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 231";
+tcbx926n29 = "Dev 232";
 
 defaultAvatar1 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAY1BMVEVYZfJib/OMlfahqPeWn/eBi/XLz/vq6/7////19f5tePTq7P22vPnV2Pyrsvirsvl3gvT09f7Axfp3gfRtePNsePPg4v22vPq2u/qCi/WhqPjf4/zf4v2Xn/essvjLzvuXnvdbidFTAAAETElEQVR4AezBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAIDZudMtV1UlDuCFRKlWIEJ6uOwbzXn/lzzzYc/GWiT6zya/79WrLeYSc5Vq9IFWa3Sr6JehWt0ZZn5RtFJvmHnodPsrPLx1/B9PKx1ziLOPnIRRO84EXaAP/CWnR3pArTWcybpA5G8NsX20pw+cSbpAngEeOQenY+Cf8KIZ4FuDfSV4Ko/7hS7wNjYH7W3MvNeHtn2jvxn+OXcgaP0x8KJo43vgnwqu85EXDfGVULWON9G1BOmDN/M/AnTgDSWC0xve0KAITeSsykFw4qzOQWB4YwNBOfLmPAHpeXsvr5XOgJkjGA3vIlU6A2bvOHvAnXwiCMrwTl5UpUtg5us7BAB2gcg78nXugaC6QORd+bo7AEAXiLwzX+8SANEFNHPdXcAwV90FDgxA037+zwAc7aZlCKnSNTDrADZBdU6DBwbha5wCAabBkWGkSqfAzFa6C8xeADYB9Y2ByEBsbSMAYAy0zHWPActQLPQuKBh3DiwiDRlwzwFOv9JfTpORh5x5rVfQc8CQiLLJiEMaA1oW6XgVq+grVh4yY56JA68x07fm8hCIhXCUPn823zgkG/HK4Rf6kYv8YBt5BQ03BQyv9CMq8M/JQ7IItw+e6cd8QQjKTqCX3OMTtOdCCNZOoCnqkrYgZEFD2/FF/08qDAE4Dji+TtHPKHknVmBboVB2i9HI9zIGahZUhaVqVxCyQEEVQ7rSBMj3QiPUUTCWJkC+8zrQVjzmELBYG2H5jDYUFqAiQDlMtAwKQgjr+nwoq9O2BSEQJQFVWKeNBSEQ6+BYeG3BFIUAHIfasmsLh7IQgLcjDZd0AWXEIZRDMDYCuuj73g95yJGxEuBLPmr6VBSyzMO9Fpzko3kqeA1r8W4GHOWNKQ/JIl4COL4SZf2lPAQhAY4lYrv860rlIVmHlYAsuBhjFwpCwO4LOkb0TMAzAc8EPBPwTMAGngl4JuCZgMig4jMB27AMykJUhCr4ekwzKI10T9hpwzcz6DNSUbRdORzThW/CJSKagd4LjKurof1suFCYVR54MDckpsBXDLk3pliQgxBTHneBrwiaNtOfeUUKCnMQYlKC32x2r7SlmSUpoOQdi5xtoqx1DNP8WW9kKSCVvAu8QnC2USR4/I2bP5vDmhS80pdOjXULw8dc7HSiL6ljYLTmz/ooKvJTdkqTt9G5s/mHczH6qXlV9I32Ehi0+QVfQbn7HryHhvY033V1Tuu3CRncOIj3rL3EV9pf7+53ced0bY+MIZm7ndEt9uNnkxN8OSWhAvjjZ8ktnIoKaMDHF0yH8S416C4Rpv7bU094pWJ9QFv4BJOBvnkFzjWKMvhu4G78IibMIz2EFM3KFUAwCEI+ID9MDia6kd/+enpFj+YE+af+aA8OZAAAAAAG+Vvf46sAAAAAAAAAAAAAAAAAAAAAAFYCeHSjWah9hFcAAAAASUVORK5CYII=`;
 defaultAvatar2 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAhFBMVEV1fop9hpGgpq+ytr2prraXnqfT19vu7/H////29/iGjpju7/DCxszc3+K6vsS6v8WOlqD39/fLztPLz9OPlqDl5+nDx8ygpq6xtr6xtr3m5+iOlp/Dxsvc3+Hd3+GorraGjpnT19rT1tv29/eOlqHU19p+hpGprrWxt72or7bLz9Kfpq+ibmTzAAAEY0lEQVR4AezBAQEAAAQAIPB/swkMqAIAAAAAAAAAAAAAAAAAAAAAgBNZPfFWy86dLimOw3AAV5qYEXFicMKxHIFs03e///PtvaouagjRGMKfNr/vmhorsiMbpwcm+UZjN4PhD2YedR5TZpnZDgfmOww+L/h/jjoaS0iRG7pdk0HBQlECmeevisGEbpDJf7DQlUDJh2xlbm30noWmBGQFuOUcTMeej3CqFeCQzTOCl8i8bymBbPKQDlxeCecGqTH/Dc/ycUVK0LKx51ZVXs08H+WLoSu5la0yQmUK7sXQEKQ592ZOgFLukSE4meUe2YTQlCyinARTFnFOAss9swRlzL1zBCTj/o2ySFdAURCMBV+FiXQFFLP4esADvxGExPKVjJJIX4HCxbcJACyBkq/IxdkDQZVAyVfl4i4AgBIo+cpcvK8AiBJYMsddApY56hJIGcCSrmfFAAq6GsMQTKTvQDEEaILiXAZTBuEAlsAYl8E1wzCRLoEij7QLFKNYmwBhIp0BIo9tBgDMAcMc9xzYMJQcugvytl55VtCHWNx9wHaZ0d+mO6sP6Z7mBnQfYA2R2Fl1yMKCHov8zp3kycHKoQ9x3Mkj9Wv/i9s0FxCC9CJca8cv3JlDxBPecfgz/cwzt9j+etO5hFsCbEM/89I2e/QhoqI+2YBzGnfWEGHRuoBRQ6R9nu0hQJ3AIqgkNwEhLR6oPy7o/2MCQwC2AwWfltAxL/oifgFrhfZhtxitvpexAKug7nnU+gKqw2sO6DDk8bwJKKF6wZRPq8IToO28XqkvDnMK5FiNMB1n9SErqGZ4xeGvQV0IYV2f34ed05qgEIAjgZfAc9oyIATiPbgOvLZgA0IgtkMm7NpCGhCC8evIgkNKILHqEJIQjEZgGfR971wfMmasBLiQj5regkLaObifBd/p0Ls+xHBXOd7NgLH+YepDRIWXAK4yIpE9B4QAJaBgjcq0/3Wl8BDxiJUA4Yuqqob+YiGi7i0BiO4JuCfgnoB7Au4J6ME9AfcE3BNQMqjqnoAYrgkDnAc4BuWoH0sGtUS6J7xdWj4bu5wBHIqqL+yYZz6Lrek47wzOL0M7+kfjLAfyLpGJB3NDYrfnE2wq5VLagNF/GJl3nk/wS+pNM+PuKZAc6EefKP5m87ahPjnWpICMq1lllRsSpmCYxy8aq0sBJcbVnjvw23yR0OHwcR6/cPsuKcjoq+kir1d8lH3O0yl9lYw9oz1+0ZSqQ34SU5O6/KOuV/Zfdf3x4dJFltAB8+wZ9PErvoKqL7vxtp90TY5Pmlyy5ZI2QcDNg+qSZy9VQ9fX1Je7uDM91SNjMPZie/QN9vDFrtZ8OaXwsgcfvjB1y64owBJp+PrlsLrIGfSzIUzN4a7HNxSs2cO8+PSLwfLsJ3Dbh4QEfBlsz/xDjHcTQicHAPIGONck8LJBvpkc7OhMduxzk9CtmUL+U3+2BwcyAAAAAIP8re/xVQAAAAAAAAAAAAAAAAAAAAAAKwFiKavpSRGzHgAAAABJRU5ErkJggg==`;
@@ -880,6 +880,7 @@ if (localStorage.full_client_rework != "false") {
                                                     modal.innerHTML = `
                                                         <div class="modalv2-inner">
                                                             <div class="modalv2-inner-left">
+                                                                <div data-modal-left-preview-holder></div>
                                                                 <p data-product-modal-sku-id></p>
                                                                 <p data-product-modal-credits></p>
                                                                 <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
@@ -930,29 +931,68 @@ if (localStorage.full_client_rework != "false") {
                                                         product.items.forEach(item => {
 
                                                             const previewHolder = modal.querySelector("[data-modal-preview-holder]");
-                                                            previewHolder.classList.add('modal-avatar-decoration-img');
+                                                            const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
 
-                                                            const imgElement = document.createElement("img");
-                                                            imgElement.id = "shop-card-deco-image";
-                                                            imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
-
-                                                            previewHolder.appendChild(imgElement);
-                                                        
-                                                            // Set the product details
                                                             modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
                                                             modal.querySelector("[data-product-modal-credits]").textContent = `Made By: ${product.credits}`;
                                                             modal.querySelector("[data-product-modal-name]").textContent = product.name;
                                                             modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
-                                                        
-                                                            // Hover effect: Change the image src on mouse enter and leave
-                                                            if (localStorage.reduced_motion != "true") {
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                    imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
-                                                                });
-                                                            
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                    imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
-                                                                });
+
+                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+
+                                                                previewHolder.classList.add('modal-preview-profile-container');
+                                                                previewHolder.innerHTML = `
+                                                                    <div class="modal-preview-profile1">
+                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                        <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                        <div class="profile-avatar-preview-bg"></div>
+                                                                        <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                        <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                        <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/${item.animated}.png">
+                                                                    </div>
+                                                                `;
+
+                                                                document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+
+                                                                previewHolderLeft.classList.add('modal-left-avatar-decoration-img');
+
+                                                                const imgElement = document.createElement("img");
+                                                                imgElement.id = "shop-card-deco-image";
+                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+
+                                                                previewHolderLeft.appendChild(imgElement);
+
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    imgElement.addEventListener("mouseenter", () => {
+                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                    });
+                                                                
+                                                                    imgElement.addEventListener("mouseleave", () => {
+                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                    });
+                                                                }
+
+                                                            } else {
+                                                                
+                                                                previewHolder.classList.add('modal-avatar-decoration-img');
+
+                                                                const imgElement = document.createElement("img");
+                                                                imgElement.id = "shop-card-deco-image";
+                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+
+                                                                previewHolder.appendChild(imgElement);
+
+                                                                // Hover effect: Change the image src on mouse enter and leave
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                    });
+                                                                
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                    });
+                                                                }
                                                             }
 
                                                         });
@@ -987,39 +1027,89 @@ if (localStorage.full_client_rework != "false") {
                                                     
                                                         // Find matching profile effect
                                                         const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+
+                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                        const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
                                                     
                                                         if (matchingEffect) {
-                                                            const previewHolder = modal.querySelector("[data-modal-preview-holder]");
-                                                            previewHolder.classList.add('modal-profile-effect-img');
-                                                        
-                                                            previewHolder.innerHTML = `
-                                                                <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
-                                                            `;
-                                                        
-                                                            // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
-                                                            const imgElement = previewHolder.querySelector("img");
-                                                        
-                                                            if (localStorage.reduced_motion != "true") {
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                    if (matchingEffect.effects && matchingEffect.effects.length > 0) {
-                                                                        const effectUrl = matchingEffect.effects[0]?.src;
-                                                                        imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
-                                                                    }
-                                                                });
+                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                                previewHolder.classList.add('modal-preview-profile-container');
+                                                                previewHolder.innerHTML = `
+                                                                    <div class="modal-preview-profile2">
+                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                        <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                        <div class="profile-avatar-preview-bg"></div>
+                                                                        <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                        <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                        <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${matchingEffect.effects[0]?.src}">
+                                                                    </div>
+                                                                `;
+
+                                                                document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+
+                                                                previewHolderLeft.classList.add('modal-left-profile-effect-img');
                                                             
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
-                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
-                                                                });
+                                                                const imgElement = document.createElement("img");
+                                                                imgElement.src = matchingEffect.thumbnailPreviewSrc;
+
+                                                                previewHolderLeft.appendChild(imgElement);
+                                                            
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    imgElement.addEventListener("mouseenter", () => {
+                                                                        if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                            const effectUrl = matchingEffect.effects[0]?.src;
+                                                                            imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                        }
+                                                                    });
+                                                                
+                                                                    imgElement.addEventListener("mouseleave", () => {
+                                                                        // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                        imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                    });
+                                                                } else {
+                                                                    imgElement.addEventListener("mouseenter", () => {
+                                                                        imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                    });
+                                                                
+                                                                    imgElement.addEventListener("mouseleave", () => {
+                                                                        // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                        imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                    });
+                                                                }
                                                             } else {
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                    imgElement.src = matchingEffect.reducedMotionSrc;
-                                                                });
+                                                                const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                                previewHolder.classList.add('modal-profile-effect-img');
                                                             
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
-                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
-                                                                });
+                                                                previewHolder.innerHTML = `
+                                                                    <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                                `;
+                                                            
+                                                                // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                                const imgElement = previewHolder.querySelector("img");
+                                                            
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                        if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                            const effectUrl = matchingEffect.effects[0]?.src;
+                                                                            imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                        }
+                                                                    });
+                                                                
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                        // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                        imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                    });
+                                                                } else {
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                        imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                    });
+                                                                
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                        // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                        imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                    });
+                                                                }
                                                             }
                                                         }
                                                     } else if (product.type === NAMEPLATE) {
@@ -1084,6 +1174,8 @@ if (localStorage.full_client_rework != "false") {
                                                         modal.classList.add('modal-1000');
 
                                                         const bundledProducts = product.bundled_products || [];
+
+                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                                     
                                                         // Generate the bundle summary from the names of the bundled products
                                                         const type0Product = bundledProducts.find(item => item.type === 0);
@@ -1107,69 +1199,114 @@ if (localStorage.full_client_rework != "false") {
                                                     
                                                         // Handle each item in the bundle
                                                         product.items.forEach(item => {
-                                                            if (item.type === 0) {
-                                                                // Avatar decoration
-                                                                const decoImage = document.createElement("img");
-                                                                decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
-                                                                decoImage.alt = "Avatar Decoration";
-                                                                decoImage.classList.add("modal-avatar-decoration-img");
-                                                                modal.querySelector("[data-modal-preview-holder]").appendChild(decoImage);
-                                                    
-                                                                // Hover effect for decoration image
-                                                                if (localStorage.reduced_motion != "true") {
-                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                        decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
-                                                                    });
-
-                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                        decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
-                                                                    });
-                                                                }
-                                                            } else if (item.type === 1) {
-                                                                // Profile effect
-                                                                (async () => {
-                                                                    // Fetch profile effects if not cached
-                                                                    if (!profileEffectsCache) {
-                                                                        const response = await fetch(api + PROFILE_EFFECTS);
-                                                                        const effectsData = await response.json();
-                                                                        profileEffectsCache = effectsData.profile_effect_configs;
-                                                                    }
-                                                    
-                                                                    // Find the matching effect
-                                                                    const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
-                                                    
-                                                                    if (matchingEffect) {
-                                                                        const effectImage = document.createElement("img");
-                                                                        effectImage.src = matchingEffect.thumbnailPreviewSrc;
-                                                                        effectImage.alt = "Profile Effect";
-                                                                        effectImage.classList.add("modal-profile-effect-img");
-                                                                        modal.querySelector("[data-modal-preview-holder]").appendChild(effectImage);
-                                                    
-                                                                        // Hover effect for profile effect
-                                                                        if (localStorage.reduced_motion != "true") {
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                                if (matchingEffect.effects && matchingEffect.effects.length > 0) {
-                                                                                    const effectUrl = matchingEffect.effects[0]?.src;
-                                                                                    effectImage.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
-                                                                                }
-                                                                            });
-                                                                        
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
-                                                                                effectImage.src = matchingEffect.thumbnailPreviewSrc;
-                                                                            });
-                                                                        } else {
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                                effectImage.src = matchingEffect.reducedMotionSrc;
-                                                                            });
-                                                                        
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
-                                                                                effectImage.src = matchingEffect.thumbnailPreviewSrc;
-                                                                            });
+                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                                
+                                                                if (item.type === 0) {
+                                                                    decosrc = item.animated
+                                                                } else if (item.type === 1) {
+                                                                    // Profile effect
+                                                                    (async () => {
+                                                                        // Fetch profile effects if not cached
+                                                                        if (!profileEffectsCache) {
+                                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                                            const effectsData = await response.json();
+                                                                            profileEffectsCache = effectsData.profile_effect_configs;
                                                                         }
+                                                    
+                                                                        // Find the matching effect
+                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                    
+                                                                        if (matchingEffect) {
+                                                                            if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                renderProfile(effectUrl)
+                                                                            }
+                                                                        }
+                                                                    })();
+                                                                }
+
+                                                                function renderProfile(effectUrl) {
+                                                                    previewHolder.classList.add('modal-preview-profile-container');
+                                                                    previewHolder.innerHTML = `
+                                                                        <div class="modal-preview-profile2">
+                                                                            <div class="options-preview-profile-banner-color"></div>
+                                                                            <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                            <div class="profile-avatar-preview-bg"></div>
+                                                                            <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                            <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                            <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/${decosrc}.png">
+                                                                            <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
+                                                                        </div>
+                                                                    `;
+                                                                    document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+                                                                }
+
+                                                                
+                                                            } else {
+                                                                if (item.type === 0) {
+                                                                    const decoImage = document.createElement("img");
+                                                                    decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                    decoImage.alt = "Avatar Decoration";
+                                                                    decoImage.classList.add("modal-avatar-decoration-img");
+                                                                    modal.querySelector("[data-modal-preview-holder]").appendChild(decoImage);
+                                                    
+                                                                    // Hover effect for decoration image
+                                                                    if (localStorage.reduced_motion != "true") {
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                        });
+
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                        });
                                                                     }
-                                                                })();
+                                                                } else if (item.type === 1) {
+                                                                    // Profile effect
+                                                                    (async () => {
+                                                                        // Fetch profile effects if not cached
+                                                                        if (!profileEffectsCache) {
+                                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                                            const effectsData = await response.json();
+                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                        }
+                                                    
+                                                                        // Find the matching effect
+                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                    
+                                                                        if (matchingEffect) {
+                                                                            const effectImage = document.createElement("img");
+                                                                            effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                            effectImage.alt = "Profile Effect";
+                                                                            effectImage.classList.add("modal-profile-effect-img");
+                                                                            modal.querySelector("[data-modal-preview-holder]").appendChild(effectImage);
+                                                    
+                                                                            // Hover effect for profile effect
+                                                                            if (localStorage.reduced_motion != "true") {
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                    if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                        const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                        effectImage.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                                    }
+                                                                                });
+                                                                            
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                    effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                                });
+                                                                            } else {
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                    effectImage.src = matchingEffect.reducedMotionSrc;
+                                                                                });
+                                                                            
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                    effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                                });
+                                                                            }
+                                                                        }
+                                                                    })();
+                                                                }
                                                             }
                                                         });
                                                     } else if (product.type === VARIANTS_GROUP) {
@@ -1215,105 +1352,222 @@ if (localStorage.full_client_rework != "false") {
             
                                                         let isFirstTimeLoadingVariant = true;
                                                         const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                        const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
                                                     
                                                         // Function to apply the selected variant
                                                         function applyVariant(selectedVariant) {
                                                             modal.querySelector("[data-shop-modal-var-title]").textContent = `(${selectedVariant.variant_label})`;
                                                             modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${selectedVariant.sku_id}`;
                                                             modal.querySelector("[data-product-modal-credits]").textContent = `Made By: ${selectedVariant.credits}`;
-                                                            // modal.querySelector("[data-share-product-card-button]").innerHTML = `
-                                                            //     <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${selectedVariant.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
-                                                            // `;
                                                             if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                                 modal.querySelector("[data-download-product-card-button]").innerHTML = `
                                                                     <svg class="downloadIcon_modal" onclick="window.open('https://item.yapper.shop/sku/${selectedVariant.sku_id}/data.zip');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                                 `;
                                                             }
-                                                            if (selectedVariant.type === 0) {
-                                                                modal.classList.add("modal-2000-0");
-                                                                previewHolder.innerHTML = ""; // Clear previous decorations
-                                                                previewHolder.classList.add('modal-avatar-decoration-img');
+                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
                                                                 
-                                                                // Add the avatar decoration based on the selected variant
-                                                                selectedVariant.items?.forEach(item => {
-                                                                    const decoImage = document.createElement("img");
-                                                                    decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
-                                                                    decoImage.alt = "Avatar Decoration";
-                                                                    decoImage.id = "shop-card-deco-image";
-                                                                    previewHolder.appendChild(decoImage);
-                                                                
-                                                                    // Hover effect for decoration image
-                                                                    if (localStorage.reduced_motion !== "true") {
-                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
-                                                                        });
-                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
-                                                                        });
-                                                                    }
-                                                                });
-                                                            } else if (selectedVariant.type === 1) {
-                                                                modal.classList.add("modal-2000-1");
-                                                                (async () => {
-                                                                    // Ensure the item ID is accessible here
-                                                                    let itemId = undefined;
-                                                                    if (Array.isArray(selectedVariant.items)) {
-                                                                        // If items is an array, find the item with type 1 and get its id
-                                                                        const item = selectedVariant.items.find(item => item.type === 1);
-                                                                        if (item) {
-                                                                            itemId = item.id;
-                                                                        }
-                                                                    } else if (selectedVariant.items && selectedVariant.items.type === 1) {
-                                                                        // If items is an object and has type 1, get its id
-                                                                        itemId = selectedVariant.items.id;
-                                                                    }
-                                                                
-                                                                
-                                                                    // Fetch profile effects API only if not already cached
-                                                                    if (!profileEffectsCache) {
-                                                                        const response = await fetch(api + PROFILE_EFFECTS);
-                                                                        const effectsData = await response.json();
-                                                                        profileEffectsCache = effectsData.profile_effect_configs;
-                                                                    }
-                                                                
-                                                                    // Find matching profile effect
-                                                                    const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
-                                                                
-                                                                    if (matchingEffect) {
-                                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
-                                                                        previewHolder.classList.add('modal-profile-effect-img');
-                                                                    
+                                                                if (selectedVariant.type === 0) {
+                                                                    selectedVariant.items?.forEach(item => {
+                                                                        previewHolder.classList.add('modal-preview-profile-container');
                                                                         previewHolder.innerHTML = `
-                                                                            <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                                            <div class="modal-preview-profile1">
+                                                                                <div class="options-preview-profile-banner-color"></div>
+                                                                                <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                                <div class="profile-avatar-preview-bg"></div>
+                                                                                <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                                <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                                <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/${item.animated}.png">
+                                                                            </div>
                                                                         `;
-                                                                    
-                                                                        // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
-                                                                        const imgElement = previewHolder.querySelector("img");
-                                                                    
+                                                                        document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+
+                                                                        previewHolderLeft.classList.add('modal-left-avatar-decoration-img');
+
+                                                                        previewHolderLeft.innerHTML = `
+                                                                            <img id="shop-card-deco-image" src="https://cdn.yapper.shop/custom-collectibles/${item.static}.png" data-left-preview-deco-var>
+                                                                        `;
+
+                                                                        const imgElement = previewHolderLeft.querySelector("[data-left-preview-deco-var]");
+                                                                        
                                                                         if (localStorage.reduced_motion != "true") {
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            imgElement.addEventListener("mouseenter", () => {
+                                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                            });
+                                                                        
+                                                                            imgElement.addEventListener("mouseleave", () => {
+                                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                            });
+                                                                        }
+                                                                    });
+                                                                } else if (selectedVariant.type === 1) {
+
+                                                                    modal.classList.add("modal-2000-1");
+                                                                    (async () => {
+                                                                        // Ensure the item ID is accessible here
+                                                                        let itemId = undefined;
+                                                                        if (Array.isArray(selectedVariant.items)) {
+                                                                            // If items is an array, find the item with type 1 and get its id
+                                                                            const item = selectedVariant.items.find(item => item.type === 1);
+                                                                            if (item) {
+                                                                                itemId = item.id;
+                                                                            }
+                                                                        } else if (selectedVariant.items && selectedVariant.items.type === 1) {
+                                                                            // If items is an object and has type 1, get its id
+                                                                            itemId = selectedVariant.items.id;
+                                                                        }
+                                                                    
+                                                                    
+                                                                        // Fetch profile effects API only if not already cached
+                                                                        if (!profileEffectsCache) {
+                                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                                            const effectsData = await response.json();
+                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                        }
+                                                                    
+                                                                        // Find matching profile effect
+                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                    
+                                                                        if (matchingEffect) {
+                                                                            if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                previewHolder.classList.add('modal-preview-profile-container');
+                                                                                previewHolder.innerHTML = `
+                                                                                    <div class="modal-preview-profile2">
+                                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                                        <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                                        <div class="profile-avatar-preview-bg"></div>
+                                                                                        <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                        <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                                        <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
+                                                                                    </div>
+                                                                                `;
+                                                                                document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+                                                                            }
+                                                                        }
+
+                                                                        previewHolderLeft.classList.add('modal-left-profile-effect-img');
+
+                                                                        previewHolderLeft.innerHTML = `
+                                                                            <img src="${matchingEffect.thumbnailPreviewSrc}" data-left-preview-effect-var>
+                                                                        `;
+
+                                                                        const imgElement = previewHolderLeft.querySelector("[data-left-preview-effect-var]");
+                                                                        
+                                                                        if (localStorage.reduced_motion != "true") {
+                                                                            imgElement.addEventListener("mouseenter", () => {
                                                                                 if (matchingEffect.effects && matchingEffect.effects.length > 0) {
                                                                                     const effectUrl = matchingEffect.effects[0]?.src;
                                                                                     imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
                                                                                 }
                                                                             });
                                                                         
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            imgElement.addEventListener("mouseleave", () => {
                                                                                 // Revert back to the original thumbnailPreviewSrc when hover ends
                                                                                 imgElement.src = matchingEffect.thumbnailPreviewSrc;
                                                                             });
                                                                         } else {
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            imgElement.addEventListener("mouseenter", () => {
                                                                                 imgElement.src = matchingEffect.reducedMotionSrc;
                                                                             });
                                                                         
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            imgElement.addEventListener("mouseleave", () => {
                                                                                 // Revert back to the original thumbnailPreviewSrc when hover ends
                                                                                 imgElement.src = matchingEffect.thumbnailPreviewSrc;
                                                                             });
                                                                         }
-                                                                    }
-                                                                })();
+                                                                    })();
+                                                                }
+
+                                                                
+                                                            } else {
+                                                                if (selectedVariant.type === 0) {
+                                                                    modal.classList.add("modal-2000-0");
+                                                                    previewHolder.innerHTML = ""; // Clear previous decorations
+                                                                    previewHolder.classList.add('modal-avatar-decoration-img');
+                                                                    
+                                                                    // Add the avatar decoration based on the selected variant
+                                                                    selectedVariant.items?.forEach(item => {
+                                                                        const decoImage = document.createElement("img");
+                                                                        decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                        decoImage.alt = "Avatar Decoration";
+                                                                        decoImage.id = "shop-card-deco-image";
+                                                                        previewHolder.appendChild(decoImage);
+                                                                    
+                                                                        // Hover effect for decoration image
+                                                                        if (localStorage.reduced_motion !== "true") {
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                            });
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                            });
+                                                                        }
+                                                                    });
+                                                                } else if (selectedVariant.type === 1) {
+                                                                    modal.classList.add("modal-2000-1");
+                                                                    (async () => {
+                                                                        // Ensure the item ID is accessible here
+                                                                        let itemId = undefined;
+                                                                        if (Array.isArray(selectedVariant.items)) {
+                                                                            // If items is an array, find the item with type 1 and get its id
+                                                                            const item = selectedVariant.items.find(item => item.type === 1);
+                                                                            if (item) {
+                                                                                itemId = item.id;
+                                                                            }
+                                                                        } else if (selectedVariant.items && selectedVariant.items.type === 1) {
+                                                                            // If items is an object and has type 1, get its id
+                                                                            itemId = selectedVariant.items.id;
+                                                                        }
+                                                                    
+                                                                    
+                                                                        // Fetch profile effects API only if not already cached
+                                                                        if (!profileEffectsCache) {
+                                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                                            const effectsData = await response.json();
+                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                        }
+                                                                    
+                                                                        // Find matching profile effect
+                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                    
+                                                                        if (matchingEffect) {
+                                                                            const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                                            previewHolder.classList.add('modal-profile-effect-img');
+                                                                        
+                                                                            previewHolder.innerHTML = `
+                                                                                <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                                            `;
+                                                                        
+                                                                            // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                                            const imgElement = previewHolder.querySelector("img");
+                                                                        
+                                                                            if (localStorage.reduced_motion != "true") {
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                    if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                        const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                        imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                                    }
+                                                                                });
+                                                                            
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                                });
+                                                                            } else {
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                    imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                                });
+                                                                            
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                                });
+                                                                            }
+                                                                        }
+                                                                    })();
+                                                                }
                                                             }
                                                         }
                                                     
@@ -3431,6 +3685,7 @@ if (localStorage.full_client_rework != "false") {
                                                     modal.innerHTML = `
                                                         <div class="modalv2-inner">
                                                             <div class="modalv2-inner-left">
+                                                                <div data-modal-left-preview-holder></div>
                                                                 <p data-product-modal-sku-id></p>
                                                                 <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
                                                                 <p style="color: var(--8)" data-product-modal-summary></p>
@@ -3485,28 +3740,67 @@ if (localStorage.full_client_rework != "false") {
                                                         product.items.forEach(item => {
 
                                                             const previewHolder = modal.querySelector("[data-modal-preview-holder]");
-                                                            previewHolder.classList.add('modal-avatar-decoration-img');
+                                                            const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
 
-                                                            const imgElement = document.createElement("img");
-                                                            imgElement.id = "shop-card-deco-image";
-                                                            imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
-
-                                                            previewHolder.appendChild(imgElement);
-                                                        
-                                                            // Set the product details
                                                             modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
                                                             modal.querySelector("[data-product-modal-name]").textContent = product.name;
                                                             modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
-                                                        
-                                                            // Hover effect: Change the image src on mouse enter and leave
-                                                            if (localStorage.reduced_motion != "true") {
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                    imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
-                                                                });
-                                                            
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                    imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
-                                                                });
+
+                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+
+                                                                previewHolder.classList.add('modal-preview-profile-container');
+                                                                previewHolder.innerHTML = `
+                                                                    <div class="modal-preview-profile1">
+                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                        <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                        <div class="profile-avatar-preview-bg"></div>
+                                                                        <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                        <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                        <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true">
+                                                                    </div>
+                                                                `;
+
+                                                                document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+
+                                                                previewHolderLeft.classList.add('modal-left-avatar-decoration-img');
+
+                                                                const imgElement = document.createElement("img");
+                                                                imgElement.id = "shop-card-deco-image";
+                                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+
+                                                                previewHolderLeft.appendChild(imgElement);
+
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    imgElement.addEventListener("mouseenter", () => {
+                                                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                    });
+                                                                
+                                                                    imgElement.addEventListener("mouseleave", () => {
+                                                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                    });
+                                                                }
+
+                                                            } else {
+                                                                
+                                                                previewHolder.classList.add('modal-avatar-decoration-img');
+
+                                                                const imgElement = document.createElement("img");
+                                                                imgElement.id = "shop-card-deco-image";
+                                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+
+                                                                previewHolder.appendChild(imgElement);
+
+                                                                // Hover effect: Change the image src on mouse enter and leave
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                    });
+                                                                
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                    });
+                                                                }
                                                             }
 
                                                         });
@@ -3540,39 +3834,89 @@ if (localStorage.full_client_rework != "false") {
                                                     
                                                         // Find matching profile effect
                                                         const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+
+                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                        const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
                                                     
                                                         if (matchingEffect) {
-                                                            const previewHolder = modal.querySelector("[data-modal-preview-holder]");
-                                                            previewHolder.classList.add('modal-profile-effect-img');
-                                                        
-                                                            previewHolder.innerHTML = `
-                                                                <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
-                                                            `;
-                                                        
-                                                            // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
-                                                            const imgElement = previewHolder.querySelector("img");
-                                                        
-                                                            if (localStorage.reduced_motion != "true") {
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                    if (matchingEffect.effects && matchingEffect.effects.length > 0) {
-                                                                        const effectUrl = matchingEffect.effects[0]?.src;
-                                                                        imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
-                                                                    }
-                                                                });
+                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                                previewHolder.classList.add('modal-preview-profile-container');
+                                                                previewHolder.innerHTML = `
+                                                                    <div class="modal-preview-profile2">
+                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                        <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                        <div class="profile-avatar-preview-bg"></div>
+                                                                        <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                        <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                        <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${matchingEffect.effects[0]?.src}">
+                                                                    </div>
+                                                                `;
+
+                                                                document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+
+                                                                previewHolderLeft.classList.add('modal-left-profile-effect-img');
                                                             
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
-                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
-                                                                });
+                                                                const imgElement = document.createElement("img");
+                                                                imgElement.src = matchingEffect.thumbnailPreviewSrc;
+
+                                                                previewHolderLeft.appendChild(imgElement);
+                                                            
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    imgElement.addEventListener("mouseenter", () => {
+                                                                        if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                            const effectUrl = matchingEffect.effects[0]?.src;
+                                                                            imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                        }
+                                                                    });
+                                                                
+                                                                    imgElement.addEventListener("mouseleave", () => {
+                                                                        // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                        imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                    });
+                                                                } else {
+                                                                    imgElement.addEventListener("mouseenter", () => {
+                                                                        imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                    });
+                                                                
+                                                                    imgElement.addEventListener("mouseleave", () => {
+                                                                        // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                        imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                    });
+                                                                }
                                                             } else {
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                    imgElement.src = matchingEffect.reducedMotionSrc;
-                                                                });
+                                                                const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                                previewHolder.classList.add('modal-profile-effect-img');
                                                             
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
-                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
-                                                                });
+                                                                previewHolder.innerHTML = `
+                                                                    <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                                `;
+                                                            
+                                                                // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                                const imgElement = previewHolder.querySelector("img");
+                                                            
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                        if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                            const effectUrl = matchingEffect.effects[0]?.src;
+                                                                            imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                        }
+                                                                    });
+                                                                
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                        // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                        imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                    });
+                                                                } else {
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                        imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                    });
+                                                                
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                        // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                        imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                    });
+                                                                }
                                                             }
                                                         }
                                                     } else if (product.type === NAMEPLATE) {
@@ -3637,6 +3981,8 @@ if (localStorage.full_client_rework != "false") {
                                                         modal.classList.add('modal-1000');
 
                                                         const bundledProducts = product.bundled_products || [];
+
+                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                                     
                                                         // Generate the bundle summary from the names of the bundled products
                                                         const type0Product = bundledProducts.find(item => item.type === 0);
@@ -3659,69 +4005,114 @@ if (localStorage.full_client_rework != "false") {
                                                     
                                                         // Handle each item in the bundle
                                                         product.items.forEach(item => {
-                                                            if (item.type === 0) {
-                                                                // Avatar decoration
-                                                                const decoImage = document.createElement("img");
-                                                                decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
-                                                                decoImage.alt = "Avatar Decoration";
-                                                                decoImage.classList.add("modal-avatar-decoration-img");
-                                                                modal.querySelector("[data-modal-preview-holder]").appendChild(decoImage);
-                                                    
-                                                                // Hover effect for decoration image
-                                                                if (localStorage.reduced_motion != "true") {
-                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                        decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
-                                                                    });
-
-                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                        decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
-                                                                    });
-                                                                }
-                                                            } else if (item.type === 1) {
-                                                                // Profile effect
-                                                                (async () => {
-                                                                    // Fetch profile effects if not cached
-                                                                    if (!profileEffectsCache) {
-                                                                        const response = await fetch(api + PROFILE_EFFECTS);
-                                                                        const effectsData = await response.json();
-                                                                        profileEffectsCache = effectsData.profile_effect_configs;
-                                                                    }
-                                                    
-                                                                    // Find the matching effect
-                                                                    const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
-                                                    
-                                                                    if (matchingEffect) {
-                                                                        const effectImage = document.createElement("img");
-                                                                        effectImage.src = matchingEffect.thumbnailPreviewSrc;
-                                                                        effectImage.alt = "Profile Effect";
-                                                                        effectImage.classList.add("modal-profile-effect-img");
-                                                                        modal.querySelector("[data-modal-preview-holder]").appendChild(effectImage);
-                                                    
-                                                                        // Hover effect for profile effect
-                                                                        if (localStorage.reduced_motion != "true") {
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                                if (matchingEffect.effects && matchingEffect.effects.length > 0) {
-                                                                                    const effectUrl = matchingEffect.effects[0]?.src;
-                                                                                    effectImage.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
-                                                                                }
-                                                                            });
-                                                                        
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
-                                                                                effectImage.src = matchingEffect.thumbnailPreviewSrc;
-                                                                            });
-                                                                        } else {
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                                effectImage.src = matchingEffect.reducedMotionSrc;
-                                                                            });
-                                                                        
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
-                                                                                effectImage.src = matchingEffect.thumbnailPreviewSrc;
-                                                                            });
+                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                                
+                                                                if (item.type === 0) {
+                                                                    decosrc = item.asset
+                                                                } else if (item.type === 1) {
+                                                                    // Profile effect
+                                                                    (async () => {
+                                                                        // Fetch profile effects if not cached
+                                                                        if (!profileEffectsCache) {
+                                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                                            const effectsData = await response.json();
+                                                                            profileEffectsCache = effectsData.profile_effect_configs;
                                                                         }
+                                                    
+                                                                        // Find the matching effect
+                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                    
+                                                                        if (matchingEffect) {
+                                                                            if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                renderProfile(effectUrl)
+                                                                            }
+                                                                        }
+                                                                    })();
+                                                                }
+
+                                                                function renderProfile(effectUrl) {
+                                                                    previewHolder.classList.add('modal-preview-profile-container');
+                                                                    previewHolder.innerHTML = `
+                                                                        <div class="modal-preview-profile2">
+                                                                            <div class="options-preview-profile-banner-color"></div>
+                                                                            <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                            <div class="profile-avatar-preview-bg"></div>
+                                                                            <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                            <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                            <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${decosrc}.png?size=4096&passthrough=true">
+                                                                            <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
+                                                                        </div>
+                                                                    `;
+                                                                    document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+                                                                }
+
+                                                                
+                                                            } else {
+                                                                if (item.type === 0) {
+                                                                    const decoImage = document.createElement("img");
+                                                                    decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                    decoImage.alt = "Avatar Decoration";
+                                                                    decoImage.classList.add("modal-avatar-decoration-img");
+                                                                    modal.querySelector("[data-modal-preview-holder]").appendChild(decoImage);
+                                                    
+                                                                    // Hover effect for decoration image
+                                                                    if (localStorage.reduced_motion != "true") {
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                        });
+
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                        });
                                                                     }
-                                                                })();
+                                                                } else if (item.type === 1) {
+                                                                    // Profile effect
+                                                                    (async () => {
+                                                                        // Fetch profile effects if not cached
+                                                                        if (!profileEffectsCache) {
+                                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                                            const effectsData = await response.json();
+                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                        }
+                                                    
+                                                                        // Find the matching effect
+                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                    
+                                                                        if (matchingEffect) {
+                                                                            const effectImage = document.createElement("img");
+                                                                            effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                            effectImage.alt = "Profile Effect";
+                                                                            effectImage.classList.add("modal-profile-effect-img");
+                                                                            modal.querySelector("[data-modal-preview-holder]").appendChild(effectImage);
+                                                    
+                                                                            // Hover effect for profile effect
+                                                                            if (localStorage.reduced_motion != "true") {
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                    if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                        const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                        effectImage.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                                    }
+                                                                                });
+                                                                            
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                    effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                                });
+                                                                            } else {
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                    effectImage.src = matchingEffect.reducedMotionSrc;
+                                                                                });
+                                                                            
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                    effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                                });
+                                                                            }
+                                                                        }
+                                                                    })();
+                                                                }
                                                             }
                                                         });
                                                     } else if (product.type === VARIANTS_GROUP) {
@@ -3766,6 +4157,7 @@ if (localStorage.full_client_rework != "false") {
             
                                                         let isFirstTimeLoadingVariant = true;
                                                         const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                        const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
                                                     
                                                         // Function to apply the selected variant
                                                         function applyVariant(selectedVariant) {
@@ -3779,91 +4171,210 @@ if (localStorage.full_client_rework != "false") {
                                                                     <svg class="downloadIcon_modal" onclick="window.open('https://item.yapper.shop/sku/${selectedVariant.sku_id}/data.zip');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                                 `;
                                                             }
-                                                            if (selectedVariant.type === 0) {
-                                                                modal.classList.add("modal-2000-0");
-                                                                previewHolder.innerHTML = ""; // Clear previous decorations
-                                                                previewHolder.classList.add('modal-avatar-decoration-img');
+                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
                                                                 
-                                                                // Add the avatar decoration based on the selected variant
-                                                                selectedVariant.items?.forEach(item => {
-                                                                    const decoImage = document.createElement("img");
-                                                                    decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
-                                                                    decoImage.alt = "Avatar Decoration";
-                                                                    decoImage.id = "shop-card-deco-image";
-                                                                    previewHolder.appendChild(decoImage);
-                                                                
-                                                                    // Hover effect for decoration image
-                                                                    if (localStorage.reduced_motion !== "true") {
-                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                            decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
-                                                                        });
-                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                            decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
-                                                                        });
-                                                                    }
-                                                                });
-                                                            } else if (selectedVariant.type === 1) {
-                                                                modal.classList.add("modal-2000-1");
-                                                                (async () => {
-                                                                    // Ensure the item ID is accessible here
-                                                                    let itemId = undefined;
-                                                                    if (Array.isArray(selectedVariant.items)) {
-                                                                        // If items is an array, find the item with type 1 and get its id
-                                                                        const item = selectedVariant.items.find(item => item.type === 1);
-                                                                        if (item) {
-                                                                            itemId = item.id;
-                                                                        }
-                                                                    } else if (selectedVariant.items && selectedVariant.items.type === 1) {
-                                                                        // If items is an object and has type 1, get its id
-                                                                        itemId = selectedVariant.items.id;
-                                                                    }
-                                                                
-                                                                
-                                                                    // Fetch profile effects API only if not already cached
-                                                                    if (!profileEffectsCache) {
-                                                                        const response = await fetch(api + PROFILE_EFFECTS);
-                                                                        const effectsData = await response.json();
-                                                                        profileEffectsCache = effectsData.profile_effect_configs;
-                                                                    }
-                                                                
-                                                                    // Find matching profile effect
-                                                                    const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
-                                                                
-                                                                    if (matchingEffect) {
-                                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
-                                                                        previewHolder.classList.add('modal-profile-effect-img');
-                                                                    
+                                                                if (selectedVariant.type === 0) {
+                                                                    selectedVariant.items?.forEach(item => {
+                                                                        previewHolder.classList.add('modal-preview-profile-container');
                                                                         previewHolder.innerHTML = `
-                                                                            <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                                            <div class="modal-preview-profile1">
+                                                                                <div class="options-preview-profile-banner-color"></div>
+                                                                                <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                                <div class="profile-avatar-preview-bg"></div>
+                                                                                <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                                <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                                <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true">
+                                                                            </div>
                                                                         `;
-                                                                    
-                                                                        // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
-                                                                        const imgElement = previewHolder.querySelector("img");
-                                                                    
+                                                                        document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+
+                                                                        previewHolderLeft.classList.add('modal-left-avatar-decoration-img');
+
+                                                                        previewHolderLeft.innerHTML = `
+                                                                            <img id="shop-card-deco-image" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&amp;passthrough=false" data-left-preview-deco-var>
+                                                                        `;
+
+                                                                        const imgElement = previewHolderLeft.querySelector("[data-left-preview-deco-var]");
+                                                                        
                                                                         if (localStorage.reduced_motion != "true") {
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            imgElement.addEventListener("mouseenter", () => {
+                                                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                            });
+                                                                        
+                                                                            imgElement.addEventListener("mouseleave", () => {
+                                                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                            });
+                                                                        }
+                                                                    });
+                                                                } else if (selectedVariant.type === 1) {
+
+                                                                    modal.classList.add("modal-2000-1");
+                                                                    (async () => {
+                                                                        // Ensure the item ID is accessible here
+                                                                        let itemId = undefined;
+                                                                        if (Array.isArray(selectedVariant.items)) {
+                                                                            // If items is an array, find the item with type 1 and get its id
+                                                                            const item = selectedVariant.items.find(item => item.type === 1);
+                                                                            if (item) {
+                                                                                itemId = item.id;
+                                                                            }
+                                                                        } else if (selectedVariant.items && selectedVariant.items.type === 1) {
+                                                                            // If items is an object and has type 1, get its id
+                                                                            itemId = selectedVariant.items.id;
+                                                                        }
+                                                                    
+                                                                    
+                                                                        // Fetch profile effects API only if not already cached
+                                                                        if (!profileEffectsCache) {
+                                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                                            const effectsData = await response.json();
+                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                        }
+                                                                    
+                                                                        // Find matching profile effect
+                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                    
+                                                                        if (matchingEffect) {
+                                                                            if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                previewHolder.classList.add('modal-preview-profile-container');
+                                                                                previewHolder.innerHTML = `
+                                                                                    <div class="modal-preview-profile2">
+                                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                                        <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                                        <div class="profile-avatar-preview-bg"></div>
+                                                                                        <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                        <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                                        <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
+                                                                                    </div>
+                                                                                `;
+                                                                                document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+                                                                            }
+                                                                        }
+
+                                                                        previewHolderLeft.classList.add('modal-left-profile-effect-img');
+
+                                                                        previewHolderLeft.innerHTML = `
+                                                                            <img src="${matchingEffect.thumbnailPreviewSrc}" data-left-preview-effect-var>
+                                                                        `;
+
+                                                                        const imgElement = previewHolderLeft.querySelector("[data-left-preview-effect-var]");
+                                                                        
+                                                                        if (localStorage.reduced_motion != "true") {
+                                                                            imgElement.addEventListener("mouseenter", () => {
                                                                                 if (matchingEffect.effects && matchingEffect.effects.length > 0) {
                                                                                     const effectUrl = matchingEffect.effects[0]?.src;
                                                                                     imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
                                                                                 }
                                                                             });
                                                                         
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            imgElement.addEventListener("mouseleave", () => {
                                                                                 // Revert back to the original thumbnailPreviewSrc when hover ends
                                                                                 imgElement.src = matchingEffect.thumbnailPreviewSrc;
                                                                             });
                                                                         } else {
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            imgElement.addEventListener("mouseenter", () => {
                                                                                 imgElement.src = matchingEffect.reducedMotionSrc;
                                                                             });
                                                                         
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            imgElement.addEventListener("mouseleave", () => {
                                                                                 // Revert back to the original thumbnailPreviewSrc when hover ends
                                                                                 imgElement.src = matchingEffect.thumbnailPreviewSrc;
                                                                             });
                                                                         }
-                                                                    }
-                                                                })();
+                                                                    })();
+                                                                }
+
+                                                                
+                                                            } else {
+                                                                if (selectedVariant.type === 0) {
+                                                                    modal.classList.add("modal-2000-0");
+                                                                    previewHolder.innerHTML = ""; // Clear previous decorations
+                                                                    previewHolder.classList.add('modal-avatar-decoration-img');
+                                                                    
+                                                                    // Add the avatar decoration based on the selected variant
+                                                                    selectedVariant.items?.forEach(item => {
+                                                                        const decoImage = document.createElement("img");
+                                                                        decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                        decoImage.alt = "Avatar Decoration";
+                                                                        decoImage.id = "shop-card-deco-image";
+                                                                        previewHolder.appendChild(decoImage);
+                                                                    
+                                                                        // Hover effect for decoration image
+                                                                        if (localStorage.reduced_motion !== "true") {
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                            });
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                            });
+                                                                        }
+                                                                    });
+                                                                } else if (selectedVariant.type === 1) {
+                                                                    modal.classList.add("modal-2000-1");
+                                                                    (async () => {
+                                                                        // Ensure the item ID is accessible here
+                                                                        let itemId = undefined;
+                                                                        if (Array.isArray(selectedVariant.items)) {
+                                                                            // If items is an array, find the item with type 1 and get its id
+                                                                            const item = selectedVariant.items.find(item => item.type === 1);
+                                                                            if (item) {
+                                                                                itemId = item.id;
+                                                                            }
+                                                                        } else if (selectedVariant.items && selectedVariant.items.type === 1) {
+                                                                            // If items is an object and has type 1, get its id
+                                                                            itemId = selectedVariant.items.id;
+                                                                        }
+                                                                    
+                                                                    
+                                                                        // Fetch profile effects API only if not already cached
+                                                                        if (!profileEffectsCache) {
+                                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                                            const effectsData = await response.json();
+                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                        }
+                                                                    
+                                                                        // Find matching profile effect
+                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                    
+                                                                        if (matchingEffect) {
+                                                                            const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                                            previewHolder.classList.add('modal-profile-effect-img');
+                                                                        
+                                                                            previewHolder.innerHTML = `
+                                                                                <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                                            `;
+                                                                        
+                                                                            // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                                            const imgElement = previewHolder.querySelector("img");
+                                                                        
+                                                                            if (localStorage.reduced_motion != "true") {
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                    if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                        const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                        imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                                    }
+                                                                                });
+                                                                            
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                                });
+                                                                            } else {
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                    imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                                });
+                                                                            
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                                });
+                                                                            }
+                                                                        }
+                                                                    })();
+                                                                }
                                                             }
                                                         }
                                                     
@@ -5127,6 +5638,7 @@ if (localStorage.full_client_rework != "false") {
                                                     modal.innerHTML = `
                                                         <div class="modalv2-inner">
                                                             <div class="modalv2-inner-left">
+                                                                <div data-modal-left-preview-holder></div>
                                                                 <p data-product-modal-sku-id></p>
                                                                 <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
                                                                 <p style="color: var(--8)" data-product-modal-summary></p>
@@ -5181,28 +5693,67 @@ if (localStorage.full_client_rework != "false") {
                                                         product.items.forEach(item => {
 
                                                             const previewHolder = modal.querySelector("[data-modal-preview-holder]");
-                                                            previewHolder.classList.add('modal-avatar-decoration-img');
+                                                            const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
 
-                                                            const imgElement = document.createElement("img");
-                                                            imgElement.id = "shop-card-deco-image";
-                                                            imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
-
-                                                            previewHolder.appendChild(imgElement);
-                                                        
-                                                            // Set the product details
                                                             modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
                                                             modal.querySelector("[data-product-modal-name]").textContent = product.name;
                                                             modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
-                                                        
-                                                            // Hover effect: Change the image src on mouse enter and leave
-                                                            if (localStorage.reduced_motion != "true") {
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                    imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
-                                                                });
-                                                            
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                    imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
-                                                                });
+
+                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+
+                                                                previewHolder.classList.add('modal-preview-profile-container');
+                                                                previewHolder.innerHTML = `
+                                                                    <div class="modal-preview-profile1">
+                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                        <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                        <div class="profile-avatar-preview-bg"></div>
+                                                                        <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                        <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                        <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true">
+                                                                    </div>
+                                                                `;
+
+                                                                document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+
+                                                                previewHolderLeft.classList.add('modal-left-avatar-decoration-img');
+
+                                                                const imgElement = document.createElement("img");
+                                                                imgElement.id = "shop-card-deco-image";
+                                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+
+                                                                previewHolderLeft.appendChild(imgElement);
+
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    imgElement.addEventListener("mouseenter", () => {
+                                                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                    });
+                                                                
+                                                                    imgElement.addEventListener("mouseleave", () => {
+                                                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                    });
+                                                                }
+
+                                                            } else {
+                                                                
+                                                                previewHolder.classList.add('modal-avatar-decoration-img');
+
+                                                                const imgElement = document.createElement("img");
+                                                                imgElement.id = "shop-card-deco-image";
+                                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+
+                                                                previewHolder.appendChild(imgElement);
+
+                                                                // Hover effect: Change the image src on mouse enter and leave
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                    });
+                                                                
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                    });
+                                                                }
                                                             }
 
                                                         });
@@ -5236,39 +5787,89 @@ if (localStorage.full_client_rework != "false") {
                                                     
                                                         // Find matching profile effect
                                                         const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+
+                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                        const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
                                                     
                                                         if (matchingEffect) {
-                                                            const previewHolder = modal.querySelector("[data-modal-preview-holder]");
-                                                            previewHolder.classList.add('modal-profile-effect-img');
-                                                        
-                                                            previewHolder.innerHTML = `
-                                                                <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
-                                                            `;
-                                                        
-                                                            // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
-                                                            const imgElement = previewHolder.querySelector("img");
-                                                        
-                                                            if (localStorage.reduced_motion != "true") {
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                    if (matchingEffect.effects && matchingEffect.effects.length > 0) {
-                                                                        const effectUrl = matchingEffect.effects[0]?.src;
-                                                                        imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
-                                                                    }
-                                                                });
+                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                                previewHolder.classList.add('modal-preview-profile-container');
+                                                                previewHolder.innerHTML = `
+                                                                    <div class="modal-preview-profile2">
+                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                        <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                        <div class="profile-avatar-preview-bg"></div>
+                                                                        <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                        <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                        <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${matchingEffect.effects[0]?.src}">
+                                                                    </div>
+                                                                `;
+
+                                                                document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+
+                                                                previewHolderLeft.classList.add('modal-left-profile-effect-img');
                                                             
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
-                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
-                                                                });
+                                                                const imgElement = document.createElement("img");
+                                                                imgElement.src = matchingEffect.thumbnailPreviewSrc;
+
+                                                                previewHolderLeft.appendChild(imgElement);
+                                                            
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    imgElement.addEventListener("mouseenter", () => {
+                                                                        if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                            const effectUrl = matchingEffect.effects[0]?.src;
+                                                                            imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                        }
+                                                                    });
+                                                                
+                                                                    imgElement.addEventListener("mouseleave", () => {
+                                                                        // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                        imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                    });
+                                                                } else {
+                                                                    imgElement.addEventListener("mouseenter", () => {
+                                                                        imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                    });
+                                                                
+                                                                    imgElement.addEventListener("mouseleave", () => {
+                                                                        // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                        imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                    });
+                                                                }
                                                             } else {
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                    imgElement.src = matchingEffect.reducedMotionSrc;
-                                                                });
+                                                                const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                                previewHolder.classList.add('modal-profile-effect-img');
                                                             
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
-                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
-                                                                });
+                                                                previewHolder.innerHTML = `
+                                                                    <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                                `;
+                                                            
+                                                                // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                                const imgElement = previewHolder.querySelector("img");
+                                                            
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                        if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                            const effectUrl = matchingEffect.effects[0]?.src;
+                                                                            imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                        }
+                                                                    });
+                                                                
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                        // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                        imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                    });
+                                                                } else {
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                        imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                    });
+                                                                
+                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                        // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                        imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                    });
+                                                                }
                                                             }
                                                         }
                                                     } else if (product.type === NAMEPLATE) {
@@ -5281,8 +5882,8 @@ if (localStorage.full_client_rework != "false") {
                                                         const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                                         previewHolder.classList.add('nameplate-modal-preview');
 
-                                                        if (localStorage.nameplate_name && localStorage.nameplate_name != '') {
-                                                            previewName = localStorage.nameplate_name;
+                                                        if (localStorage.discord_username && localStorage.discord_username != '') {
+                                                            previewName = localStorage.discord_username;
                                                         } else {
                                                             previewName = 'Discord User'
                                                         }
@@ -5290,31 +5891,51 @@ if (localStorage.full_client_rework != "false") {
                                                         previewHolder.innerHTML = `
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name _1"></div>
+                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
                                                             </div>
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name _2"></div>
+                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
                                                             </div>
-                                                            <div class="nameplate-null-user">
-                                                                <div class="nameplate-user-avatar"></div>
+                                                            <div class="nameplate-null-user" data-user-nameplate-preview>
+                                                                <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
                                                                 <p class="nameplate-user-name">${previewName}</p>
                                                             </div>
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name _3"></div>
+                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
                                                             </div>
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name _4"></div>
+                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
                                                             </div>
                                                         `;
+
+                                                        const nameplatePreview = previewHolder.querySelector("[data-user-nameplate-preview]");
+
+                                                        nameplatePreview.style.backgroundImage = `linear-gradient(10deg, #00000000 40%,rgb(144, 0, 7) 180%), linear-gradient(170deg, #00000000 40%,rgb(144, 0, 7) 180%)`;
+                                                        nameplatePreview.style.boxShadow = `0 0 0 1px #a10606`;
+
+                                                        const nullUserNameRandomWidth = previewHolder.querySelectorAll("[data-null-user-random-name]");
+
+                                                        nullUserNameRandomWidth.forEach(UserName => {
+                                                            const randomWidth = Math.floor(Math.random() * (180 - 80 + 1)) + 80;
+                                                            UserName.style.width = randomWidth + `px`;
+                                                        });
+
+                                                        const nullUserAvatar = previewHolder.querySelectorAll("[data-nameplate-user-random-avatar]");
+
+                                                        nullUserAvatar.forEach(UserAvatar => {
+                                                            UserAvatar.style.backgroundImage = `url(${localStorage.discord_avatar})`;
+                                                        });
 
                                                         
                                                     } else if (product.type === BUNDLE) {
                                                         modal.classList.add('modal-1000');
 
                                                         const bundledProducts = product.bundled_products || [];
+
+                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                                     
                                                         // Generate the bundle summary from the names of the bundled products
                                                         const type0Product = bundledProducts.find(item => item.type === 0);
@@ -5337,69 +5958,114 @@ if (localStorage.full_client_rework != "false") {
                                                     
                                                         // Handle each item in the bundle
                                                         product.items.forEach(item => {
-                                                            if (item.type === 0) {
-                                                                // Avatar decoration
-                                                                const decoImage = document.createElement("img");
-                                                                decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
-                                                                decoImage.alt = "Avatar Decoration";
-                                                                decoImage.classList.add("modal-avatar-decoration-img");
-                                                                modal.querySelector("[data-modal-preview-holder]").appendChild(decoImage);
-                                                    
-                                                                // Hover effect for decoration image
-                                                                if (localStorage.reduced_motion != "true") {
-                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                        decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
-                                                                    });
-
-                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                        decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
-                                                                    });
-                                                                }
-                                                            } else if (item.type === 1) {
-                                                                // Profile effect
-                                                                (async () => {
-                                                                    // Fetch profile effects if not cached
-                                                                    if (!profileEffectsCache) {
-                                                                        const response = await fetch(api + PROFILE_EFFECTS);
-                                                                        const effectsData = await response.json();
-                                                                        profileEffectsCache = effectsData.profile_effect_configs;
-                                                                    }
-                                                    
-                                                                    // Find the matching effect
-                                                                    const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
-                                                    
-                                                                    if (matchingEffect) {
-                                                                        const effectImage = document.createElement("img");
-                                                                        effectImage.src = matchingEffect.thumbnailPreviewSrc;
-                                                                        effectImage.alt = "Profile Effect";
-                                                                        effectImage.classList.add("modal-profile-effect-img");
-                                                                        modal.querySelector("[data-modal-preview-holder]").appendChild(effectImage);
-                                                    
-                                                                        // Hover effect for profile effect
-                                                                        if (localStorage.reduced_motion != "true") {
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                                if (matchingEffect.effects && matchingEffect.effects.length > 0) {
-                                                                                    const effectUrl = matchingEffect.effects[0]?.src;
-                                                                                    effectImage.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
-                                                                                }
-                                                                            });
-                                                                        
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
-                                                                                effectImage.src = matchingEffect.thumbnailPreviewSrc;
-                                                                            });
-                                                                        } else {
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                                effectImage.src = matchingEffect.reducedMotionSrc;
-                                                                            });
-                                                                        
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                                // Revert back to the original thumbnailPreviewSrc when hover ends
-                                                                                effectImage.src = matchingEffect.thumbnailPreviewSrc;
-                                                                            });
+                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                                
+                                                                if (item.type === 0) {
+                                                                    decosrc = item.asset
+                                                                } else if (item.type === 1) {
+                                                                    // Profile effect
+                                                                    (async () => {
+                                                                        // Fetch profile effects if not cached
+                                                                        if (!profileEffectsCache) {
+                                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                                            const effectsData = await response.json();
+                                                                            profileEffectsCache = effectsData.profile_effect_configs;
                                                                         }
+                                                    
+                                                                        // Find the matching effect
+                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                    
+                                                                        if (matchingEffect) {
+                                                                            if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                renderProfile(effectUrl)
+                                                                            }
+                                                                        }
+                                                                    })();
+                                                                }
+
+                                                                function renderProfile(effectUrl) {
+                                                                    previewHolder.classList.add('modal-preview-profile-container');
+                                                                    previewHolder.innerHTML = `
+                                                                        <div class="modal-preview-profile2">
+                                                                            <div class="options-preview-profile-banner-color"></div>
+                                                                            <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                            <div class="profile-avatar-preview-bg"></div>
+                                                                            <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                            <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                            <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${decosrc}.png?size=4096&passthrough=true">
+                                                                            <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
+                                                                        </div>
+                                                                    `;
+                                                                    document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+                                                                }
+
+                                                                
+                                                            } else {
+                                                                if (item.type === 0) {
+                                                                    const decoImage = document.createElement("img");
+                                                                    decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                    decoImage.alt = "Avatar Decoration";
+                                                                    decoImage.classList.add("modal-avatar-decoration-img");
+                                                                    modal.querySelector("[data-modal-preview-holder]").appendChild(decoImage);
+                                                    
+                                                                    // Hover effect for decoration image
+                                                                    if (localStorage.reduced_motion != "true") {
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                        });
+
+                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                        });
                                                                     }
-                                                                })();
+                                                                } else if (item.type === 1) {
+                                                                    // Profile effect
+                                                                    (async () => {
+                                                                        // Fetch profile effects if not cached
+                                                                        if (!profileEffectsCache) {
+                                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                                            const effectsData = await response.json();
+                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                        }
+                                                    
+                                                                        // Find the matching effect
+                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                    
+                                                                        if (matchingEffect) {
+                                                                            const effectImage = document.createElement("img");
+                                                                            effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                            effectImage.alt = "Profile Effect";
+                                                                            effectImage.classList.add("modal-profile-effect-img");
+                                                                            modal.querySelector("[data-modal-preview-holder]").appendChild(effectImage);
+                                                    
+                                                                            // Hover effect for profile effect
+                                                                            if (localStorage.reduced_motion != "true") {
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                    if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                        const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                        effectImage.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                                    }
+                                                                                });
+                                                                            
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                    effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                                });
+                                                                            } else {
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                    effectImage.src = matchingEffect.reducedMotionSrc;
+                                                                                });
+                                                                            
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                    effectImage.src = matchingEffect.thumbnailPreviewSrc;
+                                                                                });
+                                                                            }
+                                                                        }
+                                                                    })();
+                                                                }
                                                             }
                                                         });
                                                     } else if (product.type === VARIANTS_GROUP) {
@@ -5444,6 +6110,7 @@ if (localStorage.full_client_rework != "false") {
             
                                                         let isFirstTimeLoadingVariant = true;
                                                         const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                        const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
                                                     
                                                         // Function to apply the selected variant
                                                         function applyVariant(selectedVariant) {
@@ -5457,91 +6124,210 @@ if (localStorage.full_client_rework != "false") {
                                                                     <svg class="downloadIcon_modal" onclick="window.open('https://item.yapper.shop/sku/${selectedVariant.sku_id}/data.zip');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                                 `;
                                                             }
-                                                            if (selectedVariant.type === 0) {
-                                                                modal.classList.add("modal-2000-0");
-                                                                previewHolder.innerHTML = ""; // Clear previous decorations
-                                                                previewHolder.classList.add('modal-avatar-decoration-img');
+                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
                                                                 
-                                                                // Add the avatar decoration based on the selected variant
-                                                                selectedVariant.items?.forEach(item => {
-                                                                    const decoImage = document.createElement("img");
-                                                                    decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
-                                                                    decoImage.alt = "Avatar Decoration";
-                                                                    decoImage.id = "shop-card-deco-image";
-                                                                    previewHolder.appendChild(decoImage);
-                                                                
-                                                                    // Hover effect for decoration image
-                                                                    if (localStorage.reduced_motion !== "true") {
-                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                            decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
-                                                                        });
-                                                                        document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                            decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
-                                                                        });
-                                                                    }
-                                                                });
-                                                            } else if (selectedVariant.type === 1) {
-                                                                modal.classList.add("modal-2000-1");
-                                                                (async () => {
-                                                                    // Ensure the item ID is accessible here
-                                                                    let itemId = undefined;
-                                                                    if (Array.isArray(selectedVariant.items)) {
-                                                                        // If items is an array, find the item with type 1 and get its id
-                                                                        const item = selectedVariant.items.find(item => item.type === 1);
-                                                                        if (item) {
-                                                                            itemId = item.id;
-                                                                        }
-                                                                    } else if (selectedVariant.items && selectedVariant.items.type === 1) {
-                                                                        // If items is an object and has type 1, get its id
-                                                                        itemId = selectedVariant.items.id;
-                                                                    }
-                                                                
-                                                                
-                                                                    // Fetch profile effects API only if not already cached
-                                                                    if (!profileEffectsCache) {
-                                                                        const response = await fetch(api + PROFILE_EFFECTS);
-                                                                        const effectsData = await response.json();
-                                                                        profileEffectsCache = effectsData.profile_effect_configs;
-                                                                    }
-                                                                
-                                                                    // Find matching profile effect
-                                                                    const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
-                                                                
-                                                                    if (matchingEffect) {
-                                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
-                                                                        previewHolder.classList.add('modal-profile-effect-img');
-                                                                    
+                                                                if (selectedVariant.type === 0) {
+                                                                    selectedVariant.items?.forEach(item => {
+                                                                        previewHolder.classList.add('modal-preview-profile-container');
                                                                         previewHolder.innerHTML = `
-                                                                            <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                                            <div class="modal-preview-profile1">
+                                                                                <div class="options-preview-profile-banner-color"></div>
+                                                                                <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                                <div class="profile-avatar-preview-bg"></div>
+                                                                                <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                                <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                                <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true">
+                                                                            </div>
                                                                         `;
-                                                                    
-                                                                        // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
-                                                                        const imgElement = previewHolder.querySelector("img");
-                                                                    
+                                                                        document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+
+                                                                        previewHolderLeft.classList.add('modal-left-avatar-decoration-img');
+
+                                                                        previewHolderLeft.innerHTML = `
+                                                                            <img id="shop-card-deco-image" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&amp;passthrough=false" data-left-preview-deco-var>
+                                                                        `;
+
+                                                                        const imgElement = previewHolderLeft.querySelector("[data-left-preview-deco-var]");
+                                                                        
                                                                         if (localStorage.reduced_motion != "true") {
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            imgElement.addEventListener("mouseenter", () => {
+                                                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                            });
+                                                                        
+                                                                            imgElement.addEventListener("mouseleave", () => {
+                                                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                            });
+                                                                        }
+                                                                    });
+                                                                } else if (selectedVariant.type === 1) {
+
+                                                                    modal.classList.add("modal-2000-1");
+                                                                    (async () => {
+                                                                        // Ensure the item ID is accessible here
+                                                                        let itemId = undefined;
+                                                                        if (Array.isArray(selectedVariant.items)) {
+                                                                            // If items is an array, find the item with type 1 and get its id
+                                                                            const item = selectedVariant.items.find(item => item.type === 1);
+                                                                            if (item) {
+                                                                                itemId = item.id;
+                                                                            }
+                                                                        } else if (selectedVariant.items && selectedVariant.items.type === 1) {
+                                                                            // If items is an object and has type 1, get its id
+                                                                            itemId = selectedVariant.items.id;
+                                                                        }
+                                                                    
+                                                                    
+                                                                        // Fetch profile effects API only if not already cached
+                                                                        if (!profileEffectsCache) {
+                                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                                            const effectsData = await response.json();
+                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                        }
+                                                                    
+                                                                        // Find matching profile effect
+                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                    
+                                                                        if (matchingEffect) {
+                                                                            if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                previewHolder.classList.add('modal-preview-profile-container');
+                                                                                previewHolder.innerHTML = `
+                                                                                    <div class="modal-preview-profile2">
+                                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                                        <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                                                                                        <div class="profile-avatar-preview-bg"></div>
+                                                                                        <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                        <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                                        <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
+                                                                                    </div>
+                                                                                `;
+                                                                                document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
+                                                                            }
+                                                                        }
+
+                                                                        previewHolderLeft.classList.add('modal-left-profile-effect-img');
+
+                                                                        previewHolderLeft.innerHTML = `
+                                                                            <img src="${matchingEffect.thumbnailPreviewSrc}" data-left-preview-effect-var>
+                                                                        `;
+
+                                                                        const imgElement = previewHolderLeft.querySelector("[data-left-preview-effect-var]");
+                                                                        
+                                                                        if (localStorage.reduced_motion != "true") {
+                                                                            imgElement.addEventListener("mouseenter", () => {
                                                                                 if (matchingEffect.effects && matchingEffect.effects.length > 0) {
                                                                                     const effectUrl = matchingEffect.effects[0]?.src;
                                                                                     imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
                                                                                 }
                                                                             });
                                                                         
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            imgElement.addEventListener("mouseleave", () => {
                                                                                 // Revert back to the original thumbnailPreviewSrc when hover ends
                                                                                 imgElement.src = matchingEffect.thumbnailPreviewSrc;
                                                                             });
                                                                         } else {
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                            imgElement.addEventListener("mouseenter", () => {
                                                                                 imgElement.src = matchingEffect.reducedMotionSrc;
                                                                             });
                                                                         
-                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                            imgElement.addEventListener("mouseleave", () => {
                                                                                 // Revert back to the original thumbnailPreviewSrc when hover ends
                                                                                 imgElement.src = matchingEffect.thumbnailPreviewSrc;
                                                                             });
                                                                         }
-                                                                    }
-                                                                })();
+                                                                    })();
+                                                                }
+
+                                                                
+                                                            } else {
+                                                                if (selectedVariant.type === 0) {
+                                                                    modal.classList.add("modal-2000-0");
+                                                                    previewHolder.innerHTML = ""; // Clear previous decorations
+                                                                    previewHolder.classList.add('modal-avatar-decoration-img');
+                                                                    
+                                                                    // Add the avatar decoration based on the selected variant
+                                                                    selectedVariant.items?.forEach(item => {
+                                                                        const decoImage = document.createElement("img");
+                                                                        decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                        decoImage.alt = "Avatar Decoration";
+                                                                        decoImage.id = "shop-card-deco-image";
+                                                                        previewHolder.appendChild(decoImage);
+                                                                    
+                                                                        // Hover effect for decoration image
+                                                                        if (localStorage.reduced_motion !== "true") {
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true`;
+                                                                            });
+                                                                            document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                decoImage.src = `https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=false`;
+                                                                            });
+                                                                        }
+                                                                    });
+                                                                } else if (selectedVariant.type === 1) {
+                                                                    modal.classList.add("modal-2000-1");
+                                                                    (async () => {
+                                                                        // Ensure the item ID is accessible here
+                                                                        let itemId = undefined;
+                                                                        if (Array.isArray(selectedVariant.items)) {
+                                                                            // If items is an array, find the item with type 1 and get its id
+                                                                            const item = selectedVariant.items.find(item => item.type === 1);
+                                                                            if (item) {
+                                                                                itemId = item.id;
+                                                                            }
+                                                                        } else if (selectedVariant.items && selectedVariant.items.type === 1) {
+                                                                            // If items is an object and has type 1, get its id
+                                                                            itemId = selectedVariant.items.id;
+                                                                        }
+                                                                    
+                                                                    
+                                                                        // Fetch profile effects API only if not already cached
+                                                                        if (!profileEffectsCache) {
+                                                                            const response = await fetch(api + PROFILE_EFFECTS);
+                                                                            const effectsData = await response.json();
+                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                        }
+                                                                    
+                                                                        // Find matching profile effect
+                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                    
+                                                                        if (matchingEffect) {
+                                                                            const previewHolder = modal.querySelector("[data-modal-preview-holder]");
+                                                                            previewHolder.classList.add('modal-profile-effect-img');
+                                                                        
+                                                                            previewHolder.innerHTML = `
+                                                                                <img class="thumbnail-preview" src="${matchingEffect.thumbnailPreviewSrc}">
+                                                                            `;
+                                                                        
+                                                                            // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                                            const imgElement = previewHolder.querySelector("img");
+                                                                        
+                                                                            if (localStorage.reduced_motion != "true") {
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                    if (matchingEffect.effects && matchingEffect.effects.length > 0) {
+                                                                                        const effectUrl = matchingEffect.effects[0]?.src;
+                                                                                        imgElement.src = effectUrl || matchingEffect.thumbnailPreviewSrc;
+                                                                                    }
+                                                                                });
+                                                                            
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                                });
+                                                                            } else {
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                                    imgElement.src = matchingEffect.reducedMotionSrc;
+                                                                                });
+                                                                            
+                                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                                    // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                                                    imgElement.src = matchingEffect.thumbnailPreviewSrc;
+                                                                                });
+                                                                            }
+                                                                        }
+                                                                    })();
+                                                                }
                                                             }
                                                         }
                                                     
@@ -7753,7 +8539,7 @@ if (localStorage.full_client_rework != "false") {
                 App Version: ${tcbx926n29}
             `;
 
-            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled") {
+            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
                 document.getElementById("username-picker-container-dev").innerHTML = `
                     <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Profile</p>
                     <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">Your Profile will be seen around the website.</p>
@@ -7766,23 +8552,23 @@ if (localStorage.full_client_rework != "false") {
                         <input type="file" id="profileAvatarInput" class="profile-avatar-file-input" accept="image/*">
                         <button id="removeProfileAvatarButton" class="profile-avatar-remove-button">Remove Avatar</button>
                     </div>
+                    <div class="options-option-card" id="options-img-input-option">
+                        <label for="profileBannerInput" class="profile-avatar-upload-label">Upload Banner</label>
+                        <input type="file" id="profileBannerInput" class="profile-avatar-file-input" accept="image/*">
+                        <button id="removeProfileBannerButton" class="profile-avatar-remove-button">Remove Banner</button>
+                    </div>
                     <div class="options-preview-profile">
-                        <div class="options-preview-profile-banner"></div>
+                        <div class="options-preview-profile-banner-color"></div>
+                        <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                         <div class="profile-avatar-preview-bg"></div>
                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                        <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/a_0f4f1b40921ce680b60007e94427d1f2.png?size=4096&passthrough=false">
-                        <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="https://cdn.discordapp.com/assets/profile_effects/effects/2024-01-31/midnight-celebration/thumbnail.png">
                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                         <p class="options-preview-profile-username" id="options-username-preview"></p>
                     </div>
                 `;
                 document.getElementById("accessibility-options-container").innerHTML = `
                     <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Accessibility</p>
-                    <div class="options-option-card">
-                        <p class="option-card-title" style="color: var(--white);">Currency</p>
-                        <select id="currency_picker_container" class="options-dropdown">
-                        </select>
-                    </div>
+                    <div id="currency-picker-experiment-container"></div>
                     <div class="options-option-card" id="reduced-motion-box-option">
                         <p class="option-card-title" style="color: var(--white);">Reduced Motion</p>
                         <input class="options-toggle-box" onclick="reducedMotionChecked();" style="cursor: pointer; scale: 2; posision: center;" id="reduced-motion-box" type="checkbox">
@@ -7792,27 +8578,37 @@ if (localStorage.full_client_rework != "false") {
 
                 document.getElementById("options-username-preview").textContent = localStorage.discord_username.toLowerCase();
 
+                if (localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker") {
+                    document.getElementById("currency-picker-experiment-container").innerHTML = `
+                        <div class="options-option-card">
+                            <p class="option-card-title" style="color: var(--white);">Currency</p>
+                            <select id="currency_picker_container" class="options-dropdown">
+                            </select>
+                        </div>
+                    `;
+                }
 
-                const imageInput = document.getElementById("profileAvatarInput");
-                const imagePreview = document.getElementById("profileAvatarPreview");
-                const removeImageButton = document.getElementById("removeProfileAvatarButton");
+
+                const avatarImageInput = document.getElementById("profileAvatarInput");
+                const avatarImagePreview = document.getElementById("profileAvatarPreview");
+                const removeAvatarImageButton = document.getElementById("removeProfileAvatarButton");
 
                 // Load saved image from localStorage on page load
                 document.addEventListener("DOMContentLoaded", () => {
                     const savedImage = localStorage.getItem("discord_avatar");
                     if (savedImage) {
-                        imagePreview.src = savedImage;
+                        avatarImagePreview.src = savedImage;
                     }
                 });
 
                 // Handle image upload
-                imageInput.addEventListener("change", function () {
+                avatarImageInput.addEventListener("change", function () {
                     const file = this.files[0];
                     if (file) {
                         const reader = new FileReader();
                         reader.onload = function (event) {
                             const dataUrl = event.target.result;
-                            imagePreview.src = dataUrl;
+                            avatarImagePreview.src = dataUrl;
                             localStorage.setItem("discord_avatar", dataUrl); // Store in localStorage
                         };
                         reader.readAsDataURL(file);
@@ -7820,14 +8616,54 @@ if (localStorage.full_client_rework != "false") {
                 });
 
                 // Handle image removal
-                removeImageButton.addEventListener("click", function () {
+                removeAvatarImageButton.addEventListener("click", function () {
                     setRandomDiscordAvatar()
-                    imagePreview.src = localStorage.discord_avatar;
+                    avatarImagePreview.src = localStorage.discord_avatar;
+                });
+
+
+                const bannerImageInput = document.getElementById("profileBannerInput");
+                const bannerImagePreview = document.getElementById("profileBannerPreview");
+                const removeBannerImageButton = document.getElementById("removeProfileBannerButton");
+
+
+                if (localStorage.discord_banner === ``) {
+                    removeBannerImageButton.style.display = 'none';
+                }
+
+                // Load saved image from localStorage on page load
+                document.addEventListener("DOMContentLoaded", () => {
+                    const savedImage = localStorage.getItem("discord_banner");
+                    if (savedImage) {
+                        bannerImagePreview.style.backgroundImage = `url(${savedImage})`;
+                    }
+                });
+
+                // Handle image upload
+                bannerImageInput.addEventListener("change", function () {
+                    removeBannerImageButton.style.display = 'block';
+                    const file = this.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function (event) {
+                            const dataUrl = event.target.result;
+                            bannerImagePreview.style.backgroundImage = `url(${dataUrl})`;
+                            localStorage.setItem("discord_banner", dataUrl); // Store in localStorage
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                // Handle image removal
+                removeBannerImageButton.addEventListener("click", function () {
+                    removeBannerImageButton.style.display = 'none';
+                    localStorage.discord_banner = ``
+                    bannerImagePreview.style.backgroundImage = '';
                 });
             }
 
             try {
-                const currency_picker_currencies = ["USD", "NZD (Mobile)", "Discord Orb"];
+                const currency_picker_currencies = ["USD", "Discord Orb"];
 
                 const currency_picker_currencies_picker = document.getElementById("currency_picker_container");
                 
@@ -8105,7 +8941,7 @@ if (localStorage.full_client_rework != "false") {
 
 
                 try {
-                    const experiment_2025_02_extra_options_treatments = ["Treatment -1: Disabled", "Treatment 4: Enabled"];
+                    const experiment_2025_02_extra_options_treatments = ["Treatment -1: Disabled", "Treatment 4: Enabled", "Treatment 5: Enabled w/o currency picker"];
 
                     const experiment_2025_02_extra_options_treatment_picker = document.getElementById("experiment_2025_02_extra_options_treatment_container");
                     
