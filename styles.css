@@ -623,6 +623,42 @@ body {
     overflow: hidden;
 }
 
+.options-img-input-option-error {
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px;
+    width: 200px;
+    background-color: #bf464663;
+    border: 2px solid #bf4646;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.options-img-input-option-error p {
+    margin-top: 5px;
+}
+
+
+.options-preview-profile-status-color {
+    position: absolute;
+    top: 121px;
+    left: 86px;
+    width: 17px;
+    height: 17px;
+    background-color: #00A661;
+    border-radius: 50px;
+}
+
+.options-preview-profile-status-bg {
+    position: absolute;
+    top: 115px;
+    left: 80px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--profile-background);
+    border-radius: 50px;
+}
+
 .options-preview-profile-banner-color {
     position: absolute;
     width: 100%;

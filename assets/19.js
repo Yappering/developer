@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 233";
+tcbx926n29 = "Dev 234";
 
 defaultAvatar1 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAY1BMVEVYZfJib/OMlfahqPeWn/eBi/XLz/vq6/7////19f5tePTq7P22vPnV2Pyrsvirsvl3gvT09f7Axfp3gfRtePNsePPg4v22vPq2u/qCi/WhqPjf4/zf4v2Xn/essvjLzvuXnvdbidFTAAAETElEQVR4AezBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAIDZudMtV1UlDuCFRKlWIEJ6uOwbzXn/lzzzYc/GWiT6zya/79WrLeYSc5Vq9IFWa3Sr6JehWt0ZZn5RtFJvmHnodPsrPLx1/B9PKx1ziLOPnIRRO84EXaAP/CWnR3pArTWcybpA5G8NsX20pw+cSbpAngEeOQenY+Cf8KIZ4FuDfSV4Ko/7hS7wNjYH7W3MvNeHtn2jvxn+OXcgaP0x8KJo43vgnwqu85EXDfGVULWON9G1BOmDN/M/AnTgDSWC0xve0KAITeSsykFw4qzOQWB4YwNBOfLmPAHpeXsvr5XOgJkjGA3vIlU6A2bvOHvAnXwiCMrwTl5UpUtg5us7BAB2gcg78nXugaC6QORd+bo7AEAXiLwzX+8SANEFNHPdXcAwV90FDgxA037+zwAc7aZlCKnSNTDrADZBdU6DBwbha5wCAabBkWGkSqfAzFa6C8xeADYB9Y2ByEBsbSMAYAy0zHWPActQLPQuKBh3DiwiDRlwzwFOv9JfTpORh5x5rVfQc8CQiLLJiEMaA1oW6XgVq+grVh4yY56JA68x07fm8hCIhXCUPn823zgkG/HK4Rf6kYv8YBt5BQ03BQyv9CMq8M/JQ7IItw+e6cd8QQjKTqCX3OMTtOdCCNZOoCnqkrYgZEFD2/FF/08qDAE4Dji+TtHPKHknVmBboVB2i9HI9zIGahZUhaVqVxCyQEEVQ7rSBMj3QiPUUTCWJkC+8zrQVjzmELBYG2H5jDYUFqAiQDlMtAwKQgjr+nwoq9O2BSEQJQFVWKeNBSEQ6+BYeG3BFIUAHIfasmsLh7IQgLcjDZd0AWXEIZRDMDYCuuj73g95yJGxEuBLPmr6VBSyzMO9Fpzko3kqeA1r8W4GHOWNKQ/JIl4COL4SZf2lPAQhAY4lYrv860rlIVmHlYAsuBhjFwpCwO4LOkb0TMAzAc8EPBPwTMAGngl4JuCZgMig4jMB27AMykJUhCr4ekwzKI10T9hpwzcz6DNSUbRdORzThW/CJSKagd4LjKurof1suFCYVR54MDckpsBXDLk3pliQgxBTHneBrwiaNtOfeUUKCnMQYlKC32x2r7SlmSUpoOQdi5xtoqx1DNP8WW9kKSCVvAu8QnC2USR4/I2bP5vDmhS80pdOjXULw8dc7HSiL6ljYLTmz/ooKvJTdkqTt9G5s/mHczH6qXlV9I32Ehi0+QVfQbn7HryHhvY033V1Tuu3CRncOIj3rL3EV9pf7+53ced0bY+MIZm7ndEt9uNnkxN8OSWhAvjjZ8ktnIoKaMDHF0yH8S416C4Rpv7bU094pWJ9QFv4BJOBvnkFzjWKMvhu4G78IibMIz2EFM3KFUAwCEI+ID9MDia6kd/+enpFj+YE+af+aA8OZAAAAAAG+Vvf46sAAAAAAAAAAAAAAAAAAAAAAFYCeHSjWah9hFcAAAAASUVORK5CYII=`;
 defaultAvatar2 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAhFBMVEV1fop9hpGgpq+ytr2prraXnqfT19vu7/H////29/iGjpju7/DCxszc3+K6vsS6v8WOlqD39/fLztPLz9OPlqDl5+nDx8ygpq6xtr6xtr3m5+iOlp/Dxsvc3+Hd3+GorraGjpnT19rT1tv29/eOlqHU19p+hpGprrWxt72or7bLz9Kfpq+ibmTzAAAEY0lEQVR4AezBAQEAAAQAIPB/swkMqAIAAAAAAAAAAAAAAAAAAAAAgBNZPfFWy86dLimOw3AAV5qYEXFicMKxHIFs03e///PtvaouagjRGMKfNr/vmhorsiMbpwcm+UZjN4PhD2YedR5TZpnZDgfmOww+L/h/jjoaS0iRG7pdk0HBQlECmeevisGEbpDJf7DQlUDJh2xlbm30noWmBGQFuOUcTMeej3CqFeCQzTOCl8i8bymBbPKQDlxeCecGqTH/Dc/ycUVK0LKx51ZVXs08H+WLoSu5la0yQmUK7sXQEKQ592ZOgFLukSE4meUe2YTQlCyinARTFnFOAss9swRlzL1zBCTj/o2ySFdAURCMBV+FiXQFFLP4esADvxGExPKVjJJIX4HCxbcJACyBkq/IxdkDQZVAyVfl4i4AgBIo+cpcvK8AiBJYMsddApY56hJIGcCSrmfFAAq6GsMQTKTvQDEEaILiXAZTBuEAlsAYl8E1wzCRLoEij7QLFKNYmwBhIp0BIo9tBgDMAcMc9xzYMJQcugvytl55VtCHWNx9wHaZ0d+mO6sP6Z7mBnQfYA2R2Fl1yMKCHov8zp3kycHKoQ9x3Mkj9Wv/i9s0FxCC9CJca8cv3JlDxBPecfgz/cwzt9j+etO5hFsCbEM/89I2e/QhoqI+2YBzGnfWEGHRuoBRQ6R9nu0hQJ3AIqgkNwEhLR6oPy7o/2MCQwC2AwWfltAxL/oifgFrhfZhtxitvpexAKug7nnU+gKqw2sO6DDk8bwJKKF6wZRPq8IToO28XqkvDnMK5FiNMB1n9SErqGZ4xeGvQV0IYV2f34ed05qgEIAjgZfAc9oyIATiPbgOvLZgA0IgtkMm7NpCGhCC8evIgkNKILHqEJIQjEZgGfR971wfMmasBLiQj5regkLaObifBd/p0Ls+xHBXOd7NgLH+YepDRIWXAK4yIpE9B4QAJaBgjcq0/3Wl8BDxiJUA4Yuqqob+YiGi7i0BiO4JuCfgnoB7Au4J6ME9AfcE3BNQMqjqnoAYrgkDnAc4BuWoH0sGtUS6J7xdWj4bu5wBHIqqL+yYZz6Lrek47wzOL0M7+kfjLAfyLpGJB3NDYrfnE2wq5VLagNF/GJl3nk/wS+pNM+PuKZAc6EefKP5m87ahPjnWpICMq1lllRsSpmCYxy8aq0sBJcbVnjvw23yR0OHwcR6/cPsuKcjoq+kir1d8lH3O0yl9lYw9oz1+0ZSqQ34SU5O6/KOuV/Zfdf3x4dJFltAB8+wZ9PErvoKqL7vxtp90TY5Pmlyy5ZI2QcDNg+qSZy9VQ9fX1Je7uDM91SNjMPZie/QN9vDFrtZ8OaXwsgcfvjB1y64owBJp+PrlsLrIGfSzIUzN4a7HNxSs2cO8+PSLwfLsJ3Dbh4QEfBlsz/xDjHcTQicHAPIGONck8LJBvpkc7OhMduxzk9CtmUL+U3+2BwcyAAAAAIP8re/xVQAAAAAAAAAAAAAAAAAAAAAAKwFiKavpSRGzHgAAAABJRU5ErkJggg==`;
@@ -950,6 +950,8 @@ if (localStorage.full_client_rework != "false") {
                                                                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                         <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/${item.animated}.png">
+                                                                        <div class="options-preview-profile-status-bg"></div>
+                                                                        <div class="options-preview-profile-status-color"></div>
                                                                     </div>
                                                                 `;
 
@@ -1042,6 +1044,8 @@ if (localStorage.full_client_rework != "false") {
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                                                                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                        <div class="options-preview-profile-status-bg"></div>
+                                                                        <div class="options-preview-profile-status-color"></div>
                                                                         <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${matchingEffect.effects[0]?.src}">
                                                                     </div>
                                                                 `;
@@ -1236,6 +1240,8 @@ if (localStorage.full_client_rework != "false") {
                                                                             <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                             <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                             <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/${decosrc}.png">
+                                                                            <div class="options-preview-profile-status-bg"></div>
+                                                                            <div class="options-preview-profile-status-color"></div>
                                                                             <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
                                                                         </div>
                                                                     `;
@@ -1378,6 +1384,8 @@ if (localStorage.full_client_rework != "false") {
                                                                                 <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                                 <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                                 <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/${item.animated}.png">
+                                                                                <div class="options-preview-profile-status-bg"></div>
+                                                                                <div class="options-preview-profile-status-color"></div>
                                                                             </div>
                                                                         `;
                                                                         document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
@@ -1440,6 +1448,8 @@ if (localStorage.full_client_rework != "false") {
                                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                                                                                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                                        <div class="options-preview-profile-status-bg"></div>
+                                                                                        <div class="options-preview-profile-status-color"></div>
                                                                                         <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
                                                                                     </div>
                                                                                 `;
@@ -3758,6 +3768,8 @@ if (localStorage.full_client_rework != "false") {
                                                                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                         <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true">
+                                                                        <div class="options-preview-profile-status-bg"></div>
+                                                                        <div class="options-preview-profile-status-color"></div>
                                                                     </div>
                                                                 `;
 
@@ -3849,6 +3861,8 @@ if (localStorage.full_client_rework != "false") {
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                                                                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                        <div class="options-preview-profile-status-bg"></div>
+                                                                        <div class="options-preview-profile-status-color"></div>
                                                                         <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${matchingEffect.effects[0]?.src}">
                                                                     </div>
                                                                 `;
@@ -4042,6 +4056,8 @@ if (localStorage.full_client_rework != "false") {
                                                                             <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                             <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                             <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${decosrc}.png?size=4096&passthrough=true">
+                                                                            <div class="options-preview-profile-status-bg"></div>
+                                                                            <div class="options-preview-profile-status-color"></div>
                                                                             <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
                                                                         </div>
                                                                     `;
@@ -4185,6 +4201,8 @@ if (localStorage.full_client_rework != "false") {
                                                                                 <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                                 <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                                 <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true">
+                                                                                <div class="options-preview-profile-status-bg"></div>
+                                                                                <div class="options-preview-profile-status-color"></div>
                                                                             </div>
                                                                         `;
                                                                         document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
@@ -4247,6 +4265,8 @@ if (localStorage.full_client_rework != "false") {
                                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                                                                                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                                        <div class="options-preview-profile-status-bg"></div>
+                                                                                        <div class="options-preview-profile-status-color"></div>
                                                                                         <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
                                                                                     </div>
                                                                                 `;
@@ -5711,6 +5731,8 @@ if (localStorage.full_client_rework != "false") {
                                                                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                         <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true">
+                                                                        <div class="options-preview-profile-status-bg"></div>
+                                                                        <div class="options-preview-profile-status-color"></div>
                                                                     </div>
                                                                 `;
 
@@ -5802,6 +5824,8 @@ if (localStorage.full_client_rework != "false") {
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                                                                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                        <div class="options-preview-profile-status-bg"></div>
+                                                                        <div class="options-preview-profile-status-color"></div>
                                                                         <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${matchingEffect.effects[0]?.src}">
                                                                     </div>
                                                                 `;
@@ -5995,6 +6019,8 @@ if (localStorage.full_client_rework != "false") {
                                                                             <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                             <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                             <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${decosrc}.png?size=4096&passthrough=true">
+                                                                            <div class="options-preview-profile-status-bg"></div>
+                                                                            <div class="options-preview-profile-status-color"></div>
                                                                             <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
                                                                         </div>
                                                                     `;
@@ -6138,6 +6164,8 @@ if (localStorage.full_client_rework != "false") {
                                                                                 <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                                 <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                                 <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true">
+                                                                                <div class="options-preview-profile-status-bg"></div>
+                                                                                <div class="options-preview-profile-status-color"></div>
                                                                             </div>
                                                                         `;
                                                                         document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
@@ -6200,6 +6228,8 @@ if (localStorage.full_client_rework != "false") {
                                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                                                                                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
+                                                                                        <div class="options-preview-profile-status-bg"></div>
+                                                                                        <div class="options-preview-profile-status-color"></div>
                                                                                         <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
                                                                                     </div>
                                                                                 `;
@@ -8552,16 +8582,20 @@ if (localStorage.full_client_rework != "false") {
                         <input type="file" id="profileAvatarInput" class="profile-avatar-file-input" accept="image/*">
                         <button id="removeProfileAvatarButton" class="profile-avatar-remove-button">Remove Avatar</button>
                     </div>
+                    <div id="options-avatar-img-input-option-error"></div>
                     <div class="options-option-card" id="options-img-input-option">
                         <label for="profileBannerInput" class="profile-avatar-upload-label">Upload Banner</label>
                         <input type="file" id="profileBannerInput" class="profile-avatar-file-input" accept="image/*">
                         <button id="removeProfileBannerButton" class="profile-avatar-remove-button">Remove Banner</button>
                     </div>
+                    <div id="options-banner-img-input-option-error"></div>
                     <div class="options-preview-profile">
                         <div class="options-preview-profile-banner-color"></div>
                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                         <div class="profile-avatar-preview-bg"></div>
                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                        <div class="options-preview-profile-status-bg"></div>
+                        <div class="options-preview-profile-status-color"></div>
                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                         <p class="options-preview-profile-username" id="options-username-preview"></p>
                     </div>
@@ -8603,13 +8637,22 @@ if (localStorage.full_client_rework != "false") {
 
                 // Handle image upload
                 avatarImageInput.addEventListener("change", function () {
+                    document.getElementById("options-avatar-img-input-option-error").classList.remove('options-img-input-option-error')
+                    document.getElementById("options-avatar-img-input-option-error").innerHTML = ``;
                     const file = this.files[0];
                     if (file) {
                         const reader = new FileReader();
                         reader.onload = function (event) {
                             const dataUrl = event.target.result;
-                            avatarImagePreview.src = dataUrl;
-                            localStorage.setItem("discord_avatar", dataUrl); // Store in localStorage
+                            try {
+                                localStorage.setItem("discord_avatar", dataUrl);
+                                avatarImagePreview.src = dataUrl;
+                            } catch(error) {
+                                document.getElementById("options-avatar-img-input-option-error").classList.add('options-img-input-option-error')
+                                document.getElementById("options-avatar-img-input-option-error").innerHTML = `
+                                    <p>File too large!</p>
+                                `;
+                            }
                         };
                         reader.readAsDataURL(file);
                     }
@@ -8641,14 +8684,23 @@ if (localStorage.full_client_rework != "false") {
 
                 // Handle image upload
                 bannerImageInput.addEventListener("change", function () {
+                    document.getElementById("options-banner-img-input-option-error").classList.remove('options-img-input-option-error')
+                    document.getElementById("options-banner-img-input-option-error").innerHTML = ``;
                     removeBannerImageButton.style.display = 'block';
                     const file = this.files[0];
                     if (file) {
                         const reader = new FileReader();
                         reader.onload = function (event) {
                             const dataUrl = event.target.result;
-                            bannerImagePreview.style.backgroundImage = `url(${dataUrl})`;
-                            localStorage.setItem("discord_banner", dataUrl); // Store in localStorage
+                            try {
+                                localStorage.setItem("discord_banner", dataUrl);
+                                bannerImagePreview.style.backgroundImage = `url(${dataUrl})`;
+                            } catch(error) {
+                                document.getElementById("options-banner-img-input-option-error").classList.add('options-img-input-option-error')
+                                document.getElementById("options-banner-img-input-option-error").innerHTML = `
+                                    <p>File too large!</p>
+                                `;
+                            }
                         };
                         reader.readAsDataURL(file);
                     }
