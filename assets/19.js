@@ -3,7 +3,7 @@ n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has eve
 mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
-tcbx926n29 = "Dev 239";
+tcbx926n29 = "Dev 240";
 
 defaultAvatar1 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAY1BMVEVYZfJib/OMlfahqPeWn/eBi/XLz/vq6/7////19f5tePTq7P22vPnV2Pyrsvirsvl3gvT09f7Axfp3gfRtePNsePPg4v22vPq2u/qCi/WhqPjf4/zf4v2Xn/essvjLzvuXnvdbidFTAAAETElEQVR4AezBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAIDZudMtV1UlDuCFRKlWIEJ6uOwbzXn/lzzzYc/GWiT6zya/79WrLeYSc5Vq9IFWa3Sr6JehWt0ZZn5RtFJvmHnodPsrPLx1/B9PKx1ziLOPnIRRO84EXaAP/CWnR3pArTWcybpA5G8NsX20pw+cSbpAngEeOQenY+Cf8KIZ4FuDfSV4Ko/7hS7wNjYH7W3MvNeHtn2jvxn+OXcgaP0x8KJo43vgnwqu85EXDfGVULWON9G1BOmDN/M/AnTgDSWC0xve0KAITeSsykFw4qzOQWB4YwNBOfLmPAHpeXsvr5XOgJkjGA3vIlU6A2bvOHvAnXwiCMrwTl5UpUtg5us7BAB2gcg78nXugaC6QORd+bo7AEAXiLwzX+8SANEFNHPdXcAwV90FDgxA037+zwAc7aZlCKnSNTDrADZBdU6DBwbha5wCAabBkWGkSqfAzFa6C8xeADYB9Y2ByEBsbSMAYAy0zHWPActQLPQuKBh3DiwiDRlwzwFOv9JfTpORh5x5rVfQc8CQiLLJiEMaA1oW6XgVq+grVh4yY56JA68x07fm8hCIhXCUPn823zgkG/HK4Rf6kYv8YBt5BQ03BQyv9CMq8M/JQ7IItw+e6cd8QQjKTqCX3OMTtOdCCNZOoCnqkrYgZEFD2/FF/08qDAE4Dji+TtHPKHknVmBboVB2i9HI9zIGahZUhaVqVxCyQEEVQ7rSBMj3QiPUUTCWJkC+8zrQVjzmELBYG2H5jDYUFqAiQDlMtAwKQgjr+nwoq9O2BSEQJQFVWKeNBSEQ6+BYeG3BFIUAHIfasmsLh7IQgLcjDZd0AWXEIZRDMDYCuuj73g95yJGxEuBLPmr6VBSyzMO9Fpzko3kqeA1r8W4GHOWNKQ/JIl4COL4SZf2lPAQhAY4lYrv860rlIVmHlYAsuBhjFwpCwO4LOkb0TMAzAc8EPBPwTMAGngl4JuCZgMig4jMB27AMykJUhCr4ekwzKI10T9hpwzcz6DNSUbRdORzThW/CJSKagd4LjKurof1suFCYVR54MDckpsBXDLk3pliQgxBTHneBrwiaNtOfeUUKCnMQYlKC32x2r7SlmSUpoOQdi5xtoqx1DNP8WW9kKSCVvAu8QnC2USR4/I2bP5vDmhS80pdOjXULw8dc7HSiL6ljYLTmz/ooKvJTdkqTt9G5s/mHczH6qXlV9I32Ehi0+QVfQbn7HryHhvY033V1Tuu3CRncOIj3rL3EV9pf7+53ced0bY+MIZm7ndEt9uNnkxN8OSWhAvjjZ8ktnIoKaMDHF0yH8S416C4Rpv7bU094pWJ9QFv4BJOBvnkFzjWKMvhu4G78IibMIz2EFM3KFUAwCEI+ID9MDia6kd/+enpFj+YE+af+aA8OZAAAAAAG+Vvf46sAAAAAAAAAAAAAAAAAAAAAAFYCeHSjWah9hFcAAAAASUVORK5CYII=`;
 defaultAvatar2 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAhFBMVEV1fop9hpGgpq+ytr2prraXnqfT19vu7/H////29/iGjpju7/DCxszc3+K6vsS6v8WOlqD39/fLztPLz9OPlqDl5+nDx8ygpq6xtr6xtr3m5+iOlp/Dxsvc3+Hd3+GorraGjpnT19rT1tv29/eOlqHU19p+hpGprrWxt72or7bLz9Kfpq+ibmTzAAAEY0lEQVR4AezBAQEAAAQAIPB/swkMqAIAAAAAAAAAAAAAAAAAAAAAgBNZPfFWy86dLimOw3AAV5qYEXFicMKxHIFs03e///PtvaouagjRGMKfNr/vmhorsiMbpwcm+UZjN4PhD2YedR5TZpnZDgfmOww+L/h/jjoaS0iRG7pdk0HBQlECmeevisGEbpDJf7DQlUDJh2xlbm30noWmBGQFuOUcTMeej3CqFeCQzTOCl8i8bymBbPKQDlxeCecGqTH/Dc/ycUVK0LKx51ZVXs08H+WLoSu5la0yQmUK7sXQEKQ592ZOgFLukSE4meUe2YTQlCyinARTFnFOAss9swRlzL1zBCTj/o2ySFdAURCMBV+FiXQFFLP4esADvxGExPKVjJJIX4HCxbcJACyBkq/IxdkDQZVAyVfl4i4AgBIo+cpcvK8AiBJYMsddApY56hJIGcCSrmfFAAq6GsMQTKTvQDEEaILiXAZTBuEAlsAYl8E1wzCRLoEij7QLFKNYmwBhIp0BIo9tBgDMAcMc9xzYMJQcugvytl55VtCHWNx9wHaZ0d+mO6sP6Z7mBnQfYA2R2Fl1yMKCHov8zp3kycHKoQ9x3Mkj9Wv/i9s0FxCC9CJca8cv3JlDxBPecfgz/cwzt9j+etO5hFsCbEM/89I2e/QhoqI+2YBzGnfWEGHRuoBRQ6R9nu0hQJ3AIqgkNwEhLR6oPy7o/2MCQwC2AwWfltAxL/oifgFrhfZhtxitvpexAKug7nnU+gKqw2sO6DDk8bwJKKF6wZRPq8IToO28XqkvDnMK5FiNMB1n9SErqGZ4xeGvQV0IYV2f34ed05qgEIAjgZfAc9oyIATiPbgOvLZgA0IgtkMm7NpCGhCC8evIgkNKILHqEJIQjEZgGfR971wfMmasBLiQj5regkLaObifBd/p0Ls+xHBXOd7NgLH+YepDRIWXAK4yIpE9B4QAJaBgjcq0/3Wl8BDxiJUA4Yuqqob+YiGi7i0BiO4JuCfgnoB7Au4J6ME9AfcE3BNQMqjqnoAYrgkDnAc4BuWoH0sGtUS6J7xdWj4bu5wBHIqqL+yYZz6Lrek47wzOL0M7+kfjLAfyLpGJB3NDYrfnE2wq5VLagNF/GJl3nk/wS+pNM+PuKZAc6EefKP5m87ahPjnWpICMq1lllRsSpmCYxy8aq0sBJcbVnjvw23yR0OHwcR6/cPsuKcjoq+kir1d8lH3O0yl9lYw9oz1+0ZSqQ34SU5O6/KOuV/Zfdf3x4dJFltAB8+wZ9PErvoKqL7vxtp90TY5Pmlyy5ZI2QcDNg+qSZy9VQ9fX1Je7uDM91SNjMPZie/QN9vDFrtZ8OaXwsgcfvjB1y64owBJp+PrlsLrIGfSzIUzN4a7HNxSs2cO8+PSLwfLsJ3Dbh4QEfBlsz/xDjHcTQicHAPIGONck8LJBvpkc7OhMduxzk9CtmUL+U3+2BwcyAAAAAIP8re/xVQAAAAAAAAAAAAAAAAAAAAAAKwFiKavpSRGzHgAAAABJRU5ErkJggg==`;
@@ -334,6 +334,18 @@ if (localStorage.full_client_rework != "false") {
             })
                 .then(response => response.json())
                 .then((data) => {
+
+                    if (data.message === "Missing Access") {
+                        document.getElementById("everything-housing-container").innerHTML = `
+                            <div style="text-align: center; margin-top: 10px;" id="failed-to-load-shop">
+                                <img style="width: 200px;" src="https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/shopuhoh.png">
+                                <h2>Well, this is awkward.</h2>
+                                <p>Hmmm, we weren&#8217;t able to load the shop. Check back later.</p>
+                                <p>Error: Missing Access</p>
+                                <button class="refresh-button" onclick="location.reload();">Reload</button>
+                            </div>
+                        `;
+                    }
                     // Define async function inside the .then block
                     async function processCategories() {
                         const categoryTemplate = document.querySelector("[data-shop-category-template]");
@@ -403,6 +415,261 @@ if (localStorage.full_client_rework != "false") {
                                 }
                                 if (apiCategory.sku_id === PAPER_BEACH_V2) {
                                     category.querySelector("[data-shop-category-logo-holder]").style.display = 'unset';
+                                }
+
+                                if (localStorage.experiment_2025_02_shop_category_modals === "Treatment 1: Enable category modals" || localStorage.experiment_2025_02_shop_category_modals === "Treatment 2: Enable category modals w/ data downloads") {
+                                    category.querySelector("[data-shop-category-banner]").classList.add('clickable');
+
+                                    category.querySelector("[data-shop-category-banner]").addEventListener("click", () => {
+                                        openCategoryModal();
+                                    });
+                                    
+
+                                    async function openCategoryModal() {
+                                        let modal = document.createElement("div");
+
+                                        modal.classList.add('modalv2');
+
+                                        modal.innerHTML = `
+                                            <div class="category-modalv2-inner">
+                                                <div class="category-modalv2-inner-left">
+                                                    <p data-product-modal-sku-id></p>
+                                                    <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
+                                                    <p style="color: var(--8)" data-product-modal-summary></p>
+                                                    <p style="font-size: large; font-weight: 900;">Assets:</p>
+                                                    <div class="shop-category-modal-assets-container" data-shop-category-modal-assets-container>
+                                                    </div>
+                                                </div>
+                                                <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
+                                                <div data-modal-top-product-buttons>
+                                                    <div title="Close" data-close-product-card-button>
+                                                        <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                    </div>
+                                                    <div title="Copy Link" data-share-product-card-button></div>
+                                                    <div title="Download Data" data-download-product-card-button></div>
+                                                </div>
+                                            </div>
+                                        `;
+
+                                        const asset_container = modal.querySelector("[data-shop-category-modal-assets-container]");
+
+                                        if (apiCategory.banner != null) {
+                                            let banner_asset = document.createElement("div");
+
+                                            banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Banner (banner):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.banner}</p>
+                                                <img class="category-modalv2-inner-img-banner" src="https://cdn.yapper.shop/assets/${apiCategory.banner}.png"></img> 
+                                            `;
+
+                                            asset_container.appendChild(banner_asset);
+                                        }
+
+                                        if (apiCategory.banner_asset && apiCategory.banner_asset.static != null) {
+                                            let banner_asset = document.createElement("div");
+
+                                            banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Banner Asset Static (banner_asset.static):</p>
+                                                <img class="category-modalv2-inner-img-banner" src="${apiCategory.banner_asset.static}"></img> 
+                                            `;
+
+                                            asset_container.appendChild(banner_asset);
+                                        }
+
+                                        if (apiCategory.banner_asset && apiCategory.banner_asset.animated != null) {
+                                            let banner_asset = document.createElement("div");
+
+                                            banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Banner Asset Animated (banner_asset.animated):</p>
+                                                <video autoplay muted class="category-modalv2-inner-img-banner" src="${apiCategory.banner_asset.animated}" loop></video> 
+                                            `;
+
+                                            asset_container.appendChild(banner_asset);
+                                        }
+
+                                        if (apiCategory.logo != null) {
+                                            let logo_asset = document.createElement("div");
+
+                                            logo_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Logo (logo):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.logo}</p>
+                                                <img class="category-modalv2-inner-img-logo" src="https://cdn.yapper.shop/assets/${apiCategory.logo}.png"></img> 
+                                            `;
+
+                                            asset_container.appendChild(logo_asset);
+                                        }
+
+                                        if (apiCategory.mobile_bg != null) {
+                                            let mobile_bg_asset = document.createElement("div");
+
+                                            mobile_bg_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Mobile Background (mobile_bg):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.mobile_bg}</p>
+                                                <img class="category-modalv2-inner-img-mobile_bg" src="https://cdn.yapper.shop/assets/${apiCategory.mobile_bg}.png"></img> 
+                                            `;
+
+                                            asset_container.appendChild(mobile_bg_asset);
+                                        }
+
+                                        if (apiCategory.pdp_bg != null) {
+                                            let pdp_bg_asset = document.createElement("div");
+
+                                            pdp_bg_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Product Detail Page Background (pdp_bg):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.pdp_bg}</p>
+                                                <img class="category-modalv2-inner-img-pdp_bg" src="https://cdn.yapper.shop/assets/${apiCategory.pdp_bg}.png"></img> 
+                                            `;
+
+                                            asset_container.appendChild(pdp_bg_asset);
+                                        }
+
+                                        if (apiCategory.pdp_bg != null) {
+                                            let success_modal_bg_asset = document.createElement("div");
+
+                                            success_modal_bg_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Success Modal Background (success_modal_bg):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.success_modal_bg}</p>
+                                                <img class="category-modalv2-inner-img-success_modal_bg" src="https://cdn.yapper.shop/assets/${apiCategory.success_modal_bg}.png"></img> 
+                                            `;
+
+                                            asset_container.appendChild(success_modal_bg_asset);
+                                        }
+
+                                        if (apiCategory.mobile_banner != null) {
+                                            let mobile_banner_asset = document.createElement("div");
+
+                                            mobile_banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Mobile Banner (mobile_banner):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.mobile_banner}</p>
+                                                <img class="category-modalv2-inner-img-mobile_banner" src="https://cdn.yapper.shop/assets/${apiCategory.mobile_banner}.png"></img> 
+                                            `;
+
+                                            asset_container.appendChild(mobile_banner_asset);
+                                        }
+
+                                        if (apiCategory.featured_block != null) {
+                                            let featured_block_asset = document.createElement("div");
+
+                                            featured_block_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Featured Block (featured_block):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.featured_block}</p>
+                                                <img class="category-modalv2-inner-img-featured_block" src="https://cdn.yapper.shop/assets/${apiCategory.featured_block}.png"></img> 
+                                            `;
+
+                                            asset_container.appendChild(featured_block_asset);
+                                        }
+
+                                        if (apiCategory.hero_banner != null) {
+                                            let hero_banner_asset = document.createElement("div");
+
+                                            hero_banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Hero Banner (hero_banner):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.hero_banner}</p>
+                                                <img class="category-modalv2-inner-img-hero_banner" src="https://cdn.yapper.shop/assets/${apiCategory.hero_banner}.png"></img> 
+                                            `;
+
+                                            asset_container.appendChild(hero_banner_asset);
+                                        }
+
+                                        if (apiCategory.hero_banner_asset && apiCategory.hero_banner_asset.static != null) {
+                                            let hero_banner_asset = document.createElement("div");
+
+                                            hero_banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Hero Banner Asset Static (hero_banner_asset.static):</p>
+                                                <img class="category-modalv2-inner-img-banner" src="${apiCategory.hero_banner_asset.static}"></img> 
+                                            `;
+
+                                            asset_container.appendChild(hero_banner_asset);
+                                        }
+
+                                        if (apiCategory.hero_banner_asset && apiCategory.hero_banner_asset.animated != null) {
+                                            let hero_banner_asset = document.createElement("div");
+
+                                            hero_banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Hero Banner Asset Animated (hero_banner_asset.animated):</p>
+                                                <video autoplay muted class="category-modalv2-inner-img-banner" src="${apiCategory.hero_banner_asset.animated}" loop></video> 
+                                            `;
+
+                                            asset_container.appendChild(hero_banner_asset);
+                                        }
+
+                                        if (apiCategory.wide_banner != null) {
+                                            let wide_banner_asset = document.createElement("div");
+
+                                            wide_banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Wide Banner (wide_banner):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.wide_banner}</p>
+                                                <img class="category-modalv2-inner-img-wide_banner" src="https://cdn.yapper.shop/assets/${apiCategory.wide_banner}.png"></img> 
+                                            `;
+
+                                            asset_container.appendChild(wide_banner_asset);
+                                        }
+
+                                        if (apiCategory.hero_logo != null) {
+                                            let hero_logo_asset = document.createElement("div");
+
+                                            hero_logo_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Hero Logo (hero_logo):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.hero_logo}</p>
+                                                <img class="category-modalv2-inner-img-hero_logo" src="https://cdn.yapper.shop/assets/${apiCategory.hero_logo}.png"></img> 
+                                            `;
+
+                                            asset_container.appendChild(hero_logo_asset);
+                                        }
+
+                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${apiCategory.sku_id}`;
+                                        modal.querySelector("[data-product-modal-name]").textContent = apiCategory.name;
+                                        modal.querySelector("[data-product-modal-summary]").textContent = apiCategory.summary;
+
+                                        document.body.appendChild(modal);
+
+                                        setTimeout(() => {
+                                            modal.classList.add('show');
+                                        }, 1);
+
+                                        
+                                        if (localStorage.experiment_2025_02_shop_category_modals === "Treatment 2: Enable category modals w/ data downloads") {
+                                            modal.querySelector("[data-download-product-card-button]").innerHTML = `
+                                                <svg class="downloadIcon_modal" onclick="window.open('https://item.yapper.shop/sku/${apiCategory.sku_id}/data.zip');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
+                                            `;
+                                        }
+
+                                        modal.querySelector("[data-share-product-card-button]").style.display = 'none';
+                                        
+
+
+                                        let modal_back = document.createElement("div");
+
+                                        modal_back.classList.add('modalv2-back');
+                                        modal_back.id = 'modalv2-back';
+
+                                        document.body.appendChild(modal_back);
+
+                                        setTimeout(() => {
+                                            modal_back.classList.add('show');
+                                        }, 1);
+
+
+                                        modal.addEventListener('click', (event) => {
+                                            if (event.target === modal) {
+                                                modal.classList.remove('show');
+                                                modal_back.classList.remove('show');
+                                                setTimeout(() => {
+                                                    modal.remove();
+                                                    modal_back.remove();
+                                                }, 300);
+                                            }
+                                        });
+
+                                        document.querySelector("[data-close-product-card-button]").addEventListener('click', () => {
+                                            modal.classList.remove('show');
+                                            modal_back.classList.remove('show');
+                                            setTimeout(() => {
+                                                modal.remove();
+                                                modal_back.remove();
+                                            }, 300);
+                                        });
+                                    }
                                 }
 
 
@@ -3100,9 +3367,9 @@ if (localStorage.full_client_rework != "false") {
                                 }
 
                                 if (localStorage.experiment_2025_02_shop_category_modals === "Treatment 1: Enable category modals" || localStorage.experiment_2025_02_shop_category_modals === "Treatment 2: Enable category modals w/ data downloads") {
-                                    category.querySelector("[data-shop-banner-banner-container]").classList.add('clickable');
+                                    category.querySelector("[data-shop-category-banner]").classList.add('clickable');
 
-                                    category.querySelector("[data-shop-banner-banner-container]").addEventListener("click", () => {
+                                    category.querySelector("[data-shop-category-banner]").addEventListener("click", () => {
                                         openCategoryModal();
                                     });
                                     
@@ -3118,12 +3385,9 @@ if (localStorage.full_client_rework != "false") {
                                                     <p data-product-modal-sku-id></p>
                                                     <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
                                                     <p style="color: var(--8)" data-product-modal-summary></p>
+                                                    <p style="font-size: large; font-weight: 900;">Number of items in category: ${apiCategory.products.length}</p>
                                                     <p style="font-size: large; font-weight: 900;">Assets:</p>
-                                                    <div class="shop-category-modal-assets-container">
-                                                        <p style="font-size: large; font-weight: 900;">Banner:</p>
-                                                        <img class="category-modalv2-inner-img-banner" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.banner}.png?size=4096"></img>
-                                                        <p style="font-size: large; font-weight: 900;">Logo:</p>
-                                                        <img class="category-modalv2-inner-img-banner" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096"></img>
+                                                    <div class="shop-category-modal-assets-container" data-shop-category-modal-assets-container>
                                                     </div>
                                                 </div>
                                                 <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
@@ -3136,6 +3400,172 @@ if (localStorage.full_client_rework != "false") {
                                                 </div>
                                             </div>
                                         `;
+
+                                        const asset_container = modal.querySelector("[data-shop-category-modal-assets-container]");
+
+                                        if (apiCategory.banner != null) {
+                                            let banner_asset = document.createElement("div");
+
+                                            banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Banner (banner):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.banner}</p>
+                                                <img class="category-modalv2-inner-img-banner" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.banner}.png?size=4096"></img> 
+                                            `;
+
+                                            asset_container.appendChild(banner_asset);
+                                        }
+
+                                        if (apiCategory.banner_asset && apiCategory.banner_asset.static != null) {
+                                            let banner_asset = document.createElement("div");
+
+                                            banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Banner Asset Static (banner_asset.static):</p>
+                                                <img class="category-modalv2-inner-img-banner" src="${apiCategory.banner_asset.static}"></img> 
+                                            `;
+
+                                            asset_container.appendChild(banner_asset);
+                                        }
+
+                                        if (apiCategory.banner_asset && apiCategory.banner_asset.animated != null) {
+                                            let banner_asset = document.createElement("div");
+
+                                            banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Banner Asset Animated (banner_asset.animated):</p>
+                                                <video autoplay muted class="category-modalv2-inner-img-banner" src="${apiCategory.banner_asset.animated}" loop></video> 
+                                            `;
+
+                                            asset_container.appendChild(banner_asset);
+                                        }
+
+                                        if (apiCategory.logo != null) {
+                                            let logo_asset = document.createElement("div");
+
+                                            logo_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Logo (logo):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.logo}</p>
+                                                <img class="category-modalv2-inner-img-logo" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.logo}.png?size=4096"></img> 
+                                            `;
+
+                                            asset_container.appendChild(logo_asset);
+                                        }
+
+                                        if (apiCategory.mobile_bg != null) {
+                                            let mobile_bg_asset = document.createElement("div");
+
+                                            mobile_bg_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Mobile Background (mobile_bg):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.mobile_bg}</p>
+                                                <img class="category-modalv2-inner-img-mobile_bg" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.mobile_bg}.png?size=4096"></img> 
+                                            `;
+
+                                            asset_container.appendChild(mobile_bg_asset);
+                                        }
+
+                                        if (apiCategory.pdp_bg != null) {
+                                            let pdp_bg_asset = document.createElement("div");
+
+                                            pdp_bg_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Product Detail Page Background (pdp_bg):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.pdp_bg}</p>
+                                                <img class="category-modalv2-inner-img-pdp_bg" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.pdp_bg}.png?size=4096"></img> 
+                                            `;
+
+                                            asset_container.appendChild(pdp_bg_asset);
+                                        }
+
+                                        if (apiCategory.pdp_bg != null) {
+                                            let success_modal_bg_asset = document.createElement("div");
+
+                                            success_modal_bg_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Success Modal Background (success_modal_bg):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.success_modal_bg}</p>
+                                                <img class="category-modalv2-inner-img-success_modal_bg" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.success_modal_bg}.png?size=4096"></img> 
+                                            `;
+
+                                            asset_container.appendChild(success_modal_bg_asset);
+                                        }
+
+                                        if (apiCategory.mobile_banner != null) {
+                                            let mobile_banner_asset = document.createElement("div");
+
+                                            mobile_banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Mobile Banner (mobile_banner):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.mobile_banner}</p>
+                                                <img class="category-modalv2-inner-img-mobile_banner" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.mobile_banner}.png?size=4096"></img> 
+                                            `;
+
+                                            asset_container.appendChild(mobile_banner_asset);
+                                        }
+
+                                        if (apiCategory.featured_block != null) {
+                                            let featured_block_asset = document.createElement("div");
+
+                                            featured_block_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Featured Block (featured_block):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.featured_block}</p>
+                                                <img class="category-modalv2-inner-img-featured_block" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.featured_block}.png?size=4096"></img> 
+                                            `;
+
+                                            asset_container.appendChild(featured_block_asset);
+                                        }
+
+                                        if (apiCategory.hero_banner != null) {
+                                            let hero_banner_asset = document.createElement("div");
+
+                                            hero_banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Hero Banner (hero_banner):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.hero_banner}</p>
+                                                <img class="category-modalv2-inner-img-hero_banner" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.hero_banner}.png?size=4096"></img> 
+                                            `;
+
+                                            asset_container.appendChild(hero_banner_asset);
+                                        }
+
+                                        if (apiCategory.hero_banner_asset && apiCategory.hero_banner_asset.static != null) {
+                                            let hero_banner_asset = document.createElement("div");
+
+                                            hero_banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Hero Banner Asset Static (hero_banner_asset.static):</p>
+                                                <img class="category-modalv2-inner-img-banner" src="${apiCategory.hero_banner_asset.static}"></img> 
+                                            `;
+
+                                            asset_container.appendChild(hero_banner_asset);
+                                        }
+
+                                        if (apiCategory.hero_banner_asset && apiCategory.hero_banner_asset.animated != null) {
+                                            let hero_banner_asset = document.createElement("div");
+
+                                            hero_banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Hero Banner Asset Animated (hero_banner_asset.animated):</p>
+                                                <video autoplay muted class="category-modalv2-inner-img-banner" src="${apiCategory.hero_banner_asset.animated}" loop></video> 
+                                            `;
+
+                                            asset_container.appendChild(hero_banner_asset);
+                                        }
+
+                                        if (apiCategory.wide_banner != null) {
+                                            let wide_banner_asset = document.createElement("div");
+
+                                            wide_banner_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Wide Banner (wide_banner):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.wide_banner}</p>
+                                                <img class="category-modalv2-inner-img-wide_banner" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.wide_banner}.png?size=4096"></img> 
+                                            `;
+
+                                            asset_container.appendChild(wide_banner_asset);
+                                        }
+
+                                        if (apiCategory.hero_logo != null) {
+                                            let hero_logo_asset = document.createElement("div");
+
+                                            hero_logo_asset.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Hero Logo (hero_logo):</p>
+                                                <p style="color: var(--8)">ID: ${apiCategory.hero_logo}</p>
+                                                <img class="category-modalv2-inner-img-hero_logo" src="https://cdn.discordapp.com/app-assets/1096190356233670716/${apiCategory.hero_logo}.png?size=4096"></img> 
+                                            `;
+
+                                            asset_container.appendChild(hero_logo_asset);
+                                        }
 
                                         modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${apiCategory.sku_id}`;
                                         modal.querySelector("[data-product-modal-name]").textContent = apiCategory.name;
@@ -5268,6 +5698,18 @@ if (localStorage.full_client_rework != "false") {
                 })
                 .then(response => response.json())
                 .then(data => {
+                    if (data.message === "Missing Access") {
+                        document.getElementById("everything-housing-container").innerHTML = `
+                            <div style="text-align: center; margin-top: 10px;" id="failed-to-load-shop">
+                                <img style="width: 200px;" src="https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/shopuhoh.png">
+                                <h2>Well, this is awkward.</h2>
+                                <p>Hmmm, we weren&#8217;t able to load the shop. Check back later.</p>
+                                <p>Error: Missing Access</p>
+                                <button class="refresh-button" onclick="location.reload();">Reload</button>
+                            </div>
+                        `;
+                    }
+
                     data.forEach(apiCategory => {
                         async function processCategories() {
                             const output = document.querySelector("[data-shop-output]");
@@ -7292,7 +7734,17 @@ if (localStorage.full_client_rework != "false") {
             `;
         } else if (params.get("page") === "leaks") {
             document.title = "Leaks | Shop Archives";
-            apiUrl = api + LEAKS;
+            if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
+                if (localStorage.unreleased_discord_collectibles == "true") {
+                    url = api + LEAKS;
+                    apiUrl = new URL(url);
+                    apiUrl.searchParams.set("include-unpublished", "true");
+                } else {
+                    apiUrl = api + LEAKS;
+                }
+            } else {
+                apiUrl = api + LEAKS;
+            }
             createMainShopElement()
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 style="margin-left: 260px; margin-top: 10px;">Leaks</h2>
@@ -7412,7 +7864,18 @@ if (localStorage.full_client_rework != "false") {
                 document.getElementById("leaks-tab").classList.add('dm-button-selected');
             }
         } else {
-            fetch(api + LEAKS, {
+            if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
+                if (localStorage.unreleased_discord_collectibles == "true") {
+                    url = api + LEAKS;
+                    apiLeaks = new URL(url);
+                    apiLeaks.searchParams.set("include-unpublished", "true");
+                } else {
+                    apiLeaks = api + LEAKS;
+                }
+            } else {
+                apiLeaks = api + LEAKS;
+            }
+            fetch(apiLeaks, {
                 method: "GET",
                 headers: {
                     "Password": api_password,
