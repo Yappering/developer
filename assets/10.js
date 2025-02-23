@@ -47,7 +47,7 @@ EXPERIMENT_ID_15 = "Treatment 4: Enable modals w/ p+ on p+ page"
 EXPERIMENT_ID_16 = "Treatment 1: Enable category modals"
 
 // 2025-02_profiles_plus_home
-EXPERIMENT_ID_17 = "Treatment -1: Disabled"
+EXPERIMENT_ID_17 = "Treatment 2: Enabled"
 
 // 2025-02_extra_options
 EXPERIMENT_ID_18 = "Treatment 4: Enabled"

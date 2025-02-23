@@ -3155,7 +3155,7 @@ data-share-product-card-button {
     border-radius: 20px;
 }
 
-.category-modalv2-inner-img-logo, .category-modalv2-inner-img-mobile_bg, .category-modalv2-inner-img-pdp_bg, .category-modalv2-inner-img-success_modal_bg {
+.category-modalv2-inner-img-logo, .category-modalv2-inner-img-mobile_bg, .category-modalv2-inner-img-pdp_bg, .category-modalv2-inner-img-success_modal_bg, .category-modalv2-inner-img-category_bg {
     object-fit: cover;
     display: block;
     margin-left: auto;
