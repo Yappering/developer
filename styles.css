@@ -3828,6 +3828,10 @@ data-share-product-card-button {
     cursor: pointer;
 }
 
+#recap-2024-tab-loading {
+    position: relative;
+}
+
 .recap-2024-tab-decoration {
     position: absolute;
     width: 100px;
