@@ -57,3 +57,6 @@ EXPERIMENT_ID_19 = "Treatment 1: Enabled"
 
 // 2025-03_heartbeat
 EXPERIMENT_ID_20 = "Treatment -1: Disabled"
+
+// 2025-03_item_reviews
+EXPERIMENT_ID_21 = "Treatment -1: Disabled"

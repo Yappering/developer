@@ -341,6 +341,20 @@ body {
     animation: modal-popup-anim1 1s;
 }
 
+.shop-modal-review-container {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.review-element {
+    background-color: var(--background-tertiary);
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+}
 
 .dev-modal {
     background-color: var(--background-primary);
