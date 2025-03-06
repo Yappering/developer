@@ -4,7 +4,7 @@ mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
 
-app_version1 = "250"
+app_version1 = "251"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -16257,7 +16257,23 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         document.body.appendChild(update_button);
                     }
                 } else if (app_version2 === "Stable") {
+                    if (app_version1 != data.latest_version_stable) {
+                        console.log('Update Ready!')
 
+                        let update_button = document.createElement("div");
+
+                        update_button.style.position = 'absolute';
+                        update_button.style.marginLeft = '70px';
+                        update_button.style.marginTop = '-5px';
+                        update_button.innerHTML = `
+                            <button type="button" class="card-button" onClick="location.reload();">
+                                <div class="contents_dd4f85">Update Ready!</div>
+                            </button>
+                        `;
+
+
+                        document.body.appendChild(update_button);
+                    }
                 }
                 isFirstHeartbeat = false;
             })
