@@ -247,6 +247,11 @@ body {
     width: fit-content;
 }
 
+#clickable-side-tabs-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .top-bar {
     height: 50px;
     width: 100%;

@@ -52,5 +52,8 @@ EXPERIMENT_ID_17 = "Treatment 2: Enabled"
 // 2025-02_extra_options
 EXPERIMENT_ID_18 = "Treatment 4: Enabled"
 
-// 2025_02_fetch_from_vercel_endpoits
+// 2025-02_fetch_from_vercel_endpoits
 EXPERIMENT_ID_19 = "Treatment 1: Enabled"
+
+// 2025-03_heartbeat
+EXPERIMENT_ID_20 = "Treatment -1: Disabled"
