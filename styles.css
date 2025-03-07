@@ -356,6 +356,28 @@ body {
     margin-top: 5px;
 }
 
+.username-picker-container {
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.profile-no-text-container {
+    width: 100%;
+    height: 100px;
+}
+
+.cant-change-profile-when-logged-in-container {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #000000c7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .dev-modal {
     background-color: var(--background-primary);
     border-radius: 10px;

@@ -4,7 +4,7 @@ mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
 
-app_version1 = "253"
+app_version1 = "254"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2322,7 +2322,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     const api_password = localStorage.getItem("api-password");
     const api_token = sessionStorage.getItem("api-token");
 
-    api = 'https://raw.githubusercontent.com/Yappering/api/main/v2';
+    // api = 'https://raw.githubusercontent.com/Yappering/api/main/v2';
+    api = 'https://shop-archives-api.vercel.app/api';
     prvapi = 'https://raw.githubusercontent.com/Yappering/private-api/refs/heads/main/v2';
     discordsupport = 'https://support.discord.com/hc/en-us/articles/';
     discordblog = 'https://discord.com/blog/';
@@ -2331,13 +2332,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     cdn = 'https://cdn.yapper.shop/';
     tmpapi = 'https://api.yapper.shop/tmp';
 
-    if (localStorage.api_designed_url != "false") {
-        if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
-            api = 'https://shop-archives-api.vercel.app/api'
-        } else {
-            api = apidesignedurl;
-        }
-    }
+    // if (localStorage.api_designed_url != "false") {
+    //     if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
+    //         api = 'https://shop-archives-api.vercel.app/api'
+    //     } else {
+    //         api = apidesignedurl;
+    //     }
+    // }
 
     function privateAPICheck() {
         // if (localStorage.force_all_api_to_fectch_private_api == "true") {
@@ -2752,7 +2753,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             </div>
                                         `;
 
-                                        if (localStorage.experiment_2025_03_item_reviews === "Treatment 1: Enabled") {
+                                        if (localStorage.experiment_2025_03_item_reviews === "Treatment 1: Enabled" || localStorage.experiment_2025_03_item_reviews === "Treatment 2: Simulate not logged in" || localStorage.experiment_2025_03_item_reviews === "Treatment 3: Simulate logged in") {
                                             fetch(`https://shop-archives-api.vercel.app/api/reviews?sku_id=${apiCategory.sku_id}`, {
                                                 method: "GET",
                                                 headers: {
@@ -2772,7 +2773,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             
                                                         reviewElement.innerHTML = `
                                                             <p style="font-size: large; font-weight: 900;">No reviews yet.</p>
-                                                            <p style="color: var(--8)">Be the first to review this item!</p>
+                                                            <p style="color: var(--8)">This item has no reviews</p>
                                                         `;
                                                     } else if (data.message === "Missing Access") {
                                                         
@@ -5843,7 +5844,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             </div>
                                         `;
 
-                                        if (localStorage.experiment_2025_03_item_reviews === "Treatment 1: Enabled") {
+                                        if (localStorage.experiment_2025_03_item_reviews === "Treatment 1: Enabled" || localStorage.experiment_2025_03_item_reviews === "Treatment 2: Simulate not logged in" || localStorage.experiment_2025_03_item_reviews === "Treatment 3: Simulate logged in") {
                                             fetch(`https://shop-archives-api.vercel.app/api/reviews?sku_id=${apiCategory.sku_id}`, {
                                                 method: "GET",
                                                 headers: {
@@ -5863,8 +5864,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             
                                                         reviewElement.innerHTML = `
                                                             <p style="font-size: large; font-weight: 900;">No reviews yet.</p>
-                                                            <p style="color: var(--8)">Be the first to review this item!</p>
-                                                        `;
+                                                            <p style="color: var(--8)">This item has no reviews</p>
+                                                        `
+                                                        // Be the first to review this item!
                                                     } else if (data.message === "Missing Access") {
                                                         
                                                         reviewElement.innerHTML = `
@@ -14056,7 +14058,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         </div>
                     </div>
 
-                    <div id="username-picker-container-dev"></div>
+                    <div class="username-picker-container" id="username-picker-container-dev"></div>
 
                 </div>
                 <div id="theme-picker-container"></div>
@@ -14125,6 +14127,24 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         <p class="options-preview-profile-username" id="options-username-preview"></p>
                     </div>
                 `;
+
+                if (localStorage.experiment_2025_03_item_reviews === "Treatment 3: Simulate logged in") {
+                    let cantChangeProfileWhenLoggedIn = document.createElement("div");
+
+                    cantChangeProfileWhenLoggedIn.classList.add('cant-change-profile-when-logged-in-container');
+                    cantChangeProfileWhenLoggedIn.innerHTML = `
+                        <div class="profile-no-text-container">
+                            <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: white;">Cannot change profile when logged in.</p>
+                            <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">Your profile is synced with your Discord profile.</p>
+                        </div>
+                    `;
+                                
+                                
+                    document.getElementById("username-picker-container-dev").appendChild(cantChangeProfileWhenLoggedIn);
+                }
+
+                
+                
                 document.getElementById("accessibility-options-container").innerHTML = `
                     <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Accessibility</p>
                     <div id="currency-picker-experiment-container"></div>
@@ -14564,7 +14584,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
 
                 try {
-                    const experiment_2025_03_item_reviews_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled"];
+                    const experiment_2025_03_item_reviews_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled", "Treatment 2: Simulate not logged in", "Treatment 3: Simulate logged in"];
 
                     const experiment_2025_03_item_reviews_treatment_picker = document.getElementById("experiment_2025_03_item_reviews_treatment_container");
                     
