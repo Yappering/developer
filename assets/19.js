@@ -4,7 +4,7 @@ mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
 
-app_version1 = "254"
+app_version1 = "255"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2739,8 +2739,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         <summary class="clickable" style="font-size: large; font-weight: 900;">Assets</summary>
                                                         <div class="shop-category-modal-assets-container" data-shop-category-modal-assets-container></div>
                                                     </details>
-                                                    <p style="font-size: large; font-weight: 900;" data-shop-modal-review-title></p>
-                                                    <div class="shop-modal-review-container" data-shop-modal-review-container></div>
+                                                    <div class="shop-modal-review-container" data-shop-modal-review-container>
+                                                        <p style="font-size: large; font-weight: 900;" data-shop-modal-review-title></p>
+                                                    </div>
                                                 </div>
                                                 <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
                                                 <div data-modal-top-product-buttons>
@@ -2774,7 +2775,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         reviewElement.innerHTML = `
                                                             <p style="font-size: large; font-weight: 900;">No reviews yet.</p>
                                                             <p style="color: var(--8)">This item has no reviews</p>
-                                                        `;
+                                                        `
+                                                        // Be the first to review this item!
                                                     } else if (data.message === "Missing Access") {
                                                         
                                                         reviewElement.innerHTML = `
@@ -2804,10 +2806,21 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     reviewElement.classList.add("review-element");
         
                                                     reviewElement.innerHTML = `
-                                                        <p style="font-size: large; font-weight: 900;">${review.reviewer}</p>
+                                                        <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
+                                                            <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.reviewer}</p>
+                                                        </div>
                                                         <div class="shop-modal-review-star-container" data-shop-modal-review-star-container></div>
                                                         <p style="color: var(--8)">${review.review}</p>
                                                     `;
+
+                                                    if (review.reviewer_is_moderator === "true") {
+                                                        let moderatorNametag = document.createElement("p");
+    
+                                                        moderatorNametag.classList.add("shop-modal-review-nametag");
+                                                        moderatorNametag.textContent = "MODERATOR";
+                                                        
+                                                        reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(moderatorNametag);
+                                                    }
         
                                                     if (review.stars === "5") {
                                                         reviewElement.querySelector("[data-shop-modal-review-star-container]").innerHTML = `
@@ -5830,8 +5843,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         <summary class="clickable" style="font-size: large; font-weight: 900;">Assets</summary>
                                                         <div class="shop-category-modal-assets-container" data-shop-category-modal-assets-container></div>
                                                     </details>
-                                                    <p style="font-size: large; font-weight: 900;" data-shop-modal-review-title></p>
-                                                    <div class="shop-modal-review-container" data-shop-modal-review-container></div>
+                                                    <div class="shop-modal-review-container" data-shop-modal-review-container>
+                                                        <p style="font-size: large; font-weight: 900;" data-shop-modal-review-title></p>
+                                                    </div>
                                                 </div>
                                                 <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
                                                 <div data-modal-top-product-buttons>
@@ -5896,10 +5910,21 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     reviewElement.classList.add("review-element");
         
                                                     reviewElement.innerHTML = `
-                                                        <p style="font-size: large; font-weight: 900;">${review.reviewer}</p>
+                                                        <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
+                                                            <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.reviewer}</p>
+                                                        </div>
                                                         <div class="shop-modal-review-star-container" data-shop-modal-review-star-container></div>
                                                         <p style="color: var(--8)">${review.review}</p>
                                                     `;
+
+                                                    if (review.reviewer_is_moderator === "true") {
+                                                        let moderatorNametag = document.createElement("p");
+    
+                                                        moderatorNametag.classList.add("shop-modal-review-nametag");
+                                                        moderatorNametag.textContent = "MODERATOR";
+                                                        
+                                                        reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(moderatorNametag);
+                                                    }
         
                                                     if (review.stars === "5") {
                                                         reviewElement.querySelector("[data-shop-modal-review-star-container]").innerHTML = `
@@ -14138,8 +14163,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">Your profile is synced with your Discord profile.</p>
                         </div>
                     `;
-                                
-                                
+
+
                     document.getElementById("username-picker-container-dev").appendChild(cantChangeProfileWhenLoggedIn);
                 }
 

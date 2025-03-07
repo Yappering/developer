@@ -342,9 +342,12 @@ body {
 }
 
 .shop-modal-review-container {
-    height: 300px;
+    position: absolute;
+    height: 200px;
+    width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    bottom: 0px;
 }
 
 .review-element {
@@ -354,6 +357,20 @@ body {
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 5px;
+}
+
+.shop-modal-review-name-container {
+    display: flex;
+}
+
+.shop-modal-review-name-container .shop-modal-review-nametag {
+    margin-top: 15px;
+    margin-bottom: auto;
+    margin-left: 10px;
+    background-color: #615DED;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px !important;
 }
 
 .username-picker-container {
@@ -3264,7 +3281,7 @@ data-share-product-card-button {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
     width: 800px; /* Fixed width */
-    height: 600px; /* Fixed height */
+    height: 800px; /* Fixed height */
     overflow: hidden;
 }
 
@@ -3308,7 +3325,7 @@ data-share-product-card-button {
 .shop-category-modal-assets-container {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 350px;
+    height: 300px;
     width: 800px;
 }
 
