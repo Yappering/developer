@@ -4,7 +4,7 @@ mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
 
-app_version1 = "255"
+app_version1 = "257"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -181,7 +181,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             VALENTINES = "1333866045521395723",
             ORB = "1332505418219655258",
             ANIME_V3 = "1341506445249609728",
-            INSOMNIA = "1343751621364027462"
+            INSOMNIA = "1343751621364027462",
+            NAMEPLATE_TEST = "1344802365307621427",
+            AESPA = "1346499610977243196"
         ]
     
         category_types = [
@@ -200,6 +202,45 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             VARIANTS_GROUP = 2e3,
             EXTERNAL_SKU = 3e3
         ]
+
+        const nameplate_palettes = {
+            crimson: {
+                "darkBackground": "#900007",
+                "lightBackground": "#E7040F"
+            },
+            berry: {
+                "darkBackground": "#893A99",
+                "lightBackground": "#B11FCF"
+            },
+            sky: {
+                "darkBackground": "#0080B7",
+                "lightBackground": "#56CCFF"
+            },
+            teal: {
+                "darkBackground": "#086460",
+                "lightBackground": "#7DEED7"
+            },
+            forest: {
+                "darkBackground": "#2D5401",
+                "lightBackground": "#6AA624"
+            },
+            bubble_gum: {
+                "darkBackground": "#DC3E97",
+                "lightBackground": "#F957B3"
+            },
+            violet: {
+                "darkBackground": "#730BC8",
+                "lightBackground": "#972FED"
+            },
+            cobalt: {
+                "darkBackground": "#0131C2",
+                "lightBackground": "#4278FF"
+            },
+            clover: {
+                "darkBackground": "#047B20",
+                "lightBackground": "#63CD5A"
+            }
+        }
 
         const params = new URLSearchParams(window.location.search);
 
@@ -1644,6 +1685,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         <div class="nameplate-null-user-name" data-null-user-random-name></div>
                                                     </div>
                                                     <div class="nameplate-null-user" data-user-nameplate-preview>
+                                                        <img class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></img>
                                                         <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
                                                         <p class="nameplate-user-name">${previewName}</p>
                                                     </div>
@@ -1657,22 +1699,29 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     </div>
                                                 `;
     
-                                                const nameplatePreview = previewHolder.querySelector("[data-user-nameplate-preview]");
+                                                product.items.forEach(item => {
+                                                    const nameplatePreview = previewHolder.querySelector("[data-user-nameplate-preview]");
+                                                    const paletteName = item.palette;
+                                                    const asset = `https://cdn.discordapp.com/assets/collectibles/${item.asset}img.png`;
+                                                    const bgcolor = nameplate_palettes[paletteName].darkBackground;
     
-                                                nameplatePreview.style.backgroundImage = `linear-gradient(10deg, #00000000 40%,rgb(144, 0, 7) 180%), linear-gradient(170deg, #00000000 40%,rgb(144, 0, 7) 180%)`;
-                                                nameplatePreview.style.boxShadow = `0 0 0 1px #a10606`;
+                                                    previewHolder.querySelector("[data-user-nameplate-preview-img]").src = asset;
     
-                                                const nullUserNameRandomWidth = previewHolder.querySelectorAll("[data-null-user-random-name]");
-    
-                                                nullUserNameRandomWidth.forEach(UserName => {
-                                                    const randomWidth = Math.floor(Math.random() * (180 - 80 + 1)) + 80;
-                                                    UserName.style.width = randomWidth + `px`;
-                                                });
-    
-                                                const nullUserAvatar = previewHolder.querySelectorAll("[data-nameplate-user-random-avatar]");
-    
-                                                nullUserAvatar.forEach(UserAvatar => {
-                                                    UserAvatar.style.backgroundImage = `url(${localStorage.discord_avatar})`;
+                                                    nameplatePreview.style.backgroundImage = `linear-gradient(10deg, #00000000 40%, ${bgcolor} 180%), linear-gradient(170deg, #00000000 40%, ${bgcolor} 180%)`;
+                                                    // nameplatePreview.style.boxShadow = `0 0 0 1px #a10606`;
+                                                    
+                                                    const nullUserNameRandomWidth = previewHolder.querySelectorAll("[data-null-user-random-name]");
+                                                    
+                                                    nullUserNameRandomWidth.forEach(UserName => {
+                                                        const randomWidth = Math.floor(Math.random() * (180 - 80 + 1)) + 80;
+                                                        UserName.style.width = randomWidth + `px`;
+                                                    });
+                                                
+                                                    const nullUserAvatar = previewHolder.querySelectorAll("[data-nameplate-user-random-avatar]");
+                                                
+                                                    nullUserAvatar.forEach(UserAvatar => {
+                                                        UserAvatar.style.backgroundImage = `url(${localStorage.discord_avatar})`;
+                                                    });
                                                 });
                                                 
                                             } else if (product.type === BUNDLE) {
@@ -2458,7 +2507,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         ORB = "1332505418219655258",
         ANIME_V3 = "1341506445249609728",
         INSOMNIA = "1343751621364027462",
-        NAMEPLATE_TEST = "1344802365307621427"
+        NAMEPLATE_TEST = "1344802365307621427",
+        AESPA = "1346499610977243196"
     ]
 
     category_types = [
@@ -12189,6 +12239,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     const clickable_side_tabs_container = document.getElementById('clickable-side-tabs-container');
     if (clickable_side_tabs_container) {  // Check if element exists
         document.getElementById('clickable-side-tabs-container').innerHTML = `
+            <p class="center-text" style="font-size: 10px; display: flex; color: var(--white); opacity: 0;">${hrft33n87d}</p>
             <p class="center-text" style="font-size: 12px; display: flex; color: var(--white);">${hrft33n87d}</p>
             <div id="home-section">
                 <button class="dm-button" id="home-tab" onclick="setParams({page: 'home'}); location.reload();">
@@ -12715,9 +12766,19 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <hr style="opacity: 0; height: 30px;">
 
                 <div class="a2024-recap-text-card-1">
+                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Nameplates</h1>
+
+                    <img class="a2024-recap-img-1" src="${cdn}assets/170.png">
+
+                    <p class="center-text" style="font-size: 18px;">[replace with something from support article, if they release this year]</p>
+                </div>
+
+                <hr style="opacity: 0; height: 30px;">
+
+                <div class="a2024-recap-text-card-1">
                     <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">Spring Nitro Promotion</h1>
 
-                    <img class="a2024-recap-img-1" src="${cdn}assets/.png">
+                    <img class="a2024-recap-img-1" src="${cdn}assets/169.png">
 
                     <p class="center-text" style="font-size: 18px;">During Spring, if you were a first time Nitro subscriber, you can choose 1 of 3 Avatar Decorations of your own to collect and keep with an active Nitro subscription!</p>
                 </div>
@@ -12793,6 +12854,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 const totalItems2024 = parsedData.filter(item => new Date(item.purchased_at).getFullYear() === 2025);
                 const totalDecorations = totalItems2024.filter(item => item.type === 0).length;
                 const totalEffects = totalItems2024.filter(item => item.type === 1).length;
+                const totalNameplates = totalItems2024.filter(item => item.type === 2).length;
                 const totalBundles = totalItems2024.filter(item => item.type === 1000).length;
         
                 const purchaseTypes = {
@@ -12844,6 +12906,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         <div class="box-expandable-content">
                             <ul>
                                 ${totalItems2024.filter(item => item.type === 1).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="output-box">
+                        <div class="box-header">
+                            <span>Total Nameplates:</span><span>${totalNameplates}</span>
+                        </div>
+                        <div class="subtext">All Profile Nameplates you obtained in 2025.</div>
+                        <div class="box-expandable-content">
+                            <ul>
+                                ${totalItems2024.filter(item => item.type ===2).map(item => `<li>${item.name} (${item.sku_id})</li>`).join('')}
                             </ul>
                         </div>
                     </div>
@@ -14054,6 +14127,23 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             });
     }
 
+
+    if (localStorage.experiment_2025_02_extra_options === "Treatment 6: Settings like discord") {
+        const dm_container = document.querySelector(".dm-list");
+        let u_bar = document.createElement("div");
+
+        u_bar.classList.add("ubar-profile-and-settings")
+        u_bar.innerHTML = `
+            <img id="ubar-avatar" class="ubar-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+            <div class="ubar-status-bg"></div>
+            <div class="ubar-status-color"></div>
+            <p class="ubar-displayname" id="ubar-displayname">${localStorage.discord_username}</p>
+            <svg title="Options" x="0" y="0" onclick="optionsSidebarToggle()" id="ubar-options-cog" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4483 8.3333H18.3333V11.6667H16.4492C16.2483 12.4425 15.9167 13.165 15.4708 13.8033L16.6667 15 15 16.6667 13.8042 15.47C13.1642 15.9158 12.4433 16.2483 11.6667 16.4483V18.3333H8.3333V16.4483C7.5575 16.2483 6.8358 15.9158 6.1967 15.47L5 16.6667 3.3333 15 4.53 13.8033C4.0842 13.1658 3.7517 12.4433 3.5517 11.6667H1.6667V8.3333H3.5517C3.7517 7.5567 4.0833 6.835 4.53 6.1967L3.3333 5 5 3.3333 6.1967 4.53C6.835 4.0833 7.5567 3.7517 8.3333 3.5517V1.6667H11.6667V3.5508C12.4433 3.7517 13.1642 4.0833 13.8042 4.5292L15 3.3325 16.6667 4.9992 15.47 6.1967C15.9158 6.835 16.2483 7.5575 16.4483 8.3333ZM10 13.3333C11.8409 13.3333 13.3333 11.8409 13.3333 10 13.3333 8.159 11.8409 6.6667 10 6.6667 8.159 6.6667 6.6667 8.159 6.6667 10 6.6667 11.8409 8.159 13.3333 10 13.3333Z" )=""></path></svg>
+        `;
+
+        dm_container.appendChild(u_bar);
+    }
+
     function optionsSidebarToggle() {
         if (document.getElementById('options-sidebar-container').classList.contains('options-sidebar-container-expanded')) {
             document.getElementById('options-sidebar-container').classList.remove("options-sidebar-container-expanded");
@@ -14121,7 +14211,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 App Version: ${tcbx926n29}
             `;
 
-            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker" || localStorage.experiment_2025_02_extra_options === "Treatment 6: Settings like discord") {
                 document.getElementById("username-picker-container-dev").innerHTML = `
                     <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Profile</p>
                     <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">Your Profile will be seen around the website.</p>
@@ -14702,7 +14792,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 }
 
                 try {
-                    const experiment_2025_02_extra_options_treatments = ["Treatment -1: Disabled", "Treatment 4: Enabled", "Treatment 5: Enabled w/o currency picker"];
+                    const experiment_2025_02_extra_options_treatments = ["Treatment -1: Disabled", "Treatment 4: Enabled", "Treatment 5: Enabled w/o currency picker", "Treatment 6: Settings like discord"];
 
                     const experiment_2025_02_extra_options_treatment_picker = document.getElementById("experiment_2025_02_extra_options_treatment_container");
                     
