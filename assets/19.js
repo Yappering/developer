@@ -4,7 +4,7 @@ mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
 
-app_version1 = "257"
+app_version1 = "258"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
