@@ -363,11 +363,21 @@ body {
     display: flex;
 }
 
-.shop-modal-review-name-container .shop-modal-review-nametag {
+.shop-modal-review-name-container .shop-modal-review-nametag-moderator {
     margin-top: 15px;
     margin-bottom: auto;
     margin-left: 10px;
     background-color: #615DED;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px !important;
+}
+
+.shop-modal-review-name-container .shop-modal-review-nametag-special {
+    margin-top: 15px;
+    margin-bottom: auto;
+    margin-left: 10px;
+    background-color: #05814B;
     border-radius: 10px;
     padding: 5px;
     font-size: 15px !important;

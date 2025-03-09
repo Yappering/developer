@@ -4,7 +4,7 @@ mgx2tmg9tx = "Experiments";
 mn7829t62d = "Test out new features";
 y5n875tx29 = "Dev Options";
 
-app_version1 = "258"
+app_version1 = "259"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2805,6 +2805,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         `;
 
                                         if (localStorage.experiment_2025_03_item_reviews === "Treatment 1: Enabled" || localStorage.experiment_2025_03_item_reviews === "Treatment 2: Simulate not logged in" || localStorage.experiment_2025_03_item_reviews === "Treatment 3: Simulate logged in") {
+                                            modal.querySelector("[data-shop-modal-review-title]").textContent = "Reviews (Beta):";
+
+                                            let reviewLoadingElement = document.createElement("div");
+                                            reviewLoadingElement.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Loading Reviews...</p>
+                                            `;
+                                            reviewLoadingElement.classList.add("review-element");
+                                            modal.querySelector("[data-shop-modal-review-container]").appendChild(reviewLoadingElement);
                                             fetch(`https://shop-archives-api.vercel.app/api/reviews?sku_id=${apiCategory.sku_id}`, {
                                                 method: "GET",
                                                 headers: {
@@ -2814,7 +2822,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             }) // Replace with your API URL
                                             .then(response => response.json())
                                             .then(data => {
-                                                modal.querySelector("[data-shop-modal-review-title]").textContent = "Reviews (Beta):";
                                                 if (data.message) {
                                                     const reviewContainer = modal.querySelector("[data-shop-modal-review-container]");
                                                     let reviewElement = document.createElement("div");
@@ -2844,6 +2851,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 } else {
                                                     renderReviews(data)
                                                 }
+
+                                                reviewLoadingElement.remove();
                                                 
                                             })
                                             .catch(error => console.error('Error fetching data:', error));
@@ -2857,17 +2866,24 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         
                                                     reviewElement.innerHTML = `
                                                         <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
-                                                            <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.reviewer}</p>
+                                                            <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.reviewer.name}</p>
                                                         </div>
                                                         <div class="shop-modal-review-star-container" data-shop-modal-review-star-container></div>
                                                         <p style="color: var(--8)">${review.review}</p>
                                                     `;
 
-                                                    if (review.reviewer_is_moderator === "true") {
+                                                    if (review.reviewer.moderator === "true") {
                                                         let moderatorNametag = document.createElement("p");
     
-                                                        moderatorNametag.classList.add("shop-modal-review-nametag");
+                                                        moderatorNametag.classList.add("shop-modal-review-nametag-moderator");
                                                         moderatorNametag.textContent = "MODERATOR";
+                                                        
+                                                        reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(moderatorNametag);
+                                                    } else if (review.reviewer.special === "true") {
+                                                        let moderatorNametag = document.createElement("p");
+    
+                                                        moderatorNametag.classList.add("shop-modal-review-nametag-special");
+                                                        moderatorNametag.textContent = "ILL PUT SOMETHING HERE LATER";
                                                         
                                                         reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(moderatorNametag);
                                                     }
@@ -3326,7 +3342,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             product.items.forEach(item => {
                                                 const nameplatePreview = previewHolder.querySelector("[data-user-nameplate-preview]");
                                                 const paletteName = item.palette;
-                                                const asset = `https://cdn.discordapp.com/assets/collectibles/${item.asset}img.png`;
+                                                const asset = `https://cdn.yapper.shop/custom-collectibles/${item.asset}.png`;
                                                 const bgcolor = nameplate_palettes[paletteName].darkBackground;
 
                                                 previewHolder.querySelector("[data-user-nameplate-preview-img]").src = asset;
@@ -3763,7 +3779,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             modal.querySelector("[data-product-modal-name]").textContent = product.name;
                                                             modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
 
-                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                            if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
 
                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                 previewHolder.innerHTML = `
@@ -3865,7 +3881,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
                                                     
                                                         if (matchingEffect) {
-                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                            if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                 previewHolder.innerHTML = `
                                                                     <div class="modal-preview-profile2">
@@ -4041,7 +4057,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     
                                                         // Handle each item in the bundle
                                                         product.items.forEach(item => {
-                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                            if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                                                 
                                                                 if (item.type === 0) {
                                                                     decosrc = item.animated
@@ -4220,7 +4236,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <svg class="downloadIcon_modal" onclick="window.open('https://item.yapper.shop/sku/${selectedVariant.sku_id}/data.zip');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                                 `;
                                                             }
-                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                            if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                                                 
                                                                 if (selectedVariant.type === 0) {
                                                                     selectedVariant.items?.forEach(item => {
@@ -5909,6 +5925,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         `;
 
                                         if (localStorage.experiment_2025_03_item_reviews === "Treatment 1: Enabled" || localStorage.experiment_2025_03_item_reviews === "Treatment 2: Simulate not logged in" || localStorage.experiment_2025_03_item_reviews === "Treatment 3: Simulate logged in") {
+                                            modal.querySelector("[data-shop-modal-review-title]").textContent = "Reviews (Beta):";
+
+                                            let reviewLoadingElement = document.createElement("div");
+                                            reviewLoadingElement.innerHTML = `
+                                                <p style="font-size: large; font-weight: 900;">Loading Reviews...</p>
+                                            `;
+                                            reviewLoadingElement.classList.add("review-element");
+                                            modal.querySelector("[data-shop-modal-review-container]").appendChild(reviewLoadingElement);
                                             fetch(`https://shop-archives-api.vercel.app/api/reviews?sku_id=${apiCategory.sku_id}`, {
                                                 method: "GET",
                                                 headers: {
@@ -5918,7 +5942,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             }) // Replace with your API URL
                                             .then(response => response.json())
                                             .then(data => {
-                                                modal.querySelector("[data-shop-modal-review-title]").textContent = "Reviews (Beta):";
                                                 if (data.message) {
                                                     const reviewContainer = modal.querySelector("[data-shop-modal-review-container]");
                                                     let reviewElement = document.createElement("div");
@@ -5948,6 +5971,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 } else {
                                                     renderReviews(data)
                                                 }
+
+                                                reviewLoadingElement.remove();
                                                 
                                             })
                                             .catch(error => console.error('Error fetching data:', error));
@@ -5961,17 +5986,24 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         
                                                     reviewElement.innerHTML = `
                                                         <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
-                                                            <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.reviewer}</p>
+                                                            <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.reviewer.name}</p>
                                                         </div>
                                                         <div class="shop-modal-review-star-container" data-shop-modal-review-star-container></div>
                                                         <p style="color: var(--8)">${review.review}</p>
                                                     `;
 
-                                                    if (review.reviewer_is_moderator === "true") {
+                                                    if (review.reviewer.moderator === "true") {
                                                         let moderatorNametag = document.createElement("p");
     
-                                                        moderatorNametag.classList.add("shop-modal-review-nametag");
+                                                        moderatorNametag.classList.add("shop-modal-review-nametag-moderator");
                                                         moderatorNametag.textContent = "MODERATOR";
+                                                        
+                                                        reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(moderatorNametag);
+                                                    } else if (review.reviewer.special === "true") {
+                                                        let moderatorNametag = document.createElement("p");
+    
+                                                        moderatorNametag.classList.add("shop-modal-review-nametag-special");
+                                                        moderatorNametag.textContent = "ILL PUT SOMETHING HERE LATER";
                                                         
                                                         reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(moderatorNametag);
                                                     }
@@ -6885,7 +6917,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         let priceNitro = "N/A";
                                         let priceOrb = "N/A";
 
-                                        if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled") {
+                                        if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                             if (localStorage.is_nitro_user === "true") {
                                                 if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
                                                     product.prices["4"].country_prices.prices.forEach(price => {
@@ -7093,7 +7125,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             modal.querySelector("[data-product-modal-name]").textContent = product.name;
                                                             modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
 
-                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                            if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
 
                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                 previewHolder.innerHTML = `
@@ -7194,7 +7226,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
                                                     
                                                         if (matchingEffect) {
-                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                            if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                 previewHolder.innerHTML = `
                                                                     <div class="modal-preview-profile2">
@@ -7369,7 +7401,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     
                                                         // Handle each item in the bundle
                                                         product.items.forEach(item => {
-                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                            if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                                                 
                                                                 if (item.type === 0) {
                                                                     decosrc = item.asset
@@ -7549,7 +7581,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <svg class="downloadIcon_modal" onclick="window.open('https://item.yapper.shop/sku/${selectedVariant.sku_id}/data.zip');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                                 `;
                                                             }
-                                                            if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                            if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                                                 
                                                                 if (selectedVariant.type === 0) {
                                                                     selectedVariant.items?.forEach(item => {
@@ -7849,7 +7881,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     let priceNitro = "N/A";
                                                     let priceOrb = "N/A";
 
-                                                    if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled") {
+                                                    if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                                         if (localStorage.is_nitro_user === "true") {
                                                             if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
                                                                 product.prices["4"].country_prices.prices.forEach(price => {
@@ -14498,7 +14530,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 document.getElementById("reduced-motion-box").checked = true;
             }
 
-            if (localStorage.is_nitro_user == "true") {
+            if (localStorage.is_nitro_user == "true" && localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                 document.getElementById("options-has-nitro-box").checked = true;
             }
 
