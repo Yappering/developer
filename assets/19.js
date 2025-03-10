@@ -1,10 +1,6 @@
-hrft33n87d = "Discord is a registered trademark of Discord Inc. Shop Archives is not affiliated with, endorsed or sponsored by Discord Inc.";
-n78ndg290n = "Greetings Shop Archives Staff and/or Dataminer! This model has everything only available for developers, only use this if you know what you're doing. Don't break anything :)";
-mgx2tmg9tx = "Experiments";
-mn7829t62d = "Test out new features";
-y5n875tx29 = "Dev Options";
 
-app_version1 = "259"
+
+app_version1 = "260"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -3978,6 +3974,19 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         } else {
                                                             previewName = 'Discord User'
                                                         }
+
+                                                        if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 1: Enabled") {
+                                                            let nameplateWarning = document.createElement("div");
+
+                                                            nameplateWarning.classList.add('nameplate-modal-early-warning-container');
+                                                            nameplateWarning.innerHTML = `
+                                                                <p>Nameplates can only be seen with an experiment.</p>
+                                                                <a style="color: lightblue;" href="https://support.yapper.shop/?page=nameplates">Click here to for a guide on how to get Nameplates.</a>
+                                                            `;
+
+
+                                                            modal.querySelector(".modalv2-inner-left").appendChild(nameplateWarning);
+                                                        }
             
                                                         previewHolder.innerHTML = `
                                                             <div class="nameplate-null-user">
@@ -6531,7 +6540,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     <div class="nameplate-null-user-name" data-null-user-random-name></div>
                                                 </div>
                                                 <div class="nameplate-null-user" data-user-nameplate-preview>
-                                                    <img class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></img>
+                                                    <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
                                                     <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
                                                     <p class="nameplate-user-name">${previewName}</p>
                                                 </div>
@@ -6548,10 +6557,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             product.items.forEach(item => {
                                                 const nameplatePreview = previewHolder.querySelector("[data-user-nameplate-preview]");
                                                 const paletteName = item.palette;
-                                                const asset = `https://cdn.discordapp.com/assets/collectibles/${item.asset}img.png`;
+                                                const asset = `https://cdn.discordapp.com/assets/collectibles/${item.asset}asset.webm`;
                                                 const bgcolor = nameplate_palettes[paletteName].darkBackground;
 
-                                                previewHolder.querySelector("[data-user-nameplate-preview-img]").src = asset;
+                                                const videoElement = previewHolder.querySelector("[data-user-nameplate-preview-img]");
+
+                                                videoElement.src = asset;
 
                                                 nameplatePreview.style.backgroundImage = `linear-gradient(10deg, #00000000 40%, ${bgcolor} 180%), linear-gradient(170deg, #00000000 40%, ${bgcolor} 180%)`;
                                                 // nameplatePreview.style.boxShadow = `0 0 0 1px #a10606`;
@@ -6568,6 +6579,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 nullUserAvatar.forEach(UserAvatar => {
                                                     UserAvatar.style.backgroundImage = `url(${localStorage.discord_avatar})`;
                                                 });
+
+                                                if (localStorage.reduced_motion != "true") {
+                                                    card.addEventListener("mouseenter", () => {
+                                                        videoElement.play();
+                                                    });
+                                                    card.addEventListener("mouseleave", () => {
+                                                        videoElement.pause();
+                                                    });
+                                                }
                                             });
                                             
                                         } else if (product.type === BUNDLE) {
@@ -7323,6 +7343,19 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         } else {
                                                             previewName = 'Discord User'
                                                         }
+
+                                                        if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 1: Enabled") {
+                                                            let nameplateWarning = document.createElement("div");
+
+                                                            nameplateWarning.classList.add('nameplate-modal-early-warning-container');
+                                                            nameplateWarning.innerHTML = `
+                                                                <p>Nameplates can only be seen with an experiment.</p>
+                                                                <a style="color: lightblue;" href="https://support.yapper.shop/?page=nameplates">Click here to for a guide on how to get Nameplates.</a>
+                                                            `;
+
+
+                                                            modal.querySelector(".modalv2-inner-left").appendChild(nameplateWarning);
+                                                        }
             
                                                         previewHolder.innerHTML = `
                                                             <div class="nameplate-null-user">
@@ -7334,7 +7367,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 <div class="nameplate-null-user-name" data-null-user-random-name></div>
                                                             </div>
                                                             <div class="nameplate-null-user" data-user-nameplate-preview>
-                                                                <img class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></img>
+                                                                <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
                                                                 <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
                                                                 <p class="nameplate-user-name">${previewName}</p>
                                                             </div>
@@ -7351,10 +7384,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         product.items.forEach(item => {
                                                             const nameplatePreview = previewHolder.querySelector("[data-user-nameplate-preview]");
                                                             const paletteName = item.palette;
-                                                            const asset = `https://cdn.discordapp.com/assets/collectibles/${item.asset}img.png`;
+                                                            const asset = `https://cdn.discordapp.com/assets/collectibles/${item.asset}asset.webm`;
                                                             const bgcolor = nameplate_palettes[paletteName].darkBackground;
             
-                                                            previewHolder.querySelector("[data-user-nameplate-preview-img]").src = asset;
+                                                            const videoElement = previewHolder.querySelector("[data-user-nameplate-preview-img]");
+
+                                                            videoElement.src = asset;
             
                                                             nameplatePreview.style.backgroundImage = `linear-gradient(10deg, #00000000 40%, ${bgcolor} 180%), linear-gradient(170deg, #00000000 40%, ${bgcolor} 180%)`;
                                                             // nameplatePreview.style.boxShadow = `0 0 0 1px #a10606`;
@@ -7371,6 +7406,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             nullUserAvatar.forEach(UserAvatar => {
                                                                 UserAvatar.style.backgroundImage = `url(${localStorage.discord_avatar})`;
                                                             });
+
+                                                            if (localStorage.reduced_motion != "true") {
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
+                                                                    videoElement.play();
+                                                                });
+                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
+                                                                    videoElement.pause();
+                                                                });
+                                                            }
                                                         });
                                                         
                                                     } else if (product.type === BUNDLE) {
@@ -9185,7 +9229,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 modal.querySelector("[data-product-modal-name]").textContent = product.name;
                                                                 modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
     
-                                                                if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                                if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
     
                                                                     previewHolder.classList.add('modal-preview-profile-container');
                                                                     previewHolder.innerHTML = `
@@ -9286,7 +9330,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
                                                         
                                                             if (matchingEffect) {
-                                                                if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                                if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                                                     previewHolder.classList.add('modal-preview-profile-container');
                                                                     previewHolder.innerHTML = `
                                                                         <div class="modal-preview-profile2">
@@ -9383,6 +9427,19 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             } else {
                                                                 previewName = 'Discord User'
                                                             }
+    
+                                                            if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 1: Enabled") {
+                                                                let nameplateWarning = document.createElement("div");
+    
+                                                                nameplateWarning.classList.add('nameplate-modal-early-warning-container');
+                                                                nameplateWarning.innerHTML = `
+                                                                    <p>Nameplates can only be seen with an experiment.</p>
+                                                                    <a style="color: lightblue;" href="https://support.yapper.shop/?page=nameplates">Click here to for a guide on how to get Nameplates.</a>
+                                                                `;
+    
+    
+                                                                modal.querySelector(".modalv2-inner-left").appendChild(nameplateWarning);
+                                                            }
                 
                                                             previewHolder.innerHTML = `
                                                                 <div class="nameplate-null-user">
@@ -9461,7 +9518,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         
                                                             // Handle each item in the bundle
                                                             product.items.forEach(item => {
-                                                                if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                                if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                                                     
                                                                     if (item.type === 0) {
                                                                         decosrc = item.asset
@@ -9641,7 +9698,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <svg class="downloadIcon_modal" onclick="window.open('https://item.yapper.shop/sku/${selectedVariant.sku_id}/data.zip');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
                                                                     `;
                                                                 }
-                                                                if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker") {
+                                                                if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                                                     
                                                                     if (selectedVariant.type === 0) {
                                                                         selectedVariant.items?.forEach(item => {
@@ -9941,7 +9998,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         let priceNitro = "N/A";
                                                         let priceOrb = "N/A";
     
-                                                        if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled") {
+                                                        if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                                             if (localStorage.is_nitro_user === "true") {
                                                                 if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
                                                                     product.prices["4"].country_prices.prices.forEach(price => {
@@ -12271,33 +12328,33 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     const clickable_side_tabs_container = document.getElementById('clickable-side-tabs-container');
     if (clickable_side_tabs_container) {  // Check if element exists
         document.getElementById('clickable-side-tabs-container').innerHTML = `
-            <p class="center-text" style="font-size: 10px; display: flex; color: var(--white); opacity: 0;">${hrft33n87d}</p>
-            <p class="center-text" style="font-size: 12px; display: flex; color: var(--white);">${hrft33n87d}</p>
+            <p class="center-text" style="font-size: 10px; display: flex; color: var(--white); opacity: 0;">${DISCORD_DISCLAIMER}</p>
+            <p class="center-text" style="font-size: 12px; display: flex; color: var(--white);">${DISCORD_DISCLAIMER}</p>
             <div id="home-section">
                 <button class="dm-button" id="home-tab" onclick="setParams({page: 'home'}); location.reload();">
-                    <p class="dm-button-text">Featured</p>
+                    <p class="dm-button-text">${FEATURED_TAB_TITLE}</p>
                 </button>
                 <div id="recap-2024-tab-loading">
                 </div>
             </div>
-            <div class="dm-divider">Shop</div>
+            <div class="dm-divider">${SHOP_DM_DEVIDER}</div>
             <div id="collectibles-section">
                 <button class="dm-button" id="shop-tab" onclick="setParams({page: 'shop'}); location.reload();">
-                    <p class="dm-button-text">Shop All</p>
+                    <p class="dm-button-text">${SHOP_TAB_TITLE}</p>
                 </button>
                 <div id="orbs-shop-tab-loading">
                 </div>
                 <div id="leaks-tab-loading">
                 </div>
                 <button class="dm-button" id="potions-tab" onclick="setParams({page: 'consumables'}); location.reload();">
-                    <p class="dm-button-text">Potions</p>
+                    <p class="dm-button-text">${POTIONS_TAB_TITLE}</p>
                 </button>
                 <button class="dm-button" id="miscellaneous-tab" onclick="setParams({page: 'miscellaneous'}); location.reload();">
-                    <p class="dm-button-text">Miscellaneous</p>
+                    <p class="dm-button-text">${MISCELLANEOUS_TAB_TITLE}</p>
                 </button>
                 <div id="old-pplus-tab">
                     <button class="dm-button" id="pplus-tab" onclick="setParams({page: 'pplus'}); location.reload();">
-                        <p class="dm-button-text">Profiles Plus</p>
+                        <p class="dm-button-text">${PROFILES_PLUS_TAB_TITLE}</p>
                     </button>
                 </div>
             </div>
@@ -12318,13 +12375,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         if (localStorage.experiment_2025_02_profiles_plus_home === "Treatment 2: Enabled") {
             document.getElementById('old-pplus-tab').innerHTML = ``;
             document.getElementById('new-profiles-plus-tab-container').innerHTML = `
-                <div class="dm-divider">Profiles Plus</div>
+                <div class="dm-divider">${PROFILES_PLUS_DM_DEVIDER}</div>
                 <div id="collectibles-section">
                     <button class="dm-button" id="pplus-home-tab" onclick="setParams({page: 'pplus-home'}); location.reload();">
-                        <p class="dm-button-text">Featured</p>
+                        <p class="dm-button-text">${PROFILES_PLUS_FEATURED_TAB_TITLE}</p>
                     </button>
                     <button class="dm-button" id="pplus-tab" onclick="setParams({page: 'pplus'}); location.reload();">
-                        <p class="dm-button-text">Browse All</p>
+                        <p class="dm-button-text">${PROFILES_PLUS_BROWSE_ALL_TAB_TITLE}</p>
                     </button>
                 </div>
             `;
@@ -12356,7 +12413,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         document.getElementById('recap-2024-tab-loading').innerHTML = `
             <img class="recap-2024-tab-decoration" src="https://cdn.yapper.shop/assets/157.png">
             <button class="dm-button" id="recap-2024-tab" onclick="setParams({page: 'year_recap'}); location.reload();">
-                <p class="dm-button-text">2025 Recap</p>
+                <p class="dm-button-text">${RECAP_2024_TAB_TITLE}</p>
             </button>
 
         `;
@@ -12366,7 +12423,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     function pageCheck() {
         privateAPICheck()
         if (params.get("page") === "home") {
-            document.title = "Featured | Shop Archives";
+            document.title = `${FEATURED_TAB_DOCUMENT_TITLE}${DOCUMENT_TITLE_SITE_NAME}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
                 if (localStorage.unreleased_discord_collectibles == "true") {
                     url = api + HOME_PAGE_ALL;
@@ -12381,19 +12438,19 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             createHomePageElement()
             document.getElementById("home-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Featured</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">${FEATURED_TAB_PAGE_TITLE}</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "year_recap") {
-            document.title = "2025 Recap | Shop Archives";
+            document.title = `${RECAP_2024_TAB_DOCUMENT_TITLE}${DOCUMENT_TITLE_SITE_NAME}`;
             document.getElementById("recap-2024-tab").classList.add('dm-button-selected');
             localStorage.dismissible_recap_2024 = "dismissed";
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">2025 Recap</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">${RECAP_2024_TAB_PAGE_TITLE}</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "shop") {
-            document.title = "Shop All | Shop Archives";
+            document.title = `${SHOP_TAB_DOCUMENT_TITLE}${DOCUMENT_TITLE_SITE_NAME}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
                 if (localStorage.unreleased_discord_collectibles == "true") {
                     url = api + COLLECTIBLES;
@@ -12408,11 +12465,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             createMainShopElement()
             document.getElementById("shop-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Shop > Shop All</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">${SHOP_TAB_PAGE_TITLE}</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "orbs") {
-            document.title = "Orb Rewards | Shop Archives";
+            document.title = `${ORB_SHOP_TAB_DOCUMENT_TITLE}${DOCUMENT_TITLE_SITE_NAME}`;
             if (localStorage.experiment_2025_02_orbs_shop === "Treatment 2: Orb Shop done like default") {
                 apiUrl = api + ORBS_SHOP_DEFAULT;
             } else {
@@ -12420,11 +12477,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             }
             createMainPotionsElement()
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Shop > Orb Rewards</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">${ORB_SHOP_TAB_PAGE_TITLE}</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "leaks") {
-            document.title = "Leaks | Shop Archives";
+            document.title = `${LEAKS_TAB_DOCUMENT_TITLE}${DOCUMENT_TITLE_SITE_NAME}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
                 if (localStorage.unreleased_discord_collectibles == "true") {
                     url = api + LEAKS;
@@ -12438,11 +12495,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             }
             createMainShopElement()
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Shop > Leaks</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">${LEAKS_TAB_PAGE_TITLE}</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "consumables") {
-            document.title = "Potions | Shop Archives";
+            document.title = `${POTIONS_TAB_DOCUMENT_TITLE}${DOCUMENT_TITLE_SITE_NAME}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
                 if (localStorage.unreleased_discord_collectibles == "true") {
                     url = api + CONSUMABLES;
@@ -12457,11 +12514,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             createMainPotionsElement()
             document.getElementById("potions-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Shop > Potions</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">${POTIONS_TAB_PAGE_TITLE}</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "miscellaneous") {
-            document.title = "Miscellaneous | Shop Archives";
+            document.title = `${POTIONS_TAB_DOCUMENT_TITLE}${DOCUMENT_TITLE_SITE_NAME}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
                 if (localStorage.unreleased_discord_collectibles == "true") {
                     url = api + MISCELLANEOUS;
@@ -12476,11 +12533,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             createMainShopElement()
             document.getElementById("miscellaneous-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Shop > Miscellaneous</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">${MISCELLANEOUS_TAB_PAGE_TITLE}</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "pplus-home") {
-            document.title = "Featured | Shop Archives";
+            document.title = `${PROFILES_PLUS_FEATURED_TAB_DOCUMENT_TITLE}${DOCUMENT_TITLE_SITE_NAME}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
                 if (localStorage.unreleased_profiles_plus == "true") {
                     url = api + HOME_PAGE_PPLUS;
@@ -12495,11 +12552,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             createHomePageElement()
             document.getElementById("pplus-home-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Profiles Plus > Featured</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">${PROFILES_PLUS_FEATURED_TAB_PAGE_TITLE}</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "pplus") {
-            document.title = "Profiles Plus | Shop Archives";
+            document.title = `${PROFILES_PLUS_BROWSE_ALL_TAB_DOCUMENT_TITLE}${DOCUMENT_TITLE_SITE_NAME}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
                 if (localStorage.unreleased_profiles_plus == "true") {
                     url = api + PROFILES_PLUS;
@@ -12519,7 +12576,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             createMainShopElement()
             document.getElementById("pplus-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">Profiles Plus > Browse All</h2>
+                <h2 style="margin-left: 260px; margin-top: 10px;">${PROFILES_PLUS_BROWSE_ALL_TAB_PAGE_TITLE}</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "published_listings") {
@@ -12572,10 +12629,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             console.log(`Valid Leaks Check: Overridden`);
             document.getElementById('leaks-tab-loading').innerHTML = `
                 <button class="dm-button" id="leaks-tab" onclick="setParams({page: 'leaks'}); location.reload();" title="New {apiCategory.name} Leaks">
-                    <p class="dm-button-text">Leaks</p>
-                    <div class="dm-new-icon">
-                        NEW
-                    </div>
+                    <p class="dm-button-text">${LEAKS_TAB_TITLE}</p>
+                    <div class="dm-new-icon">${DM_NEW}</div>
                 </button>
             `;
             if (params.get("page") === "leaks") {
@@ -12606,10 +12661,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     console.log(`Valid Leaks Check: True`);
                     document.getElementById('leaks-tab-loading').innerHTML = `
                         <button class="dm-button" id="leaks-tab" onclick="setParams({page: 'leaks'}); location.reload();" title="New ${apiCategory.name} Leaks">
-                            <p class="dm-button-text">Leaks</p>
-                            <div class="dm-new-icon">
-                                NEW
-                            </div>
+                            <p class="dm-button-text">${LEAKS_TAB_TITLE}</p>
+                            <div class="dm-new-icon">${DM_NEW}</div>
                         </button>
                     `;
                     if (params.get("page") === "leaks") {
@@ -12632,7 +12685,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     if (localStorage.experiment_2025_02_orbs_shop === "Treatment 1: Orb Shop done like Potions" || localStorage.experiment_2025_02_orbs_shop === "Treatment 2: Orb Shop done like default") {
         document.getElementById('orbs-shop-tab-loading').innerHTML = `
             <button class="dm-button" id="orbs-shop-tab" onclick="setParams({page: 'orbs'}); location.reload();">
-                <p class="dm-button-text">Orb Rewards</p>
+                <p class="dm-button-text">${ORB_SHOP_TAB_TITLE}</p>
             </button>
         `;
         if (params.get("page") === "orbs") {
@@ -14611,117 +14664,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         <input class="options-toggle-box" onclick="disabledExperimentForceRollout();" style="cursor: pointer; scale: 2; posision: center;" id="experiment-force-rollout" type="checkbox">
                     </div>
 
-                    <div class="options-option-card">
-                        <p class="option-card-title">Item Reviews</p>
-                        <p class="new-experiment-subtext">2025_03_item_reviews</p>
-                        <select id="experiment_2025_03_item_reviews_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2025_03_item_reviews_clear()">Clear</button>
-                    </div>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title">Heartbeat</p>
-                        <p class="new-experiment-subtext">2025_03_heartbeat</p>
-                        <select id="experiment_2025_03_heartbeat_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2025_03_heartbeat_clear()">Clear</button>
-                    </div>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title">Fetch From Vercel Endpoints</p>
-                        <p class="new-experiment-subtext">2025_02_fetch_from_vercel_endpoits</p>
-                        <select id="experiment_2025_02_fetch_from_vercel_endpoits_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2025_02_fetch_from_vercel_endpoits_clear()">Clear</button>
-                    </div>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title">Extra Options</p>
-                        <p class="new-experiment-subtext">2025_02_extra_options</p>
-                        <select id="experiment_2025_02_extra_options_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2025_02_extra_options_clear()">Clear</button>
-                    </div>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title">Profiles Plus Home</p>
-                        <p class="new-experiment-subtext">2025_02_profiles_plus_home</p>
-                        <select id="experiment_2025_02_profiles_plus_home_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2025_02_profiles_plus_home_clear()">Clear</button>
-                    </div>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title">Shop Category Modals</p>
-                        <p class="new-experiment-subtext">2025_02_shop_category_modals</p>
-                        <select id="experiment_2025_02_shop_category_modals_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2025_02_shop_category_modals_clear()">Clear</button>
-                    </div>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title">Shop Card Modals</p>
-                        <p class="new-experiment-subtext">2025_02_shop_card_modals</p>
-                        <select id="experiment_2025_02_shop_card_modals_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2025_02_shop_card_modals_clear()">Clear</button>
-                    </div>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title">Mobile Render</p>
-                        <p class="new-experiment-subtext">2025_02_mobile_render</p>
-                        <select id="experiment_2025_02_mobile_render_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2025_02_mobile_render_clear()">Clear</button>
-                    </div>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title">Orbs</p>
-                        <p class="new-experiment-subtext">2025_02_orbs_shop</p>
-                        <select id="experiment_2025_02_orbs_shop_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2025_02_orbs_shop_clear()">Clear</button>
-                    </div>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title">Orb Testing</p>
-                        <p class="new-experiment-subtext">2025_01_orb_testing</p>
-                        <select id="experiment_2025_01_orb_testing_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2025_01_orb_testing_clear()">Clear</button>
-                    </div>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title">Leaks on Home Page</p>
-                        <p class="new-experiment-subtext">2025_01_show_leaks_on_home_page</p>
-                        <select id="experiment_2025_01_show_leaks_on_home_page_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2025_01_show_leaks_on_home_page_clear()">Clear</button>
-                    </div>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title">Theme Picker</p>
-                        <p class="new-experiment-subtext">2024_12_theme_picker</p>
-                        <select id="experiment_2024_12_theme_picker_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2024_12_theme_picker_treatment_clear()">Clear</button>
-                    </div>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title">Profiles Plus Marketing Variants</p>
-                        <p class="new-experiment-subtext">2024-12_profiles_plus_marketing_variants</p>
-                        <select id="experiment_2024_12_profiles_plus_marketing_variants_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2024_12_profiles_plus_marketing_variants_treatment_clear()">Clear</button>
-                    </div>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title">2024 Recap</p>
-                        <p class="new-experiment-subtext">2024-11_recap</p>
-                        <select id="experiment_2024_11_recap_treatment_container" class="experiment-treatment-picker">
-                        </select>
-                        <button class="new-experiment-clear-button" onclick="experiment_2024_11_recap_treatment_clear()">Clear</button>
-                    </div>
+                    <div id="experiments-container-output"></div>
 
                 `;
 
@@ -14729,475 +14672,52 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     document.getElementById("experiment-force-rollout").checked = true;
                 }
 
+                experimentsList.forEach(({ title, id, name, treatments }) => {
+                    try {
 
-                try {
-                    const experiment_2025_03_item_reviews_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled", "Treatment 2: Simulate not logged in", "Treatment 3: Simulate logged in"];
+                        let experimentCard = document.createElement("div");
 
-                    const experiment_2025_03_item_reviews_treatment_picker = document.getElementById("experiment_2025_03_item_reviews_treatment_container");
-                    
+                        experimentCard.classList.add('options-option-card');
+                        experimentCard.innerHTML = `
+                            <p class="option-card-title">${title}</p>
+                            <p class="new-experiment-subtext">${id}</p>
+                            <select id="${name}_treatment_container" class="experiment-treatment-picker">
+                            </select>
+                            <button class="new-experiment-clear-button" onclick="clearSetExperiment('${name}')">Clear</button>
+                        `;
 
-                    populate_experiment_2025_03_item_reviews();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2025_03_item_reviews");
-                    if (storedTreatment) {
-                        experiment_2025_03_item_reviews_treatment_picker.value = storedTreatment;
-                    }
 
-                    function populate_experiment_2025_03_item_reviews() {
-                        experiment_2025_03_item_reviews_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2025_03_item_reviews_treatment_picker.appendChild(optElement);
+                        document.getElementById("experiments-container-output").appendChild(experimentCard);
+
+                        const treatmentPicker = document.getElementById(`${name}_treatment_container`);
+                
+                        if (!treatmentPicker) return; // Skip if element doesn't exist
+                
+                        populateExperimentOptions(treatmentPicker, treatments);
+                
+                        const storedTreatment = localStorage.getItem(name);
+                        if (storedTreatment) {
+                            treatmentPicker.value = storedTreatment;
+                        }
+                
+                        treatmentPicker.addEventListener("change", () => {
+                            localStorage.setItem(name, treatmentPicker.value);
                         });
+                
+                    } catch (error) {
+                        console.error(`Error setting up experiment: ${name}`, error);
                     }
-
-                    experiment_2025_03_item_reviews_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2025_03_item_reviews_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2025_03_item_reviews", selectedTreatment);
+                });
+                
+                function populateExperimentOptions(selectElement, treatments) {
+                    treatments.forEach((treatment) => {
+                        const optElement = document.createElement("option");
+                        optElement.value = treatment;
+                        optElement.textContent = treatment;
+                        selectElement.appendChild(optElement);
                     });
-                } catch(error) {
-                }
-
-                try {
-                    const experiment_2025_03_heartbeat_treatments = ["Treatment -1: Disabled", "Treatment 1: Fetch once on startup", "Treatment 2: Fetch every 60 seconds"];
-
-                    const experiment_2025_03_heartbeat_treatment_picker = document.getElementById("experiment_2025_03_heartbeat_treatment_container");
-                    
-
-                    populate_experiment_2025_03_heartbeat();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2025_03_heartbeat");
-                    if (storedTreatment) {
-                        experiment_2025_03_heartbeat_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2025_03_heartbeat() {
-                        experiment_2025_03_heartbeat_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2025_03_heartbeat_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2025_03_heartbeat_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2025_03_heartbeat_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2025_03_heartbeat", selectedTreatment);
-                    });
-                } catch(error) {
-                }
-
-                try {
-                    const experiment_2025_02_fetch_from_vercel_endpoits_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled"];
-
-                    const experiment_2025_02_fetch_from_vercel_endpoits_treatment_picker = document.getElementById("experiment_2025_02_fetch_from_vercel_endpoits_treatment_container");
-                    
-
-                    populate_experiment_2025_02_fetch_from_vercel_endpoits();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2025_02_fetch_from_vercel_endpoits");
-                    if (storedTreatment) {
-                        experiment_2025_02_fetch_from_vercel_endpoits_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2025_02_fetch_from_vercel_endpoits() {
-                        experiment_2025_02_fetch_from_vercel_endpoits_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2025_02_fetch_from_vercel_endpoits_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2025_02_fetch_from_vercel_endpoits_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2025_02_fetch_from_vercel_endpoits_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2025_02_fetch_from_vercel_endpoits", selectedTreatment);
-                    });
-                } catch(error) {
-                }
-
-                try {
-                    const experiment_2025_02_extra_options_treatments = ["Treatment -1: Disabled", "Treatment 4: Enabled", "Treatment 5: Enabled w/o currency picker", "Treatment 6: Settings like discord"];
-
-                    const experiment_2025_02_extra_options_treatment_picker = document.getElementById("experiment_2025_02_extra_options_treatment_container");
-                    
-
-                    populate_experiment_2025_02_extra_options();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2025_02_extra_options");
-                    if (storedTreatment) {
-                        experiment_2025_02_extra_options_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2025_02_extra_options() {
-                        experiment_2025_02_extra_options_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2025_02_extra_options_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2025_02_extra_options_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2025_02_extra_options_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2025_02_extra_options", selectedTreatment);
-                    });
-                } catch(error) {
-                }
-
-                try {
-                    const experiment_2025_02_profiles_plus_home_treatments = ["Treatment -1: Disabled", "Treatment 2: Enabled", "Treatment 3: Hide All Profiles Plus Tabs"];
-
-                    const experiment_2025_02_profiles_plus_home_treatment_picker = document.getElementById("experiment_2025_02_profiles_plus_home_treatment_container");
-                    
-
-                    populate_experiment_2025_02_profiles_plus_home();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2025_02_profiles_plus_home");
-                    if (storedTreatment) {
-                        experiment_2025_02_profiles_plus_home_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2025_02_profiles_plus_home() {
-                        experiment_2025_02_profiles_plus_home_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2025_02_profiles_plus_home_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2025_02_profiles_plus_home_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2025_02_profiles_plus_home_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2025_02_profiles_plus_home", selectedTreatment);
-                    });
-                } catch(error) {
-                }
-
-                try {
-                    const experiment_2025_02_shop_category_modals_treatments = ["Treatment -1: Disabled", "Treatment 1: Enable category modals", "Treatment 2: Enable category modals w/ data downloads"];
-
-                    const experiment_2025_02_shop_category_modals_treatment_picker = document.getElementById("experiment_2025_02_shop_category_modals_treatment_container");
-                    
-
-                    populate_experiment_2025_02_shop_category_modals();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2025_02_shop_category_modals");
-                    if (storedTreatment) {
-                        experiment_2025_02_shop_category_modals_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2025_02_shop_category_modals() {
-                        experiment_2025_02_shop_category_modals_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2025_02_shop_category_modals_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2025_02_shop_category_modals_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2025_02_shop_category_modals_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2025_02_shop_category_modals", selectedTreatment);
-                    });
-                } catch(error) {
-                }
-
-                try {
-                    const experiment_2025_02_shop_card_modals_treatments = ["Treatment -1: Disabled", "Treatment 1: Enable modals", "Treatment 2: Enable modals w/ data downloads", "Treatment 3: Enable modals w/ p+", "Treatment 4: Enable modals w/ p+ on p+ page", "Treatment 5: Enable modals w/ data downloads and p+", "Treatment 6: Enable modals w/ data downloads and p+ on p+ page"];
-
-                    const experiment_2025_02_shop_card_modals_treatment_picker = document.getElementById("experiment_2025_02_shop_card_modals_treatment_container");
-                    
-
-                    populate_experiment_2025_02_shop_card_modals();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2025_02_shop_card_modals");
-                    if (storedTreatment) {
-                        experiment_2025_02_shop_card_modals_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2025_02_shop_card_modals() {
-                        experiment_2025_02_shop_card_modals_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2025_02_shop_card_modals_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2025_02_shop_card_modals_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2025_02_shop_card_modals_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2025_02_shop_card_modals", selectedTreatment);
-                    });
-                } catch(error) {
-                }
-
-                try {
-                    const experiment_2025_02_mobile_render_treatments = ["Treatment -1: Disabled", "Treatment 1: Use new mobile check", "Treatment 2: Use old mobile check"];
-
-                    const experiment_2025_02_mobile_render_treatment_picker = document.getElementById("experiment_2025_02_mobile_render_treatment_container");
-                    
-
-                    populate_experiment_2025_02_mobile_render();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2025_02_mobile_render");
-                    if (storedTreatment) {
-                        experiment_2025_02_mobile_render_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2025_02_mobile_render() {
-                        experiment_2025_02_mobile_render_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2025_02_mobile_render_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2025_02_mobile_render_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2025_02_mobile_render_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2025_02_mobile_render", selectedTreatment);
-                    });
-                } catch(error) {
-                }
-
-                try {
-                    const experiment_2025_02_orbs_shop_treatments = ["Treatment -1: Disabled", "Treatment 1: Orb Shop done like Potions", "Treatment 2: Orb Shop done like default"];
-
-                    const experiment_2025_02_orbs_shop_treatment_picker = document.getElementById("experiment_2025_02_orbs_shop_treatment_container");
-                    
-
-                    populate_experiment_2025_02_orbs_shop();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2025_02_orbs_shop");
-                    if (storedTreatment) {
-                        experiment_2025_02_orbs_shop_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2025_02_orbs_shop() {
-                        experiment_2025_02_orbs_shop_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2025_02_orbs_shop_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2025_02_orbs_shop_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2025_02_orbs_shop_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2025_02_orbs_shop", selectedTreatment);
-                    });
-                } catch(error) {
-                }
-
-                try {
-                    const experiment_2025_01_orb_testing_treatments = ["Treatment -1: Disabled", "Treatment 4: Orb Converter"];
-
-                    const experiment_2025_01_orb_testing_treatment_picker = document.getElementById("experiment_2025_01_orb_testing_treatment_container");
-                    
-
-                    populate_experiment_2025_01_orb_testing();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2025_01_orb_testing");
-                    if (storedTreatment) {
-                        experiment_2025_01_orb_testing_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2025_01_orb_testing() {
-                        experiment_2025_01_orb_testing_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2025_01_orb_testing_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2025_01_orb_testing_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2025_01_orb_testing_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2025_01_orb_testing", selectedTreatment);
-                    });
-                } catch(error) {
-                }
-
-                try {
-                    const experiment_2025_01_show_leaks_on_home_page_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled"];
-
-                    const experiment_2025_01_show_leaks_on_home_page_treatment_picker = document.getElementById("experiment_2025_01_show_leaks_on_home_page_treatment_container");
-                 
-
-                    populate_experiment_2025_01_show_leaks_on_home_page();
-                 
-                    const storedTreatment = localStorage.getItem("experiment_2025_01_show_leaks_on_home_page");
-                    if (storedTreatment) {
-                        experiment_2025_01_show_leaks_on_home_page_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2025_01_show_leaks_on_home_page() {
-                        experiment_2025_01_show_leaks_on_home_page_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2025_01_show_leaks_on_home_page_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2025_01_show_leaks_on_home_page_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2025_01_show_leaks_on_home_page_treatment_picker.value;
-                 
-                        // Store the selection
-                        localStorage.setItem("experiment_2025_01_show_leaks_on_home_page", selectedTreatment);
-                    });
-                } catch(error) {
-                }
-
-
-                try {
-                    const experiment_2024_12_theme_picker_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled", "Treatment 2: Enabled with custom css"];
-
-                    const experiment_2024_12_theme_picker_treatment_picker = document.getElementById("experiment_2024_12_theme_picker_treatment_container");
-                    
-
-                    populate_experiment_2024_12_theme_picker();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2024_12_theme_picker");
-                    if (storedTreatment) {
-                        experiment_2024_12_theme_picker_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2024_12_theme_picker() {
-                        experiment_2024_12_theme_picker_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2024_12_theme_picker_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2024_12_theme_picker_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2024_12_theme_picker_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2024_12_theme_picker", selectedTreatment);
-                    });
-                } catch(error) {
-                }
-
-
-                try {
-                    const experiment_2024_12_profiles_plus_marketing_variants_treatments = ["Treatment -1: Disabled", "Treatment 1: Paper Beach V2", "Treatment 2: Roblox Doors"];
-
-                    const experiment_2024_12_profiles_plus_marketing_variants_treatment_picker = document.getElementById("experiment_2024_12_profiles_plus_marketing_variants_treatment_container");
-                    
-
-                    populate_experiment_2024_12_profiles_plus_marketing_variants();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2024_12_profiles_plus_marketing_variants");
-                    if (storedTreatment) {
-                        experiment_2024_12_profiles_plus_marketing_variants_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2024_12_profiles_plus_marketing_variants() {
-                        experiment_2024_12_profiles_plus_marketing_variants_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2024_12_profiles_plus_marketing_variants_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2024_12_profiles_plus_marketing_variants_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2024_12_profiles_plus_marketing_variants_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2024_12_profiles_plus_marketing_variants", selectedTreatment);
-                    });
-                } catch(error) {
                 }
                 
-
-                try {
-                    const experiment_2024_11_collectibles_variants_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled"];
-
-                    const experiment_2024_11_collectibles_variants_treatment_picker = document.getElementById("experiment_2024_11_collectibles_variants_treatment_container");
-                    
-
-                    populate_experiment_2024_11_collectibles_variants();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2024_11_collectibles_variants");
-                    if (storedTreatment) {
-                        experiment_2024_11_collectibles_variants_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2024_11_collectibles_variants() {
-                        experiment_2024_11_collectibles_variants_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2024_11_collectibles_variants_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2024_11_collectibles_variants_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2024_11_collectibles_variants_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2024_11_collectibles_variants", selectedTreatment);
-                    });
-                } catch(error) {
-                }
-
-
-                try {
-                    const experiment_2024_11_recap_treatments = ["Treatment -1: Disabled", "Treatment 1: Enabled"];
-
-                    const experiment_2024_11_recap_treatment_picker = document.getElementById("experiment_2024_11_recap_treatment_container");
-                    
-
-                    populate_experiment_2024_11_recap();
-                    
-                    const storedTreatment = localStorage.getItem("experiment_2024_11_recap");
-                    if (storedTreatment) {
-                        experiment_2024_11_recap_treatment_picker.value = storedTreatment;
-                    }
-
-                    function populate_experiment_2024_11_recap() {
-                        experiment_2024_11_recap_treatments.forEach((treatments) => {
-                            const optElement = document.createElement("option");
-                            optElement.value = treatments;
-                            optElement.textContent = treatments;
-                            experiment_2024_11_recap_treatment_picker.appendChild(optElement);
-                        });
-                    }
-
-                    experiment_2024_11_recap_treatment_picker.addEventListener("change", () => {
-                        const selectedTreatment = experiment_2024_11_recap_treatment_picker.value;
-                    
-                        // Store the selection
-                        localStorage.setItem("experiment_2024_11_recap", selectedTreatment);
-                    });
-                } catch(error) {
-                }
 
 
 
@@ -15255,159 +14775,35 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     }
 
-    if (localStorage.experiment_force_rollout != "false") {
-        localStorage.experiment_2025_03_item_reviews = EXPERIMENT_ID_21;
-        localStorage.experiment_2025_03_heartbeat = EXPERIMENT_ID_20;
-        localStorage.experiment_2025_02_fetch_from_vercel_endpoits = EXPERIMENT_ID_19;
-        localStorage.experiment_2025_02_extra_options = EXPERIMENT_ID_18;
-        localStorage.experiment_2025_02_profiles_plus_home = EXPERIMENT_ID_17;
-        localStorage.experiment_2025_02_shop_category_modals = EXPERIMENT_ID_16;
-        localStorage.experiment_2025_02_shop_card_modals = EXPERIMENT_ID_15;
-        localStorage.experiment_2025_02_mobile_render = EXPERIMENT_ID_14;
-        localStorage.experiment_2025_02_orbs_shop = EXPERIMENT_ID_13;
-        localStorage.experiment_2025_01_orb_testing = EXPERIMENT_ID_12;
-        localStorage.experiment_2025_01_show_leaks_on_home_page = EXPERIMENT_ID_11;
-        localStorage.experiment_2024_12_theme_picker = EXPERIMENT_ID_10;
-        localStorage.experiment_2024_12_profiles_plus_marketing_variants = EXPERIMENT_ID_9;
-        localStorage.experiment_2024_11_collectibles_variants = EXPERIMENT_ID_8;
-        localStorage.experiment_2024_11_recap = EXPERIMENT_ID_7;
-    } else {
-
-        if (localStorage.experiment_2025_03_item_reviews == null) {
-            localStorage.experiment_2025_02_2025_03_item_reviews = EXPERIMENT_ID_21;
+    experimentsList.forEach(({ name, rollout }) => {
+        try {
+            if (localStorage.experiment_force_rollout != "false") {
+                localStorage.setItem(name, rollout);
+            } else if (localStorage.getItem(name) == null) {
+                localStorage.setItem(name, rollout);
+            }
+    
+        } catch (error) {
+            console.error(`Error setting up experiment: ${name}`, error);
         }
+    });
 
-        if (localStorage.experiment_2025_03_heartbeat == null) {
-            localStorage.experiment_2025_02_2025_03_heartbeat = EXPERIMENT_ID_20;
-        }
-
-        if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits == null) {
-            localStorage.experiment_2025_02_fetch_from_vercel_endpoits = EXPERIMENT_ID_19;
-        }
-
-        if (localStorage.experiment_2025_02_extra_options == null) {
-            localStorage.experiment_2025_02_extra_options = EXPERIMENT_ID_18;
-        }
-
-        if (localStorage.experiment_2025_02_profiles_plus_home == null) {
-            localStorage.experiment_2025_02_profiles_plus_home = EXPERIMENT_ID_17;
-        }
-
-        if (localStorage.experiment_2025_02_category_card_modals == null) {
-            localStorage.experiment_2025_02_category_card_modals = EXPERIMENT_ID_16;
-        }
-
-        if (localStorage.experiment_2025_02_shop_card_modals == null) {
-            localStorage.experiment_2025_02_shop_card_modals = EXPERIMENT_ID_15;
-        }
-
-        if (localStorage.experiment_2025_02_mobile_render == null) {
-            localStorage.experiment_2025_02_mobile_render = EXPERIMENT_ID_14;
-        }
-
-        if (localStorage.experiment_2025_02_orbs_shop == null) {
-            localStorage.experiment_2025_02_orbs_shop = EXPERIMENT_ID_13;
-        }
-
-        if (localStorage.experiment_2025_01_orb_testing == null) {
-            localStorage.experiment_2025_01_orb_testing = EXPERIMENT_ID_12;
-        }
-
-        if (localStorage.experiment_2025_01_show_leaks_on_home_page == null) {
-            localStorage.experiment_2025_01_show_leaks_on_home_page = EXPERIMENT_ID_11;
-        }
-
-        if (localStorage.experiment_2024_12_theme_picker == null) {
-            localStorage.experiment_2024_12_theme_picker = EXPERIMENT_ID_10;
-        }
+    function clearSetExperiment(experimentName) {
+        const experiment = experimentsList.find(exp => exp.name === experimentName);
         
-        if (localStorage.experiment_2024_12_profiles_plus_marketing_variants == null) {
-            localStorage.experiment_2024_12_profiles_plus_marketing_variants = EXPERIMENT_ID_9;
+        if (!experiment) {
+            console.warn(`Experiment "${experimentName}" not found.`);
+            return;
         }
     
-        if (localStorage.experiment_2024_11_collectibles_variants == null) {
-            localStorage.experiment_2024_11_collectibles_variants = EXPERIMENT_ID_8;
-        }
+        const { rollout } = experiment;
+        const treatmentPicker = document.getElementById(`${experimentName}_treatment_container`);
     
-        if (localStorage.experiment_2024_11_recap == null) {
-            localStorage.experiment_2024_11_recap = EXPERIMENT_ID_7;
+        if (treatmentPicker) {
+            treatmentPicker.value = rollout;
+            localStorage.setItem(experimentName, rollout);
         }
     }
-
-    function experiment_2025_03_item_reviews_clear() {
-        localStorage.experiment_2025_03_item_reviews = EXPERIMENT_ID_21;
-        document.getElementById("experiment_2025_03_item_reviews_treatment_container").value = EXPERIMENT_ID_21;
-    };
-
-    function experiment_2025_03_heartbeat_clear() {
-        localStorage.experiment_2025_03_heartbeat = EXPERIMENT_ID_20;
-        document.getElementById("experiment_2025_03_heartbeat_treatment_container").value = EXPERIMENT_ID_20;
-    };
-
-    function experiment_2025_02_fetch_from_vercel_endpoits_clear() {
-        localStorage.experiment_2025_02_fetch_from_vercel_endpoits = EXPERIMENT_ID_19;
-        document.getElementById("experiment_2025_02_fetch_from_vercel_endpoits_treatment_container").value = EXPERIMENT_ID_19;
-    };
-
-    function experiment_2025_02_extra_options_clear() {
-        localStorage.experiment_2025_02_extra_options = EXPERIMENT_ID_18;
-        document.getElementById("experiment_2025_02_extra_options_treatment_container").value = EXPERIMENT_ID_18;
-    };
-
-    function experiment_2025_02_profiles_plus_home_clear() {
-        localStorage.experiment_2025_02_profiles_plus_home = EXPERIMENT_ID_17;
-        document.getElementById("experiment_2025_02_profiles_plus_home_treatment_container").value = EXPERIMENT_ID_17;
-    };
-
-    function experiment_2025_02_shop_category_modals_clear() {
-        localStorage.experiment_2025_02_shop_category_modals = EXPERIMENT_ID_16;
-        document.getElementById("experiment_2025_02_shop_category_modals_treatment_container").value = EXPERIMENT_ID_16;
-    };
-
-    function experiment_2025_02_shop_card_modals_clear() {
-        localStorage.experiment_2025_02_shop_card_modals = EXPERIMENT_ID_15;
-        document.getElementById("experiment_2025_02_shop_card_modals_treatment_container").value = EXPERIMENT_ID_15;
-    };
-
-    function experiment_2025_02_mobile_render_clear() {
-        localStorage.experiment_2025_02_mobile_render = EXPERIMENT_ID_14;
-        document.getElementById("experiment_2025_02_mobile_render_treatment_container").value = EXPERIMENT_ID_14;
-    };
-
-    function experiment_2025_02_orbs_shop_clear() {
-        localStorage.experiment_2025_02_orbs_shop = EXPERIMENT_ID_13;
-        document.getElementById("experiment_2025_02_orbs_shop_treatment_container").value = EXPERIMENT_ID_13;
-    };
-
-    function experiment_2025_01_orb_testing_clear() {
-        localStorage.experiment_2025_01_orb_testing = EXPERIMENT_ID_12;
-        document.getElementById("experiment_2025_01_orb_testing_treatment_container").value = EXPERIMENT_ID_12;
-    };
-
-    function experiment_2025_01_show_leaks_on_home_page_clear() {
-        localStorage.experiment_2025_01_show_leaks_on_home_page = EXPERIMENT_ID_11;
-        document.getElementById("experiment_2025_01_show_leaks_on_home_page_treatment_container").value = EXPERIMENT_ID_11;
-    };
-
-    function experiment_2024_12_theme_picker_treatment_clear() {
-        localStorage.experiment_2024_12_theme_picker = EXPERIMENT_ID_10;
-        document.getElementById("experiment_2024_12_theme_picker_treatment_container").value = EXPERIMENT_ID_10;
-    };
-
-    function experiment_2024_12_profiles_plus_marketing_variants_treatment_clear() {
-        localStorage.experiment_2024_12_profiles_plus_marketing_variants = EXPERIMENT_ID_9;
-        document.getElementById("experiment_2024_12_profiles_plus_marketing_variants_treatment_container").value = EXPERIMENT_ID_9;
-    };
-
-    function experiment_2024_11_collectibles_variants_treatment_clear() {
-        localStorage.experiment_2024_11_collectibles_variants = EXPERIMENT_ID_8;
-        document.getElementById("experiment_2024_11_collectibles_variants_treatment_container").value = EXPERIMENT_ID_8;
-    };
-    
-    function experiment_2024_11_recap_treatment_clear() {
-        localStorage.experiment_2024_11_recap = EXPERIMENT_ID_8;
-        document.getElementById("experiment_2024_11_recap_treatment_container").value = EXPERIMENT_ID_8;
-    };
 
 
     function changeUsernameFromInput() {
@@ -16028,7 +15424,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         <div>
                             <h2>Local Storage Overrides</h2>
                             <p class="experiment-subtext">Refresh the page for changes to take effect</p>
-                            <button class="refresh-button" style="opacity: 0; pointer-events: none;">Save</button>
+                            <button class="refresh-button" onclick="localStorage.clear()">Delete All</button>
                             <input type="text" class="dev-local-storage-input-1" id="keyInput" placeholder="Enter key">
                             <input type="text" class="dev-local-storage-input-1" id="valueInput" placeholder="Enter value">
                             <button class="refresh-button" onclick="saveToLocalStorage()">Save</button>
