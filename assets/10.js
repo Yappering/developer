@@ -18,6 +18,16 @@ EXPERIMENT_ID_6 = 1
 
 const experimentsList = [
     {
+        title: "Extra Options Dismissible Content",
+        id: "2025-03_extra_options_dismissible_content",
+        name: "experiment_2025_03_extra_options_dismissible_content",
+        treatments: [
+            "Treatment -1: Disabled",
+            "Treatment 1: V1"
+        ],
+        rollout: "Treatment -1: Disabled"
+    },
+    {
         title: "Early Nameplate Warning",
         id: "2025-03_early_nameplate_warning",
         name: "experiment_2025_03_early_nameplate_warning",

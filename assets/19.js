@@ -1,6 +1,6 @@
 
 
-app_version1 = "264"
+app_version1 = "265"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2374,6 +2374,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     discordblog = 'https://discord.com/blog/';
     apidesignedurl = 'https://api.yapper.shop/v2';
     yapperblog = 'https://yapper.shop/blog/';
+    yappersupport = 'https://support.yapper.shop/?page=';
     cdn = 'https://cdn.yapper.shop/';
     tmpapi = 'https://api.yapper.shop/tmp';
 
@@ -2920,8 +2921,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let banner_asset = document.createElement("div");
 
                                             banner_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Banner (banner):</p>
-                                                <p style="color: var(--8)">ID: ${apiCategory.banner}</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_BANNER")}</p>
+                                                <p style="color: var(--8)">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_ID")}${apiCategory.banner}</p>
                                                 <img class="category-modalv2-inner-img-banner" src="https://cdn.yapper.shop/assets/${apiCategory.banner}.png"></img> 
                                             `;
 
@@ -2932,7 +2933,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let banner_asset = document.createElement("div");
 
                                             banner_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Banner Asset Static (banner_asset.static):</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_BANNER_ASSET_1")}</p>
                                                 <img class="category-modalv2-inner-img-banner" src="${apiCategory.banner_asset.static}"></img> 
                                             `;
 
@@ -2943,7 +2944,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let banner_asset = document.createElement("div");
 
                                             banner_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Banner Asset Animated (banner_asset.animated):</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_BANNER_ASSET_2")}</p>
                                                 <video autoplay muted class="category-modalv2-inner-img-banner" src="${apiCategory.banner_asset.animated}" loop></video> 
                                             `;
 
@@ -2954,8 +2955,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let logo_asset = document.createElement("div");
 
                                             logo_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Logo (logo):</p>
-                                                <p style="color: var(--8)">ID: ${apiCategory.logo}</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_LOGO")}</p>
+                                                <p style="color: var(--8)">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_ID")}${apiCategory.logo}</p>
                                                 <img class="category-modalv2-inner-img-logo" src="https://cdn.yapper.shop/assets/${apiCategory.logo}.png"></img> 
                                             `;
 
@@ -2966,8 +2967,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let mobile_bg_asset = document.createElement("div");
 
                                             mobile_bg_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Mobile Background (mobile_bg):</p>
-                                                <p style="color: var(--8)">ID: ${apiCategory.mobile_bg}</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_MOBILE_BG")}</p>
+                                                <p style="color: var(--8)">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_ID")}${apiCategory.mobile_bg}</p>
                                                 <img class="category-modalv2-inner-img-mobile_bg" src="https://cdn.yapper.shop/assets/${apiCategory.mobile_bg}.png"></img> 
                                             `;
 
@@ -2978,8 +2979,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let pdp_bg_asset = document.createElement("div");
 
                                             pdp_bg_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Product Detail Page Background (pdp_bg):</p>
-                                                <p style="color: var(--8)">ID: ${apiCategory.pdp_bg}</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_PDP_BG")}</p>
+                                                <p style="color: var(--8)">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_ID")}${apiCategory.pdp_bg}</p>
                                                 <img class="category-modalv2-inner-img-pdp_bg" src="https://cdn.yapper.shop/assets/${apiCategory.pdp_bg}.png"></img> 
                                             `;
 
@@ -2990,8 +2991,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let success_modal_bg_asset = document.createElement("div");
 
                                             success_modal_bg_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Success Modal Background (success_modal_bg):</p>
-                                                <p style="color: var(--8)">ID: ${apiCategory.success_modal_bg}</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_SUCCESS_MODAL_BG")}</p>
+                                                <p style="color: var(--8)">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_ID")}${apiCategory.success_modal_bg}</p>
                                                 <img class="category-modalv2-inner-img-success_modal_bg" src="https://cdn.yapper.shop/assets/${apiCategory.success_modal_bg}.png"></img> 
                                             `;
 
@@ -3002,8 +3003,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let mobile_banner_asset = document.createElement("div");
 
                                             mobile_banner_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Mobile Banner (mobile_banner):</p>
-                                                <p style="color: var(--8)">ID: ${apiCategory.mobile_banner}</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_MOBILE_BANNER")}</p>
+                                                <p style="color: var(--8)">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_ID")}${apiCategory.mobile_banner}</p>
                                                 <img class="category-modalv2-inner-img-mobile_banner" src="https://cdn.yapper.shop/assets/${apiCategory.mobile_banner}.png"></img> 
                                             `;
 
@@ -3014,8 +3015,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let featured_block_asset = document.createElement("div");
 
                                             featured_block_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Featured Block (featured_block):</p>
-                                                <p style="color: var(--8)">ID: ${apiCategory.featured_block}</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_FEATURED_BLOCK")}</p>
+                                                <p style="color: var(--8)">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_ID")}${apiCategory.featured_block}</p>
                                                 <img class="category-modalv2-inner-img-featured_block" src="https://cdn.yapper.shop/assets/${apiCategory.featured_block}.png"></img> 
                                             `;
 
@@ -3026,8 +3027,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let hero_banner_asset = document.createElement("div");
 
                                             hero_banner_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Hero Banner (hero_banner):</p>
-                                                <p style="color: var(--8)">ID: ${apiCategory.hero_banner}</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_HERO_BANNER")}</p>
+                                                <p style="color: var(--8)">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_ID")}${apiCategory.hero_banner}</p>
                                                 <img class="category-modalv2-inner-img-hero_banner" src="https://cdn.yapper.shop/assets/${apiCategory.hero_banner}.png"></img> 
                                             `;
 
@@ -3038,7 +3039,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let hero_banner_asset = document.createElement("div");
 
                                             hero_banner_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Hero Banner Asset Static (hero_banner_asset.static):</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_HERO_BANNER_ASSET_1")}</p>
                                                 <img class="category-modalv2-inner-img-banner" src="${apiCategory.hero_banner_asset.static}"></img> 
                                             `;
 
@@ -3049,7 +3050,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let hero_banner_asset = document.createElement("div");
 
                                             hero_banner_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Hero Banner Asset Animated (hero_banner_asset.animated):</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_HERO_BANNER_ASSET_2")}</p>
                                                 <video autoplay muted class="category-modalv2-inner-img-banner" src="${apiCategory.hero_banner_asset.animated}" loop></video> 
                                             `;
 
@@ -3060,8 +3061,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let wide_banner_asset = document.createElement("div");
 
                                             wide_banner_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Wide Banner (wide_banner):</p>
-                                                <p style="color: var(--8)">ID: ${apiCategory.wide_banner}</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_WIDE_BANNER")}</p>
+                                                <p style="color: var(--8)">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_ID")}${apiCategory.wide_banner}</p>
                                                 <img class="category-modalv2-inner-img-wide_banner" src="https://cdn.yapper.shop/assets/${apiCategory.wide_banner}.png"></img> 
                                             `;
 
@@ -3072,8 +3073,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let hero_logo_asset = document.createElement("div");
 
                                             hero_logo_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Hero Logo (hero_logo):</p>
-                                                <p style="color: var(--8)">ID: ${apiCategory.hero_logo}</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_HERO_LOGO")}</p>
+                                                <p style="color: var(--8)">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_ID")}${apiCategory.hero_logo}</p>
                                                 <img class="category-modalv2-inner-img-hero_logo" src="https://cdn.yapper.shop/assets/${apiCategory.hero_logo}.png"></img> 
                                             `;
 
@@ -3084,8 +3085,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let category_bg_asset = document.createElement("div");
 
                                             category_bg_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Category Background (category_bg):</p>
-                                                <p style="color: var(--8)">ID: ${apiCategory.category_bg}</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_CATEGORY_BG")}</p>
+                                                <p style="color: var(--8)">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_ID")}${apiCategory.category_bg}</p>
                                                 <img class="category-modalv2-inner-img-category_bg" src="https://cdn.yapper.shop/assets/${apiCategory.category_bg}.png"></img> 
                                             `;
 
@@ -3096,8 +3097,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let condensed_banner_left_asset = document.createElement("div");
 
                                             condensed_banner_left_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Condensed Banner Left (condensed_banner_left):</p>
-                                                <p style="color: var(--8)">ID: ${apiCategory.condensed_banner_left}</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_CONDENSED_BANNER_LEFT")}</p>
+                                                <p style="color: var(--8)">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_ID")}${apiCategory.condensed_banner_left}</p>
                                                 <img class="category-modalv2-inner-img-condensed_banner_left" src="https://cdn.yapper.shop/assets/${apiCategory.condensed_banner_left}.png"></img> 
                                             `;
 
@@ -3108,8 +3109,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let condensed_banner_right_asset = document.createElement("div");
 
                                             condensed_banner_right_asset.innerHTML = `
-                                                <p style="font-size: large; font-weight: 900;">Condensed Banner Right (condensed_banner_right):</p>
-                                                <p style="color: var(--8)">ID: ${apiCategory.condensed_banner_right}</p>
+                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_CONDENSED_BANNER_RIGHT")}</p>
+                                                <p style="color: var(--8)">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_ID")}${apiCategory.condensed_banner_right}</p>
                                                 <img class="category-modalv2-inner-img-condensed_banner_right" src="https://cdn.yapper.shop/assets/${apiCategory.condensed_banner_right}.png"></img> 
                                             `;
 
@@ -8349,10 +8350,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         document.getElementById("everything-housing-container").innerHTML = `
                             <div style="text-align: center; margin-top: 10px;" id="failed-to-load-shop">
                                 <img style="width: 200px;" src="https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/shopuhoh.png">
-                                <h2>Well, this is awkward.</h2>
-                                <p>Hmmm, we weren&#8217;t able to load the shop. Check back later.</p>
-                                <p>Error: Missing Access</p>
-                                <button class="refresh-button" onclick="location.reload();">Reload</button>
+                                <h2>${getTextString("SHOP_NOT_LOAD_ERROR_1")}</h2>
+                                <p>${getTextString("SHOP_NOT_LOAD_ERROR_2")}</p>
+                                <p>${getTextString("SHOP_NOT_LOAD_ERROR")}${data.message}</p>
+                                <button class="refresh-button" onclick="location.reload();">${getTextString("SHOP_NOT_LOAD_ERROR_RELOAD")}</button>
                             </div>
                         `;
                     } else {
@@ -10405,10 +10406,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         document.getElementById("everything-housing-container").innerHTML = `
                             <div style="text-align: center; margin-top: 10px;" id="failed-to-load-shop">
                                 <img style="width: 200px;" src="https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/shopuhoh.png">
-                                <h2>Well, this is awkward.</h2>
-                                <p>Hmmm, we weren&#8217;t able to load the shop. Check back later.</p>
-                                <p>Error: Missing Access</p>
-                                <button class="refresh-button" onclick="location.reload();">Reload</button>
+                                <h2>${getTextString("SHOP_NOT_LOAD_ERROR_1")}</h2>
+                                <p>${getTextString("SHOP_NOT_LOAD_ERROR_2")}</p>
+                                <p>${getTextString("SHOP_NOT_LOAD_ERROR")}${data.message}</p>
+                                <button class="refresh-button" onclick="location.reload();">${getTextString("SHOP_NOT_LOAD_ERROR_RELOAD")}</button>
                             </div>
                         `;
                     } else {
