@@ -1,6 +1,6 @@
 
 
-app_version1 = "267"
+app_version1 = "269"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10316,7 +10316,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     `;
                                                                     orb_price.style.position = `absolute`;
                                                                     orb_price.style.left = `23px`;
-                                                                    orb_price.style.bottom = `0px`;
                                                                     
                                                                     priceContainer.appendChild(orb_price);
                 
