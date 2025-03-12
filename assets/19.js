@@ -1,6 +1,6 @@
 
 
-app_version1 = "266"
+app_version1 = "267"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -321,7 +321,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             // } else if (params.get("page") === "year_recap") {
             //     document.title = "2025 Recap | Shop Archives";
             //     document.getElementById("recap-2024-tab").classList.add('dm-button-selected');
-            //     localStorage.dismissible_recap_2024 = "dismissed";
+            //     localStorage.dismissible_recap_2024 = "Treatment 1: Seen";
             //     document.getElementById("top-bar-container").innerHTML = `
             //         <h2 style="margin-left: 260px; margin-top: 10px;">2025 Recap</h2>
             //         <div id="open-help-modals-buttons-holder"></div>
@@ -455,9 +455,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     apiUrl = api + PROFILES_PLUS;
                 }
                 if (localStorage.experiment_2024_12_profiles_plus_marketing_variants == "Treatment 1: Paper Beach V2") {
-                    localStorage.dismissible_paper_beach_v2_marketing = "dismissed";
+                    localStorage.dismissible_paper_beach_v2_marketing = "Treatment 1: Seen";
                 } else if (localStorage.experiment_2024_12_profiles_plus_marketing_variants == "Treatment 2: Roblox Doors") {
-                    localStorage.dismissible_roblox_doors_marketing = "dismissed";
+                    localStorage.dismissible_roblox_doors_marketing = "Treatment 1: Seen";
                 }
                 createMainShopElement()
                 document.getElementById("pplus-tab").classList.add('dm-button-selected');
@@ -2642,10 +2642,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 createShopCategoryLoadingElement()
             }
 
-            if (params.get("page") === "orbs" && localStorage.experiment_2025_02_orbs_shop != "Treatment 2: Orb Shop done like default") {
+            if (params.get("page") === "orbs" && localStorage.experiment_2025_02_orbs_shop != "Treatment 2: Orb Shop done like default" && localStorage.experiment_2025_02_orbs_shop != "Treatment 3: Default + New tag") {
                 createMainPotionsElement()
                 createPotionsCategoryLoadingElement()
-            } else if (params.get("page") === "orbs" && localStorage.experiment_2025_02_orbs_shop === "Treatment 2: Orb Shop done like default") {
+            } else if (params.get("page") === "orbs" && localStorage.experiment_2025_02_orbs_shop === "Treatment 2: Orb Shop done like default" && localStorage.experiment_2025_02_orbs_shop === "Treatment 3: Default + New tag") {
                 createMainShopElement()
                 createShopCategoryLoadingElement()
             }
@@ -5377,7 +5377,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                 });
             
                                 categoryOutput.append(potionCard);
-                            } else if (page === "orbs" && localStorage.experiment_2025_02_orbs_shop != "Treatment 2: Orb Shop done like default") {
+                            } else if (page === "orbs" && localStorage.experiment_2025_02_orbs_shop != "Treatment 2: Orb Shop done like default" && localStorage.experiment_2025_02_orbs_shop != "Treatment 3: Default + New tag") {
                                 // Existing code for 'consumables' page
                                 const potionCard = potionTemplate.content.cloneNode(true).children[0];
                                 potionCard.querySelector("[data-potion-card-holder]").id = apiCategory.sku_id;
@@ -12783,7 +12783,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         } else if (params.get("page") === "year_recap") {
             document.title = `${getTextString("RECAP_2024_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
             document.getElementById("recap-2024-tab").classList.add('dm-button-selected');
-            localStorage.dismissible_recap_2024 = "dismissed";
+            localStorage.dismissible_recap_2024 = "Treatment 1: Seen";
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 style="margin-left: 260px; margin-top: 10px;">${getTextString("RECAP_2024_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder"></div>
@@ -12809,8 +12809,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             `;
         } else if (params.get("page") === "orbs") {
             document.title = `${getTextString("ORB_SHOP_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
-            if (localStorage.experiment_2025_02_orbs_shop === "Treatment 2: Orb Shop done like default") {
-                apiUrl = api + ORBS_SHOP_DEFAULT;
+            if (localStorage.experiment_2025_02_orbs_shop === "Treatment 2: Orb Shop done like default" || localStorage.experiment_2025_02_orbs_shop === "Treatment 3: Default + New tag") {
+                if (localStorage.unreleased_discord_collectibles == "true") {
+                    url = api + ORBS_SHOP_DEFAULT;
+                    apiUrl = new URL(url);
+                    apiUrl.searchParams.set("include-unpublished", "true");
+                } else {
+                    apiUrl = api + ORBS_SHOP_DEFAULT;
+                }
+                if (localStorage.experiment_2025_02_orbs_shop === "Treatment 3: Default + New tag") {
+                    localStorage.dismissible_orbs_shop_new_tag = "Treatment 1: Seen"
+                }
             } else {
                 apiUrl = api + ORBS_SHOP;
             }
@@ -12908,9 +12917,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 apiUrl = api + PROFILES_PLUS;
             }
             if (localStorage.experiment_2024_12_profiles_plus_marketing_variants == "Treatment 1: Paper Beach V2") {
-                localStorage.dismissible_paper_beach_v2_marketing = "dismissed";
+                localStorage.dismissible_paper_beach_v2_marketing = "Treatment 1: Seen";
             } else if (localStorage.experiment_2024_12_profiles_plus_marketing_variants == "Treatment 2: Roblox Doors") {
-                localStorage.dismissible_roblox_doors_marketing = "dismissed";
+                localStorage.dismissible_roblox_doors_marketing = "Treatment 1: Seen";
             }
             createMainShopElement()
             document.getElementById("pplus-tab").classList.add('dm-button-selected');
@@ -13021,12 +13030,21 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     leaksCheck();
 
 
-    if (localStorage.experiment_2025_02_orbs_shop === "Treatment 1: Orb Shop done like Potions" || localStorage.experiment_2025_02_orbs_shop === "Treatment 2: Orb Shop done like default") {
-        document.getElementById('orbs-shop-tab-loading').innerHTML = `
-            <button class="dm-button" id="orbs-shop-tab" onclick="setParams({page: 'orbs'}); location.reload();">
-                <p class="dm-button-text">${getTextString("ORB_SHOP_TAB_TITLE")}</p>
-            </button>
-        `;
+    if (localStorage.experiment_2025_02_orbs_shop === "Treatment 1: Orb Shop done like Potions" || localStorage.experiment_2025_02_orbs_shop === "Treatment 2: Orb Shop done like default" || localStorage.experiment_2025_02_orbs_shop === "Treatment 3: Default + New tag") {
+        if (localStorage.experiment_2025_02_orbs_shop === "Treatment 3: Default + New tag" && localStorage.dismissible_orbs_shop_new_tag != "Treatment 1: Seen") {
+            document.getElementById('orbs-shop-tab-loading').innerHTML = `
+                <button class="dm-button" id="orbs-shop-tab" onclick="setParams({page: 'orbs'}); location.reload();">
+                    <p class="dm-button-text">${getTextString("ORB_SHOP_TAB_TITLE")}</p>
+                    <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
+                </button>
+            `;
+        } else {
+            document.getElementById('orbs-shop-tab-loading').innerHTML = `
+                <button class="dm-button" id="orbs-shop-tab" onclick="setParams({page: 'orbs'}); location.reload();">
+                    <p class="dm-button-text">${getTextString("ORB_SHOP_TAB_TITLE")}</p>
+                </button>
+            `;
+        }
         if (params.get("page") === "orbs") {
             document.getElementById("orbs-shop-tab").classList.add('dm-button-selected');
         }
@@ -13157,7 +13175,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             `;
         }
         if (localStorage.experiment_2024_11_recap === "Treatment 1: Enabled") {
-            if (localStorage.dismissible_recap_2024 != "dismissed") {
+            if (localStorage.dismissible_recap_2024 != "Treatment 1: Seen") {
                 document.getElementById("home-page-dismissible-content-container").innerHTML = `
                     <img class="home-page-dismissible-content-2024-recap" onclick="dismissibleContentRecap2024()" src="${cdn}${DISMISSIBLE_2025_RECAP}" title="${getTextString("DISMISSIBLE_CONTENT_2024_RECAP_TITLE")}">
                 `;
@@ -13167,7 +13185,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     function dismissibleContentRecap2024() {
         setParams({page: 'year_recap'}); location.reload();
-        localStorage.dismissible_recap_2024 = "dismissed";
+        localStorage.dismissible_recap_2024 = "Treatment 1: Seen";
     }
 
     function createRecap2024Element() {
@@ -15089,45 +15107,57 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                     <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_SIDEBAR_DISMISSIBLE_CONTENT")}</p>
 
-                    <div class="options-option-card" id="reduced-motion-box-option">
-                        <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_SIDEBAR_DISMISSIBLE_NEW_PROFILE_SETTINGS")}</p>
-                        <input class="options-toggle-box" onclick="dismissibleContent_newProfileSettingsChecked();" style="cursor: pointer; scale: 2; posision: center;" id="dismissible_newProfileSettings-box" type="checkbox">
-                    </div>
+                    <div id="dismissible-content-container-output"></div>
 
-                    <div class="options-option-card" id="reduced-motion-box-option">
-                        <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_SIDEBAR_DISMISSIBLE_ROBLOX_DOORS_PPLUS")}</p>
-                        <input class="options-toggle-box" onclick="dismissibleContent_RobloxDoorsMarketingChecked();" style="cursor: pointer; scale: 2; posision: center;" id="dismissible_roblox_doors_marketing-box" type="checkbox">
-                    </div>
-
-                    <div class="options-option-card" id="reduced-motion-box-option">
-                        <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_SIDEBAR_DISMISSIBLE_PAPER_BEACH_V2_PPLUS")}</p>
-                        <input class="options-toggle-box" onclick="dismissibleContent_PaperBeachV2MarketingChecked();" style="cursor: pointer; scale: 2; posision: center;" id="dismissible_paper_beach_v2_marketing-box" type="checkbox">
-                    </div>
-
-                    <div class="options-option-card" id="disable-banner-overrides-box-option">
-                        <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_SIDEBAR_DISMISSIBLE_RECAP_2024")}</p>
-                        <input class="options-toggle-box" onclick="dismissibleContent_Recap2024Checked();" style="cursor: pointer; scale: 2; posision: center;" id="dismissible_recap_2024-box" type="checkbox">
-                    </div>
                 `;
 
-                if (localStorage.dismissible_newProfileSettings == "dismissed") {
-                    document.getElementById("dismissible_newProfileSettings-box").checked = true;
-                }
+                dismissibleContentList.forEach(({ title, id, name, treatments, needs_api_token }) => {
+                    try {
 
-                if (localStorage.dismissible_roblox_doors_marketing == "dismissed") {
-                    document.getElementById("dismissible_roblox_doors_marketing-box").checked = true;
-                }
+                        let experimentCard = document.createElement("div");
 
-                if (localStorage.dismissible_paper_beach_v2_marketing == "dismissed") {
-                    document.getElementById("dismissible_paper_beach_v2_marketing-box").checked = true;
-                }
-    
-                if (localStorage.dismissible_recap_2024 == "dismissed") {
-                    document.getElementById("dismissible_recap_2024-box").checked = true;
+                        experimentCard.classList.add('options-option-card');
+                        experimentCard.innerHTML = `
+                            <p class="option-card-title">${title}</p>
+                            <p class="new-experiment-subtext">${id}</p>
+                            <select id="${name}_treatment_container" class="experiment-treatment-picker">
+                            </select>
+                        `;
+
+
+                        document.getElementById("dismissible-content-container-output").appendChild(experimentCard);
+
+                        const treatmentPicker = document.getElementById(`${name}_treatment_container`);
+                
+                        if (!treatmentPicker) return; // Skip if element doesn't exist
+                
+                        populateDismissibleContentOptions(treatmentPicker, treatments);
+                
+                        const storedTreatment = localStorage.getItem(name);
+                        if (storedTreatment) {
+                            treatmentPicker.value = storedTreatment;
+                        }
+                
+                        treatmentPicker.addEventListener("change", () => {
+                            localStorage.setItem(name, treatmentPicker.value);
+                        });
+                
+                    } catch (error) {
+                        console.error(`Error setting up experiment: ${name}`, error);
+                    }
+                });
+                
+                function populateDismissibleContentOptions(selectElement, treatments) {
+                    treatments.forEach((treatment) => {
+                        const optElement = document.createElement("option");
+                        optElement.value = treatment;
+                        optElement.textContent = treatment;
+                        selectElement.appendChild(optElement);
+                    });
                 }
             }
             if (localStorage.experiment_2025_03_extra_options_dismissible_content === "Treatment 1: V1") {
-                localStorage.dismissible_newProfileSettings = "dismissed"
+                localStorage.dismissible_newProfileSettings = "Treatment 1: Seen"
                 if (document.getElementById("newProfileSettingsDismissible")) {
                     document.getElementById("newProfileSettingsDismissible").remove();
                 }
@@ -15190,35 +15220,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     if (localStorage.experiment_2025_03_extra_options_dismissible_content === "Treatment 1: V1") {
 
-        function dismissibleContent_newProfileSettingsChecked() {
-            if (localStorage.dismissible_newProfileSettings != "dismissed") {
-                localStorage.dismissible_newProfileSettings = "dismissed"
-                document.getElementById("newProfileSettingsDismissible").remove();
-            } else {
-                localStorage.dismissible_newProfileSettings = ""
-                let newProfileSettingsDismissible = document.createElement("div");
-
-                newProfileSettingsDismissible.onclick = function() {
-                    optionsSidebarToggle();
-                    localStorage.dismissible_newProfileSettings = "dismissed"
-                    newProfileSettingsDismissible.remove();
-                };
-
-                newProfileSettingsDismissible.classList.add('newProfileSettingsDismissible');
-
-                newProfileSettingsDismissible.id = `newProfileSettingsDismissible`;
-
-                document.body.appendChild(newProfileSettingsDismissible);
-            }
-        }
-
-
-        if (localStorage.dismissible_newProfileSettings != "dismissed") {
+        if (localStorage.dismissible_newProfileSettings != "Treatment 1: Seen") {
             let newProfileSettingsDismissible = document.createElement("div");
 
             newProfileSettingsDismissible.onclick = function() {
                 optionsSidebarToggle();
-                localStorage.dismissible_newProfileSettings = "dismissed"
+                localStorage.dismissible_newProfileSettings = "Treatment 1: Seen"
                 newProfileSettingsDismissible.remove();
             };
 
@@ -15228,63 +15235,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
             document.body.appendChild(newProfileSettingsDismissible);
         }
-    } else {
-        function dismissibleContent_newProfileSettingsChecked() {
-            console.error('Enable Experiment First');
-        }
     }
 
     if (localStorage.experiment_2024_12_profiles_plus_marketing_variants === "Treatment 1: Paper Beach V2") {
 
-        function dismissibleContent_PaperBeachV2MarketingChecked() {
-            const profiles_plus_tab = document.getElementById("pplus-tab");
-            if (localStorage.dismissible_paper_beach_v2_marketing != "dismissed") {
-                localStorage.dismissible_paper_beach_v2_marketing = "dismissed"
-    
-                if (profiles_plus_tab) {
-                    profiles_plus_tab.innerHTML = `
-                        <p class="dm-button-text">${getTextString("PROFILES_PLUS_BROWSE_ALL_TAB_TITLE")}</p>
-                    `;
-                    profiles_plus_tab.classList.remove('paper_beach_v2_marketing_tab');
-                }
-            } else {
-                localStorage.dismissible_paper_beach_v2_marketing = ''
-                if (profiles_plus_tab) {
-                    profiles_plus_tab.innerHTML = `
-                        <p class="dm-button-text">${getTextString("PROFILES_PLUS_BROWSE_ALL_TAB_TITLE")}</p>
-                        <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
-                        <img class="paper-beach-v2-greeting-catgirl-1" src="https://cdn.yapper.shop/assets/null.png">
-                        <div class="dm-tab-preview-avatar-decoration-rotate">
-                            <div class="dm-tab-preview-avatar-decoration-container" id="dm-tab-preview-avatar-decoration-container">
-                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
-                            </div>
-                            <div class="dm-tab-preview-avatar-decoration-back"></div>
-                        </div>
-                        <p class="dm-button-text dm-button-text-marketing-1">${getTextString("DISMISSIBLE_CONTENT_PAPER_BEACH_V2_TITLE")}</p>
-                    `;
-                    profiles_plus_tab.classList.add('paper_beach_v2_marketing_tab');
-        
-                    profiles_plus_tab.addEventListener("mouseenter", () => {
-                        if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png") {
-                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
-                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png">
-                            `;
-                        } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png") {
-                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
-                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
-                            `;
-                        } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png") {
-                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
-                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png">
-                            `;
-                        }
-                    });
-                }
-            }
-        }
-
-
-        if (localStorage.dismissible_paper_beach_v2_marketing != "dismissed") {
+        if (localStorage.dismissible_paper_beach_v2_marketing != "Treatment 1: Seen") {
             const profiles_plus_tab = document.getElementById("pplus-tab");
             if (profiles_plus_tab) {
                 profiles_plus_tab.innerHTML = `
@@ -15318,64 +15273,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 });
             }
         }
-    } else {
-        function dismissibleContent_PaperBeachV2MarketingChecked() {
-            console.error('Invalid Profiles Plus Marketing');
-        }
     }
 
 
     if (localStorage.experiment_2024_12_profiles_plus_marketing_variants === "Treatment 2: Roblox Doors") {
 
-        function dismissibleContent_RobloxDoorsMarketingChecked() {
-            const profiles_plus_tab = document.getElementById("pplus-tab");
-            if (localStorage.dismissible_roblox_doors_marketing != "dismissed") {
-                localStorage.dismissible_roblox_doors_marketing = "dismissed"
-    
-                if (profiles_plus_tab) {
-                    profiles_plus_tab.innerHTML = `
-                        <p class="dm-button-text">${getTextString("PROFILES_PLUS_BROWSE_ALL_TAB_TITLE")}</p>
-                    `;
-                    profiles_plus_tab.classList.remove('roblox_doors_marketing_tab');
-                }
-            } else {
-                localStorage.dismissible_roblox_doors_marketing = ''
-                if (profiles_plus_tab) {
-                    profiles_plus_tab.innerHTML = `
-                        <p class="dm-button-text">${getTextString("PROFILES_PLUS_BROWSE_ALL_TAB_TITLE")}</p>
-                        <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
-                        <img class="paper-beach-v2-greeting-catgirl-1" src="https://cdn.yapper.shop/assets/null.png">
-                        <div class="dm-tab-preview-avatar-decoration-rotate">
-                            <div class="dm-tab-preview-avatar-decoration-container" id="dm-tab-preview-avatar-decoration-container">
-                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
-                            </div>
-                            <div class="dm-tab-preview-avatar-decoration-back"></div>
-                        </div>
-                        <p class="dm-button-text dm-button-text-marketing-1">${getTextString("DISMISSIBLE_CONTENT_ROBLOX_DOORS_TITLE")}</p>
-                    `;
-                    profiles_plus_tab.classList.add('roblox_doors_marketing_tab');
-        
-                    profiles_plus_tab.addEventListener("mouseenter", () => {
-                        if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png") {
-                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
-                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png">
-                            `;
-                        } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/8.png") {
-                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
-                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png">
-                            `;
-                        } else if (document.getElementById("dm-tab-preview-avatar-decoration").src == "https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/2.png") {
-                            document.getElementById("dm-tab-preview-avatar-decoration-container").innerHTML = `
-                                <img class="dm-tab-preview-avatar-decoration-3" id="dm-tab-preview-avatar-decoration" src="https://cdn.yapper.shop/custom-collectibles/paper-beach/avatar-decorations/12.png">
-                            `;
-                        }
-                    });
-                }
-            }
-        }
-
-
-        if (localStorage.dismissible_roblox_doors_marketing != "dismissed") {
+        if (localStorage.dismissible_roblox_doors_marketing != "Treatment 1: Seen") {
             const profiles_plus_tab = document.getElementById("pplus-tab");
             if (profiles_plus_tab) {
                 profiles_plus_tab.innerHTML = `
@@ -15407,36 +15310,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         `;
                     }
                 });
-            }
-        }
-    } else {
-        function dismissibleContent_RobloxDoorsMarketingChecked() {
-            console.error('Invalid Profiles Plus Marketing');
-        }
-    }
-
-
-
-
-    function dismissibleContent_Recap2024Checked() {
-        const home_page_dismissible_content_container = document.getElementById("home-page-dismissible-content-container");
-        if (localStorage.dismissible_recap_2024 != "dismissed") {
-            localStorage.dismissible_recap_2024 = "dismissed"
-
-            if (home_page_dismissible_content_container) {
-                if (localStorage.experiment_2024_11_recap === "Treatment 1: Enabled") {
-                    document.getElementById("home-page-dismissible-content-container").innerHTML = ``;
-                }
-            }
-        }
-        else {
-            localStorage.dismissible_recap_2024 = ''
-            if (home_page_dismissible_content_container) {
-                if (localStorage.experiment_2024_11_recap === "Treatment 1: Enabled") {
-                    document.getElementById("home-page-dismissible-content-container").innerHTML = `
-                        <img class="home-page-dismissible-content-2024-recap" onclick="dismissibleContentRecap2024()" src="${cdn}${DISMISSIBLE_2025_RECAP}" title="${DISMISSIBLE_CONTENT_2024_RECAP_TITLE}">
-                    `;
-                }
             }
         }
     }
