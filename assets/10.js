@@ -48,7 +48,8 @@ const experimentsList = [
             "Treatment 2: Simulate not logged in",
             "Treatment 3: Simulate logged in"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment -1: Disabled",
+        needs_api_token: "true"
     },
     {
         title: "Heartbeat",
@@ -59,7 +60,8 @@ const experimentsList = [
             "Treatment 1: Fetch once on startup",
             "Treatment 2: Fetch every 60 seconds"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment -1: Disabled",
+        needs_api_token: "true"
     },
     {
         title: "Fetch From Vercel Endpoits",
@@ -140,7 +142,8 @@ const experimentsList = [
             "Treatment 1: Orb Shop done like Potions",
             "Treatment 2: Orb Shop done like default"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment -1: Disabled",
+        needs_api_token: "true"
     },
     {
         title: "Orb Testing",
