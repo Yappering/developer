@@ -1830,8 +1830,12 @@ body {
     height: 264px;
 }
 
-.nitro-3-days-orb-preview {
+.potion-card-preview-holder:has(.nitro-3-days-orb-preview) {
     margin-top: 20px;
+}
+
+.potion-card-preview-holder:has(.profile-badge-orb-preview) {
+    margin-top: 10px;
 }
 
 .profile-badge-orb-preview {
@@ -2243,6 +2247,38 @@ data-share-product-card-button {
     width: 1280px;
     height: 289px;
     z-index: 200;
+}
+
+.quick-info-info-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.quick-info-info-card {
+    background-color: #1E1F22;
+    border: 2px solid #1E1F22;
+    border-radius: 20px;
+    padding-top: 20px;
+}
+
+.quick-info-info-card-loading {
+    background-color: #1E1F22;
+    border: 2px solid #111214;
+    border-radius: 20px;
+    padding-top: 20px;
+    animation: quick-info-info-card-anim 3s infinite;
+}
+
+@keyframes quick-info-info-card-anim {
+    0% {background-color: #111214;}
+    50% {background-color: #1E1F22;}
+    100% {background-color: #111214;}
 }
 
 .a2024-recap-container {
