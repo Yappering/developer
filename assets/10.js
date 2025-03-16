@@ -165,7 +165,7 @@ const experimentsList = [
             "Treatment 2: Orb Shop done like default",
             "Treatment 3: Default + New tag"
         ],
-        rollout: "Treatment -1: Disabled",
+        rollout: "Treatment 3: Default + New tag",
         needs_api_token: "true"
     },
     {
@@ -226,7 +226,8 @@ const experimentsList = [
         name: "experiment_2024_11_recap",
         treatments: [
             "Treatment -1: Disabled",
-            "Treatment 1: Enabled"
+            "Treatment 1: Enabled",
+            "Treatment 2: Nameplate Marketing"
         ],
         rollout: "Treatment -1: Disabled"
     }
