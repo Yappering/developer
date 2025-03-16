@@ -161,7 +161,6 @@ const experimentsList = [
         name: "experiment_2025_02_orbs_shop",
         treatments: [
             "Treatment -1: Disabled",
-            "Treatment 1: Orb Shop done like Potions",
             "Treatment 2: Orb Shop done like default",
             "Treatment 3: Default + New tag"
         ],

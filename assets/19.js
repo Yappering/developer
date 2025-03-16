@@ -1,6 +1,6 @@
 
 
-app_version1 = "277"
+app_version1 = "278"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2626,7 +2626,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     function clearShopData() {
         const output = document.querySelector("[data-shop-output]");
         output.innerHTML = ''; // Clears the content of the shop category
-        if (params.get("page") === "consumables" || params.get("page") === "orbs") {
+        if (params.get("page") === "consumables") {
             createPotionsCategoryLoadingElement()
         } else {
             createShopCategoryLoadingElement()
@@ -6881,16 +6881,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 createShopCategoryLoadingElement()
             }
 
-            if (params.get("page") === "orbs" && localStorage.experiment_2025_02_orbs_shop != "Treatment 2: Orb Shop done like default" && localStorage.experiment_2025_02_orbs_shop != "Treatment 3: Default + New tag") {
-                createMainPotionsElement()
-                createPotionsCategoryLoadingElement()
-            } else if (params.get("page") === "orbs") {
-                if (localStorage.experiment_2025_02_orbs_shop === "Treatment 2: Orb Shop done like default" || localStorage.experiment_2025_02_orbs_shop === "Treatment 3: Default + New tag") {
-                    createMainShopElement()
-                    createShopCategoryLoadingElement()
-                }
-            }
-        
+
             // Clear the previous data
             clearShopData();
         
