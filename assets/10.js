@@ -165,7 +165,7 @@ const experimentsList = [
             "Treatment 2: Orb Shop done like default",
             "Treatment 3: Default + New tag"
         ],
-        rollout: "Treatment -1: Disabled",
+        rollout: "Treatment 3: Default + New tag",
         needs_api_token: "true"
     },
     {
