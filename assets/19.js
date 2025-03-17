@@ -1,6 +1,6 @@
 
 
-app_version1 = "280"
+app_version1 = "281"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -695,11 +695,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 previewHolder.innerHTML = `
                                                     <div class="nameplate-null-user">
                                                         <div class="nameplate-null-user-avatar"></div>
-                                                        <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                        <div class="nameplate-null-user-name _1"></div>
                                                     </div>
                                                     <div class="nameplate-null-user">
                                                         <div class="nameplate-null-user-avatar"></div>
-                                                        <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                        <div class="nameplate-null-user-name _2"></div>
                                                     </div>
                                                     <div class="nameplate-null-user" data-user-nameplate-preview>
                                                         <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
@@ -707,11 +707,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     </div>
                                                     <div class="nameplate-null-user">
                                                         <div class="nameplate-null-user-avatar"></div>
-                                                        <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                        <div class="nameplate-null-user-name _2"></div>
                                                     </div>
                                                     <div class="nameplate-null-user">
                                                         <div class="nameplate-null-user-avatar"></div>
-                                                        <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                        <div class="nameplate-null-user-name _1"></div>
                                                     </div>
                                                 `;
     
@@ -1680,25 +1680,35 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 previewHolder.innerHTML = `
                                                     <div class="nameplate-null-user">
                                                         <div class="nameplate-null-user-avatar"></div>
-                                                        <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                        <div class="nameplate-null-user-name _1"></div>
+                                                        <div class="nameplate-preview-status-bg"></div>
+                                                        <div class="nameplate-preview-status-color"></div>
                                                     </div>
                                                     <div class="nameplate-null-user">
                                                         <div class="nameplate-null-user-avatar"></div>
-                                                        <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                        <div class="nameplate-null-user-name _2"></div>
+                                                        <div class="nameplate-preview-status-bg"></div>
+                                                        <div class="nameplate-preview-status-color"></div>
                                                     </div>
                                                     <div class="nameplate-null-user" data-user-nameplate-preview>
-                                                        <img class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></img>
+                                                        <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
                                                         <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
                                                         <p class="nameplate-user-name">${previewName}</p>
                                                     </div>
                                                     <div class="nameplate-null-user">
                                                         <div class="nameplate-null-user-avatar"></div>
-                                                        <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                        <div class="nameplate-null-user-name _2"></div>
+                                                        <div class="nameplate-preview-status-bg"></div>
+                                                        <div class="nameplate-preview-status-color"></div>
                                                     </div>
                                                     <div class="nameplate-null-user">
                                                         <div class="nameplate-null-user-avatar"></div>
-                                                        <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                        <div class="nameplate-null-user-name _1"></div>
+                                                        <div class="nameplate-preview-status-bg"></div>
+                                                        <div class="nameplate-preview-status-color"></div>
                                                     </div>
+                                                    <div class="nameplate-fade-top"></div>
+                                                    <div class="nameplate-fade-bottom"></div>
                                                 `;
     
                                                 product.items.forEach(item => {
@@ -2877,11 +2887,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 previewHolder.innerHTML = `
                                                     <div class="nameplate-null-user">
                                                         <div class="nameplate-null-user-avatar"></div>
-                                                        <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                        <div class="nameplate-null-user-name _1"></div>
+                                                        <div class="nameplate-preview-status-bg"></div>
+                                                        <div class="nameplate-preview-status-color"></div>
                                                     </div>
                                                     <div class="nameplate-null-user">
                                                         <div class="nameplate-null-user-avatar"></div>
-                                                        <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                        <div class="nameplate-null-user-name _2"></div>
+                                                        <div class="nameplate-preview-status-bg"></div>
+                                                        <div class="nameplate-preview-status-color"></div>
                                                     </div>
                                                     <div class="nameplate-null-user" data-user-nameplate-preview>
                                                         <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
@@ -2890,12 +2904,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     </div>
                                                     <div class="nameplate-null-user">
                                                         <div class="nameplate-null-user-avatar"></div>
-                                                        <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                        <div class="nameplate-null-user-name _2"></div>
+                                                        <div class="nameplate-preview-status-bg"></div>
+                                                        <div class="nameplate-preview-status-color"></div>
                                                     </div>
                                                     <div class="nameplate-null-user">
                                                         <div class="nameplate-null-user-avatar"></div>
-                                                        <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                        <div class="nameplate-null-user-name _1"></div>
+                                                        <div class="nameplate-preview-status-bg"></div>
+                                                        <div class="nameplate-preview-status-color"></div>
                                                     </div>
+                                                    <div class="nameplate-fade-top"></div>
+                                                    <div class="nameplate-fade-bottom"></div>
                                                 `;
     
                                                 product.items.forEach(item => {
@@ -3792,11 +3812,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             previewHolder.innerHTML = `
                                                                 <div class="nameplate-null-user">
                                                                     <div class="nameplate-null-user-avatar"></div>
-                                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                    <div class="nameplate-null-user-name _1"></div>
+                                                                    <div class="nameplate-preview-status-bg"></div>
+                                                                    <div class="nameplate-preview-status-color"></div>
                                                                 </div>
                                                                 <div class="nameplate-null-user">
                                                                     <div class="nameplate-null-user-avatar"></div>
-                                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                    <div class="nameplate-null-user-name _2"></div>
+                                                                    <div class="nameplate-preview-status-bg"></div>
+                                                                    <div class="nameplate-preview-status-color"></div>
                                                                 </div>
                                                                 <div class="nameplate-null-user" data-user-nameplate-preview>
                                                                     <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
@@ -3805,11 +3829,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 </div>
                                                                 <div class="nameplate-null-user">
                                                                     <div class="nameplate-null-user-avatar"></div>
-                                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                    <div class="nameplate-null-user-name _2"></div>
+                                                                    <div class="nameplate-preview-status-bg"></div>
+                                                                    <div class="nameplate-preview-status-color"></div>
                                                                 </div>
                                                                 <div class="nameplate-null-user">
                                                                     <div class="nameplate-null-user-avatar"></div>
-                                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                    <div class="nameplate-null-user-name _1"></div>
+                                                                    <div class="nameplate-preview-status-bg"></div>
+                                                                    <div class="nameplate-preview-status-color"></div>
                                                                 </div>
                                                             `;
                 
@@ -5095,25 +5123,35 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             previewHolder.innerHTML = `
                                                 <div class="nameplate-null-user">
                                                     <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                    <div class="nameplate-null-user-name _1"></div>
+                                                    <div class="nameplate-preview-status-bg"></div>
+                                                    <div class="nameplate-preview-status-color"></div>
                                                 </div>
                                                 <div class="nameplate-null-user">
                                                     <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                    <div class="nameplate-null-user-name _2"></div>
+                                                    <div class="nameplate-preview-status-bg"></div>
+                                                    <div class="nameplate-preview-status-color"></div>
                                                 </div>
                                                 <div class="nameplate-null-user" data-user-nameplate-preview>
-                                                    <img class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></img>
+                                                    <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
                                                     <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
                                                     <p class="nameplate-user-name">${previewName}</p>
                                                 </div>
                                                 <div class="nameplate-null-user">
                                                     <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                    <div class="nameplate-null-user-name _2"></div>
+                                                    <div class="nameplate-preview-status-bg"></div>
+                                                    <div class="nameplate-preview-status-color"></div>
                                                 </div>
                                                 <div class="nameplate-null-user">
                                                     <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                    <div class="nameplate-null-user-name _1"></div>
+                                                    <div class="nameplate-preview-status-bg"></div>
+                                                    <div class="nameplate-preview-status-color"></div>
                                                 </div>
+                                                <div class="nameplate-fade-top"></div>
+                                                <div class="nameplate-fade-bottom"></div>
                                             `;
 
                                             product.items.forEach(item => {
@@ -5772,25 +5810,35 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         previewHolder.innerHTML = `
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                <div class="nameplate-null-user-name _1"></div>
+                                                                <div class="nameplate-preview-status-bg"></div>
+                                                                <div class="nameplate-preview-status-color"></div>
                                                             </div>
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                <div class="nameplate-null-user-name _2"></div>
+                                                                <div class="nameplate-preview-status-bg"></div>
+                                                                <div class="nameplate-preview-status-color"></div>
                                                             </div>
                                                             <div class="nameplate-null-user" data-user-nameplate-preview>
-                                                                <img class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></img>
+                                                                <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
                                                                 <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
                                                                 <p class="nameplate-user-name">${previewName}</p>
                                                             </div>
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                <div class="nameplate-null-user-name _2"></div>
+                                                                <div class="nameplate-preview-status-bg"></div>
+                                                                <div class="nameplate-preview-status-color"></div>
                                                             </div>
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                <div class="nameplate-null-user-name _1"></div>
+                                                                <div class="nameplate-preview-status-bg"></div>
+                                                                <div class="nameplate-preview-status-color"></div>
                                                             </div>
+                                                            <div class="nameplate-fade-top"></div>
+                                                            <div class="nameplate-fade-bottom"></div>
                                                         `;
             
                                                         product.items.forEach(item => {
@@ -7548,25 +7596,35 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             previewHolder.innerHTML = `
                                                 <div class="nameplate-null-user">
                                                     <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                    <div class="nameplate-null-user-name _1"></div>
+                                                    <div class="nameplate-preview-status-bg"></div>
+                                                    <div class="nameplate-preview-status-color"></div>
                                                 </div>
                                                 <div class="nameplate-null-user">
                                                     <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                    <div class="nameplate-null-user-name _2"></div>
+                                                    <div class="nameplate-preview-status-bg"></div>
+                                                    <div class="nameplate-preview-status-color"></div>
                                                 </div>
                                                 <div class="nameplate-null-user" data-user-nameplate-preview>
-                                                    <img class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></img>
+                                                    <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
                                                     <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
                                                     <p class="nameplate-user-name">${previewName}</p>
                                                 </div>
                                                 <div class="nameplate-null-user">
                                                     <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                    <div class="nameplate-null-user-name _2"></div>
+                                                    <div class="nameplate-preview-status-bg"></div>
+                                                    <div class="nameplate-preview-status-color"></div>
                                                 </div>
                                                 <div class="nameplate-null-user">
                                                     <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                    <div class="nameplate-null-user-name _1"></div>
+                                                    <div class="nameplate-preview-status-bg"></div>
+                                                    <div class="nameplate-preview-status-color"></div>
                                                 </div>
+                                                <div class="nameplate-fade-top"></div>
+                                                <div class="nameplate-fade-bottom"></div>
                                             `;
 
                                             product.items.forEach(item => {
@@ -8225,24 +8283,32 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         previewHolder.innerHTML = `
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                <div class="nameplate-null-user-name _1"></div>
+                                                                <div class="nameplate-preview-status-bg"></div>
+                                                                <div class="nameplate-preview-status-color"></div>
                                                             </div>
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                <div class="nameplate-null-user-name _2"></div>
+                                                                <div class="nameplate-preview-status-bg"></div>
+                                                                <div class="nameplate-preview-status-color"></div>
                                                             </div>
                                                             <div class="nameplate-null-user" data-user-nameplate-preview>
-                                                                <img class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></img>
+                                                                <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
                                                                 <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
                                                                 <p class="nameplate-user-name">${previewName}</p>
                                                             </div>
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                <div class="nameplate-null-user-name _2"></div>
+                                                                <div class="nameplate-preview-status-bg"></div>
+                                                                <div class="nameplate-preview-status-color"></div>
                                                             </div>
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                <div class="nameplate-null-user-name _1"></div>
+                                                                <div class="nameplate-preview-status-bg"></div>
+                                                                <div class="nameplate-preview-status-color"></div>
                                                             </div>
                                                         `;
             
@@ -10709,11 +10775,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             previewHolder.innerHTML = `
                                                 <div class="nameplate-null-user">
                                                     <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                    <div class="nameplate-null-user-name _1"></div>
+                                                    <div class="nameplate-preview-status-bg"></div>
+                                                    <div class="nameplate-preview-status-color"></div>
                                                 </div>
                                                 <div class="nameplate-null-user">
                                                     <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                    <div class="nameplate-null-user-name _2"></div>
+                                                    <div class="nameplate-preview-status-bg"></div>
+                                                    <div class="nameplate-preview-status-color"></div>
                                                 </div>
                                                 <div class="nameplate-null-user" data-user-nameplate-preview>
                                                     <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
@@ -10722,12 +10792,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 </div>
                                                 <div class="nameplate-null-user">
                                                     <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                    <div class="nameplate-null-user-name _2"></div>
+                                                    <div class="nameplate-preview-status-bg"></div>
+                                                    <div class="nameplate-preview-status-color"></div>
                                                 </div>
                                                 <div class="nameplate-null-user">
                                                     <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                    <div class="nameplate-null-user-name _1"></div>
+                                                    <div class="nameplate-preview-status-bg"></div>
+                                                    <div class="nameplate-preview-status-color"></div>
                                                 </div>
+                                                <div class="nameplate-fade-top"></div>
+                                                <div class="nameplate-fade-bottom"></div>
                                             `;
 
                                             product.items.forEach(item => {
@@ -11624,11 +11700,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         previewHolder.innerHTML = `
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                <div class="nameplate-null-user-name _1"></div>
+                                                                <div class="nameplate-preview-status-bg"></div>
+                                                                <div class="nameplate-preview-status-color"></div>
                                                             </div>
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                <div class="nameplate-null-user-name _2"></div>
+                                                                <div class="nameplate-preview-status-bg"></div>
+                                                                <div class="nameplate-preview-status-color"></div>
                                                             </div>
                                                             <div class="nameplate-null-user" data-user-nameplate-preview>
                                                                 <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
@@ -11637,11 +11717,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             </div>
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                <div class="nameplate-null-user-name _2"></div>
+                                                                <div class="nameplate-preview-status-bg"></div>
+                                                                <div class="nameplate-preview-status-color"></div>
                                                             </div>
                                                             <div class="nameplate-null-user">
                                                                 <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name" data-null-user-random-name></div>
+                                                                <div class="nameplate-null-user-name _1"></div>
+                                                                <div class="nameplate-preview-status-bg"></div>
+                                                                <div class="nameplate-preview-status-color"></div>
                                                             </div>
                                                         `;
             
