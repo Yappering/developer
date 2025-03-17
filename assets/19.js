@@ -1,6 +1,6 @@
 
 
-app_version1 = "279"
+app_version1 = "280"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -32,6 +32,12 @@ if (localStorage.discord_banner) {
     
 } else {
     localStorage.discord_banner = ``;
+}
+
+if (localStorage.discord_banner_color) {
+    
+} else {
+    localStorage.discord_banner_color = `#829ff4`;
 }
 
 if (localStorage.discord_avatar && localStorage.discord_avatar != '') {
@@ -3576,7 +3582,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     previewHolder.classList.add('modal-preview-profile-container');
                                                                     previewHolder.innerHTML = `
                                                                         <div class="modal-preview-profile1">
-                                                                            <div class="options-preview-profile-banner-color"></div>
+                                                                            <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                             <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                             <div class="profile-avatar-preview-bg"></div>
                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -3676,7 +3682,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     previewHolder.classList.add('modal-preview-profile-container');
                                                                     previewHolder.innerHTML = `
                                                                         <div class="modal-preview-profile2">
-                                                                            <div class="options-preview-profile-banner-color"></div>
+                                                                            <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                             <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                             <div class="profile-avatar-preview-bg"></div>
                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -3907,7 +3913,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         previewHolder.classList.add('modal-preview-profile-container');
                                                                         previewHolder.innerHTML = `
                                                                             <div class="modal-preview-profile2">
-                                                                                <div class="options-preview-profile-banner-color"></div>
+                                                                                <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                                 <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                 <div class="profile-avatar-preview-bg"></div>
                                                                                 <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -4058,7 +4064,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             previewHolder.classList.add('modal-preview-profile-container');
                                                                             previewHolder.innerHTML = `
                                                                                 <div class="modal-preview-profile1">
-                                                                                    <div class="options-preview-profile-banner-color"></div>
+                                                                                    <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                                     <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                     <div class="profile-avatar-preview-bg"></div>
                                                                                     <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -4129,7 +4135,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                     previewHolder.classList.add('modal-preview-profile-container');
                                                                                     previewHolder.innerHTML = `
                                                                                         <div class="modal-preview-profile2">
-                                                                                            <div class="options-preview-profile-banner-color"></div>
+                                                                                            <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                                             <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                             <div class="profile-avatar-preview-bg"></div>
                                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -4291,7 +4297,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                 previewHolder.innerHTML = `
                                                                     <div class="modal-preview-profile3">
-                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -5555,7 +5561,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                 previewHolder.innerHTML = `
                                                                     <div class="modal-preview-profile1">
-                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -5656,7 +5662,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                 previewHolder.innerHTML = `
                                                                     <div class="modal-preview-profile2">
-                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -5877,7 +5883,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     previewHolder.classList.add('modal-preview-profile-container');
                                                                     previewHolder.innerHTML = `
                                                                         <div class="modal-preview-profile2">
-                                                                            <div class="options-preview-profile-banner-color"></div>
+                                                                            <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                             <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                             <div class="profile-avatar-preview-bg"></div>
                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -6027,7 +6033,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         previewHolder.classList.add('modal-preview-profile-container');
                                                                         previewHolder.innerHTML = `
                                                                             <div class="modal-preview-profile1">
-                                                                                <div class="options-preview-profile-banner-color"></div>
+                                                                                <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                                 <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                 <div class="profile-avatar-preview-bg"></div>
                                                                                 <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -6098,7 +6104,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                                 previewHolder.innerHTML = `
                                                                                     <div class="modal-preview-profile2">
-                                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -8008,7 +8014,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                 previewHolder.innerHTML = `
                                                                     <div class="modal-preview-profile1">
-                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -8109,7 +8115,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                 previewHolder.innerHTML = `
                                                                     <div class="modal-preview-profile2">
-                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -8330,7 +8336,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     previewHolder.classList.add('modal-preview-profile-container');
                                                                     previewHolder.innerHTML = `
                                                                         <div class="modal-preview-profile2">
-                                                                            <div class="options-preview-profile-banner-color"></div>
+                                                                            <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                             <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                             <div class="profile-avatar-preview-bg"></div>
                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -8480,7 +8486,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         previewHolder.classList.add('modal-preview-profile-container');
                                                                         previewHolder.innerHTML = `
                                                                             <div class="modal-preview-profile1">
-                                                                                <div class="options-preview-profile-banner-color"></div>
+                                                                                <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                                 <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                 <div class="profile-avatar-preview-bg"></div>
                                                                                 <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -8551,7 +8557,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                                 previewHolder.innerHTML = `
                                                                                     <div class="modal-preview-profile2">
-                                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -11408,7 +11414,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                 previewHolder.innerHTML = `
                                                                     <div class="modal-preview-profile1">
-                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -11508,7 +11514,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                 previewHolder.innerHTML = `
                                                                     <div class="modal-preview-profile2">
-                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -11739,7 +11745,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     previewHolder.classList.add('modal-preview-profile-container');
                                                                     previewHolder.innerHTML = `
                                                                         <div class="modal-preview-profile2">
-                                                                            <div class="options-preview-profile-banner-color"></div>
+                                                                            <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                             <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                             <div class="profile-avatar-preview-bg"></div>
                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -11890,7 +11896,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         previewHolder.classList.add('modal-preview-profile-container');
                                                                         previewHolder.innerHTML = `
                                                                             <div class="modal-preview-profile1">
-                                                                                <div class="options-preview-profile-banner-color"></div>
+                                                                                <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                                 <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                 <div class="profile-avatar-preview-bg"></div>
                                                                                 <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -11961,7 +11967,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 previewHolder.classList.add('modal-preview-profile-container');
                                                                                 previewHolder.innerHTML = `
                                                                                     <div class="modal-preview-profile2">
-                                                                                        <div class="options-preview-profile-banner-color"></div>
+                                                                                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -12123,7 +12129,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             previewHolder.classList.add('modal-preview-profile-container');
                                                             previewHolder.innerHTML = `
                                                                 <div class="modal-preview-profile3">
-                                                                    <div class="options-preview-profile-banner-color"></div>
+                                                                    <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                                                                     <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                     <div class="profile-avatar-preview-bg"></div>
                                                                     <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -14826,6 +14832,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_USERNAME")}</p>
                         <input class="options-text-input" autocomplete="off" oninput="changeUsernameFromInput();" style="posision: center;" id="profile-username-text-input" value="${localStorage.discord_username}" type="text">
                     </div>
+                    <div class="options-option-card" id="options-text-input-option">
+                        <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_BANNER_COLOR")}</p>
+                        <input class="options-color-input" autocomplete="off" oninput="changeBannerColorFromInput();" style="posision: center;" id="profile-banner-color-input" value="${localStorage.discord_banner_color}" type="color">
+                    </div>
                     <div class="options-option-card" id="options-img-input-option">
                         <label for="profileAvatarInput" class="profile-avatar-upload-label">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_AVATAR")}</label>
                         <input type="file" id="profileAvatarInput" class="profile-avatar-file-input" accept="image/*">
@@ -14839,7 +14849,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     </div>
                     <div id="options-banner-img-input-option-error"></div>
                     <div class="options-preview-profile">
-                        <div class="options-preview-profile-banner-color"></div>
+                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                         <div class="profile-avatar-preview-bg"></div>
                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
@@ -15373,6 +15383,16 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         const usernamename = document.getElementById('options-username-preview')
 
         usernamename.textContent = input.value.toLowerCase();
+    }
+
+    function changeBannerColorFromInput() {
+        const input = document.getElementById('profile-banner-color-input')
+
+        localStorage.discord_banner_color = input.value;
+
+        const banner = document.getElementById('options-preview-profile-banner-color')
+
+        banner.style.backgroundColor = input.value;
     }
 
     function changeAvatarFromInput() {
