@@ -1,6 +1,6 @@
 
 
-app_version1 = "278"
+app_version1 = "279"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -12991,10 +12991,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     url = api + MISCELLANEOUS;
                     apiUrl = new URL(url);
                     apiUrl.searchParams.set("include-unpublished", "true");
-                } else if (localStorage.experiment_2025_03_orbs_and_holiday === "Treatment 1: Enabled") {
-                    url = api + MISCELLANEOUS;
-                    apiUrl = new URL(url);
-                    apiUrl.searchParams.set("include-orbs-and-holidays", "true");
                 } else {
                     apiUrl = api + MISCELLANEOUS;
                 }
@@ -13638,7 +13634,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <div class="a2024-recap-text-card-1">
                     <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">${getTextString("QUICK_INFO_PAGE_TITLE")}</h1>
 
-                    <p class="center-text" style="font-size: 18px;">${getTextString("LOREM_IPSUM_LONG")}</p>
+                    <p class="center-text" style="font-size: 18px;">${getTextString("QUICK_INFO_DESC")}</p>
 
                     <div class="quick-info-info-container" id="quick-info-info-container">
                     </div>
