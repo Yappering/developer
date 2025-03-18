@@ -1,6 +1,6 @@
 
 
-app_version1 = "281"
+app_version1 = "282"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -3500,9 +3500,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 }
                                             }
     
-                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP")}</button>
-                                            `;
+                                            if (localStorage.experiment_2025_03_copy_sku_card === "Treatment 1: Enabled" || localStorage.experiment_2025_03_copy_sku_card === "Treatment 2: w/ share button") {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <div class="card-multi-button-container" card-multi-button-container>
+                                                        <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP_V2")}</button>
+                                                        <button class="card-button" onclick="copyEmoji('${product.sku_id}');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
+                                                    </div>
+                                                `;
+                                            } else {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP")}</button>
+                                                `;
+                                            }
     
                                             if (product.premium_type === 2) {
                                                 card.querySelector("[data-shop-card-tag-container]").innerHTML = `
@@ -3515,7 +3524,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     card.classList.add('clickable');
     
                                                     card.addEventListener("click", (event) => {
-                                                        if (event.target.matches("[data-shop-card-var]")) {
+                                                        if (event.target.matches("[data-shop-card-var]") || event.target.matches(".card-button") || event.target.matches(".shareIcon_f4a996")) {
                                                         } else {
                                                             openItemModal();
                                                         }
@@ -4338,7 +4347,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         </div>
                                                                     </div>
                                                                 `;
-    
+        
                                                                 document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
                                                             } else if (product.sku_id === "1333912750274904064") {
                                                                 previewHolder.classList.add('modal-potion-img');
@@ -4699,7 +4708,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         });
                                                     }
                                                 }
-                                            } else {
+                                            }
+    
+                                            if (localStorage.experiment_2025_03_copy_sku_card === "Treatment 2: w/ share button" || localStorage.experiment_2025_03_copy_sku_card === "Treatment 3: only share button") {
                                                 card.querySelector("[data-share-product-card-button]").innerHTML = `
                                                     <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${product.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
                                                 `;
@@ -9417,8 +9428,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                 if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                     potionCard.classList.add('clickable');
 
-                                    potionCard.addEventListener("click", () => {
-                                        openItemModal();
+                                    potionCard.addEventListener("click", (event) => {
+                                        if (event.target.matches(".card-button")) {
+                                        } else {
+                                            openItemModal();
+                                        }
                                     });
 
                                     async function openItemModal() {
@@ -9668,9 +9682,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                     }
                                 }
 
-                                potionCard.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                    <button class="card-button" onclick="location.href='${discordsupport}${apiCategory.support_id}';" title="Open this Potion's support article">Open Support Article</button>
-                                `;
+                                if (localStorage.experiment_2025_03_copy_sku_card === "Treatment 1: Enabled" || localStorage.experiment_2025_03_copy_sku_card === "Treatment 2: w/ share button") {
+                                    potionCard.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                        <div class="card-multi-button-container" card-multi-button-container>
+                                            <button class="card-button" onclick="location.href='${discordsupport}${apiCategory.support_id}';" title="${getTextString("CARD_OPEN_SUPPORT_ARTICLE_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP_V2")}</button>
+                                            <button class="card-button" onclick="copyEmoji('${apiCategory.sku_id}');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
+                                        </div>
+                                    `;
+                                } else {
+                                    potionCard.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                        <button class="card-button" onclick="location.href='${discordsupport}${apiCategory.support_id}';" title="${getTextString("CARD_OPEN_SUPPORT_ARTICLE_TITLE")}">${getTextString("CARD_OPEN_SUPPORT_ARTICLE")}</button>
+                                    `;
+                                }
 
                                 potionCard.addEventListener("mouseenter", () => {
                                     potionCard.classList.add('potion-wobble')
@@ -11388,9 +11411,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             }
                                         }
 
-                                        card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                            <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP")}</button>
-                                        `;
+                                        if (localStorage.experiment_2025_03_copy_sku_card === "Treatment 1: Enabled" || localStorage.experiment_2025_03_copy_sku_card === "Treatment 2: w/ share button") {
+                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                <div class="card-multi-button-container" card-multi-button-container>
+                                                    <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP_V2")}</button>
+                                                    <button class="card-button" onclick="copyEmoji('${product.sku_id}');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
+                                                </div>
+                                            `;
+                                        } else {
+                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP")}</button>
+                                            `;
+                                        }
 
                                         if (product.premium_type === 2) {
                                             card.querySelector("[data-shop-card-tag-container]").innerHTML = `
@@ -11403,7 +11435,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 card.classList.add('clickable');
 
                                                 card.addEventListener("click", (event) => {
-                                                    if (event.target.matches("[data-shop-card-var]")) {
+                                                    if (event.target.matches("[data-shop-card-var]") || event.target.matches(".card-button") || event.target.matches(".shareIcon_f4a996")) {
                                                     } else {
                                                         openItemModal();
                                                     }
@@ -12587,7 +12619,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     });
                                                 }
                                             }
-                                        } else {
+                                        }
+
+                                        if (localStorage.experiment_2025_03_copy_sku_card === "Treatment 2: w/ share button" || localStorage.experiment_2025_03_copy_sku_card === "Treatment 3: only share button") {
                                             card.querySelector("[data-share-product-card-button]").innerHTML = `
                                                 <svg class="shareIcon_f4a996" onclick="copyEmoji('https://canary.discord.com/shop#itemSkuId=${product.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
                                             `;
