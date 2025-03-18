@@ -1,6 +1,6 @@
 
 
-app_version1 = "283"
+app_version1 = "284"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2747,7 +2747,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         `;
                                     } else {
                                         category.querySelector("[data-preview-new-categoey-button]").innerHTML = `
-                                            <button class="home-page-preview-button" onclick="setParams({page: 'shop'}); location.reload();">${getTextString("SHOP_CATEGORY_SHOP_THE_COLLECTION_1")}${apiCategory.name}${getTextString("SHOP_CATEGORY_SHOP_THE_COLLECTION_2")}</button>
+                                            <button class="home-page-preview-button" onclick="setParams({page: 'shop'}); addParams({itemSkuId: '${apiCategory.sku_id}'}); location.reload();">${getTextString("SHOP_CATEGORY_SHOP_THE_COLLECTION_1")}${apiCategory.name}${getTextString("SHOP_CATEGORY_SHOP_THE_COLLECTION_2")}</button>
                                         `;
                                     }
                                 
@@ -4883,7 +4883,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         oneImage.src = subblock.banner_url;
                                         oneImage.alt = subblock.name;
     
-                                        featureblock.setAttribute("onclick",`setParams({page: '${subblock.page}'}); location.reload();`);
+                                        featureblock.setAttribute("onclick",`setParams({page: '${subblock.page}'}); addParams({itemSkuId: '${subblock.sku_id}'}); location.reload();`);
     
                                         featureBlockContainer.append(featureblock);
     

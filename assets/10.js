@@ -117,7 +117,7 @@ const experimentsList = [
             "Treatment 2: Enabled",
             "Treatment 3: Hide All Profiles Plus Tabs"
         ],
-        rollout: "Treatment 2: Enabled"
+        rollout: "Treatment 3: Hide All Profiles Plus Tabs"
     },
     {
         title: "Shop Category Modals",
