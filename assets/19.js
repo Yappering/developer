@@ -1,6 +1,6 @@
 
 
-app_version1 = "286"
+app_version1 = "287"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -4929,8 +4929,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                                             // Append card to output
                                             cardOutput.append(card);
-    
-                                            scrollToSKU(product.sku_id);
                                         }
                                     }
                                     output0.append(category);
