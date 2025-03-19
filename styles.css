@@ -3558,6 +3558,29 @@ data-share-product-card-button {
     width: 800px;
 }
 
+.view-raw-modal-textbox {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    outline: none;
+    border: none;
+    background-color: var(--input-background);
+    color: var(--white);
+}
+
+.view-raw-modalv2-inner {
+    position: relative;
+    z-index: 1001;
+    background-color: var(--background-primary);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    width: 1000px;
+    height: 800px;
+    overflow: hidden;
+}
+
 .modalv2 {
     position: fixed;
     top: 0;
