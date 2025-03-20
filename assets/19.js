@@ -1,6 +1,6 @@
 
 
-app_version1 = "289"
+app_version1 = "290"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2958,7 +2958,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         <div class="nameplate-preview-status-color"></div>
                                                     </div>
                                                     <div class="nameplate-null-user" data-user-nameplate-preview>
-                                                        <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
+                                                        <video disablepictureinpicture muted loop class="nameplate-null-user" style="position: absolute; height: 100%; width: auto; right: 0;" data-user-nameplate-preview-img></video>
                                                         <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
                                                         <p class="nameplate-user-name">${previewName}</p>
                                                     </div>
@@ -2988,7 +2988,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                                                     videoElement.src = asset;
     
-                                                    nameplatePreview.style.backgroundImage = `linear-gradient(10deg, #00000000 40%, ${bgcolor} 180%), linear-gradient(170deg, #00000000 40%, ${bgcolor} 180%)`;
+                                                    nameplatePreview.style.backgroundImage = `linear-gradient(90deg, #00000000 -30%, ${bgcolor} 200%)`;
                                                     // nameplatePreview.style.boxShadow = `0 0 0 1px #a10606`;
                                                     
                                                     const nullUserNameRandomWidth = previewHolder.querySelectorAll("[data-null-user-random-name]");
@@ -3994,7 +3994,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <div class="nameplate-preview-status-color"></div>
                                                                 </div>
                                                                 <div class="nameplate-null-user" data-user-nameplate-preview>
-                                                                    <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
+                                                                    <video disablepictureinpicture muted loop class="nameplate-null-user" style="position: absolute; height: 100%; width: auto; right: 0;" data-user-nameplate-preview-img></video>
                                                                     <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
                                                                     <p class="nameplate-user-name">${previewName}</p>
                                                                 </div>
@@ -4022,7 +4022,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                                                                 videoElement.src = asset;
                 
-                                                                nameplatePreview.style.backgroundImage = `linear-gradient(10deg, #00000000 40%, ${bgcolor} 180%), linear-gradient(170deg, #00000000 40%, ${bgcolor} 180%)`;
+                                                                nameplatePreview.style.backgroundImage = `linear-gradient(90deg, #00000000 -30%, ${bgcolor} 200%)`;
                                                                 // nameplatePreview.style.boxShadow = `0 0 0 1px #a10606`;
                                                                 
                                                                 const nullUserNameRandomWidth = previewHolder.querySelectorAll("[data-null-user-random-name]");
@@ -4039,12 +4039,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 });
     
                                                                 if (localStorage.reduced_motion != "true") {
-                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                        videoElement.play();
-                                                                    });
-                                                                    document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                        videoElement.pause();
-                                                                    });
+                                                                    videoElement.play();
                                                                 }
                                                             });
                                                             
@@ -4930,8 +4925,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                                             // Append card to output
                                             cardOutput.append(card);
-    
-                                            scrollToSKU(product.sku_id);
                                         }
                                     }
                                     output0.append(category);
@@ -10929,7 +10922,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     <div class="nameplate-preview-status-color"></div>
                                                 </div>
                                                 <div class="nameplate-null-user" data-user-nameplate-preview>
-                                                    <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
+                                                    <video disablepictureinpicture muted loop class="nameplate-null-user" style="position: absolute; height: 100%; width: auto; right: 0;" data-user-nameplate-preview-img></video>
                                                     <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
                                                     <p class="nameplate-user-name">${previewName}</p>
                                                 </div>
@@ -10959,7 +10952,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                 videoElement.src = asset;
 
-                                                nameplatePreview.style.backgroundImage = `linear-gradient(10deg, #00000000 40%, ${bgcolor} 180%), linear-gradient(170deg, #00000000 40%, ${bgcolor} 180%)`;
+                                                nameplatePreview.style.backgroundImage = `linear-gradient(90deg, #00000000 -30%, ${bgcolor} 200%)`;
                                                 // nameplatePreview.style.boxShadow = `0 0 0 1px #a10606`;
                                                 
                                                 const nullUserNameRandomWidth = previewHolder.querySelectorAll("[data-null-user-random-name]");
@@ -11965,7 +11958,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 <div class="nameplate-preview-status-color"></div>
                                                             </div>
                                                             <div class="nameplate-null-user" data-user-nameplate-preview>
-                                                                <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
+                                                                <video disablepictureinpicture muted loop class="nameplate-null-user" style="position: absolute; height: 100%; width: auto; right: 0;" data-user-nameplate-preview-img></video>
                                                                 <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
                                                                 <p class="nameplate-user-name">${previewName}</p>
                                                             </div>
@@ -11993,7 +11986,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                             videoElement.src = asset;
             
-                                                            nameplatePreview.style.backgroundImage = `linear-gradient(10deg, #00000000 40%, ${bgcolor} 180%), linear-gradient(170deg, #00000000 40%, ${bgcolor} 180%)`;
+                                                            nameplatePreview.style.backgroundImage = `linear-gradient(90deg, #00000000 -30%, ${bgcolor} 200%)`;
                                                             // nameplatePreview.style.boxShadow = `0 0 0 1px #a10606`;
                                                             
                                                             const nullUserNameRandomWidth = previewHolder.querySelectorAll("[data-null-user-random-name]");
@@ -12010,12 +12003,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             });
 
                                                             if (localStorage.reduced_motion != "true") {
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                    videoElement.play();
-                                                                });
-                                                                document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                    videoElement.pause();
-                                                                });
+                                                                videoElement.play();
                                                             }
                                                         });
                                                         
