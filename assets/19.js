@@ -1,6 +1,6 @@
 
 
-app_version1 = "288"
+app_version1 = "289"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -4567,7 +4567,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <div class="orb-icon" style="margin-left: -25px"></div>
                                                                         `;
                                                                         orb_price.style.position = `absolute`;
-                                                                        orb_price.style.right = `0px`;
+                                                                        orb_price.style.right = `-15px`;
                                                                         
                                                                         priceContainer.appendChild(orb_price);
                     
@@ -4596,7 +4596,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <div class="orb-icon" style="margin-left: -25px"></div>
                                                                         `;
                                                                         orb_price.style.position = `absolute`;
-                                                                        orb_price.style.left = `20px`;
+                                                                        orb_price.style.left = `18px`;
                                                                         
                                                                         priceContainer.appendChild(orb_price);
                     
@@ -4627,7 +4627,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <div class="orb-icon" style="margin-left: -25px"></div>
                                                                         `;
                                                                         orb_price.style.position = `absolute`;
-                                                                        orb_price.style.right = `0px`;
+                                                                        orb_price.style.right = `-15px`;
                                                                         
                                                                         priceContainer.appendChild(orb_price);
                     
@@ -4646,7 +4646,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <div class="orb-icon" style="margin-left: -25px"></div>
                                                                         `;
                                                                         orb_price.style.position = `absolute`;
-                                                                        orb_price.style.left = `23px`;
+                                                                        orb_price.style.left = `18px`;
                                                                         
                                                                         priceContainer.appendChild(orb_price);
                     
@@ -4930,6 +4930,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                                             // Append card to output
                                             cardOutput.append(card);
+    
+                                            scrollToSKU(product.sku_id);
                                         }
                                     }
                                     output0.append(category);
@@ -12536,7 +12538,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div class="orb-icon" style="margin-left: -25px"></div>
                                                                     `;
                                                                     orb_price.style.position = `absolute`;
-                                                                    orb_price.style.right = `0px`;
+                                                                    orb_price.style.right = `-15px`;
                                                                     
                                                                     priceContainer.appendChild(orb_price);
                 
@@ -12565,7 +12567,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div class="orb-icon" style="margin-left: -25px"></div>
                                                                     `;
                                                                     orb_price.style.position = `absolute`;
-                                                                    orb_price.style.left = `20px`;
+                                                                    orb_price.style.left = `18px`;
                                                                     
                                                                     priceContainer.appendChild(orb_price);
                 
@@ -12596,7 +12598,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div class="orb-icon" style="margin-left: -25px"></div>
                                                                     `;
                                                                     orb_price.style.position = `absolute`;
-                                                                    orb_price.style.right = `0px`;
+                                                                    orb_price.style.right = `-15px`;
                                                                     
                                                                     priceContainer.appendChild(orb_price);
                 
@@ -12615,7 +12617,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div class="orb-icon" style="margin-left: -25px"></div>
                                                                     `;
                                                                     orb_price.style.position = `absolute`;
-                                                                    orb_price.style.left = `23px`;
+                                                                    orb_price.style.left = `18px`;
                                                                     
                                                                     priceContainer.appendChild(orb_price);
                 

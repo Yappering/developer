@@ -2235,7 +2235,7 @@ data-share-product-card-button {
 .shop-card-var-title {
     position: absolute;
     bottom: 40px;
-    right: 10px;
+    right: 15px;
     color: #b1b5bb;
     opacity: 0;
     transition: transform 0.5s ease, opacity 0.5s ease;
@@ -3806,7 +3806,7 @@ data-share-product-card-button {
 
 .shop-modal-var-title {
     position: absolute;
-    right: 10px;
+    right: 20px;
     color: var(--8);
     pointer-events: none;
 }
