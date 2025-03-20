@@ -2908,7 +2908,7 @@ data-share-product-card-button {
 
 .card-multi-button-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 5px;
 }
 
@@ -4247,6 +4247,32 @@ data-share-product-card-button {
 
 .shop-notice-text {
     margin-top: 5px;
+}
+
+.copy-notice-container {
+    position: fixed;
+    opacity: 0;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1e1f22;
+    color: var(--white);
+    border-radius: 50px;
+    width: auto;
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    pointer-events: none;
+    animation: gtfin76g7ererg 5s;
+    z-index: 2000;
+}
+
+@keyframes gtfin76g7ererg {
+    0% {opacity: 0; transform: translateY(-50px);}
+    10% {opacity: 1; transform: translateY(0px);}
+    90% {opacity: 1; transform: translateY(0px);}
+    100% {opacity: 0; transform: translateY(-50px);}
 }
 
 .home-page-preview-banner {

@@ -37,7 +37,7 @@ const experimentsList = [
             "Treatment 2: w/ share button",
             "Treatment 3: only share button"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment 1: Enabled"
     },
     {
         title: "Quick Info Tab",
