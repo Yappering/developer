@@ -1,6 +1,6 @@
 
 
-app_version1 = "290"
+app_version1 = "292"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10322,10 +10322,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
                                                     <p style="color: var(--8)" data-product-modal-summary></p>
                                                     <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ITEM_COUNT")}${apiCategory.products.length}</p>
-                                                    <details>
+                                                    <details style="display: none;">
                                                         <summary class="clickable" style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS")}</summary>
-                                                        <div class="shop-category-modal-assets-container" data-shop-category-modal-assets-container></div>
+                                                        
                                                     </details>
+                                                    <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_ASSETS_SHOW")}</p>
+                                                    <div class="shop-category-modal-assets-container" data-shop-category-modal-assets-container></div>
                                                     <div class="shop-modal-review-container" data-shop-modal-review-container>
                                                         <p style="font-size: large; font-weight: 900;" data-shop-modal-review-title></p>
                                                     </div>
