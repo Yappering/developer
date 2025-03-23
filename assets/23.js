@@ -137,6 +137,7 @@ SHOP_CATEGORY_MODAL_ASSETS_CATEGORY_BG = "Category Background (category_bg):";
 SHOP_CATEGORY_MODAL_ASSETS_CONDENSED_BANNER_LEFT = "Condensed Banner Left (condensed_banner_left):";
 SHOP_CATEGORY_MODAL_ASSETS_CONDENSED_BANNER_RIGHT = "Condensed Banner Right (condensed_banner_right):";
 SHOP_CATEGORY_MODAL_SKU_ID = "SKU ID: ";
+FAILED_TO_LOAD_ITEM_CARD_ERROR = "Failed to load item";
 CARD_REQUEST_PPLUS_EMOJI_TITLE = "Request item in our Discord server";
 CARD_REQUEST_PPLUS_EMOJI = "Request to P+";
 CARD_COPY_PPLUS_EMOJI_TITLE = "Copy P+ emoji to clipboard";

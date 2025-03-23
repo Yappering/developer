@@ -18,6 +18,17 @@ EXPERIMENT_ID_6 = 1
 
 const experimentsList = [
     {
+        title: "Show items with no skus in misc tab",
+        id: "2025-03_items_with_no_sku",
+        name: "experiment_2025_03_items_with_no_sku",
+        treatments: [
+            "Treatment -1: Disabled",
+            "Treatment 1: Enabled"
+        ],
+        rollout: "Treatment -1: Disabled",
+        needs_api_token: "true"
+    },
+    {
         title: "View Raw Modal",
         id: "2025-03_view_raw_modal",
         name: "experiment_2025_03_view_raw_modal",
