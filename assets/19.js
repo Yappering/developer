@@ -1,6 +1,6 @@
 
 
-app_version1 = "293"
+app_version1 = "294"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2567,7 +2567,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         NAMEPLATE_TEST = "1344802365307621427",
         AESPA = "1346499610977243196",
         NAMEPLATE = "1349849614353829990",
-        HOLIDAYS = "1349486948942745691"
+        HOLIDAYS = "1349486948942745691",
+        SHENANIGANS = "1352407446500675708"
     ]
 
     category_types = [
@@ -15585,49 +15586,51 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     document.getElementById("experiment-force-rollout").checked = true;
                 }
 
-                experimentsList.forEach(({ title, id, name, treatments, needs_api_token }) => {
-                    try {
+                experimentsList.forEach(({ title, id, name, treatments, needs_api_token, not_needed }) => {
+                    if (not_needed != "true") {
+                        try {
 
-                        let experimentCard = document.createElement("div");
-
-                        experimentCard.classList.add('options-option-card');
-                        experimentCard.innerHTML = `
-                            <p class="option-card-title">${title}</p>
-                            <p class="new-experiment-subtext">${id}</p>
-                            <select id="${name}_treatment_container" class="experiment-treatment-picker">
-                            </select>
-                            <button class="new-experiment-clear-button" onclick="clearSetExperiment('${name}')">Clear</button>
-                        `;
-
-                        if (needs_api_token === "true") {
-                            let apiNotice = document.createElement("p");
-
-                            apiNotice.classList.add('new-experiment-subtext-api-notice');
-                            apiNotice.textContent = getTextString("OPTIONS_SIDEBAR_EXPERIMENTS_API_PASSWORD")
-
-                            experimentCard.appendChild(apiNotice);
+                            let experimentCard = document.createElement("div");
+    
+                            experimentCard.classList.add('options-option-card');
+                            experimentCard.innerHTML = `
+                                <p class="option-card-title">${title}</p>
+                                <p class="new-experiment-subtext">${id}</p>
+                                <select id="${name}_treatment_container" class="experiment-treatment-picker">
+                                </select>
+                                <button class="new-experiment-clear-button" onclick="clearSetExperiment('${name}')">Clear</button>
+                            `;
+    
+                            if (needs_api_token === "true") {
+                                let apiNotice = document.createElement("p");
+    
+                                apiNotice.classList.add('new-experiment-subtext-api-notice');
+                                apiNotice.textContent = getTextString("OPTIONS_SIDEBAR_EXPERIMENTS_API_PASSWORD")
+    
+                                experimentCard.appendChild(apiNotice);
+                            }
+    
+    
+                            document.getElementById("experiments-container-output").appendChild(experimentCard);
+    
+                            const treatmentPicker = document.getElementById(`${name}_treatment_container`);
+                    
+                            if (!treatmentPicker) return; // Skip if element doesn't exist
+                    
+                            populateExperimentOptions(treatmentPicker, treatments);
+                    
+                            const storedTreatment = localStorage.getItem(name);
+                            if (storedTreatment) {
+                                treatmentPicker.value = storedTreatment;
+                            }
+                    
+                            treatmentPicker.addEventListener("change", () => {
+                                localStorage.setItem(name, treatmentPicker.value);
+                            });
+                    
+                        } catch (error) {
+                            console.error(`Error setting up experiment: ${name}`, error);
                         }
-
-
-                        document.getElementById("experiments-container-output").appendChild(experimentCard);
-
-                        const treatmentPicker = document.getElementById(`${name}_treatment_container`);
-                
-                        if (!treatmentPicker) return; // Skip if element doesn't exist
-                
-                        populateExperimentOptions(treatmentPicker, treatments);
-                
-                        const storedTreatment = localStorage.getItem(name);
-                        if (storedTreatment) {
-                            treatmentPicker.value = storedTreatment;
-                        }
-                
-                        treatmentPicker.addEventListener("change", () => {
-                            localStorage.setItem(name, treatmentPicker.value);
-                        });
-                
-                    } catch (error) {
-                        console.error(`Error setting up experiment: ${name}`, error);
                     }
                 });
                 
