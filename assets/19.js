@@ -1,6 +1,6 @@
 
 
-app_version1 = "295"
+app_version1 = "296"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -15152,8 +15152,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 </div>
                 <div id="theme-picker-container"></div>
                 <div id="accessibility-options-container"></div>
-                <div id="new-options-experiments-container"></div>
-                <div id="new-options-dismissible-content-container"></div>
                 <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_SIDEBAR_DOWNLOADS")}</h1>
                 <div>
                     <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
@@ -15187,7 +15185,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
             if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker" || localStorage.experiment_2025_02_extra_options === "Treatment 6: Settings like discord") {
                 document.getElementById("username-picker-container-dev").innerHTML = `
-                    <div id="staff-todo-list"></div>
                     <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE")}</p>
                     <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DESC")}</p>
                     <div class="options-option-card" id="options-text-input-option">
@@ -15221,17 +15218,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         <p class="options-preview-profile-username" id="options-username-preview"></p>
                     </div>
                 `;
-
-                if (localStorage.dev === "true") {
-                    document.getElementById("staff-todo-list").innerHTML = `
-                        <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_TODO_LIST")}</p>
-                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_TODO_LIST_1")}</p>
-                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_TODO_LIST_2")}</p>
-                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_TODO_LIST_3")}</p>
-                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_TODO_LIST_4")}</p>
-                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_TODO_LIST_5")}</p>
-                    `;
-                }
 
                 if (localStorage.experiment_2025_03_item_reviews === "Treatment 3: Simulate logged in") {
                     let cantChangeProfileWhenLoggedIn = document.createElement("div");
@@ -15556,143 +15542,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     // Append the cloned template to the content
                     content.appendChild(clone);
                 });
-            }
-
-
-            if (localStorage.dev == "true") {
-                document.getElementById("new-options-experiments-container").innerHTML = `
-
-                    <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Experiments</p>
-
-                    <div class="options-option-card">
-                        <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_SIDEBAR_NO_FORCE_ROLLOUT")}</p>
-                        <input class="options-toggle-box" onclick="disabledExperimentForceRollout();" style="cursor: pointer; scale: 2; posision: center;" id="experiment-force-rollout" type="checkbox">
-                    </div>
-
-                    <div id="experiments-container-output"></div>
-
-                `;
-
-                if (localStorage.experiment_force_rollout == "false") {
-                    document.getElementById("experiment-force-rollout").checked = true;
-                }
-
-                experimentsList.forEach(({ title, id, name, treatments, needs_api_token, not_needed }) => {
-                    if (not_needed != "true") {
-                        try {
-
-                            let experimentCard = document.createElement("div");
-    
-                            experimentCard.classList.add('options-option-card');
-                            experimentCard.innerHTML = `
-                                <p class="option-card-title">${title}</p>
-                                <p class="new-experiment-subtext">${id}</p>
-                                <select id="${name}_treatment_container" class="experiment-treatment-picker">
-                                </select>
-                                <button class="new-experiment-clear-button" onclick="clearSetExperiment('${name}')">Clear</button>
-                            `;
-    
-                            if (needs_api_token === "true") {
-                                let apiNotice = document.createElement("p");
-    
-                                apiNotice.classList.add('new-experiment-subtext-api-notice');
-                                apiNotice.textContent = getTextString("OPTIONS_SIDEBAR_EXPERIMENTS_API_PASSWORD")
-    
-                                experimentCard.appendChild(apiNotice);
-                            }
-    
-    
-                            document.getElementById("experiments-container-output").appendChild(experimentCard);
-    
-                            const treatmentPicker = document.getElementById(`${name}_treatment_container`);
-                    
-                            if (!treatmentPicker) return; // Skip if element doesn't exist
-                    
-                            populateExperimentOptions(treatmentPicker, treatments);
-                    
-                            const storedTreatment = localStorage.getItem(name);
-                            if (storedTreatment) {
-                                treatmentPicker.value = storedTreatment;
-                            }
-                    
-                            treatmentPicker.addEventListener("change", () => {
-                                localStorage.setItem(name, treatmentPicker.value);
-                            });
-                    
-                        } catch (error) {
-                            console.error(`Error setting up experiment: ${name}`, error);
-                        }
-                    }
-                });
-                
-                function populateExperimentOptions(selectElement, treatments) {
-                    treatments.forEach((treatment) => {
-                        const optElement = document.createElement("option");
-                        optElement.value = treatment;
-                        optElement.textContent = treatment;
-                        selectElement.appendChild(optElement);
-                    });
-                }
-                
-
-
-
-
-
-
-
-                document.getElementById("new-options-dismissible-content-container").innerHTML = `
-
-                    <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_SIDEBAR_DISMISSIBLE_CONTENT")}</p>
-
-                    <div id="dismissible-content-container-output"></div>
-
-                `;
-
-                dismissibleContentList.forEach(({ title, id, name, treatments, needs_api_token }) => {
-                    try {
-
-                        let experimentCard = document.createElement("div");
-
-                        experimentCard.classList.add('options-option-card');
-                        experimentCard.innerHTML = `
-                            <p class="option-card-title">${title}</p>
-                            <p class="new-experiment-subtext">${id}</p>
-                            <select id="${name}_treatment_container" class="experiment-treatment-picker">
-                            </select>
-                        `;
-
-
-                        document.getElementById("dismissible-content-container-output").appendChild(experimentCard);
-
-                        const treatmentPicker = document.getElementById(`${name}_treatment_container`);
-                
-                        if (!treatmentPicker) return; // Skip if element doesn't exist
-                
-                        populateDismissibleContentOptions(treatmentPicker, treatments);
-                
-                        const storedTreatment = localStorage.getItem(name);
-                        if (storedTreatment) {
-                            treatmentPicker.value = storedTreatment;
-                        }
-                
-                        treatmentPicker.addEventListener("change", () => {
-                            localStorage.setItem(name, treatmentPicker.value);
-                        });
-                
-                    } catch (error) {
-                        console.error(`Error setting up experiment: ${name}`, error);
-                    }
-                });
-                
-                function populateDismissibleContentOptions(selectElement, treatments) {
-                    treatments.forEach((treatment) => {
-                        const optElement = document.createElement("option");
-                        optElement.value = treatment;
-                        optElement.textContent = treatment;
-                        selectElement.appendChild(optElement);
-                    });
-                }
             }
             if (localStorage.experiment_2025_03_extra_options_dismissible_content === "Treatment 1: V1") {
                 localStorage.dismissible_newProfileSettings = "Treatment 1: Seen"
@@ -16093,227 +15942,269 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
     
     
+    let dev_topbar_container = document.createElement("div");
+
+    dev_topbar_container.classList.add('dev-topbar-container');
+    dev_topbar_container.id = 'dev-topbar-container';
+
+    document.body.appendChild(dev_topbar_container);
+    
     function openDevModal() {
         if (localStorage.dev == "true") {
-            document.getElementById('modal-housing').innerHTML = `
-            <div class="modal-housing-1" id="modal-housing-1">
-                <div class="dev-modal">
-                    <div class="dev-modal-inner">
-                        <h1 class="center-text" style="font-size: 54px; margin-top: -10px; margin-bottom: -5px;">${getTextString("OPTIONS_DEV_TITLE")}</h1>
-                        <p>${getTextString("OPTIONS_DEV_DESC")}</p>
-                        <button class="staff-close-button" onclick="closeDevModal()">${getTextString("OPTIONS_DEV_CLOSE")}</button>
-                        <button class="staff-safe-mode-button" onclick="turnOffDevMode()">${getTextString("OPTIONS_DEV_SAFE_MODE")}</button>
-                        <hr>
-                        <div>
-                            <h2>Debug</h2>
-                            <p class="experiment-subtext">Overrides</p>
-                            <div class="experiment-card-holder">
-                                <div class="experiment-card">
-                                    <p>Disable Client Reowrk (Possible to re-enable on old client)</p>
-                                    <p class="experiment-subtext">2024-12_disable_client_rework</p>
-                                    <button class="newish-experiment-button" onclick="disableClientReworkTrue()" id="2024-12_disable_client_rework-1">1</button>
-                                    <button class="newish-experiment-button" onclick="disableClientReworkFalse()" id="2024-12_disable_client_rework-00">-1</button>
-                                </div>
-                                <div class="experiment-card">
-                                    <p>Force Private API</p>
-                                    <p class="experiment-subtext">2024-12_force_all_api_to_fectch_private_api</p>
-                                    <button class="newish-experiment-button" onclick="forceAllApiToFectchPrivateApiTrue()" id="2024-12_force_all_api_to_fectch_private_api-1">1</button>
-                                    <button class="newish-experiment-button" onclick="forceAllApiToFectchPrivateApiFalse()" id="2024-12_force_all_api_to_fectch_private_api-2">-1</button>
-                                </div>
-                                <div class="experiment-card">
-                                    <p>Show Leaks Button</p>
-                                    <p class="experiment-subtext">2024-11_override_leaks_button</p>
-                                    <button class="newish-experiment-button" onclick="overrideLeaksButtonShow()" id="2024-11_override_leaks_button-1">1</button>
-                                    <button class="newish-experiment-button" onclick="overrideLeaksButtonHide()" id="2024-11_override_leaks_button-2">-1</button>
-                                </div>
-                                <div class="experiment-card">
-                                    <p>Project Joshua</p>
-                                    <p class="experiment-subtext">2024-11_unreleased_discord_collectibles</p>
-                                    <button class="newish-experiment-button" onclick="unreleasedDiscordCollectiblesTrue()" id="2024-11_unreleased_discord_collectibles-1">1</button>
-                                    <button class="newish-experiment-button" onclick="unreleasedDiscordCollectiblesFalse()" id="2024-11_unreleased_discord_collectibles-2">-1</button>
-                                </div>
-                                <div class="experiment-card">
-                                    <p>Unreleased Profiles Plus Items</p>
-                                    <p class="experiment-subtext">2024-09_profiles_plus</p>
-                                    <button class="newish-experiment-button" onclick="unreleasedProfilesPlusItemsTrue()" id="2024-09_profiles_plus-1">1</button>
-                                    <button class="newish-experiment-button" onclick="unreleasedProfilesPlusItemsFalse()" id="2024-09_profiles_plus-2">-1</button>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div>
-                            <h2>Modals</h2>
-                            <div class="experiment-card-holder">
-                                <div class="experiment-card">
-                                    <p>Lost</p>
-                                    <p class="experiment-subtext">modal no longer supported on client</p>
-                                    <button class="refresh-button" onclick="openLostModal()">Open</button>
-                                </div>
-                                <div class="experiment-card">
-                                    <p>Dev</p>
-                                    <button class="refresh-button" onclick="openDevModal()">Open</button>
-                                </div>
-                                <div class="experiment-card">
-                                    <p>Options</p>
-                                    <button class="refresh-button" onclick="openOptionsModal()">Open</button>
-                                </div>
-                                <div class="experiment-card">
-                                    <p>Downloads</p>
-                                    <button class="refresh-button" onclick="openDownloadsModal()">Open</button>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div>
-                            <h2>Local Storage Overrides</h2>
-                            <p class="experiment-subtext">Refresh the page for changes to take effect</p>
-                            <button class="refresh-button" onclick="localStorage.clear()">Delete All</button>
-                            <input type="text" class="dev-local-storage-input-1" id="keyInput" placeholder="Enter key">
-                            <input type="text" class="dev-local-storage-input-1" id="valueInput" placeholder="Enter value">
-                            <button class="refresh-button" onclick="saveToLocalStorage()">Save</button>
-                            <div id="storageItems"></div>
-                        </div>
-                        <hr>
-                        <div>
 
-                            <p>${getTextString("APP_VERSION")}${tcbx926n29}</p>
+
+            if (document.getElementById('dev-topbar-container').classList.contains('dev-topbar-container-expanded')) {
+                document.getElementById('dev-topbar-container').classList.remove("dev-topbar-container-expanded");
+            } else {
+                document.getElementById('dev-topbar-container').classList.add("dev-topbar-container-expanded");
+                document.getElementById('dev-topbar-container').innerHTML = `
+                    <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_DEV_TITLE")}</h1>
+                    <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_DEV_OPTIONS_DISCLAIMER")}</p>
+
+                    <div id="staff-todo-list">
+                        <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_TODO_LIST")}</p>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_TODO_LIST_1")}</p>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_TODO_LIST_2")}</p>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_TODO_LIST_3")}</p>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_TODO_LIST_4")}</p>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_TODO_LIST_5")}</p>
+                    </div>
+
+                    <div class="options-option-card-holder">
+
+                        <div class="options-option-card" id="unpublished-collectibles-box-option">
+                            <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_DEV_UNPUBLISHED_COLLECTIBLES")}</p>
+                            <input class="options-toggle-box" onclick="unreleasedDiscordCollectiblesToggle();" style="cursor: pointer; scale: 2; posision: center;" id="unpublished-collectibles-box" type="checkbox">
                         </div>
-                        <hr>
-                        <button class="staff-close-button" onclick="closeDevModal()">${getTextString("OPTIONS_DEV_CLOSE")}</button>
-                        <button class="staff-safe-mode-button" onclick="turnOffDevMode()">${getTextString("OPTIONS_DEV_SAFE_MODE")}</button>
+
+                    </div>
+
+                    <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
+                        <button class="card-button" onclick="disableClientRework();">${getTextString("OPTIONS_DEV_DISABLE_CLIENT_REWORK")}</button>
+                        <button class="card-button" onclick="openOldDevModal();">${getTextString("OPTIONS_DEV_OPEN_OLD_DEV_MODAL")}</button>
+                    </div>
+
+                    <div id="new-options-experiments-container"></div>
+                    <div id="new-options-dismissible-content-container"></div>
+                    ${getTextString("APP_VERSION")}${tcbx926n29}
+                `;
+
+                document.getElementById("new-options-experiments-container").innerHTML = `
+    
+                    <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Experiments</p>
+    
+                    <div class="options-option-card">
+                        <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_SIDEBAR_NO_FORCE_ROLLOUT")}</p>
+                        <input class="options-toggle-box" onclick="disabledExperimentForceRollout();" style="cursor: pointer; scale: 2; posision: center;" id="experiment-force-rollout" type="checkbox">
+                    </div>
+    
+                    <div id="experiments-container-output"></div>
+    
+                `;
+    
+                if (localStorage.experiment_force_rollout == "false") {
+                    document.getElementById("experiment-force-rollout").checked = true;
+                }
+    
+                experimentsList.forEach(({ title, id, name, treatments, needs_api_token, not_needed }) => {
+                    if (not_needed != "true") {
+                        try {
+    
+                            let experimentCard = document.createElement("div");
+        
+                            experimentCard.classList.add('options-option-card');
+                            experimentCard.innerHTML = `
+                                <p class="option-card-title">${title}</p>
+                                <p class="new-experiment-subtext">${id}</p>
+                                <select id="${name}_treatment_container" class="experiment-treatment-picker">
+                                </select>
+                                <button class="new-experiment-clear-button" onclick="clearSetExperiment('${name}')">Clear</button>
+                            `;
+        
+                            if (needs_api_token === "true") {
+                                let apiNotice = document.createElement("p");
+        
+                                apiNotice.classList.add('new-experiment-subtext-api-notice');
+                                apiNotice.textContent = getTextString("OPTIONS_SIDEBAR_EXPERIMENTS_API_PASSWORD")
+        
+                                experimentCard.appendChild(apiNotice);
+                            }
+        
+        
+                            document.getElementById("experiments-container-output").appendChild(experimentCard);
+        
+                            const treatmentPicker = document.getElementById(`${name}_treatment_container`);
+                    
+                            if (!treatmentPicker) return; // Skip if element doesn't exist
+                    
+                            populateExperimentOptions(treatmentPicker, treatments);
+                    
+                            const storedTreatment = localStorage.getItem(name);
+                            if (storedTreatment) {
+                                treatmentPicker.value = storedTreatment;
+                            }
+                    
+                            treatmentPicker.addEventListener("change", () => {
+                                localStorage.setItem(name, treatmentPicker.value);
+                            });
+                    
+                        } catch (error) {
+                            console.error(`Error setting up experiment: ${name}`, error);
+                        }
+                    }
+                });
+                
+                function populateExperimentOptions(selectElement, treatments) {
+                    treatments.forEach((treatment) => {
+                        const optElement = document.createElement("option");
+                        optElement.value = treatment;
+                        optElement.textContent = treatment;
+                        selectElement.appendChild(optElement);
+                    });
+                }
+                
+    
+    
+    
+    
+    
+    
+    
+                document.getElementById("new-options-dismissible-content-container").innerHTML = `
+    
+                    <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_SIDEBAR_DISMISSIBLE_CONTENT")}</p>
+    
+                    <div id="dismissible-content-container-output"></div>
+    
+                `;
+    
+                dismissibleContentList.forEach(({ title, id, name, treatments, needs_api_token }) => {
+                    try {
+    
+                        let experimentCard = document.createElement("div");
+    
+                        experimentCard.classList.add('options-option-card');
+                        experimentCard.innerHTML = `
+                            <p class="option-card-title">${title}</p>
+                            <p class="new-experiment-subtext">${id}</p>
+                            <select id="${name}_treatment_container" class="experiment-treatment-picker">
+                            </select>
+                        `;
+    
+    
+                        document.getElementById("dismissible-content-container-output").appendChild(experimentCard);
+    
+                        const treatmentPicker = document.getElementById(`${name}_treatment_container`);
+                
+                        if (!treatmentPicker) return; // Skip if element doesn't exist
+                
+                        populateDismissibleContentOptions(treatmentPicker, treatments);
+                
+                        const storedTreatment = localStorage.getItem(name);
+                        if (storedTreatment) {
+                            treatmentPicker.value = storedTreatment;
+                        }
+                
+                        treatmentPicker.addEventListener("change", () => {
+                            localStorage.setItem(name, treatmentPicker.value);
+                        });
+                
+                    } catch (error) {
+                        console.error(`Error setting up experiment: ${name}`, error);
+                    }
+                });
+                
+                function populateDismissibleContentOptions(selectElement, treatments) {
+                    treatments.forEach((treatment) => {
+                        const optElement = document.createElement("option");
+                        optElement.value = treatment;
+                        optElement.textContent = treatment;
+                        selectElement.appendChild(optElement);
+                    });
+                }
+    
+                if (localStorage.unreleased_discord_collectibles == "true") {
+                    document.getElementById("unpublished-collectibles-box").checked = true;
+                }
+            }
+        } else {
+            console.error('403 (Forbidden)')
+        }
+    }
+
+    function disableClientRework() {
+        localStorage.full_client_rework = "false"
+        location.reload();
+    }
+
+    function unreleasedDiscordCollectiblesToggle() {
+        if (localStorage.unreleased_discord_collectibles === "none") {
+            localStorage.unreleased_discord_collectibles = "true"
+        } else {
+            localStorage.unreleased_discord_collectibles = "none"
+        }
+        fetchData(pageCheck());
+    }
+
+    function openOldDevModal() {
+        if (localStorage.dev == "true") {
+            openDevModal()
+            document.getElementById('modal-housing').innerHTML = `
+                <div class="modal-housing-1" id="modal-housing-1">
+                    <div class="dev-modal">
+                        <div class="dev-modal-inner">
+                            <h1 class="center-text" style="font-size: 54px; margin-top: -10px; margin-bottom: -5px;">${getTextString("OPTIONS_DEV_TITLE")}</h1>
+                            <p>${getTextString("OPTIONS_DEV_DESC")}</p>
+                            <button class="staff-close-button" onclick="closeDevModal()">${getTextString("OPTIONS_DEV_CLOSE")}</button>
+                            <button class="staff-safe-mode-button" onclick="turnOffDevMode()">${getTextString("OPTIONS_DEV_SAFE_MODE")}</button>
+                            <hr>
+                            <div>
+                                <h2>Modals</h2>
+                                <div class="experiment-card-holder">
+                                    <div class="experiment-card">
+                                        <p>Lost</p>
+                                        <p class="experiment-subtext">modal no longer supported on client</p>
+                                        <button class="refresh-button" onclick="openLostModal()">Open</button>
+                                    </div>
+                                    <div class="experiment-card">
+                                        <p>Dev</p>
+                                        <button class="refresh-button" onclick="openDevModal()">Open</button>
+                                    </div>
+                                    <div class="experiment-card">
+                                        <p>Options</p>
+                                        <button class="refresh-button" onclick="openOptionsModal()">Open</button>
+                                    </div>
+                                    <div class="experiment-card">
+                                        <p>Downloads</p>
+                                        <button class="refresh-button" onclick="openDownloadsModal()">Open</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div>
+                                <h2>Local Storage Overrides</h2>
+                                <p class="experiment-subtext">Refresh the page for changes to take effect</p>
+                                <button class="refresh-button" onclick="localStorage.clear()">Delete All</button>
+                                <input type="text" class="dev-local-storage-input-1" id="keyInput" placeholder="Enter key">
+                                <input type="text" class="dev-local-storage-input-1" id="valueInput" placeholder="Enter value">
+                                <button class="refresh-button" onclick="saveToLocalStorage()">Save</button>
+                                <div id="storageItems"></div>
+                            </div>
+                            <hr>
+                            <div>
+
+                                <p>${getTextString("APP_VERSION")}${tcbx926n29}</p>
+                            </div>
+                            <hr>
+                            <button class="staff-close-button" onclick="closeDevModal()">${getTextString("OPTIONS_DEV_CLOSE")}</button>
+                            <button class="staff-safe-mode-button" onclick="turnOffDevMode()">${getTextString("OPTIONS_DEV_SAFE_MODE")}</button>
+                        </div>
                     </div>
                 </div>
-            </div>
             `;
     
-        
-        
-            // if (localStorage.top_selling_item != "true") {
-            //     if (localStorage.top_selling_item != "false") {
-            //         if (localStorage.top_selling_item != "two") {
-            //             document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('newish-experiment-button-selected');
-            //             document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('newish-experiment-button-selected');
-            //             document.getElementById("2024-11_top_selling_item_tag-0").classList.add('newish-experiment-button-selected');
-            //             document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('newish-experiment-button-selected');
-            //         }
-            //     }
-            // }
-        
-            // if (localStorage.top_selling_item == "two") {
-            //     document.getElementById("2024-11_top_selling_item_tag-2").classList.add('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('newish-experiment-button-selected');
-            // }
-            
-            // if (localStorage.top_selling_item == "true") {
-            //     document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-1").classList.add('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-00").classList.remove('newish-experiment-button-selected');
-            // }
-        
-            // if (localStorage.top_selling_item == "false") {
-            //     document.getElementById("2024-11_top_selling_item_tag-2").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-1").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-0").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_top_selling_item_tag-00").classList.add('newish-experiment-button-selected');
-            // }
-        
-        
-        
-            // if (localStorage.item_data_downloads != "true") {
-            //     if (localStorage.item_data_downloads != "false") {
-            //         if (localStorage.item_data_downloads != "two") {
-            //             document.getElementById("2024-11_item_data_downloads-2").classList.remove('newish-experiment-button-selected');
-            //             document.getElementById("2024-11_item_data_downloads-1").classList.remove('newish-experiment-button-selected');
-            //             document.getElementById("2024-11_item_data_downloads-0").classList.add('newish-experiment-button-selected');
-            //             document.getElementById("2024-11_item_data_downloads-00").classList.remove('newish-experiment-button-selected');
-            //         }
-            //     }
-            // }
-        
-            // if (localStorage.item_data_downloads == "two") {
-            //     document.getElementById("2024-11_item_data_downloads-2").classList.add('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-1").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-0").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-00").classList.remove('newish-experiment-button-selected');
-            // }
-            
-            // if (localStorage.item_data_downloads == "true") {
-            //     document.getElementById("2024-11_item_data_downloads-2").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-1").classList.add('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-0").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-00").classList.remove('newish-experiment-button-selected');
-            // }
-            
-            // if (localStorage.item_data_downloads == "false") {
-            //     document.getElementById("2024-11_item_data_downloads-2").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-1").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-0").classList.remove('newish-experiment-button-selected');
-            //     document.getElementById("2024-11_item_data_downloads-00").classList.add('newish-experiment-button-selected');
-            // }
-        
-        
-
-            if (localStorage.full_client_rework == "true") {
-                document.getElementById("2024-12_disable_client_rework-1").classList.remove('newish-experiment-button-selected');
-                document.getElementById("2024-12_disable_client_rework-00").classList.add('newish-experiment-button-selected');
-            }
-            
-            if (localStorage.full_client_rework != "true") {
-                document.getElementById("2024-12_disable_client_rework-1").classList.add('newish-experiment-button-selected');
-                document.getElementById("2024-12_disable_client_rework-00").classList.remove('newish-experiment-button-selected');
-            }
-
-
-
-            if (localStorage.force_all_api_to_fectch_private_api == "true") {
-                document.getElementById("2024-12_force_all_api_to_fectch_private_api-1").classList.add('newish-experiment-button-selected');
-                document.getElementById("2024-12_force_all_api_to_fectch_private_api-2").classList.remove('newish-experiment-button-selected');
-            }
-            
-            if (localStorage.force_all_api_to_fectch_private_api != "true") {
-                document.getElementById("2024-12_force_all_api_to_fectch_private_api-1").classList.remove('newish-experiment-button-selected');
-                document.getElementById("2024-12_force_all_api_to_fectch_private_api-2").classList.add('newish-experiment-button-selected');
-            }
-
-
-
-            if (localStorage.override_leaks_button == "true") {
-                document.getElementById("2024-11_override_leaks_button-1").classList.add('newish-experiment-button-selected');
-                document.getElementById("2024-11_override_leaks_button-2").classList.remove('newish-experiment-button-selected');
-            }
-            
-            if (localStorage.override_leaks_button != "true") {
-                document.getElementById("2024-11_override_leaks_button-1").classList.remove('newish-experiment-button-selected');
-                document.getElementById("2024-11_override_leaks_button-2").classList.add('newish-experiment-button-selected');
-            }
-
-
-
-            if (localStorage.unreleased_discord_collectibles == "true") {
-                document.getElementById("2024-11_unreleased_discord_collectibles-1").classList.add('newish-experiment-button-selected');
-                document.getElementById("2024-11_unreleased_discord_collectibles-2").classList.remove('newish-experiment-button-selected');
-            }
-            
-            if (localStorage.unreleased_discord_collectibles != "true") {
-                document.getElementById("2024-11_unreleased_discord_collectibles-1").classList.remove('newish-experiment-button-selected');
-                document.getElementById("2024-11_unreleased_discord_collectibles-2").classList.add('newish-experiment-button-selected');
-            }
-            
-            
-            if (localStorage.unreleased_profiles_plus == "true") {
-                document.getElementById("2024-09_profiles_plus-1").classList.add('newish-experiment-button-selected');
-            }
-            
-            if (localStorage.unreleased_profiles_plus != "true") {
-                document.getElementById("2024-09_profiles_plus-1").classList.remove('newish-experiment-button-selected');
-                document.getElementById("2024-09_profiles_plus-2").classList.add('newish-experiment-button-selected');
-            }
-        
             displayLocalStorage();
-        }else {
+        } else {
             console.error('403 (Forbidden)')
         }
     }
