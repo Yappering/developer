@@ -69,7 +69,8 @@ const experimentsList = [
             "Treatment -1: Disabled",
             "Treatment 1: V1"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment -1: Disabled",
+        not_needed: "true"
     },
     {
         title: "Early Nameplate Warning",
@@ -79,7 +80,8 @@ const experimentsList = [
             "Treatment -1: Disabled",
             "Treatment 1: Enabled"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment -1: Disabled",
+        not_needed: "true"
     },
     {
         //21
@@ -93,7 +95,8 @@ const experimentsList = [
             "Treatment 3: Simulate logged in"
         ],
         rollout: "Treatment -1: Disabled",
-        needs_api_token: "true"
+        needs_api_token: "true",
+        not_needed: "true"
     },
     {
         title: "Heartbeat",
@@ -105,7 +108,8 @@ const experimentsList = [
             "Treatment 2: Fetch every 60 seconds"
         ],
         rollout: "Treatment -1: Disabled",
-        needs_api_token: "true"
+        needs_api_token: "true",
+        not_needed: "true"
     },
     {
         title: "Fetch From Vercel Endpoits",
@@ -138,7 +142,8 @@ const experimentsList = [
             "Treatment 2: Enabled",
             "Treatment 3: Hide All Profiles Plus Tabs"
         ],
-        rollout: "Treatment 3: Hide All Profiles Plus Tabs"
+        rollout: "Treatment 3: Hide All Profiles Plus Tabs",
+        not_needed: "true"
     },
     {
         title: "Shop Category Modals",
@@ -207,7 +212,8 @@ const experimentsList = [
             "Treatment -1: Disabled",
             "Treatment 1: Enabled"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment -1: Disabled",
+        not_needed: "true"
     },
     {
         title: "Theme Picker",
@@ -229,7 +235,8 @@ const experimentsList = [
             "Treatment 1: Paper Beach V2",
             "Treatment 2: Roblox Doors"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment -1: Disabled",
+        not_needed: "true"
     },
     {
         title: "Collectibles Variants",
@@ -239,7 +246,8 @@ const experimentsList = [
             "Treatment -1: Disabled",
             "Treatment 1: Enabled"
         ],
-        rollout: "Treatment 1: Enabled"
+        rollout: "Treatment 1: Enabled",
+        not_needed: "true"
     },
     {
         title: "2024 Recap",

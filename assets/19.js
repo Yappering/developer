@@ -1,6 +1,6 @@
 
 
-app_version1 = "294"
+app_version1 = "295"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2461,25 +2461,16 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
         endpoints = [
             COLLECTIBLES = "/collectibles-categories",
-            COLLECTIBLES_IN_SHOP = "/collectibles-categories-published",
             CONSUMABLES = "/consumables",
             MISCELLANEOUS = "/miscellaneous-categories",
-            PROFILES_PLUS = "/profiles-plus-categories",
             HOME_PAGE_ALL = "/preview-1",
-            HOME_PAGE_LEAKS = "/preview-2",
-            HOME_PAGE_PPLUS = "/preview-3",
             PROFILE_EFFECTS = "/user-profile-effects",
             DOWNLOADABLE_DATA = "/downloads",
-            PROFILES_PLUS_EFFECTS = "/profiles-plus-profile-effects",
             LEAKS = "/leaked-categories",
             COLLECTIBLES_MARKETING = "/collectibles-marketing",
-            COLLECTIBLES_VARIANTS = "/collectibles-categories-variants",
             EXPERIMENT_ROLLOUTS = "/rollout-handler",
             COLLECTIBLES_SHOP_HOME = "/collectibles-shop-home",
-            NEW_ITEMS = "/new-items",
-            ORBS_SHOP = "/orbs-shop",
             ORBS_SHOP_DEFAULT = "/orbs-shop-default",
-            HEARTBEAT_DATA = "/heartbeat-data",
             QUICK_INFO = "/quick-info"
         ]
     } else {
