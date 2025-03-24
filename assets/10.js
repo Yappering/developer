@@ -309,3 +309,42 @@ const dismissibleContentList = [
         ]
     }
 ];
+
+const testFetchAPIList = [
+    {
+        title: "Test Fetch Old API",
+        id: "testfetch",
+        name: "testfetch_testfetch",
+        treatments: [
+            "none",
+            "collectibles-categories",
+            "consumables",
+            "miscellaneous-categories",
+            "preview-1",
+            "user-profile-effects",
+            "downloads",
+            "leaked-categories",
+            "orbs-shop-default"
+        ],
+        rollout: "none",
+        needs_api_token: "true"
+    },
+    {
+        title: "Test Fetch New API",
+        id: "testfetch_collectibles-shop",
+        name: "testfetch_testfetchnew",
+        treatments: [
+            "none",
+            "home",
+            "shop",
+            "orbs",
+            "leaks",
+            "consumables",
+            "miscellaneous",
+            "pplus-home",
+            "pplus"
+        ],
+        rollout: "none",
+        needs_api_token: "true"
+    }
+];

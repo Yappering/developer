@@ -1,6 +1,6 @@
 
 
-app_version1 = "296"
+app_version1 = "297"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2471,7 +2471,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             EXPERIMENT_ROLLOUTS = "/rollout-handler",
             COLLECTIBLES_SHOP_HOME = "/collectibles-shop-home",
             ORBS_SHOP_DEFAULT = "/orbs-shop-default",
-            QUICK_INFO = "/quick-info"
+            COLLECTIBLES_SHOP = "/collectibles-shop"
         ]
     } else {
         endpoints = [
@@ -13238,12 +13238,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         if (params.get("page") === "home") {
             document.title = `${getTextString("FEATURED_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
+                url = api + COLLECTIBLES_SHOP;
+                apiUrl = new URL(url);
+                apiUrl.searchParams.append("tab", "home");
                 if (localStorage.unreleased_discord_collectibles == "true") {
-                    url = api + HOME_PAGE_ALL;
-                    apiUrl = new URL(url);
-                    apiUrl.searchParams.set("include-unpublished", "true");
-                } else {
-                    apiUrl = api + HOME_PAGE_ALL;
+                    apiUrl.searchParams.append("include-unpublished", "true");
                 }
             } else {
                 apiUrl = api + HOME_PAGE_ALL;
@@ -13274,12 +13273,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         } else if (params.get("page") === "shop") {
             document.title = `${getTextString("SHOP_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
+                url = api + COLLECTIBLES_SHOP;
+                apiUrl = new URL(url);
+                apiUrl.searchParams.append("tab", "shop");
                 if (localStorage.unreleased_discord_collectibles == "true") {
-                    url = api + COLLECTIBLES;
-                    apiUrl = new URL(url);
-                    apiUrl.searchParams.set("include-unpublished", "true");
-                } else {
-                    apiUrl = api + COLLECTIBLES;
+                    apiUrl.searchParams.append("include-unpublished", "true");
                 }
             } else {
                 apiUrl = api + COLLECTIBLES_VARIANTS;
@@ -13293,12 +13291,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         } else if (params.get("page") === "orbs") {
             document.title = `${getTextString("ORB_SHOP_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
             if (localStorage.experiment_2025_02_orbs_shop === "Treatment 2: Orb Shop done like default" || localStorage.experiment_2025_02_orbs_shop === "Treatment 3: Default + New tag") {
+                url = api + COLLECTIBLES_SHOP;
+                apiUrl = new URL(url);
+                apiUrl.searchParams.append("tab", "orbs");
                 if (localStorage.unreleased_discord_collectibles == "true") {
-                    url = api + ORBS_SHOP_DEFAULT;
-                    apiUrl = new URL(url);
-                    apiUrl.searchParams.set("include-unpublished", "true");
-                } else {
-                    apiUrl = api + ORBS_SHOP_DEFAULT;
+                    apiUrl.searchParams.append("include-unpublished", "true");
                 }
                 if (localStorage.experiment_2025_02_orbs_shop === "Treatment 3: Default + New tag") {
                     localStorage.dismissible_orbs_shop_new_tag = "Treatment 1: Seen"
@@ -13314,12 +13311,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         } else if (params.get("page") === "leaks") {
             document.title = `${getTextString("LEAKS_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
+                url = api + COLLECTIBLES_SHOP;
+                apiUrl = new URL(url);
+                apiUrl.searchParams.append("tab", "leaks");
                 if (localStorage.unreleased_discord_collectibles == "true") {
-                    url = api + LEAKS;
-                    apiUrl = new URL(url);
-                    apiUrl.searchParams.set("include-unpublished", "true");
-                } else {
-                    apiUrl = api + LEAKS;
+                    apiUrl.searchParams.append("include-unpublished", "true");
                 }
             } else {
                 apiUrl = api + LEAKS;
@@ -13332,12 +13328,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         } else if (params.get("page") === "consumables") {
             document.title = `${getTextString("POTIONS_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
+                url = api + COLLECTIBLES_SHOP;
+                apiUrl = new URL(url);
+                apiUrl.searchParams.append("tab", "consumables");
                 if (localStorage.unreleased_discord_collectibles == "true") {
-                    url = api + CONSUMABLES;
-                    apiUrl = new URL(url);
-                    apiUrl.searchParams.set("include-unpublished", "true");
-                } else {
-                    apiUrl = api + CONSUMABLES;
+                    apiUrl.searchParams.append("include-unpublished", "true");
                 }
             } else {
                 apiUrl = api + CONSUMABLES;
@@ -13351,16 +13346,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         } else if (params.get("page") === "miscellaneous") {
             document.title = `${getTextString("MISCELLANEOUS_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
+                url = api + COLLECTIBLES_SHOP;
+                apiUrl = new URL(url);
+                apiUrl.searchParams.append("tab", "miscellaneous");
+                if (localStorage.experiment_2025_03_items_with_no_sku == "Treatment 1: Enabled") {
+                    apiUrl.searchParams.append("include-no-sku-items", "true");
+                }
                 if (localStorage.unreleased_discord_collectibles == "true") {
-                    url = api + MISCELLANEOUS;
-                    apiUrl = new URL(url);
-                    apiUrl.searchParams.set("include-unpublished", "true");
-                } else if (localStorage.experiment_2025_03_items_with_no_sku == "Treatment 1: Enabled") {
-                    url = api + MISCELLANEOUS;
-                    apiUrl = new URL(url);
-                    apiUrl.searchParams.set("include-no-sku-items", "true");
-                } else {
-                    apiUrl = api + MISCELLANEOUS;
+                    apiUrl.searchParams.append("include-unpublished", "true");
                 }
             } else {
                 apiUrl = api + MISCELLANEOUS;
@@ -13473,12 +13466,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             }
         } else {
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
+                url = api + COLLECTIBLES_SHOP;
+                apiLeaks = new URL(url);
+                apiLeaks.searchParams.append("tab", "leaks");
                 if (localStorage.unreleased_discord_collectibles == "true") {
-                    url = api + LEAKS;
-                    apiLeaks = new URL(url);
-                    apiLeaks.searchParams.set("include-unpublished", "true");
-                } else {
-                    apiLeaks = api + LEAKS;
+                    apiLeaks.searchParams.append("include-unpublished", "true");
                 }
             } else {
                 apiLeaks = api + LEAKS;
@@ -15971,18 +15963,31 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     </div>
 
                     <div class="options-option-card-holder">
-
                         <div class="options-option-card" id="unpublished-collectibles-box-option">
                             <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_DEV_UNPUBLISHED_COLLECTIBLES")}</p>
                             <input class="options-toggle-box" onclick="unreleasedDiscordCollectiblesToggle();" style="cursor: pointer; scale: 2; posision: center;" id="unpublished-collectibles-box" type="checkbox">
                         </div>
-
                     </div>
 
                     <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
                         <button class="card-button" onclick="disableClientRework();">${getTextString("OPTIONS_DEV_DISABLE_CLIENT_REWORK")}</button>
                         <button class="card-button" onclick="openOldDevModal();">${getTextString("OPTIONS_DEV_OPEN_OLD_DEV_MODAL")}</button>
                     </div>
+
+                    <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Test Fetch API</p>
+
+                    <div class="options-option-card-holder">
+                        <div class="options-option-card"">
+                            <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_DEV_TEST_FETCH_NOSKUS")}</p>
+                            <input class="options-toggle-box" style="cursor: pointer; scale: 2; posision: center;" id="test-fetch-include-no-sku-items-box" type="checkbox">
+                        </div>
+                        <div class="options-option-card"">
+                            <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_DEV_TEST_FETCH_UNPUBLISHED")}</p>
+                            <input class="options-toggle-box" style="cursor: pointer; scale: 2; posision: center;" id="test-fetch-unpublished-collectibles-box" type="checkbox">
+                        </div>
+                    </div>
+
+                    <div id="test-fetch-apis-container"></div>
 
                     <div id="new-options-experiments-container"></div>
                     <div id="new-options-dismissible-content-container"></div>
@@ -16062,12 +16067,64 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         selectElement.appendChild(optElement);
                     });
                 }
+
+
+                testFetchAPIList.forEach(({ title, id, name, treatments, needs_api_token, not_needed }) => {
+                    if (not_needed != "true") {
+                        try {
+    
+                            let experimentCard = document.createElement("div");
+        
+                            experimentCard.classList.add('options-option-card');
+                            experimentCard.innerHTML = `
+                                <p class="option-card-title">${title}</p>
+                                <p class="new-experiment-subtext">${id}</p>
+                                <select id="${name}_treatment_container" class="experiment-treatment-picker">
+                                </select>
+                                <button class="new-experiment-clear-button" onclick="testFetchAPI('${name}')">Fetch</button>
+                            `;
+        
+                            if (needs_api_token === "true") {
+                                let apiNotice = document.createElement("p");
+        
+                                apiNotice.classList.add('new-experiment-subtext-api-notice');
+                                apiNotice.textContent = getTextString("OPTIONS_SIDEBAR_EXPERIMENTS_TEST_FETCH_API")
+        
+                                experimentCard.appendChild(apiNotice);
+                            }
+        
+        
+                            document.getElementById("test-fetch-apis-container").appendChild(experimentCard);
+        
+                            const treatmentPicker = document.getElementById(`${name}_treatment_container`);
+                    
+                            if (!treatmentPicker) return; // Skip if element doesn't exist
+                    
+                            populateTestFetchOptions(treatmentPicker, treatments);
+                    
+                            const storedTreatment = localStorage.getItem(name);
+                            if (storedTreatment) {
+                                treatmentPicker.value = storedTreatment;
+                            }
+                    
+                            treatmentPicker.addEventListener("change", () => {
+                                localStorage.setItem(name, treatmentPicker.value);
+                            });
+                    
+                        } catch (error) {
+                            console.error(`Error setting up experiment: ${name}`, error);
+                        }
+                    }
+                });
                 
-    
-    
-    
-    
-    
+                function populateTestFetchOptions(selectElement, treatments) {
+                    treatments.forEach((treatment) => {
+                        const optElement = document.createElement("option");
+                        optElement.value = treatment;
+                        optElement.textContent = treatment;
+                        selectElement.appendChild(optElement);
+                    });
+                }
     
     
                 document.getElementById("new-options-dismissible-content-container").innerHTML = `
@@ -16144,6 +16201,44 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             localStorage.unreleased_discord_collectibles = "none"
         }
         fetchData(pageCheck());
+    }
+
+    function testFetchAPI(fetcherName) {
+        const endpoint = testFetchAPIList.find(api => api.name === fetcherName);
+
+        const { rollout } = endpoint;
+        const treatmentPicker = document.getElementById(`${fetcherName}_treatment_container`);
+
+        if (fetcherName === "testfetch_testfetchnew") {
+            url = api + "/" + "collectibles-shop";
+            testFetchURL = new URL(url);
+            testFetchURL.searchParams.append("tab", treatmentPicker.value);
+        } else {
+            url = api + "/" + treatmentPicker.value;
+            testFetchURL = new URL(url);
+        }
+        testFetchURL.searchParams.append("is-test-fetch", "true");
+        if (document.getElementById("test-fetch-include-no-sku-items-box").checked === true) {
+            testFetchURL.searchParams.append("include-no-sku-items", "true");
+        }
+        if (document.getElementById("test-fetch-unpublished-collectibles-box").checked === true) {
+            testFetchURL.searchParams.append("include-unpublished", "true");
+        }
+        
+        fetch(testFetchURL, {
+            method: "GET",
+            headers: {
+                "Password": api_password,
+                "Token": api_token
+            }
+        })
+        .then(response => response.json())
+        .then((data) => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.log(`Failed to test fetch: `, error);
+        });
     }
 
     function openOldDevModal() {
