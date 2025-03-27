@@ -1,6 +1,6 @@
 
 
-app_version1 = "297"
+app_version1 = "298"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -11627,7 +11627,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     modalIsAlreadyOpen = true;
                                                     setTimeout(() => {
                                                         openItemModal();
-                                                    }, 500);
+                                                    }, 1000);
+                                                    card.classList.add("highlighted")
+
+                                                    let highlightedGlint = document.createElement("div");
+
+                                                    highlightedGlint.classList.add('shop-category-card-highlighted-glint');
+
+                                                    card.appendChild(highlightedGlint);
+                                                    setTimeout(() => {
+                                                        highlightedGlint.remove();
+                                                    }, 3000);
                                                 }
                                                 
 
@@ -12975,7 +12985,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             catch(error) {
                                                 scrollToSKU(sku_id)
                                             }
-                                        }, 500);
+                                        }, 10);
                                     }
                                 }
 
@@ -15932,6 +15942,35 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     
     }
+
+    function scrollToSKUOverrride() {
+        const sku_id = document.getElementById("scroll-to-sku-id-override-input").value;
+        if (sku_id) {
+            document.getElementById("scroll-to-sku-id-override-button").disabled = true;
+            document.getElementById("scroll-to-sku-id-override-button").style.backgroundColor = 'var(--button-danger-background)';
+            setTimeout(() => {
+                try {
+                    document.getElementById(sku_id).scrollIntoView({ behavior: "smooth" });
+                }
+                catch(error) {
+                    scrollToSKU(sku_id)
+                }
+            }, 10);
+            document.getElementById(sku_id).classList.add("highlighted")
+    
+            let highlightedGlint = document.createElement("div");
+    
+            highlightedGlint.classList.add('shop-category-card-highlighted-glint');
+    
+            document.getElementById(sku_id).appendChild(highlightedGlint);
+            setTimeout(() => {
+                highlightedGlint.remove();
+                document.getElementById(sku_id).classList.remove("highlighted");
+                document.getElementById("scroll-to-sku-id-override-button").disabled = false;
+                document.getElementById("scroll-to-sku-id-override-button").style.backgroundColor = '';
+            }, 3000);
+        }
+    }
     
     
     let dev_topbar_container = document.createElement("div");
@@ -15972,6 +16011,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
                         <button class="card-button" onclick="disableClientRework();">${getTextString("OPTIONS_DEV_DISABLE_CLIENT_REWORK")}</button>
                         <button class="card-button" onclick="openOldDevModal();">${getTextString("OPTIONS_DEV_OPEN_OLD_DEV_MODAL")}</button>
+                    </div>
+
+                    <div class="options-option-card" id="options-text-input-option">
+                        <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_DEV_HIGHLIGHT_SKU_ID")}</p>
+                        <input class="options-text-input" autocomplete="off" style="posision: center;" id="scroll-to-sku-id-override-input" value="1349486948942745695" type="text">
+                    </div>
+                    <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
+                        <button class="card-button" id="scroll-to-sku-id-override-button" onclick="scrollToSKUOverrride();">${getTextString("OPTIONS_DEV_HIGHLIGHT_SKU_CARD")}</button>
                     </div>
 
                     <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">Test Fetch API</p>
@@ -16837,6 +16884,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 copyNotice.remove();
             }, 5000);
         } else {
+            let copyNotice = document.createElement("div");
+
+            copyNotice.classList.add('copy-notice-container');
+            copyNotice.innerHTML = `
+                <p>${getTextString("SHOP_LINK_COPY_FAIL")}</p>
+            `;
+                         
+            document.body.appendChild(copyNotice);
+            setTimeout(() => {
+                copyNotice.remove();
+            }, 5000);
             console.warn('Invalid copyNotice')
         }
     }
