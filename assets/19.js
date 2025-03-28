@@ -1,10 +1,12 @@
 
 
-app_version1 = "299"
+app_version1 = "300"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
 let modalIsAlreadyOpen = false;
+let discordProfileEffectsCache = null;
+let pplusProfileEffectsCache = null;
 
 defaultAvatar1 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAY1BMVEVYZfJib/OMlfahqPeWn/eBi/XLz/vq6/7////19f5tePTq7P22vPnV2Pyrsvirsvl3gvT09f7Axfp3gfRtePNsePPg4v22vPq2u/qCi/WhqPjf4/zf4v2Xn/essvjLzvuXnvdbidFTAAAETElEQVR4AezBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAIDZudMtV1UlDuCFRKlWIEJ6uOwbzXn/lzzzYc/GWiT6zya/79WrLeYSc5Vq9IFWa3Sr6JehWt0ZZn5RtFJvmHnodPsrPLx1/B9PKx1ziLOPnIRRO84EXaAP/CWnR3pArTWcybpA5G8NsX20pw+cSbpAngEeOQenY+Cf8KIZ4FuDfSV4Ko/7hS7wNjYH7W3MvNeHtn2jvxn+OXcgaP0x8KJo43vgnwqu85EXDfGVULWON9G1BOmDN/M/AnTgDSWC0xve0KAITeSsykFw4qzOQWB4YwNBOfLmPAHpeXsvr5XOgJkjGA3vIlU6A2bvOHvAnXwiCMrwTl5UpUtg5us7BAB2gcg78nXugaC6QORd+bo7AEAXiLwzX+8SANEFNHPdXcAwV90FDgxA037+zwAc7aZlCKnSNTDrADZBdU6DBwbha5wCAabBkWGkSqfAzFa6C8xeADYB9Y2ByEBsbSMAYAy0zHWPActQLPQuKBh3DiwiDRlwzwFOv9JfTpORh5x5rVfQc8CQiLLJiEMaA1oW6XgVq+grVh4yY56JA68x07fm8hCIhXCUPn823zgkG/HK4Rf6kYv8YBt5BQ03BQyv9CMq8M/JQ7IItw+e6cd8QQjKTqCX3OMTtOdCCNZOoCnqkrYgZEFD2/FF/08qDAE4Dji+TtHPKHknVmBboVB2i9HI9zIGahZUhaVqVxCyQEEVQ7rSBMj3QiPUUTCWJkC+8zrQVjzmELBYG2H5jDYUFqAiQDlMtAwKQgjr+nwoq9O2BSEQJQFVWKeNBSEQ6+BYeG3BFIUAHIfasmsLh7IQgLcjDZd0AWXEIZRDMDYCuuj73g95yJGxEuBLPmr6VBSyzMO9Fpzko3kqeA1r8W4GHOWNKQ/JIl4COL4SZf2lPAQhAY4lYrv860rlIVmHlYAsuBhjFwpCwO4LOkb0TMAzAc8EPBPwTMAGngl4JuCZgMig4jMB27AMykJUhCr4ekwzKI10T9hpwzcz6DNSUbRdORzThW/CJSKagd4LjKurof1suFCYVR54MDckpsBXDLk3pliQgxBTHneBrwiaNtOfeUUKCnMQYlKC32x2r7SlmSUpoOQdi5xtoqx1DNP8WW9kKSCVvAu8QnC2USR4/I2bP5vDmhS80pdOjXULw8dc7HSiL6ljYLTmz/ooKvJTdkqTt9G5s/mHczH6qXlV9I32Ehi0+QVfQbn7HryHhvY033V1Tuu3CRncOIj3rL3EV9pf7+53ced0bY+MIZm7ndEt9uNnkxN8OSWhAvjjZ8ktnIoKaMDHF0yH8S416C4Rpv7bU094pWJ9QFv4BJOBvnkFzjWKMvhu4G78IibMIz2EFM3KFUAwCEI+ID9MDia6kd/+enpFj+YE+af+aA8OZAAAAAAG+Vvf46sAAAAAAAAAAAAAAAAAAAAAAFYCeHSjWah9hFcAAAAASUVORK5CYII=`;
 defaultAvatar2 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAhFBMVEV1fop9hpGgpq+ytr2prraXnqfT19vu7/H////29/iGjpju7/DCxszc3+K6vsS6v8WOlqD39/fLztPLz9OPlqDl5+nDx8ygpq6xtr6xtr3m5+iOlp/Dxsvc3+Hd3+GorraGjpnT19rT1tv29/eOlqHU19p+hpGprrWxt72or7bLz9Kfpq+ibmTzAAAEY0lEQVR4AezBAQEAAAQAIPB/swkMqAIAAAAAAAAAAAAAAAAAAAAAgBNZPfFWy86dLimOw3AAV5qYEXFicMKxHIFs03e///PtvaouagjRGMKfNr/vmhorsiMbpwcm+UZjN4PhD2YedR5TZpnZDgfmOww+L/h/jjoaS0iRG7pdk0HBQlECmeevisGEbpDJf7DQlUDJh2xlbm30noWmBGQFuOUcTMeej3CqFeCQzTOCl8i8bymBbPKQDlxeCecGqTH/Dc/ycUVK0LKx51ZVXs08H+WLoSu5la0yQmUK7sXQEKQ592ZOgFLukSE4meUe2YTQlCyinARTFnFOAss9swRlzL1zBCTj/o2ySFdAURCMBV+FiXQFFLP4esADvxGExPKVjJJIX4HCxbcJACyBkq/IxdkDQZVAyVfl4i4AgBIo+cpcvK8AiBJYMsddApY56hJIGcCSrmfFAAq6GsMQTKTvQDEEaILiXAZTBuEAlsAYl8E1wzCRLoEij7QLFKNYmwBhIp0BIo9tBgDMAcMc9xzYMJQcugvytl55VtCHWNx9wHaZ0d+mO6sP6Z7mBnQfYA2R2Fl1yMKCHov8zp3kycHKoQ9x3Mkj9Wv/i9s0FxCC9CJca8cv3JlDxBPecfgz/cwzt9j+etO5hFsCbEM/89I2e/QhoqI+2YBzGnfWEGHRuoBRQ6R9nu0hQJ3AIqgkNwEhLR6oPy7o/2MCQwC2AwWfltAxL/oifgFrhfZhtxitvpexAKug7nnU+gKqw2sO6DDk8bwJKKF6wZRPq8IToO28XqkvDnMK5FiNMB1n9SErqGZ4xeGvQV0IYV2f34ed05qgEIAjgZfAc9oyIATiPbgOvLZgA0IgtkMm7NpCGhCC8evIgkNKILHqEJIQjEZgGfR971wfMmasBLiQj5regkLaObifBd/p0Ls+xHBXOd7NgLH+YepDRIWXAK4yIpE9B4QAJaBgjcq0/3Wl8BDxiJUA4Yuqqob+YiGi7i0BiO4JuCfgnoB7Au4J6ME9AfcE3BNQMqjqnoAYrgkDnAc4BuWoH0sGtUS6J7xdWj4bu5wBHIqqL+yYZz6Lrek47wzOL0M7+kfjLAfyLpGJB3NDYrfnE2wq5VLagNF/GJl3nk/wS+pNM+PuKZAc6EefKP5m87ahPjnWpICMq1lllRsSpmCYxy8aq0sBJcbVnjvw23yR0OHwcR6/cPsuKcjoq+kir1d8lH3O0yl9lYw9oz1+0ZSqQ34SU5O6/KOuV/Zfdf3x4dJFltAB8+wZ9PErvoKqL7vxtp90TY5Pmlyy5ZI2QcDNg+qSZy9VQ9fX1Je7uDM91SNjMPZie/QN9vDFrtZ8OaXwsgcfvjB1y64owBJp+PrlsLrIGfSzIUzN4a7HNxSs2cO8+PSLwfLsJ3Dbh4QEfBlsz/xDjHcTQicHAPIGONck8LJBvpkc7OhMduxzk9CtmUL+U3+2BwcyAAAAAIP8re/xVQAAAAAAAAAAAAAAAAAAAAAAKwFiKavpSRGzHgAAAABJRU5ErkJggg==`;
@@ -509,7 +511,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         function fetchData() {
             if (params.get("page") != "home" && params.get("page") != "pplus-home" && params.get("page") != "year-recap") {
     
-                let profileEffectsCache = null; // Cache for the profile effects data
     
                 // Make the function async
                 fetch(apiUrl, {
@@ -626,7 +627,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             
                                             
                                                 // Fetch profile effects API only if not already cached
-                                                if (!profileEffectsCache) {
+                                                if (!discordProfileEffectsCache) {
                                                     const response = await fetch(api + PROFILES_PLUS_EFFECTS, {
                                                         method: "GET",
                                                         headers: {
@@ -635,11 +636,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         }
                                                     });
                                                     const effectsData = await response.json();
-                                                    profileEffectsCache = effectsData.profile_effect_configs;
+                                                    discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                 }
                                             
                                                 // Find matching profile effect
-                                                const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                             
                                                 if (matchingEffect) {
                                                     const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
@@ -789,10 +790,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         }
                                                     } else if (item.type === 1) {
                                                         // Profile effect
-                                                        let profileEffectsCache = null; // Cache profile effects to avoid multiple fetches
+                                                        let discordProfileEffectsCache = null; // Cache profile effects to avoid multiple fetches
                                             
                                                         (async () => {
-                                                            if (!profileEffectsCache) {
+                                                            if (!discordProfileEffectsCache) {
                                                                 const response = await fetch(api + PROFILES_PLUS_EFFECTS, {
                                                                     method: "GET",
                                                                     headers: {
@@ -801,10 +802,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     }
                                                                 });
                                                                 const effectsData = await response.json();
-                                                                profileEffectsCache = effectsData.profile_effect_configs;
+                                                                discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                             }
                                             
-                                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                            const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === item.id);
                                             
                                                             if (matchingEffect) {
                                                                 const effectImage = document.createElement("img");
@@ -940,7 +941,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         
                                                         
                                                             // Fetch profile effects API only if not already cached
-                                                            if (!profileEffectsCache) {
+                                                            if (!discordProfileEffectsCache) {
                                                                 const response = await fetch(api + PROFILES_PLUS_EFFECTS, {
                                                                     method: "GET",
                                                                     headers: {
@@ -949,11 +950,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     }
                                                                 });
                                                                 const effectsData = await response.json();
-                                                                profileEffectsCache = effectsData.profile_effect_configs;
+                                                                discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                             }
                                                         
                                                             // Find matching profile effect
-                                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                            const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                                         
                                                             if (matchingEffect) {
                                                                 const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
@@ -1611,7 +1612,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             
                                             
                                                 // Fetch profile effects API only if not already cached
-                                                if (!profileEffectsCache) {
+                                                if (!discordProfileEffectsCache) {
                                                     const response = await fetch(api + PROFILE_EFFECTS, {
                                                         method: "GET",
                                                         headers: {
@@ -1620,11 +1621,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         }
                                                     });
                                                     const effectsData = await response.json();
-                                                    profileEffectsCache = effectsData.profile_effect_configs;
+                                                    discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                 }
                                             
                                                 // Find matching profile effect
-                                                const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                             
                                                 if (matchingEffect) {
                                                     const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
@@ -1809,7 +1810,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         // Profile effect
                                                         (async () => {
                                                             // Fetch profile effects if not cached
-                                                            if (!profileEffectsCache) {
+                                                            if (!discordProfileEffectsCache) {
                                                                 const response = await fetch(api + PROFILE_EFFECTS, {
                                                                     method: "GET",
                                                                     headers: {
@@ -1818,11 +1819,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     }
                                                                 });
                                                                 const effectsData = await response.json();
-                                                                profileEffectsCache = effectsData.profile_effect_configs;
+                                                                discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                             }
                                             
                                                             // Find the matching effect
-                                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                            const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === item.id);
                                             
                                                             if (matchingEffect) {
                                                                 const effectImage = document.createElement("img");
@@ -1975,7 +1976,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         
                                                         
                                                             // Fetch profile effects API only if not already cached
-                                                            if (!profileEffectsCache) {
+                                                            if (!discordProfileEffectsCache) {
                                                                 const response = await fetch(api + PROFILE_EFFECTS, {
                                                                     method: "GET",
                                                                     headers: {
@@ -1984,11 +1985,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     }
                                                                 });
                                                                 const effectsData = await response.json();
-                                                                profileEffectsCache = effectsData.profile_effect_configs;
+                                                                discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                             }
                                                         
                                                             // Find matching profile effect
-                                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                            const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                                         
                                                             if (matchingEffect) {
                                                                 const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
@@ -2464,14 +2465,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             CONSUMABLES = "/consumables",
             MISCELLANEOUS = "/miscellaneous-categories",
             HOME_PAGE_ALL = "/preview-1",
-            PROFILE_EFFECTS = "/user-profile-effects",
             DOWNLOADABLE_DATA = "/downloads",
+            PROFILES_PLUS_EFFECTS = "/profiles-plus-profile-effects",
             LEAKS = "/leaked-categories",
             COLLECTIBLES_MARKETING = "/collectibles-marketing",
             EXPERIMENT_ROLLOUTS = "/rollout-handler",
             COLLECTIBLES_SHOP_HOME = "/collectibles-shop-home",
             ORBS_SHOP_DEFAULT = "/orbs-shop-default",
-            COLLECTIBLES_SHOP = "/collectibles-shop"
+            COLLECTIBLES_SHOP = "/collectibles-shop",
+            PROFILE_EFFECTS = "/profile-effects"
         ]
     } else {
         endpoints = [
@@ -2498,15 +2500,16 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
 
     yapper_categories = [
-        WINDOWKILL = "profiles-plus-1",
-        BOPL_BATTLE = "profiles-plus-2",
-        PAPER_BEACH = "profiles-plus-3",
-        WINDOWKILL_V2 = "profiles-plus-4",
-        FIVE_NIGHTS_AT_FREDDYS = "profiles-plus-5",
-        PLUS_SPECIAL_EVENT = "profiles-plus-6",
-        GEOMETRY_DASH = "profiles-plus-7",
-        PAPER_BEACH_V2 = "profiles-plus-8",
-        RBXDOORS = "profiles-plus-9"
+        WINDOWKILL = "1",
+        BOPL_BATTLE = "7",
+        PAPER_BEACH = "20",
+        WINDOWKILL_V2 = "35",
+        FIVE_NIGHTS_AT_FREDDYS = "54",
+        PLUS_SPECIAL_EVENT = "55",
+        GEOMETRY_DASH = "68",
+        PAPER_BEACH_V2 = "77",
+        RBXDOORS = "82",
+        DATA_EXTRACTION_PROCESS = "85"
     ]
 
 
@@ -2644,7 +2647,39 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     N = new Date();
     I = ["1212569433839636530", "1144308439720394944", "1314020996201713685", "1212570343567261736", "1314020996776329279", "1271174640026255380", "1271175049168031815", "1232073608168472638", "1293373563407175680", "1314020996327542894", "1139323093991575696", "1232071157746765906", "1232071712695386162", "1144307957425778779", "1306330662990643252", "1280621222496964630", "1306330663015809024", "1306330663070334996", "1243617249974288404", "1309668861578186803", "1303490165213237338", "1306330662898372639", "1298033986508951685", "1282816432026943488", "1306330663137443991", "1197344764174008452", "1298033986727055370", "1298033986571866112", "1271175120437641261", "1314020996361093171", "1309668861645426729", "1256321669467865088", "1314020996864413717", "1306752744278982737", "1271174732577767626", "1144307257807491094", "1144308196723408958", "1287835633787732070", "1306330663162609685", "1306330662940311726", "1309668861901279422", "1282816431871754281", "1287835633485877369", "1228234634379132958", "1144305233707671573", "1298033986643169360", "1139323093551165533", "1212569856189407352", "1282816431850782730", "1144307629225672846", "1232070870093008937", "1207047014769234001", "1212582298893946880", "1232073286582538261", "1282816431985004594", "1293373563381878836", "1282816431964028958", "1306752744258011166", "1309668861846753372", "1271174324375519273", "1256321669426053198", "1287835633615765524", "1286504131325853739", "1306330663183581247", "1139323099687436419", "1287835633590734848", "1256321669493166214", "1286504131518791816", "1243620093431119922", "1262492035558932604", "1306330662927859723", "1197344326133502032", "1228251351415263242", "1232073448415821854", "1158572178179108968", "1298033986752221204", "1262491137394868311", "1309668861620260874", "1271174241860980907", "1220513989729976411", "1282820582408192061", "1154896005045694555", "1207047597294886923", "1306330663036780695", "1309668861674786877", "1197344693630009424", "1306330662965477478", "1174460780842856588", "1271174907081789524", "1282816431813169272", "1298033986622328842", "1139323101881061466", "1262491690900656267", "1303490165171294268", "1139323100568244355", "1243619479645065287", "1262491690971955284", "1316087100260483174", "1139323101008642101", "1228251144065777765", "1207048289610899526", "1287835633561239683", "1232072121950146560", "1303490165045727317", "1228246010116050965", "1309668861871919316", "1207049364464345158", "1243618816639107223", "1265421074514841751", "1316087100277395607", "1159280677246742548", "1262492035558932607", "1207047808838799410", "1306752744299954306", "1298033986668335135", "1266160780928352268", "1262491137386614812", "1139323092645183591", "1220513977683935373", "1256321669467865091", "1237654942202990602", "1287835633536209079", "1262491137394868305", "1256321669493166217", "1212582452640350238", "1158572275507937342", "1306752744228524052", "1174459546748600481", "1262491137394868308", "1309668861599285249", "1262492035558932610", "1144046002110738634", "1293373563184877618", "1298033986693500960", "1285465421260263464", "1306330663091306608", "1287835633645125653", "1303490165074825296", "1298033986538569781", "1303490165150322698", "1262491690900656261", "1256321669467865094", "1207048656289534022", "1285681070196396177", "1287835633674620949", "1237654224712765440", "1293373563121696891", "1303490165255180298", "1303490165120962651", "1212582372877541427", "1287835634005970994", "1303490165099991143", "1271564593746939904", "1314020996629532686", "1316087100260483176", "1228233390260486164", "1287835633867559022", "1158572263411556373", "1303490165192265799", "1237654783209508904", "1309668861704146984", "1212581147675205652", "1309668861548957738", "1245088205330710539", "1287835633896783952", "1316087100260483178", "1139323099251232828", "1262491690900656258", "1232072859485208687", "1197344396983664670", "1309668861788033074", "1314020996600172554", "1159280847262859364", "1314020996461760542", "1220514048068812901", "1293373563302318110", "1228251846032756796", "1197344636558114986", "1282820582223642624", "1287835634035331072", "1298033986777387059", "1243619781362450442", "1282816432001777794", "1212570596970467378", "1157409074422481023", "1256321669426053195", "1146328961417224193", "1293373563327483984", "1303490165234208810", "1266160780978556969", "1228237157554978817", "1287835633947115570", "1282820582345408595", "1271174810227179562", "1282816431830077542", "1287835633842258022", "1283211414323990538", "1282820582303334482", "1282820582429298748", "1306330663116472371", "1157407831348228141", "1293373563210043442", "1287835633515102228", "1309668861758672997", "1287835633703845888", "1287835633733341224", "1197344575832981605", "1316087100260483180", "1237653964582031400", "1287835633817227297", "1266493591207940133", "1309668861817393263", "1316087100260483182", "1298033986555351132", "1237650542772228096", "1207049498065375343", "1287835633980669972", "1314020996516286485", "1285465421193154560", "1268362891946627103", "1282820582244880496", "1293373563352649961", "1220432740638523543", "1243620329331626044", "1220432697718083614", "1267521289330102344", "1146328960951668776", "1293373563457507463", "1245088094437507163", "1262491690900656264", "1314020996432400404", "1220513984273186816", "1293373563159449653", "1314020996721803306", "1285681070196396179", "1285465421050548345", "1282820582366511229", "1256321669467865097", "1285465421285429258", "1293373563239272458", "1271174154514595891", "1217625794382401577", "1228252219502100530", "1285465421029576704", "1243618548673417298", "1220432647453409384", "1266493591275044903", "1217626024540508170", "1232072520249643028", "1245088254647205991", "1237654867330469949", "1314020996570812506", "1314020996227006484", "1245087968759382207", "1144006094134456352", "1314020997166403624", "1144048390594908212", "1287835633762701382", "1212581390936178768", "1285465420995756065", "1217626509737459852", "1314020996491116575", "1309668861729312898", "1237650411410685972", "1245087661316898877", "1217627230818009171", "1256321669388308601", "1314020996310896672", "1274105879238676561", "1293373563432341574", "1314020996273016863", "1282816431943057460", "1220513995308400680", "1293373563264569416", "1228252042791878707", "1314020997078323200", "1237654031732703272", "1267521289355268154", "1298033986592837754", "1285465421214126100", "1245087724265013299", "1314020996990242816", "1314020996663087154", "1282820582282629171", "1282816431922085888", "1314020997107683411", "1237654124443734026", "1314020997137043578", "1266161342801383434", "1285465421096685639", "1237654692985700352", "1174459480348565554", "1314020997019602984", "1314020996252176444", "1144003752978829455", "1282816431901118474", "1285465421306400858", "1285465421239291904", "1285465420979245087", "1314020996692447234", "1144048977138946230", "1217627051217911848", "1217626219651006495", "1217625572168044604", "1286504131392962641", "1237650618777075712", "1207048049571139584", "1314020996289921154", "1237654615474962472", "1314020996927328276", "1286504131439366184", "1285465421016862730", "1217625289681801316", "1243619153688920206", "1217624148080332820", "1144049316009353338", "1245481938202918912", "1245088023452975104", "1314020996960882789", "1285465421121851445", "1243617981435478102", "1144049603109470370", "1285465421071519825", "1256321669426053192", "1245087912350187520", "1207049115339591681", "1144049924397334651", "1237649939027333232", "1237650103980920872", "1237650023794081823", "1237650179721527347", "1245087850177888356", "1285465421167988758", "1277733174797008931"];
 
+    async function setDiscordProfileEffectCache() {
+        url = api + PROFILE_EFFECTS;
+        pfxapiUrl = new URL(url);
+        pfxapiUrl.searchParams.append("tab", "discord");
+        const response = await fetch(pfxapiUrl, {
+            method: "GET",
+            headers: {
+                "Password": api_password,
+                "Token": api_token
+            }
+        });
+        const effectsData = await response.json();
+        discordProfileEffectsCache = effectsData.profile_effect_configs;
+    }
 
+    setDiscordProfileEffectCache()
+
+    async function setPplusProfileEffectCache() {
+        url = api + PROFILE_EFFECTS;
+        pfxapiUrl = new URL(url);
+        pfxapiUrl.searchParams.append("tab", "pplus");
+        const response = await fetch(pfxapiUrl, {
+            method: "GET",
+            headers: {
+                "Password": api_password,
+                "Token": api_token
+            }
+        });
+        const effectsData = await response.json();
+        pplusProfileEffectsCache = effectsData.profile_effect_configs;
+    }
+
+    setPplusProfileEffectCache()
 
     const params = new URLSearchParams(window.location.search);
 
@@ -2706,7 +2741,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             fetchFirstHomeData();
 
             function fetchFirstHomeData() {
-                let profileEffectsCache = null;
             
                 fetch(apiUrl, {
                     method: "GET",
@@ -2867,21 +2901,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 }
                                             
                                             
-                                                // Fetch profile effects API only if not already cached
-                                                if (!profileEffectsCache) {
-                                                    const response = await fetch(api + PROFILE_EFFECTS, {
-                                                        method: "GET",
-                                                        headers: {
-                                                            "Password": api_password,
-                                                            "Token": api_token
-                                                        }
-                                                    });
-                                                    const effectsData = await response.json();
-                                                    profileEffectsCache = effectsData.profile_effect_configs;
+                                                if (!discordProfileEffectsCache) {
+                                                    await setDiscordProfileEffectCache();
                                                 }
                                             
                                                 // Find matching profile effect
-                                                const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                             
                                                 if (matchingEffect) {
                                                     const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
@@ -3065,21 +3090,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else if (item.type === 1) {
                                                         // Profile effect
                                                         (async () => {
-                                                            // Fetch profile effects if not cached
-                                                            if (!profileEffectsCache) {
-                                                                const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                    method: "GET",
-                                                                    headers: {
-                                                                        "Password": api_password,
-                                                                        "Token": api_token
-                                                                    }
-                                                                });
-                                                                const effectsData = await response.json();
-                                                                profileEffectsCache = effectsData.profile_effect_configs;
+                                                            if (!discordProfileEffectsCache) {
+                                                                await setDiscordProfileEffectCache();
                                                             }
                                             
                                                             // Find the matching effect
-                                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                            const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === item.id);
                                             
                                                             if (matchingEffect) {
                                                                 const effectImage = document.createElement("img");
@@ -3231,21 +3247,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             }
                                                         
                                                         
-                                                            // Fetch profile effects API only if not already cached
-                                                            if (!profileEffectsCache) {
-                                                                const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                    method: "GET",
-                                                                    headers: {
-                                                                        "Password": api_password,
-                                                                        "Token": api_token
-                                                                    }
-                                                                });
-                                                                const effectsData = await response.json();
-                                                                profileEffectsCache = effectsData.profile_effect_configs;
+                                                            if (!discordProfileEffectsCache) {
+                                                                await setDiscordProfileEffectCache();
                                                             }
                                                         
                                                             // Find matching profile effect
-                                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                            const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                                         
                                                             if (matchingEffect) {
                                                                 const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
@@ -3406,6 +3413,74 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     });
                                                     card.addEventListener("mouseleave", () => {
                                                         plusMoreQuestionMark.src = `https://cdn.discordapp.com/assets/server_products/storefront/question-mark.png`;
+                                                    });
+                                                }
+                                            } else if (product.items[0].item_type === 'deco') {
+                                                product.items.forEach(item => {
+                                                    
+                                                    card.classList.add("type_0");
+                                                    // Set the innerHTML for the preview holder
+                                                    const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
+                                                    previewHolder.classList.add('avatar-decoration-image');
+                                                    
+                                                    // Set the initial image for the deco card
+                                                    const imgElement = document.createElement("img");
+                                                    imgElement.id = "shop-card-deco-image";
+                                                    imgElement.src = imgElement.src = item.static;
+                                                    
+                                                    previewHolder.appendChild(imgElement);
+    
+                                                    const bgimg = document.createElement("div");
+                                                    bgimg.id = "shop-card-deco-bg-image";
+                                                    
+                                                    previewHolder.appendChild(bgimg);
+                                            
+                                                    // Set the product details
+                                                    card.querySelector("[data-product-card-sku-id]").textContent = ``;
+                                                    card.querySelector("[data-product-card-name]").textContent = product.name;
+                                                    card.querySelector("[data-product-card-summary]").textContent = product.summary;
+                                            
+                                                    // Hover effect: Change the image src on mouse enter and leave
+                                                    if (localStorage.reduced_motion != "true") {
+                                                        card.addEventListener("mouseenter", () => {
+                                                            imgElement.src = item.animated;
+                                                            if (localStorage.discord_avatar != defaultAvatar1 && localStorage.discord_avatar != defaultAvatar2 && localStorage.discord_avatar != defaultAvatar3 && localStorage.discord_avatar != defaultAvatar4 && localStorage.discord_avatar != defaultAvatar5 && localStorage.discord_avatar != defaultAvatar6) {
+                                                                bgimg.style.backgroundImage = `url(${localStorage.discord_avatar})`
+                                                            }
+                                                        });
+                                                
+                                                        card.addEventListener("mouseleave", () => {
+                                                            imgElement.src = item.static;
+                                                            bgimg.style.backgroundImage = `url(data:image/png;base64,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)`;
+                                                        });
+                                                    }
+                                                    
+                                                });
+                                            } else if (product.items[0].item_type === 'effect') {
+                                                card.classList.add("type_1");
+    
+                                                card.querySelector("[data-product-card-sku-id]").textContent = ``;
+                                                card.querySelector("[data-product-card-name]").textContent = product.name;
+                                                card.querySelector("[data-product-card-summary]").textContent = product.summary;
+                                                
+                                                const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
+                                                previewHolder.classList.add('profile-effect-image');
+                                            
+                                                previewHolder.innerHTML = `
+                                                    <img class="thumbnail-preview" src="${product.items[0].static}">
+                                                `;
+                                            
+                                                // Hover effect: change to the first effect URL (use 'src' from the 'effects' array)
+                                                const imgElement = card.querySelector("img");
+                                            
+                                                if (localStorage.reduced_motion != "true") {
+                                                    card.addEventListener("mouseenter", () => {
+                                                        imgElement.src = product.items[0].animated;
+                                                    });
+                                                
+                                                    card.addEventListener("mouseleave", () => {
+                                                        // Revert back to the original thumbnailPreviewSrc when hover ends
+                                                        imgElement.src = product.items[0].static;
                                                     });
                                                 }
                                             } else {
@@ -3579,6 +3654,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 `;
                                             }
     
+                                            if (product.items[0] && product.items[0].item_type && product.items[0].item_type === 'deco' || product.items[0] && product.items[0].item_type && product.items[0].item_type === 'effect' || product.sku_id === "0") {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = ``;
+                                            }
+    
                                             if (product.premium_type === 2) {
                                                 card.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                     <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
@@ -3603,7 +3682,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         modalIsAlreadyOpen = true;
                                                         setTimeout(() => {
                                                             openItemModal();
-                                                        }, 500);
+                                                        }, 1000);
+                                                        card.classList.add("highlighted")
+    
+                                                        let highlightedGlint = document.createElement("div");
+    
+                                                        highlightedGlint.classList.add('shop-category-card-highlighted-glint');
+    
+                                                        card.appendChild(highlightedGlint);
+                                                        setTimeout(() => {
+                                                            highlightedGlint.remove();
+                                                        }, 3000);
                                                     }
                                                     
     
@@ -3855,21 +3944,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             }
                                                         
                                                         
-                                                            // Fetch profile effects API only if not already cached
-                                                            if (!profileEffectsCache) {
-                                                                const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                    method: "GET",
-                                                                    headers: {
-                                                                        "Password": api_password,
-                                                                        "Token": api_token
-                                                                    }
-                                                                });
-                                                                const effectsData = await response.json();
-                                                                profileEffectsCache = effectsData.profile_effect_configs;
+                                                            if (!discordProfileEffectsCache) {
+                                                                await setDiscordProfileEffectCache();
                                                             }
                                                         
                                                             // Find matching profile effect
-                                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                            const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
     
                                                             const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                                             const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
@@ -4084,21 +4164,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     } else if (item.type === 1) {
                                                                         // Profile effect
                                                                         (async () => {
-                                                                            // Fetch profile effects if not cached
-                                                                            if (!profileEffectsCache) {
-                                                                                const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                                    method: "GET",
-                                                                                    headers: {
-                                                                                        "Password": api_password,
-                                                                                        "Token": api_token
-                                                                                    }
-                                                                                });
-                                                                                const effectsData = await response.json();
-                                                                                profileEffectsCache = effectsData.profile_effect_configs;
+                                                                            if (!discordProfileEffectsCache) {
+                                                                                await setDiscordProfileEffectCache();
                                                                             }
+                                                                            
                                                         
                                                                             // Find the matching effect
-                                                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                                            const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === item.id);
                                                         
                                                                             if (matchingEffect) {
                                                                                 if (matchingEffect.effects && matchingEffect.effects.length > 0) {
@@ -4151,7 +4223,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         // Profile effect
                                                                         (async () => {
                                                                             // Fetch profile effects if not cached
-                                                                            if (!profileEffectsCache) {
+                                                                            if (!discordProfileEffectsCache) {
                                                                                 const response = await fetch(api + PROFILE_EFFECTS, {
                                                                                     method: "GET",
                                                                                     headers: {
@@ -4160,11 +4232,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                     }
                                                                                 });
                                                                                 const effectsData = await response.json();
-                                                                                profileEffectsCache = effectsData.profile_effect_configs;
+                                                                                discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                                             }
                                                         
                                                                             // Find the matching effect
-                                                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                                            const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === item.id);
                                                         
                                                                             if (matchingEffect) {
                                                                                 const effectImage = document.createElement("img");
@@ -4313,21 +4385,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             }
                                                                         
                                                                         
-                                                                            // Fetch profile effects API only if not already cached
-                                                                            if (!profileEffectsCache) {
-                                                                                const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                                    method: "GET",
-                                                                                    headers: {
-                                                                                        "Password": api_password,
-                                                                                        "Token": api_token
-                                                                                    }
-                                                                                });
-                                                                                const effectsData = await response.json();
-                                                                                profileEffectsCache = effectsData.profile_effect_configs;
+                                                                            if (!discordProfileEffectsCache) {
+                                                                                await setDiscordProfileEffectCache();
                                                                             }
                                                                         
                                                                             // Find matching profile effect
-                                                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                            const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                                                         
                                                                             if (matchingEffect) {
                                                                                 if (matchingEffect.effects && matchingEffect.effects.length > 0) {
@@ -4426,7 +4489,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         
                                                                         
                                                                             // Fetch profile effects API only if not already cached
-                                                                            if (!profileEffectsCache) {
+                                                                            if (!discordProfileEffectsCache) {
                                                                                 const response = await fetch(api + PROFILE_EFFECTS, {
                                                                                     method: "GET",
                                                                                     headers: {
@@ -4435,11 +4498,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                     }
                                                                                 });
                                                                                 const effectsData = await response.json();
-                                                                                profileEffectsCache = effectsData.profile_effect_configs;
+                                                                                discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                                             }
                                                                         
                                                                             // Find matching profile effect
-                                                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                            const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                                                         
                                                                             if (matchingEffect) {
                                                                                 const previewHolder = modal.querySelector("[data-modal-preview-holder]");
@@ -4514,7 +4577,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 document.getElementById("modal-username-preview").textContent = localStorage.discord_username.toLowerCase();
                                                             } else if (product.sku_id === "1333912750274904064") {
                                                                 previewHolder.classList.add('modal-preview-profile-container');
-                                                                
+                                                                    
                                                                 previewHolder.innerHTML = `
                                                                     <div class="nitro-3-days-modal-orb-preview">
                                                                         <img class="hero-img" src="https://cdn.discordapp.com/assets/content/81644099db353c3ea7cefa334f8d298d06b768a68a349de663d2151fd01eddc7.png"></img>
@@ -5038,7 +5101,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             fetchFirstHomeData();
 
             function fetchFirstHomeData() {
-                let profileEffectsCache = null;
+                let discordProfileEffectsCache = null;
             
                 fetch(apiUrl, {
                     method: "GET",
@@ -5114,7 +5177,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                     `;
                                 } else {
                                     category.querySelector("[data-preview-new-categoey-button]").innerHTML = `
-                                        <button class="home-page-preview-button" onclick="setParams({page: 'pplus'}); location.reload();">${getTextString("SHOP_CATEGORY_BROWSE_THE_COLLECTION_1")}${apiCategory.name}${getTextString("SHOP_CATEGORY_BROWSE_THE_COLLECTION_2")}</button>
+                                        <button class="home-page-preview-button" onclick="setParams({page: 'pplus'}); addParams({itemSkuId: '${apiCategory.sku_id}'}); location.reload();">${getTextString("SHOP_CATEGORY_BROWSE_THE_COLLECTION_1")}${apiCategory.name}${getTextString("SHOP_CATEGORY_BROWSE_THE_COLLECTION_2")}</button>
                                     `;
                                 }
                             
@@ -5123,6 +5186,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                     for (const product of apiCategory.products) {
                                         const cardTemplate = document.querySelector("[data-shop-item-card-template]");
                                         const card = cardTemplate.content.cloneNode(true).children[0];
+
+                                        card.id = product.sku_id;
 
                                         if (product.type === NONE) {
                                             card.classList.add("type_100");
@@ -5137,7 +5202,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 // Set the initial image for the deco card
                                                 const imgElement = document.createElement("img");
                                                 imgElement.id = "shop-card-deco-image";
-                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                 
                                                 previewHolder.appendChild(imgElement);
 
@@ -5154,14 +5219,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 // Hover effect: Change the image src on mouse enter and leave
                                                 if (localStorage.reduced_motion != "true") {
                                                     card.addEventListener("mouseenter", () => {
-                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                         if (localStorage.discord_avatar != defaultAvatar1 && localStorage.discord_avatar != defaultAvatar2 && localStorage.discord_avatar != defaultAvatar3 && localStorage.discord_avatar != defaultAvatar4 && localStorage.discord_avatar != defaultAvatar5 && localStorage.discord_avatar != defaultAvatar6) {
                                                             bgimg.style.backgroundImage = `url(${localStorage.discord_avatar})`
                                                         }
                                                     });
                                             
                                                     card.addEventListener("mouseleave", () => {
-                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                         bgimg.style.backgroundImage = `url(data:image/png;base64,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)`;
                                                     });
                                                 }
@@ -5185,23 +5250,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 // If items is an object and has type 1, get its id
                                                 itemId = product.items.id;
                                             }
-                                        
-                                        
-                                            // Fetch profile effects API only if not already cached
-                                            if (!profileEffectsCache) {
-                                                const response = await fetch(api + PROFILES_PLUS_EFFECTS, {
-                                                    method: "GET",
-                                                    headers: {
-                                                        "Password": api_password,
-                                                        "Token": api_token
-                                                    }
-                                                });
-                                                const effectsData = await response.json();
-                                                profileEffectsCache = effectsData.profile_effect_configs;
+
+                                            if (!pplusProfileEffectsCache) {
+                                                await setPplusProfileEffectCache();
                                             }
                                         
                                             // Find matching profile effect
-                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                            const matchingEffect = pplusProfileEffectsCache.find(effect => effect.id === itemId);
                                         
                                             if (matchingEffect) {
                                                 const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
@@ -5340,7 +5395,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 if (item.type === 0) {
                                                     // Avatar decoration
                                                     const decoImage = document.createElement("img");
-                                                    decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                    decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                     decoImage.alt = "Avatar Decoration";
                                                     decoImage.classList.add("avatar-decoration-image");
                                                     card.querySelector("[data-shop-card-preview-holder]").appendChild(decoImage);
@@ -5353,34 +5408,26 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     // Hover effect for decoration image
                                                     if (localStorage.reduced_motion != "true") {
                                                         card.addEventListener("mouseenter", () => {
-                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                             if (localStorage.discord_avatar != defaultAvatar1 && localStorage.discord_avatar != defaultAvatar2 && localStorage.discord_avatar != defaultAvatar3 && localStorage.discord_avatar != defaultAvatar4 && localStorage.discord_avatar != defaultAvatar5 && localStorage.discord_avatar != defaultAvatar6) {
                                                                 bgimg.style.backgroundImage = `url(${localStorage.discord_avatar})`
                                                             }
                                                         });
                                                         card.addEventListener("mouseleave", () => {
-                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                             bgimg.style.backgroundImage = `url(data:image/png;base64,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)`;
                                                         });
                                                     }
                                                 } else if (item.type === 1) {
                                                     // Profile effect
-                                                    let profileEffectsCache = null; // Cache profile effects to avoid multiple fetches
                                         
                                                     (async () => {
-                                                        if (!profileEffectsCache) {
-                                                            const response = await fetch(api + PROFILES_PLUS_EFFECTS, {
-                                                                method: "GET",
-                                                                headers: {
-                                                                    "Password": api_password,
-                                                                    "Token": api_token
-                                                                }
-                                                            });
-                                                            const effectsData = await response.json();
-                                                            profileEffectsCache = effectsData.profile_effect_configs;
+
+                                                        if (!pplusProfileEffectsCache) {
+                                                            await setPplusProfileEffectCache();
                                                         }
                                         
-                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                        const matchingEffect = pplusProfileEffectsCache.find(effect => effect.id === item.id);
                                         
                                                         if (matchingEffect) {
                                                             const effectImage = document.createElement("img");
@@ -5468,10 +5515,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         const decoImage = document.createElement("img");
                                                         const bgimg = document.createElement("div");
                                                         if (isFirstTimeLoadingVariant == true) {
-                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                             isFirstTimeLoadingVariant = false;
                                                         } else {
-                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                             if (localStorage.discord_avatar != defaultAvatar1 && localStorage.discord_avatar != defaultAvatar2 && localStorage.discord_avatar != defaultAvatar3 && localStorage.discord_avatar != defaultAvatar4 && localStorage.discord_avatar != defaultAvatar5 && localStorage.discord_avatar != defaultAvatar6) {
                                                                 bgimg.style.backgroundImage = `url(${localStorage.discord_avatar})`
                                                             }
@@ -5487,13 +5534,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         // Hover effect for decoration image
                                                         if (localStorage.reduced_motion !== "true") {
                                                             card.addEventListener("mouseenter", () => {
-                                                                decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                                 if (localStorage.discord_avatar != defaultAvatar1 && localStorage.discord_avatar != defaultAvatar2 && localStorage.discord_avatar != defaultAvatar3 && localStorage.discord_avatar != defaultAvatar4 && localStorage.discord_avatar != defaultAvatar5 && localStorage.discord_avatar != defaultAvatar6) {
                                                                     bgimg.style.backgroundImage = `url(${localStorage.discord_avatar})`
                                                                 }
                                                             });
                                                             card.addEventListener("mouseleave", () => {
-                                                                decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                                 bgimg.style.backgroundImage = `url(data:image/png;base64,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)`;
                                                             });
                                                         }
@@ -5513,23 +5560,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             // If items is an object and has type 1, get its id
                                                             itemId = selectedVariant.items.id;
                                                         }
-                                                    
-                                                    
-                                                        // Fetch profile effects API only if not already cached
-                                                        if (!profileEffectsCache) {
-                                                            const response = await fetch(api + PROFILES_PLUS_EFFECTS, {
-                                                                method: "GET",
-                                                                headers: {
-                                                                    "Password": api_password,
-                                                                    "Token": api_token
-                                                                }
-                                                            });
-                                                            const effectsData = await response.json();
-                                                            profileEffectsCache = effectsData.profile_effect_configs;
+
+                                                        if (!pplusProfileEffectsCache) {
+                                                            await setPplusProfileEffectCache();
                                                         }
                                                     
                                                         // Find matching profile effect
-                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                        const matchingEffect = pplusProfileEffectsCache.find(effect => effect.id === itemId);
                                                     
                                                         if (matchingEffect) {
                                                             const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
@@ -5626,14 +5663,32 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
 
 
-                                        if (product.emojiCopy === null && product.type != 'plus_more') {
-                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI")}</button>
-                                            `;
-                                        } else if (product.type != 'plus_more') {
-                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                <button class="card-button" onclick="copyEmoji('${product.emojiCopy}');" title="${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_COPY_PPLUS_EMOJI")}</button>
-                                            `;
+                                        if (localStorage.experiment_2025_03_copy_sku_card === "Treatment 1: Enabled" || localStorage.experiment_2025_03_copy_sku_card === "Treatment 2: w/ share button") {
+                                            if (product.emojiCopy === null && product.type != 'plus_more') {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <div class="card-multi-button-container" card-multi-button-container>
+                                                        <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI_v2")}</button>
+                                                        <button class="card-button" onclick="copyEmoji('${product.sku_id}'); copyNotice('copysku');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
+                                                    </div>
+                                                `;
+                                            } else if (product.type != 'plus_more') {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <div class="card-multi-button-container" card-multi-button-container>
+                                                        <button class="card-button" onclick="copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');" title="${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_COPY_PPLUS_EMOJI_V2")}</button>
+                                                        <button class="card-button" onclick="copyEmoji('${product.sku_id}'); copyNotice('copysku');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
+                                                    </div>
+                                                `;
+                                            }
+                                        } else {
+                                            if (product.emojiCopy === null && product.type != 'plus_more') {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI")}</button>
+                                                `;
+                                            } else if (product.type != 'plus_more') {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <button class="card-button" onclick="copyEmoji('${product.emojiCopy}');" title="${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_COPY_PPLUS_EMOJI")}</button>
+                                                `;
+                                            }
                                         }
 
                                         if (product.premium_type === 2) {
@@ -5648,11 +5703,31 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 card.classList.add('clickable');
 
                                                 card.addEventListener("click", (event) => {
-                                                    if (event.target.matches("[data-shop-card-var]")) {
+                                                    if (event.target.matches("[data-shop-card-var]") || event.target.matches(".card-button") || event.target.matches(".shareIcon_f4a996")) {
                                                     } else {
                                                         openItemModal();
+                                                        addParams({itemSkuId: product.sku_id})
                                                     }
                                                 });
+
+                                                const itemSKUForScroll = params.get("itemSkuId");
+
+                                                if (itemSKUForScroll === product.sku_id && modalIsAlreadyOpen != true) {
+                                                    modalIsAlreadyOpen = true;
+                                                    setTimeout(() => {
+                                                        openItemModal();
+                                                    }, 1000);
+                                                    card.classList.add("highlighted")
+
+                                                    let highlightedGlint = document.createElement("div");
+
+                                                    highlightedGlint.classList.add('shop-category-card-highlighted-glint');
+
+                                                    card.appendChild(highlightedGlint);
+                                                    setTimeout(() => {
+                                                        highlightedGlint.remove();
+                                                    }, 3000);
+                                                }
 
                                                 async function openItemModal() {
                                                     let modal = document.createElement("div");
@@ -5737,7 +5812,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                                                                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
-                                                                        <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/${item.animated}.png">
+                                                                        <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png">
                                                                         <div class="options-preview-profile-status-bg"></div>
                                                                         <div class="options-preview-profile-status-color"></div>
                                                                     </div>
@@ -5749,17 +5824,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                                 const imgElement = document.createElement("img");
                                                                 imgElement.id = "shop-card-deco-image";
-                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
 
                                                                 previewHolderLeft.appendChild(imgElement);
 
                                                                 if (localStorage.reduced_motion != "true") {
                                                                     imgElement.addEventListener("mouseenter", () => {
-                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                                     });
                                                                 
                                                                     imgElement.addEventListener("mouseleave", () => {
-                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                                     });
                                                                 }
 
@@ -5769,18 +5844,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                                 const imgElement = document.createElement("img");
                                                                 imgElement.id = "shop-card-deco-image";
-                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
 
                                                                 previewHolder.appendChild(imgElement);
 
                                                                 // Hover effect: Change the image src on mouse enter and leave
                                                                 if (localStorage.reduced_motion != "true") {
                                                                     document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                                     });
                                                                 
                                                                     document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                                     });
                                                                 }
                                                             }
@@ -5807,22 +5882,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             itemId = product.items.id;
                                                         }
                                                     
-                                                    
-                                                        // Fetch profile effects API only if not already cached
-                                                        if (!profileEffectsCache) {
-                                                            const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                method: "GET",
-                                                                headers: {
-                                                                    "Password": api_password,
-                                                                    "Token": api_token
-                                                                }
-                                                            });
-                                                            const effectsData = await response.json();
-                                                            profileEffectsCache = effectsData.profile_effect_configs;
-                                                        }
-                                                    
                                                         // Find matching profile effect
-                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                        const matchingEffect = pplusProfileEffectsCache.find(effect => effect.id === itemId);
 
                                                         const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                                         const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
@@ -5969,8 +6030,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 <div class="nameplate-preview-status-bg"></div>
                                                                 <div class="nameplate-preview-status-color"></div>
                                                             </div>
-                                                            <div class="nameplate-fade-top"></div>
-                                                            <div class="nameplate-fade-bottom"></div>
                                                         `;
             
                                                         product.items.forEach(item => {
@@ -6030,25 +6089,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                                                 
                                                                 if (item.type === 0) {
-                                                                    decosrc = item.animated
+                                                                    decosrc = item.asset
                                                                 } else if (item.type === 1) {
                                                                     // Profile effect
                                                                     (async () => {
-                                                                        // Fetch profile effects if not cached
-                                                                        if (!profileEffectsCache) {
-                                                                            const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                                method: "GET",
-                                                                                headers: {
-                                                                                    "Password": api_password,
-                                                                                    "Token": api_token
-                                                                                }
-                                                                            });
-                                                                            const effectsData = await response.json();
-                                                                            profileEffectsCache = effectsData.profile_effect_configs;
-                                                                        }
                                                     
                                                                         // Find the matching effect
-                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                                        const matchingEffect = pplusProfileEffectsCache.find(effect => effect.id === item.id);
                                                     
                                                                         if (matchingEffect) {
                                                                             if (matchingEffect.effects && matchingEffect.effects.length > 0) {
@@ -6069,7 +6116,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                                                                             <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                             <p class="options-preview-profile-username" id="modal-username-preview"></p>
-                                                                            <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/${decosrc}.png">
+                                                                            <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${decosrc}.png">
                                                                             <div class="options-preview-profile-status-bg"></div>
                                                                             <div class="options-preview-profile-status-color"></div>
                                                                             <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
@@ -6082,7 +6129,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             } else {
                                                                 if (item.type === 0) {
                                                                     const decoImage = document.createElement("img");
-                                                                    decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                    decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                                     decoImage.alt = "Avatar Decoration";
                                                                     decoImage.classList.add("modal-avatar-decoration-img");
                                                                     modal.querySelector("[data-modal-preview-holder]").appendChild(decoImage);
@@ -6090,18 +6137,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     // Hover effect for decoration image
                                                                     if (localStorage.reduced_motion != "true") {
                                                                         document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                                         });
 
                                                                         document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                                         });
                                                                     }
                                                                 } else if (item.type === 1) {
                                                                     // Profile effect
                                                                     (async () => {
                                                                         // Fetch profile effects if not cached
-                                                                        if (!profileEffectsCache) {
+                                                                        if (!discordProfileEffectsCache) {
                                                                             const response = await fetch(api + PROFILE_EFFECTS, {
                                                                                 method: "GET",
                                                                                 headers: {
@@ -6110,11 +6157,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 }
                                                                             });
                                                                             const effectsData = await response.json();
-                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                            discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                                         }
                                                     
                                                                         // Find the matching effect
-                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                                        const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === item.id);
                                                     
                                                                         if (matchingEffect) {
                                                                             const effectImage = document.createElement("img");
@@ -6219,7 +6266,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                                                                                 <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                                 <p class="options-preview-profile-username" id="modal-username-preview"></p>
-                                                                                <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/${item.animated}.png">
+                                                                                <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png">
                                                                                 <div class="options-preview-profile-status-bg"></div>
                                                                                 <div class="options-preview-profile-status-color"></div>
                                                                             </div>
@@ -6229,18 +6276,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         previewHolderLeft.classList.add('modal-left-avatar-decoration-img');
 
                                                                         previewHolderLeft.innerHTML = `
-                                                                            <img id="shop-card-deco-image" src="https://cdn.yapper.shop/custom-collectibles/${item.static}.png" data-left-preview-deco-var>
+                                                                            <img id="shop-card-deco-image" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png" data-left-preview-deco-var>
                                                                         `;
 
                                                                         const imgElement = previewHolderLeft.querySelector("[data-left-preview-deco-var]");
                                                                         
                                                                         if (localStorage.reduced_motion != "true") {
                                                                             imgElement.addEventListener("mouseenter", () => {
-                                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                                             });
                                                                         
                                                                             imgElement.addEventListener("mouseleave", () => {
-                                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                                             });
                                                                         }
                                                                     });
@@ -6261,22 +6308,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             itemId = selectedVariant.items.id;
                                                                         }
                                                                     
-                                                                    
-                                                                        // Fetch profile effects API only if not already cached
-                                                                        if (!profileEffectsCache) {
-                                                                            const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                                method: "GET",
-                                                                                headers: {
-                                                                                    "Password": api_password,
-                                                                                    "Token": api_token
-                                                                                }
-                                                                            });
-                                                                            const effectsData = await response.json();
-                                                                            profileEffectsCache = effectsData.profile_effect_configs;
-                                                                        }
-                                                                    
                                                                         // Find matching profile effect
-                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                        const matchingEffect = pplusProfileEffectsCache.find(effect => effect.id === itemId);
                                                                     
                                                                         if (matchingEffect) {
                                                                             if (matchingEffect.effects && matchingEffect.effects.length > 0) {
@@ -6375,7 +6408,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     
                                                                     
                                                                         // Fetch profile effects API only if not already cached
-                                                                        if (!profileEffectsCache) {
+                                                                        if (!discordProfileEffectsCache) {
                                                                             const response = await fetch(api + PROFILE_EFFECTS, {
                                                                                 method: "GET",
                                                                                 headers: {
@@ -6384,11 +6417,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 }
                                                                             });
                                                                             const effectsData = await response.json();
-                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                            discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                                         }
                                                                     
                                                                         // Find matching profile effect
-                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                        const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                                                     
                                                                         if (matchingEffect) {
                                                                             const previewHolder = modal.querySelector("[data-modal-preview-holder]");
@@ -6445,7 +6478,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToGoogle()`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
                                                             `;
                                                         } else {
                                                             button_container.innerHTML = `
@@ -6455,7 +6488,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToGoogle()`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
                                                             `;
                                                             modal.querySelector("[data-download-product-card-button]").innerHTML = `
                                                                 <svg class="downloadIcon_modal" onclick="window.open('https://item.yapper.shop/sku/${product.sku_id}/data.zip');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
@@ -6598,6 +6631,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 modal.remove();
                                                                 modal_back.remove();
                                                             }, 300);
+                                                            removeParams('itemSkuId');
+                                                            modalIsAlreadyOpen = false;
                                                         }
                                                     });
 
@@ -6830,6 +6865,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 modal.remove();
                                                                 modal_back.remove();
                                                             }, 300);
+                                                            removeParams('itemSkuId');
+                                                            modalIsAlreadyOpen = false;
                                                         }
                                                     });
 
@@ -7071,8 +7108,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         
             // Fetch new data
 
-            let profileEffectsCache = null; // Cache for the profile effects data
-
             // Make the function async
             fetch(apiUrl, {
                 method: "GET",
@@ -7183,7 +7218,27 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                     category.querySelector("[data-shop-category-banner]").addEventListener("click", () => {
                                         openCategoryModal();
+                                        addParams({itemSkuId: apiCategory.sku_id})
                                     });
+
+                                    const itemSKUForScroll = params.get("itemSkuId");
+
+                                    if (itemSKUForScroll === apiCategory.sku_id && modalIsAlreadyOpen != true) {
+                                        modalIsAlreadyOpen = true;
+                                        setTimeout(() => {
+                                            openCategoryModal();
+                                        }, 1000);
+                                        category.querySelector("[data-shop-category-banner]").classList.add("highlighted")
+
+                                        let highlightedGlint = document.createElement("div");
+
+                                        highlightedGlint.classList.add('shop-category-highlighted-glint');
+
+                                        category.querySelector("[data-shop-category-banner]").appendChild(highlightedGlint);
+                                        setTimeout(() => {
+                                            highlightedGlint.remove();
+                                        }, 3000);
+                                    }
                                     
 
                                     async function openCategoryModal() {
@@ -7574,6 +7629,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     modal.remove();
                                                     modal_back.remove();
                                                 }, 300);
+                                                removeParams('itemSkuId');
+                                                modalIsAlreadyOpen = false;
                                             }
                                         });
 
@@ -7595,6 +7652,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         const cardTemplate = document.querySelector("[data-shop-item-card-template]");
                                         const card = cardTemplate.content.cloneNode(true).children[0];
 
+                                        card.id = product.sku_id;
+
                                         if (product.type === NONE) {
                                             card.classList.add("type_100");
                                             card.classList.add('hidden')
@@ -7608,7 +7667,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 // Set the initial image for the deco card
                                                 const imgElement = document.createElement("img");
                                                 imgElement.id = "shop-card-deco-image";
-                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                 
                                                 previewHolder.appendChild(imgElement);
 
@@ -7625,14 +7684,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 // Hover effect: Change the image src on mouse enter and leave
                                                 if (localStorage.reduced_motion != "true") {
                                                     card.addEventListener("mouseenter", () => {
-                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                         if (localStorage.discord_avatar != defaultAvatar1 && localStorage.discord_avatar != defaultAvatar2 && localStorage.discord_avatar != defaultAvatar3 && localStorage.discord_avatar != defaultAvatar4 && localStorage.discord_avatar != defaultAvatar5 && localStorage.discord_avatar != defaultAvatar6) {
                                                             bgimg.style.backgroundImage = `url(${localStorage.discord_avatar})`
                                                         }
                                                     });
                                             
                                                     card.addEventListener("mouseleave", () => {
-                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                         bgimg.style.backgroundImage = `url(data:image/png;base64,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)`;
                                                     });
                                                 }
@@ -7656,23 +7715,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 // If items is an object and has type 1, get its id
                                                 itemId = product.items.id;
                                             }
-                                        
-                                        
-                                            // Fetch profile effects API only if not already cached
-                                            if (!profileEffectsCache) {
-                                                const response = await fetch(api + PROFILES_PLUS_EFFECTS, {
-                                                    method: "GET",
-                                                    headers: {
-                                                        "Password": api_password,
-                                                        "Token": api_token
-                                                    }
-                                                });
-                                                const effectsData = await response.json();
-                                                profileEffectsCache = effectsData.profile_effect_configs;
+
+                                            if (!pplusProfileEffectsCache) {
+                                                await setPplusProfileEffectCache();
                                             }
                                         
                                             // Find matching profile effect
-                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                            const matchingEffect = pplusProfileEffectsCache.find(effect => effect.id === itemId);
                                         
                                             if (matchingEffect) {
                                                 const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
@@ -7811,7 +7860,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 if (item.type === 0) {
                                                     // Avatar decoration
                                                     const decoImage = document.createElement("img");
-                                                    decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                    decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                     decoImage.alt = "Avatar Decoration";
                                                     decoImage.classList.add("avatar-decoration-image");
                                                     card.querySelector("[data-shop-card-preview-holder]").appendChild(decoImage);
@@ -7824,34 +7873,26 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     // Hover effect for decoration image
                                                     if (localStorage.reduced_motion != "true") {
                                                         card.addEventListener("mouseenter", () => {
-                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                             if (localStorage.discord_avatar != defaultAvatar1 && localStorage.discord_avatar != defaultAvatar2 && localStorage.discord_avatar != defaultAvatar3 && localStorage.discord_avatar != defaultAvatar4 && localStorage.discord_avatar != defaultAvatar5 && localStorage.discord_avatar != defaultAvatar6) {
                                                                 bgimg.style.backgroundImage = `url(${localStorage.discord_avatar})`
                                                             }
                                                         });
                                                         card.addEventListener("mouseleave", () => {
-                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                             bgimg.style.backgroundImage = `url(data:image/png;base64,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)`;
                                                         });
                                                     }
                                                 } else if (item.type === 1) {
                                                     // Profile effect
-                                                    let profileEffectsCache = null; // Cache profile effects to avoid multiple fetches
                                         
                                                     (async () => {
-                                                        if (!profileEffectsCache) {
-                                                            const response = await fetch(api + PROFILES_PLUS_EFFECTS, {
-                                                                method: "GET",
-                                                                headers: {
-                                                                    "Password": api_password,
-                                                                    "Token": api_token
-                                                                }
-                                                            });
-                                                            const effectsData = await response.json();
-                                                            profileEffectsCache = effectsData.profile_effect_configs;
+
+                                                        if (!pplusProfileEffectsCache) {
+                                                            await setPplusProfileEffectCache();
                                                         }
                                         
-                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                        const matchingEffect = pplusProfileEffectsCache.find(effect => effect.id === item.id);
                                         
                                                         if (matchingEffect) {
                                                             const effectImage = document.createElement("img");
@@ -7939,10 +7980,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         const decoImage = document.createElement("img");
                                                         const bgimg = document.createElement("div");
                                                         if (isFirstTimeLoadingVariant == true) {
-                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                             isFirstTimeLoadingVariant = false;
                                                         } else {
-                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                             if (localStorage.discord_avatar != defaultAvatar1 && localStorage.discord_avatar != defaultAvatar2 && localStorage.discord_avatar != defaultAvatar3 && localStorage.discord_avatar != defaultAvatar4 && localStorage.discord_avatar != defaultAvatar5 && localStorage.discord_avatar != defaultAvatar6) {
                                                                 bgimg.style.backgroundImage = `url(${localStorage.discord_avatar})`
                                                             }
@@ -7958,13 +7999,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         // Hover effect for decoration image
                                                         if (localStorage.reduced_motion !== "true") {
                                                             card.addEventListener("mouseenter", () => {
-                                                                decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                                 if (localStorage.discord_avatar != defaultAvatar1 && localStorage.discord_avatar != defaultAvatar2 && localStorage.discord_avatar != defaultAvatar3 && localStorage.discord_avatar != defaultAvatar4 && localStorage.discord_avatar != defaultAvatar5 && localStorage.discord_avatar != defaultAvatar6) {
                                                                     bgimg.style.backgroundImage = `url(${localStorage.discord_avatar})`
                                                                 }
                                                             });
                                                             card.addEventListener("mouseleave", () => {
-                                                                decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                                 bgimg.style.backgroundImage = `url(data:image/png;base64,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)`;
                                                             });
                                                         }
@@ -7984,23 +8025,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             // If items is an object and has type 1, get its id
                                                             itemId = selectedVariant.items.id;
                                                         }
-                                                    
-                                                    
-                                                        // Fetch profile effects API only if not already cached
-                                                        if (!profileEffectsCache) {
-                                                            const response = await fetch(api + PROFILES_PLUS_EFFECTS, {
-                                                                method: "GET",
-                                                                headers: {
-                                                                    "Password": api_password,
-                                                                    "Token": api_token
-                                                                }
-                                                            });
-                                                            const effectsData = await response.json();
-                                                            profileEffectsCache = effectsData.profile_effect_configs;
+
+                                                        if (!pplusProfileEffectsCache) {
+                                                            await setPplusProfileEffectCache();
                                                         }
                                                     
                                                         // Find matching profile effect
-                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                        const matchingEffect = pplusProfileEffectsCache.find(effect => effect.id === itemId);
                                                     
                                                         if (matchingEffect) {
                                                             const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
@@ -8097,14 +8128,32 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
 
 
-                                        if (product.emojiCopy === null && product.type != 'plus_more') {
-                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI")}</button>
-                                            `;
-                                        } else if (product.type != 'plus_more') {
-                                            card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                <button class="card-button" onclick="copyEmoji('${product.emojiCopy}');" title="${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_COPY_PPLUS_EMOJI")}</button>
-                                            `;
+                                        if (localStorage.experiment_2025_03_copy_sku_card === "Treatment 1: Enabled" || localStorage.experiment_2025_03_copy_sku_card === "Treatment 2: w/ share button") {
+                                            if (product.emojiCopy === null && product.type != 'plus_more') {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <div class="card-multi-button-container" card-multi-button-container>
+                                                        <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI_v2")}</button>
+                                                        <button class="card-button" onclick="copyEmoji('${product.sku_id}'); copyNotice('copysku');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
+                                                    </div>
+                                                `;
+                                            } else if (product.type != 'plus_more') {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <div class="card-multi-button-container" card-multi-button-container>
+                                                        <button class="card-button" onclick="copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');" title="${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_COPY_PPLUS_EMOJI_V2")}</button>
+                                                        <button class="card-button" onclick="copyEmoji('${product.sku_id}'); copyNotice('copysku');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
+                                                    </div>
+                                                `;
+                                            }
+                                        } else {
+                                            if (product.emojiCopy === null && product.type != 'plus_more') {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI")}</button>
+                                                `;
+                                            } else if (product.type != 'plus_more') {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <button class="card-button" onclick="copyEmoji('${product.emojiCopy}');" title="${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_COPY_PPLUS_EMOJI")}</button>
+                                                `;
+                                            }
                                         }
 
                                         if (product.premium_type === 2) {
@@ -8119,11 +8168,31 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 card.classList.add('clickable');
 
                                                 card.addEventListener("click", (event) => {
-                                                    if (event.target.matches("[data-shop-card-var]")) {
+                                                    if (event.target.matches("[data-shop-card-var]") || event.target.matches(".card-button") || event.target.matches(".shareIcon_f4a996")) {
                                                     } else {
                                                         openItemModal();
+                                                        addParams({itemSkuId: product.sku_id})
                                                     }
                                                 });
+
+                                                const itemSKUForScroll = params.get("itemSkuId");
+
+                                                if (itemSKUForScroll === product.sku_id && modalIsAlreadyOpen != true) {
+                                                    modalIsAlreadyOpen = true;
+                                                    setTimeout(() => {
+                                                        openItemModal();
+                                                    }, 1000);
+                                                    card.classList.add("highlighted")
+
+                                                    let highlightedGlint = document.createElement("div");
+
+                                                    highlightedGlint.classList.add('shop-category-card-highlighted-glint');
+
+                                                    card.appendChild(highlightedGlint);
+                                                    setTimeout(() => {
+                                                        highlightedGlint.remove();
+                                                    }, 3000);
+                                                }
 
                                                 async function openItemModal() {
                                                     let modal = document.createElement("div");
@@ -8208,7 +8277,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                                                                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
-                                                                        <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/${item.animated}.png">
+                                                                        <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png">
                                                                         <div class="options-preview-profile-status-bg"></div>
                                                                         <div class="options-preview-profile-status-color"></div>
                                                                     </div>
@@ -8220,17 +8289,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                                 const imgElement = document.createElement("img");
                                                                 imgElement.id = "shop-card-deco-image";
-                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
 
                                                                 previewHolderLeft.appendChild(imgElement);
 
                                                                 if (localStorage.reduced_motion != "true") {
                                                                     imgElement.addEventListener("mouseenter", () => {
-                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                                     });
                                                                 
                                                                     imgElement.addEventListener("mouseleave", () => {
-                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                                     });
                                                                 }
 
@@ -8240,18 +8309,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                                 const imgElement = document.createElement("img");
                                                                 imgElement.id = "shop-card-deco-image";
-                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
 
                                                                 previewHolder.appendChild(imgElement);
 
                                                                 // Hover effect: Change the image src on mouse enter and leave
                                                                 if (localStorage.reduced_motion != "true") {
                                                                     document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                                     });
                                                                 
                                                                     document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                                     });
                                                                 }
                                                             }
@@ -8278,22 +8347,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             itemId = product.items.id;
                                                         }
                                                     
-                                                    
-                                                        // Fetch profile effects API only if not already cached
-                                                        if (!profileEffectsCache) {
-                                                            const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                method: "GET",
-                                                                headers: {
-                                                                    "Password": api_password,
-                                                                    "Token": api_token
-                                                                }
-                                                            });
-                                                            const effectsData = await response.json();
-                                                            profileEffectsCache = effectsData.profile_effect_configs;
-                                                        }
-                                                    
                                                         // Find matching profile effect
-                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                        const matchingEffect = pplusProfileEffectsCache.find(effect => effect.id === itemId);
 
                                                         const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                                         const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
@@ -8499,25 +8554,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
                                                                 
                                                                 if (item.type === 0) {
-                                                                    decosrc = item.animated
+                                                                    decosrc = item.asset
                                                                 } else if (item.type === 1) {
                                                                     // Profile effect
                                                                     (async () => {
-                                                                        // Fetch profile effects if not cached
-                                                                        if (!profileEffectsCache) {
-                                                                            const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                                method: "GET",
-                                                                                headers: {
-                                                                                    "Password": api_password,
-                                                                                    "Token": api_token
-                                                                                }
-                                                                            });
-                                                                            const effectsData = await response.json();
-                                                                            profileEffectsCache = effectsData.profile_effect_configs;
-                                                                        }
                                                     
                                                                         // Find the matching effect
-                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                                        const matchingEffect = pplusProfileEffectsCache.find(effect => effect.id === item.id);
                                                     
                                                                         if (matchingEffect) {
                                                                             if (matchingEffect.effects && matchingEffect.effects.length > 0) {
@@ -8538,7 +8581,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                                                                             <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                             <p class="options-preview-profile-username" id="modal-username-preview"></p>
-                                                                            <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/${decosrc}.png">
+                                                                            <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${decosrc}.png">
                                                                             <div class="options-preview-profile-status-bg"></div>
                                                                             <div class="options-preview-profile-status-color"></div>
                                                                             <img id="profileProfileEffectPreview" class="profile-profile-effect-preview" src="${effectUrl}">
@@ -8551,7 +8594,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             } else {
                                                                 if (item.type === 0) {
                                                                     const decoImage = document.createElement("img");
-                                                                    decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                    decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                                     decoImage.alt = "Avatar Decoration";
                                                                     decoImage.classList.add("modal-avatar-decoration-img");
                                                                     modal.querySelector("[data-modal-preview-holder]").appendChild(decoImage);
@@ -8559,18 +8602,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     // Hover effect for decoration image
                                                                     if (localStorage.reduced_motion != "true") {
                                                                         document.getElementById('modalv2-inner-right').addEventListener("mouseenter", () => {
-                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                                         });
 
                                                                         document.getElementById('modalv2-inner-right').addEventListener("mouseleave", () => {
-                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                            decoImage.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                                         });
                                                                     }
                                                                 } else if (item.type === 1) {
                                                                     // Profile effect
                                                                     (async () => {
                                                                         // Fetch profile effects if not cached
-                                                                        if (!profileEffectsCache) {
+                                                                        if (!discordProfileEffectsCache) {
                                                                             const response = await fetch(api + PROFILE_EFFECTS, {
                                                                                 method: "GET",
                                                                                 headers: {
@@ -8579,11 +8622,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 }
                                                                             });
                                                                             const effectsData = await response.json();
-                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                            discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                                         }
                                                     
                                                                         // Find the matching effect
-                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                                        const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === item.id);
                                                     
                                                                         if (matchingEffect) {
                                                                             const effectImage = document.createElement("img");
@@ -8688,7 +8731,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                                                                                 <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                                 <p class="options-preview-profile-username" id="modal-username-preview"></p>
-                                                                                <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/${item.animated}.png">
+                                                                                <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png">
                                                                                 <div class="options-preview-profile-status-bg"></div>
                                                                                 <div class="options-preview-profile-status-color"></div>
                                                                             </div>
@@ -8698,18 +8741,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         previewHolderLeft.classList.add('modal-left-avatar-decoration-img');
 
                                                                         previewHolderLeft.innerHTML = `
-                                                                            <img id="shop-card-deco-image" src="https://cdn.yapper.shop/custom-collectibles/${item.static}.png" data-left-preview-deco-var>
+                                                                            <img id="shop-card-deco-image" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png" data-left-preview-deco-var>
                                                                         `;
 
                                                                         const imgElement = previewHolderLeft.querySelector("[data-left-preview-deco-var]");
                                                                         
                                                                         if (localStorage.reduced_motion != "true") {
                                                                             imgElement.addEventListener("mouseenter", () => {
-                                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.animated}.png`;
+                                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png`;
                                                                             });
                                                                         
                                                                             imgElement.addEventListener("mouseleave", () => {
-                                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/${item.static}.png`;
+                                                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png`;
                                                                             });
                                                                         }
                                                                     });
@@ -8730,22 +8773,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             itemId = selectedVariant.items.id;
                                                                         }
                                                                     
-                                                                    
-                                                                        // Fetch profile effects API only if not already cached
-                                                                        if (!profileEffectsCache) {
-                                                                            const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                                method: "GET",
-                                                                                headers: {
-                                                                                    "Password": api_password,
-                                                                                    "Token": api_token
-                                                                                }
-                                                                            });
-                                                                            const effectsData = await response.json();
-                                                                            profileEffectsCache = effectsData.profile_effect_configs;
-                                                                        }
-                                                                    
                                                                         // Find matching profile effect
-                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                        const matchingEffect = pplusProfileEffectsCache.find(effect => effect.id === itemId);
                                                                     
                                                                         if (matchingEffect) {
                                                                             if (matchingEffect.effects && matchingEffect.effects.length > 0) {
@@ -8844,7 +8873,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     
                                                                     
                                                                         // Fetch profile effects API only if not already cached
-                                                                        if (!profileEffectsCache) {
+                                                                        if (!discordProfileEffectsCache) {
                                                                             const response = await fetch(api + PROFILE_EFFECTS, {
                                                                                 method: "GET",
                                                                                 headers: {
@@ -8853,11 +8882,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 }
                                                                             });
                                                                             const effectsData = await response.json();
-                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                            discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                                         }
                                                                     
                                                                         // Find matching profile effect
-                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                        const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                                                     
                                                                         if (matchingEffect) {
                                                                             const previewHolder = modal.querySelector("[data-modal-preview-holder]");
@@ -8914,7 +8943,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToGoogle()`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
                                                             `;
                                                         } else {
                                                             button_container.innerHTML = `
@@ -8924,7 +8953,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}')` : `redirectToGoogle()`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToGoogle()`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
                                                             `;
                                                             modal.querySelector("[data-download-product-card-button]").innerHTML = `
                                                                 <svg class="downloadIcon_modal" onclick="window.open('https://item.yapper.shop/sku/${product.sku_id}/data.zip');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
@@ -9067,6 +9096,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 modal.remove();
                                                                 modal_back.remove();
                                                             }, 300);
+                                                            removeParams('itemSkuId');
+                                                            modalIsAlreadyOpen = false;
                                                         }
                                                     });
 
@@ -9299,6 +9330,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 modal.remove();
                                                                 modal_back.remove();
                                                             }, 300);
+                                                            removeParams('itemSkuId');
+                                                            modalIsAlreadyOpen = false;
                                                         }
                                                     });
 
@@ -9415,10 +9448,29 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         // Append card to output
                                         card.classList.add('shop-category-card-transparent')
                                         cardOutput.append(card);
+
+                                        scrollToSKU(product.sku_id);
                                     }
                                 }
             
                                 categoryOutput.append(category);
+
+                                scrollToSKU(apiCategory.sku_id);
+
+                                function scrollToSKU(sku_id) {
+                                    const itemSKUForScroll = params.get("itemSkuId");
+
+                                    if (itemSKUForScroll === sku_id) {
+                                        setTimeout(() => {
+                                            try {
+                                                document.getElementById(itemSKUForScroll).scrollIntoView({ behavior: "smooth" });
+                                            }
+                                            catch(error) {
+                                                scrollToSKU(sku_id)
+                                            }
+                                        }, 10);
+                                    }
+                                }
 
 
                                 const paper_beach2_banner = document.getElementById(PAPER_BEACH_V2);
@@ -10871,21 +10923,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             }
                                         
                                         
-                                            // Fetch profile effects API only if not already cached
-                                            if (!profileEffectsCache) {
-                                                const response = await fetch(api + PROFILE_EFFECTS, {
-                                                    method: "GET",
-                                                    headers: {
-                                                        "Password": api_password,
-                                                        "Token": api_token
-                                                    }
-                                                });
-                                                const effectsData = await response.json();
-                                                profileEffectsCache = effectsData.profile_effect_configs;
+                                            if (!discordProfileEffectsCache) {
+                                                await setDiscordProfileEffectCache();
                                             }
                                         
                                             // Find matching profile effect
-                                            const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                            const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                         
                                             if (matchingEffect) {
                                                 const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
@@ -11069,21 +11112,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 } else if (item.type === 1) {
                                                     // Profile effect
                                                     (async () => {
-                                                        // Fetch profile effects if not cached
-                                                        if (!profileEffectsCache) {
-                                                            const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                method: "GET",
-                                                                headers: {
-                                                                    "Password": api_password,
-                                                                    "Token": api_token
-                                                                }
-                                                            });
-                                                            const effectsData = await response.json();
-                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                        if (!discordProfileEffectsCache) {
+                                                            await setDiscordProfileEffectCache();
                                                         }
                                         
                                                         // Find the matching effect
-                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                        const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === item.id);
                                         
                                                         if (matchingEffect) {
                                                             const effectImage = document.createElement("img");
@@ -11235,21 +11269,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         }
                                                     
                                                     
-                                                        // Fetch profile effects API only if not already cached
-                                                        if (!profileEffectsCache) {
-                                                            const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                method: "GET",
-                                                                headers: {
-                                                                    "Password": api_password,
-                                                                    "Token": api_token
-                                                                }
-                                                            });
-                                                            const effectsData = await response.json();
-                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                        if (!discordProfileEffectsCache) {
+                                                            await setDiscordProfileEffectCache();
                                                         }
                                                     
                                                         // Find matching profile effect
-                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                        const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                                     
                                                         if (matchingEffect) {
                                                             const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
@@ -11941,21 +11966,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         }
                                                     
                                                     
-                                                        // Fetch profile effects API only if not already cached
-                                                        if (!profileEffectsCache) {
-                                                            const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                method: "GET",
-                                                                headers: {
-                                                                    "Password": api_password,
-                                                                    "Token": api_token
-                                                                }
-                                                            });
-                                                            const effectsData = await response.json();
-                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                        if (!discordProfileEffectsCache) {
+                                                            await setDiscordProfileEffectCache();
                                                         }
                                                     
                                                         // Find matching profile effect
-                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                        const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
 
                                                         const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                                         const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
@@ -12170,21 +12186,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 } else if (item.type === 1) {
                                                                     // Profile effect
                                                                     (async () => {
-                                                                        // Fetch profile effects if not cached
-                                                                        if (!profileEffectsCache) {
-                                                                            const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                                method: "GET",
-                                                                                headers: {
-                                                                                    "Password": api_password,
-                                                                                    "Token": api_token
-                                                                                }
-                                                                            });
-                                                                            const effectsData = await response.json();
-                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                        if (!discordProfileEffectsCache) {
+                                                                            await setDiscordProfileEffectCache();
                                                                         }
+                                                                        
                                                     
                                                                         // Find the matching effect
-                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                                        const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === item.id);
                                                     
                                                                         if (matchingEffect) {
                                                                             if (matchingEffect.effects && matchingEffect.effects.length > 0) {
@@ -12237,7 +12245,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     // Profile effect
                                                                     (async () => {
                                                                         // Fetch profile effects if not cached
-                                                                        if (!profileEffectsCache) {
+                                                                        if (!discordProfileEffectsCache) {
                                                                             const response = await fetch(api + PROFILE_EFFECTS, {
                                                                                 method: "GET",
                                                                                 headers: {
@@ -12246,11 +12254,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 }
                                                                             });
                                                                             const effectsData = await response.json();
-                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                            discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                                         }
                                                     
                                                                         // Find the matching effect
-                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === item.id);
+                                                                        const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === item.id);
                                                     
                                                                         if (matchingEffect) {
                                                                             const effectImage = document.createElement("img");
@@ -12399,21 +12407,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         }
                                                                     
                                                                     
-                                                                        // Fetch profile effects API only if not already cached
-                                                                        if (!profileEffectsCache) {
-                                                                            const response = await fetch(api + PROFILE_EFFECTS, {
-                                                                                method: "GET",
-                                                                                headers: {
-                                                                                    "Password": api_password,
-                                                                                    "Token": api_token
-                                                                                }
-                                                                            });
-                                                                            const effectsData = await response.json();
-                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                        if (!discordProfileEffectsCache) {
+                                                                            await setDiscordProfileEffectCache();
                                                                         }
                                                                     
                                                                         // Find matching profile effect
-                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                        const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                                                     
                                                                         if (matchingEffect) {
                                                                             if (matchingEffect.effects && matchingEffect.effects.length > 0) {
@@ -12512,7 +12511,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     
                                                                     
                                                                         // Fetch profile effects API only if not already cached
-                                                                        if (!profileEffectsCache) {
+                                                                        if (!discordProfileEffectsCache) {
                                                                             const response = await fetch(api + PROFILE_EFFECTS, {
                                                                                 method: "GET",
                                                                                 headers: {
@@ -12521,11 +12520,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 }
                                                                             });
                                                                             const effectsData = await response.json();
-                                                                            profileEffectsCache = effectsData.profile_effect_configs;
+                                                                            discordProfileEffectsCache = effectsData.profile_effect_configs;
                                                                         }
                                                                     
                                                                         // Find matching profile effect
-                                                                        const matchingEffect = profileEffectsCache.find(effect => effect.id === itemId);
+                                                                        const matchingEffect = discordProfileEffectsCache.find(effect => effect.id === itemId);
                                                                     
                                                                         if (matchingEffect) {
                                                                             const previewHolder = modal.querySelector("[data-modal-preview-holder]");
@@ -13443,12 +13442,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         } else if (params.get("page") === "pplus-home") {
             document.title = `${getTextString("PROFILES_PLUS_FEATURED_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
-                if (localStorage.unreleased_profiles_plus == "true") {
-                    url = api + HOME_PAGE_PPLUS;
-                    apiUrl = new URL(url);
-                    apiUrl.searchParams.set("include-unpublished", "true");
-                } else {
-                    apiUrl = api + HOME_PAGE_PPLUS;
+                url = api + COLLECTIBLES_SHOP;
+                apiUrl = new URL(url);
+                apiUrl.searchParams.append("tab", "pplus-home");
+                if (localStorage.unreleased_discord_collectibles == "true") {
+                    apiUrl.searchParams.append("include-unpublished", "true");
                 }
             } else {
                 apiUrl = api + HOME_PAGE_PPLUS;
@@ -13462,12 +13460,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         } else if (params.get("page") === "pplus") {
             document.title = `${getTextString("PROFILES_PLUS_BROWSE_ALL_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
             if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
-                if (localStorage.unreleased_profiles_plus == "true") {
-                    url = api + PROFILES_PLUS;
-                    apiUrl = new URL(url);
-                    apiUrl.searchParams.set("include-unpublished", "true");
-                } else {
-                    apiUrl = api + PROFILES_PLUS;
+                url = api + COLLECTIBLES_SHOP;
+                apiUrl = new URL(url);
+                apiUrl.searchParams.append("tab", "pplus");
+                if (localStorage.unreleased_discord_collectibles == "true") {
+                    apiUrl.searchParams.append("include-unpublished", "true");
                 }
             } else {
                 apiUrl = api + PROFILES_PLUS;
@@ -16359,6 +16356,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             url = api + "/" + "collectibles-shop";
             testFetchURL = new URL(url);
             testFetchURL.searchParams.append("tab", treatmentPicker.value);
+        } else if (fetcherName === "testfetch_testfetcheffects") {
+            url = api + "/" + "profile-effects";
+            testFetchURL = new URL(url);
+            testFetchURL.searchParams.append("tab", treatmentPicker.value);
         } else {
             url = api + "/" + treatmentPicker.value;
             testFetchURL = new URL(url);
@@ -16976,6 +16977,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             copyNotice.classList.add('copy-notice-container');
             copyNotice.innerHTML = `
                 <p>${getTextString("SHOP_SKU_ID_COPY_SUCCESS")}</p>
+            `;
+                         
+            document.body.appendChild(copyNotice);
+            setTimeout(() => {
+                copyNotice.remove();
+            }, 5000);
+        } else if (type === "copyemoji") {
+            let copyNotice = document.createElement("div");
+
+            copyNotice.classList.add('copy-notice-container');
+            copyNotice.innerHTML = `
+                <p>${getTextString("SHOP_EMOJI_COPY_SUCCESS")}</p>
             `;
                          
             document.body.appendChild(copyNotice);

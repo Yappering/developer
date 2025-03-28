@@ -142,8 +142,7 @@ const experimentsList = [
             "Treatment 2: Enabled",
             "Treatment 3: Hide All Profiles Plus Tabs"
         ],
-        rollout: "Treatment 3: Hide All Profiles Plus Tabs",
-        not_needed: "true"
+        rollout: "Treatment 3: Hide All Profiles Plus Tabs"
     },
     {
         title: "Shop Category Modals",
@@ -330,7 +329,7 @@ const testFetchAPIList = [
         needs_api_token: "true"
     },
     {
-        title: "Test Fetch New API",
+        title: "Test Fetch Collectibles Shop API",
         id: "testfetch_collectibles-shop",
         name: "testfetch_testfetchnew",
         treatments: [
@@ -342,6 +341,18 @@ const testFetchAPIList = [
             "consumables",
             "miscellaneous",
             "pplus-home",
+            "pplus"
+        ],
+        rollout: "none",
+        needs_api_token: "true"
+    },
+    {
+        title: "Test Fetch Profile Effects API",
+        id: "testfetch_profile-effects",
+        name: "testfetch_testfetcheffects",
+        treatments: [
+            "none",
+            "discord",
             "pplus"
         ],
         rollout: "none",
