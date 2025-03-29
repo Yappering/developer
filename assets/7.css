@@ -6,18 +6,18 @@ body {
     font-family: 'gg sans', sans-serif;
     font-family: 'gg sans Normal', sans-serif;
     font-family: 'gg sans Medium', sans-serif;
-    font-family: 'gg sans SemiBold', sans-serif; 
+    font-family: 'gg sans SemiBold', sans-serif;
 }
 
 .gg-sans {
     font-family: 'gg sans', sans-serif;
     font-family: 'gg sans Normal', sans-serif;
     font-family: 'gg sans Medium', sans-serif;
-    font-family: 'gg sans SemiBold', sans-serif;                                   
+    font-family: 'gg sans SemiBold', sans-serif;
 }
 
 .abcgintonord {
-    font-family: "Abcgintonord 800",sans-serif                              
+    font-family: "Abcgintonord 800", sans-serif
 }
 
 .housing {
@@ -98,9 +98,15 @@ body {
     width: 100vw;
     animation: modal-popup-anim1 1s;
 }
+
 @keyframes modal-popup-anim1 {
-    0% {background-color: #00000000;}
-    100% {background-color: #0000006e;}
+    0% {
+        background-color: #00000000;
+    }
+
+    100% {
+        background-color: #0000006e;
+    }
 }
 
 .modal {
@@ -113,9 +119,17 @@ body {
 }
 
 @keyframes modal-popup-anim {
-    0% {scale: 0;}
-    20% {scale: 0;}
-    100% {scale: 1;}
+    0% {
+        scale: 0;
+    }
+
+    20% {
+        scale: 0;
+    }
+
+    100% {
+        scale: 1;
+    }
 }
 
 .modal-lost-found {
@@ -219,9 +233,11 @@ body {
 .dm-button-text-fetching-var-1 {
     width: 100px;
 }
+
 .dm-button-text-fetching-var-2 {
     width: 120px;
 }
+
 .dm-button-text-fetching-var-3 {
     width: 80px;
 }
@@ -238,9 +254,17 @@ body {
 }
 
 @keyframes dm-button-text-fetching-anim {
-    0% {background-color: #B1B5BB;}
-    50% {background-color: #676d75;}
-    100% {background-color: #B1B5BB;}
+    0% {
+        background-color: #B1B5BB;
+    }
+
+    50% {
+        background-color: #676d75;
+    }
+
+    100% {
+        background-color: #B1B5BB;
+    }
 }
 
 .dm-button-text {
@@ -329,6 +353,7 @@ body {
     margin-right: auto;
     margin-bottom: 40px;
 }
+
 .shop-category-banner-loading {
     display: block;
     margin-left: auto;
@@ -344,6 +369,7 @@ body {
     box-shadow: 0 0 0 5px #2B2D31;
     animation: shop-fetching-anim 4s infinite;
 }
+
 .shop-category-card-loading {
     display: inline-block;
     height: 432px;
@@ -356,15 +382,24 @@ body {
     margin-right: 2px;
     animation: shop-fetching-anim 4s infinite;
 }
+
 .shop-category-card-holder-loading {
     display: block;
     text-align: center;
 }
 
 @keyframes shop-fetching-anim {
-    0% {background-color: #2B2D31;}
-    50% {background-color: #1E1F22;}
-    100% {background-color: #2B2D31;}
+    0% {
+        background-color: #2B2D31;
+    }
+
+    50% {
+        background-color: #1E1F22;
+    }
+
+    100% {
+        background-color: #2B2D31;
+    }
 }
 
 .shop-category-banner {
@@ -410,12 +445,12 @@ body {
 
 .shop-category-text-holder {
     position: absolute;
-    z-index: 1; /* Ensure the text is above the banner */
-    margin-top: 180px; /* Space between the logo and the text */
+    z-index: 1;
+    /* Ensure the text is above the banner */
+    margin-top: 180px;
+    /* Space between the logo and the text */
     text-align: center;
 }
-
-
 
 
 
@@ -430,9 +465,12 @@ body {
     transition: transform 0.5s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
-    height: 440px; /* Fixed height for the entire card */
-    overflow: hidden; /* Prevents content from overflowing */
-    position: relative; /* Allows positioning of the card bottom */
+    height: 440px;
+    /* Fixed height for the entire card */
+    overflow: hidden;
+    /* Prevents content from overflowing */
+    position: relative;
+    /* Allows positioning of the card bottom */
     border: 2px solid #1E1F22;
 }
 
@@ -447,7 +485,8 @@ body {
     display: flex;
     gap: 15px;
     margin-top: 15px;
-    flex: 1; /* Allows bundle-items to take up available space */
+    flex: 1;
+    /* Allows bundle-items to take up available space */
 }
 
 /* Individual Bundled Item */
@@ -459,14 +498,19 @@ body {
 
 
 .bundled-item:has([class="effect"]) img {
-    width: 100px; /* Adjust width as needed */
-    height: 150px; /* Adjust height as needed */
+    width: 100px;
+    /* Adjust width as needed */
+    height: 150px;
+    /* Adjust height as needed */
     object-fit: cover;
     object-position: top;
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/352db5d6852138aabc88.png');
-    background-size: cover; /* Ensures the background image covers the whole element */
-    background-position: top; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: cover;
+    /* Ensures the background image covers the whole element */
+    background-position: top;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     border-radius: 10px;
     pointer-events: none;
 }
@@ -480,13 +524,18 @@ body {
 }
 
 .bundled-item:has([class="deco"]) img {
-    width: 100px; /* Adjust width as needed */
-    height: 100px; /* Adjust height as needed */
+    width: 100px;
+    /* Adjust width as needed */
+    height: 100px;
+    /* Adjust height as needed */
     object-fit: cover;
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/ff84fa219ab7e996ec26.png');
-    background-size: 80%; /* Ensures the background image covers the whole element */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: 80%;
+    /* Ensures the background image covers the whole element */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     border-radius: 10px;
     pointer-events: none;
 }
@@ -529,8 +578,10 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 150px; /* Fixed height for the card bottom */
-    box-sizing: border-box; /* Includes padding in height calculation */
+    height: 150px;
+    /* Fixed height for the card bottom */
+    box-sizing: border-box;
+    /* Includes padding in height calculation */
     backdrop-filter: blur(50px);
 }
 
@@ -551,9 +602,12 @@ body {
 /* Deco Card Image */
 .deco-card img {
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/6d8f0708e196aaad2550.png');
-    background-size: 80%; /* Ensures the background image covers the whole element */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: 80%;
+    /* Ensures the background image covers the whole element */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     scale: 0.75;
     border-radius: 15px;
 }
@@ -565,9 +619,12 @@ body {
 
 .effect-card {
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/352db5d6852138aabc88.png');
-    background-size: cover; /* Ensures the background image covers the whole element */
-    background-position: top; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: cover;
+    /* Ensures the background image covers the whole element */
+    background-position: top;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
 }
 
 .effect-card .card-bottom {
@@ -579,10 +636,14 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
-    justify-content: center; /* Center the grid horizontally */
-    max-width: 1200px; /* Limit the width of the card holder */
-    margin: 0 auto; /* Center the card holder container */
-    padding: 20px 0; /* Add some space between the banner and cards */
+    justify-content: center;
+    /* Center the grid horizontally */
+    max-width: 1200px;
+    /* Limit the width of the card holder */
+    margin: 0 auto;
+    /* Center the card holder container */
+    padding: 20px 0;
+    /* Add some space between the banner and cards */
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -603,30 +664,39 @@ body {
 }
 
 .card-bottom {
-    transition: opacity 0.3s ease; /* Smooth fade transition */
+    transition: opacity 0.3s ease;
+    /* Smooth fade transition */
 }
 
 .card-bottom p {
     margin: 0;
-    transition: opacity 0.3s ease; /* Smooth fade transition */
+    transition: opacity 0.3s ease;
+    /* Smooth fade transition */
 }
 
 .card-button-container {
     position: absolute;
-    bottom: 10px; /* Adjust based on your design */
+    bottom: 10px;
+    /* Adjust based on your design */
     left: 50%;
-    transform: translateX(-50%) translateY(20px); /* Start off-screen */
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth fade and slide transition */
-    text-align: center; /* Center buttons horizontally */
+    transform: translateX(-50%) translateY(20px);
+    /* Start off-screen */
+    opacity: 0;
+    /* Initially hidden */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    /* Smooth fade and slide transition */
+    text-align: center;
+    /* Center buttons horizontally */
     width: 90%;
 }
 
 .card-button {
     display: block;
-    margin: 5px 0; /* Space between buttons */
+    margin: 5px 0;
+    /* Space between buttons */
     padding: 10px 20px;
-    background-color: #615DED; /* Adjust based on your design */
+    background-color: #615DED;
+    /* Adjust based on your design */
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -646,32 +716,32 @@ body {
 }
 
 .shop-category-card:hover .card-button-container {
-    opacity: 1; /* Fade in */
-    transform: translateX(-50%) translateY(0); /* Slide up to final position */
+    opacity: 1;
+    /* Fade in */
+    transform: translateX(-50%) translateY(0);
+    /* Slide up to final position */
 }
 
 .shop-category-card:hover .shop-card-summary {
-    opacity: 0; /* Fade out description */
+    opacity: 0;
+    /* Fade out description */
 }
 
 
 .shop-price-container {
     position: absolute;
-    bottom: 10px; /* Adjust based on your design */
+    bottom: 10px;
+    /* Adjust based on your design */
     width: 90%;
-    opacity: 1; /* Fade in */
+    opacity: 1;
+    /* Fade in */
     transition: opacity 0.5s ease;
 }
 
 .shop-category-card:hover .shop-price-container {
-    opacity: 0; /* Fade out description */
+    opacity: 0;
+    /* Fade out description */
 }
-
-
-
-
-
-
 
 
 
@@ -714,27 +784,35 @@ body {
 }
 
 @keyframes shop-banner-logo-rotate {
-    0% {rotate: -3deg;}
-    50% {rotate: 3deg;}
-    100% {rotate: -3deg;}
+    0% {
+        rotate: -3deg;
+    }
+
+    50% {
+        rotate: 3deg;
+    }
+
+    100% {
+        rotate: -3deg;
+    }
 }
 
 /* width */
 ::-webkit-scrollbar {
     width: 5px;
 }
-  
+
 /* Track */
 ::-webkit-scrollbar-track {
     background: none;
 }
-  
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #1E1F22;
     border-radius: 10px;
 }
-  
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #1E1F22;

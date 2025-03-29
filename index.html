@@ -51,13 +51,13 @@
     <div class="options-sidebar-container" id="options-sidebar-container">
     </div>
 
-    
+
     <script src="/assets/10.js"></script>
     <script src="/assets/23.js"></script>
     <script src="/assets/19.js"></script>
     <script>
         if (localStorage.full_client_rework === "false") {
-            location.href='/home';
+            location.href = '/home';
         } else {
             let clickCount = 0;
 
@@ -72,6 +72,49 @@
                     }
                 }
             });
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const isShopPage = window.location.pathname.includes('/index.html') &&
+                window.location.search.includes('page=shop');
+
+            const searchBar = document.getElementById('shopSearch');
+
+            if (searchBar) {
+                if (!isShopPage) {
+                    searchBar.style.display = 'none';
+                } else {
+                    searchBar.style.display = '';
+                    searchBar.addEventListener('input', searchItems);
+                }
+            }
+        });
+
+        let debounceTimer;
+
+        function searchItems() {
+            clearTimeout(debounceTimer);
+
+            debounceTimer = setTimeout(() => {
+                let input = document.getElementById('shopSearch').value.toLowerCase().trim();
+                let items = document.querySelectorAll('.shop-category-card');
+
+                if (input === '') {
+                    items.forEach(item => {
+                        item.style.display = '';
+                    });
+                    return;
+                }
+
+                let pattern = '\\b' + input + '\\b';
+                let regex = new RegExp(pattern, 'i');
+
+                items.forEach(item => {
+                    let text = item.innerText.toLowerCase();
+                    item.style.display = regex.test(text) ? '' : 'none';
+                });
+            }, 300);
         }
     </script>
 </body>
