@@ -1,6 +1,6 @@
 
 
-app_version1 = "300"
+app_version1 = "301"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -3711,21 +3711,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             <div class="modalv2-inner">
                                                                 <div class="modalv2-inner-left">
                                                                     <div data-modal-left-preview-holder></div>
-                                                                    <p data-product-modal-sku-id></p>
-                                                                    <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
-                                                                    <p style="color: var(--8)" data-product-modal-summary></p>
+                                                                    <p class="shop-modal-product-sku-id" data-product-modal-sku-id></p>
+                                                                    <p class="shop-modal-product-name" style="font-size: large; font-weight: 900;" data-product-modal-name></p>
+                                                                    <p class="shop-modal-product-summary" style="color: var(--8)" data-product-modal-summary></p>
                                                                     <div class="shop-modal-var-container-container" data-shop-modal-var-container-container>
                                                                         <div class="shop-modal-var-container" data-shop-modal-var-container></div>
                                                                         <a class="shop-modal-var-title" data-shop-modal-var-title></a>
                                                                     </div>
-                                                                    <div class="modal-shop-price-container" data-shop-price-container>
-                                                                        <div data-price-standard-container>
-                                                                            <a style="font-size: large; font-weight: 900;" data-price-standard></a>
-                                                                        </div>
-                                                                        <div data-price-nitro-container>
-                                                                            <a data-price-nitro></a>
-                                                                        </div>
-                                                                    </div>
+                                                                    <div class="modal-shop-price-container" data-shop-price-container></div>
                                                                     <div class="modal-left-bottom">
                                                                         <div class="modal-buttons" data-modal-buttons></div>
                                                                     </div>
@@ -4638,6 +4631,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     });
                     
                                                                     if (priceStandard != "N/A" && priceOrb != "N/A") {
+    
+                                                                        let nitro_price = document.createElement("div");
+                                                                
+                                                                        nitro_price.innerHTML = `
+                                                                            <a style="font-size: large; font-weight: 900; margin-left: 23px">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                            <div class="nitro-icon" style="margin-left: -5px"></div>
+                                                                        `;
+                                                                        nitro_price.style.position = `absolute`;
+                                                                        nitro_price.style.left = `0px`;
+                                                                        
+                                                                        priceContainer.appendChild(nitro_price);
+    
                                                                         let orb_price = document.createElement("div");
                                                                 
                                                                         orb_price.innerHTML = `
@@ -4645,25 +4650,22 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <div class="orb-icon" style="margin-left: -25px"></div>
                                                                         `;
                                                                         orb_price.style.position = `absolute`;
-                                                                        orb_price.style.right = `-15px`;
+                                                                        orb_price.style.right = `20px`;
                                                                         
                                                                         priceContainer.appendChild(orb_price);
                     
-                                                                        standardPriceOutput = `US$${(priceStandard / 100).toFixed(2)}`;
-                
-                                                                        priceContainerStandard.innerHTML = `
-                                                                            <a style="font-size: large; font-weight: 900; margin-left: 23px">${standardPriceOutput}</a>
-                                                                            <div class="nitro-icon" style="margin-left: -5px"></div>
-                                                                        `;
-                    
                                                                     } else if (priceStandard != "N/A") {
                     
-                                                                        standardPriceOutput = `US$${(priceStandard / 100).toFixed(2)}`;
-                
-                                                                        priceContainerStandard.innerHTML = `
-                                                                            <a style="font-size: large; font-weight: 900; margin-left: 23px">${standardPriceOutput}</a>
+                                                                        let nitro_price = document.createElement("div");
+                                                                
+                                                                        nitro_price.innerHTML = `
+                                                                            <a style="font-size: large; font-weight: 900; margin-left: 23px">US$${(priceStandard / 100).toFixed(2)}</a>
                                                                             <div class="nitro-icon" style="margin-left: -5px"></div>
                                                                         `;
+                                                                        nitro_price.style.position = `absolute`;
+                                                                        nitro_price.style.left = `0px`;
+                                                                        
+                                                                        priceContainer.appendChild(nitro_price);
                     
                                                                     } else if (priceOrb != "N/A") {
                     
@@ -4674,11 +4676,81 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <div class="orb-icon" style="margin-left: -25px"></div>
                                                                         `;
                                                                         orb_price.style.position = `absolute`;
-                                                                        orb_price.style.left = `18px`;
+                                                                        orb_price.style.left = `23px`;
                                                                         
                                                                         priceContainer.appendChild(orb_price);
                     
-                                                                        card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                        modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                            <div class="unplublished-tag">
+                                                                                <p class="unplublished-tag-text">${getTextString("CARD_ORB_EXCLUSIVE_TAG")}</p>
+                                                                            </div>
+                                                                        `;
+                                                                        
+                                                                    }
+                                                                }
+                                                                if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
+                                                                    product.prices["0"].country_prices.prices.forEach(price => {
+                                                                        if (price.currency === "usd") {
+                                                                            priceStandard = price.amount;
+                                                                        }
+                                                                        if (price.currency === "discord_orb") {
+                                                                            priceOrb = price.amount;
+                                                                        }
+                                                                    });
+                    
+                                                                    if (priceStandard != "N/A" && priceOrb != "N/A") {
+    
+                                                                        let standard_price = document.createElement("div");
+                                                                
+                                                                        standard_price.innerHTML = `
+                                                                            <a class="modal-standard-price-crossed">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                        `;
+                                                                        standard_price.style.position = `absolute`;
+                                                                        standard_price.style.left = `0px`;
+                                                                        standard_price.style.marginTop = `30px`;
+                                                                        
+                                                                        priceContainer.appendChild(standard_price);
+    
+                                                                        let orb_standard_price = document.createElement("div");
+                                                                
+                                                                        orb_standard_price.innerHTML = `
+                                                                            <a class="modal-standard-price-crossed">${priceOrb}</a>
+                                                                            <div class="orb-icon-crossed" style="margin-left: -23px"></div>
+                                                                        `;
+                                                                        orb_standard_price.style.position = `absolute`;
+                                                                        orb_standard_price.style.right = `20px`;
+                                                                        orb_standard_price.style.marginTop = `30px`;
+                                                                        
+                                                                        priceContainer.appendChild(orb_standard_price);
+                    
+                                                                    } else if (priceStandard != "N/A") {
+                    
+                                                                        let standard_price = document.createElement("div");
+                                                                
+                                                                        standard_price.innerHTML = `
+                                                                            <a class="modal-standard-price-crossed">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                        `;
+                                                                        standard_price.style.position = `absolute`;
+                                                                        standard_price.style.left = `0px`;
+                                                                        standard_price.style.marginTop = `30px`;
+                                                                        
+                                                                        priceContainer.appendChild(standard_price);
+                    
+                                                                    } else if (priceOrb != "N/A") {
+                    
+                                                                        let orb_standard_price = document.createElement("div");
+                                                                
+                                                                        orb_standard_price.innerHTML = `
+                                                                            <a class="modal-standard-price-crossed">${priceOrb}</a>
+                                                                            <div class="orb-icon-crossed" style="margin-left: -24px"></div>
+                                                                        `;
+                                                                        orb_standard_price.style.position = `absolute`;
+                                                                        orb_standard_price.style.left = `23px`;
+                                                                        orb_standard_price.style.marginTop = `30px`;
+                                                                        
+                                                                        priceContainer.appendChild(orb_standard_price);
+                    
+                                                                        modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                                             <div class="unplublished-tag">
                                                                                 <p class="unplublished-tag-text">${getTextString("CARD_ORB_EXCLUSIVE_TAG")}</p>
                                                                             </div>
@@ -4698,6 +4770,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     });
                     
                                                                     if (priceStandard != "N/A" && priceOrb != "N/A") {
+    
+                                                                        let standard_price = document.createElement("div");
+                                                                
+                                                                        standard_price.innerHTML = `
+                                                                            <a style="font-size: large; font-weight: 900;">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                        `;
+                                                                        standard_price.style.position = `absolute`;
+                                                                        standard_price.style.left = `0px`;
+                                                                        
+                                                                        priceContainer.appendChild(standard_price);
+    
                                                                         let orb_price = document.createElement("div");
                                                                 
                                                                         orb_price.innerHTML = `
@@ -4705,15 +4788,21 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <div class="orb-icon" style="margin-left: -25px"></div>
                                                                         `;
                                                                         orb_price.style.position = `absolute`;
-                                                                        orb_price.style.right = `-15px`;
+                                                                        orb_price.style.right = `20px`;
                                                                         
                                                                         priceContainer.appendChild(orb_price);
                     
-                                                                        priceTextStandard.textContent = `US$${(priceStandard / 100).toFixed(2)}`;
-                    
                                                                     } else if (priceStandard != "N/A") {
                     
-                                                                        priceTextStandard.textContent = `US$${(priceStandard / 100).toFixed(2)}`;
+                                                                        let nitro_price = document.createElement("div");
+                                                                
+                                                                        nitro_price.innerHTML = `
+                                                                            <a style="font-size: large; font-weight: 900;">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                        `;
+                                                                        nitro_price.style.position = `absolute`;
+                                                                        nitro_price.style.left = `0px`;
+                                                                        
+                                                                        priceContainer.appendChild(nitro_price);
                     
                                                                     } else if (priceOrb != "N/A") {
                     
@@ -4724,11 +4813,83 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <div class="orb-icon" style="margin-left: -25px"></div>
                                                                         `;
                                                                         orb_price.style.position = `absolute`;
-                                                                        orb_price.style.left = `18px`;
+                                                                        orb_price.style.left = `23px`;
                                                                         
                                                                         priceContainer.appendChild(orb_price);
                     
-                                                                        card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                        modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                            <div class="unplublished-tag">
+                                                                                <p class="unplublished-tag-text">${getTextString("CARD_ORB_EXCLUSIVE_TAG")}</p>
+                                                                            </div>
+                                                                        `;
+                                                                        
+                                                                    }
+                                                                }
+                                                                if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
+                                                                    product.prices["4"].country_prices.prices.forEach(price => {
+                                                                        if (price.currency === "usd") {
+                                                                            priceStandard = price.amount;
+                                                                        }
+                                                                        if (price.currency === "discord_orb") {
+                                                                            priceOrb = price.amount;
+                                                                        }
+                                                                    });
+                    
+                                                                    if (priceStandard != "N/A" && priceOrb != "N/A") {
+    
+                                                                        let standard_price = document.createElement("div");
+                                                                
+                                                                        standard_price.innerHTML = `
+                                                                            <a class="modal-standard-price-crossed" style="margin-left: 21px;">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                            <div class="nitro-icon-crossed" style="margin-left: -3px"></div>
+                                                                        `;
+                                                                        standard_price.style.position = `absolute`;
+                                                                        standard_price.style.left = `0px`;
+                                                                        standard_price.style.marginTop = `30px`;
+                                                                        
+                                                                        priceContainer.appendChild(standard_price);
+    
+                                                                        let orb_standard_price = document.createElement("div");
+                                                                
+                                                                        orb_standard_price.innerHTML = `
+                                                                            <a class="modal-standard-price-crossed">${priceOrb}</a>
+                                                                            <div class="orb-icon-crossed" style="margin-left: -23px"></div>
+                                                                        `;
+                                                                        orb_standard_price.style.position = `absolute`;
+                                                                        orb_standard_price.style.right = `20px`;
+                                                                        orb_standard_price.style.marginTop = `30px`;
+                                                                        
+                                                                        priceContainer.appendChild(orb_standard_price);
+                    
+                                                                    } else if (priceStandard != "N/A") {
+                    
+                                                                        let standard_price = document.createElement("div");
+                                                                
+                                                                        standard_price.innerHTML = `
+                                                                            <a class="modal-standard-price-crossed" style="margin-left: 21px;">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                            <div class="nitro-icon-crossed" style="margin-left: -3px"></div>
+                                                                        `;
+                                                                        standard_price.style.position = `absolute`;
+                                                                        standard_price.style.left = `0px`;
+                                                                        standard_price.style.marginTop = `30px`;
+                                                                        
+                                                                        priceContainer.appendChild(standard_price);
+                    
+                                                                    } else if (priceOrb != "N/A") {
+                    
+                                                                        let orb_standard_price = document.createElement("div");
+                                                                
+                                                                        orb_standard_price.innerHTML = `
+                                                                            <a class="modal-standard-price-crossed">${priceOrb}</a>
+                                                                            <div class="orb-icon-crossed" style="margin-left: -24px"></div>
+                                                                        `;
+                                                                        orb_standard_price.style.position = `absolute`;
+                                                                        orb_standard_price.style.left = `23px`;
+                                                                        orb_standard_price.style.marginTop = `30px`;
+                                                                        
+                                                                        priceContainer.appendChild(orb_standard_price);
+                    
+                                                                        modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                                             <div class="unplublished-tag">
                                                                                 <p class="unplublished-tag-text">${getTextString("CARD_ORB_EXCLUSIVE_TAG")}</p>
                                                                             </div>
@@ -4762,26 +4923,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             if (priceTextNitro) {
                                                                 priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "null";
                                                             }
-                                                        }
-    
-                                                        if (priceTextStandard.textContent === "null" && priceTextNitro.textContent === "null") {
-                                                            let error_warning = document.createElement("div");
-    
-                                                            error_warning.classList.add('invalid_currency_warning');
-                                                            error_warning.innerHTML = `
-                                                                <p>This item does not support this currency!</p>
-                                                            `;
-                                                                        
-                                                            priceContainer.appendChild(error_warning);
-                                                        } else if (priceTextStandard.textContent === "null" || priceTextNitro.textContent === "null") {
-                                                            let error_warning = document.createElement("div");
-    
-                                                            error_warning.classList.add('invalid_currency_warning');
-                                                            error_warning.innerHTML = `
-                                                                <p>This item does not fully support this currency!</p>
-                                                            `;
-                                                                        
-                                                            priceContainer.appendChild(error_warning);
                                                         }
     
     
@@ -6478,7 +6619,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToGoogle()`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToLink('https://discord.gg/Mcwh7hGcWb')`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
                                                             `;
                                                         } else {
                                                             button_container.innerHTML = `
@@ -6488,7 +6629,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToGoogle()`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToLink('https://discord.gg/Mcwh7hGcWb')`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
                                                             `;
                                                             modal.querySelector("[data-download-product-card-button]").innerHTML = `
                                                                 <svg class="downloadIcon_modal" onclick="window.open('https://item.yapper.shop/sku/${product.sku_id}/data.zip');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
@@ -8209,36 +8350,28 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         <div class="modalv2-inner">
                                                             <div class="modalv2-inner-left">
                                                                 <div data-modal-left-preview-holder></div>
-                                                                <p data-product-modal-sku-id></p>
-                                                                <p data-product-modal-credits></p>
-                                                                <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
-                                                                <p style="color: var(--8)" data-product-modal-summary></p>
+                                                                <p class="shop-modal-product-sku-id" data-product-modal-sku-id></p>
+                                                                <p class="shop-modal-product-credits" data-product-modal-credits></p>
+                                                                <p class="shop-modal-product-name" style="font-size: large; font-weight: 900;" data-product-modal-name></p>
+                                                                <p class="shop-modal-product-summary" style="color: var(--8)" data-product-modal-summary></p>
                                                                 <div class="shop-modal-var-container-container" data-shop-modal-var-container-container>
                                                                     <div class="shop-modal-var-container" data-shop-modal-var-container></div>
                                                                     <a class="shop-modal-var-title" data-shop-modal-var-title></a>
                                                                 </div>
-                                                                <div class="modal-shop-price-container" data-shop-price-container>
-                                                                    <div data-price-standard-container>
-                                                                        <a style="font-size: large; font-weight: 900;" data-price-standard></a>
-                                                                    </div>
-                                                                    <div data-price-nitro-container>
-                                                                        <a data-price-nitro></a>
-                                                                    </div>
-                                                                </div>
+                                                                <div class="modal-shop-price-container" data-shop-price-container></div>
                                                                 <div class="modal-left-bottom">
                                                                     <div class="modal-buttons" data-modal-buttons></div>
                                                                 </div>
                                                             </div>
-                                                            <img class="modalv2-inner-logo" src="https://cdn.yapper.shop/assets/${apiCategory.logo}.png"></img>
+                                                            <img class="modalv2-inner-logo" src="https://cdn.yapper.shop/assets/${apiCategory.logo}.png" data-modalv2-inner-logo></img>
                                                             <div class="shop-modal-tag-container" data-shop-card-tag-container></div>
-
+    
                                                             <div data-modal-top-product-buttons>
                                                                 <div title="Close" data-close-product-card-button>
                                                                     <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
                                                                 </div>
-                                                                <div title="Download Data" data-download-product-card-button></div>
                                                             </div>
-
+    
                                                             <div id="modalv2-inner-right" class="modalv2-inner-right">
                                                                 <img class="modalv2-inner-img" src="https://cdn.yapper.shop/assets/${pdp}.png"></img>
                                                                 <div data-modal-preview-holder></div>
@@ -8943,7 +9076,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToGoogle()`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToLink('https://discord.gg/Mcwh7hGcWb')`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
                                                             `;
                                                         } else {
                                                             button_container.innerHTML = `
@@ -8953,7 +9086,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToGoogle()`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToLink('https://discord.gg/Mcwh7hGcWb')`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
                                                             `;
                                                             modal.querySelector("[data-download-product-card-button]").innerHTML = `
                                                                 <svg class="downloadIcon_modal" onclick="window.open('https://item.yapper.shop/sku/${product.sku_id}/data.zip');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
@@ -9620,9 +9753,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         modal.innerHTML = `
                                             <div class="modalv2-inner">
                                                 <div class="modalv2-inner-left">
-                                                    <p data-product-modal-sku-id></p>
-                                                    <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
-                                                    <p style="color: var(--8)" data-product-modal-summary></p>
+                                                    <p class="shop-modal-product-sku-id" data-product-modal-sku-id></p>
+                                                    <p class="shop-modal-product-name" style="font-size: large; font-weight: 900;" data-product-modal-name></p>
+                                                    <p class="shop-modal-product-summary" style="color: var(--8)" data-product-modal-summary></p>
                                                     <div class="modal-shop-price-container" data-shop-price-container>
                                                         <div data-price-standard-container>
                                                             <a style="font-size: large; font-weight: 900;" data-price-standard></a>
@@ -11733,21 +11866,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         <div class="modalv2-inner">
                                                             <div class="modalv2-inner-left">
                                                                 <div data-modal-left-preview-holder></div>
-                                                                <p data-product-modal-sku-id></p>
-                                                                <p style="font-size: large; font-weight: 900;" data-product-modal-name></p>
-                                                                <p style="color: var(--8)" data-product-modal-summary></p>
+                                                                <p class="shop-modal-product-sku-id" data-product-modal-sku-id></p>
+                                                                <p class="shop-modal-product-name" style="font-size: large; font-weight: 900;" data-product-modal-name></p>
+                                                                <p class="shop-modal-product-summary" style="color: var(--8)" data-product-modal-summary></p>
                                                                 <div class="shop-modal-var-container-container" data-shop-modal-var-container-container>
                                                                     <div class="shop-modal-var-container" data-shop-modal-var-container></div>
                                                                     <a class="shop-modal-var-title" data-shop-modal-var-title></a>
                                                                 </div>
-                                                                <div class="modal-shop-price-container" data-shop-price-container>
-                                                                    <div data-price-standard-container>
-                                                                        <a style="font-size: large; font-weight: 900;" data-price-standard></a>
-                                                                    </div>
-                                                                    <div data-price-nitro-container>
-                                                                        <a data-price-nitro></a>
-                                                                    </div>
-                                                                </div>
+                                                                <div class="modal-shop-price-container" data-shop-price-container></div>
                                                                 <div class="modal-left-bottom">
                                                                     <div class="modal-buttons" data-modal-buttons></div>
                                                                 </div>
@@ -12660,6 +12786,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 });
                 
                                                                 if (priceStandard != "N/A" && priceOrb != "N/A") {
+
+                                                                    let nitro_price = document.createElement("div");
+                                                            
+                                                                    nitro_price.innerHTML = `
+                                                                        <a style="font-size: large; font-weight: 900; margin-left: 23px">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                        <div class="nitro-icon" style="margin-left: -5px"></div>
+                                                                    `;
+                                                                    nitro_price.style.position = `absolute`;
+                                                                    nitro_price.style.left = `0px`;
+                                                                    
+                                                                    priceContainer.appendChild(nitro_price);
+
                                                                     let orb_price = document.createElement("div");
                                                             
                                                                     orb_price.innerHTML = `
@@ -12667,25 +12805,22 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div class="orb-icon" style="margin-left: -25px"></div>
                                                                     `;
                                                                     orb_price.style.position = `absolute`;
-                                                                    orb_price.style.right = `-15px`;
+                                                                    orb_price.style.right = `20px`;
                                                                     
                                                                     priceContainer.appendChild(orb_price);
                 
-                                                                    standardPriceOutput = `US$${(priceStandard / 100).toFixed(2)}`;
-            
-                                                                    priceContainerStandard.innerHTML = `
-                                                                        <a style="font-size: large; font-weight: 900; margin-left: 23px">${standardPriceOutput}</a>
-                                                                        <div class="nitro-icon" style="margin-left: -5px"></div>
-                                                                    `;
-                
                                                                 } else if (priceStandard != "N/A") {
                 
-                                                                    standardPriceOutput = `US$${(priceStandard / 100).toFixed(2)}`;
-            
-                                                                    priceContainerStandard.innerHTML = `
-                                                                        <a style="font-size: large; font-weight: 900; margin-left: 23px">${standardPriceOutput}</a>
+                                                                    let nitro_price = document.createElement("div");
+                                                            
+                                                                    nitro_price.innerHTML = `
+                                                                        <a style="font-size: large; font-weight: 900; margin-left: 23px">US$${(priceStandard / 100).toFixed(2)}</a>
                                                                         <div class="nitro-icon" style="margin-left: -5px"></div>
                                                                     `;
+                                                                    nitro_price.style.position = `absolute`;
+                                                                    nitro_price.style.left = `0px`;
+                                                                    
+                                                                    priceContainer.appendChild(nitro_price);
                 
                                                                 } else if (priceOrb != "N/A") {
                 
@@ -12696,11 +12831,81 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div class="orb-icon" style="margin-left: -25px"></div>
                                                                     `;
                                                                     orb_price.style.position = `absolute`;
-                                                                    orb_price.style.left = `18px`;
+                                                                    orb_price.style.left = `23px`;
                                                                     
                                                                     priceContainer.appendChild(orb_price);
                 
-                                                                    card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                    modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                        <div class="unplublished-tag">
+                                                                            <p class="unplublished-tag-text">${getTextString("CARD_ORB_EXCLUSIVE_TAG")}</p>
+                                                                        </div>
+                                                                    `;
+                                                                    
+                                                                }
+                                                            }
+                                                            if (product.prices && product.prices["0"] && product.prices["0"].country_prices && product.prices["0"].country_prices.prices) {
+                                                                product.prices["0"].country_prices.prices.forEach(price => {
+                                                                    if (price.currency === "usd") {
+                                                                        priceStandard = price.amount;
+                                                                    }
+                                                                    if (price.currency === "discord_orb") {
+                                                                        priceOrb = price.amount;
+                                                                    }
+                                                                });
+                
+                                                                if (priceStandard != "N/A" && priceOrb != "N/A") {
+
+                                                                    let standard_price = document.createElement("div");
+                                                            
+                                                                    standard_price.innerHTML = `
+                                                                        <a class="modal-standard-price-crossed">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                    `;
+                                                                    standard_price.style.position = `absolute`;
+                                                                    standard_price.style.left = `0px`;
+                                                                    standard_price.style.marginTop = `30px`;
+                                                                    
+                                                                    priceContainer.appendChild(standard_price);
+
+                                                                    let orb_standard_price = document.createElement("div");
+                                                            
+                                                                    orb_standard_price.innerHTML = `
+                                                                        <a class="modal-standard-price-crossed">${priceOrb}</a>
+                                                                        <div class="orb-icon-crossed" style="margin-left: -23px"></div>
+                                                                    `;
+                                                                    orb_standard_price.style.position = `absolute`;
+                                                                    orb_standard_price.style.right = `20px`;
+                                                                    orb_standard_price.style.marginTop = `30px`;
+                                                                    
+                                                                    priceContainer.appendChild(orb_standard_price);
+                
+                                                                } else if (priceStandard != "N/A") {
+                
+                                                                    let standard_price = document.createElement("div");
+                                                            
+                                                                    standard_price.innerHTML = `
+                                                                        <a class="modal-standard-price-crossed">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                    `;
+                                                                    standard_price.style.position = `absolute`;
+                                                                    standard_price.style.left = `0px`;
+                                                                    standard_price.style.marginTop = `30px`;
+                                                                    
+                                                                    priceContainer.appendChild(standard_price);
+                
+                                                                } else if (priceOrb != "N/A") {
+                
+                                                                    let orb_standard_price = document.createElement("div");
+                                                            
+                                                                    orb_standard_price.innerHTML = `
+                                                                        <a class="modal-standard-price-crossed">${priceOrb}</a>
+                                                                        <div class="orb-icon-crossed" style="margin-left: -24px"></div>
+                                                                    `;
+                                                                    orb_standard_price.style.position = `absolute`;
+                                                                    orb_standard_price.style.left = `23px`;
+                                                                    orb_standard_price.style.marginTop = `30px`;
+                                                                    
+                                                                    priceContainer.appendChild(orb_standard_price);
+                
+                                                                    modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                                         <div class="unplublished-tag">
                                                                             <p class="unplublished-tag-text">${getTextString("CARD_ORB_EXCLUSIVE_TAG")}</p>
                                                                         </div>
@@ -12720,6 +12925,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 });
                 
                                                                 if (priceStandard != "N/A" && priceOrb != "N/A") {
+
+                                                                    let standard_price = document.createElement("div");
+                                                            
+                                                                    standard_price.innerHTML = `
+                                                                        <a style="font-size: large; font-weight: 900;">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                    `;
+                                                                    standard_price.style.position = `absolute`;
+                                                                    standard_price.style.left = `0px`;
+                                                                    
+                                                                    priceContainer.appendChild(standard_price);
+
                                                                     let orb_price = document.createElement("div");
                                                             
                                                                     orb_price.innerHTML = `
@@ -12727,15 +12943,21 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div class="orb-icon" style="margin-left: -25px"></div>
                                                                     `;
                                                                     orb_price.style.position = `absolute`;
-                                                                    orb_price.style.right = `-15px`;
+                                                                    orb_price.style.right = `20px`;
                                                                     
                                                                     priceContainer.appendChild(orb_price);
                 
-                                                                    priceTextStandard.textContent = `US$${(priceStandard / 100).toFixed(2)}`;
-                
                                                                 } else if (priceStandard != "N/A") {
                 
-                                                                    priceTextStandard.textContent = `US$${(priceStandard / 100).toFixed(2)}`;
+                                                                    let nitro_price = document.createElement("div");
+                                                            
+                                                                    nitro_price.innerHTML = `
+                                                                        <a style="font-size: large; font-weight: 900;">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                    `;
+                                                                    nitro_price.style.position = `absolute`;
+                                                                    nitro_price.style.left = `0px`;
+                                                                    
+                                                                    priceContainer.appendChild(nitro_price);
                 
                                                                 } else if (priceOrb != "N/A") {
                 
@@ -12746,11 +12968,83 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div class="orb-icon" style="margin-left: -25px"></div>
                                                                     `;
                                                                     orb_price.style.position = `absolute`;
-                                                                    orb_price.style.left = `18px`;
+                                                                    orb_price.style.left = `23px`;
                                                                     
                                                                     priceContainer.appendChild(orb_price);
                 
-                                                                    card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                    modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                                        <div class="unplublished-tag">
+                                                                            <p class="unplublished-tag-text">${getTextString("CARD_ORB_EXCLUSIVE_TAG")}</p>
+                                                                        </div>
+                                                                    `;
+                                                                    
+                                                                }
+                                                            }
+                                                            if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
+                                                                product.prices["4"].country_prices.prices.forEach(price => {
+                                                                    if (price.currency === "usd") {
+                                                                        priceStandard = price.amount;
+                                                                    }
+                                                                    if (price.currency === "discord_orb") {
+                                                                        priceOrb = price.amount;
+                                                                    }
+                                                                });
+                
+                                                                if (priceStandard != "N/A" && priceOrb != "N/A") {
+
+                                                                    let standard_price = document.createElement("div");
+                                                            
+                                                                    standard_price.innerHTML = `
+                                                                        <a class="modal-standard-price-crossed" style="margin-left: 21px;">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                        <div class="nitro-icon-crossed" style="margin-left: -3px"></div>
+                                                                    `;
+                                                                    standard_price.style.position = `absolute`;
+                                                                    standard_price.style.left = `0px`;
+                                                                    standard_price.style.marginTop = `30px`;
+                                                                    
+                                                                    priceContainer.appendChild(standard_price);
+
+                                                                    let orb_standard_price = document.createElement("div");
+                                                            
+                                                                    orb_standard_price.innerHTML = `
+                                                                        <a class="modal-standard-price-crossed">${priceOrb}</a>
+                                                                        <div class="orb-icon-crossed" style="margin-left: -23px"></div>
+                                                                    `;
+                                                                    orb_standard_price.style.position = `absolute`;
+                                                                    orb_standard_price.style.right = `20px`;
+                                                                    orb_standard_price.style.marginTop = `30px`;
+                                                                    
+                                                                    priceContainer.appendChild(orb_standard_price);
+                
+                                                                } else if (priceStandard != "N/A") {
+                
+                                                                    let standard_price = document.createElement("div");
+                                                            
+                                                                    standard_price.innerHTML = `
+                                                                        <a class="modal-standard-price-crossed" style="margin-left: 21px;">US$${(priceStandard / 100).toFixed(2)}</a>
+                                                                        <div class="nitro-icon-crossed" style="margin-left: -3px"></div>
+                                                                    `;
+                                                                    standard_price.style.position = `absolute`;
+                                                                    standard_price.style.left = `0px`;
+                                                                    standard_price.style.marginTop = `30px`;
+                                                                    
+                                                                    priceContainer.appendChild(standard_price);
+                
+                                                                } else if (priceOrb != "N/A") {
+                
+                                                                    let orb_standard_price = document.createElement("div");
+                                                            
+                                                                    orb_standard_price.innerHTML = `
+                                                                        <a class="modal-standard-price-crossed">${priceOrb}</a>
+                                                                        <div class="orb-icon-crossed" style="margin-left: -24px"></div>
+                                                                    `;
+                                                                    orb_standard_price.style.position = `absolute`;
+                                                                    orb_standard_price.style.left = `23px`;
+                                                                    orb_standard_price.style.marginTop = `30px`;
+                                                                    
+                                                                    priceContainer.appendChild(orb_standard_price);
+                
+                                                                    modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                                         <div class="unplublished-tag">
                                                                             <p class="unplublished-tag-text">${getTextString("CARD_ORB_EXCLUSIVE_TAG")}</p>
                                                                         </div>
@@ -12784,26 +13078,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         if (priceTextNitro) {
                                                             priceTextNitro.textContent = priceNitro !== "N/A" ? `US$${(priceNitro / 100).toFixed(2)} with Nitro` : "null";
                                                         }
-                                                    }
-
-                                                    if (priceTextStandard.textContent === "null" && priceTextNitro.textContent === "null") {
-                                                        let error_warning = document.createElement("div");
-
-                                                        error_warning.classList.add('invalid_currency_warning');
-                                                        error_warning.innerHTML = `
-                                                            <p>This item does not support this currency!</p>
-                                                        `;
-                                                                    
-                                                        priceContainer.appendChild(error_warning);
-                                                    } else if (priceTextStandard.textContent === "null" || priceTextNitro.textContent === "null") {
-                                                        let error_warning = document.createElement("div");
-
-                                                        error_warning.classList.add('invalid_currency_warning');
-                                                        error_warning.innerHTML = `
-                                                            <p>This item does not fully support this currency!</p>
-                                                        `;
-                                                                    
-                                                        priceContainer.appendChild(error_warning);
                                                     }
 
 
@@ -13185,8 +13459,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
     
     // Redirect to Google if emojiCopy is null
-    function redirectToGoogle() {
-        window.location.href = 'https://discord.gg/Mcwh7hGcWb';
+    function redirectToLink(link) {
+        window.location.href = link;
     }
     
 
@@ -13504,10 +13778,16 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <h2 style="margin-left: 260px; margin-top: 10px;">${getTextString("ITEM_DEBUG_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
-        } else {
+        } else if (params.get("page")) {
             setParams({page: 'home',err: '404'});
-            document.title = "Home | Shop Archives";
+            document.title = `${getTextString("FEATURED_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
             location.reload();
+            console.log('b')
+        } else {
+            setParams({page: 'home'});
+            document.title = `${getTextString("FEATURED_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
+            location.reload();
+            console.log('a')
         }
 
         const open_help_modals_buttons_holder = document.getElementById('open-help-modals-buttons-holder');
@@ -16079,6 +16359,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 document.getElementById('dev-topbar-container').innerHTML = `
                     <h1 class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_DEV_TITLE")}</h1>
                     <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_DEV_OPTIONS_DISCLAIMER")}</p>
+
+                    <div id="staff-notes">
+                        <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_NOTES")}</p>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_NOTES_1")}</p>
+                    </div>
+
+                    <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
+                        <button class="card-button" onclick="redirectToLink('https://discord.gg/88Kkv6xmck');">${getTextString("OPTIONS_DEV_OPEN_STAFF_DISCORD_SERVER")}</button>
+                    </div>
 
                     <div id="staff-todo-list">
                         <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_TODO_LIST")}</p>
