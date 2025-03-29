@@ -62,6 +62,7 @@ OPTIONS_DEV_OPTIONS_DISCLAIMER = "Close dev popout to view options popout";
 OPTIONS_DEV_CLOSE = "Close";
 OPTIONS_DEV_SAFE_MODE = "Safe Mode";
 OPTIONS_DEV_UNPUBLISHED_COLLECTIBLES = "Shop: Include Unpublished Collectibles";
+OPTIONS_DEV_UNPUBLISHED_PPLUS_ITEMS = "PPlus: Include Unpublished Items";
 OPTIONS_DEV_DISABLE_CLIENT_REWORK = "Go back to old client";
 OPTIONS_DEV_OPEN_OLD_DEV_MODAL = "Open old dev modal";
 OPTIONS_DEV_OPEN_STAFF_DISCORD_SERVER = "Open Discord Server";
