@@ -142,18 +142,18 @@ body {
     font-family: 'gg sans', sans-serif;
     font-family: 'gg sans Normal', sans-serif;
     font-family: 'gg sans Medium', sans-serif;
-    font-family: 'gg sans SemiBold', sans-serif; 
+    font-family: 'gg sans SemiBold', sans-serif;
 }
 
 .gg-sans {
     font-family: 'gg sans', sans-serif;
     font-family: 'gg sans Normal', sans-serif;
     font-family: 'gg sans Medium', sans-serif;
-    font-family: 'gg sans SemiBold', sans-serif;                                   
+    font-family: 'gg sans SemiBold', sans-serif;
 }
 
 .abcgintonord {
-    font-family: "Abcgintonord 800",sans-serif                              
+    font-family: "Abcgintonord 800", sans-serif
 }
 
 #theme-selection-box-container {
@@ -201,11 +201,11 @@ body {
 }
 
 #theme-neongreen-button {
-    background-image: linear-gradient(-45deg, rgba(0, 0, 0) 50%,#17c400 50%)
+    background-image: linear-gradient(-45deg, rgba(0, 0, 0) 50%, #17c400 50%)
 }
 
 #theme-neonpurple-button {
-    background-image: linear-gradient(-45deg, rgba(0, 0, 0) 50%,#be00c4 50%)
+    background-image: linear-gradient(-45deg, rgba(0, 0, 0) 50%, #be00c4 50%)
 }
 
 .housing {
@@ -496,13 +496,23 @@ body {
 }
 
 @keyframes modal-popup-anim {
-    0% {scale: 0;}
-    100% {scale: 1;}
+    0% {
+        scale: 0;
+    }
+
+    100% {
+        scale: 1;
+    }
 }
 
 @keyframes modal-popup-anim1 {
-    0% {background-color: #00000000;}
-    100% {background-color: #0000006e;}
+    0% {
+        background-color: #00000000;
+    }
+
+    100% {
+        background-color: #0000006e;
+    }
 }
 
 .dev-modal-inner {
@@ -629,7 +639,7 @@ body {
 
 *:has(.mobile-client) #open-options-tools-button-1 {
     right: 10px;
-}   
+}
 
 #storageItems div {
     margin-top: 3px;
@@ -798,9 +808,8 @@ body {
 
 
 .modal-left-avatar-decoration-img {
-    position: absolute;
-    top: 0px;
-    transform: translateX(50%);
+    margin-left: auto;
+    margin-right: auto;
     width: 200px;
     height: 200px;
     margin-top: 20px;
@@ -818,18 +827,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 83%;
-}
-
-.modal-left-profile-effect-img {
-    position: absolute;
-    top: 0px;
-    transform: translateX(115%);
-    width: 125px;
-    height: 250px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    overflow: hidden;
 }
 
 .modal-left-profile-effect-img img {
@@ -995,7 +992,8 @@ body {
     display: none;
 }
 
-.profile-avatar-upload-label, .profile-avatar-remove-button {
+.profile-avatar-upload-label,
+.profile-avatar-remove-button {
     position: absolute;
     padding: 10px 20px;
     color: white;
@@ -1074,7 +1072,8 @@ body {
     background-color: var(--brand-500-hover);
 }
 
-.theme-selection-box:hover .edit-custom-theme-box, .theme-selection-box:hover .delete-custom-theme-box {
+.theme-selection-box:hover .edit-custom-theme-box,
+.theme-selection-box:hover .delete-custom-theme-box {
     opacity: 1;
 }
 
@@ -1238,9 +1237,11 @@ body {
 .dm-button-text-fetching-var-1 {
     width: 100px;
 }
+
 .dm-button-text-fetching-var-2 {
     width: 120px;
 }
+
 .dm-button-text-fetching-var-3 {
     width: 80px;
 }
@@ -1257,9 +1258,17 @@ body {
 }
 
 @keyframes dm-button-text-fetching-anim {
-    0% {background-color: #B1B5BB;}
-    50% {background-color: #676d75;}
-    100% {background-color: #B1B5BB;}
+    0% {
+        background-color: #B1B5BB;
+    }
+
+    50% {
+        background-color: #676d75;
+    }
+
+    100% {
+        background-color: #B1B5BB;
+    }
 }
 
 .dm-button-text {
@@ -1399,7 +1408,7 @@ body {
     bottom: 150px;
     width: 100%;
     height: 70px;
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 10%,var(--shop-card-background) 100%);
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 10%, var(--shop-card-background) 100%);
 }
 
 .nameplate-fade-top {
@@ -1407,7 +1416,7 @@ body {
     top: 0px;
     width: 100%;
     height: 70px;
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 10%,var(--shop-card-background) 100%);
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 10%, var(--shop-card-background) 100%);
 }
 
 .nameplate-preview-status-color {
@@ -1465,11 +1474,13 @@ body {
     border-radius: 10px;
 }
 
-.nameplate-modal-preview .nameplate-user-avatar, .nameplate-modal-preview .nameplate-null-user-avatar {
+.nameplate-modal-preview .nameplate-user-avatar,
+.nameplate-modal-preview .nameplate-null-user-avatar {
     margin-left: 10px;
 }
 
-.nameplate-modal-preview .nameplate-user-name, .nameplate-modal-preview .nameplate-null-user-name {
+.nameplate-modal-preview .nameplate-user-name,
+.nameplate-modal-preview .nameplate-null-user-name {
     margin-left: 60px;
 }
 
@@ -1633,6 +1644,7 @@ body {
     margin-right: auto;
     margin-bottom: 40px;
 }
+
 .shop-category-banner-loading {
     display: flex;
     position: relative;
@@ -1651,6 +1663,7 @@ body {
     outline-offset: -2px;
     animation: shop-fetching-anim 4s infinite;
 }
+
 .shop-category-card-loading {
     background-color: var(--background-primary);
     border-radius: 15px;
@@ -1660,28 +1673,44 @@ body {
     transition: transform 0.5s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
-    height: 440px; /* Fixed height for the entire card */
-    overflow: hidden; /* Prevents content from overflowing */
-    position: relative; /* Allows positioning of the card bottom */
+    height: 440px;
+    /* Fixed height for the entire card */
+    overflow: hidden;
+    /* Prevents content from overflowing */
+    position: relative;
+    /* Allows positioning of the card bottom */
     border: 2px solid var(--background-tertiary);
     animation: shop-fetching-anim 4s infinite;
 }
+
 .shop-category-card-holder-loading {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
-    justify-content: center; /* Center the grid horizontally */
-    max-width: 1200px; /* Limit the width of the card holder */
-    margin: 0 auto; /* Center the card holder container */
-    padding: 20px 0; /* Add some space between the banner and cards */
+    justify-content: center;
+    /* Center the grid horizontally */
+    max-width: 1200px;
+    /* Limit the width of the card holder */
+    margin: 0 auto;
+    /* Center the card holder container */
+    padding: 20px 0;
+    /* Add some space between the banner and cards */
     padding-left: 20px;
     padding-right: 20px;
 }
 
 @keyframes shop-fetching-anim {
-    0% {background-color: var(--background-primary);}
-    50% {background-color: var(--background-tertiary)}
-    100% {background-color: var(--background-primary);}
+    0% {
+        background-color: var(--background-primary);
+    }
+
+    50% {
+        background-color: var(--background-tertiary)
+    }
+
+    100% {
+        background-color: var(--background-primary);
+    }
 }
 
 .shop-category-banner {
@@ -1746,8 +1775,10 @@ body {
 }
 
 .shop-category-assets-holder {
-    height: 150px; /* Initial height */
-    transition: height 1s ease, scale 0.4s ease, border-radius 0.4s ease, margin-top 0.4s ease, margin-bottom 0.4s ease, box-shadow 0.4s ease; /* Smooth transition */
+    height: 150px;
+    /* Initial height */
+    transition: height 1s ease, scale 0.4s ease, border-radius 0.4s ease, margin-top 0.4s ease, margin-bottom 0.4s ease, box-shadow 0.4s ease;
+    /* Smooth transition */
 }
 
 .shop-category-assets-holder:hover {
@@ -1761,7 +1792,8 @@ body {
     transition: height 1s ease, opacity 1s ease;
 }
 
-.shop-category-assets-holder .shop-assets-left-column, .shop-category-assets-holder .shop-assets-right-column {
+.shop-category-assets-holder .shop-assets-left-column,
+.shop-category-assets-holder .shop-assets-right-column {
     opacity: 0;
     transition: opacity 1s ease;
 }
@@ -1775,9 +1807,10 @@ body {
     filter: blur(10px);
     transition: height 1s ease, filter 1s ease;
 }
-  
+
 .shop-category-assets-holder.expanded {
-    height: 2500px; /* Height when hovered */
+    height: 2500px;
+    /* Height when hovered */
     scale: 1.03;
     border-radius: 5px;
     z-index: 1;
@@ -1789,7 +1822,8 @@ body {
     opacity: 1;
 }
 
-.shop-category-assets-holder.expanded .shop-assets-left-column, .shop-category-assets-holder.expanded .shop-assets-right-column {
+.shop-category-assets-holder.expanded .shop-assets-left-column,
+.shop-category-assets-holder.expanded .shop-assets-right-column {
     opacity: 1;
 }
 
@@ -1800,7 +1834,7 @@ body {
 .shop-category-assets-holder.expanded .shop-assets-banner-top {
     filter: blur(0px);
 }
-  
+
 
 .shop-category-banner-asset {
     width: 1100px;
@@ -1821,9 +1855,12 @@ body {
     transition: transform 0.5s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
-    height: 440px; /* Fixed height for the entire card */
-    overflow: hidden; /* Prevents content from overflowing */
-    position: relative; /* Allows positioning of the card bottom */
+    height: 440px;
+    /* Fixed height for the entire card */
+    overflow: hidden;
+    /* Prevents content from overflowing */
+    position: relative;
+    /* Allows positioning of the card bottom */
     border: 2px solid var(--4);
 }
 
@@ -1982,7 +2019,7 @@ body {
     margin-left: 20px;
     margin-left: auto;
     margin-right: auto;
-    background: linear-gradient(180deg,#000 -17.38%,#36266d 109.68%);
+    background: linear-gradient(180deg, #000 -17.38%, #36266d 109.68%);
     border-radius: 10px;
     overflow: hidden;
 }
@@ -2144,8 +2181,13 @@ data-share-product-card-button {
 }
 
 @keyframes fhsin38fdnsi9d {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 
@@ -2255,9 +2297,17 @@ data-share-product-card-button {
 }
 
 @keyframes hsity29fjhsk59 {
-    0% {transform: rotate(-5deg);}
-    50% {transform: rotate(5deg);}
-    100% {transform: rotate(-5deg);}
+    0% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+
+    100% {
+        transform: rotate(-5deg);
+    }
 }
 
 .dm-tab-preview-avatar-decoration-back {
@@ -2285,7 +2335,9 @@ data-share-product-card-button {
     animation: hsity29fjhsk59 10s infinite !important;
 }
 
-.paper_beach_v2_marketing_tab:hover .dm-tab-preview-avatar-decoration-back, .paper_beach_v2_marketing_tab:hover .dm-tab-preview-avatar-decoration-3, .paper_beach_v2_marketing_tab:hover .paper-beach-v2-greeting-catgirl-1 {
+.paper_beach_v2_marketing_tab:hover .dm-tab-preview-avatar-decoration-back,
+.paper_beach_v2_marketing_tab:hover .dm-tab-preview-avatar-decoration-3,
+.paper_beach_v2_marketing_tab:hover .paper-beach-v2-greeting-catgirl-1 {
     opacity: 1;
 }
 
@@ -2335,30 +2387,35 @@ data-share-product-card-button {
 
 .shop-category-text-holder {
     position: absolute;
-    z-index: 1; /* Ensure the text is above the banner */
-    margin-top: 190px; /* Space between the logo and the text */
+    z-index: 1;
+    /* Ensure the text is above the banner */
+    margin-top: 190px;
+    /* Space between the logo and the text */
     text-align: center;
     pointer-events: none;
 }
 
 .potion-card-text-holder {
     position: absolute;
-    z-index: 1; /* Ensure the text is above the banner */
+    z-index: 1;
+    /* Ensure the text is above the banner */
     left: 15px;
     top: 310px;
 }
 
 .potion-card-title-holder {
     position: absolute;
-    z-index: 1; /* Ensure the text is above the banner */
-    margin-top: -160px; /* Space between the logo and the text */
+    z-index: 1;
+    /* Ensure the text is above the banner */
+    margin-top: -160px;
+    /* Space between the logo and the text */
     left: 15px;
     top: 420px;
 }
 
 .potion-card-title-holder p {
-    display: -webkit-box;      
-    -webkit-line-clamp: 1;     
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     word-wrap: break-word;
     height: 33px;
@@ -2367,8 +2424,10 @@ data-share-product-card-button {
 
 .potion-card-price-holder {
     position: absolute;
-    z-index: 1; /* Ensure the text is above the banner */
-    margin-top: 160px; /* Space between the logo and the text */
+    z-index: 1;
+    /* Ensure the text is above the banner */
+    margin-top: 160px;
+    /* Space between the logo and the text */
     right: 5%;
     bottom: 0%;
     text-align: center;
@@ -2376,16 +2435,20 @@ data-share-product-card-button {
 
 .potion-card-sku-holder {
     position: absolute;
-    z-index: 1; /* Ensure the text is above the banner */
-    margin-top: 170px; /* Space between the logo and the text */
+    z-index: 1;
+    /* Ensure the text is above the banner */
+    margin-top: 170px;
+    /* Space between the logo and the text */
     left: 15px;
     top: 60px;
 }
 
 .potion-card-button-holder {
     position: absolute;
-    z-index: 1; /* Ensure the text is above the banner */
-    margin-top: 160px; /* Space between the logo and the text */
+    z-index: 1;
+    /* Ensure the text is above the banner */
+    margin-top: 160px;
+    /* Space between the logo and the text */
     right: 3%;
     text-align: center;
 }
@@ -2396,19 +2459,30 @@ data-share-product-card-button {
 }
 
 @keyframes gwouaycny78obt {
-    0% {transform: rotate(0deg);}
-    33% {transform: rotate(10deg);}
-    60% {transform: rotate(-10deg);}
-    100% {transform: rotate(0deg);}
+    0% {
+        transform: rotate(0deg);
+    }
+
+    33% {
+        transform: rotate(10deg);
+    }
+
+    60% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 
 .potion-card-gradient1 {
-    background-image: linear-gradient(0deg, var(--shop-card-background) 50%,#be00c4 150%);
+    background-image: linear-gradient(0deg, var(--shop-card-background) 50%, #be00c4 150%);
 }
 
 .potion-card-gradient2 {
-    background-image: linear-gradient(0deg, var(--shop-card-background) 50%,#5246ff 150%);
+    background-image: linear-gradient(0deg, var(--shop-card-background) 50%, #5246ff 150%);
 }
 
 
@@ -2447,9 +2521,17 @@ data-share-product-card-button {
 }
 
 @keyframes quick-info-info-card-anim {
-    0% {background-color: #111214;}
-    50% {background-color: #1E1F22;}
-    100% {background-color: #111214;}
+    0% {
+        background-color: #111214;
+    }
+
+    50% {
+        background-color: #1E1F22;
+    }
+
+    100% {
+        background-color: #111214;
+    }
 }
 
 .a2024-recap-container {
@@ -2471,8 +2553,13 @@ data-share-product-card-button {
 }
 
 @keyframes fb87236b789c9d {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .a2024-recap-card {
@@ -2509,8 +2596,15 @@ data-share-product-card-button {
 }
 
 @keyframes f527b856fdhfjx {
-    0% {transform: translateY(-20px); opacity: 0;}
-    100% {transform: translateY(0px); opacity: 1;}
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
 }
 
 .a2024-recap-img-1 {
@@ -2536,9 +2630,12 @@ data-share-product-card-button {
     transition: transform 0.5s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
-    height: 440px; /* Fixed height for the entire card */
-    overflow: hidden; /* Prevents content from overflowing */
-    position: relative; /* Allows positioning of the card bottom */
+    height: 440px;
+    /* Fixed height for the entire card */
+    overflow: hidden;
+    /* Prevents content from overflowing */
+    position: relative;
+    /* Allows positioning of the card bottom */
     border: 2px solid var(--4);
     z-index: 1;
 }
@@ -2553,9 +2650,12 @@ data-share-product-card-button {
     transition: transform 0.5s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
-    height: 440px; /* Fixed height for the entire card */
-    overflow: hidden; /* Prevents content from overflowing */
-    position: relative; /* Allows positioning of the card bottom */
+    height: 440px;
+    /* Fixed height for the entire card */
+    overflow: hidden;
+    /* Prevents content from overflowing */
+    position: relative;
+    /* Allows positioning of the card bottom */
     border: 2px solid var(--4);
 }
 
@@ -2570,16 +2670,30 @@ data-share-product-card-button {
 }
 
 @keyframes fsysuit4s6bnot {
-    0% {box-shadow: 0 0 0px 0px #6c61ff;}
-    10% {box-shadow: 0 0 0px 0px #6c61ff;}
-    35% {box-shadow: 0 0 4px 5px #6c61ff;}
-    65% {box-shadow: 0 0 4px 5px #6c61ff;}
-    100% {box-shadow: 0 0 0px 0px #6c61ff;}
+    0% {
+        box-shadow: 0 0 0px 0px #6c61ff;
+    }
+
+    10% {
+        box-shadow: 0 0 0px 0px #6c61ff;
+    }
+
+    35% {
+        box-shadow: 0 0 4px 5px #6c61ff;
+    }
+
+    65% {
+        box-shadow: 0 0 4px 5px #6c61ff;
+    }
+
+    100% {
+        box-shadow: 0 0 0px 0px #6c61ff;
+    }
 }
 
 .shop-category-card-highlighted-glint {
     position: absolute;
-    background-image: linear-gradient(rgba(255, 255, 255, 0),rgb(255, 255, 255) 200%) !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255) 200%) !important;
     width: 1000px;
     height: 400px;
     animation: fb8723nd87fd7t 4s !important;
@@ -2588,7 +2702,7 @@ data-share-product-card-button {
 
 .shop-category-highlighted-glint {
     position: absolute;
-    background-image: linear-gradient(rgba(255, 255, 255, 0),rgb(255, 255, 255) 200%) !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255) 200%) !important;
     width: 1000px;
     height: 400px;
     animation: fb8723nd87fd7t 3s !important;
@@ -2596,8 +2710,13 @@ data-share-product-card-button {
 }
 
 @keyframes fb8723nd87fd7t {
-    0% {transform: translate3d(-150%, 0px, 0px) rotate(-50deg);}
-    100% {transform: translate3d(150%, 0px, 0px) rotate(-50deg);}
+    0% {
+        transform: translate3d(-150%, 0px, 0px) rotate(-50deg);
+    }
+
+    100% {
+        transform: translate3d(150%, 0px, 0px) rotate(-50deg);
+    }
 }
 
 .shop-category-card-transparent {
@@ -2621,9 +2740,12 @@ data-share-product-card-button {
     transition: transform 0.5s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
-    height: 350px; /* Fixed height for the entire card */
-    overflow: hidden; /* Prevents content from overflowing */
-    position: relative; /* Allows positioning of the card bottom */
+    height: 350px;
+    /* Fixed height for the entire card */
+    overflow: hidden;
+    /* Prevents content from overflowing */
+    position: relative;
+    /* Allows positioning of the card bottom */
     border: none;
 }
 
@@ -2643,7 +2765,8 @@ data-share-product-card-button {
     display: flex;
     gap: 15px;
     margin-top: 15px;
-    flex: 1; /* Allows bundle-items to take up available space */
+    flex: 1;
+    /* Allows bundle-items to take up available space */
 }
 
 /* Individual Bundled Item */
@@ -2655,14 +2778,19 @@ data-share-product-card-button {
 
 
 .bundled-item:has([class="effect"]) img {
-    width: 100px; /* Adjust width as needed */
-    height: 150px; /* Adjust height as needed */
+    width: 100px;
+    /* Adjust width as needed */
+    height: 150px;
+    /* Adjust height as needed */
     object-fit: cover;
     object-position: top;
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/352db5d6852138aabc88.png');
-    background-size: cover; /* Ensures the background image covers the whole element */
-    background-position: top; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: cover;
+    /* Ensures the background image covers the whole element */
+    background-position: top;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     border-radius: 10px;
     pointer-events: none;
 }
@@ -2677,13 +2805,18 @@ data-share-product-card-button {
 }
 
 .bundled-item:has([class="deco"]) img {
-    width: 100px; /* Adjust width as needed */
-    height: 100px; /* Adjust height as needed */
+    width: 100px;
+    /* Adjust width as needed */
+    height: 100px;
+    /* Adjust height as needed */
     object-fit: cover;
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/ff84fa219ab7e996ec26.png');
-    background-size: 83%; /* Ensures the background image covers the whole element */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: 83%;
+    /* Ensures the background image covers the whole element */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     border-radius: 10px;
     pointer-events: none;
 }
@@ -2728,8 +2861,10 @@ data-share-product-card-button {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 150px; /* Fixed height for the card bottom */
-    box-sizing: border-box; /* Includes padding in height calculation */
+    height: 150px;
+    /* Fixed height for the card bottom */
+    box-sizing: border-box;
+    /* Includes padding in height calculation */
     backdrop-filter: blur(50px);
 }
 
@@ -2741,8 +2876,10 @@ data-share-product-card-button {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 150px; /* Fixed height for the card bottom */
-    box-sizing: border-box; /* Includes padding in height calculation */
+    height: 150px;
+    /* Fixed height for the card bottom */
+    box-sizing: border-box;
+    /* Includes padding in height calculation */
     backdrop-filter: none;
 }
 
@@ -2769,9 +2906,12 @@ data-share-product-card-button {
 /* Deco Card Image */
 .deco-card img {
     background-image: url(data:image/png;base64,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);
-    background-size: 83%; /* Ensures the background image covers the whole element */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: 83%;
+    /* Ensures the background image covers the whole element */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     scale: 0.75;
     border-radius: 15px;
 }
@@ -2788,9 +2928,12 @@ data-share-product-card-button {
 
 .avatar-decoration-image #shop-card-deco-image {
     position: absolute;
-    background-size: 83%; /* Ensures the background image covers the whole element */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: 83%;
+    /* Ensures the background image covers the whole element */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     width: 220px !important;
     height: 220px !important;
     border-radius: 15px;
@@ -2817,9 +2960,12 @@ data-share-product-card-button {
     z-index: 3;
     top: 50px;
     transform: rotate(10deg);
-    background-size: 83%; /* Ensures the background image covers the whole element */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: 83%;
+    /* Ensures the background image covers the whole element */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     width: 150px !important;
     height: 150px !important;
 }
@@ -2862,9 +3008,12 @@ data-share-product-card-button {
 
 [class="shop-category-card-standard deco-card"] img {
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/6d8f0708e196aaad2550.png');
-    background-size: 83%; /* Ensures the background image covers the whole element */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: 83%;
+    /* Ensures the background image covers the whole element */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     scale: 0.45;
     margin-top: -80px;
     border-radius: 15px;
@@ -2877,16 +3026,22 @@ data-share-product-card-button {
 
 .effect-card {
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/352db5d6852138aabc88.png');
-    background-size: cover; /* Ensures the background image covers the whole element */
-    background-position: top; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: cover;
+    /* Ensures the background image covers the whole element */
+    background-position: top;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
 }
 
 .type_1 {
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/352db5d6852138aabc88.png');
-    background-size: cover; /* Ensures the background image covers the whole element */
-    background-position: top; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: cover;
+    /* Ensures the background image covers the whole element */
+    background-position: top;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
 }
 
 .type_1 img {
@@ -2896,9 +3051,12 @@ data-share-product-card-button {
 
 .type_2000-1 {
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/352db5d6852138aabc88.png');
-    background-size: cover; /* Ensures the background image covers the whole element */
-    background-position: top; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: cover;
+    /* Ensures the background image covers the whole element */
+    background-position: top;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
 }
 
 .type_2000-1 img {
@@ -2917,9 +3075,12 @@ data-share-product-card-button {
 
 [class="shop-category-card-standard effect-card"] img {
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/352db5d6852138aabc88.png');
-    background-size: cover; /* Ensures the background image covers the whole element */
-    background-position: top; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: cover;
+    /* Ensures the background image covers the whole element */
+    background-position: top;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
 }
 
 [class="shop-category-card-standard effect-card"] {
@@ -2927,11 +3088,11 @@ data-share-product-card-button {
 }
 
 [class="shop-category-card-standard effect-card"] .card-bottom {
-    background-image: linear-gradient(rgba(0, 0, 0, 0),rgb(0, 0, 0)) !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0)) !important;
 }
 
 [class="shop-category-card-standard bundle-card"] .card-bottom {
-    background-image: linear-gradient(rgba(0, 0, 0, 0),rgb(0, 0, 0)) !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0)) !important;
 }
 
 /* Container Holding Cards */
@@ -2939,10 +3100,14 @@ data-share-product-card-button {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
-    justify-content: center; /* Center the grid horizontally */
-    max-width: 1200px; /* Limit the width of the card holder */
-    margin: 0 auto; /* Center the card holder container */
-    padding: 20px 0; /* Add some space between the banner and cards */
+    justify-content: center;
+    /* Center the grid horizontally */
+    max-width: 1200px;
+    /* Limit the width of the card holder */
+    margin: 0 auto;
+    /* Center the card holder container */
+    padding: 20px 0;
+    /* Add some space between the banner and cards */
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -2956,7 +3121,7 @@ data-share-product-card-button {
     grid-auto-flow: column;
     grid-template-columns: unset;
     grid-auto-columns: minmax(290px, 1fr);
-    gap: 20px; 
+    gap: 20px;
     justify-content: start;
     width: 100%;
     max-width: 1200px;
@@ -2972,10 +3137,14 @@ data-share-product-card-button {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-    justify-content: center; /* Center the grid horizontally */
-    max-width: 1200px; /* Limit the width of the card holder */
-    margin: 0 auto; /* Center the card holder container */
-    padding: 20px 0; /* Add some space between the banner and cards */
+    justify-content: center;
+    /* Center the grid horizontally */
+    max-width: 1200px;
+    /* Limit the width of the card holder */
+    margin: 0 auto;
+    /* Center the card holder container */
+    padding: 20px 0;
+    /* Add some space between the banner and cards */
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -2986,12 +3155,6 @@ data-share-product-card-button {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 }
-
-
-
-
-
-
 
 
 
@@ -3013,22 +3176,29 @@ data-share-product-card-button {
 }
 
 .card-bottom {
-    transition: opacity 0.3s ease; /* Smooth fade transition */
+    transition: opacity 0.3s ease;
+    /* Smooth fade transition */
 }
 
 .card-bottom p {
     margin: 0;
-    transition: opacity 0.3s ease; /* Smooth fade transition */
+    transition: opacity 0.3s ease;
+    /* Smooth fade transition */
 }
 
 .card-button-container {
     position: absolute;
-    bottom: 10px; /* Adjust based on your design */
+    bottom: 10px;
+    /* Adjust based on your design */
     left: 50%;
-    transform: translateX(-50%) translateY(20px); /* Start off-screen */
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth fade and slide transition */
-    text-align: center; /* Center buttons horizontally */
+    transform: translateX(-50%) translateY(20px);
+    /* Start off-screen */
+    opacity: 0;
+    /* Initially hidden */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    /* Smooth fade and slide transition */
+    text-align: center;
+    /* Center buttons horizontally */
     width: 90%;
 }
 
@@ -3040,9 +3210,11 @@ data-share-product-card-button {
 
 .card-button {
     display: block;
-    margin: 5px 0; /* Space between buttons */
+    margin: 5px 0;
+    /* Space between buttons */
     padding: 10px 20px;
-    background-color: var(--brand-500); /* Adjust based on your design */
+    background-color: var(--brand-500);
+    /* Adjust based on your design */
     color: #fff;
     border: 2px var(--6) solid;
     border-radius: 4px;
@@ -3062,27 +3234,32 @@ data-share-product-card-button {
 }
 
 .shop-category-card:hover .card-button-container {
-    opacity: 1; /* Fade in */
-    transform: translateX(-50%) translateY(0); /* Slide up to final position */
+    opacity: 1;
+    /* Fade in */
+    transform: translateX(-50%) translateY(0);
+    /* Slide up to final position */
 }
 
 .shop-category-card-standard:hover .card-button-container {
-    opacity: 1; /* Fade in */
-    transform: translateX(-50%) translateY(0); /* Slide up to final position */
+    opacity: 1;
+    /* Fade in */
+    transform: translateX(-50%) translateY(0);
+    /* Slide up to final position */
 }
 
 .shop-category-card:hover .shop-card-summary {
-    opacity: 0; /* Fade out description */
+    opacity: 0;
+    /* Fade out description */
     pointer-events: none;
 }
 
 [data-product-card-name] {
-    overflow: hidden;          
-    text-overflow: ellipsis;   
-    display: -webkit-box;      
-    -webkit-line-clamp: 1;     
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-    word-wrap: break-word;     
+    word-wrap: break-word;
 }
 
 [class*="type_2000"] .shop-card-summary {
@@ -3090,34 +3267,45 @@ data-share-product-card-button {
 }
 
 .shop-card-summary {
-    overflow: hidden;          /* Hides the overflowed text */
-    text-overflow: ellipsis;   /* Displays "..." when the text overflows */
-    display: -webkit-box;      /* Required for multi-line ellipsis */
-    -webkit-line-clamp: 3;     /* Sets the number of lines before truncation (adjust as needed) */
-    -webkit-box-orient: vertical; /* Ensures the box behaves as a vertical stack */
-    word-wrap: break-word;     /* Allows text to wrap properly */
+    overflow: hidden;
+    /* Hides the overflowed text */
+    text-overflow: ellipsis;
+    /* Displays "..." when the text overflows */
+    display: -webkit-box;
+    /* Required for multi-line ellipsis */
+    -webkit-line-clamp: 3;
+    /* Sets the number of lines before truncation (adjust as needed) */
+    -webkit-box-orient: vertical;
+    /* Ensures the box behaves as a vertical stack */
+    word-wrap: break-word;
+    /* Allows text to wrap properly */
 }
 
 .shop-category-card-standard:hover .shop-card-summary {
-    opacity: 0; /* Fade out description */
+    opacity: 0;
+    /* Fade out description */
 }
 
 .shop-price-container {
     position: absolute;
     display: flex;
-    bottom: 10px; /* Adjust based on your design */
+    bottom: 10px;
+    /* Adjust based on your design */
     width: 90%;
-    opacity: 1; /* Fade in */
+    opacity: 1;
+    /* Fade in */
     transition: opacity 0.5s ease;
     color: var(--white);
 }
 
 .shop-category-card:hover .shop-price-container {
-    opacity: 0; /* Fade out description */
+    opacity: 0;
+    /* Fade out description */
 }
 
 .shop-category-card-standard:hover .shop-price-container {
-    opacity: 0; /* Fade out description */
+    opacity: 0;
+    /* Fade out description */
 }
 
 
@@ -3153,17 +3341,6 @@ data-share-product-card-button {
     width: 24px;
 }
 
-.orb-icon-crossed {
-    position: absolute;
-    top: 0;
-    background-image: url(data:image/png;base64,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);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: right;
-    height: 22px;
-    width: 22px;
-}
-
 .nitro-icon {
     position: absolute;
     top: 0;
@@ -3174,18 +3351,6 @@ data-share-product-card-button {
     background-position: right;
     height: 24px;
     width: 24px;
-}
-
-.nitro-icon-crossed {
-    position: absolute;
-    top: 0;
-    margin-left: -4px;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAABOCAYAAACOqiAdAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAUdSURBVHgB7ZvdcdQ8FIZPEnLNfhUgKviWCvBWANxnsrsVABXEqYBQwTqZ3AMVxFTAUkFEB0sBSXgPewz2rmVbsvwTRs+MxuN/+7Wk8yOZKBAIBAKBQCAQCAQCgcA/wQF5ZrVaqYODg9XDw0NE/bJB0bg3L9e4/1deLpdLTR3gVTgWDYsbFEXjYX14eJjc399/8SniIfklonGJxkwh2gWWt6stijzgVTh82Wc0bhbkSUCvwuHLfqXHwQLlG8R7R450YRzOsIjp8ZCgvEf/t7E5ybtwzNXV1Usbq4qaOsXiNQ2HRpnZGI9OhHMBNZXFY4s8oWHQZCGeb6vqDB6Y3YYLGg6FctPUaIxGOAZN9jsNi0L5BPFqa/2ohBsJ3GWc1R00KuEQLtU+cE+8Q62rNFajMA5iGFi0IS3rLhrlhclNebK7gZXmLw93YprbnKCc71qcXEDPx/ZlDVMYkc/ibOvsxa6vr59hm0JZiCukqB0K93mL5XnZzkKNky//zXAhfsjnO8ffUn+xKVvc86aOKp5tQdtarMgdvtfzsnsW+riaPkbhYSL6+2AR9SOaPjo6ivDwVt49jk3kQ8fkzkRq3R5WxgEXeZpbVdQ9a5TZ6empcwwM8bipvSdH0PRL49ndGrem6ovk/azP1C0a5Y2PHBquwc3cVbxJvqVlFISDMB9p+5XLiPMvIc0mpu6YLT0mHkU818hkvruh1B25vLx8RVtHkNlwTTQ1F7asaMJzqgGWboLC7oaiemJpYkbEu38tOcANtwackzY4hw2arQewwbX/y2/o3Y/DwydU8gVz7FnvnfP5pWOUsk5bQ8h4Pp9fms5HpTiDyDFZcnx8rE5OTn5k60NEDtzZVlnH1LRDAnB2l94aDmE/LsFxseka0h1Zc3d3F+XXexdO+kZt2g/XIzHtE3dJUT1nZR167v4p2aPyK6ML8iv60gh95IKaY/RJOfIgSzgqKVyDekaC56lht9EdQm17RXZEpvQQRPhJ9hSu9YR6IrOCKB8qDqvq+6Zkj6Lyj6HJHv/CGRIDvmkcbmWgv3xKHdFaOEkMfIJo5AFVsU+TJbCEpoxy60xO6z7Oc/LR+EL4MF/IjtSUFIBx+J/s0YVr0LiYVLgRKdm5EUvTDpcJQRBbF9apJXWJAYfrVVlPFkNTPbEpzmUn2nEmVeE9WwtXkxiwhn01kxshYswgbmI4PcvdVcW5ETmA9/yRX/cWq+4kBrKbOY3QS7xZF+Qr6av4HpWJiPw55DYNbS9+7jTIlwe9JXu4U3/he1JgkiQry+jjz6l4lkKf2alxkBd3acbcVG+aDAw3hQN/R9FKQ7TOrapLXCgospiSUIVM53J1mzS6jT1XqHPhxHhYe/3C74k4ruJxjUW5oOowr460bGPnwrET2nIyjSKHWZTiD1bl7ppSP67aFS1S1nvAeqbsjsjA0Z8BaRF1in0vpS/z0T8aU/i9pc5dU9YDoqliwKjXMQfUCm46XWZQvIHuZVE1dtF3rPqG3A1Fn1xUicYMMcq14AWNl8pRtowhBmsSGu+sdI0ya3LgYPPjRjitX5PF7IHBhGNGJJ4myykXgyYyxUdig6FpOBJySCgMWuMyxHllgxFRf/yeNATBnEb2RyFchqdZlE1IqGRqrg2jEi6jQwFTZIjjNhMVM0YpXAZnlXlqmEwPc409UykfbabC1jFq4fLIj3X8025EWxEVFWvkRsoagT7/Yr6Wv6IfQ6QSCAQCgUAgEAgEAoFAYCh+AY+RL3Fao8anAAAAAElFTkSuQmCC);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: right;
-    height: 22px;
-    width: 22px;
 }
 
 [data-price-nitro-container]:has(.orb-icon-strike) [data-price-nitro] {
@@ -3216,9 +3381,6 @@ data-share-product-card-button {
 
 
 
-
-
-
 .item-tool-card-big {
     display: block;
     background-color: #313338;
@@ -3243,6 +3405,7 @@ data-share-product-card-button {
     border-radius: 5px;
     margin-bottom: 3px;
 }
+
 .item-tool-card-big .json-input-field {
     background-color: #2B2D31;
     width: 300px;
@@ -3334,7 +3497,6 @@ data-share-product-card-button {
 
 
 
-
 .output-box {
     display: flex;
     flex-direction: column;
@@ -3390,14 +3552,19 @@ data-share-product-card-button {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    opacity: 0; /* Start hidden */
-    transform: scale(0); /* Start small */
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Transition for opacity and scale */
+    opacity: 0;
+    /* Start hidden */
+    transform: scale(0);
+    /* Start small */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Transition for opacity and scale */
 }
 
 .shop-item-info-modal.show {
-    opacity: 1; /* Fully visible */
-    transform: scale(1); /* Full size */
+    opacity: 1;
+    /* Fully visible */
+    transform: scale(1);
+    /* Full size */
 }
 
 .modal-content {
@@ -3406,21 +3573,28 @@ data-share-product-card-button {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
-    width: 800px; /* Fixed width */
-    height: 600px; /* Fixed height */
-    overflow: hidden; /* Hide overflow */
+    width: 800px;
+    /* Fixed width */
+    height: 600px;
+    /* Fixed height */
+    overflow: hidden;
+    /* Hide overflow */
 }
 
 .modal-left {
     flex: 1;
-    overflow-y: auto; /* Allow scrolling for content */
-    max-height: 100%; /* Make sure it doesn't exceed modal height */
-    padding-right: 20px; /* Space between left and right content */
+    overflow-y: auto;
+    /* Allow scrolling for content */
+    max-height: 100%;
+    /* Make sure it doesn't exceed modal height */
+    padding-right: 20px;
+    /* Space between left and right content */
     position: relative;
 }
 
 .modal-right {
-    flex: 0 0 400px; /* Fixed width for the right side */
+    flex: 0 0 400px;
+    /* Fixed width for the right side */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -3432,57 +3606,80 @@ data-share-product-card-button {
 }
 
 .bundled-item img {
-    max-width: 100%; /* Constrain image width */
-    max-height: 100%; /* Constrain image height */
-    object-fit: cover; /* Crop images if they exceed the bounds */
+    max-width: 100%;
+    /* Constrain image width */
+    max-height: 100%;
+    /* Constrain image height */
+    object-fit: cover;
+    /* Crop images if they exceed the bounds */
 }
 
 .modal-content #avatar-decoration {
-    width: 300px; /* Adjust width as needed */
-    height: 300px; /* Adjust height as needed */
+    width: 300px;
+    /* Adjust width as needed */
+    height: 300px;
+    /* Adjust height as needed */
     object-fit: cover;
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/6d8f0708e196aaad2550.png');
-    background-size: 83%; /* Ensures the background image covers the whole element */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: 83%;
+    /* Ensures the background image covers the whole element */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     border-radius: 10px;
     pointer-events: none;
 }
 
 .modal-content #profile-effect {
-    width: 350px; /* Adjust width as needed */
-    height: 550px; /* Adjust height as needed */
+    width: 350px;
+    /* Adjust width as needed */
+    height: 550px;
+    /* Adjust height as needed */
     object-fit: cover;
     object-position: top;
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/352db5d6852138aabc88.png');
-    background-size: cover; /* Ensures the background image covers the whole element */
-    background-position: top; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: cover;
+    /* Ensures the background image covers the whole element */
+    background-position: top;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     border-radius: 10px;
     pointer-events: none;
 }
 
 .modal-content .bundled-item #avatar-decoration {
-    width: 300px; /* Adjust width as needed */
-    height: 300px; /* Adjust height as needed */
+    width: 300px;
+    /* Adjust width as needed */
+    height: 300px;
+    /* Adjust height as needed */
     object-fit: cover;
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/ff84fa219ab7e996ec26.png');
-    background-size: 83%; /* Ensures the background image covers the whole element */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: 83%;
+    /* Ensures the background image covers the whole element */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     border-radius: 10px;
     pointer-events: none;
 }
 
 .modal-content .bundled-item #profile-effect {
-    width: 200px; /* Adjust width as needed */
-    height: 300px; /* Adjust height as needed */
+    width: 200px;
+    /* Adjust width as needed */
+    height: 300px;
+    /* Adjust height as needed */
     object-fit: cover;
     object-position: top;
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/352db5d6852138aabc88.png');
-    background-size: cover; /* Ensures the background image covers the whole element */
-    background-position: top; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: cover;
+    /* Ensures the background image covers the whole element */
+    background-position: top;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     border-radius: 10px;
     pointer-events: none;
 }
@@ -3490,8 +3687,6 @@ data-share-product-card-button {
 * {
     text-decoration: none !important;
 }
-
-
 
 
 
@@ -3554,7 +3749,8 @@ data-share-product-card-button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* Spacing between sections */
+    gap: 20px;
+    /* Spacing between sections */
 }
 
 /* Middle Section Container */
@@ -3563,14 +3759,17 @@ data-share-product-card-button {
     justify-content: space-between;
     width: 100%;
     max-width: 2121px;
-    gap: 20px; /* Spacing between columns */
+    gap: 20px;
+    /* Spacing between columns */
 }
 
 /* Left and Right Columns */
-.shop-assets-left-column, .shop-assets-right-column {
+.shop-assets-left-column,
+.shop-assets-right-column {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Space between images */
+    gap: 20px;
+    /* Space between images */
     flex: 1;
 }
 
@@ -3585,7 +3784,8 @@ data-share-product-card-button {
 /* Individual Image Styling */
 .shop-assets-collage img {
     height: auto;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
+    /* Rounded corners */
     object-fit: cover;
 }
 
@@ -3645,10 +3845,9 @@ data-share-product-card-button {
 }
 
 .modal-left-bottom {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    width: 100%;
+    position: absolute;
+    bottom: 0;
+    width: 95%;
 }
 
 .category-modalv2-inner {
@@ -3659,12 +3858,19 @@ data-share-product-card-button {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
-    width: 800px; /* Fixed width */
-    height: 800px; /* Fixed height */
+    width: 800px;
+    /* Fixed width */
+    height: 800px;
+    /* Fixed height */
     overflow: hidden;
 }
 
-.category-modalv2-inner-img-banner, .category-modalv2-inner-img-mobile_banner, .category-modalv2-inner-img-hero_banner, .category-modalv2-inner-img-wide_banner, .category-modalv2-inner-img-condensed_banner_left, .category-modalv2-inner-img-condensed_banner_right {
+.category-modalv2-inner-img-banner,
+.category-modalv2-inner-img-mobile_banner,
+.category-modalv2-inner-img-hero_banner,
+.category-modalv2-inner-img-wide_banner,
+.category-modalv2-inner-img-condensed_banner_left,
+.category-modalv2-inner-img-condensed_banner_right {
     object-fit: cover;
     display: block;
     margin-left: auto;
@@ -3674,7 +3880,11 @@ data-share-product-card-button {
     border-radius: 20px;
 }
 
-.category-modalv2-inner-img-logo, .category-modalv2-inner-img-mobile_bg, .category-modalv2-inner-img-pdp_bg, .category-modalv2-inner-img-success_modal_bg, .category-modalv2-inner-img-category_bg {
+.category-modalv2-inner-img-logo,
+.category-modalv2-inner-img-mobile_bg,
+.category-modalv2-inner-img-pdp_bg,
+.category-modalv2-inner-img-success_modal_bg,
+.category-modalv2-inner-img-category_bg {
     object-fit: cover;
     display: block;
     margin-left: auto;
@@ -3684,7 +3894,8 @@ data-share-product-card-button {
     border-radius: 20px;
 }
 
-.category-modalv2-inner-img-featured_block, .category-modalv2-inner-img-hero_logo {
+.category-modalv2-inner-img-featured_block,
+.category-modalv2-inner-img-hero_logo {
     object-fit: cover;
     display: block;
     margin-left: auto;
@@ -3697,7 +3908,8 @@ data-share-product-card-button {
 .category-modalv2-inner-left {
     margin-top: 20px;
     flex: 1;
-    max-height: 100%; /* Make sure it doesn't exceed modal height */
+    max-height: 100%;
+    /* Make sure it doesn't exceed modal height */
     position: relative;
 }
 
@@ -3759,26 +3971,28 @@ data-share-product-card-button {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
-    width: 800px; /* Fixed width */
-    height: 600px; /* Fixed height */
+    width: 800px;
+    /* Fixed width */
+    height: 600px;
+    /* Fixed height */
     overflow: hidden;
 }
 
 .modalv2-inner-left {
     margin-top: 20px;
     flex: 1;
-    overflow-y: auto; /* Allow scrolling for content */
-    max-height: 100%; /* Make sure it doesn't exceed modal height */
-    padding-right: 20px; /* Space between left and right content */
+    overflow-y: auto;
+    /* Allow scrolling for content */
+    max-height: 100%;
+    /* Make sure it doesn't exceed modal height */
+    padding-right: 20px;
+    /* Space between left and right content */
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    overflow: hidden;
 }
 
 .modalv2-inner-right {
-    flex: 0 0 400px; /* Fixed width for the right side */
+    flex: 0 0 400px;
+    /* Fixed width for the right side */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -3886,9 +4100,12 @@ data-share-product-card-button {
 
 .modal-avatar-decoration-img img {
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/6d8f0708e196aaad2550.png');
-    background-size: 83%; /* Ensures the background image covers the whole element */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: 83%;
+    /* Ensures the background image covers the whole element */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     width: 300px !important;
     height: 300px !important;
     border-radius: 15px;
@@ -3939,34 +4156,13 @@ data-share-product-card-button {
     margin-top: 35px;
 }
 
-.modal-standard-price-crossed {
-    font-size: medium;
-    font-weight: 500;
-    text-decoration: line-through !important;
-    color: var(--8);
-}
-
-.shop-modal-product-sku-id {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.shop-modal-product-name {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.shop-modal-product-summary {
-    margin-top: 10px;
-    margin-bottom: 15px;
-}
-
 
 .modal-shop-price-container {
+    position: absolute;
     display: flex;
-    width: 100%;
-    height: 60px;
-    opacity: 1; /* Fade in */
+    width: 90%;
+    opacity: 1;
+    /* Fade in */
     transition: opacity 0.5s ease;
     color: var(--white);
 }
@@ -4018,9 +4214,12 @@ data-share-product-card-button {
 
 .modal-1000 .modal-avatar-decoration-img {
     background-image: url('https://raw.githubusercontent.com/DTACat/Collectibles/main/Images/ff84fa219ab7e996ec26.png');
-    background-size: 83%; /* Ensures the background image covers the whole element */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-size: 83%;
+    /* Ensures the background image covers the whole element */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
     width: 220px !important;
     height: 220px !important;
     border-radius: 15px;
@@ -4153,7 +4352,7 @@ data-share-product-card-button {
 }
 
 .premiumWheelBadge_c23530 {
-    background-image: linear-gradient(90deg, rgb(149, 67, 177),rgb(169, 85, 143));
+    background-image: linear-gradient(90deg, rgb(149, 67, 177), rgb(169, 85, 143));
     height: 20px;
     width: 30px;
     border-radius: 999px;
@@ -4270,9 +4469,12 @@ data-share-product-card-button {
     transition: transform 0.5s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
-    height: 440px; /* Fixed height for the entire card */
-    overflow: hidden; /* Prevents content from overflowing */
-    position: relative; /* Allows positioning of the card bottom */
+    height: 440px;
+    /* Fixed height for the entire card */
+    overflow: hidden;
+    /* Prevents content from overflowing */
+    position: relative;
+    /* Allows positioning of the card bottom */
     border: 2px solid red;
 }
 
@@ -4304,9 +4506,17 @@ data-share-product-card-button {
 }
 
 @keyframes shop-banner-logo-rotate {
-    0% {rotate: -3deg;}
-    50% {rotate: 3deg;}
-    100% {rotate: -3deg;}
+    0% {
+        rotate: -3deg;
+    }
+
+    50% {
+        rotate: 3deg;
+    }
+
+    100% {
+        rotate: -3deg;
+    }
 }
 
 .shop-notice {
@@ -4370,19 +4580,73 @@ data-share-product-card-button {
 }
 
 @keyframes home-page-temporary-warning-anim {
-    0% {opacity: 0; transform: translateY(-5px); border: 2px solid #bf4646; background-color: #bf464663;}
-    5% {opacity: 1; transform: translateY(0px);}
-    10% {border: 2px solid #7c2525; background-color: #b1303063;}
-    20% {border: 2px solid #bf4646; background-color: #bf464663;}
-    30% {border: 2px solid #7c2525; background-color: #b1303063;}
-    40% {border: 2px solid #bf4646; background-color: #bf464663;}
-    50% {border: 2px solid #7c2525; background-color: #b1303063;}
-    60% {border: 2px solid #bf4646; background-color: #bf464663;}
-    70% {border: 2px solid #7c2525; background-color: #b1303063;}
-    80% {border: 2px solid #bf4646; background-color: #bf464663;}
-    90% {border: 2px solid #7c2525; background-color: #b1303063;}
-    95% {opacity: 1; transform: translateY(0px);}
-    100% {transform: translateY(-5px); border: 2px solid #bf4646; background-color: #bf464663;}
+    0% {
+        opacity: 0;
+        transform: translateY(-5px);
+        border: 2px solid #bf4646;
+        background-color: #bf464663;
+    }
+
+    5% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    10% {
+        border: 2px solid #7c2525;
+        background-color: #b1303063;
+    }
+
+    20% {
+        border: 2px solid #bf4646;
+        background-color: #bf464663;
+    }
+
+    30% {
+        border: 2px solid #7c2525;
+        background-color: #b1303063;
+    }
+
+    40% {
+        border: 2px solid #bf4646;
+        background-color: #bf464663;
+    }
+
+    50% {
+        border: 2px solid #7c2525;
+        background-color: #b1303063;
+    }
+
+    60% {
+        border: 2px solid #bf4646;
+        background-color: #bf464663;
+    }
+
+    70% {
+        border: 2px solid #7c2525;
+        background-color: #b1303063;
+    }
+
+    80% {
+        border: 2px solid #bf4646;
+        background-color: #bf464663;
+    }
+
+    90% {
+        border: 2px solid #7c2525;
+        background-color: #b1303063;
+    }
+
+    95% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(-5px);
+        border: 2px solid #bf4646;
+        background-color: #bf464663;
+    }
 }
 
 .home-page-dismissible-content-2024-recap {
@@ -4417,8 +4681,15 @@ data-share-product-card-button {
 }
 
 @keyframes home-page-dismissible-content-2024-recap-anim {
-    0% {opacity: 0; transform: translateY(-50px);}
-    10% {opacity: 1; transform: translateY(0px);}
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
 .shop-notice-text {
@@ -4445,10 +4716,25 @@ data-share-product-card-button {
 }
 
 @keyframes gtfin76g7ererg {
-    0% {opacity: 0; transform: translateY(-50px);}
-    10% {opacity: 1; transform: translateY(0px);}
-    90% {opacity: 1; transform: translateY(0px);}
-    100% {opacity: 0; transform: translateY(-50px);}
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
 }
 
 .home-page-preview-banner {
@@ -4456,7 +4742,7 @@ data-share-product-card-button {
     height: 294.56px;
     object-fit: cover;
     object-position: 0 -30px;
-    mask-image: linear-gradient(to bottom,#000 60%,rgba(0,0,0,0)100%);
+    mask-image: linear-gradient(to bottom, #000 60%, rgba(0, 0, 0, 0)100%);
     margin-top: 50px;
 }
 
@@ -4465,7 +4751,7 @@ data-share-product-card-button {
     height: 294.56px;
     object-fit: cover;
     object-position: 0 -30px;
-    mask-image: linear-gradient(to bottom,#000 60%,rgba(0,0,0,0)100%);
+    mask-image: linear-gradient(to bottom, #000 60%, rgba(0, 0, 0, 0)100%);
     top: 50px;
 }
 
@@ -4516,18 +4802,18 @@ data-share-product-card-button {
 ::-webkit-scrollbar {
     width: 5px;
 }
-  
+
 /* Track */
 ::-webkit-scrollbar-track {
     background: none;
 }
-  
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #1E1F22;
     border-radius: 10px;
 }
-  
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #1E1F22;
@@ -4547,4 +4833,30 @@ data-share-product-card-button {
 
 body {
     overflow-x: hidden;
+}
+
+.search-container {
+    position: flex;
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    padding-left: 35px;
+}
+
+.search-bar {
+    width: 60%;
+    height: 35px;
+    padding: 5px 10px;
+    border: 1px solid var(--border-color, #ccc);
+    outline: none;
+    border-radius: 8px;
+    color: var(--white, #fff);
+    background-color: var(--input-background, #333);
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-bar:focus {
+    border-color: var(--primary-color, #007bff);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
