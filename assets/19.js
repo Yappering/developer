@@ -1,6 +1,6 @@
 
 
-app_version1 = "302"
+app_version1 = "303"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2562,7 +2562,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         AESPA = "1346499610977243196",
         NAMEPLATE = "1349849614353829990",
         HOLIDAYS = "1349486948942745691",
-        SHENANIGANS = "1352407446500675708"
+        SHENANIGANS = "1352407446500675708",
+        CHIBI_CAFE = "1354894010849820852"
     ]
 
     external_skus = [
@@ -10538,6 +10539,19 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             </div>
                                         `;
 
+                                        if (apiCategory.sku_id === "1349849614353829990" && apiCategory.logo === null) {
+                                            let nameplateWarning = document.createElement("div");
+
+                                            nameplateWarning.classList.add('nameplate-modal-category-warning-container');
+                                            nameplateWarning.innerHTML = `
+                                                <p>${getTextString("SHOP_NAMEPLATE_CATEGORY_NOTICE_1")}</p>
+                                                <p>${getTextString("SHOP_NAMEPLATE_CATEGORY_NOTICE_2")}</p>
+                                            `;
+
+
+                                            modal.querySelector(".category-modalv2-inner-left").appendChild(nameplateWarning);
+                                        }
+
                                         if (localStorage.experiment_2025_03_item_reviews === "Treatment 1: Enabled" || localStorage.experiment_2025_03_item_reviews === "Treatment 2: Simulate not logged in" || localStorage.experiment_2025_03_item_reviews === "Treatment 3: Simulate logged in") {
                                             modal.querySelector("[data-shop-modal-review-title]").textContent = `${getTextString("SHOP_REVIEWS_TITLE")}`;
 
@@ -13746,13 +13760,40 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
 
         const open_help_modals_buttons_holder = document.getElementById('open-help-modals-buttons-holder');
-        open_help_modals_buttons_holder.innerHTML = `
-            <svg title="Dev Tools" x="0" y="0" onclick="openDevModal()" style="display: none;" id="open-dev-tools-button-1" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M2 20.59V19.4a1 1 0 0 1 .3-.7l2.4-2.42a1 1 0 0 1 .71-.29H6l9-9-.85-.85a1 1 0 0 1-.23-.34l-1.49-3.73a.5.5 0 0 1 .65-.65l3.73 1.5a1 1 0 0 1 .34.22l.64.64a1 1 0 0 1 1.42 0l1 1a1 1 0 0 1 0 1.42l1.58 1.58a1 1 0 0 1 0 1.42l-1.58 1.58a1 1 0 0 1-1.42 0L17 9l-9 9v.59a1 1 0 0 1-.3.7l-2.4 2.42a1 1 0 0 1-.71.29H3.4a1 1 0 0 1-.7-.3l-.42-.4a1 1 0 0 1-.29-.71Z" class=""></path><path fill="currentColor" d="M8.23 10.23c.2.2.51.2.7 0l1.3-1.3a.5.5 0 0 0 0-.7L6.5 4.5l.3-.3a1 1 0 0 0 0-1.4l-.5-.5c-.2-.2-.45-.3-.7-.22-.43.14-1.17.49-2.1 1.42a5.37 5.37 0 0 0-1.42 2.1c-.08.25.03.5.21.7l.5.5a1 1 0 0 0 1.42 0l.29-.3 3.73 3.73ZM13.77 15.06a.5.5 0 0 0 0 .7l1.73 1.74 1.44 2.4a1 1 0 0 0 .15.19l1.73 1.73c.1.1.26.1.36 0l2.64-2.64c.1-.1.1-.26 0-.36L20.1 17.1a1 1 0 0 0-.2-.15L17.5 15.5l-1.73-1.73a.5.5 0 0 0-.7 0l-1.3 1.3Z" class=""></path></svg>
-            <svg title="Options" x="0" y="0" onclick="optionsSidebarToggle()" id="open-options-tools-button-1" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4483 8.3333H18.3333V11.6667H16.4492C16.2483 12.4425 15.9167 13.165 15.4708 13.8033L16.6667 15 15 16.6667 13.8042 15.47C13.1642 15.9158 12.4433 16.2483 11.6667 16.4483V18.3333H8.3333V16.4483C7.5575 16.2483 6.8358 15.9158 6.1967 15.47L5 16.6667 3.3333 15 4.53 13.8033C4.0842 13.1658 3.7517 12.4433 3.5517 11.6667H1.6667V8.3333H3.5517C3.7517 7.5567 4.0833 6.835 4.53 6.1967L3.3333 5 5 3.3333 6.1967 4.53C6.835 4.0833 7.5567 3.7517 8.3333 3.5517V1.6667H11.6667V3.5508C12.4433 3.7517 13.1642 4.0833 13.8042 4.5292L15 3.3325 16.6667 4.9992 15.47 6.1967C15.9158 6.835 16.2483 7.5575 16.4483 8.3333ZM10 13.3333C11.8409 13.3333 13.3333 11.8409 13.3333 10 13.3333 8.159 11.8409 6.6667 10 6.6667 8.159 6.6667 6.6667 8.159 6.6667 10 6.6667 11.8409 8.159 13.3333 10 13.3333Z")></path></svg>
+        
+        let options_button = document.createElement("div");
+
+        options_button.id = 'open-options-tools-button-1';
+        options_button.setAttribute("onclick","optionsSidebarToggle();");
+        options_button.title = `Options`;
+        options_button.innerHTML = `
+            <svg x="0" y="0" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path d="M19.738 9.99995H22V14H19.7391C19.498 14.931 19.1001 15.798 18.565 16.564L20.0001 18L18 20.0001L16.5651 18.564C15.7971 19.099 14.932 19.498 14 19.738V22H9.99995V19.738C9.06899 19.498 8.20295 19.099 7.43602 18.564L5.99998 20.0001L3.99993 18L5.43597 16.564C4.90101 15.799 4.50201 14.932 4.26201 14H2V9.99995H4.26201C4.50201 9.06803 4.89993 8.20199 5.43597 7.43602L3.99993 5.99998L5.99998 3.99993L7.43602 5.43597C8.20199 4.89993 9.06803 4.50201 9.99995 4.26201V2H14V4.26093C14.932 4.50201 15.7971 4.89993 16.5651 5.43501L18 3.99897L20.0001 5.99902L18.564 7.43602C19.099 8.20199 19.498 9.06899 19.738 9.99995ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79079 14.2091 8.00002 12 8.00002C9.79079 8.00002 8.00002 9.79079 8.00002 12C8.00002 14.2091 9.79079 16 12 16Z" fill="currentColor"/></svg>
         `;
+
+        open_help_modals_buttons_holder.appendChild(options_button);
+
         if (localStorage.dev == "true") {
-            const dev_tool_button = document.querySelector("#open-dev-tools-button-1");
-            dev_tool_button.style.display = 'block';
+            let devtools_button = document.createElement("div");
+
+            devtools_button.id = 'open-dev-tools-button-1';
+            devtools_button.setAttribute("onclick","openDevModal();");
+            devtools_button.title = `Dev Tools`;
+            devtools_button.innerHTML = `
+                <svg x="0" y="0" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M2 20.59V19.4a1 1 0 0 1 .3-.7l2.4-2.42a1 1 0 0 1 .71-.29H6l9-9-.85-.85a1 1 0 0 1-.23-.34l-1.49-3.73a.5.5 0 0 1 .65-.65l3.73 1.5a1 1 0 0 1 .34.22l.64.64a1 1 0 0 1 1.42 0l1 1a1 1 0 0 1 0 1.42l1.58 1.58a1 1 0 0 1 0 1.42l-1.58 1.58a1 1 0 0 1-1.42 0L17 9l-9 9v.59a1 1 0 0 1-.3.7l-2.4 2.42a1 1 0 0 1-.71.29H3.4a1 1 0 0 1-.7-.3l-.42-.4a1 1 0 0 1-.29-.71Z" class=""></path><path fill="currentColor" d="M8.23 10.23c.2.2.51.2.7 0l1.3-1.3a.5.5 0 0 0 0-.7L6.5 4.5l.3-.3a1 1 0 0 0 0-1.4l-.5-.5c-.2-.2-.45-.3-.7-.22-.43.14-1.17.49-2.1 1.42a5.37 5.37 0 0 0-1.42 2.1c-.08.25.03.5.21.7l.5.5a1 1 0 0 0 1.42 0l.29-.3 3.73 3.73ZM13.77 15.06a.5.5 0 0 0 0 .7l1.73 1.74 1.44 2.4a1 1 0 0 0 .15.19l1.73 1.73c.1.1.26.1.36 0l2.64-2.64c.1-.1.1-.26 0-.36L20.1 17.1a1 1 0 0 0-.2-.15L17.5 15.5l-1.73-1.73a.5.5 0 0 0-.7 0l-1.3 1.3Z" class=""></path></svg>
+            `;
+
+            open_help_modals_buttons_holder.appendChild(devtools_button);
+
+            let old_devtools_button = document.createElement("div");
+
+            old_devtools_button.id = 'open-dev-tools-button-1';
+            old_devtools_button.setAttribute("onclick","openOldDevModal();");
+            old_devtools_button.title = `Old Dev Tools`;
+            old_devtools_button.innerHTML = `
+                <svg x="0" y="0" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M2 20.59V19.4a1 1 0 0 1 .3-.7l2.4-2.42a1 1 0 0 1 .71-.29H6l9-9-.85-.85a1 1 0 0 1-.23-.34l-1.49-3.73a.5.5 0 0 1 .65-.65l3.73 1.5a1 1 0 0 1 .34.22l.64.64a1 1 0 0 1 1.42 0l1 1a1 1 0 0 1 0 1.42l1.58 1.58a1 1 0 0 1 0 1.42l-1.58 1.58a1 1 0 0 1-1.42 0L17 9l-9 9v.59a1 1 0 0 1-.3.7l-2.4 2.42a1 1 0 0 1-.71.29H3.4a1 1 0 0 1-.7-.3l-.42-.4a1 1 0 0 1-.29-.71Z" class=""></path><path fill="currentColor" d="M8.23 10.23c.2.2.51.2.7 0l1.3-1.3a.5.5 0 0 0 0-.7L6.5 4.5l.3-.3a1 1 0 0 0 0-1.4l-.5-.5c-.2-.2-.45-.3-.7-.22-.43.14-1.17.49-2.1 1.42a5.37 5.37 0 0 0-1.42 2.1c-.08.25.03.5.21.7l.5.5a1 1 0 0 0 1.42 0l.29-.3 3.73 3.73ZM13.77 15.06a.5.5 0 0 0 0 .7l1.73 1.74 1.44 2.4a1 1 0 0 0 .15.19l1.73 1.73c.1.1.26.1.36 0l2.64-2.64c.1-.1.1-.26 0-.36L20.1 17.1a1 1 0 0 0-.2-.15L17.5 15.5l-1.73-1.73a.5.5 0 0 0-.7 0l-1.3 1.3Z" class=""></path></svg>
+            `;
+
+            open_help_modals_buttons_holder.appendChild(old_devtools_button);
         }
     }
 
@@ -13999,7 +14040,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                     <img class="a2024-recap-img-1" src="${cdn}assets/170.png">
 
-                    <p class="center-text" style="font-size: 18px;">[replace with something from support article, if they release this year]</p>
+                    <p class="center-text" style="font-size: 18px;">Make your name stand out with nameplates! These special designs customize how your name appears in your direct messages (DMs), group chats and servers, giving your name that extra fun and flair wherever you go on Discord.</p>
                 </div>
 
                 <hr style="opacity: 0; height: 30px;">
@@ -16346,7 +16387,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                     <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
                         <button class="card-button" onclick="disableClientRework();">${getTextString("OPTIONS_DEV_DISABLE_CLIENT_REWORK")}</button>
-                        <button class="card-button" onclick="openOldDevModal();">${getTextString("OPTIONS_DEV_OPEN_OLD_DEV_MODAL")}</button>
                     </div>
 
                     <div class="options-option-card" id="options-text-input-option">
@@ -16651,7 +16691,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     function openOldDevModal() {
         if (localStorage.dev == "true") {
-            openDevModal()
             document.getElementById('modal-housing').innerHTML = `
                 <div class="modal-housing-1" id="modal-housing-1">
                     <div class="dev-modal">

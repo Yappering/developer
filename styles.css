@@ -581,13 +581,6 @@ body {
     position: absolute;
 }
 
-#open-dev-tools-button-1 {
-    margin-top: -50px;
-    right: 120px;
-    cursor: pointer;
-    position: absolute;
-}
-
 #open-downloads-button {
     margin-top: -50px;
     right: 150px;
@@ -619,17 +612,46 @@ body {
     scale: 1.3;
 }
 
-#open-options-tools-button-1 {
-    margin-top: -47px;
-    right: 85px;
+#open-options-tools-button-1, #open-options-tools-button-1 svg {
+    height: 34px !important;
+    width: 34px !important;
+    scale: 0.9;
     cursor: pointer;
-    position: absolute;
-    scale: 1.3;
+}
+
+#open-dev-tools-button-1, #open-dev-tools-button-1 svg {
+    height: 34px !important;
+    width: 34px !important;
+    scale: 0.85;
+    cursor: pointer;
 }
 
 *:has(.mobile-client) #open-options-tools-button-1 {
     right: 10px;
-}   
+}
+
+#open-help-modals-buttons-holder {
+    position: absolute;
+    top: 5px;
+    width: 200px;
+    height: 34px;
+    right: 85px;
+    display: grid;
+    direction: rtl;
+    gap: 5px;
+    grid-template-columns: repeat(auto-fill, 29px);
+}
+
+#open-help-modals-buttons-holder div {
+    height: 34px !important;
+    width: 34px !important;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+#seachfhgfkjsdfhkdj {
+    width: 80px;
+}
 
 #storageItems div {
     margin-top: 3px;
@@ -3132,6 +3154,17 @@ data-share-product-card-button {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+.nameplate-modal-category-warning-container {
+    background-color: var(--button-danger-background);
+    margin-top: 50px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     border-radius: 10px;
 }
 
