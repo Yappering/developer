@@ -142,7 +142,8 @@ const experimentsList = [
             "Treatment 2: Enabled",
             "Treatment 3: Hide All Profiles Plus Tabs"
         ],
-        rollout: "Treatment 3: Hide All Profiles Plus Tabs"
+        rollout: "Treatment 3: Hide All Profiles Plus Tabs",
+        needs_api_token: "true"
     },
     {
         title: "Shop Category Modals",
@@ -190,7 +191,7 @@ const experimentsList = [
             "Treatment 2: Orb Shop done like default",
             "Treatment 3: Default + New tag"
         ],
-        rollout: "Treatment 3: Default + New tag",
+        rollout: "Treatment 2: Orb Shop done like default",
         needs_api_token: "true"
     },
     {
