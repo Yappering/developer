@@ -4269,8 +4269,9 @@ data-share-product-card-button {
 }
 
 #home-page-preview-logo-container {
-    text-align: center;
+    text-align: left;
     width: 700px;
+    margin-left: 50px;
 }
 
 #home-page-preview-logo-container img {

@@ -1,6 +1,6 @@
 
 
-app_version1 = "303"
+app_version1 = "304"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -109,17 +109,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
 
         endpoints = [
-            COLLECTIBLES = "/collectibles-categories",
+            COLLECTIBLES = "/collectibles-shop?tab=shop&has-leaks=true",
             COLLECTIBLES_IN_SHOP = "/collectibles-categories-published",
             CONSUMABLES = "/consumables",
-            MISCELLANEOUS = "/miscellaneous-categories",
-            PROFILES_PLUS = "/profiles-plus-categories",
+            MISCELLANEOUS = "/collectibles-shop?tab=miscellaneous",
+            PROFILES_PLUS = "/collectibles-shop?tab=pplus",
             HOME_PAGE_ALL = "/preview-1",
             HOME_PAGE_LEAKS = "/preview-2",
             HOME_PAGE_PPLUS = "/preview-3",
-            PROFILE_EFFECTS = "/user-profile-effects",
+            PROFILE_EFFECTS = "/profile-effects?tab=discord",
             DOWNLOADABLE_DATA = "/downloads",
-            PROFILES_PLUS_EFFECTS = "/profiles-plus-profile-effects",
+            PROFILES_PLUS_EFFECTS = "/profile-effects?tab=pplus",
             LEAKS = "/leaked-categories",
             COLLECTIBLES_MARKETING = "/collectibles-marketing",
             COLLECTIBLES_VARIANTS = "/collectibles-categories-variants",
