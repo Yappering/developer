@@ -870,6 +870,12 @@ body {
     overflow: hidden;
 }
 
+.modal-left-nameplate-preview {
+    position: absolute;
+    transform: translateX(30%);
+    top: 150px;
+}
+
 .options-img-input-option-error {
     margin-left: auto;
     margin-right: auto;

@@ -1,6 +1,6 @@
 
 
-app_version1 = "305"
+app_version1 = "306"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -4024,6 +4024,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 
                                                             const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                                             previewHolder.classList.add('nameplate-modal-preview');
+    
+                                                            const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
                 
                                                             if (localStorage.discord_username && localStorage.discord_username != '') {
                                                                 previewName = localStorage.discord_username;
@@ -4075,6 +4077,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <div class="nameplate-preview-status-color"></div>
                                                                 </div>
                                                             `;
+    
+                                                            previewHolderLeft.innerHTML = `
+                                                                <div class="nameplate-null-user" data-user-nameplate-preview-left>
+                                                                    <video disablepictureinpicture muted loop class="nameplate-null-user" style="position: absolute; height: 100%; width: auto; right: 0;" data-user-nameplate-preview-img-left></video>
+                                                                    <div class="nameplate-user-avatar" data-nameplate-user-random-avatar-left></div>
+                                                                    <p class="nameplate-user-name">${previewName}</p>
+                                                                </div>
+                                                            `;
                 
                                                             product.items.forEach(item => {
                                                                 const nameplatePreview = previewHolder.querySelector("[data-user-nameplate-preview]");
@@ -4104,6 +4114,32 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                                                                 if (localStorage.reduced_motion != "true") {
                                                                     videoElement.play();
+                                                                }
+    
+    
+    
+                                                                const videoElementLeft = previewHolderLeft.querySelector("[data-user-nameplate-preview-img-left]");
+                                                                const nameplatePreviewLeft = previewHolderLeft.querySelector("[data-user-nameplate-preview-left]");
+                                                                previewHolderLeft.classList.add("modal-left-nameplate-preview");
+    
+                                                                videoElementLeft.src = asset;
+    
+                                                                nameplatePreviewLeft.style.backgroundImage = `linear-gradient(90deg, #00000000 -30%, ${bgcolor} 200%)`;
+    
+                                                                const nullUserAvatarLeft = previewHolderLeft.querySelectorAll("[data-nameplate-user-random-avatar-left]");
+                                                            
+                                                                nullUserAvatarLeft.forEach(UserAvatar => {
+                                                                    UserAvatar.style.backgroundImage = `url(${localStorage.discord_avatar})`;
+                                                                });
+    
+                                                                if (localStorage.reduced_motion != "true") {
+                                                                    videoElementLeft.addEventListener("mouseenter", () => {
+                                                                        videoElementLeft.play();
+                                                                    });
+                                                                
+                                                                    videoElementLeft.addEventListener("mouseleave", () => {
+                                                                        videoElementLeft.pause();
+                                                                    });
                                                                 }
                                                             });
                                                             
@@ -5055,7 +5091,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 }
                                             }
                                                                                 
-                                            if (newColorsSKUIDS.includes(product.sku_id) && ANIME_V3 === apiCategory.sku_id) {
+                                            if (newColorsSKUIDS.includes(product.sku_id) && discord_categories.ANIME_V3 === apiCategory.sku_id) {
                                                 newColorItemCheck();
                                             }
     
@@ -12167,6 +12203,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             
                                                         const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                                         previewHolder.classList.add('nameplate-modal-preview');
+
+                                                        const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
             
                                                         if (localStorage.discord_username && localStorage.discord_username != '') {
                                                             previewName = localStorage.discord_username;
@@ -12218,6 +12256,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 <div class="nameplate-preview-status-color"></div>
                                                             </div>
                                                         `;
+
+                                                        previewHolderLeft.innerHTML = `
+                                                            <div class="nameplate-null-user" data-user-nameplate-preview-left>
+                                                                <video disablepictureinpicture muted loop class="nameplate-null-user" style="position: absolute; height: 100%; width: auto; right: 0;" data-user-nameplate-preview-img-left></video>
+                                                                <div class="nameplate-user-avatar" data-nameplate-user-random-avatar-left></div>
+                                                                <p class="nameplate-user-name">${previewName}</p>
+                                                            </div>
+                                                        `;
             
                                                         product.items.forEach(item => {
                                                             const nameplatePreview = previewHolder.querySelector("[data-user-nameplate-preview]");
@@ -12247,6 +12293,32 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                             if (localStorage.reduced_motion != "true") {
                                                                 videoElement.play();
+                                                            }
+
+
+
+                                                            const videoElementLeft = previewHolderLeft.querySelector("[data-user-nameplate-preview-img-left]");
+                                                            const nameplatePreviewLeft = previewHolderLeft.querySelector("[data-user-nameplate-preview-left]");
+                                                            previewHolderLeft.classList.add("modal-left-nameplate-preview");
+
+                                                            videoElementLeft.src = asset;
+
+                                                            nameplatePreviewLeft.style.backgroundImage = `linear-gradient(90deg, #00000000 -30%, ${bgcolor} 200%)`;
+
+                                                            const nullUserAvatarLeft = previewHolderLeft.querySelectorAll("[data-nameplate-user-random-avatar-left]");
+                                                        
+                                                            nullUserAvatarLeft.forEach(UserAvatar => {
+                                                                UserAvatar.style.backgroundImage = `url(${localStorage.discord_avatar})`;
+                                                            });
+
+                                                            if (localStorage.reduced_motion != "true") {
+                                                                videoElementLeft.addEventListener("mouseenter", () => {
+                                                                    videoElementLeft.play();
+                                                                });
+                                                            
+                                                                videoElementLeft.addEventListener("mouseleave", () => {
+                                                                    videoElementLeft.pause();
+                                                                });
                                                             }
                                                         });
                                                         
