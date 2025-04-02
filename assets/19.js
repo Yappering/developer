@@ -1,6 +1,6 @@
 
 
-app_version1 = "309"
+app_version1 = "310"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -17281,7 +17281,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
     function openInDiscordShop(sku_id, type, from, unpublished_data, category_sku_id) {
-        if (params.get("page") === "shop" && from === "card" && unpublished_data != null && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
+        if (params.get("page") === "shop" && from === "card" && unpublished_data != "null" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
             createModal(getTextString("SHOP_UNPUBLISHED_WARNING"));
         } else if (params.get("page") === "orbs" && from === "card" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
             createModal(getTextString("SHOP_MISCELLANEOUS_WARNING"));
@@ -17289,7 +17289,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             createModal(getTextString("SHOP_UNRELEASED_WARNING"));
         } else if (params.get("page") === "miscellaneous" && from === "card" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
             createModal(getTextString("SHOP_MISCELLANEOUS_WARNING"));
-        } else if (params.get("page") === "nameplates" && category_sku_id === discord_categories.NAMEPLATE && from === "card" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
+        } else if (category_sku_id === discord_categories.NAMEPLATE && from === "card" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
             createModal(getTextString("SHOP_ROLLING_OUT_WARNING"));
         } else if (params.get("page") === "nameplates" && category_sku_id === discord_categories.NAMEPLATE_TEST && from === "card" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
             createModal(getTextString("SHOP_MISCELLANEOUS_WARNING"));
