@@ -1,6 +1,6 @@
 
 
-app_version1 = "308"
+app_version1 = "309"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -11719,13 +11719,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         if (localStorage.experiment_2025_03_copy_sku_card === "Treatment 1: Enabled" || localStorage.experiment_2025_03_copy_sku_card === "Treatment 2: w/ share button") {
                                             card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
                                                 <div class="card-multi-button-container" card-multi-button-container>
-                                                    <button class="card-button" onclick="openInDiscordShop('${product.sku_id}', null, 'card', '${product.unpublished_at}');" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP_V2")}</button>
+                                                    <button class="card-button" onclick="openInDiscordShop('${product.sku_id}', null, 'card', '${product.unpublished_at}', '${product.category_sku_id}');" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP_V2")}</button>
                                                     <button class="card-button" onclick="copyEmoji('${product.sku_id}'); copyNotice('copysku');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
                                                 </div>
                                             `;
                                         } else {
                                             card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                <button class="card-button" onclick="openInDiscordShop('${product.sku_id}', null, 'card', '${product.unpublished_at}');" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP")}</button>
+                                                <button class="card-button" onclick="openInDiscordShop('${product.sku_id}', null, 'card', '${product.unpublished_at}', '${product.category_sku_id}');" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP")}</button>
                                             `;
                                         }
 
@@ -17280,7 +17280,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     }
 
-    function openInDiscordShop(sku_id, type, from, unpublished_data) {
+    function openInDiscordShop(sku_id, type, from, unpublished_data, category_sku_id) {
         if (params.get("page") === "shop" && from === "card" && unpublished_data != null && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
             createModal(getTextString("SHOP_UNPUBLISHED_WARNING"));
         } else if (params.get("page") === "orbs" && from === "card" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
@@ -17288,6 +17288,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         } else if (params.get("page") === "leaks" && from === "card" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
             createModal(getTextString("SHOP_UNRELEASED_WARNING"));
         } else if (params.get("page") === "miscellaneous" && from === "card" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
+            createModal(getTextString("SHOP_MISCELLANEOUS_WARNING"));
+        } else if (params.get("page") === "nameplates" && category_sku_id === discord_categories.NAMEPLATE && from === "card" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
+            createModal(getTextString("SHOP_ROLLING_OUT_WARNING"));
+        } else if (params.get("page") === "nameplates" && category_sku_id === discord_categories.NAMEPLATE_TEST && from === "card" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
             createModal(getTextString("SHOP_MISCELLANEOUS_WARNING"));
         } else {
             location.href='https://discord.com/shop#itemSkuId=' + sku_id;
@@ -17323,7 +17327,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             }, 1);
 
             let modal_back = document.createElement("div");
-            console.log('fssfsdfs');
 
             modal_back.classList.add('modalv2-back');
             modal_back.id = 'modalv2-back';

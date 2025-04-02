@@ -211,6 +211,7 @@ SHOP_NAMEPLATE_WARNING_NOTICE_2 = "Nameplates from this category can no longer b
 SHOP_UNPUBLISHED_WARNING = "This item has an unpublished date and might not show up in the Discord shop.";
 SHOP_UNRELEASED_WARNING = "This item has not released yet and will not show up in the Discord shop unless you know what you're doing.";
 SHOP_MISCELLANEOUS_WARNING = "This is a miscellaneous item and will not show up in the Discord shop unless you know what you're doing.";
+SHOP_ROLLING_OUT_WARNING = "This item is part of a rollout and will not show up in the Discord shop unless you have the rollout.";
 SHOP_MODAL_UNPUBLISHED_WARNING_CONTINUE = "Continue";
 SHOP_MODAL_UNPUBLISHED_WARNING_CONTINUE2 = "Continue and don't show again";
 SHOP_MODAL_UNPUBLISHED_WARNING_GO_BACK = "Go Back";
