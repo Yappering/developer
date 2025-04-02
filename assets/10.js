@@ -349,6 +349,7 @@ const testFetchAPIList = [
             "shop",
             "orbs",
             "leaks",
+            "nameplates",
             "consumables",
             "miscellaneous",
             "pplus-home",
