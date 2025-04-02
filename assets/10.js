@@ -59,7 +59,8 @@ const experimentsList = [
             "Treatment 1: Enabled"
         ],
         rollout: "Treatment -1: Disabled",
-        needs_api_token: "true"
+        needs_api_token: "true",
+        not_needed: "true"
     },
     {
         title: "Extra Options Dismissible Content",
@@ -78,10 +79,10 @@ const experimentsList = [
         name: "experiment_2025_03_early_nameplate_warning",
         treatments: [
             "Treatment -1: Disabled",
-            "Treatment 1: Enabled"
+            "Treatment 1: Nameplate Test Warning",
+            "Treatment 2: Nameplate & Nameplate Test Warning"
         ],
-        rollout: "Treatment -1: Disabled",
-        not_needed: "true"
+        rollout: "Treatment 2: Nameplate & Nameplate Test Warning"
     },
     {
         //21
@@ -263,6 +264,15 @@ const experimentsList = [
 ];
 
 const dismissibleContentList = [
+    {
+        title: "Open In Shop Notice",
+        id: "dismissible_content_open_in_shop_notice",
+        name: "dismissible_open_in_shop_notice",
+        treatments: [
+            "Treatment -1: Unseen",
+            "Treatment 1: Seen"
+        ]
+    },
     {
         title: "Orbs Shop New Tag",
         id: "dismissible_content_orbs_shop_new_tag",

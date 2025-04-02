@@ -1,6 +1,6 @@
 
 
-app_version1 = "306"
+app_version1 = "307"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -3668,16 +3668,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         setTimeout(() => {
                                                             openItemModal();
                                                         }, 1000);
-                                                        card.classList.add("highlighted")
-    
-                                                        let highlightedGlint = document.createElement("div");
-    
-                                                        highlightedGlint.classList.add('shop-category-card-highlighted-glint');
-    
-                                                        card.appendChild(highlightedGlint);
-                                                        setTimeout(() => {
-                                                            highlightedGlint.remove();
-                                                        }, 3000);
                                                     }
                                                     
     
@@ -4033,17 +4023,26 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 previewName = 'Discord User'
                                                             }
     
-                                                            if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 1: Enabled") {
+                                                            if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning" && product.category_sku_id === discord_categories.NAMEPLATE) {
                                                                 let nameplateWarning = document.createElement("div");
     
                                                                 nameplateWarning.classList.add('nameplate-modal-early-warning-container');
                                                                 nameplateWarning.innerHTML = `
                                                                     <p>${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_1")}</p>
-                                                                    <a style="color: lightblue;" href="https://support.yapper.shop/?page=nameplates">${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_2")}</a>
                                                                 `;
     
-    
                                                                 modal.querySelector(".modalv2-inner-left").appendChild(nameplateWarning);
+                                                            } else if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 1: Nameplate Test Warning" || localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning") {
+                                                                if (product.category_sku_id === discord_categories.NAMEPLATE_TEST) {
+                                                                    let nameplateWarning = document.createElement("div");
+    
+                                                                    nameplateWarning.classList.add('nameplate-modal-early-warning-container');
+                                                                    nameplateWarning.innerHTML = `
+                                                                        <p>${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_2")}</p>
+                                                                    `;
+    
+                                                                    modal.querySelector(".modalv2-inner-left").appendChild(nameplateWarning);
+                                                                }
                                                             }
                 
                                                             previewHolder.innerHTML = `
@@ -5170,6 +5169,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                                             // Append card to output
                                             cardOutput.append(card);
+    
+                                            scrollToSKU(product.sku_id, 'true');
                                         }
                                     }
                                     output0.append(category);
@@ -5879,16 +5880,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     setTimeout(() => {
                                                         openItemModal();
                                                     }, 1000);
-                                                    card.classList.add("highlighted")
-
-                                                    let highlightedGlint = document.createElement("div");
-
-                                                    highlightedGlint.classList.add('shop-category-card-highlighted-glint');
-
-                                                    card.appendChild(highlightedGlint);
-                                                    setTimeout(() => {
-                                                        highlightedGlint.remove();
-                                                    }, 3000);
                                                 }
 
                                                 async function openItemModal() {
@@ -6149,17 +6140,26 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             previewName = 'Discord User'
                                                         }
 
-                                                        if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 1: Enabled") {
+                                                        if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning" && product.category_sku_id === discord_categories.NAMEPLATE) {
                                                             let nameplateWarning = document.createElement("div");
 
                                                             nameplateWarning.classList.add('nameplate-modal-early-warning-container');
                                                             nameplateWarning.innerHTML = `
                                                                 <p>${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_1")}</p>
-                                                                <a style="color: lightblue;" href="https://support.yapper.shop/?page=nameplates">${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_2")}</a>
                                                             `;
 
-
                                                             modal.querySelector(".modalv2-inner-left").appendChild(nameplateWarning);
+                                                        } else if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 1: Nameplate Test Warning" || localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning") {
+                                                            if (product.category_sku_id === discord_categories.NAMEPLATE_TEST) {
+                                                                let nameplateWarning = document.createElement("div");
+
+                                                                nameplateWarning.classList.add('nameplate-modal-early-warning-container');
+                                                                nameplateWarning.innerHTML = `
+                                                                    <p>${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_2")}</p>
+                                                                `;
+
+                                                                modal.querySelector(".modalv2-inner-left").appendChild(nameplateWarning);
+                                                            }
                                                         }
             
                                                         previewHolder.innerHTML = `
@@ -7212,48 +7212,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     console.error('Error fetching the API:', error);
                 });
             }
-        } else if (params.get("page") === "quick-info") {
-            createQuickInfoElement()
-
-            fetch(apiUrl, {
-                method: "GET",
-                headers: {
-                    "Password": api_password,
-                    "Token": api_token
-                }
-            })
-            .then(response => response.json())
-            .then((data) => {
-                data.forEach(info => {
-                    let infoCard = document.createElement("div");
-
-                    infoCard.classList.add('quick-info-info-card');
-                    infoCard.innerHTML = `
-                        <h1 class="center-text abcgintonord" style="font-size: 25px; margin-top: 0px; margin-bottom: 0px;">${info.name}</h1>
-
-                        <p class="center-text" style="font-size: 18px;">${info.summary}</p>
-
-                        <h1 class="center-text" style="font-size: 40px;">${info.count}</h1>
-                    `;
-
-                    document.getElementById("quick-info-info-container-loading").innerHTML = ``;
-                    document.getElementById("quick-info-info-container").appendChild(infoCard);
-                })
-                
-            })
-            .catch(error => {
-                console.error('Error fetching the API:', error);
-                document.getElementById("quick-info-info-container").innerHTML = `
-                    <div class="quick-info-info-card">
-                        <h1 class="center-text abcgintonord" style="font-size: 25px; margin-top: 0px; margin-bottom: 0px;">${getTextString("SHOP_NOT_LOAD_ERROR_3")}</h1>
-
-                        <p class="center-text" style="font-size: 18px;">${getTextString("SHOP_NOT_LOAD_ERROR")}${error}</p>
-
-                        <button class="refresh-button" onclick="location.reload();">${getTextString("SHOP_NOT_LOAD_ERROR_RELOAD")}</button>
-                    </div>
-                `;
-                document.getElementById("quick-info-info-container-loading").innerHTML = ``;
-            });
         } else {
 
             if (params.get("page") === "consumables") {
@@ -7390,16 +7348,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         setTimeout(() => {
                                             openCategoryModal();
                                         }, 1000);
-                                        category.querySelector("[data-shop-category-banner]").classList.add("highlighted")
-
-                                        let highlightedGlint = document.createElement("div");
-
-                                        highlightedGlint.classList.add('shop-category-highlighted-glint');
-
-                                        category.querySelector("[data-shop-category-banner]").appendChild(highlightedGlint);
-                                        setTimeout(() => {
-                                            highlightedGlint.remove();
-                                        }, 3000);
                                     }
                                     
 
@@ -8344,16 +8292,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     setTimeout(() => {
                                                         openItemModal();
                                                     }, 1000);
-                                                    card.classList.add("highlighted")
-
-                                                    let highlightedGlint = document.createElement("div");
-
-                                                    highlightedGlint.classList.add('shop-category-card-highlighted-glint');
-
-                                                    card.appendChild(highlightedGlint);
-                                                    setTimeout(() => {
-                                                        highlightedGlint.remove();
-                                                    }, 3000);
                                                 }
 
                                                 async function openItemModal() {
@@ -8606,17 +8544,26 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             previewName = 'Discord User'
                                                         }
 
-                                                        if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 1: Enabled") {
+                                                        if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning" && product.category_sku_id === discord_categories.NAMEPLATE) {
                                                             let nameplateWarning = document.createElement("div");
 
                                                             nameplateWarning.classList.add('nameplate-modal-early-warning-container');
                                                             nameplateWarning.innerHTML = `
                                                                 <p>${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_1")}</p>
-                                                                <a style="color: lightblue;" href="https://support.yapper.shop/?page=nameplates">${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_2")}</a>
                                                             `;
 
-
                                                             modal.querySelector(".modalv2-inner-left").appendChild(nameplateWarning);
+                                                        } else if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 1: Nameplate Test Warning" || localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning") {
+                                                            if (product.category_sku_id === discord_categories.NAMEPLATE_TEST) {
+                                                                let nameplateWarning = document.createElement("div");
+
+                                                                nameplateWarning.classList.add('nameplate-modal-early-warning-container');
+                                                                nameplateWarning.innerHTML = `
+                                                                    <p>${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_2")}</p>
+                                                                `;
+
+                                                                modal.querySelector(".modalv2-inner-left").appendChild(nameplateWarning);
+                                                            }
                                                         }
             
                                                         previewHolder.innerHTML = `
@@ -9611,21 +9558,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                 scrollToSKU(apiCategory.sku_id);
 
-                                function scrollToSKU(sku_id) {
-                                    const itemSKUForScroll = params.get("itemSkuId");
-
-                                    if (itemSKUForScroll === sku_id) {
-                                        setTimeout(() => {
-                                            try {
-                                                document.getElementById(itemSKUForScroll).scrollIntoView({ behavior: "smooth" });
-                                            }
-                                            catch(error) {
-                                                scrollToSKU(sku_id)
-                                            }
-                                        }, 10);
-                                    }
-                                }
-
 
                                 const paper_beach2_banner = document.getElementById(PAPER_BEACH_V2);
                                 const geometry_dash_banner = document.getElementById(GEOMETRY_DASH);
@@ -10400,6 +10332,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                 category.querySelector("[data-shop-banner-banner-container]").id = `${apiCategory.sku_id}-banner-banner-container`;
 
+                                category.querySelector("[data-shop-category-marketing-bg]").remove();
+
 
                                 // Logo Image/Video asset
             
@@ -10533,16 +10467,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         setTimeout(() => {
                                             openCategoryModal();
                                         }, 1000);
-                                        category.querySelector("[data-shop-category-banner]").classList.add("highlighted")
-
-                                        let highlightedGlint = document.createElement("div");
-
-                                        highlightedGlint.classList.add('shop-category-highlighted-glint');
-
-                                        category.querySelector("[data-shop-category-banner]").appendChild(highlightedGlint);
-                                        setTimeout(() => {
-                                            highlightedGlint.remove();
-                                        }, 3000);
                                     }
                                     
 
@@ -10578,19 +10502,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 </div>
                                             </div>
                                         `;
-
-                                        if (apiCategory.sku_id === "1349849614353829990" && apiCategory.logo === null) {
-                                            let nameplateWarning = document.createElement("div");
-
-                                            nameplateWarning.classList.add('nameplate-modal-category-warning-container');
-                                            nameplateWarning.innerHTML = `
-                                                <p>${getTextString("SHOP_NAMEPLATE_CATEGORY_NOTICE_1")}</p>
-                                                <p>${getTextString("SHOP_NAMEPLATE_CATEGORY_NOTICE_2")}</p>
-                                            `;
-
-
-                                            modal.querySelector(".category-modalv2-inner-left").appendChild(nameplateWarning);
-                                        }
 
                                         if (localStorage.experiment_2025_03_item_reviews === "Treatment 1: Enabled" || localStorage.experiment_2025_03_item_reviews === "Treatment 2: Simulate not logged in" || localStorage.experiment_2025_03_item_reviews === "Treatment 3: Simulate logged in") {
                                             modal.querySelector("[data-shop-modal-review-title]").textContent = `${getTextString("SHOP_REVIEWS_TITLE")}`;
@@ -11808,13 +11719,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         if (localStorage.experiment_2025_03_copy_sku_card === "Treatment 1: Enabled" || localStorage.experiment_2025_03_copy_sku_card === "Treatment 2: w/ share button") {
                                             card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
                                                 <div class="card-multi-button-container" card-multi-button-container>
-                                                    <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP_V2")}</button>
+                                                    <button class="card-button" onclick="openInDiscordShop('${product.sku_id}', null, 'card', '${product.unpublished_at}');" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP_V2")}</button>
                                                     <button class="card-button" onclick="copyEmoji('${product.sku_id}'); copyNotice('copysku');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
                                                 </div>
                                             `;
                                         } else {
                                             card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${product.sku_id}';" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP")}</button>
+                                                <button class="card-button" onclick="openInDiscordShop('${product.sku_id}', null, 'card', '${product.unpublished_at}');" title="${getTextString("CARD_OPEN_IN_SHOP_TITLE")}">${getTextString("CARD_OPEN_IN_SHOP")}</button>
                                             `;
                                         }
 
@@ -11847,16 +11758,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     setTimeout(() => {
                                                         openItemModal();
                                                     }, 1000);
-                                                    card.classList.add("highlighted")
-
-                                                    let highlightedGlint = document.createElement("div");
-
-                                                    highlightedGlint.classList.add('shop-category-card-highlighted-glint');
-
-                                                    card.appendChild(highlightedGlint);
-                                                    setTimeout(() => {
-                                                        highlightedGlint.remove();
-                                                    }, 3000);
                                                 }
                                                 
 
@@ -12212,17 +12113,26 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             previewName = 'Discord User'
                                                         }
 
-                                                        if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 1: Enabled") {
+                                                        if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning" && product.category_sku_id === discord_categories.NAMEPLATE) {
                                                             let nameplateWarning = document.createElement("div");
 
                                                             nameplateWarning.classList.add('nameplate-modal-early-warning-container');
                                                             nameplateWarning.innerHTML = `
                                                                 <p>${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_1")}</p>
-                                                                <a style="color: lightblue;" href="https://support.yapper.shop/?page=nameplates">${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_2")}</a>
                                                             `;
 
-
                                                             modal.querySelector(".modalv2-inner-left").appendChild(nameplateWarning);
+                                                        } else if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 1: Nameplate Test Warning" || localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning") {
+                                                            if (product.category_sku_id === discord_categories.NAMEPLATE_TEST) {
+                                                                let nameplateWarning = document.createElement("div");
+
+                                                                nameplateWarning.classList.add('nameplate-modal-early-warning-container');
+                                                                nameplateWarning.innerHTML = `
+                                                                    <p>${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_2")}</p>
+                                                                `;
+
+                                                                modal.querySelector(".modalv2-inner-left").appendChild(nameplateWarning);
+                                                            }
                                                         }
             
                                                         previewHolder.innerHTML = `
@@ -13358,21 +13268,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                 scrollToSKU(apiCategory.sku_id);
 
-                                function scrollToSKU(sku_id) {
-                                    const itemSKUForScroll = params.get("itemSkuId");
-
-                                    if (itemSKUForScroll === sku_id) {
-                                        setTimeout(() => {
-                                            try {
-                                                document.getElementById(itemSKUForScroll).scrollIntoView({ behavior: "smooth" });
-                                            }
-                                            catch(error) {
-                                                scrollToSKU(sku_id)
-                                            }
-                                        }, 10);
-                                    }
-                                }
-
                                 const nameplates_banner = document.getElementById(discord_categories.NAMEPLATE);
                                 const arcane_banner = document.getElementById(discord_categories.WARRIOR);
                                 const dnd_banner = document.getElementById(discord_categories.CHANCE);
@@ -13520,8 +13415,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 </button>
                 <div id="recap-2024-tab-loading">
                 </div>
-                <div id="quick-info-tab-container">
-                </div>
             </div>
             <div class="dm-divider">${getTextString("SHOP_DM_DEVIDER")}</div>
             <div id="collectibles-section">
@@ -13615,14 +13508,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         document.getElementById('recap-2024-tab').style.backgroundImage = "linear-gradient(10deg, rgba(0, 0, 0, 0) 40%, rgb(115, 11, 200) 180%), linear-gradient(170deg, rgba(0, 0, 0, 0) 40%, rgb(115, 11, 200) 180%)";
     }
 
-    if (localStorage.experiment_2025_03_quick_info === "Treatment 1: Enabled") {
-        document.getElementById('quick-info-tab-container').innerHTML = `
-            <button class="dm-button" id="quick-info-tab" onclick="setParams({page: 'quick-info'}); location.reload();">
-                <p class="dm-button-text">${getTextString("QUICK_INFO_TAB_TITLE")}</p>
-            </button>
-        `;
-    }
-
     function pageCheck() {
         privateAPICheck()
         if (params.get("page") === "home") {
@@ -13650,14 +13535,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             localStorage.dismissible_recap_2024 = "Treatment 1: Seen";
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 style="margin-left: 260px; margin-top: 10px;">${getTextString("RECAP_2024_TAB_PAGE_TITLE")}</h2>
-                <div id="open-help-modals-buttons-holder"></div>
-            `;
-        } else if (params.get("page") === "quick-info") {
-            document.title = `${getTextString("QUICK_INFO_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
-            apiUrl = api + QUICK_INFO;
-            document.getElementById("quick-info-tab").classList.add('dm-button-selected');
-            document.getElementById("top-bar-container").innerHTML = `
-                <h2 style="margin-left: 260px; margin-top: 10px;">${getTextString("QUICK_INFO_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
         } else if (params.get("page") === "shop") {
@@ -14402,51 +14279,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 console.warn("No file selected.");
             }
         });
-
-    }
-
-    function createQuickInfoElement() {
-        document.getElementById("everything-housing-container").innerHTML = `
-            <div class="thy-shop-category-idk" style="height: 100%;">
-                <img class="shop-category-marketing-bg" style="height: 100%; position: absolute; filter: blur(3px);" src="${cdn}assets/110.svg">
-
-                <div style="height: 60px; padding-top: 30px;"></div>
-                
-                <div class="a2024-recap-text-card-1">
-                    <h1 class="center-text abcgintonord" style="font-size: 44px; margin-top: 0px; margin-bottom: 0px;">${getTextString("QUICK_INFO_PAGE_TITLE")}</h1>
-
-                    <p class="center-text" style="font-size: 18px;">${getTextString("QUICK_INFO_DESC")}</p>
-
-                    <div class="quick-info-info-container" id="quick-info-info-container">
-                    </div>
-                    <div class="quick-info-info-container" id="quick-info-info-container-loading">
-                        <div class="quick-info-info-card-loading">
-                            <h1 class="center-text abcgintonord" style="font-size: 25px; margin-top: 0px; margin-bottom: 0px; opacity: 0;">a</h1>
-
-                            <p class="center-text" style="font-size: 18px; opacity: 0;">Loading...</p>
-
-                            <h1 class="center-text" style="font-size: 40px; opacity: 0;">a</h1>
-                        </div>
-                        <div class="quick-info-info-card-loading">
-                            <h1 class="center-text abcgintonord" style="font-size: 25px; margin-top: 0px; margin-bottom: 0px; opacity: 0;">a</h1>
-
-                            <p class="center-text" style="font-size: 18px; opacity: 0;">Loading...</p>
-
-                            <h1 class="center-text" style="font-size: 40px; opacity: 0;">a</h1>
-                        </div>
-                        <div class="quick-info-info-card-loading">
-                            <h1 class="center-text abcgintonord" style="font-size: 25px; margin-top: 0px; margin-bottom: 0px; opacity: 0;">a</h1>
-
-                            <p class="center-text" style="font-size: 18px; opacity: 0;">Loading...</p>
-
-                            <h1 class="center-text" style="font-size: 40px; opacity: 0;">a</h1>
-                        </div>
-                    </div>
-                </div>
-
-                <hr style="opacity: 0; height: 30px;">
-            </div>
-        `;
 
     }
 
@@ -17381,6 +17213,147 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             }, 5000);
             console.warn('Invalid copyNotice')
         }
+    }
+
+    function scrollToSKU(sku_id, noscroll) {
+        const itemSKUForScroll = params.get("itemSkuId");
+        const justScrollSKU = params.get("scrollTo");
+
+        if (itemSKUForScroll === sku_id) {
+            setTimeout(() => {
+                try {
+                    if (noscroll != "true") {
+                        document.getElementById(itemSKUForScroll).scrollIntoView({ behavior: "smooth" });
+                    }
+                    document.getElementById(sku_id).classList.add("highlighted")
+
+                    let highlightedGlint = document.createElement("div");
+
+                    highlightedGlint.classList.add('shop-category-highlighted-glint');
+
+                    document.getElementById(sku_id).appendChild(highlightedGlint);
+                    setTimeout(() => {
+                        highlightedGlint.remove();
+                    }, 3000);
+                }
+                catch(error) {
+                    scrollToSKU(sku_id)
+                }
+            }, 10);
+        } else if (justScrollSKU === sku_id) {
+            setTimeout(() => {
+                try {
+                    if (noscroll != "true") {
+                        document.getElementById(justScrollSKU).scrollIntoView({ behavior: "smooth" });
+                    }
+                    document.getElementById(sku_id).classList.add("highlighted")
+
+                    let highlightedGlint = document.createElement("div");
+
+                    highlightedGlint.classList.add('shop-category-highlighted-glint');
+
+                    document.getElementById(sku_id).appendChild(highlightedGlint);
+                    setTimeout(() => {
+                        highlightedGlint.remove();
+                        removeParams('scrollTo');
+                    }, 3000);
+                }
+                catch(error) {
+                    scrollToSKU(sku_id)
+                }
+            }, 10);
+        }
+    }
+
+    function openInDiscordShop(sku_id, type, from, unpublished_data) {
+        if (params.get("page") === "shop" && from === "card" && unpublished_data != null && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
+            createModal(getTextString("SHOP_UNPUBLISHED_WARNING"));
+        } else if (params.get("page") === "orbs" && from === "card" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
+            createModal(getTextString("SHOP_MISCELLANEOUS_WARNING"));
+        } else if (params.get("page") === "leaks" && from === "card" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
+            createModal(getTextString("SHOP_UNRELEASED_WARNING"));
+        } else if (params.get("page") === "miscellaneous" && from === "card" && localStorage.dismissible_open_in_shop_notice != "Treatment 1: Seen") {
+            createModal(getTextString("SHOP_MISCELLANEOUS_WARNING"));
+        } else {
+            location.href='https://discord.com/shop#itemSkuId=' + sku_id;
+        }
+
+        function createModal(string) {
+            let modal = document.createElement("div");
+
+            modal.classList.add('modalv2');
+
+            modal.innerHTML = `
+                <div class="modalv2-inner open-in-shop">
+                    <p style="text-align: center; min-width: 800px;">${string}</p>
+                    <div data-modal-top-product-buttons>
+                        <div title="Close" data-close-product-card-button>
+                            <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                        </div>
+                    </div>
+                    <div class="card-button-container open-in-shop">
+                        <div class="card-multi-button-container open-in-shop">
+                            <button class="card-button" onclick="location.href='https://discord.com/shop#itemSkuId=${sku_id}';">${getTextString("SHOP_MODAL_UNPUBLISHED_WARNING_CONTINUE")}</button>
+                            <button class="card-button" onclick="openAndDismiss('${sku_id}')">${getTextString("SHOP_MODAL_UNPUBLISHED_WARNING_CONTINUE2")}</button>
+                            <button class="card-button" data-go-back-button>${getTextString("SHOP_MODAL_UNPUBLISHED_WARNING_GO_BACK")}</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 1);
+
+            let modal_back = document.createElement("div");
+            console.log('fssfsdfs');
+
+            modal_back.classList.add('modalv2-back');
+            modal_back.id = 'modalv2-back';
+
+            document.body.appendChild(modal_back);
+
+            setTimeout(() => {
+                modal_back.classList.add('show');
+            }, 1);
+
+
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.classList.remove('show');
+                    modal_back.classList.remove('show');
+                    setTimeout(() => {
+                        modal.remove();
+                        modal_back.remove();
+                    }, 300);
+                }
+            });
+
+            modal.querySelector("[data-close-product-card-button]").addEventListener('click', () => {
+                modal.classList.remove('show');
+                modal_back.classList.remove('show');
+                setTimeout(() => {
+                    modal.remove();
+                    modal_back.remove();
+                }, 300);
+            });
+
+            modal.querySelector("[data-go-back-button]").addEventListener('click', () => {
+                modal.classList.remove('show');
+                modal_back.classList.remove('show');
+                setTimeout(() => {
+                    modal.remove();
+                    modal_back.remove();
+                }, 300);
+            });
+        }
+    }
+
+    function openAndDismiss(sku_id) {
+        localStorage.dismissible_open_in_shop_notice = "Treatment 1: Seen";
+        location.href='https://discord.com/shop#itemSkuId=' + sku_id;
     }
     
     
