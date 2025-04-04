@@ -1,6 +1,6 @@
 
 
-app_version1 = "310"
+app_version1 = "311"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -7304,6 +7304,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             
                                 category.querySelector("[data-shop-category-desc]").id = `${apiCategory.sku_id}-summary`;
                                 category.querySelector("[data-shop-category-desc]").textContent = apiCategory.summary;
+                                if (apiCategory.banner_text_color && apiCategory.banner_text_color != null) {
+                                    category.querySelector("[data-shop-category-desc]").style.color = apiCategory.banner_text_color;
+                                }
 
                                 category.querySelector("[data-shop-banner-banner-container]").id = `${apiCategory.sku_id}-banner-banner-container`;
                                 category.querySelector("[data-shop-category-logo-holder]").id = `${apiCategory.sku_id}-logo-container`;
@@ -7876,70 +7879,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                             const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
 
-                                            if (localStorage.discord_username && localStorage.discord_username != '') {
-                                                previewName = localStorage.discord_username;
-                                            } else {
-                                                previewName = 'Discord User'
-                                            }
-
                                             previewHolder.innerHTML = `
-                                                <div class="nameplate-null-user">
-                                                    <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name _1"></div>
-                                                    <div class="nameplate-preview-status-bg"></div>
-                                                    <div class="nameplate-preview-status-color"></div>
-                                                </div>
-                                                <div class="nameplate-null-user">
-                                                    <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name _2"></div>
-                                                    <div class="nameplate-preview-status-bg"></div>
-                                                    <div class="nameplate-preview-status-color"></div>
-                                                </div>
-                                                <div class="nameplate-null-user" data-user-nameplate-preview>
-                                                    <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
-                                                    <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
-                                                    <p class="nameplate-user-name">${previewName}</p>
-                                                </div>
-                                                <div class="nameplate-null-user">
-                                                    <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name _2"></div>
-                                                    <div class="nameplate-preview-status-bg"></div>
-                                                    <div class="nameplate-preview-status-color"></div>
-                                                </div>
-                                                <div class="nameplate-null-user">
-                                                    <div class="nameplate-null-user-avatar"></div>
-                                                    <div class="nameplate-null-user-name _1"></div>
-                                                    <div class="nameplate-preview-status-bg"></div>
-                                                    <div class="nameplate-preview-status-color"></div>
-                                                </div>
-                                                <div class="nameplate-fade-top"></div>
-                                                <div class="nameplate-fade-bottom"></div>
+                                                <p>${getTextString("CARD_TYPE_NAMEPLATE_PPLUS_ERROR")}</p>
                                             `;
-
-                                            product.items.forEach(item => {
-                                                const nameplatePreview = previewHolder.querySelector("[data-user-nameplate-preview]");
-                                                const paletteName = item.palette;
-                                                const asset = `https://cdn.yapper.shop/custom-collectibles/${item.asset}.png`;
-                                                const bgcolor = nameplate_palettes[paletteName].darkBackground;
-
-                                                previewHolder.querySelector("[data-user-nameplate-preview-img]").src = asset;
-
-                                                nameplatePreview.style.backgroundImage = `linear-gradient(10deg, #00000000 40%, ${bgcolor} 180%), linear-gradient(170deg, #00000000 40%, ${bgcolor} 180%)`;
-                                                // nameplatePreview.style.boxShadow = `0 0 0 1px #a10606`;
-                                                
-                                                const nullUserNameRandomWidth = previewHolder.querySelectorAll("[data-null-user-random-name]");
-                                                
-                                                nullUserNameRandomWidth.forEach(UserName => {
-                                                    const randomWidth = Math.floor(Math.random() * (180 - 80 + 1)) + 80;
-                                                    UserName.style.width = randomWidth + `px`;
-                                                });
-                                            
-                                                const nullUserAvatar = previewHolder.querySelectorAll("[data-nameplate-user-random-avatar]");
-                                            
-                                                nullUserAvatar.forEach(UserAvatar => {
-                                                    UserAvatar.style.backgroundImage = `url(${localStorage.discord_avatar})`;
-                                                });
-                                            });
                                             
                                         } else if (product.type === item_types.BUNDLE) {
                                             card.classList.add("type_1000");
@@ -8274,7 +8216,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
 
                                         if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 1: Enable modals" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 2: Enable modals w/ data downloads" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
-                                            if (product.type === item_types.AVATAR_DECORATION || product.type === item_types.PROFILE_EFFECT || product.type === item_types.NAMEPLATE || product.type === item_types.BUNDLE || product.type === item_types.VARIANTS_GROUP) {
+                                            if (product.type === item_types.AVATAR_DECORATION || product.type === item_types.PROFILE_EFFECT || product.type === item_types.BUNDLE || product.type === item_types.VARIANTS_GROUP) {
                                                 card.classList.add('clickable');
 
                                                 card.addEventListener("click", (event) => {
@@ -8369,7 +8311,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                                                                         <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
-                                                                        <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png">
+                                                                        <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png">
                                                                         <div class="options-preview-profile-status-bg"></div>
                                                                         <div class="options-preview-profile-status-color"></div>
                                                                     </div>
@@ -8528,101 +8470,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 }
                                                             }
                                                         }
-                                                    } else if (product.type === item_types.NAMEPLATE) {
-                                                        card.classList.add("modal-2");
-            
-                                                        modal.querySelector("[data-product-modal-sku-id]").textContent = `SKU ID: ${product.sku_id}`;
-                                                        modal.querySelector("[data-product-modal-name]").textContent = product.name;
-                                                        modal.querySelector("[data-product-modal-summary]").textContent = product.summary;
-            
-                                                        const previewHolder = modal.querySelector("[data-modal-preview-holder]");
-                                                        previewHolder.classList.add('nameplate-modal-preview');
-            
-                                                        if (localStorage.discord_username && localStorage.discord_username != '') {
-                                                            previewName = localStorage.discord_username;
-                                                        } else {
-                                                            previewName = 'Discord User'
-                                                        }
-
-                                                        if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning" && product.category_sku_id === discord_categories.NAMEPLATE) {
-                                                            let nameplateWarning = document.createElement("div");
-
-                                                            nameplateWarning.classList.add('nameplate-modal-early-warning-container');
-                                                            nameplateWarning.innerHTML = `
-                                                                <p>${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_1")}</p>
-                                                            `;
-
-                                                            modal.querySelector(".modalv2-inner-left").appendChild(nameplateWarning);
-                                                        } else if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 1: Nameplate Test Warning" || localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning") {
-                                                            if (product.category_sku_id === discord_categories.NAMEPLATE_TEST) {
-                                                                let nameplateWarning = document.createElement("div");
-
-                                                                nameplateWarning.classList.add('nameplate-modal-early-warning-container');
-                                                                nameplateWarning.innerHTML = `
-                                                                    <p>${getTextString("SHOP_NAMEPLATE_WARNING_NOTICE_2")}</p>
-                                                                `;
-
-                                                                modal.querySelector(".modalv2-inner-left").appendChild(nameplateWarning);
-                                                            }
-                                                        }
-            
-                                                        previewHolder.innerHTML = `
-                                                            <div class="nameplate-null-user">
-                                                                <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name _1"></div>
-                                                                <div class="nameplate-preview-status-bg"></div>
-                                                                <div class="nameplate-preview-status-color"></div>
-                                                            </div>
-                                                            <div class="nameplate-null-user">
-                                                                <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name _2"></div>
-                                                                <div class="nameplate-preview-status-bg"></div>
-                                                                <div class="nameplate-preview-status-color"></div>
-                                                            </div>
-                                                            <div class="nameplate-null-user" data-user-nameplate-preview>
-                                                                <video muted loop class="nameplate-null-user" style="position: absolute;" data-user-nameplate-preview-img></video>
-                                                                <div class="nameplate-user-avatar" data-nameplate-user-random-avatar></div>
-                                                                <p class="nameplate-user-name">${previewName}</p>
-                                                            </div>
-                                                            <div class="nameplate-null-user">
-                                                                <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name _2"></div>
-                                                                <div class="nameplate-preview-status-bg"></div>
-                                                                <div class="nameplate-preview-status-color"></div>
-                                                            </div>
-                                                            <div class="nameplate-null-user">
-                                                                <div class="nameplate-null-user-avatar"></div>
-                                                                <div class="nameplate-null-user-name _1"></div>
-                                                                <div class="nameplate-preview-status-bg"></div>
-                                                                <div class="nameplate-preview-status-color"></div>
-                                                            </div>
-                                                        `;
-            
-                                                        product.items.forEach(item => {
-                                                            const nameplatePreview = previewHolder.querySelector("[data-user-nameplate-preview]");
-                                                            const paletteName = item.palette;
-                                                            const asset = `https://cdn.discordapp.com/assets/collectibles/${item.asset}img.png`;
-                                                            const bgcolor = nameplate_palettes[paletteName].darkBackground;
-            
-                                                            previewHolder.querySelector("[data-user-nameplate-preview-img]").src = asset;
-            
-                                                            nameplatePreview.style.backgroundImage = `linear-gradient(10deg, #00000000 40%, ${bgcolor} 180%), linear-gradient(170deg, #00000000 40%, ${bgcolor} 180%)`;
-                                                            // nameplatePreview.style.boxShadow = `0 0 0 1px #a10606`;
-                                                            
-                                                            const nullUserNameRandomWidth = previewHolder.querySelectorAll("[data-null-user-random-name]");
-                                                            
-                                                            nullUserNameRandomWidth.forEach(UserName => {
-                                                                const randomWidth = Math.floor(Math.random() * (180 - 80 + 1)) + 80;
-                                                                UserName.style.width = randomWidth + `px`;
-                                                            });
-                                                        
-                                                            const nullUserAvatar = previewHolder.querySelectorAll("[data-nameplate-user-random-avatar]");
-                                                        
-                                                            nullUserAvatar.forEach(UserAvatar => {
-                                                                UserAvatar.style.backgroundImage = `url(${localStorage.discord_avatar})`;
-                                                            });
-                                                        });
-                                                        
                                                     } else if (product.type === item_types.BUNDLE) {
                                                         modal.classList.add('modal-1000');
 
@@ -9576,9 +9423,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             <img class="paper-beach-sun-banner-decoration" src="https://cdn.yapper.shop/assets/116.png">
                                         `;
                                         document.getElementById(`${PAPER_BEACH_V2}-logo-container`).innerHTML = `
-                                                <img class="shop-category-banner-logo-1 shop-logo-sway" src="https://cdn.yapper.shop/assets/115.png" id="shop-banner-logo">
-                                            `;
-                                        document.getElementById(`${PAPER_BEACH_V2}-summary`).style.color = 'black';
+                                            <img class="shop-category-banner-logo-1 shop-logo-sway" src="https://cdn.yapper.shop/assets/115.png" id="shop-banner-logo">
+                                        `;
                                     }
                                     
                                     if (windowkill2_banner) {
@@ -9607,37 +9453,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             </div>
                                         `;
                                     }
-                                }
-
-
-                                if (paper_beach2_banner) {
-                                    try {
-                                        document.getElementById(`${PAPER_BEACH_V2}-summary`).style.color = 'black';
-                                    } catch (error) {}
-                                }
-
-                                if (windowkill2_banner) {
-                                    try {
-                                        document.getElementById(`${WINDOWKILL_V2}-summary`).style.color = 'black';
-                                    } catch (error) {}
-                                }
-
-                                if (paper_beach_banner) {
-                                    try {
-                                        document.getElementById(`${PAPER_BEACH}-summary`).style.color = 'black';
-                                    } catch (error) {}
-                                }
-
-                                if (bopl_battle_banner) {
-                                    try {
-                                        document.getElementById(`${BOPL_BATTLE}-summary`).style.color = 'black';
-                                    } catch (error) {}
-                                }
-
-                                if (windowkill_banner) {
-                                    try {
-                                        document.getElementById(`${WINDOWKILL}-summary`).style.color = 'black';
-                                    } catch (error) {}
                                 }
 
 
@@ -10350,6 +10165,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             
                                 category.querySelector("[data-shop-category-desc]").id = `${apiCategory.sku_id}-summary`;
                                 category.querySelector("[data-shop-category-desc]").textContent = apiCategory.summary;
+                                if (apiCategory.banner_text_color && apiCategory.banner_text_color != null) {
+                                    category.querySelector("[data-shop-category-desc]").style.color = apiCategory.banner_text_color;
+                                }
 
 
                                 category.querySelector("[data-shop-discord-watermark-container]").id = `${apiCategory.sku_id}-discord-watermark-container`;
@@ -13179,6 +12997,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 `;
                                             }
                                         }
+
+                                        if (params.get("page") === "leaks") {
+                                            card.querySelector("[data-shop-card-tag-container]").innerHTML = `
+                                                <div class="unplublished-tag">
+                                                    <p class="unplublished-tag-text">${getTextString("CARD_LEAKED_TAG")}</p>
+                                                </div>
+                                            `;
+                                        }
                                                                             
                                         if (newColorsSKUIDS.includes(product.sku_id) && discord_categories.ANIME_V3 === apiCategory.sku_id) {
                                             newColorItemCheck();
@@ -15479,7 +15305,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     </div>
                 `;
 
-                if (localStorage.experiment_2025_03_item_reviews === "Treatment 3: Simulate logged in") {
+                if (localStorage.experiment_2025_04_discord_sign_in === "Treatment 3: Force Logged In") {
                     let cantChangeProfileWhenLoggedIn = document.createElement("div");
 
                     cantChangeProfileWhenLoggedIn.classList.add('cant-change-profile-when-logged-in-container');
@@ -15487,6 +15313,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         <div class="profile-no-text-container">
                             <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_ERROR_1")}</p>
                             <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_ERROR_2")}</p>
+                            <button class="discord-profile-logout-button">${getTextString("OPTIONS_EXTRA_PROFILE_ERROR_BUTTON")}</button>
                         </div>
                     `;
 
@@ -16306,6 +16133,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                     <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
                         <button class="card-button" onclick="disableClientRework();">${getTextString("OPTIONS_DEV_DISABLE_CLIENT_REWORK")}</button>
+                        <button class="card-button" onclick="setPageToNameplatePage();">${getTextString("OPTIONS_DEV_OPEN_NAMEPLATES_PAGE")}</button>
                     </div>
 
                     <div class="options-option-card" id="options-text-input-option">
@@ -16545,6 +16373,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     function disableClientRework() {
         localStorage.full_client_rework = "false"
+        location.reload();
+    }
+
+    function setPageToNameplatePage() {
+        setParams({page: 'nameplates'});
         location.reload();
     }
 
