@@ -848,6 +848,30 @@ body {
     color: #B1B5BB;
 }
 
+#discord-sign-in-title-container {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+#discord-sign-in-title-container p {
+    display: flex;
+    margin-top: 0px;
+}
+
+#discord-sign-in-title-container .dm-new-icon {
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: unset;
+    background-color: #E2373E;
+    border-radius: 999px;
+    width: 50px;
+    height: 18px;
+    font-size: medium;
+    font-weight: 600;
+    color: white;
+}
+
 
 .closeIcon_modal_discord_login:hover {
     color: white;

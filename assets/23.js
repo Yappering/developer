@@ -44,6 +44,7 @@ OPTIONS_EXTRA_STAFF_TODO_LIST_5 = "5. Update/Fix Profiles Plus";
 OPTIONS_EXTRA_PROFILE = "Profile";
 OPTIONS_EXTRA_PROFILE_DESC = "Your Profile will be seen around the website.";
 OPTIONS_EXTRA_PROFILE_DISCORD = "Discord Settings";
+OPTIONS_EXTRA_PROFILE_DISCORD_SUMMARY = "Log in with Discord to keep your profile up to date on Shop Archives!";
 OPTIONS_EXTRA_PROFILE_DISCORD_LOGIN = "Log in with Discord";
 OPTIONS_EXTRA_PROFILE_DISCORD_LOGGED_IN_AS = "Logged in as: ";
 OPTIONS_EXTRA_PROFILE_DISCORD_LOGOUT = "Log Out";

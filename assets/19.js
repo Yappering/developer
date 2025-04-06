@@ -1,6 +1,6 @@
 
 
-app_version1 = "317"
+app_version1 = "318"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -15591,15 +15591,36 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     document.getElementById("profile-change-settings").appendChild(cantChangeProfileWhenLoggedIn);
 
                     document.getElementById("discord-integration-options-container").innerHTML = `
-                        <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD")}</p>
+                        <div id="discord-sign-in-title-container"></div>
                         <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGGED_IN_AS")}${localStorage.discord_username}</p>
                         <button class="card-button" onclick="logoutOfDiscord()">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGOUT")}</button>
                     `;
+                    if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen") {
+                        document.getElementById('discord-sign-in-title-container').innerHTML = `
+                            <p class="center-text" style="font-size: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD")}</p>
+                            <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
+                        `;
+                    } else {
+                        document.getElementById('discord-sign-in-title-container').innerHTML = `
+                            <p class="center-text" style="font-size: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD")}</p>
+                        `;
+                    }
                 } else if (localStorage.experiment_2025_04_discord_sign_in === "Treatment 1: Dynamic" || localStorage.experiment_2025_04_discord_sign_in === "Treatment 2: Force Logged Out") {
                     document.getElementById("discord-integration-options-container").innerHTML = `
-                        <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD")}</p>
+                        <div id="discord-sign-in-title-container"></div>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_SUMMARY")}</p>
                         <button class="card-button" onclick="loginToDiscord()">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGIN")}</button>
                     `;
+                    if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen") {
+                        document.getElementById('discord-sign-in-title-container').innerHTML = `
+                            <p class="center-text" style="font-size: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD")}</p>
+                            <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
+                        `;
+                    } else {
+                        document.getElementById('discord-sign-in-title-container').innerHTML = `
+                            <p class="center-text" style="font-size: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD")}</p>
+                        `;
+                    }
                 }
 
                 
