@@ -1,6 +1,6 @@
 
 
-app_version1 = "313"
+app_version1 = "314"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -15463,6 +15463,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_ERROR_1")}</p>
                             <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_ERROR_2")}</p>
                             <button class="discord-profile-logout-button" onclick="logoutOfDiscord()">${getTextString("OPTIONS_EXTRA_PROFILE_ERROR_BUTTON")}</button>
+                            <button class="discord-profile-logout-button" onclick="updateDiscordProfilePlaceholder()">${getTextString("OPTIONS_EXTRA_PROFILE_RESYNC")}</button>
                         </div>
                     `;
 
@@ -15816,9 +15817,35 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         if (match) {
             const token = match[1];
             localStorage.setItem('discord_token', token);
+            if (sessionStorage.discord_profile) {
+                
+            } else {
+                updateDiscordProfile(token)
+            }
             window.location.hash = '';
         }
     });
+
+    function updateDiscordProfilePlaceholder() {
+        updateDiscordProfile(localStorage.discord_token);
+        location.reload();
+    }
+
+    async function updateDiscordProfile(token) {
+        const userInfo = await fetch('https://discord.com/api/users/@me', {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        const user = await userInfo.json();
+        sessionStorage.discord_profile = JSON.stringify(user, undefined, 4);
+        localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp`;
+        localStorage.discord_username = user.global_name;
+        localStorage.discord_banner_color = user.banner_color;
+        if (user.banner != null) {
+            localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png`;
+        } else {
+            localStorage.removeItem('discord_banner')
+        }
+    }
 
     function changeUsernameFromInput() {
         const input = document.getElementById('profile-username-text-input')
