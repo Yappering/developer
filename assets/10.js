@@ -341,13 +341,9 @@ const testFetchAPIList = [
         treatments: [
             "none",
             "collectibles-categories",
-            "consumables",
             "miscellaneous-categories",
-            "preview-1",
-            "user-profile-effects",
             "downloads",
-            "leaked-categories",
-            "orbs-shop-default"
+            "leaked-categories"
         ],
         rollout: "none",
         needs_api_token: "true"

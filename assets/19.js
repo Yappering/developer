@@ -1,6 +1,6 @@
 
 
-app_version1 = "314"
+app_version1 = "315"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -15808,6 +15808,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     function logoutOfDiscord() {
         localStorage.removeItem('discord_token');
         localStorage.removeItem('discord_profile');
+        localStorage.removeItem('discord_avatar');
+        localStorage.removeItem('discord_username');
+        localStorage.removeItem('discord_banner_color');
+        localStorage.removeItem('discord_banner');
+        location.reload();
     }
 
     window.addEventListener('DOMContentLoaded', () => {
@@ -15828,7 +15833,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     function updateDiscordProfilePlaceholder() {
         updateDiscordProfile(localStorage.discord_token);
-        location.reload();
+        optionsSidebarToggle();
+        optionsSidebarToggle();
+        if (apiUrl) {
+            fetchData(pageCheck());
+        }
     }
 
     async function updateDiscordProfile(token) {
@@ -15837,11 +15846,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         });
         const user = await userInfo.json();
         sessionStorage.discord_profile = JSON.stringify(user, undefined, 4);
-        localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp`;
+        localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=128`;
         localStorage.discord_username = user.global_name;
         localStorage.discord_banner_color = user.banner_color;
         if (user.banner != null) {
-            localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png`;
+            localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=480`;
         } else {
             localStorage.removeItem('discord_banner')
         }
