@@ -486,6 +486,16 @@ body {
     justify-content: center;
 }
 
+#profile-change-settings {
+    position: relative;
+}
+
+#discord-integration-options-container:has(.discord-integration-multi-button-container) {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    text-align: center;
+    width: 100%;
+}
+
 .discord-profile-logout-button {
     display: block;
     margin: 5px 0;
