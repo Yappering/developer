@@ -1,6 +1,6 @@
 
 
-app_version1 = "315"
+app_version1 = "316"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -15460,6 +15460,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     cantChangeProfileWhenLoggedIn.classList.add('cant-change-profile-when-logged-in-container');
                     cantChangeProfileWhenLoggedIn.innerHTML = `
                         <div class="profile-no-text-container">
+                            <img style="width: 150px;" src="https://cdn.yapper.shop/assets/177.png">
                             <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_ERROR_1")}</p>
                             <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_ERROR_2")}</p>
                             <button class="discord-profile-logout-button" onclick="logoutOfDiscord()">${getTextString("OPTIONS_EXTRA_PROFILE_ERROR_BUTTON")}</button>
@@ -15828,6 +15829,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 updateDiscordProfile(token)
             }
             window.location.hash = '';
+            copyNotice('logintrue');
         }
     });
 
@@ -17228,55 +17230,31 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     function copyNotice(type) {
         if (type === "copylink") {
-            let copyNotice = document.createElement("div");
-
-            copyNotice.classList.add('copy-notice-container');
-            copyNotice.innerHTML = `
-                <p>${getTextString("SHOP_LINK_COPY_SUCCESS")}</p>
-            `;
-                         
-            document.body.appendChild(copyNotice);
-            setTimeout(() => {
-                copyNotice.remove();
-            }, 5000);
+            string = getTextString("SHOP_LINK_COPY_SUCCESS");
         } else if (type === "copysku") {
-            let copyNotice = document.createElement("div");
-
-            copyNotice.classList.add('copy-notice-container');
-            copyNotice.innerHTML = `
-                <p>${getTextString("SHOP_SKU_ID_COPY_SUCCESS")}</p>
-            `;
-                         
-            document.body.appendChild(copyNotice);
-            setTimeout(() => {
-                copyNotice.remove();
-            }, 5000);
+            string = getTextString("SHOP_SKU_ID_COPY_SUCCESS");
         } else if (type === "copyemoji") {
-            let copyNotice = document.createElement("div");
-
-            copyNotice.classList.add('copy-notice-container');
-            copyNotice.innerHTML = `
-                <p>${getTextString("SHOP_EMOJI_COPY_SUCCESS")}</p>
-            `;
-                         
-            document.body.appendChild(copyNotice);
-            setTimeout(() => {
-                copyNotice.remove();
-            }, 5000);
+            string = getTextString("SHOP_EMOJI_COPY_SUCCESS");
+        } else if (type === "logintrue") {
+            string = getTextString("SHOP_DISCORD_LOGIN_SUCCESS");
+        } else if (type === "loginfalse") {
+            string = getTextString("SHOP_DISCORD_LOGIN_FAIL");
         } else {
-            let copyNotice = document.createElement("div");
-
-            copyNotice.classList.add('copy-notice-container');
-            copyNotice.innerHTML = `
-                <p>${getTextString("SHOP_LINK_COPY_FAIL")}</p>
-            `;
-                         
-            document.body.appendChild(copyNotice);
-            setTimeout(() => {
-                copyNotice.remove();
-            }, 5000);
+            string = getTextString("SHOP_LINK_COPY_FAIL");
             console.warn('Invalid copyNotice')
         }
+
+        let copyNotice = document.createElement("div");
+
+        copyNotice.classList.add('copy-notice-container');
+        copyNotice.innerHTML = `
+            <p>${string}</p>
+        `;
+                     
+        document.body.appendChild(copyNotice);
+        setTimeout(() => {
+            copyNotice.remove();
+        }, 5000);
     }
 
     function scrollToSKU(sku_id, noscroll) {
