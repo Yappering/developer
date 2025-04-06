@@ -1,6 +1,6 @@
 
 
-app_version1 = "318"
+app_version1 = "319"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -13802,6 +13802,30 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <h2 style="margin-left: 260px; margin-top: 10px;">${getTextString("ITEM_DEBUG_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder"></div>
             `;
+        } else if (params.get("page") === "login") {
+            document.title = `${getTextString("DOCUMENT_TITLE_WEBSITE_NAME")}`;
+            document.body.innerHTML = ``;
+            window.addEventListener('DOMContentLoaded', () => {
+                const hash = window.location.hash;
+                const match = hash.match(/#token=([^&]+)/);
+          
+                if (match) {
+                    const token = match[1];
+                    localStorage.setItem('discord_token', token);
+                    if (sessionStorage.discord_profile) {
+                        
+                    } else {
+                        updateDiscordProfile(token)
+                    }
+                    window.location.hash = '';
+                    localStorage.dismissible_newLogInWithDiscord = "Treatment 1: Seen";
+                    setParams({page: 'home', login: 'true'});
+                    location.reload();
+                } else {
+                    setParams({page: 'home', login: 'false'});
+                    location.reload();
+                }
+            });
         } else if (params.get("page")) {
             setParams({page: 'home',err: '404'});
             document.title = `${getTextString("FEATURED_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -13814,7 +13838,26 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             console.log('a')
         }
 
+        if (params.get("login") === "true") {
+            copyNotice('logintrue');
+        } else if (params.get("login") === "false") {
+            copyNotice('loginfalse');
+        }
+
         const open_help_modals_buttons_holder = document.getElementById('open-help-modals-buttons-holder');
+
+        if (localStorage.discord_token) {
+            let user_button = document.createElement("div");
+
+            user_button.id = 'open-options-tools-button-1';
+            user_button.setAttribute("onclick","logoutOfDiscord();");
+            user_button.title = `Log Out`;
+            user_button.innerHTML = `
+                <img style="width: 100%;" src="${localStorage.discord_avatar}">
+            `;
+
+            open_help_modals_buttons_holder.appendChild(user_button);
+        }
         
         let options_button = document.createElement("div");
 
@@ -15595,7 +15638,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGGED_IN_AS")}${localStorage.discord_username}</p>
                         <button class="card-button" onclick="logoutOfDiscord()">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGOUT")}</button>
                     `;
-                    if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen") {
+                    if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen" && localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1") {
                         document.getElementById('discord-sign-in-title-container').innerHTML = `
                             <p class="center-text" style="font-size: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD")}</p>
                             <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
@@ -15608,10 +15651,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 } else if (localStorage.experiment_2025_04_discord_sign_in === "Treatment 1: Dynamic" || localStorage.experiment_2025_04_discord_sign_in === "Treatment 2: Force Logged Out") {
                     document.getElementById("discord-integration-options-container").innerHTML = `
                         <div id="discord-sign-in-title-container"></div>
-                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_SUMMARY")}</p>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_SUMMARY")}</p>
                         <button class="card-button" onclick="loginToDiscord()">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGIN")}</button>
                     `;
-                    if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen") {
+                    if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen" && localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1") {
                         document.getElementById('discord-sign-in-title-container').innerHTML = `
                             <p class="center-text" style="font-size: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD")}</p>
                             <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
@@ -15938,7 +15981,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     document.getElementById("newProfileSettingsDismissible").remove();
                 }
             }
-            if (localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1") {
+            if (localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1" && localStorage.staff_dont_dismiss_discord_login != "true") {
                 localStorage.dismissible_newLogInWithDiscord = "Treatment 1: Seen"
                 if (document.getElementById("newLogInWithDiscordDismissible")) {
                     document.getElementById("newLogInWithDiscordDismissible").remove();
@@ -15969,24 +16012,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById('newLogInWithDiscordDismissible').remove();
         }
     }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        const hash = window.location.hash;
-        const match = hash.match(/#token=([^&]+)/);
-  
-        if (match) {
-            const token = match[1];
-            localStorage.setItem('discord_token', token);
-            if (sessionStorage.discord_profile) {
-                
-            } else {
-                updateDiscordProfile(token)
-            }
-            window.location.hash = '';
-            copyNotice('logintrue');
-            localStorage.dismissible_newLogInWithDiscord = "Treatment 1: Seen";
-        }
-    });
 
     function updateDiscordProfilePlaceholder() {
         updateDiscordProfile(localStorage.discord_token);
@@ -16502,6 +16527,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_DEV_UNPUBLISHED_PPLUS_ITEMS")}</p>
                             <input class="options-toggle-box" onclick="unreleasedPPlusItemsToggle();" style="cursor: pointer; scale: 2; posision: center;" id="unpublished-pplus-items-box" type="checkbox">
                         </div>
+                        <div class="options-option-card" id="dont-dismiss-discord-login-box-option">
+                            <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_DEV_NO_SEEN_DISCORD_LOG_IN_OPTIONS_OPEN")}</p>
+                            <input class="options-toggle-box" onclick="dontSetDiscordLoginDismissibleToSeenToggle();" style="cursor: pointer; scale: 2; posision: center;" id="dont-dismiss-discord-login-box" type="checkbox">
+                        </div>
                     </div>
 
                     <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
@@ -16738,6 +16767,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 if (localStorage.unreleased_profiles_plus == "true") {
                     document.getElementById("unpublished-pplus-items-box").checked = true;
                 }
+
+                if (localStorage.staff_dont_dismiss_discord_login == "true") {
+                    document.getElementById("dont-dismiss-discord-login-box").checked = true;
+                }
             }
         } else {
             console.error('403 (Forbidden)')
@@ -16770,6 +16803,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             localStorage.unreleased_profiles_plus = "none"
         }
         fetchData(pageCheck());
+    }
+
+    function dontSetDiscordLoginDismissibleToSeenToggle() {
+        if (localStorage.staff_dont_dismiss_discord_login === "none") {
+            localStorage.staff_dont_dismiss_discord_login = "true"
+        } else {
+            localStorage.staff_dont_dismiss_discord_login = "none"
+        }
     }
 
     function testFetchAPI(fetcherName) {

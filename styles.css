@@ -26,6 +26,7 @@
     --profile-background: #111214;
     --profile-badge-background: #1f2024;
     --nameplate-null: #2B2D3196;
+    --new-discord-sign-in-bg: #1f2024;
 }
 
 .theme-midnight {
@@ -76,6 +77,7 @@
     --white: #000000;
     --profile-background: #ffffff;
     --profile-badge-background: #ffffff;
+    --new-discord-sign-in-bg: #ffffff;
 }
 
 .theme-neongreen {
@@ -663,7 +665,7 @@ body {
 
 #open-help-modals-buttons-holder {
     position: absolute;
-    top: 5px;
+    top: 7px;
     width: 200px;
     height: 34px;
     right: 85px;
@@ -815,7 +817,7 @@ body {
     top: 46%;
     width: 20px;
     height: 20px;
-    background-color: #1f2024;
+    background-color: var(--new-discord-sign-in-bg);
     transform: rotate(45deg);
 }
 
@@ -824,7 +826,7 @@ body {
     right: 0;
     width: 300px;
     height: 380px;
-    background-color: #1f2024;
+    background-color: var(--new-discord-sign-in-bg);
     border-radius: 15px;
     text-align: center;
 }
@@ -866,7 +868,7 @@ body {
     background-color: #E2373E;
     border-radius: 999px;
     width: 50px;
-    height: 18px;
+    height: 20px;
     font-size: medium;
     font-weight: 600;
     color: white;
@@ -3331,6 +3333,10 @@ data-share-product-card-button {
     width: 24px;
 }
 
+.theme-light .orb-icon {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAABOCAYAAACOqiAdAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAOESURBVHgB7ZzbcdswEEXPpAJ3EHQQd2B0EHcgdGB3QHTgdIASXAJKcFIBSnA6cIiInHgyloTHApRknJn98VjA3cvFgyAlGAwGg8FgMBj8h57jaY7XJdzyt8EH3MzxMIef4+1AhDl2y/9+etQcln1lvSXGWoWKT4jmeHWlRmxjx5UTh5glr7pSIyxtK64IzX5otTDso3Bc8GKSMtm3jsB+GCsugFvaDcfSOOvFRCNfXdMSkhchatxxJvxAvkreJxerWLqCHRujaWvaSgvzNBviaG/airR5no1Q9DNtRdq8WzbA0Ne0FUnzJjYg0N+0FSPUd7wAXQ8N7tnOtBUjpOGBjni2NW3FCOjwdEJxHqatGAE9mg44OBvTVgx1mp7oQIAupsVkbMb/G8p1NV8kDH1Me7/45CRkKNc30RBPe9MiruKzhjKNLzTilj6mRcK7z3vyMZRp1TTA0cc0g0xChny9HmEUfUxTfLz4lCZkyNctukgY2psWeT7S5iNlGPK0TwgSaG+abdi2IV3/K0JozsO0nuZpBHC0S0hRtsWxlGES2/dUomhjmsTD6UDbI6mqQ84JOdNuFtEO2VPcsLR5Tzomod2q+9eXE40/Z7Q1IWeWRJU8cfqCHOQLdeTseX7N8Zt2/Mxs/5T2Kq0pVWLJ4w65p2Ovi8av5GET2nZUcENaApZ8FOUGroaV7PJtYh+KSp5pZ17EkLdYBMqTsol9eATQpCdlKUORdncSF6vSe0lLeh47hPC0N+/U89JobA/TAoI8ZHRcY94j8nOOJU/7hCDxSuduWi1leOSSseRprrlABzm1YZQyTyMzRC35eh0N0AVCSs3z1CVjKdN6RyM8fcx7P6fmJmMp0xhoyHfKROWatz4Yyk3GUq5vR0NKFolS8xR5c5ulXNcbHV6unqgTaJHHUqfJ0YHU+9de5lkBPd3ezPRwFuZZAR2ejmjqBdeaZ4U07OiM1PG3JR8r1HdgAyZkxOea9yjYr2MDarcmJeYZwf5iKDYi9ZBTwjwj3JdnQzSyyRwyzzTo5zsbM9HWPNOg/S7v/KYQr570sHXIf1fM0/AEpAbFPtmAbMI1sT4R+8aFYNj2q+Wx73g8dbG/UxLvAx39qitOGXdcEYp9FQbaDcer/xWcWBEOmeF4VdWViiJ/MVmrSzH4i+H4YnLxk31rFP9ePowRN6ufcjgOBoPBYDAYHOEP+dythzkHnwAAAAAASUVORK5CYII=);
+}
+
 .orb-icon-crossed {
     position: absolute;
     top: 0;
@@ -3352,6 +3358,10 @@ data-share-product-card-button {
     background-position: right;
     height: 24px;
     width: 24px;
+}
+
+.theme-light .nitro-icon {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAABOCAYAAACOqiAdAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAOwSURBVHgB7ZvLcdswEIb/PA65JalASAVRB2ZuudkdmKnA7gBKBUoHTAcZVyCngjgVkB1YueXmYIfihKJNvLgiQM9+M/9QEglgscRzSQGCIAiCIAiCIAiCIDwLXoAfZVQZFZiXvVFzON4Z/TwcGywAZVQbPWSkX0ZXB9uypUReThuqApMDX4KXFfKmRNsj2BzIRYG8W1xf90bXiOQVeGkOxwL588boM9qWRxPJ34C0J5lViTOEOW9tdIF0NEafsJAZeAg5j7pPqq5bI/OZ14ZG2nHP23ncs+pUfiMtyuiH0TvXhbk5LgdoyNBYGLTKf8hEKScrb+guUxfJxWndeOfssn3I08M7X+HpQZN+22He2ZDKo73nelCxFdplUAW+/bKGJ2vY78AQLgN9tEVYCygZ7Lv3LdPVXYretcVEo3xVo21JseiJ5WufQlyOO+9dW040yEc0ZChM53qCDfc+BWhHJqp37bsJxvi2NAU+pjivcGVOzhhbEugnrtcTjHFJgZ9tpC3VMKOxTT51yfXhcz8U/RTK6BJu6KZcwM8hG6Ovnvmt0NpIu45bjzQ1ApcZh/zfIzHf4e6iNqjS3yxpXTdRI67VrZAYqrht3VdZ0ir4LTE2jvJjHHeJDLBtrc4s6SrwDOg7hDmNpJEBNseNUSCsojtLXleBeT3qCSmiIzSgr0fO3VnSnSOMAuOTwB+Ec5TXnI6jgkvYx7C95dwa4aiR3xuEc+S41+CBWhGNATGV82WPcN7iRHA4rgsJcaAs5xqEMxZRDl3HPYKjq3LONrYK3SCMW4y30o8Ip+l/yS10To4rRs7dwr0z6PPFcq5AOE3/C4fj7sCLbfYkZzRws7FcpxDnOO56WgMDMXIFDxXGF8I13LG7MtKuo4mP80l+PzDQEfuEfgP3Jl+hHauoDFcgop9mh/DIS2P0ATOiEN/qFPipIu2pkIDYblyDYdnQYxNpByl018KCRrzBOYTOayTCFUbyMVwhDlvsLutu2qExzfiuAgr+FOB5fKmQkKmtrq8d2qDi8IG0QjuDbxnL0sgAMuJhQaqR0ftyOb1U49IlMkIh7VuXvtoiQ0rk7bQaHnC/de5Dt1kukB8N2peoY4Kms6GRX0tTWAi5OG9RTuugtRcZnsppFXj3xLOiEPeQeIpodr/CM6HEPK2vwoL/DGKjxGkcuMO0tzsXA8XBqHVMWTSTszSYx7FT/QnuFFBLoY19gdYJCsfdbY//IfTmcLxB5msyQRAEQRAEQRAEQRAS8w8XDzthwx4fwAAAAABJRU5ErkJggg==);
 }
 
 .nitro-icon-crossed {
