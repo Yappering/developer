@@ -18,6 +18,16 @@ EXPERIMENT_ID_6 = 1
 
 const experimentsList = [
     {
+        title: "Discord Sign In Dismissible",
+        id: "2025-04_discord_sign_in_dismissible",
+        name: "experiment_2025_04_discord_sign_in_dismissible",
+        treatments: [
+            "Treatment -1: Disabled",
+            "Treatment 1: V1"
+        ],
+        rollout: "Treatment -1: Disabled"
+    },
+    {
         title: "Discord Sign In",
         id: "2025-04_discord_sign_in",
         name: "experiment_2025_04_discord_sign_in",
@@ -277,6 +287,15 @@ const experimentsList = [
 ];
 
 const dismissibleContentList = [
+    {
+        title: "Discord Sign In V1",
+        id: "dismissible_content_newLogInWithDiscord",
+        name: "dismissible_newLogInWithDiscord",
+        treatments: [
+            "Treatment -1: Unseen",
+            "Treatment 1: Seen"
+        ]
+    },
     {
         title: "Open In Shop Notice",
         id: "dismissible_content_open_in_shop_notice",

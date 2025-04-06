@@ -1,6 +1,6 @@
 
 
-app_version1 = "316"
+app_version1 = "317"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -5020,6 +5020,36 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
                                                             `;
                                                         }
+
+                                                        if (localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1" && product.type != 3000) {
+
+                                                            if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen") {
+                                                                let newLogInWithDiscordDismissible = document.createElement("div");
+                                                    
+                                                                newLogInWithDiscordDismissible.innerHTML = `
+                                                                    <div class="newLogInWithDiscordDismissible-inner">
+                                                                        <svg class="closeIcon_modal_discord_login" onclick="closeLoginDismissibleCoachtip()" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                                        <hr style="opacity: 0;">
+                                                                        <p class="center-text options-medium-title" style="margin-top: 0px;">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_TITLE")}</p>
+                                                                        <hr style="opacity: 0;">
+                                                                        <p class="center-text options-summary-text">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_SUMMARY_1")}</p>
+                                                                        <hr style="opacity: 0;">
+                                                                        <p class="center-text options-summary-text">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_SUMMARY_2")}</p>
+                                                                        <hr style="opacity: 0;">
+                                                                        <img style="width: 200px;" src="https://cdn.yapper.shop/assets/178.png">
+                                                                        <hr style="opacity: 0;">
+                                                                        <button class="card-button" onclick="loginToDiscord()">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_LOG_IN")}</button>
+                                                                    </div>
+                                                                    <div class="newLogInWithDiscordDismissible-pointer"></div>
+                                                                `;
+                                                    
+                                                                newLogInWithDiscordDismissible.classList.add('newLogInWithDiscordDismissible');
+                                                    
+                                                                newLogInWithDiscordDismissible.id = `newLogInWithDiscordDismissible`;
+                                                    
+                                                                modal.appendChild(newLogInWithDiscordDismissible);
+                                                            }
+                                                        }
                                                         
     
     
@@ -6774,6 +6804,36 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         modal.querySelector("[data-shop-card-tag-container]").innerHTML = `
                                                             <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
                                                         `;
+                                                    }
+
+                                                    if (localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1" && product.type != 3000) {
+
+                                                        if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen") {
+                                                            let newLogInWithDiscordDismissible = document.createElement("div");
+                                                
+                                                            newLogInWithDiscordDismissible.innerHTML = `
+                                                                <div class="newLogInWithDiscordDismissible-inner">
+                                                                    <svg class="closeIcon_modal_discord_login" onclick="closeLoginDismissibleCoachtip()" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                                    <hr style="opacity: 0;">
+                                                                    <p class="center-text options-medium-title" style="margin-top: 0px;">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_TITLE")}</p>
+                                                                    <hr style="opacity: 0;">
+                                                                    <p class="center-text options-summary-text">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_SUMMARY_1")}</p>
+                                                                    <hr style="opacity: 0;">
+                                                                    <p class="center-text options-summary-text">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_SUMMARY_2")}</p>
+                                                                    <hr style="opacity: 0;">
+                                                                    <img style="width: 200px;" src="https://cdn.yapper.shop/assets/178.png">
+                                                                    <hr style="opacity: 0;">
+                                                                    <button class="card-button" onclick="loginToDiscord()">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_LOG_IN")}</button>
+                                                                </div>
+                                                                <div class="newLogInWithDiscordDismissible-pointer"></div>
+                                                            `;
+                                                
+                                                            newLogInWithDiscordDismissible.classList.add('newLogInWithDiscordDismissible');
+                                                
+                                                            newLogInWithDiscordDismissible.id = `newLogInWithDiscordDismissible`;
+                                                
+                                                            modal.appendChild(newLogInWithDiscordDismissible);
+                                                        }
                                                     }
                                                     
 
@@ -9098,6 +9158,35 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         `;
                                                     }
                                                     
+                                                    if (localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1" && product.type != 3000) {
+
+                                                        if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen") {
+                                                            let newLogInWithDiscordDismissible = document.createElement("div");
+                                                
+                                                            newLogInWithDiscordDismissible.innerHTML = `
+                                                                <div class="newLogInWithDiscordDismissible-inner">
+                                                                    <svg class="closeIcon_modal_discord_login" onclick="closeLoginDismissibleCoachtip()" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                                    <hr style="opacity: 0;">
+                                                                    <p class="center-text options-medium-title" style="margin-top: 0px;">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_TITLE")}</p>
+                                                                    <hr style="opacity: 0;">
+                                                                    <p class="center-text options-summary-text">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_SUMMARY_1")}</p>
+                                                                    <hr style="opacity: 0;">
+                                                                    <p class="center-text options-summary-text">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_SUMMARY_2")}</p>
+                                                                    <hr style="opacity: 0;">
+                                                                    <img style="width: 200px;" src="https://cdn.yapper.shop/assets/178.png">
+                                                                    <hr style="opacity: 0;">
+                                                                    <button class="card-button" onclick="loginToDiscord()">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_LOG_IN")}</button>
+                                                                </div>
+                                                                <div class="newLogInWithDiscordDismissible-pointer"></div>
+                                                            `;
+                                                
+                                                            newLogInWithDiscordDismissible.classList.add('newLogInWithDiscordDismissible');
+                                                
+                                                            newLogInWithDiscordDismissible.id = `newLogInWithDiscordDismissible`;
+                                                
+                                                            modal.appendChild(newLogInWithDiscordDismissible);
+                                                        }
+                                                    }
 
 
                                                     let modal_back = document.createElement("div");
@@ -13069,6 +13158,36 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             <div class="premiumWheelBadge_c23530 textBadge_df8943 base_df8943 eyebrow_df8943 baseShapeRound_df8943" aria-label="This bonus item is yours to keep and use anytime with an active Nitro subscription." style="background-color: var(--status-danger);"><svg class="premiumWheel_c23530" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd" class=""></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z" class=""></path></svg></div>
                                                         `;
                                                     }
+
+                                                    if (localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1" && product.type != 3000) {
+
+                                                        if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen") {
+                                                            let newLogInWithDiscordDismissible = document.createElement("div");
+                                                
+                                                            newLogInWithDiscordDismissible.innerHTML = `
+                                                                <div class="newLogInWithDiscordDismissible-inner">
+                                                                    <svg class="closeIcon_modal_discord_login" onclick="closeLoginDismissibleCoachtip()" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                                                                    <hr style="opacity: 0;">
+                                                                    <p class="center-text options-medium-title" style="margin-top: 0px;">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_TITLE")}</p>
+                                                                    <hr style="opacity: 0;">
+                                                                    <p class="center-text options-summary-text">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_SUMMARY_1")}</p>
+                                                                    <hr style="opacity: 0;">
+                                                                    <p class="center-text options-summary-text">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_SUMMARY_2")}</p>
+                                                                    <hr style="opacity: 0;">
+                                                                    <img style="width: 200px;" src="https://cdn.yapper.shop/assets/178.png">
+                                                                    <hr style="opacity: 0;">
+                                                                    <button class="card-button" onclick="loginToDiscord()">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_LOG_IN")}</button>
+                                                                </div>
+                                                                <div class="newLogInWithDiscordDismissible-pointer"></div>
+                                                            `;
+                                                
+                                                            newLogInWithDiscordDismissible.classList.add('newLogInWithDiscordDismissible');
+                                                
+                                                            newLogInWithDiscordDismissible.id = `newLogInWithDiscordDismissible`;
+                                                
+                                                            modal.appendChild(newLogInWithDiscordDismissible);
+                                                        }
+                                                    }
                                                     
 
 
@@ -15473,6 +15592,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                     document.getElementById("discord-integration-options-container").innerHTML = `
                         <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD")}</p>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGGED_IN_AS")}${localStorage.discord_username}</p>
                         <button class="card-button" onclick="logoutOfDiscord()">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGOUT")}</button>
                     `;
                 } else if (localStorage.experiment_2025_04_discord_sign_in === "Treatment 1: Dynamic" || localStorage.experiment_2025_04_discord_sign_in === "Treatment 2: Force Logged Out") {
@@ -15797,6 +15917,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     document.getElementById("newProfileSettingsDismissible").remove();
                 }
             }
+            if (localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1") {
+                localStorage.dismissible_newLogInWithDiscord = "Treatment 1: Seen"
+                if (document.getElementById("newLogInWithDiscordDismissible")) {
+                    document.getElementById("newLogInWithDiscordDismissible").remove();
+                }
+            }
         }
     }
 
@@ -15816,6 +15942,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         location.reload();
     }
 
+    function closeLoginDismissibleCoachtip() {
+        if (document.getElementById('newLogInWithDiscordDismissible')) {
+            localStorage.dismissible_newLogInWithDiscord = "Treatment 1: Seen";
+            document.getElementById('newLogInWithDiscordDismissible').remove();
+        }
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
         const hash = window.location.hash;
         const match = hash.match(/#token=([^&]+)/);
@@ -15830,6 +15963,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             }
             window.location.hash = '';
             copyNotice('logintrue');
+            localStorage.dismissible_newLogInWithDiscord = "Treatment 1: Seen";
         }
     });
 
