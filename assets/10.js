@@ -25,7 +25,7 @@ const experimentsList = [
             "Treatment -1: Disabled",
             "Treatment 1: V1"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment 1: V1"
     },
     {
         title: "Discord Sign In",
@@ -39,7 +39,7 @@ const experimentsList = [
             "Treatment 4: Dynamic v2",
             "Treatment 6: Force Logged In v2"
         ],
-        rollout: "Treatment -1: Disabled",
+        rollout: "Treatment 4: Dynamic v2",
         needs_api_token: "true"
     },
     {
