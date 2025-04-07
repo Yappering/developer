@@ -1,6 +1,6 @@
 
 
-app_version1 = "323"
+app_version1 = "324"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -100,6 +100,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         sessionStorage.setItem('api-token', 'token');
 
         const api_password = localStorage.getItem("api-password");
+        const discord_token = localStorage.getItem("discord_token");
         const api_token = sessionStorage.getItem("api-token");
         api = 'https://shop-archives-api.vercel.app/api';
         discordsupport = 'https://support.discord.com/hc/en-us/articles/';
@@ -518,6 +519,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     method: "GET",
                     headers: {
                         "Password": api_password,
+                        "Authorization": discord_token,
                         "Token": api_token
                     }
                 })
@@ -633,6 +635,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         method: "GET",
                                                         headers: {
                                                             "Password": api_password,
+                                                            "Authorization": discord_token,
                                                             "Token": api_token
                                                         }
                                                     });
@@ -799,6 +802,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     method: "GET",
                                                                     headers: {
                                                                         "Password": api_password,
+                                                                        "Authorization": discord_token,
                                                                         "Token": api_token
                                                                     }
                                                                 });
@@ -947,6 +951,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     method: "GET",
                                                                     headers: {
                                                                         "Password": api_password,
+                                                                        "Authorization": discord_token,
                                                                         "Token": api_token
                                                                     }
                                                                 });
@@ -1622,6 +1627,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         method: "GET",
                                                         headers: {
                                                             "Password": api_password,
+                                                            "Authorization": discord_token,
                                                             "Token": api_token
                                                         }
                                                     });
@@ -1820,6 +1826,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     method: "GET",
                                                                     headers: {
                                                                         "Password": api_password,
+                                                                        "Authorization": discord_token,
                                                                         "Token": api_token
                                                                     }
                                                                 });
@@ -1986,6 +1993,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     method: "GET",
                                                                     headers: {
                                                                         "Password": api_password,
+                                                                        "Authorization": discord_token,
                                                                         "Token": api_token
                                                                     }
                                                                 });
@@ -2430,6 +2438,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     sessionStorage.setItem('api-token', 'token');
 
     const api_password = localStorage.getItem("api-password");
+    const discord_token = localStorage.getItem("discord_token");
     const api_token = sessionStorage.getItem("api-token");
 
     // api = 'https://raw.githubusercontent.com/Yappering/api/main/v2';
@@ -2502,6 +2511,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         ]
     }
 
+    staff_ids = ["1169899815983915121", "1049207768785100880", "194749476269719552"]
 
     yapper_categories = [
         WINDOWKILL = "1",
@@ -2671,6 +2681,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             method: "GET",
             headers: {
                 "Password": api_password,
+                "Authorization": discord_token,
                 "Token": api_token
             }
         });
@@ -2688,6 +2699,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             method: "GET",
             headers: {
                 "Password": api_password,
+                "Authorization": discord_token,
                 "Token": api_token
             }
         });
@@ -2762,6 +2774,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     method: "GET",
                     headers: {
                         "Password": api_password,
+                        "Authorization": discord_token,
                         "Token": api_token
                     }
                 })
@@ -4247,6 +4260,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                     method: "GET",
                                                                                     headers: {
                                                                                         "Password": api_password,
+                                                                                        "Authorization": discord_token,
                                                                                         "Token": api_token
                                                                                     }
                                                                                 });
@@ -4513,6 +4527,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                     method: "GET",
                                                                                     headers: {
                                                                                         "Password": api_password,
+                                                                                        "Authorization": discord_token,
                                                                                         "Token": api_token
                                                                                     }
                                                                                 });
@@ -5307,6 +5322,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     method: "GET",
                     headers: {
                         "Password": api_password,
+                        "Authorization": discord_token,
                         "Token": api_token
                     }
                 })
@@ -6352,6 +6368,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 method: "GET",
                                                                                 headers: {
                                                                                     "Password": api_password,
+                                                                                    "Authorization": discord_token,
                                                                                     "Token": api_token
                                                                                 }
                                                                             });
@@ -6612,6 +6629,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 method: "GET",
                                                                                 headers: {
                                                                                     "Password": api_password,
+                                                                                    "Authorization": discord_token,
                                                                                     "Token": api_token
                                                                                 }
                                                                             });
@@ -7301,6 +7319,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 method: "GET",
                 headers: {
                     "Password": api_password,
+                    "Authorization": discord_token,
                     "Token": api_token
                 }
             })
@@ -7466,6 +7485,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 method: "GET",
                                                 headers: {
                                                     "Password": api_password,
+                                                    "Authorization": discord_token,
                                                     "Token": api_token
                                                 }
                                             }) // Replace with your API URL
@@ -8705,6 +8725,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 method: "GET",
                                                                                 headers: {
                                                                                     "Password": api_password,
+                                                                                    "Authorization": discord_token,
                                                                                     "Token": api_token
                                                                                 }
                                                                             });
@@ -8965,6 +8986,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 method: "GET",
                                                                                 headers: {
                                                                                     "Password": api_password,
+                                                                                    "Authorization": discord_token,
                                                                                     "Token": api_token
                                                                                 }
                                                                             });
@@ -10501,6 +10523,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 method: "GET",
                                                 headers: {
                                                     "Password": api_password,
+                                                    "Authorization": discord_token,
                                                     "Token": api_token
                                                 }
                                             }) // Replace with your API URL
@@ -12388,6 +12411,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 method: "GET",
                                                                                 headers: {
                                                                                     "Password": api_password,
+                                                                                    "Authorization": discord_token,
                                                                                     "Token": api_token
                                                                                 }
                                                                             });
@@ -12654,6 +12678,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 method: "GET",
                                                                                 headers: {
                                                                                     "Password": api_password,
+                                                                                    "Authorization": discord_token,
                                                                                     "Token": api_token
                                                                                 }
                                                                             });
@@ -13851,6 +13876,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                     } else {
                                         localStorage.removeItem('discord_banner');
                                     }
+
+                                    if (staff_ids.includes(user.id)) {
+                                        localStorage.dev = "true";
+                                        console.log('yapper')
+                                    }
                           
                                     console.log('success');
                                     setParams({ page: 'home', login: 'true' });
@@ -13987,6 +14017,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 method: "GET",
                 headers: {
                     "Password": api_password,
+                    "Authorization": discord_token,
                     "Token": api_token
                 }
             })
@@ -16027,6 +16058,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 method: "GET",
                 headers: {
                     "Password": api_password,
+                    "Authorization": discord_token,
                     "Token": api_token
                 }
             })
@@ -16189,6 +16221,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         localStorage.removeItem('discord_banner_color');
         localStorage.removeItem('discord_banner');
         localStorage.removeItem('discord_premium_type');
+        localStorage.dev = "false";
         location.reload();
     }
 
@@ -16239,6 +16272,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=4096`;
             } else {
                 localStorage.removeItem('discord_banner');
+            }
+
+            if (staff_ids.includes(user.id)) {
+                localStorage.dev = "true";
+                console.log('yapper')
             }
   
             console.log('success');
@@ -16601,6 +16639,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             method: "GET",
             headers: {
                 "Password": api_password,
+                "Authorization": discord_token,
                 "Token": api_token
             }
         })
@@ -17063,6 +17102,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             method: "GET",
             headers: {
                 "Password": api_password,
+                "Authorization": discord_token,
                 "Token": api_token
             }
         })
