@@ -1,6 +1,6 @@
 
 
-app_version1 = "322"
+app_version1 = "323"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -13838,7 +13838,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                     sessionStorage.discord_profile = JSON.stringify(user, undefined, 4);
                                     localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
                                     localStorage.discord_username = user.username;
-                                    localStorage.discord_displayname = user.global_name;
+                                    if (user.global_name != null) {
+                                        localStorage.discord_displayname = user.global_name;
+                                    } else {
+                                        localStorage.discord_displayname = user.username;
+                                    }
                                     localStorage.discord_banner_color = user.banner_color;
                                     localStorage.discord_premium_type = user.premium_type;
                           
@@ -16223,7 +16227,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             sessionStorage.discord_profile = JSON.stringify(user, undefined, 4);
             localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
             localStorage.discord_username = user.username;
-            localStorage.discord_displayname = user.global_name;
+            if (user.global_name != null) {
+                localStorage.discord_displayname = user.global_name;
+            } else {
+                localStorage.discord_displayname = user.username;
+            }
             localStorage.discord_banner_color = user.banner_color;
             localStorage.discord_premium_type = user.premium_type;
   
