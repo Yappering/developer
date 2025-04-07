@@ -35,7 +35,9 @@ const experimentsList = [
             "Treatment -1: Disabled",
             "Treatment 1: Dynamic",
             "Treatment 2: Force Logged Out",
-            "Treatment 3: Force Logged In"
+            "Treatment 3: Force Logged In",
+            "Treatment 4: Dynamic v2",
+            "Treatment 6: Force Logged In v2"
         ],
         rollout: "Treatment -1: Disabled",
         needs_api_token: "true"
@@ -152,7 +154,6 @@ const experimentsList = [
         treatments: [
             "Treatment -1: Disabled",
             "Treatment 4: Enabled",
-            "Treatment 5: Enabled w/o currency picker",
             "Treatment 6: Settings like discord"
         ],
         rollout: "Treatment 4: Enabled"

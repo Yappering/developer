@@ -1,6 +1,6 @@
 
 
-app_version1 = "320"
+app_version1 = "321"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2103,7 +2103,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let priceOrb = "N/A";
     
                                             if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled") {
-                                                if (localStorage.is_nitro_user === "true") {
+                                                if (localStorage.discord_premium_type === "2") {
                                                     if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
                                                         product.prices["4"].country_prices.prices.forEach(price => {
                                                             if (price.currency === "discord_orb") {
@@ -3492,7 +3492,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             let priceOrb = "N/A";
     
                                             if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
-                                                if (localStorage.is_nitro_user === "true") {
+                                                if (localStorage.discord_premium_type === "2") {
                                                     if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
                                                         product.prices["4"].country_prices.prices.forEach(price => {
                                                             if (price.currency === "usd") {
@@ -4645,7 +4645,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         let priceOrb = "N/A";
     
                                                         if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
-                                                            if (localStorage.is_nitro_user === "true") {
+                                                            if (localStorage.discord_premium_type === "2") {
                                                                 if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
                                                                     product.prices["4"].country_prices.prices.forEach(price => {
                                                                         if (price.currency === "usd") {
@@ -5037,9 +5037,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <hr style="opacity: 0;">
                                                                         <p class="center-text options-summary-text">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_SUMMARY_2")}</p>
                                                                         <hr style="opacity: 0;">
-                                                                        <img style="width: 200px;" src="https://cdn.yapper.shop/assets/178.png">
+                                                                        <img src="https://cdn.yapper.shop/assets/178.png">
                                                                         <hr style="opacity: 0;">
                                                                         <button class="card-button" onclick="loginToDiscord()">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_LOG_IN")}</button>
+                                                                        <button class="card-button" onclick="closeLoginDismissibleCoachtip()">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_NO_THANKS")}</button>
                                                                     </div>
                                                                     <div class="newLogInWithDiscordDismissible-pointer"></div>
                                                                 `;
@@ -6822,9 +6823,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <hr style="opacity: 0;">
                                                                     <p class="center-text options-summary-text">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_SUMMARY_2")}</p>
                                                                     <hr style="opacity: 0;">
-                                                                    <img style="width: 200px;" src="https://cdn.yapper.shop/assets/178.png">
+                                                                    <img src="https://cdn.yapper.shop/assets/178.png">
                                                                     <hr style="opacity: 0;">
                                                                     <button class="card-button" onclick="loginToDiscord()">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_LOG_IN")}</button>
+                                                                    <button class="card-button" onclick="closeLoginDismissibleCoachtip()">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_NO_THANKS")}</button>
                                                                 </div>
                                                                 <div class="newLogInWithDiscordDismissible-pointer"></div>
                                                             `;
@@ -9174,9 +9176,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <hr style="opacity: 0;">
                                                                     <p class="center-text options-summary-text">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_SUMMARY_2")}</p>
                                                                     <hr style="opacity: 0;">
-                                                                    <img style="width: 200px;" src="https://cdn.yapper.shop/assets/178.png">
+                                                                    <img src="https://cdn.yapper.shop/assets/178.png">
                                                                     <hr style="opacity: 0;">
                                                                     <button class="card-button" onclick="loginToDiscord()">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_LOG_IN")}</button>
+                                                                    <button class="card-button" onclick="closeLoginDismissibleCoachtip()">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_NO_THANKS")}</button>
                                                                 </div>
                                                                 <div class="newLogInWithDiscordDismissible-pointer"></div>
                                                             `;
@@ -11630,7 +11633,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         let priceOrb = "N/A";
 
                                         if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
-                                            if (localStorage.is_nitro_user === "true") {
+                                            if (localStorage.discord_premium_type === "2") {
                                                 if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
                                                     product.prices["4"].country_prices.prices.forEach(price => {
                                                         if (price.currency === "usd") {
@@ -12783,7 +12786,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     let priceOrb = "N/A";
 
                                                     if (localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
-                                                        if (localStorage.is_nitro_user === "true") {
+                                                        if (localStorage.discord_premium_type === "2") {
                                                             if (product.prices && product.prices["4"] && product.prices["4"].country_prices && product.prices["4"].country_prices.prices) {
                                                                 product.prices["4"].country_prices.prices.forEach(price => {
                                                                     if (price.currency === "usd") {
@@ -13175,9 +13178,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <hr style="opacity: 0;">
                                                                     <p class="center-text options-summary-text">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_SUMMARY_2")}</p>
                                                                     <hr style="opacity: 0;">
-                                                                    <img style="width: 200px;" src="https://cdn.yapper.shop/assets/178.png">
+                                                                    <img src="https://cdn.yapper.shop/assets/178.png">
                                                                     <hr style="opacity: 0;">
                                                                     <button class="card-button" onclick="loginToDiscord()">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_LOG_IN")}</button>
+                                                                    <button class="card-button" onclick="closeLoginDismissibleCoachtip()">${getTextString("DISMISSIBLE_CONTENT_NEW_DISCORD_SIGN_IN_MODAL_NO_THANKS")}</button>
                                                                 </div>
                                                                 <div class="newLogInWithDiscordDismissible-pointer"></div>
                                                             `;
@@ -13826,19 +13830,20 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                     if (!userInfo.ok) {
                                         // If the response is not ok (e.g., 401 Unauthorized)
                                         setParams({ page: 'home', login: 'false' });
-                                        logoutOfDiscord();
+                                        actuallyLogOutOfDiscord();
                                         return;
                                     }
                           
                                     const user = await userInfo.json();
                                     sessionStorage.discord_profile = JSON.stringify(user, undefined, 4);
-                                    localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=128`;
+                                    localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
                                     localStorage.discord_username = user.username;
                                     localStorage.discord_displayname = user.global_name;
                                     localStorage.discord_banner_color = user.banner_color;
+                                    localStorage.discord_premium_type = user.premium_type;
                           
                                     if (user.banner != null) {
-                                        localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=480`;
+                                        localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=4096`;
                                     } else {
                                         localStorage.removeItem('discord_banner');
                                     }
@@ -13852,12 +13857,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                 const parsedProfile = JSON.parse(sessionStorage.discord_profile);
                                 if (parsedProfile.code === 0) {
                                     setParams({ page: 'home', login: 'false' });
-                                    logoutOfDiscord();
+                                    actuallyLogOutOfDiscord();
                                 }
                           
                             } catch (error) {
                                 setParams({ page: 'home', login: 'false' });
-                                logoutOfDiscord();
+                                actuallyLogOutOfDiscord();
                             }
                         }
                           
@@ -13893,9 +13898,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         if (localStorage.discord_token) {
             let user_button = document.createElement("div");
 
-            user_button.id = 'open-options-tools-button-1';
-            user_button.setAttribute("onclick","logoutOfDiscord();");
-            user_button.title = `Log Out`;
+            user_button.id = 'open-profile-settings-button-1';
+            // user_button.setAttribute("onclick","logoutOfDiscord();");
+            // user_button.title = `Log Out`;
+            user_button.title = getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGGED_IN_AS") + localStorage.discord_displayname;
             user_button.innerHTML = `
                 <img style="width: 100%;" src="${localStorage.discord_avatar}">
             `;
@@ -15606,7 +15612,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <div class="experiment-card-holder" id="yapper-article-container" style="width: 300px; margin-left: auto; margin-right: auto;">
                     <button class="card-button" onclick="window.open('https://discord.gg/Mcwh7hGcWb/');">${getTextString("OPTIONS_SIDEBAR_YAPPER_DISCORD_SERVER")}</button>
                     <button class="card-button" onclick="window.open('https://github.com/Yappering/');">${getTextString("OPTIONS_SIDEBAR_YAPPER_GITHUB")}</button>
-                    <button class="card-button" onclick="window.open('https://www.youtube.com/@DTACat');">${getTextString("OPTIONS_SIDEBAR_YAPPER_YOUTUBE_1")}</button>
                 </div>
                 ${getTextString("APP_VERSION")}${tcbx926n29}
             `;
@@ -15623,30 +15628,33 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
             if (localStorage.experiment_2025_02_extra_options === "Treatment 4: Enabled" || localStorage.experiment_2025_02_extra_options === "Treatment 5: Enabled w/o currency picker" || localStorage.experiment_2025_02_extra_options === "Treatment 6: Settings like discord") {
                 document.getElementById("username-picker-container-dev").innerHTML = `
-                    <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE")}</p>
+                    <p class="center-text" style="font-size: 20px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE")}</p>
                     <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DESC")}</p>
                     <div class="experiment-card-holder" id="discord-integration-options-container" style="width: 300px; margin-left: auto; margin-right: auto;"></div>
                     <div id="profile-change-settings">
-                        <div class="options-option-card" id="options-text-input-option">
-                            <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_USERNAME")}</p>
-                            <input class="options-text-input" autocomplete="off" oninput="changeUsernameFromInput();" style="posision: center;" id="profile-username-text-input" value="${localStorage.discord_displayname}" type="text">
+                        <div id="options-profile-nono-change-container"></div>
+                        <div id="profile-settings-edit">
+                            <div class="options-option-card" id="options-text-input-option">
+                                <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_USERNAME")}</p>
+                                <input class="options-text-input" autocomplete="off" oninput="changeUsernameFromInput();" style="posision: center;" id="profile-username-text-input" value="${localStorage.discord_displayname}" type="text">
+                            </div>
+                            <div class="options-option-card" id="options-text-input-option">
+                                <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_BANNER_COLOR")}</p>
+                                <input class="options-color-input" autocomplete="off" oninput="changeBannerColorFromInput();" style="posision: center;" id="profile-banner-color-input" value="${localStorage.discord_banner_color}" type="color">
+                            </div>
+                            <div class="options-option-card" id="options-img-input-option">
+                                <label for="profileAvatarInput" class="profile-avatar-upload-label">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_AVATAR")}</label>
+                                <input type="file" id="profileAvatarInput" class="profile-avatar-file-input" accept="image/*">
+                                <button id="removeProfileAvatarButton" class="profile-avatar-remove-button">${getTextString("OPTIONS_EXTRA_PROFILE_REMOVE_AVATAR")}</button>
+                            </div>
+                            <div id="options-avatar-img-input-option-error"></div>
+                            <div class="options-option-card" id="options-img-input-option">
+                                <label for="profileBannerInput" class="profile-avatar-upload-label">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_BANNER")}</label>
+                                <input type="file" id="profileBannerInput" class="profile-avatar-file-input" accept="image/*">
+                                <button id="removeProfileBannerButton" class="profile-avatar-remove-button">${getTextString("OPTIONS_EXTRA_PROFILE_REMOVE_BANNER")}</button>
+                            </div>
+                            <div id="options-banner-img-input-option-error"></div>
                         </div>
-                        <div class="options-option-card" id="options-text-input-option">
-                            <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_BANNER_COLOR")}</p>
-                            <input class="options-color-input" autocomplete="off" oninput="changeBannerColorFromInput();" style="posision: center;" id="profile-banner-color-input" value="${localStorage.discord_banner_color}" type="color">
-                        </div>
-                        <div class="options-option-card" id="options-img-input-option">
-                            <label for="profileAvatarInput" class="profile-avatar-upload-label">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_AVATAR")}</label>
-                            <input type="file" id="profileAvatarInput" class="profile-avatar-file-input" accept="image/*">
-                            <button id="removeProfileAvatarButton" class="profile-avatar-remove-button">${getTextString("OPTIONS_EXTRA_PROFILE_REMOVE_AVATAR")}</button>
-                        </div>
-                        <div id="options-avatar-img-input-option-error"></div>
-                        <div class="options-option-card" id="options-img-input-option">
-                            <label for="profileBannerInput" class="profile-avatar-upload-label">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_BANNER")}</label>
-                            <input type="file" id="profileBannerInput" class="profile-avatar-file-input" accept="image/*">
-                            <button id="removeProfileBannerButton" class="profile-avatar-remove-button">${getTextString("OPTIONS_EXTRA_PROFILE_REMOVE_BANNER")}</button>
-                        </div>
-                        <div id="options-banner-img-input-option-error"></div>
                         <div class="options-preview-profile">
                             <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
                             <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
@@ -15679,7 +15687,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                     document.getElementById("discord-integration-options-container").innerHTML = `
                         <div id="discord-sign-in-title-container"></div>
-                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGGED_IN_AS")}${localStorage.discord_displayname} (${localStorage.discord_username})</p>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGGED_IN_AS")}${localStorage.discord_displayname} (${localStorage.discord_username})</p>
                         <button class="card-button" onclick="logoutOfDiscord()">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGOUT")}</button>
                     `;
                     if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen" && localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1") {
@@ -15693,6 +15701,52 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         `;
                     }
                 } else if (localStorage.experiment_2025_04_discord_sign_in === "Treatment 1: Dynamic" || localStorage.experiment_2025_04_discord_sign_in === "Treatment 2: Force Logged Out") {
+                    document.getElementById("discord-integration-options-container").innerHTML = `
+                        <div id="discord-sign-in-title-container"></div>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_SUMMARY")}</p>
+                        <button class="card-button" onclick="loginToDiscord()">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGIN")}</button>
+                    `;
+                    if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen" && localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1") {
+                        document.getElementById('discord-sign-in-title-container').innerHTML = `
+                            <p class="center-text" style="font-size: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD")}</p>
+                            <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
+                        `;
+                    } else {
+                        document.getElementById('discord-sign-in-title-container').innerHTML = `
+                            <p class="center-text" style="font-size: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD")}</p>
+                        `;
+                    }
+                }
+
+                if (localStorage.experiment_2025_04_discord_sign_in === "Treatment 6: Force Logged In v2" || localStorage.experiment_2025_04_discord_sign_in === "Treatment 4: Dynamic v2" && localStorage.getItem('discord_token')) {
+
+                    document.getElementById("options-profile-nono-change-container").innerHTML = `
+                        <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_ERROR_1")}</p>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_ERROR_2")}</p>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_ERROR_3")}</p>
+                    `;
+
+                    document.getElementById("profile-settings-edit").style.display = 'none';
+
+                    document.getElementById("discord-integration-options-container").innerHTML = `
+                        <div id="discord-sign-in-title-container"></div>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGGED_IN_AS")}${localStorage.discord_displayname} (${localStorage.discord_username})</p>
+                        <div class="card-multi-button-container">
+                            <button class="card-button" onclick="updateDiscordProfilePlaceholder()">${getTextString("OPTIONS_EXTRA_PROFILE_RESYNC")}</button>
+                            <button class="card-button" onclick="logoutOfDiscord()">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGOUT")}</button>
+                        </div>
+                    `;
+                    if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen" && localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1") {
+                        document.getElementById('discord-sign-in-title-container').innerHTML = `
+                            <p class="center-text" style="font-size: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD")}</p>
+                            <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
+                        `;
+                    } else {
+                        document.getElementById('discord-sign-in-title-container').innerHTML = `
+                            <p class="center-text" style="font-size: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD")}</p>
+                        `;
+                    }
+                } else if (localStorage.experiment_2025_04_discord_sign_in === "Treatment 4: Dynamic v2") {
                     document.getElementById("discord-integration-options-container").innerHTML = `
                         <div id="discord-sign-in-title-container"></div>
                         <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_SUMMARY")}</p>
@@ -15724,19 +15778,19 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                 document.getElementById("options-username-preview").textContent = localStorage.discord_username.toLowerCase();
 
-                if (localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker") {
-                    document.getElementById("currency-picker-experiment-container").innerHTML = `
-                        <div class="options-option-card" id="has-nitro-box-option">
-                            <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_SIDEBAR_NITRO_DISCOUNT")}</p>
-                            <input class="options-toggle-box" onclick="optionsHasNitroChecked();" style="cursor: pointer; scale: 2; posision: center;" id="options-has-nitro-box" type="checkbox">
-                        </div>
-                    `;
-                    // <div class="options-option-card">
-                    //     <p class="option-card-title" style="color: var(--white);">Currency</p>
-                    //     <select id="currency_picker_container" class="options-dropdown">
-                    //     </select>
-                    // </div>
-                }
+                // if (localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker") {
+                //     document.getElementById("currency-picker-experiment-container").innerHTML = `
+                //         <div class="options-option-card" id="has-nitro-box-option">
+                //             <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_SIDEBAR_NITRO_DISCOUNT")}</p>
+                //             <input class="options-toggle-box" onclick="optionsHasNitroChecked();" style="cursor: pointer; scale: 2; posision: center;" id="options-has-nitro-box" type="checkbox">
+                //         </div>
+                //     `;
+                //     <div class="options-option-card">
+                //         <p class="option-card-title" style="color: var(--white);">Currency</p>
+                //         <select id="currency_picker_container" class="options-dropdown">
+                //         </select>
+                //     </div>
+                // }
 
 
                 const avatarImageInput = document.getElementById("profileAvatarInput");
@@ -15950,9 +16004,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 document.getElementById("reduced-motion-box").checked = true;
             }
 
-            if (localStorage.is_nitro_user == "true" && localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
-                document.getElementById("options-has-nitro-box").checked = true;
-            }
+            // if (localStorage.is_nitro_user == "true" && localStorage.experiment_2025_02_extra_options && localStorage.experiment_2025_02_extra_options != "Treatment 5: Enabled w/o currency picker" && localStorage.experiment_2025_02_extra_options != "Treatment -1: Disabled") {
+            //     document.getElementById("options-has-nitro-box").checked = true;
+            // }
 
             if (localStorage.disable_client_banner_overrides == "true") {
                 document.getElementById("disable-banner-overrides-box").checked = true;
@@ -16041,6 +16095,75 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
     function logoutOfDiscord() {
+        let modal = document.createElement("div");
+
+        modal.classList.add('modalv2');
+
+        modal.innerHTML = `
+            <div class="modalv2-inner open-in-shop" style="display: unset; height: 500px; width: 700px;">
+                <div data-modal-top-product-buttons>
+                    <div title="Close" data-close-product-card-button>
+                        <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                    </div>
+                </div>
+                <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white); min-width: 500px;">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGOUT_1")}</p>
+                <img style="display: block; width: 700px; margin-left: auto; margin-right: auto;" src="https://cdn.yapper.shop/assets/179.png">
+                <p class="center-text options-medium-title" style="margin-top: 0px; min-width: 500px;">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGOUT_2")}</p>
+                <div class="card-button-container open-in-shop">
+                    <button class="card-button" onclick="actuallyLogOutOfDiscord();">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGOUT_3")}</button>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 1);
+
+        let modal_back = document.createElement("div");
+
+        modal_back.classList.add('modalv2-back');
+        modal_back.id = 'modalv2-back';
+
+        document.body.appendChild(modal_back);
+
+        setTimeout(() => {
+            modal_back.classList.add('show');
+        }, 1);
+
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.classList.remove('show');
+                modal_back.classList.remove('show');
+                setTimeout(() => {
+                    modal.remove();
+                    modal_back.remove();
+                }, 300);
+            }
+        });
+
+        modal.querySelector("[data-close-product-card-button]").addEventListener('click', () => {
+            modal.classList.remove('show');
+            modal_back.classList.remove('show');
+            setTimeout(() => {
+                modal.remove();
+                modal_back.remove();
+            }, 300);
+        });
+
+        modal.querySelector("[data-go-back-button]").addEventListener('click', () => {
+            modal.classList.remove('show');
+            modal_back.classList.remove('show');
+            setTimeout(() => {
+                modal.remove();
+                modal_back.remove();
+            }, 300);
+        });
+    }
+
+    function actuallyLogOutOfDiscord() {
         localStorage.removeItem('discord_token');
         localStorage.removeItem('discord_profile');
         sessionStorage.removeItem('discord_profile');
@@ -16049,6 +16172,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         localStorage.removeItem('discord_displayname');
         localStorage.removeItem('discord_banner_color');
         localStorage.removeItem('discord_banner');
+        localStorage.removeItem('discord_premium_type');
         location.reload();
     }
 
@@ -16079,19 +16203,20 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             if (!userInfo.ok) {
                 // If the response is not ok (e.g., 401 Unauthorized)
                 setParams({ page: 'home', login: 'false' });
-                logoutOfDiscord();
+                actuallyLogOutOfDiscord();
                 return;
             }
   
             const user = await userInfo.json();
             sessionStorage.discord_profile = JSON.stringify(user, undefined, 4);
-            localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=128`;
+            localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
             localStorage.discord_username = user.username;
             localStorage.discord_displayname = user.global_name;
             localStorage.discord_banner_color = user.banner_color;
+            localStorage.discord_premium_type = user.premium_type;
   
             if (user.banner != null) {
-                localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=480`;
+                localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=4096`;
             } else {
                 localStorage.removeItem('discord_banner');
             }
@@ -16102,12 +16227,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             const parsedProfile = JSON.parse(sessionStorage.discord_profile);
             if (parsedProfile.code === 0) {
                 setParams({ page: 'home', login: 'false' });
-                logoutOfDiscord();
+                actuallyLogOutOfDiscord();
             }
       
         } catch (error) {
             setParams({ page: 'home', login: 'false' });
-            logoutOfDiscord();
+            actuallyLogOutOfDiscord();
         }
     }
 
@@ -16576,6 +16701,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                     <div id="staff-notes">
                         <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_NOTES")}</p>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_NOTES_2")}</p>
                         <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_EXTRA_STAFF_NOTES_1")}</p>
                     </div>
 
