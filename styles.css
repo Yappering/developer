@@ -656,7 +656,19 @@ body {
     height: 34px !important;
     width: 34px !important;
     scale: 0.9;
+    border-radius: 50px;
     /* cursor: pointer; */
+}
+
+.guys-theres-a-new-log-in-with-discord-feature-on-yapper-dot-shop {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    z-index: 1;
+    width: 13px !important;
+    height: 13px !important;
+    background-color: var(--button-danger-background);
+    border-radius: 13px;
 }
 
 #open-dev-tools-button-1, #open-dev-tools-button-1 svg {
@@ -683,9 +695,6 @@ body {
 }
 
 #open-help-modals-buttons-holder div {
-    height: 34px !important;
-    width: 34px !important;
-    border-radius: 50px;
     overflow: hidden;
 }
 

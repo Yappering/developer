@@ -289,7 +289,7 @@ const experimentsList = [
 
 const dismissibleContentList = [
     {
-        title: "Discord Sign In V1",
+        title: "Discord Sign In",
         id: "dismissible_content_newLogInWithDiscord",
         name: "dismissible_newLogInWithDiscord",
         treatments: [
