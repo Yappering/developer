@@ -1,6 +1,6 @@
 
 
-app_version1 = "319"
+app_version1 = "320"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -82,6 +82,7 @@ function setRandomDiscordUsername() {
     .then(response => response.json())
     .then((data) => {
         localStorage.discord_username = data.name;
+        localStorage.discord_displayname = data.name;
     })
 
 }
@@ -689,8 +690,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                                                 const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
     
-                                                if (localStorage.discord_username && localStorage.discord_username != '') {
-                                                    previewName = localStorage.discord_username;
+                                                if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
+                                                    previewName = localStorage.discord_displayname;
                                                 } else {
                                                     previewName = 'Discord User'
                                                 }
@@ -1678,8 +1679,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                                                 const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
     
-                                                if (localStorage.discord_username && localStorage.discord_username != '') {
-                                                    previewName = localStorage.discord_username;
+                                                if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
+                                                    previewName = localStorage.discord_displayname;
                                                 } else {
                                                     previewName = 'Discord User'
                                                 }
@@ -2970,8 +2971,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                                                 const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
     
-                                                if (localStorage.discord_username && localStorage.discord_username != '') {
-                                                    previewName = localStorage.discord_username;
+                                                if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
+                                                    previewName = localStorage.discord_displayname;
                                                 } else {
                                                     previewName = 'Discord User'
                                                 }
@@ -3845,7 +3846,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                             <div class="profile-avatar-preview-bg"></div>
                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                             <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                             <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true">
                                                                             <div class="options-preview-profile-status-bg"></div>
@@ -3936,7 +3937,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                             <div class="profile-avatar-preview-bg"></div>
                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                             <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                             <div class="options-preview-profile-status-bg"></div>
                                                                             <div class="options-preview-profile-status-color"></div>
@@ -4022,8 +4023,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                                                             const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
                 
-                                                            if (localStorage.discord_username && localStorage.discord_username != '') {
-                                                                previewName = localStorage.discord_username;
+                                                            if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
+                                                                previewName = localStorage.discord_displayname;
                                                             } else {
                                                                 previewName = 'Discord User'
                                                             }
@@ -4207,7 +4208,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                 <div class="profile-avatar-preview-bg"></div>
                                                                                 <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                                <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                                 <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                                 <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${decosrc}.png?size=4096&passthrough=true">
                                                                                 <div class="options-preview-profile-status-bg"></div>
@@ -4358,7 +4359,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                     <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                     <div class="profile-avatar-preview-bg"></div>
                                                                                     <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                                    <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                    <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                                     <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                                     <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true">
                                                                                     <div class="options-preview-profile-status-bg"></div>
@@ -4420,7 +4421,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                             <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                             <div class="profile-avatar-preview-bg"></div>
                                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                                             <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                                             <div class="options-preview-profile-status-bg"></div>
                                                                                             <div class="options-preview-profile-status-color"></div>
@@ -4582,7 +4583,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                         <div class="options-preview-profile-status-bg"></div>
                                                                         <div class="options-preview-profile-status-color"></div>
@@ -5499,8 +5500,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                             const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
 
-                                            if (localStorage.discord_username && localStorage.discord_username != '') {
-                                                previewName = localStorage.discord_username;
+                                            if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
+                                                previewName = localStorage.discord_displayname;
                                             } else {
                                                 previewName = 'Discord User'
                                             }
@@ -5998,7 +5999,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                         <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${item.asset}.png">
                                                                         <div class="options-preview-profile-status-bg"></div>
@@ -6085,7 +6086,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                         <div class="options-preview-profile-status-bg"></div>
                                                                         <div class="options-preview-profile-status-color"></div>
@@ -6169,8 +6170,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         const previewHolder = modal.querySelector("[data-modal-preview-holder]");
                                                         previewHolder.classList.add('nameplate-modal-preview');
             
-                                                        if (localStorage.discord_username && localStorage.discord_username != '') {
-                                                            previewName = localStorage.discord_username;
+                                                        if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
+                                                            previewName = localStorage.discord_displayname;
                                                         } else {
                                                             previewName = 'Discord User'
                                                         }
@@ -6311,7 +6312,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                             <div class="profile-avatar-preview-bg"></div>
                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                             <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                             <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${decosrc}.png">
                                                                             <div class="options-preview-profile-status-bg"></div>
@@ -6461,7 +6462,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                 <div class="profile-avatar-preview-bg"></div>
                                                                                 <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                                <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                                 <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                                 <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png">
                                                                                 <div class="options-preview-profile-status-bg"></div>
@@ -6518,7 +6519,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                                         <div class="options-preview-profile-status-bg"></div>
                                                                                         <div class="options-preview-profile-status-color"></div>
@@ -8445,7 +8446,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                         <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png">
                                                                         <div class="options-preview-profile-status-bg"></div>
@@ -8532,7 +8533,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                         <div class="options-preview-profile-status-bg"></div>
                                                                         <div class="options-preview-profile-status-color"></div>
@@ -8663,7 +8664,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                             <div class="profile-avatar-preview-bg"></div>
                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                             <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                             <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${decosrc}.png">
                                                                             <div class="options-preview-profile-status-bg"></div>
@@ -8813,7 +8814,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                 <div class="profile-avatar-preview-bg"></div>
                                                                                 <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                                <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                                 <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                                 <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${item.asset}.png">
                                                                                 <div class="options-preview-profile-status-bg"></div>
@@ -8870,7 +8871,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                                         <div class="options-preview-profile-status-bg"></div>
                                                                                         <div class="options-preview-profile-status-color"></div>
@@ -11108,8 +11109,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                             const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
 
-                                            if (localStorage.discord_username && localStorage.discord_username != '') {
-                                                previewName = localStorage.discord_username;
+                                            if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
+                                                previewName = localStorage.discord_displayname;
                                             } else {
                                                 previewName = 'Discord User'
                                             }
@@ -11983,7 +11984,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                         <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true">
                                                                         <div class="options-preview-profile-status-bg"></div>
@@ -12074,7 +12075,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                         <div class="options-preview-profile-status-bg"></div>
                                                                         <div class="options-preview-profile-status-color"></div>
@@ -12160,8 +12161,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                         const previewHolderLeft = modal.querySelector("[data-modal-left-preview-holder]");
             
-                                                        if (localStorage.discord_username && localStorage.discord_username != '') {
-                                                            previewName = localStorage.discord_username;
+                                                        if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
+                                                            previewName = localStorage.discord_displayname;
                                                         } else {
                                                             previewName = 'Discord User'
                                                         }
@@ -12345,7 +12346,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                             <div class="profile-avatar-preview-bg"></div>
                                                                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                             <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                             <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${decosrc}.png?size=4096&passthrough=true">
                                                                             <div class="options-preview-profile-status-bg"></div>
@@ -12496,7 +12497,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                 <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                 <div class="profile-avatar-preview-bg"></div>
                                                                                 <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                                <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                                 <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                                 <img id="profileAvatarDecoPreview" class="profile-avatar-deco-preview" src="https://cdn.discordapp.com/avatar-decoration-presets/${item.asset}.png?size=4096&passthrough=true">
                                                                                 <div class="options-preview-profile-status-bg"></div>
@@ -12558,7 +12559,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                                         <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                                         <div class="profile-avatar-preview-bg"></div>
                                                                                         <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                                         <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                                         <div class="options-preview-profile-status-bg"></div>
                                                                                         <div class="options-preview-profile-status-color"></div>
@@ -12720,7 +12721,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
                                                                     <div class="profile-avatar-preview-bg"></div>
                                                                     <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-                                                                    <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                                                                    <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                                                                     <p class="options-preview-profile-username" id="modal-username-preview"></p>
                                                                     <div class="options-preview-profile-status-bg"></div>
                                                                     <div class="options-preview-profile-status-color"></div>
@@ -13804,28 +13805,69 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             `;
         } else if (params.get("page") === "login") {
             document.title = `${getTextString("DOCUMENT_TITLE_WEBSITE_NAME")}`;
-            document.body.innerHTML = ``;
-            window.addEventListener('DOMContentLoaded', () => {
-                const hash = window.location.hash;
-                const match = hash.match(/#token=([^&]+)/);
-          
-                if (match) {
-                    const token = match[1];
-                    localStorage.setItem('discord_token', token);
-                    if (sessionStorage.discord_profile) {
-                        
+                document.body.innerHTML = `logging in...`;
+                window.addEventListener('DOMContentLoaded', () => {
+                    const hash = window.location.hash;
+                    const match = hash.match(/#token=([^&]+)/);
+
+                    if (match) {
+                        async function login() {
+                            try {
+                                const token = match[1];
+                                localStorage.setItem('discord_token', token);
+                                window.location.hash = '';
+                                localStorage.dismissible_newLogInWithDiscord = "Treatment 1: Seen";
+                          
+                                if (!sessionStorage.discord_profile) {
+                                    const userInfo = await fetch('https://discord.com/api/users/@me', {
+                                        headers: { Authorization: `Bearer ${token}` }
+                                    });
+                          
+                                    if (!userInfo.ok) {
+                                        // If the response is not ok (e.g., 401 Unauthorized)
+                                        setParams({ page: 'home', login: 'false' });
+                                        logoutOfDiscord();
+                                        return;
+                                    }
+                          
+                                    const user = await userInfo.json();
+                                    sessionStorage.discord_profile = JSON.stringify(user, undefined, 4);
+                                    localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=128`;
+                                    localStorage.discord_username = user.username;
+                                    localStorage.discord_displayname = user.global_name;
+                                    localStorage.discord_banner_color = user.banner_color;
+                          
+                                    if (user.banner != null) {
+                                        localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=480`;
+                                    } else {
+                                        localStorage.removeItem('discord_banner');
+                                    }
+                          
+                                    console.log('success');
+                                    setParams({ page: 'home', login: 'true' });
+                                    location.reload();
+                                }
+                          
+                                // Optional: additional check (but `sessionStorage.discord_profile` is a string, so this check won't work unless parsed)
+                                const parsedProfile = JSON.parse(sessionStorage.discord_profile);
+                                if (parsedProfile.code === 0) {
+                                    setParams({ page: 'home', login: 'false' });
+                                    logoutOfDiscord();
+                                }
+                          
+                            } catch (error) {
+                                setParams({ page: 'home', login: 'false' });
+                                logoutOfDiscord();
+                            }
+                        }
+                          
+                        login();
+                          
                     } else {
-                        updateDiscordProfile(token)
+                        setParams({page: 'home', login: 'false'});
+                        location.reload();
                     }
-                    window.location.hash = '';
-                    localStorage.dismissible_newLogInWithDiscord = "Treatment 1: Seen";
-                    setParams({page: 'home', login: 'true'});
-                    location.reload();
-                } else {
-                    setParams({page: 'home', login: 'false'});
-                    location.reload();
-                }
-            });
+                });
         } else if (params.get("page")) {
             setParams({page: 'home',err: '404'});
             document.title = `${getTextString("FEATURED_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -13840,8 +13882,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
         if (params.get("login") === "true") {
             copyNotice('logintrue');
+            removeParams('login');
         } else if (params.get("login") === "false") {
             copyNotice('loginfalse');
+            removeParams('login');
         }
 
         const open_help_modals_buttons_holder = document.getElementById('open-help-modals-buttons-holder');
@@ -15505,7 +15549,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             <img id="ubar-avatar" class="ubar-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
             <div class="ubar-status-bg"></div>
             <div class="ubar-status-color"></div>
-            <p class="ubar-displayname" id="ubar-displayname">${localStorage.discord_username}</p>
+            <p class="ubar-displayname" id="ubar-displayname">${localStorage.discord_displayname}</p>
             <svg title="Options" x="0" y="0" onclick="optionsSidebarToggle()" id="ubar-options-cog" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4483 8.3333H18.3333V11.6667H16.4492C16.2483 12.4425 15.9167 13.165 15.4708 13.8033L16.6667 15 15 16.6667 13.8042 15.47C13.1642 15.9158 12.4433 16.2483 11.6667 16.4483V18.3333H8.3333V16.4483C7.5575 16.2483 6.8358 15.9158 6.1967 15.47L5 16.6667 3.3333 15 4.53 13.8033C4.0842 13.1658 3.7517 12.4433 3.5517 11.6667H1.6667V8.3333H3.5517C3.7517 7.5567 4.0833 6.835 4.53 6.1967L3.3333 5 5 3.3333 6.1967 4.53C6.835 4.0833 7.5567 3.7517 8.3333 3.5517V1.6667H11.6667V3.5508C12.4433 3.7517 13.1642 4.0833 13.8042 4.5292L15 3.3325 16.6667 4.9992 15.47 6.1967C15.9158 6.835 16.2483 7.5575 16.4483 8.3333ZM10 13.3333C11.8409 13.3333 13.3333 11.8409 13.3333 10 13.3333 8.159 11.8409 6.6667 10 6.6667 8.159 6.6667 6.6667 8.159 6.6667 10 6.6667 11.8409 8.159 13.3333 10 13.3333Z" )=""></path></svg>
         `;
 
@@ -15585,7 +15629,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <div id="profile-change-settings">
                         <div class="options-option-card" id="options-text-input-option">
                             <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_USERNAME")}</p>
-                            <input class="options-text-input" autocomplete="off" oninput="changeUsernameFromInput();" style="posision: center;" id="profile-username-text-input" value="${localStorage.discord_username}" type="text">
+                            <input class="options-text-input" autocomplete="off" oninput="changeUsernameFromInput();" style="posision: center;" id="profile-username-text-input" value="${localStorage.discord_displayname}" type="text">
                         </div>
                         <div class="options-option-card" id="options-text-input-option">
                             <p class="option-card-title" style="color: var(--white);">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_BANNER_COLOR")}</p>
@@ -15610,7 +15654,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
                             <div class="options-preview-profile-status-bg"></div>
                             <div class="options-preview-profile-status-color"></div>
-                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_username}</p>
+                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                             <p class="options-preview-profile-username" id="options-username-preview"></p>
                         </div>
                     </div>
@@ -15635,7 +15679,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                     document.getElementById("discord-integration-options-container").innerHTML = `
                         <div id="discord-sign-in-title-container"></div>
-                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGGED_IN_AS")}${localStorage.discord_username}</p>
+                        <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGGED_IN_AS")}${localStorage.discord_displayname} (${localStorage.discord_username})</p>
                         <button class="card-button" onclick="logoutOfDiscord()">${getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGOUT")}</button>
                     `;
                     if (localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen" && localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1") {
@@ -15999,8 +16043,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     function logoutOfDiscord() {
         localStorage.removeItem('discord_token');
         localStorage.removeItem('discord_profile');
+        sessionStorage.removeItem('discord_profile');
         localStorage.removeItem('discord_avatar');
         localStorage.removeItem('discord_username');
+        localStorage.removeItem('discord_displayname');
         localStorage.removeItem('discord_banner_color');
         localStorage.removeItem('discord_banner');
         location.reload();
@@ -16013,8 +16059,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     }
 
-    function updateDiscordProfilePlaceholder() {
-        updateDiscordProfile(localStorage.discord_token);
+    async function updateDiscordProfilePlaceholder() {
+        await updateDiscordProfile(localStorage.discord_token);
         optionsSidebarToggle();
         optionsSidebarToggle();
         if (apiUrl) {
@@ -16022,19 +16068,46 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     }
 
+    window.updateDiscordProfilePlaceholder = updateDiscordProfilePlaceholder;
+
     async function updateDiscordProfile(token) {
-        const userInfo = await fetch('https://discord.com/api/users/@me', {
-            headers: { Authorization: `Bearer ${token}` }
-        });
-        const user = await userInfo.json();
-        sessionStorage.discord_profile = JSON.stringify(user, undefined, 4);
-        localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=128`;
-        localStorage.discord_username = user.global_name;
-        localStorage.discord_banner_color = user.banner_color;
-        if (user.banner != null) {
-            localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=480`;
-        } else {
-            localStorage.removeItem('discord_banner')
+        try {
+            const userInfo = await fetch('https://discord.com/api/users/@me', {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+  
+            if (!userInfo.ok) {
+                // If the response is not ok (e.g., 401 Unauthorized)
+                setParams({ page: 'home', login: 'false' });
+                logoutOfDiscord();
+                return;
+            }
+  
+            const user = await userInfo.json();
+            sessionStorage.discord_profile = JSON.stringify(user, undefined, 4);
+            localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=128`;
+            localStorage.discord_username = user.username;
+            localStorage.discord_displayname = user.global_name;
+            localStorage.discord_banner_color = user.banner_color;
+  
+            if (user.banner != null) {
+                localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=480`;
+            } else {
+                localStorage.removeItem('discord_banner');
+            }
+  
+            console.log('success');
+      
+            // Optional: additional check (but `sessionStorage.discord_profile` is a string, so this check won't work unless parsed)
+            const parsedProfile = JSON.parse(sessionStorage.discord_profile);
+            if (parsedProfile.code === 0) {
+                setParams({ page: 'home', login: 'false' });
+                logoutOfDiscord();
+            }
+      
+        } catch (error) {
+            setParams({ page: 'home', login: 'false' });
+            logoutOfDiscord();
         }
     }
 
@@ -16042,6 +16115,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         const input = document.getElementById('profile-username-text-input')
 
         localStorage.discord_username = input.value;
+        localStorage.discord_displayname = input.value;
 
         const displayname = document.getElementById('options-preview-profile-displayname')
 
