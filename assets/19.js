@@ -1,6 +1,6 @@
 
 
-app_version1 = "325"
+app_version1 = "327"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2473,42 +2473,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
 
-    if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
-        endpoints = [
-            COLLECTIBLES = "/collectibles-categories",
-            MISCELLANEOUS = "/miscellaneous-categories",
-            DOWNLOADABLE_DATA = "/downloads",
-            PROFILES_PLUS_EFFECTS = "/profiles-plus-profile-effects",
-            LEAKS = "/leaked-categories",
-            COLLECTIBLES_SHOP = "/collectibles-shop",
-            PROFILE_EFFECTS = "/profile-effects"
-        ]
-        if (app_version2 === "Dev") {
-            LOGIN_CALLBACK = "/dev/callback"
-        } else {
-            LOGIN_CALLBACK = "/callback"
-        }
+    endpoints = [
+        DOWNLOADABLE_DATA = "/downloads",
+        COLLECTIBLES_SHOP = "/collectibles-shop",
+        PROFILE_EFFECTS = "/profile-effects"
+    ]
+    if (app_version2 === "Dev") {
+        LOGIN_CALLBACK = "/dev/callback"
     } else {
-        endpoints = [
-            COLLECTIBLES = "/collectibles-categories.json",
-            COLLECTIBLES_IN_SHOP = "/collectibles-categories-published.json",
-            CONSUMABLES = "/consumables.json",
-            MISCELLANEOUS = "/miscellaneous-categories.json",
-            PROFILES_PLUS = "/profiles-plus-categories.json",
-            HOME_PAGE_ALL = "/preview-1.json",
-            HOME_PAGE_LEAKS = "/preview-2.json",
-            PROFILE_EFFECTS = "/user-profile-effects.json",
-            DOWNLOADABLE_DATA = "/downloads.json",
-            PROFILES_PLUS_EFFECTS = "/profiles-plus-profile-effects.json",
-            LEAKS = "/leaked-categories.json",
-            COLLECTIBLES_MARKETING = "/collectibles-marketing.json",
-            COLLECTIBLES_VARIANTS = "/collectibles-categories-variants.json",
-            EXPERIMENT_ROLLOUTS = "/rollout-handler.json",
-            COLLECTIBLES_SHOP_HOME = "/collectibles-shop-home.json",
-            NEW_ITEMS = "/new-items.json",
-            ORBS_SHOP = "/orbs-shop.json",
-            ORBS_SHOP_DEFAULT = "/orbs-shop-default.json"
-        ]
+        LOGIN_CALLBACK = "/callback"
     }
 
     staff_ids = ["1169899815983915121", "1049207768785100880", "194749476269719552"]
@@ -10293,6 +10266,124 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                 });
             
                                 categoryOutput.append(potionCard);
+                            } else if (page === "marketing") {
+                                const category = categoryTemplate.content.cloneNode(true).children[0];
+                                category.querySelector("[data-shop-category-banner]").id = apiCategory.sku_id;
+
+                                if (localStorage.experiment_2025_02_shop_category_modals === "Treatment 1: Enable category modals" || localStorage.experiment_2025_02_shop_category_modals === "Treatment 2: Enable category modals w/ data downloads") {
+                                    category.querySelector("[data-shop-category-banner]").classList.add('clickable')
+                                }
+            
+                                if (apiCategory.banner_asset) {
+                                    if (apiCategory.banner_asset.animated != null) {
+                                        if (apiCategory.banner_asset.static != null) {
+                                            category.querySelector("[data-shop-banner-banner-container]").innerHTML = `
+                                                <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="${apiCategory.banner_asset.static}">
+                                                <video disablepictureinpicture autoplay muted class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px; z-index: 1;" src="${apiCategory.banner_asset.animated}" loop></video>
+                                            `;
+                                        } else {
+                                            category.querySelector("[data-shop-banner-banner-container]").innerHTML = `
+                                                <video disablepictureinpicture autoplay muted class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px; z-index: 1;" src="${apiCategory.banner_asset.animated}" loop></video>
+                                            `;
+                                        }
+                                    } else if (apiCategory.banner_asset.static != null) {
+                                        category.querySelector("[data-shop-category-banner-image]").src = `${apiCategory.banner_asset.static}`;
+                                    }
+                                } else {
+                                    category.querySelector("[data-shop-category-banner-image]").src = `https://cdn.yapper.shop/assets/${apiCategory.banner}.png`;
+                                    category.querySelector("[data-shop-category-banner-image]").alt = apiCategory.name;
+                                }
+            
+                                category.querySelector("[data-shop-category-logo-image]").src = `https://cdn.yapper.shop/assets/${apiCategory.logo}.png`;
+                                category.querySelector("[data-shop-category-logo-image]").alt = apiCategory.name;
+                                category.querySelector("[data-shop-category-logo-image]").classList.add("shop-category-condensed-banner-img");
+            
+                                category.querySelector("[data-shop-category-desc]").id = `${apiCategory.sku_id}-summary`;
+                                category.querySelector("[data-shop-category-desc]").textContent = apiCategory.summary;
+                                if (apiCategory.banner_text_color && apiCategory.banner_text_color != null) {
+                                    category.querySelector("[data-shop-category-desc]").style.color = apiCategory.banner_text_color;
+                                }
+
+                                category.querySelector("[data-shop-banner-banner-container]").id = `${apiCategory.sku_id}-banner-banner-container`;
+                                category.querySelector("[data-shop-category-logo-holder]").id = `${apiCategory.sku_id}-logo-container`;
+                                category.querySelector("[data-shop-discord-watermark-container]").id = `${apiCategory.sku_id}-discord-watermark-container`;
+
+
+                                const cardOutput = category.querySelector("[data-shop-category-card-holder]");
+                                if (cardOutput) {
+                                    for (const product of apiCategory.products) {
+                                        const cardTemplate = document.querySelector("[data-shop-item-card-template]");
+                                        const card = cardTemplate.content.cloneNode(true).children[0];
+
+                                        card.id = product.sku_id;
+
+                                        const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
+                                        previewHolder.classList.add('avatar-decoration-image');
+                                                
+                                        // Set the initial image for the deco card
+                                        const imgElement = document.createElement("img");
+                                        imgElement.id = "shop-card-deco-image";
+                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${product.asset}.png?size=4096&passthrough=false`;
+                                                
+                                        previewHolder.appendChild(imgElement);
+
+                                        const bgimg = document.createElement("div");
+                                        bgimg.id = "shop-card-deco-bg-image";
+                                        bgimg.style.backgroundImage = `url('${product.src}')`;
+                                        
+                                        previewHolder.appendChild(bgimg);
+                                        
+                                        // Set the product details
+                                        card.querySelector("[data-product-card-sku-id]").textContent = `${getTextString("CARD_SHOP_MARKETING_ID")}${product.id}`;
+                                        card.querySelector("[data-product-card-name]").textContent = product.name;
+                                        card.querySelector("[data-product-card-summary]").textContent = product.summary;
+                                        
+                                        // Hover effect: Change the image src on mouse enter and leave
+                                        if (localStorage.reduced_motion != "true") {
+                                            card.addEventListener("mouseenter", () => {
+                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${product.asset}.png?size=4096&passthrough=true`;
+                                            });
+                                            
+                                            card.addEventListener("mouseleave", () => {
+                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${product.asset}.png?size=4096&passthrough=false`;
+                                            });
+                                        }
+
+
+
+                                        if (localStorage.experiment_2025_03_copy_sku_card === "Treatment 1: Enabled" || localStorage.experiment_2025_03_copy_sku_card === "Treatment 2: w/ share button") {
+                                            if (product.emojiCopy === null && product.type != 'plus_more') {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <div class="card-multi-button-container" card-multi-button-container>
+                                                        <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI_v2")}</button>
+                                                        <button class="card-button" onclick="copyEmoji('${product.sku_id}'); copyNotice('copysku');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
+                                                    </div>
+                                                `;
+                                            } else if (product.type != 'plus_more') {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <div class="card-multi-button-container" card-multi-button-container>
+                                                        <button class="card-button" onclick="copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');" title="${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_COPY_PPLUS_EMOJI_V2")}</button>
+                                                        <button class="card-button" onclick="copyEmoji('${product.sku_id}'); copyNotice('copysku');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
+                                                    </div>
+                                                `;
+                                            }
+                                        } else {
+                                            if (product.emojiCopy === null && product.type != 'plus_more') {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI")}</button>
+                                                `;
+                                            } else if (product.type != 'plus_more') {
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <button class="card-button" onclick="copyEmoji('${product.emojiCopy}');" title="${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_COPY_PPLUS_EMOJI")}</button>
+                                                `;
+                                            }
+                                        }
+                                        cardOutput.append(card);
+                                    }
+                                }
+            
+                                categoryOutput.append(category);
+
                             } else {
                                 // Default page handling
                                 const category = categoryTemplate.content.cloneNode(true).children[0];
@@ -13552,6 +13643,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <button class="dm-button" id="miscellaneous-tab" onclick="setParams({page: 'miscellaneous'}); location.reload();">
                     <p class="dm-button-text">${getTextString("MISCELLANEOUS_TAB_TITLE")}</p>
                 </button>
+                <div id="shop-marketing-tab-container">
+                </div>
                 <div id="old-pplus-tab">
                     <button class="dm-button" id="pplus-tab" onclick="setParams({page: 'pplus'}); location.reload();">
                         <p class="dm-button-text">${getTextString("PROFILES_PLUS_TAB_TITLE")}</p>
@@ -13596,6 +13689,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById('orb-converter').innerHTML = `
                 <button class="dm-button" id="orb-converter-tab" onclick="setParams({page: 'orb_converter'}); location.reload();">
                     <p class="dm-button-text">${getTextString("ORB_CONVERTER_TAB_TITLE")}</p>
+                </button>
+            `;
+        }
+
+        if (localStorage.experiment_2025_04_collectibles_marketing_page === "Treatment 1: Enabled") {
+            document.getElementById('shop-marketing-tab-container').innerHTML = `
+                <button class="dm-button" id="shop-marketing-tab" onclick="setParams({page: 'marketing'}); location.reload();">
+                    <p class="dm-button-text">${getTextString("MARKETING_TAB_TITLE")}</p>
                 </button>
             `;
         }
@@ -13765,6 +13866,22 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("miscellaneous-tab").classList.add('dm-button-selected');
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 style="margin-left: 260px; margin-top: 10px;">${getTextString("MISCELLANEOUS_TAB_PAGE_TITLE")}</h2>
+                <div id="open-help-modals-buttons-holder-new"></div>
+            `;
+        } else if (params.get("page") === "marketing") {
+            document.title = `${getTextString("MARKETING_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
+            if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
+                url = api + COLLECTIBLES_SHOP;
+                apiUrl = new URL(url);
+                apiUrl.searchParams.append("tab", "marketing");
+                if (localStorage.unreleased_discord_collectibles == "true") {
+                    apiUrl.searchParams.append("include-unpublished", "true");
+                }
+            }
+            createMainShopElement()
+            document.getElementById("shop-marketing-tab").classList.add('dm-button-selected');
+            document.getElementById("top-bar-container").innerHTML = `
+                <h2 style="margin-left: 260px; margin-top: 10px;">${getTextString("MARKETING_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
             `;
         } else if (params.get("page") === "pplus-home") {
@@ -16054,67 +16171,74 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 document.getElementById("disable-banner-overrides-box").checked = true;
             }
 
-            fetch(api + DOWNLOADABLE_DATA, {
-                method: "GET",
-                headers: {
-                    "Password": api_password,
-                    "Authorization": discord_token,
-                    "Token": api_token
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    // Call the function to display the data
-                    displayData(data);
-                })
-                .catch(error => {
-                    console.error('Error fetching the API:', error);
-                });
-                
-                // Function to display the data in the HTML
-                function displayData(data) {
+            if (localStorage.experiment_2025_04_collectibles_marketing_page === "Treatment 1: Enabled") {
                 const content = document.getElementById('downloadables-output');
-                const template = document.getElementById('downloadables-api-template');
-                
-                data.forEach(item => {
-                    // Clone the template
-                    const clone = template.content.cloneNode(true);
-                
-                    // Fill in the name and summary
-                    clone.querySelector('.name').textContent = item.name;
-                    clone.querySelector('.summary').textContent = item.summary;
-                
-                    if (item.id === "discord_marketing") {
-                        // Add buttons for downloadables
-                        const downloadablesDiv = clone.querySelector('.downloadables');
-                        item.downloadables.forEach(downloadable => {
-                            const button = document.createElement('button');
-                            button.textContent = `${downloadable.id}: ` + downloadable.name;
-                            button.classList.add('card-button');
-                            button.addEventListener('click', () => {
-                                window.open('https://item.yapper.shop/marketing/' + downloadable.id + '/data.zip', '_blank');
-                            });
-                            downloadablesDiv.appendChild(button);
-                        });
-                    }
+                content.innerHTML = `<p class="name">${getTextString("OPTIONS_SIDEBAR_MARKETING_DOWNLOADS_HAVE_MOVED")}</p>`;
+            } else {
 
-                    if (item.id === "profiles_plus_marketing") {
-                        // Add buttons for downloadables
-                        const downloadablesDiv = clone.querySelector('.downloadables');
-                        item.downloadables.forEach(downloadable => {
-                            const button = document.createElement('button');
-                            button.textContent = `${downloadable.id}: ` + downloadable.name;
-                            button.classList.add('card-button');
-                            button.addEventListener('click', () => {
-                                window.open('https://item.yapper.shop/profiles-plus-marketing/' + downloadable.id + '/data.zip', '_blank');
-                            });
-                            downloadablesDiv.appendChild(button);
-                        });
+                fetch(api + DOWNLOADABLE_DATA, {
+                    method: "GET",
+                    headers: {
+                        "Password": api_password,
+                        "Authorization": discord_token,
+                        "Token": api_token
                     }
-                
-                    // Append the cloned template to the content
-                    content.appendChild(clone);
-                });
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Call the function to display the data
+                        displayData(data);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching the API:', error);
+                    });
+
+                    // Function to display the data in the HTML
+                    function displayData(data) {
+                    const content = document.getElementById('downloadables-output');
+                    const template = document.getElementById('downloadables-api-template');
+                    
+                    data.forEach(item => {
+                        // Clone the template
+                        const clone = template.content.cloneNode(true);
+                    
+                        // Fill in the name and summary
+                        clone.querySelector('.name').textContent = item.name;
+                        clone.querySelector('.summary').textContent = item.summary;
+                    
+                        if (item.id === "discord_marketing") {
+                            // Add buttons for downloadables
+                            const downloadablesDiv = clone.querySelector('.downloadables');
+                            item.downloadables.forEach(downloadable => {
+                                const button = document.createElement('button');
+                                button.textContent = `${downloadable.id}: ` + downloadable.name;
+                                button.classList.add('card-button');
+                                button.addEventListener('click', () => {
+                                    window.open('https://item.yapper.shop/marketing/' + downloadable.id + '/data.zip', '_blank');
+                                });
+                                downloadablesDiv.appendChild(button);
+                            });
+                        }
+
+                        if (item.id === "profiles_plus_marketing") {
+                            // Add buttons for downloadables
+                            const downloadablesDiv = clone.querySelector('.downloadables');
+                            item.downloadables.forEach(downloadable => {
+                                const button = document.createElement('button');
+                                button.textContent = `${downloadable.id}: ` + downloadable.name;
+                                button.classList.add('card-button');
+                                button.addEventListener('click', () => {
+                                    window.open('https://item.yapper.shop/profiles-plus-marketing/' + downloadable.id + '/data.zip', '_blank');
+                                });
+                                downloadablesDiv.appendChild(button);
+                            });
+                        }
+                    
+                        // Append the cloned template to the content
+                        content.appendChild(clone);
+                    });
+                }
+
             }
             if (localStorage.experiment_2025_03_extra_options_dismissible_content === "Treatment 1: V1") {
                 localStorage.dismissible_newProfileSettings = "Treatment 1: Seen"
