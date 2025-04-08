@@ -23,7 +23,8 @@ const experimentsList = [
         name: "experiment_2025_04_collectibles_marketing_page",
         treatments: [
             "Treatment -1: Disabled",
-            "Treatment 1: Enabled"
+            "Treatment 1: Enabled",
+            "Treatment 2: Enable v2"
         ],
         rollout: "Treatment -1: Disabled",
         needs_api_token: "true"

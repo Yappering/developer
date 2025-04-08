@@ -1,6 +1,6 @@
 
 
-app_version1 = "327"
+app_version1 = "328"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10267,122 +10267,137 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             
                                 categoryOutput.append(potionCard);
                             } else if (page === "marketing") {
-                                const category = categoryTemplate.content.cloneNode(true).children[0];
-                                category.querySelector("[data-shop-category-banner]").id = apiCategory.sku_id;
+                                if (localStorage.experiment_2025_04_collectibles_marketing_page === "Treatment 1: Enabled") {
+                                    const category = categoryTemplate.content.cloneNode(true).children[0];
+                                    category.querySelector("[data-shop-category-banner]").id = apiCategory.sku_id;
 
-                                if (localStorage.experiment_2025_02_shop_category_modals === "Treatment 1: Enable category modals" || localStorage.experiment_2025_02_shop_category_modals === "Treatment 2: Enable category modals w/ data downloads") {
-                                    category.querySelector("[data-shop-category-banner]").classList.add('clickable')
-                                }
-            
-                                if (apiCategory.banner_asset) {
-                                    if (apiCategory.banner_asset.animated != null) {
-                                        if (apiCategory.banner_asset.static != null) {
-                                            category.querySelector("[data-shop-banner-banner-container]").innerHTML = `
-                                                <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="${apiCategory.banner_asset.static}">
-                                                <video disablepictureinpicture autoplay muted class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px; z-index: 1;" src="${apiCategory.banner_asset.animated}" loop></video>
-                                            `;
-                                        } else {
-                                            category.querySelector("[data-shop-banner-banner-container]").innerHTML = `
-                                                <video disablepictureinpicture autoplay muted class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px; z-index: 1;" src="${apiCategory.banner_asset.animated}" loop></video>
-                                            `;
-                                        }
-                                    } else if (apiCategory.banner_asset.static != null) {
-                                        category.querySelector("[data-shop-category-banner-image]").src = `${apiCategory.banner_asset.static}`;
+                                    if (localStorage.experiment_2025_02_shop_category_modals === "Treatment 1: Enable category modals" || localStorage.experiment_2025_02_shop_category_modals === "Treatment 2: Enable category modals w/ data downloads") {
+                                        category.querySelector("[data-shop-category-banner]").classList.add('clickable')
                                     }
-                                } else {
-                                    category.querySelector("[data-shop-category-banner-image]").src = `https://cdn.yapper.shop/assets/${apiCategory.banner}.png`;
-                                    category.querySelector("[data-shop-category-banner-image]").alt = apiCategory.name;
-                                }
             
-                                category.querySelector("[data-shop-category-logo-image]").src = `https://cdn.yapper.shop/assets/${apiCategory.logo}.png`;
-                                category.querySelector("[data-shop-category-logo-image]").alt = apiCategory.name;
-                                category.querySelector("[data-shop-category-logo-image]").classList.add("shop-category-condensed-banner-img");
+                                    if (apiCategory.banner_asset) {
+                                        if (apiCategory.banner_asset.animated != null) {
+                                            if (apiCategory.banner_asset.static != null) {
+                                                category.querySelector("[data-shop-banner-banner-container]").innerHTML = `
+                                                    <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="${apiCategory.banner_asset.static}">
+                                                    <video disablepictureinpicture autoplay muted class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px; z-index: 1;" src="${apiCategory.banner_asset.animated}" loop></video>
+                                                `;
+                                            } else {
+                                                category.querySelector("[data-shop-banner-banner-container]").innerHTML = `
+                                                    <video disablepictureinpicture autoplay muted class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px; z-index: 1;" src="${apiCategory.banner_asset.animated}" loop></video>
+                                                `;
+                                            }
+                                        } else if (apiCategory.banner_asset.static != null) {
+                                            category.querySelector("[data-shop-category-banner-image]").src = `${apiCategory.banner_asset.static}`;
+                                        }
+                                    } else {
+                                        category.querySelector("[data-shop-category-banner-image]").src = `https://cdn.yapper.shop/assets/${apiCategory.banner}.png`;
+                                        category.querySelector("[data-shop-category-banner-image]").alt = apiCategory.name;
+                                    }
             
-                                category.querySelector("[data-shop-category-desc]").id = `${apiCategory.sku_id}-summary`;
-                                category.querySelector("[data-shop-category-desc]").textContent = apiCategory.summary;
-                                if (apiCategory.banner_text_color && apiCategory.banner_text_color != null) {
-                                    category.querySelector("[data-shop-category-desc]").style.color = apiCategory.banner_text_color;
-                                }
+                                    category.querySelector("[data-shop-category-logo-image]").src = `https://cdn.yapper.shop/assets/${apiCategory.logo}.png`;
+                                    category.querySelector("[data-shop-category-logo-image]").alt = apiCategory.name;
+                                    category.querySelector("[data-shop-category-logo-image]").classList.add("shop-category-condensed-banner-img");
+            
+                                    category.querySelector("[data-shop-category-desc]").id = `${apiCategory.sku_id}-summary`;
+                                    category.querySelector("[data-shop-category-desc]").textContent = apiCategory.summary;
+                                    if (apiCategory.banner_text_color && apiCategory.banner_text_color != null) {
+                                        category.querySelector("[data-shop-category-desc]").style.color = apiCategory.banner_text_color;
+                                    }
 
-                                category.querySelector("[data-shop-banner-banner-container]").id = `${apiCategory.sku_id}-banner-banner-container`;
-                                category.querySelector("[data-shop-category-logo-holder]").id = `${apiCategory.sku_id}-logo-container`;
-                                category.querySelector("[data-shop-discord-watermark-container]").id = `${apiCategory.sku_id}-discord-watermark-container`;
+                                    category.querySelector("[data-shop-banner-banner-container]").id = `${apiCategory.sku_id}-banner-banner-container`;
+                                    category.querySelector("[data-shop-category-logo-holder]").id = `${apiCategory.sku_id}-logo-container`;
+                                    category.querySelector("[data-shop-discord-watermark-container]").id = `${apiCategory.sku_id}-discord-watermark-container`;
 
 
-                                const cardOutput = category.querySelector("[data-shop-category-card-holder]");
-                                if (cardOutput) {
-                                    for (const product of apiCategory.products) {
-                                        const cardTemplate = document.querySelector("[data-shop-item-card-template]");
-                                        const card = cardTemplate.content.cloneNode(true).children[0];
+                                    const cardOutput = category.querySelector("[data-shop-category-card-holder]");
+                                    if (cardOutput) {
+                                        for (const product of apiCategory.products) {
+                                            const cardTemplate = document.querySelector("[data-shop-item-card-template]");
+                                            const card = cardTemplate.content.cloneNode(true).children[0];
 
-                                        card.id = product.sku_id;
+                                            card.id = product.sku_id;
 
-                                        const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
-                                        previewHolder.classList.add('avatar-decoration-image');
-                                                
-                                        // Set the initial image for the deco card
-                                        const imgElement = document.createElement("img");
-                                        imgElement.id = "shop-card-deco-image";
-                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${product.asset}.png?size=4096&passthrough=false`;
-                                                
-                                        previewHolder.appendChild(imgElement);
+                                            const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
+                                            previewHolder.classList.add('avatar-decoration-image');
 
-                                        const bgimg = document.createElement("div");
-                                        bgimg.id = "shop-card-deco-bg-image";
-                                        bgimg.style.backgroundImage = `url('${product.src}')`;
-                                        
-                                        previewHolder.appendChild(bgimg);
-                                        
-                                        // Set the product details
-                                        card.querySelector("[data-product-card-sku-id]").textContent = `${getTextString("CARD_SHOP_MARKETING_ID")}${product.id}`;
-                                        card.querySelector("[data-product-card-name]").textContent = product.name;
-                                        card.querySelector("[data-product-card-summary]").textContent = product.summary;
-                                        
-                                        // Hover effect: Change the image src on mouse enter and leave
-                                        if (localStorage.reduced_motion != "true") {
-                                            card.addEventListener("mouseenter", () => {
-                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${product.asset}.png?size=4096&passthrough=true`;
-                                            });
                                             
-                                            card.addEventListener("mouseleave", () => {
+                                            if (apiCategory.type === 0) {
+                                                // Set the initial image for the deco card
+                                                const imgElement = document.createElement("img");
+                                                imgElement.id = "shop-card-deco-image";
                                                 imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${product.asset}.png?size=4096&passthrough=false`;
-                                            });
-                                        }
 
+                                                previewHolder.appendChild(imgElement);
 
+                                                const bgimg = document.createElement("div");
+                                                bgimg.id = "shop-card-deco-bg-image";
+                                                bgimg.style.backgroundImage = `url('${product.src}')`;
 
-                                        if (localStorage.experiment_2025_03_copy_sku_card === "Treatment 1: Enabled" || localStorage.experiment_2025_03_copy_sku_card === "Treatment 2: w/ share button") {
-                                            if (product.emojiCopy === null && product.type != 'plus_more') {
+                                                previewHolder.appendChild(bgimg);
+
+                                                // Set the product details
+                                                card.querySelector("[data-product-card-sku-id]").textContent = `${getTextString("CARD_SHOP_MARKETING_ID")}${product.id}`;
+                                                card.querySelector("[data-product-card-name]").textContent = product.name;
+                                                card.querySelector("[data-product-card-summary]").textContent = product.summary;
+
+                                                // Hover effect: Change the image src on mouse enter and leave
+                                                if (localStorage.reduced_motion != "true") {
+                                                    card.addEventListener("mouseenter", () => {
+                                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${product.asset}.png?size=4096&passthrough=true`;
+                                                    });
+
+                                                    card.addEventListener("mouseleave", () => {
+                                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${product.asset}.png?size=4096&passthrough=false`;
+                                                    });
+                                                }
+
                                                 card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                    <div class="card-multi-button-container" card-multi-button-container>
-                                                        <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI_v2")}</button>
-                                                        <button class="card-button" onclick="copyEmoji('${product.sku_id}'); copyNotice('copysku');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
-                                                    </div>
+                                                    <button class="card-button" onclick="location.href='https://item.yapper.shop/marketing/${product.id}/data.zip';">${getTextString("CARD_DOWNLOAD_MARKETING_DATA")}</button>
                                                 `;
-                                            } else if (product.type != 'plus_more') {
+                                            } else if (apiCategory.type === 1) {
+                                                // Set the initial image for the deco card
+                                                const imgElement = document.createElement("img");
+                                                imgElement.id = "shop-card-deco-image";
+                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${product.asset}.png`;
+
+                                                previewHolder.appendChild(imgElement);
+
+                                                const bgimg = document.createElement("div");
+                                                bgimg.id = "shop-card-deco-bg-image";
+                                                bgimg.style.backgroundImage = `url('${product.src}')`;
+
+                                                previewHolder.appendChild(bgimg);
+
+                                                // Set the product details
+                                                card.querySelector("[data-product-card-sku-id]").textContent = `${getTextString("CARD_SHOP_MARKETING_ID")}${product.id}`;
+                                                card.querySelector("[data-product-card-name]").textContent = product.name;
+                                                card.querySelector("[data-product-card-summary]").textContent = product.summary;
+
+                                                // Hover effect: Change the image src on mouse enter and leave
+                                                if (localStorage.reduced_motion != "true") {
+                                                    card.addEventListener("mouseenter", () => {
+                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${product.asset}.png`;
+                                                    });
+
+                                                    card.addEventListener("mouseleave", () => {
+                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${product.asset}.png`;
+                                                    });
+                                                }
+
                                                 card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                    <div class="card-multi-button-container" card-multi-button-container>
-                                                        <button class="card-button" onclick="copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');" title="${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_COPY_PPLUS_EMOJI_V2")}</button>
-                                                        <button class="card-button" onclick="copyEmoji('${product.sku_id}'); copyNotice('copysku');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
-                                                    </div>
+                                                    <button class="card-button" onclick="location.href='https://item.yapper.shop/profiles-plus-marketing/${product.id}/data.zip';">${getTextString("CARD_DOWNLOAD_MARKETING_DATA")}</button>
                                                 `;
+                                            } else {
+                                                card.classList.add("hidden");
                                             }
-                                        } else {
-                                            if (product.emojiCopy === null && product.type != 'plus_more') {
-                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                    <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI")}</button>
-                                                `;
-                                            } else if (product.type != 'plus_more') {
-                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                    <button class="card-button" onclick="copyEmoji('${product.emojiCopy}');" title="${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_COPY_PPLUS_EMOJI")}</button>
-                                                `;
-                                            }
+
+                                            cardOutput.append(card);
                                         }
-                                        cardOutput.append(card);
                                     }
-                                }
             
-                                categoryOutput.append(category);
+                                    categoryOutput.append(category);
+                                }
 
                             } else {
                                 // Default page handling
@@ -13693,7 +13708,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             `;
         }
 
-        if (localStorage.experiment_2025_04_collectibles_marketing_page === "Treatment 1: Enabled") {
+        if (localStorage.experiment_2025_04_collectibles_marketing_page === "Treatment 1: Enabled" || localStorage.experiment_2025_04_collectibles_marketing_page === "Treatment 2: Enable v2") {
             document.getElementById('shop-marketing-tab-container').innerHTML = `
                 <button class="dm-button" id="shop-marketing-tab" onclick="setParams({page: 'marketing'}); location.reload();">
                     <p class="dm-button-text">${getTextString("MARKETING_TAB_TITLE")}</p>
@@ -15769,7 +15784,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 </div>
                 <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_SIDEBAR_YAPPER_HELP")}</p>
                 <div class="experiment-card-holder" id="yapper-article-container" style="width: 300px; margin-left: auto; margin-right: auto;">
-                    <button class="card-button" onclick="window.open('https://discord.gg/Mcwh7hGcWb/');">${getTextString("OPTIONS_SIDEBAR_YAPPER_DISCORD_SERVER")}</button>
+                    <button class="card-button" onclick="window.open('https://discord.gg/Mcwh7hGcWb');">${getTextString("OPTIONS_SIDEBAR_YAPPER_DISCORD_SERVER")}</button>
                     <button class="card-button" onclick="window.open('https://github.com/Yappering/');">${getTextString("OPTIONS_SIDEBAR_YAPPER_GITHUB")}</button>
                 </div>
                 ${getTextString("APP_VERSION")}${tcbx926n29}

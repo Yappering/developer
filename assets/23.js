@@ -174,6 +174,7 @@ CARD_COPY_PPLUS_EMOJI_V2 = "Copy Emoji";
 CARD_PPLUS_ERROR_TITLE = "There was an error fetching emojiCopy";
 CARD_PPLUS_ERROR = "Error";
 CARD_FAILED_TO_LOAD_ITEM_ERROR = "Failed To Load Item";
+CARD_DOWNLOAD_MARKETING_DATA = "Download Marketing Data";
 CARD_OPEN_IN_SHOP = "Open In Shop";
 CARD_OPEN_IN_SHOP_V2 = "Open";
 CARD_OPEN_IN_SHOP_TITLE = "Open this item in the Discord Shop";
