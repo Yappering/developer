@@ -1437,7 +1437,7 @@ body {
 
 .dm-button-text {
     margin-left: 10px;
-    margin-top: 13px;
+    margin-top: 14px;
     font-weight: 600;
     font-size: large;
 }
@@ -2233,6 +2233,15 @@ body {
 }
 
 .shop-category-card:hover .shareIcon_f4a996 {
+    opacity: 1;
+}
+
+.shop-marketing-silly-crap-container {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.shop-category-card:hover .shop-marketing-silly-crap-container {
     opacity: 1;
 }
 
@@ -3159,7 +3168,7 @@ data-share-product-card-button {
 
 .shop-category-card-holder:has(.shop-marketing-card) {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(1000px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
     gap: 20px;
     justify-content: center; /* Center the grid horizontally */
     max-width: 1200px; /* Limit the width of the card holder */

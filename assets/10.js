@@ -367,20 +367,6 @@ const dismissibleContentList = [
 
 const testFetchAPIList = [
     {
-        title: "Test Fetch Old API",
-        id: "testfetch",
-        name: "testfetch_testfetch",
-        treatments: [
-            "none",
-            "collectibles-categories",
-            "miscellaneous-categories",
-            "downloads",
-            "leaked-categories"
-        ],
-        rollout: "none",
-        needs_api_token: "true"
-    },
-    {
         title: "Test Fetch Collectibles Shop API",
         id: "testfetch_collectibles-shop",
         name: "testfetch_testfetchnew",
@@ -393,6 +379,7 @@ const testFetchAPIList = [
             "nameplates",
             "consumables",
             "miscellaneous",
+            "marketing",
             "pplus-home",
             "pplus"
         ],
