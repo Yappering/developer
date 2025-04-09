@@ -1,6 +1,6 @@
 
 
-app_version1 = "333"
+app_version1 = "334"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10099,14 +10099,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                     category.querySelector("[data-shop-category-logo-holder]").id = `${apiCategory.sku_id}-logo-container`;
                                     category.querySelector("[data-shop-discord-watermark-container]").id = `${apiCategory.sku_id}-discord-watermark-container`;
 
-                                    if (document.getElementById("-1")) {
-                                        document.getElementById("-1").innerHTML = `
-                                            <img class="shop-category-condensed-banner-img" src="https://cdn.yapper.shop/assets/180.png">
-                                            <div class="shop-category-condensed-logo-holder" style="left: 23%;">
-                                                <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/assets/181.png" id="shop-banner-logo">
-                                            </div>
-                                        `;
-                                    }
+                                    category.querySelector("[data-shop-category-banner]").innerHTML = `
+                                        <img class="shop-category-condensed-banner-img" src="https://cdn.yapper.shop/assets/180.png">
+                                        <div class="shop-category-condensed-logo-holder" style="left: 23%;">
+                                            <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/assets/181.png" id="shop-banner-logo">
+                                        </div>
+                                    `;
 
 
                                     const cardOutput = category.querySelector("[data-shop-category-card-holder]");
