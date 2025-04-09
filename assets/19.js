@@ -1,6 +1,6 @@
 
 
-app_version1 = "331"
+app_version1 = "332"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -102,7 +102,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         const api_password = localStorage.getItem("api-password");
         const discord_token = localStorage.getItem("discord_token");
         const api_token = sessionStorage.getItem("api-token");
-        api = 'https://shop-archives-api.vercel.app/api';
+        api = 'https://api.yapper.shop/v2';
         discordsupport = 'https://support.discord.com/hc/en-us/articles/';
         discordblog = 'https://discord.com/blog/';
         yapperblog = 'https://yapper.shop/blog/';
@@ -2442,7 +2442,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     const api_token = sessionStorage.getItem("api-token");
 
     // api = 'https://raw.githubusercontent.com/Yappering/api/main/v2';
-    api = 'https://shop-archives-api.vercel.app/api';
+    api = 'https://api.yapper.shop/v2';
     prvapi = 'https://raw.githubusercontent.com/Yappering/private-api/refs/heads/main/v2';
     discordsupport = 'https://support.discord.com/hc/en-us/articles/';
     discordblog = 'https://discord.com/blog/';
@@ -2451,10 +2451,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     yappersupport = 'https://support.yapper.shop/?page=';
     cdn = 'https://cdn.yapper.shop/';
     tmpapi = 'https://api.yapper.shop/tmp';
-
-    if (localStorage.experiment_2025_04_use_api_dot_yapper_dot_shop === "Treatment 1: Enabled") {
-        api = 'https://api.yapper.shop/v2'
-    }
 
     function privateAPICheck() {
         // if (localStorage.force_all_api_to_fectch_private_api == "true") {
@@ -10137,6 +10133,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     <h3 style="margin-left: 186px; z-index: 2;" data-product-card-name>Failed to load name</h3>
                                                     <p class="shop-card-summary" style="margin-left: 186px; z-index: 2;" data-product-card-summary>Failed to load summary</p>
                                                 </div>
+                                                <p style="display: none; z-index: 1; position: absolute; top: 10px; right: 305px;" data-shop-tab-preview-text>${getTextString("CARD_MARKETING_SHOP_TAB_PREVIEW_TEXT")}</p>
                                                 <div class="dm-button" style="display: none; position: absolute; top: 45px; right: 200px; overflow: hidden;" title="${getTextString("CARD_MARKETING_SHOP_TAB_PREVIEW_TITLE")}" data-shop-tab-preview>
                                                     <img style="position: absolute; bottom: 0px; right: 0px; width: 270px;" src="https://cdn.yapper.shop/assets/31.png" data-shop-tab-preview-img>
                                                     <svg style="margin-left: 10px; margin-top: 14px; z-index: 1;" class="linkButtonIcon__972a0" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M2.63 4.19A3 3 0 0 1 5.53 2H7a1 1 0 0 1 1 1v3.98a3.07 3.07 0 0 1-.3 1.35A2.97 2.97 0 0 1 4.98 10c-2 0-3.44-1.9-2.9-3.83l.55-1.98ZM10 2a1 1 0 0 0-1 1v4a3 3 0 0 0 3 3 3 3 0 0 0 3-2.97V3a1 1 0 0 0-1-1h-4ZM17 2a1 1 0 0 0-1 1v3.98a2.43 2.43 0 0 0 0 .05A2.95 2.95 0 0 0 19.02 10c2 0 3.44-1.9 2.9-3.83l-.55-1.98A3 3 0 0 0 18.47 2H17Z" class=""></path><path fill="currentColor" d="M21 11.42V19a3 3 0 0 1-3 3h-2.75a.25.25 0 0 1-.25-.25V16a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v5.75c0 .14-.11.25-.25.25H6a3 3 0 0 1-3-3v-7.58c0-.18.2-.3.37-.24a4.46 4.46 0 0 0 4.94-1.1c.1-.12.3-.12.4 0a4.49 4.49 0 0 0 6.58 0c.1-.12.3-.12.4 0a4.45 4.45 0 0 0 4.94 1.1c.17-.07.37.06.37.24Z" class=""></path></svg>
@@ -10151,6 +10148,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                             if (product.raw != null && product.raw.marketings["0"] && product.raw.marketings["0"].ref_target_background != null) {
                                                 card.querySelector("[data-shop-tab-preview]").style.display = 'flex';
+                                                card.querySelector("[data-shop-tab-preview-text]").style.display = 'flex';
                                                 if (product.raw != null && product.raw.marketings["0"] && product.raw.marketings["0"].ref_target_background != null && product.raw.marketings["0"].ref_target_background.asset.resting.dark && product.raw.marketings["0"].ref_target_background.asset.resting.dark != null) {
                                                     card.querySelector("[data-shop-tab-preview-img]").src = product.raw.marketings["0"].ref_target_background.asset.resting.dark;
                                                 }
@@ -10255,7 +10253,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 card.querySelector("[data-product-card-sku-id]").textContent = `${getTextString("CARD_SHOP_MARKETING_ID")}${product.id}`;
                                                 card.querySelector("[data-product-card-name]").textContent = product.name;
                                                 card.querySelector("[data-product-card-summary]").textContent = product.summary;
-                                                if (product.raw.marketings["2"] && product.raw.marketings["2"].revert_text_color === true) {
+                                                if (product.raw != null && product.raw.marketings["2"] && product.raw.marketings["2"].revert_text_color === true) {
                                                     card.querySelector("[data-product-card-sku-id]").style.color = `black`;
                                                     card.querySelector("[data-product-card-name]").style.color = `black`;
                                                     card.querySelector("[data-product-card-summary]").style.color = `black`;
@@ -10283,12 +10281,16 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 const imgElement = document.createElement("img");
                                                 imgElement.id = "shop-card-deco-image";
                                                 imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${product.asset}.png`;
+                                                imgElement.style.height = `150px`;
+                                                imgElement.style.width = `150px`;
 
                                                 previewHolder.appendChild(imgElement);
 
                                                 const bgimg = document.createElement("div");
                                                 bgimg.id = "shop-card-deco-bg-image";
                                                 bgimg.style.backgroundImage = `url('${product.src}')`;
+                                                bgimg.style.height = `150px`;
+                                                bgimg.style.width = `150px`;
 
                                                 previewHolder.appendChild(bgimg);
 
@@ -10296,6 +10298,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 card.querySelector("[data-product-card-sku-id]").textContent = `${getTextString("CARD_SHOP_MARKETING_ID")}${product.id}`;
                                                 card.querySelector("[data-product-card-name]").textContent = product.name;
                                                 card.querySelector("[data-product-card-summary]").textContent = product.summary;
+                                                if (product.raw != null && product.raw.marketings["2"] && product.raw.marketings["2"].revert_text_color === true) {
+                                                    card.querySelector("[data-product-card-sku-id]").style.color = `black`;
+                                                    card.querySelector("[data-product-card-name]").style.color = `black`;
+                                                    card.querySelector("[data-product-card-summary]").style.color = `black`;
+                                                } 
 
                                                 // Hover effect: Change the image src on mouse enter and leave
                                                 if (localStorage.reduced_motion != "true") {
@@ -10309,7 +10316,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 }
 
                                                 card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                    <button class="card-button" onclick="location.href='https://item.yapper.shop/profiles-plus-marketing/${product.id}/data.zip';">${getTextString("CARD_DOWNLOAD_MARKETING_DATA")}</button>
+                                                    <div class="card-multi-button-container" card-multi-button-container>
+                                                        <button class="card-button" onclick="location.href='https://item.yapper.shop/profiles-plus-marketing/${product.id}/data.zip';">${getTextString("CARD_DOWNLOAD_MARKETING_DATA")}</button>
+                                                        <button class="card-button" onclick="setParams({page: 'pplus'}); addParams({scrollTo: '${product.category_sku_id}'}); location.reload();">${getTextString("CARD_MARKETING_GO_TO_CATEGORY")}</button>
+                                                    </div>
                                                 `;
                                             } else {
                                                 card.classList.add("hidden");
@@ -14777,6 +14787,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         document.getElementById("shop-category-loading-container").innerHTML = `
             <div class="shop-category-loading" id="shop-category-loading">
                 <div>
+                    <div class="potion-card-loading">
+                    </div>
+                    <div class="potion-card-loading">
+                    </div>
+                    <div class="potion-card-loading">
+                    </div>
+                    <div class="potion-card-loading">
+                    </div>
                     <div class="potion-card-loading">
                     </div>
                     <div class="potion-card-loading">

@@ -2009,12 +2009,12 @@ body {
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: 1000px;
-    height: 240px;
+    margin-bottom: 15px;
+    width: 1200px;
+    height: 150px;
     background-color: var(--background-primary);
-    scale: 0.9;
     object-fit: cover;
-    border-radius: 32px;
+    border-radius: 20px;
     justify-content: center;
     align-items: center;
     overflow: hidden;

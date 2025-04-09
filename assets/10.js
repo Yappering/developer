@@ -26,7 +26,8 @@ const experimentsList = [
             "Treatment 1: Enabled"
         ],
         rollout: "Treatment 1: Enabled",
-        needs_api_token: "true"
+        needs_api_token: "true",
+        not_needed: "true"
     },
     {
         title: "Collectibles Marketing Page",
