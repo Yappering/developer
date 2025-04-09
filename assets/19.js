@@ -1,6 +1,6 @@
 
 
-app_version1 = "328"
+app_version1 = "329"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10270,10 +10270,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                 if (localStorage.experiment_2025_04_collectibles_marketing_page === "Treatment 1: Enabled") {
                                     const category = categoryTemplate.content.cloneNode(true).children[0];
                                     category.querySelector("[data-shop-category-banner]").id = apiCategory.sku_id;
-
-                                    if (localStorage.experiment_2025_02_shop_category_modals === "Treatment 1: Enable category modals" || localStorage.experiment_2025_02_shop_category_modals === "Treatment 2: Enable category modals w/ data downloads") {
-                                        category.querySelector("[data-shop-category-banner]").classList.add('clickable')
-                                    }
             
                                     if (apiCategory.banner_asset) {
                                         if (apiCategory.banner_asset.animated != null) {
@@ -10354,6 +10350,170 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                 card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
                                                     <button class="card-button" onclick="location.href='https://item.yapper.shop/marketing/${product.id}/data.zip';">${getTextString("CARD_DOWNLOAD_MARKETING_DATA")}</button>
+                                                `;
+                                            } else if (apiCategory.type === 1) {
+                                                // Set the initial image for the deco card
+                                                const imgElement = document.createElement("img");
+                                                imgElement.id = "shop-card-deco-image";
+                                                imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${product.asset}.png`;
+
+                                                previewHolder.appendChild(imgElement);
+
+                                                const bgimg = document.createElement("div");
+                                                bgimg.id = "shop-card-deco-bg-image";
+                                                bgimg.style.backgroundImage = `url('${product.src}')`;
+
+                                                previewHolder.appendChild(bgimg);
+
+                                                // Set the product details
+                                                card.querySelector("[data-product-card-sku-id]").textContent = `${getTextString("CARD_SHOP_MARKETING_ID")}${product.id}`;
+                                                card.querySelector("[data-product-card-name]").textContent = product.name;
+                                                card.querySelector("[data-product-card-summary]").textContent = product.summary;
+
+                                                // Hover effect: Change the image src on mouse enter and leave
+                                                if (localStorage.reduced_motion != "true") {
+                                                    card.addEventListener("mouseenter", () => {
+                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/a_${product.asset}.png`;
+                                                    });
+
+                                                    card.addEventListener("mouseleave", () => {
+                                                        imgElement.src = `https://cdn.yapper.shop/custom-collectibles/avatar-decorations/${product.asset}.png`;
+                                                    });
+                                                }
+
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <button class="card-button" onclick="location.href='https://item.yapper.shop/profiles-plus-marketing/${product.id}/data.zip';">${getTextString("CARD_DOWNLOAD_MARKETING_DATA")}</button>
+                                                `;
+                                            } else {
+                                                card.classList.add("hidden");
+                                            }
+
+                                            cardOutput.append(card);
+                                        }
+                                    }
+            
+                                    categoryOutput.append(category);
+                                } else if (localStorage.experiment_2025_04_collectibles_marketing_page === "Treatment 2: Enable v2") {
+                                    const category = categoryTemplate.content.cloneNode(true).children[0];
+                                    category.querySelector("[data-shop-category-banner]").id = apiCategory.sku_id;
+            
+                                    if (apiCategory.banner_asset) {
+                                        if (apiCategory.banner_asset.animated != null) {
+                                            if (apiCategory.banner_asset.static != null) {
+                                                category.querySelector("[data-shop-banner-banner-container]").innerHTML = `
+                                                    <img class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px;" src="${apiCategory.banner_asset.static}">
+                                                    <video disablepictureinpicture autoplay muted class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px; z-index: 1;" src="${apiCategory.banner_asset.animated}" loop></video>
+                                                `;
+                                            } else {
+                                                category.querySelector("[data-shop-banner-banner-container]").innerHTML = `
+                                                    <video disablepictureinpicture autoplay muted class="shop-category-banner-img" style="position: absolute; left: 0px; bottom: 0px; width: 1280px; z-index: 1;" src="${apiCategory.banner_asset.animated}" loop></video>
+                                                `;
+                                            }
+                                        } else if (apiCategory.banner_asset.static != null) {
+                                            category.querySelector("[data-shop-category-banner-image]").src = `${apiCategory.banner_asset.static}`;
+                                        }
+                                    } else {
+                                        category.querySelector("[data-shop-category-banner-image]").src = `https://cdn.yapper.shop/assets/${apiCategory.banner}.png`;
+                                        category.querySelector("[data-shop-category-banner-image]").alt = apiCategory.name;
+                                    }
+            
+                                    category.querySelector("[data-shop-category-logo-image]").src = `https://cdn.yapper.shop/assets/${apiCategory.logo}.png`;
+                                    category.querySelector("[data-shop-category-logo-image]").alt = apiCategory.name;
+                                    category.querySelector("[data-shop-category-logo-image]").classList.add("shop-category-condensed-banner-img");
+            
+                                    category.querySelector("[data-shop-category-desc]").id = `${apiCategory.sku_id}-summary`;
+                                    category.querySelector("[data-shop-category-desc]").textContent = apiCategory.summary;
+                                    if (apiCategory.banner_text_color && apiCategory.banner_text_color != null) {
+                                        category.querySelector("[data-shop-category-desc]").style.color = apiCategory.banner_text_color;
+                                    }
+
+                                    category.querySelector("[data-shop-banner-banner-container]").id = `${apiCategory.sku_id}-banner-banner-container`;
+                                    category.querySelector("[data-shop-category-logo-holder]").id = `${apiCategory.sku_id}-logo-container`;
+                                    category.querySelector("[data-shop-discord-watermark-container]").id = `${apiCategory.sku_id}-discord-watermark-container`;
+
+                                    if (document.getElementById("-1")) {
+                                        document.getElementById("-1").innerHTML = `
+                                            <img class="shop-category-condensed-banner-img" src="https://cdn.yapper.shop/assets/180.png">
+                                            <div class="shop-category-condensed-logo-holder" style="left: 23%;">
+                                                <img class="shop-category-banner-logo" src="https://cdn.yapper.shop/assets/181.png" id="shop-banner-logo">
+                                            </div>
+                                        `;
+                                    }
+
+
+                                    const cardOutput = category.querySelector("[data-shop-category-card-holder]");
+                                    if (cardOutput) {
+                                        const sortedData = apiCategory.products.sort((b, a) => a.id - b.id);
+                                        for (const product of sortedData) {
+                                            const cardTemplate = document.querySelector("[data-shop-item-card-template]");
+                                            const card = cardTemplate.content.cloneNode(true).children[0];
+
+                                            card.classList.add("shop-marketing-card");
+                                            card.innerHTML = `
+                                                <div data-shop-card-preview-holder  style="position: absolute; z-index: 1; left: 10px; margin-top: 0px; height: 150px; width: 150px; scale: 0.9;" class="avatar-decoration-image"></div>
+                                                <img class="shop-category-banner-img" style="position: absolute; left: 0px; top: 0px; filter: blur(5px);" src="https://cdn.yapper.shop/assets/31.png" data-marketing-shop-card-bg>
+                                                <div class="card-bottom" style="background-color: unset; backdrop-filter: unset;">
+                                                    <div title="Copy Link">
+                                                        <svg class="shareIcon_f4a996" style="margin-right: 10px;" onclick="copyEmoji('https://item.yapper.shop/marketing/${product.id}'); copyNotice('copylink');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
+                                                    </div>
+                                                    <a class="item-credits" style="margin-left: 186px; z-index: 2;" data-product-card-sku-id>Failed to load ID</a>
+                                                    <h3 style="margin-left: 186px; z-index: 2;" data-product-card-name>Failed to load name</h3>
+                                                    <p class="shop-card-summary" style="margin-left: 186px; z-index: 2;" data-product-card-summary>Failed to load summary</p>
+                                                </div>
+                                                <div class="card-button-container" style="width: 400px; left: 400px;" data-product-card-open-in-shop></div>
+                                            `;
+
+                                            if (product.raw != null && product.raw.marketings["2"] && product.raw.marketings["2"].asset != null) {
+                                                card.querySelector("[data-marketing-shop-card-bg]").src = product.raw.marketings["2"].asset;
+                                            }
+
+                                            const previewHolder = card.querySelector("[data-shop-card-preview-holder]");
+
+                                            
+                                            if (apiCategory.type === 0) {
+                                                // Set the initial image for the deco card
+                                                const imgElement = document.createElement("img");
+                                                imgElement.id = "shop-card-deco-image";
+                                                imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${product.asset}.png?size=4096&passthrough=false`;
+                                                imgElement.style.height = `150px`;
+                                                imgElement.style.width = `150px`;
+
+                                                previewHolder.appendChild(imgElement);
+
+                                                const bgimg = document.createElement("div");
+                                                bgimg.id = "shop-card-deco-bg-image";
+                                                bgimg.style.backgroundImage = `url('${product.src}')`;
+                                                bgimg.style.height = `150px`;
+                                                bgimg.style.width = `150px`;
+
+                                                previewHolder.appendChild(bgimg);
+
+                                                // Set the product details
+                                                card.querySelector("[data-product-card-sku-id]").textContent = `${getTextString("CARD_SHOP_MARKETING_ID")}${product.id}`;
+                                                card.querySelector("[data-product-card-name]").textContent = product.name;
+                                                card.querySelector("[data-product-card-summary]").textContent = product.summary;
+                                                if (product.raw.marketings["2"] && product.raw.marketings["2"].revert_text_color === true) {
+                                                    card.querySelector("[data-product-card-sku-id]").style.color = `black`;
+                                                    card.querySelector("[data-product-card-name]").style.color = `black`;
+                                                    card.querySelector("[data-product-card-summary]").style.color = `black`;
+                                                } 
+
+                                                // Hover effect: Change the image src on mouse enter and leave
+                                                if (localStorage.reduced_motion != "true") {
+                                                    card.addEventListener("mouseenter", () => {
+                                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${product.asset}.png?size=4096&passthrough=true`;
+                                                    });
+
+                                                    card.addEventListener("mouseleave", () => {
+                                                        imgElement.src = `https://cdn.discordapp.com/avatar-decoration-presets/${product.asset}.png?size=4096&passthrough=false`;
+                                                    });
+                                                }
+
+                                                card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
+                                                    <div class="card-multi-button-container" card-multi-button-container>
+                                                        <button class="card-button" onclick="location.href='https://item.yapper.shop/marketing/${product.id}/data.zip';">${getTextString("CARD_DOWNLOAD_MARKETING_DATA")}</button>
+                                                        <button class="card-button" onclick="setParams({page: 'shop'}); addParams({scrollTo: '${product.category_sku_id}'}); location.reload();">${getTextString("CARD_MARKETING_GO_TO_CATEGORY")}</button>
+                                                    </div>
                                                 `;
                                             } else if (apiCategory.type === 1) {
                                                 // Set the initial image for the deco card
@@ -15839,6 +15999,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
                             <p class="options-preview-profile-username" id="options-username-preview"></p>
                         </div>
+                        <div id="options-profile-nameplate-preview-container"></div>
                     </div>
                 `;
 
@@ -16186,9 +16347,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 document.getElementById("disable-banner-overrides-box").checked = true;
             }
 
-            if (localStorage.experiment_2025_04_collectibles_marketing_page === "Treatment 1: Enabled") {
+            if (localStorage.experiment_2025_04_collectibles_marketing_page === "Treatment 1: Enabled" || localStorage.experiment_2025_04_collectibles_marketing_page === "Treatment 2: Enable v2") {
                 const content = document.getElementById('downloadables-output');
-                content.innerHTML = `<p class="name">${getTextString("OPTIONS_SIDEBAR_MARKETING_DOWNLOADS_HAVE_MOVED")}</p>`;
+                content.innerHTML = `
+                    <p class="name">${getTextString("OPTIONS_SIDEBAR_MARKETING_DOWNLOADS_HAVE_MOVED")}</p>
+                    <div class="experiment-card-holder" style="width: 300px; margin-left: auto; margin-right: auto;">
+                        <button class="card-button" onclick="setParams({page: 'marketing'}); location.reload();">${getTextString("OPTIONS_SIDEBAR_MARKETING_DOWNLOADS_HAVE_MOVED_BUTTON")}</button>
+                    </div>
+                `;
             } else {
 
                 fetch(api + DOWNLOADABLE_DATA, {
