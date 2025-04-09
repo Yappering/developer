@@ -1,6 +1,6 @@
 
 
-app_version1 = "330"
+app_version1 = "331"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2452,13 +2452,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     cdn = 'https://cdn.yapper.shop/';
     tmpapi = 'https://api.yapper.shop/tmp';
 
-    // if (localStorage.api_designed_url != "false") {
-    //     if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
-    //         api = 'https://shop-archives-api.vercel.app/api'
-    //     } else {
-    //         api = apidesignedurl;
-    //     }
-    // }
+    if (localStorage.experiment_2025_04_use_api_dot_yapper_dot_shop === "Treatment 1: Enabled") {
+        api = 'https://api.yapper.shop/v2'
+    }
 
     function privateAPICheck() {
         // if (localStorage.force_all_api_to_fectch_private_api == "true") {
@@ -2730,6 +2726,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         output.innerHTML = ''; // Clears the content of the shop category
         if (params.get("page") === "consumables") {
             createPotionsCategoryLoadingElement()
+        } else if (params.get("page") === "marketing") {
+            createMarketingCategoryLoadingElement()
         } else {
             createShopCategoryLoadingElement()
         }
@@ -14769,6 +14767,23 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         </div>
                         <div class="shop-category-card-loading">
                         </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function createMarketingCategoryLoadingElement() {
+        document.getElementById("shop-category-loading-container").innerHTML = `
+            <div class="shop-category-loading" id="shop-category-loading">
+                <div>
+                    <div class="potion-card-loading">
+                    </div>
+                    <div class="potion-card-loading">
+                    </div>
+                    <div class="potion-card-loading">
+                    </div>
+                    <div class="potion-card-loading">
                     </div>
                 </div>
             </div>
