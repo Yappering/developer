@@ -38,7 +38,7 @@ const experimentsList = [
             "Treatment 1: Enabled",
             "Treatment 2: Enable v2"
         ],
-        rollout: "Treatment -1: Disabled",
+        rollout: "Treatment 2: Enable v2",
         needs_api_token: "true"
     },
     {
