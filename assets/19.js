@@ -1,12 +1,13 @@
 
 
-app_version1 = "334"
+app_version1 = "336"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
 let modalIsAlreadyOpen = false;
 let discordProfileEffectsCache = null;
 let pplusProfileEffectsCache = null;
+let communityThemesCache = null;
 
 defaultAvatar1 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAY1BMVEVYZfJib/OMlfahqPeWn/eBi/XLz/vq6/7////19f5tePTq7P22vPnV2Pyrsvirsvl3gvT09f7Axfp3gfRtePNsePPg4v22vPq2u/qCi/WhqPjf4/zf4v2Xn/essvjLzvuXnvdbidFTAAAETElEQVR4AezBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAIDZudMtV1UlDuCFRKlWIEJ6uOwbzXn/lzzzYc/GWiT6zya/79WrLeYSc5Vq9IFWa3Sr6JehWt0ZZn5RtFJvmHnodPsrPLx1/B9PKx1ziLOPnIRRO84EXaAP/CWnR3pArTWcybpA5G8NsX20pw+cSbpAngEeOQenY+Cf8KIZ4FuDfSV4Ko/7hS7wNjYH7W3MvNeHtn2jvxn+OXcgaP0x8KJo43vgnwqu85EXDfGVULWON9G1BOmDN/M/AnTgDSWC0xve0KAITeSsykFw4qzOQWB4YwNBOfLmPAHpeXsvr5XOgJkjGA3vIlU6A2bvOHvAnXwiCMrwTl5UpUtg5us7BAB2gcg78nXugaC6QORd+bo7AEAXiLwzX+8SANEFNHPdXcAwV90FDgxA037+zwAc7aZlCKnSNTDrADZBdU6DBwbha5wCAabBkWGkSqfAzFa6C8xeADYB9Y2ByEBsbSMAYAy0zHWPActQLPQuKBh3DiwiDRlwzwFOv9JfTpORh5x5rVfQc8CQiLLJiEMaA1oW6XgVq+grVh4yY56JA68x07fm8hCIhXCUPn823zgkG/HK4Rf6kYv8YBt5BQ03BQyv9CMq8M/JQ7IItw+e6cd8QQjKTqCX3OMTtOdCCNZOoCnqkrYgZEFD2/FF/08qDAE4Dji+TtHPKHknVmBboVB2i9HI9zIGahZUhaVqVxCyQEEVQ7rSBMj3QiPUUTCWJkC+8zrQVjzmELBYG2H5jDYUFqAiQDlMtAwKQgjr+nwoq9O2BSEQJQFVWKeNBSEQ6+BYeG3BFIUAHIfasmsLh7IQgLcjDZd0AWXEIZRDMDYCuuj73g95yJGxEuBLPmr6VBSyzMO9Fpzko3kqeA1r8W4GHOWNKQ/JIl4COL4SZf2lPAQhAY4lYrv860rlIVmHlYAsuBhjFwpCwO4LOkb0TMAzAc8EPBPwTMAGngl4JuCZgMig4jMB27AMykJUhCr4ekwzKI10T9hpwzcz6DNSUbRdORzThW/CJSKagd4LjKurof1suFCYVR54MDckpsBXDLk3pliQgxBTHneBrwiaNtOfeUUKCnMQYlKC32x2r7SlmSUpoOQdi5xtoqx1DNP8WW9kKSCVvAu8QnC2USR4/I2bP5vDmhS80pdOjXULw8dc7HSiL6ljYLTmz/ooKvJTdkqTt9G5s/mHczH6qXlV9I32Ehi0+QVfQbn7HryHhvY033V1Tuu3CRncOIj3rL3EV9pf7+53ced0bY+MIZm7ndEt9uNnkxN8OSWhAvjjZ8ktnIoKaMDHF0yH8S416C4Rpv7bU094pWJ9QFv4BJOBvnkFzjWKMvhu4G78IibMIz2EFM3KFUAwCEI+ID9MDia6kd/+enpFj+YE+af+aA8OZAAAAAAG+Vvf46sAAAAAAAAAAAAAAAAAAAAAAFYCeHSjWah9hFcAAAAASUVORK5CYII=`;
 defaultAvatar2 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAhFBMVEV1fop9hpGgpq+ytr2prraXnqfT19vu7/H////29/iGjpju7/DCxszc3+K6vsS6v8WOlqD39/fLztPLz9OPlqDl5+nDx8ygpq6xtr6xtr3m5+iOlp/Dxsvc3+Hd3+GorraGjpnT19rT1tv29/eOlqHU19p+hpGprrWxt72or7bLz9Kfpq+ibmTzAAAEY0lEQVR4AezBAQEAAAQAIPB/swkMqAIAAAAAAAAAAAAAAAAAAAAAgBNZPfFWy86dLimOw3AAV5qYEXFicMKxHIFs03e///PtvaouagjRGMKfNr/vmhorsiMbpwcm+UZjN4PhD2YedR5TZpnZDgfmOww+L/h/jjoaS0iRG7pdk0HBQlECmeevisGEbpDJf7DQlUDJh2xlbm30noWmBGQFuOUcTMeej3CqFeCQzTOCl8i8bymBbPKQDlxeCecGqTH/Dc/ycUVK0LKx51ZVXs08H+WLoSu5la0yQmUK7sXQEKQ592ZOgFLukSE4meUe2YTQlCyinARTFnFOAss9swRlzL1zBCTj/o2ySFdAURCMBV+FiXQFFLP4esADvxGExPKVjJJIX4HCxbcJACyBkq/IxdkDQZVAyVfl4i4AgBIo+cpcvK8AiBJYMsddApY56hJIGcCSrmfFAAq6GsMQTKTvQDEEaILiXAZTBuEAlsAYl8E1wzCRLoEij7QLFKNYmwBhIp0BIo9tBgDMAcMc9xzYMJQcugvytl55VtCHWNx9wHaZ0d+mO6sP6Z7mBnQfYA2R2Fl1yMKCHov8zp3kycHKoQ9x3Mkj9Wv/i9s0FxCC9CJca8cv3JlDxBPecfgz/cwzt9j+etO5hFsCbEM/89I2e/QhoqI+2YBzGnfWEGHRuoBRQ6R9nu0hQJ3AIqgkNwEhLR6oPy7o/2MCQwC2AwWfltAxL/oifgFrhfZhtxitvpexAKug7nnU+gKqw2sO6DDk8bwJKKF6wZRPq8IToO28XqkvDnMK5FiNMB1n9SErqGZ4xeGvQV0IYV2f34ed05qgEIAjgZfAc9oyIATiPbgOvLZgA0IgtkMm7NpCGhCC8evIgkNKILHqEJIQjEZgGfR971wfMmasBLiQj5regkLaObifBd/p0Ls+xHBXOd7NgLH+YepDRIWXAK4yIpE9B4QAJaBgjcq0/3Wl8BDxiJUA4Yuqqob+YiGi7i0BiO4JuCfgnoB7Au4J6ME9AfcE3BNQMqjqnoAYrgkDnAc4BuWoH0sGtUS6J7xdWj4bu5wBHIqqL+yYZz6Lrek47wzOL0M7+kfjLAfyLpGJB3NDYrfnE2wq5VLagNF/GJl3nk/wS+pNM+PuKZAc6EefKP5m87ahPjnWpICMq1lllRsSpmCYxy8aq0sBJcbVnjvw23yR0OHwcR6/cPsuKcjoq+kir1d8lH3O0yl9lYw9oz1+0ZSqQ34SU5O6/KOuV/Zfdf3x4dJFltAB8+wZ9PErvoKqL7vxtp90TY5Pmlyy5ZI2QcDNg+qSZy9VQ9fX1Je7uDM91SNjMPZie/QN9vDFrtZ8OaXwsgcfvjB1y64owBJp+PrlsLrIGfSzIUzN4a7HNxSs2cO8+PSLwfLsJ3Dbh4QEfBlsz/xDjHcTQicHAPIGONck8LJBvpkc7OhMduxzk9CtmUL+U3+2BwcyAAAAAIP8re/xVQAAAAAAAAAAAAAAAAAAAAAAKwFiKavpSRGzHgAAAABJRU5ErkJggg==`;
@@ -16,6 +17,7 @@ defaultAvatar5 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABr
 defaultAvatar6 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAZlBMVEXrRZ/sUKXxf73zl8nyi8Pwc7f5xOH96PP////+8/ntXKv86PP2rdX60Of1os/vZ7H+9Pn3udvuaLHzi8P73O32rtX0lsnzlsnwdLf95/P4xOH4xeH4udvsUaXxgL383O3yisPvaLFF0RjvAAAET0lEQVR4AezBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAIDZuc/FVnUYDuBiJbLBKs5ooLvv/5B3X3UTdJzAP4f8PldtLTxkM47K8qKk0fKiyn6jtlfFas3MbnSbfM3M9aqofofGN4H/JzSSaEhoLjkJN0VgZegCvuX3QnFDF6hq1qxsXSDyZ3WsLq31LStLF9AZ4JJzsJGWfyC2GeCTuvEEL9NxP9AF/E2+LaSJSqTYVpWnf9T8s1ASNC8tD4pN3A38SBtWEnlQHT2hqgJPYlURpD1PZk+ASp5QRXB8zROqM0ITWS1yEGxYLXMQ1DyxmqAIT04IiOfpOb/QGVAFgpHzLKqFzoBqh1MDzuSWIGQ1z8RlC10ClSxvEwDYBSLPSJZZA0F1gcizkmV3AIAuEHlmstwlAKILHHh2ssRdAEwXKBnALc1nxwACzaZjCNVC10C1WmYRBDANlgxCljgFAkyDG4ZRLXQKVM1Cq0DlllcEAIyByECahY4A5ZY2AgDGwJ6hNNBVkFuHnWMDe0iNuw8IB09/25S9PWR8mj3oPqDv3gf15pC8Bz0WueNRmuzTzGEPEcw9sfvFbZqkh0AshBtr+5WcOETd4B2H39N37u0b2wegScAwBfSevvPo+Gf2EBXh6mCh70lCCEol4C3P8Rmu50AIViXwlNQl9wkhA3KajiT9P11iCMB2IPBxGf3k0d6JH8FKIcdHPdPP1vZaZg01Cz4mHlWHhJABGdRhyOq0CYhQteCWj4upCbBXXiVNRTCHQANVCNdDM5o9ZAdVDO84fRm0hRCP8Ix1GFBZ5lBDCMCRwGPiOW1MCgFYBzeJjy3UCSEQ26Eu7bGFMi0E4O7IE6d0gaw2h5CGYBQCh6T3e/f2EGGsBEjKI4yH1JABAndb8IU+e7GHVHA3CCOPJvaLaQ9RES8BHD2R8vcJIUAJCGwRq+GvK6WHqBVWAlQbYoyr9mwhKsyQABzXBFwTcE3ANQHXBFwTcE3ANQETiAwqXhOwhMeEAc4DhEHJDGeCUG6Bbg5zOPR8Mv1hB3Moanhgp7vnkwjdyHFXodwZ0qNNLz0ncpLpwIN5QqJ0fEStvbGLCTlwsdO/2fIR7pYm43c8PgX2HGjrM8M3m4OnKQlbUkCdBDbZNR2pKjDM5Ve+t6WAsk6C4xFcaJ4yMjR/4suvxI1Jgaf3Nk9N2PGP1vfNdkPvZdIy2uVXPhoO+d/bdFtpYgi79b9CiFG2Tz6jT6r7lkEvv+EtqHDejXef05yEj3o9U8mlZYLCHAfxnGcv0dP8fDjfgzubYzUyhq4/2x59j918VQbDm1MWjw68+aoLA7uiBAfA5humw3iWM+hVR5h87E//BXjv0BY+w2Rwe/ITuJBnpOC7QTjxjRgnr4RPDwB0BTjNIHC6Qb6YHLzQibz83fqMLs0G8lf92R4cyAAAAAAM8re+x1cBAAAAAAAAAAAAAAAAAAAAAKwEXiSjy96AYeIAAAAASUVORK5CYII=`;
 
 localStorage.experiment_2025_02_mobile_render = "Treatment 1: Use new mobile check";
+
 
 if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-dark');
@@ -27,7 +29,7 @@ if (localStorage.sa_theme == "dark") {
     document.body.classList.add('theme-neongreen');
 } else if (localStorage.sa_theme == "neonpurple") {
     document.body.classList.add('theme-neonpurple');
-} else {
+} else if (!localStorage.sa_theme) {
     localStorage.sa_theme = "dark";
     document.body.classList.add('theme-dark');
 }
@@ -2468,7 +2470,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     endpoints = [
         DOWNLOADABLE_DATA = "/downloads",
         COLLECTIBLES_SHOP = "/collectibles-shop",
-        PROFILE_EFFECTS = "/profile-effects"
+        PROFILE_EFFECTS = "/profile-effects",
+        COMMUNITY = "/community"
     ]
     if (app_version2 === "Dev") {
         LOGIN_CALLBACK = "/dev/callback"
@@ -13609,6 +13612,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <div id="secret-tools">
                 </div>
             </div>
+            <div style="width: 100%; height: 70px;"></div>
         `;
 
         if (localStorage.experiment_2025_02_profiles_plus_home === "Treatment 2: Enabled") {
@@ -13992,37 +13996,39 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
         const open_help_modals_buttons_holder = document.getElementById('open-help-modals-buttons-holder-new');
 
-        if (localStorage.discord_token) {
-            let user_button = document.createElement("div");
-
-            user_button.id = 'open-profile-settings-button-1';
-            // user_button.setAttribute("onclick","logoutOfDiscord();");
-            // user_button.title = `Log Out`;
-            user_button.title = getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGGED_IN_AS") + localStorage.discord_displayname;
-            user_button.innerHTML = `
-                <img style="width: 100%;" src="${localStorage.discord_avatar}">
-            `;
-
-            open_help_modals_buttons_holder.appendChild(user_button);
+        if (localStorage.experiment_2025_02_extra_options != "Treatment 6: Settings like discord") {
+            if (localStorage.discord_token) {
+                let user_button = document.createElement("div");
+    
+                user_button.id = 'open-profile-settings-button-1';
+                // user_button.setAttribute("onclick","logoutOfDiscord();");
+                // user_button.title = `Log Out`;
+                user_button.title = getTextString("OPTIONS_EXTRA_PROFILE_DISCORD_LOGGED_IN_AS") + localStorage.discord_displayname;
+                user_button.innerHTML = `
+                    <img style="width: 100%;" src="${localStorage.discord_avatar}">
+                `;
+    
+                open_help_modals_buttons_holder.appendChild(user_button);
+            }
+            
+            let options_button = document.createElement("div");
+    
+            options_button.id = 'open-options-tools-button-1';
+            options_button.setAttribute("onclick","optionsSidebarToggle();");
+            options_button.title = `Options`;
+            if (localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1" && localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen") {
+                options_button.innerHTML = `
+                    <svg x="0" y="0" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path d="M19.738 9.99995H22V14H19.7391C19.498 14.931 19.1001 15.798 18.565 16.564L20.0001 18L18 20.0001L16.5651 18.564C15.7971 19.099 14.932 19.498 14 19.738V22H9.99995V19.738C9.06899 19.498 8.20295 19.099 7.43602 18.564L5.99998 20.0001L3.99993 18L5.43597 16.564C4.90101 15.799 4.50201 14.932 4.26201 14H2V9.99995H4.26201C4.50201 9.06803 4.89993 8.20199 5.43597 7.43602L3.99993 5.99998L5.99998 3.99993L7.43602 5.43597C8.20199 4.89993 9.06803 4.50201 9.99995 4.26201V2H14V4.26093C14.932 4.50201 15.7971 4.89993 16.5651 5.43501L18 3.99897L20.0001 5.99902L18.564 7.43602C19.099 8.20199 19.498 9.06899 19.738 9.99995ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79079 14.2091 8.00002 12 8.00002C9.79079 8.00002 8.00002 9.79079 8.00002 12C8.00002 14.2091 9.79079 16 12 16Z" fill="currentColor"/></svg>
+                    <div class="guys-theres-a-new-log-in-with-discord-feature-on-yapper-dot-shop"></div>
+                `;
+            } else {
+                options_button.innerHTML = `
+                    <svg x="0" y="0" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path d="M19.738 9.99995H22V14H19.7391C19.498 14.931 19.1001 15.798 18.565 16.564L20.0001 18L18 20.0001L16.5651 18.564C15.7971 19.099 14.932 19.498 14 19.738V22H9.99995V19.738C9.06899 19.498 8.20295 19.099 7.43602 18.564L5.99998 20.0001L3.99993 18L5.43597 16.564C4.90101 15.799 4.50201 14.932 4.26201 14H2V9.99995H4.26201C4.50201 9.06803 4.89993 8.20199 5.43597 7.43602L3.99993 5.99998L5.99998 3.99993L7.43602 5.43597C8.20199 4.89993 9.06803 4.50201 9.99995 4.26201V2H14V4.26093C14.932 4.50201 15.7971 4.89993 16.5651 5.43501L18 3.99897L20.0001 5.99902L18.564 7.43602C19.099 8.20199 19.498 9.06899 19.738 9.99995ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79079 14.2091 8.00002 12 8.00002C9.79079 8.00002 8.00002 9.79079 8.00002 12C8.00002 14.2091 9.79079 16 12 16Z" fill="currentColor"/></svg>
+                `;
+            }
+    
+            open_help_modals_buttons_holder.appendChild(options_button);
         }
-        
-        let options_button = document.createElement("div");
-
-        options_button.id = 'open-options-tools-button-1';
-        options_button.setAttribute("onclick","optionsSidebarToggle();");
-        options_button.title = `Options`;
-        if (localStorage.experiment_2025_04_discord_sign_in_dismissible === "Treatment 1: V1" && localStorage.dismissible_newLogInWithDiscord != "Treatment 1: Seen") {
-            options_button.innerHTML = `
-                <svg x="0" y="0" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path d="M19.738 9.99995H22V14H19.7391C19.498 14.931 19.1001 15.798 18.565 16.564L20.0001 18L18 20.0001L16.5651 18.564C15.7971 19.099 14.932 19.498 14 19.738V22H9.99995V19.738C9.06899 19.498 8.20295 19.099 7.43602 18.564L5.99998 20.0001L3.99993 18L5.43597 16.564C4.90101 15.799 4.50201 14.932 4.26201 14H2V9.99995H4.26201C4.50201 9.06803 4.89993 8.20199 5.43597 7.43602L3.99993 5.99998L5.99998 3.99993L7.43602 5.43597C8.20199 4.89993 9.06803 4.50201 9.99995 4.26201V2H14V4.26093C14.932 4.50201 15.7971 4.89993 16.5651 5.43501L18 3.99897L20.0001 5.99902L18.564 7.43602C19.099 8.20199 19.498 9.06899 19.738 9.99995ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79079 14.2091 8.00002 12 8.00002C9.79079 8.00002 8.00002 9.79079 8.00002 12C8.00002 14.2091 9.79079 16 12 16Z" fill="currentColor"/></svg>
-                <div class="guys-theres-a-new-log-in-with-discord-feature-on-yapper-dot-shop"></div>
-            `;
-        } else {
-            options_button.innerHTML = `
-                <svg x="0" y="0" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path d="M19.738 9.99995H22V14H19.7391C19.498 14.931 19.1001 15.798 18.565 16.564L20.0001 18L18 20.0001L16.5651 18.564C15.7971 19.099 14.932 19.498 14 19.738V22H9.99995V19.738C9.06899 19.498 8.20295 19.099 7.43602 18.564L5.99998 20.0001L3.99993 18L5.43597 16.564C4.90101 15.799 4.50201 14.932 4.26201 14H2V9.99995H4.26201C4.50201 9.06803 4.89993 8.20199 5.43597 7.43602L3.99993 5.99998L5.99998 3.99993L7.43602 5.43597C8.20199 4.89993 9.06803 4.50201 9.99995 4.26201V2H14V4.26093C14.932 4.50201 15.7971 4.89993 16.5651 5.43501L18 3.99897L20.0001 5.99902L18.564 7.43602C19.099 8.20199 19.498 9.06899 19.738 9.99995ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79079 14.2091 8.00002 12 8.00002C9.79079 8.00002 8.00002 9.79079 8.00002 12C8.00002 14.2091 9.79079 16 12 16Z" fill="currentColor"/></svg>
-            `;
-        }
-
-        open_help_modals_buttons_holder.appendChild(options_button);
 
         if (localStorage.dev == "true") {
             let devtools_button = document.createElement("div");
@@ -15686,11 +15692,335 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             <div class="ubar-status-bg"></div>
             <div class="ubar-status-color"></div>
             <p class="ubar-displayname" id="ubar-displayname">${localStorage.discord_displayname}</p>
-            <svg title="Options" x="0" y="0" onclick="optionsSidebarToggle()" id="ubar-options-cog" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4483 8.3333H18.3333V11.6667H16.4492C16.2483 12.4425 15.9167 13.165 15.4708 13.8033L16.6667 15 15 16.6667 13.8042 15.47C13.1642 15.9158 12.4433 16.2483 11.6667 16.4483V18.3333H8.3333V16.4483C7.5575 16.2483 6.8358 15.9158 6.1967 15.47L5 16.6667 3.3333 15 4.53 13.8033C4.0842 13.1658 3.7517 12.4433 3.5517 11.6667H1.6667V8.3333H3.5517C3.7517 7.5567 4.0833 6.835 4.53 6.1967L3.3333 5 5 3.3333 6.1967 4.53C6.835 4.0833 7.5567 3.7517 8.3333 3.5517V1.6667H11.6667V3.5508C12.4433 3.7517 13.1642 4.0833 13.8042 4.5292L15 3.3325 16.6667 4.9992 15.47 6.1967C15.9158 6.835 16.2483 7.5575 16.4483 8.3333ZM10 13.3333C11.8409 13.3333 13.3333 11.8409 13.3333 10 13.3333 8.159 11.8409 6.6667 10 6.6667 8.159 6.6667 6.6667 8.159 6.6667 10 6.6667 11.8409 8.159 13.3333 10 13.3333Z" )=""></path></svg>
+            <p class="ubar-username" id="ubar-username">${localStorage.discord_username}</p>
+            <svg title="User Options" x="0" y="0" onclick="openNewDiscordLikeSettings()" id="ubar-options-cog" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4483 8.3333H18.3333V11.6667H16.4492C16.2483 12.4425 15.9167 13.165 15.4708 13.8033L16.6667 15 15 16.6667 13.8042 15.47C13.1642 15.9158 12.4433 16.2483 11.6667 16.4483V18.3333H8.3333V16.4483C7.5575 16.2483 6.8358 15.9158 6.1967 15.47L5 16.6667 3.3333 15 4.53 13.8033C4.0842 13.1658 3.7517 12.4433 3.5517 11.6667H1.6667V8.3333H3.5517C3.7517 7.5567 4.0833 6.835 4.53 6.1967L3.3333 5 5 3.3333 6.1967 4.53C6.835 4.0833 7.5567 3.7517 8.3333 3.5517V1.6667H11.6667V3.5508C12.4433 3.7517 13.1642 4.0833 13.8042 4.5292L15 3.3325 16.6667 4.9992 15.47 6.1967C15.9158 6.835 16.2483 7.5575 16.4483 8.3333ZM10 13.3333C11.8409 13.3333 13.3333 11.8409 13.3333 10 13.3333 8.159 11.8409 6.6667 10 6.6667 8.159 6.6667 6.6667 8.159 6.6667 10 6.6667 11.8409 8.159 13.3333 10 13.3333Z" )=""></path></svg>
         `;
 
         dm_container.appendChild(u_bar);
     }
+
+    function openNewDiscordLikeSettings() {
+        openCategoryModal();
+
+        async function openCategoryModal() {
+            let modal = document.createElement("div");
+
+            modal.classList.add('modalv3');
+
+            modal.innerHTML = `
+                <div class="modalv3-inner" style="color: var(--white);">
+                    <div class="modalv3-inner-left">
+                        <div class="modalv3-side-tabs-container-backer">
+                        
+                        </div>
+                        <div class="modalv3-side-tabs-container" id="modalv3-side-tabs-container">
+                        
+                        </div>
+                    </div>
+                    <div class="modalv3-inner-right">
+                        <div class="modalv3-right-content-container" id="modalv3-right-content-container">
+                            
+                        </div>
+                    </div>
+                    <div class="container_c2b141" data-discord-like-settings-close-button>
+                        <div class="closeButton_c2b141" aria-label="Close" role="button" tabindex="0">
+                            <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path>
+                            </svg>
+                        </div>
+                        <div class="keybind_c2b141" aria-hidden="true">ESC</div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            document.getElementById("modalv3-side-tabs-container").innerHTML = `
+                <p class="side-tabs-category-text">${getTextString("MODAL_V3_TAB_HEADER_USER_SETTINGS")}</p>
+                <button class="side-tabs-button" id="modal-v3-tab-account" onclick="setModalv3InnerContent('account')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_ACCOUNT")}</p>
+                </button>
+                <button class="side-tabs-button" id="modal-v3-tab-profile" onclick="setModalv3InnerContent('profile')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_PROFILE")}</p>
+                </button>
+                <hr>
+                <p class="side-tabs-category-text">${getTextString("MODAL_V3_TAB_HEADER_SITE_SETTINGS")}</p>
+                <button class="side-tabs-button" id="modal-v3-tab-appearance" onclick="setModalv3InnerContent('appearance')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_APPEARANCE")}</p>
+                </button>
+                <button class="side-tabs-button" id="modal-v3-tab-accessibility" onclick="setModalv3InnerContent('accessibility')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_ACCESSIBILITY")}</p>
+                </button>
+                <div id="staff-options-modalv3-container"></div>
+            `;
+
+            if (localStorage.dev === "true") {
+                document.getElementById("staff-options-modalv3-container").innerHTML = `
+                    <hr>
+                    <p class="side-tabs-category-text">${getTextString("MODAL_V3_TAB_HEADER_STAFF_ONLY")}</p>
+                    <button class="side-tabs-button" id="modal-v3-tab-experiments" onclick="setModalv3InnerContent('experiments')">
+                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_EXPERIMENTS")}</p>
+                    </button>
+                    <button class="side-tabs-button" id="modal-v3-tab-dismissible_content" onclick="setModalv3InnerContent('dismissible_content')">
+                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_DISMISSIBLE_CONTENT")}</p>
+                    </button>
+                    <button class="side-tabs-button" id="modal-v3-tab-api_test_fetch" onclick="setModalv3InnerContent('api_test_fetch')">
+                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_API_TEST_FETCH")}</p>
+                    </button>
+                    <button class="side-tabs-button" id="modal-v3-tab-local_storage" onclick="setModalv3InnerContent('local_storage')">
+                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_LOCAL_STORAGE")}</p>
+                    </button>
+                    <button class="side-tabs-button" id="modal-v3-tab-misc" onclick="setModalv3InnerContent('misc')">
+                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_MISC")}</p>
+                    </button>
+                `;
+            }
+
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 1);
+
+            setModalv3InnerContent('account');
+
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape") {
+                    modal.classList.remove('show');
+                    setTimeout(() => {
+                        modal.remove();
+                    }, 300);
+                }
+            });
+
+            document.querySelector("[data-discord-like-settings-close-button]").addEventListener('click', (event) => {
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    modal.remove();
+                }, 300);
+            });
+        }
+    }
+
+    function setModalv3InnerContent(tab) {
+        const tabPageOutput = document.getElementById("modalv3-right-content-container");
+        if (document.querySelector(".side-tabs-button-selected")) {
+            document.querySelectorAll('.side-tabs-button-selected').forEach((el) => {
+                el.classList.remove("side-tabs-button-selected");
+            });
+        }
+
+        if (tab === "account") {
+            document.getElementById("modal-v3-tab-account").classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_ACCOUNT_HEADER")}</h2>
+            `;
+        } else if (tab === "profile") {
+            document.getElementById("modal-v3-tab-profile").classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_PROFILE_HEADER")}</h2>
+            `;
+        } else if (tab === "appearance") {
+            document.getElementById("modal-v3-tab-appearance").classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_APPEARANCE_HEADER")}</h2>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_SUMMARY")}</p>
+
+                    <div class="modalv3-theme-selection-container" id="modalv3-theme-selection-container">
+                    </div>
+                </div>
+                <hr>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COLOR_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COLOR_SUMMARY")}</p>
+
+                    <div class="modalv3-theme-selection-container" id="modalv3-color-theme-selection-container">
+                    </div>
+                </div>
+                <hr>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_CUSTOM_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_CUSTOM_SUMMARY")}</p>
+
+                    <div class="modalv3-theme-selection-container" id="modalv3-custom-theme-selection-container">
+                    </div>
+                </div>
+                <hr>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_SUMMARY")}</p>
+
+                    <div class="modalv3-theme-selection-container" id="modalv3-community-theme-selection-container">
+                    </div>
+                </div>
+            `;
+
+            document.getElementById("modalv3-theme-selection-container").innerHTML = `
+                <div class="theme-selection-box" title="Light" id="theme-light-button" onclick="updateThemeStore('light', 'true', null);"></div>
+                <div class="theme-selection-box" title="Dark" id="theme-dark-button" onclick="updateThemeStore('dark', 'true', null);"></div>
+                <div class="theme-selection-box" title="Midnight" id="theme-midnight-button" onclick="updateThemeStore('midnight', 'true', null);"></div>
+            `;
+            document.getElementById("modalv3-color-theme-selection-container").innerHTML = `
+                <div style="text-align: center;" class="theme-selection-box" title="Add Custon Theme" id="theme-custom-button" onclick="themeAddCustom();" bis_skin_checked="1">
+                    <svg class="circleIcon_db6521" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z" class=""></path></svg>
+                </div>
+            `;
+            document.getElementById("modalv3-custom-theme-selection-container").innerHTML = `
+                <div style="text-align: center;" class="theme-selection-box" title="Add Custon Theme" id="theme-custom-button" onclick="themeAddCustom();" bis_skin_checked="1">
+                    <svg class="circleIcon_db6521" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z" class=""></path></svg>
+                </div>
+            `;
+            document.getElementById("modalv3-community-theme-selection-container").innerHTML = ``;
+            fetch(api + COMMUNITY + '?tab=themes', {
+                method: "GET",
+                headers: {
+                    "Password": api_password,
+                    "Authorization": discord_token,
+                    "Token": api_token
+                }
+            })
+            .then(response => response.json())
+            .then((data) => {
+                data.forEach(theme => {
+                    let themeIcon = document.createElement("div");
+
+                    themeIcon.classList.add("theme-selection-box");
+                    themeIcon.id = 'theme-community-' + theme.id + '-button'
+                    themeIcon.title = theme.name;
+                    themeIcon.style.backgroundColor = theme.icon.color;
+
+                    themeIcon.onclick = function() {
+                        updateThemeStore('community-' + theme.id, 'true', theme.github.raw);
+                    };
+
+                    document.getElementById("modalv3-community-theme-selection-container").appendChild(themeIcon);
+                });
+                if (document.getElementById("theme-" + localStorage.sa_theme + "-button")) {
+                    document.getElementById("theme-" + localStorage.sa_theme + "-button").classList.add('theme-selection-box-selected');
+                }
+            })
+            .catch(error => {
+                console.error(error)
+            });
+            if (document.getElementById("theme-" + localStorage.sa_theme + "-button")) {
+                document.getElementById("theme-" + localStorage.sa_theme + "-button").classList.add('theme-selection-box-selected');
+            }
+        } else if (tab === "accessibility") {
+            document.getElementById("modal-v3-tab-accessibility").classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_ACCESSIBILITY_HEADER")}</h2>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_ACCESSIBILITY_REDUCED_MOTION_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCESSIBILITY_REDUCED_MOTION_SUMMARY")}</p>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCESSIBILITY_REDUCED_MOTION_SUMMARY2")}</p>
+
+                    <input class="modalv3-toggle" onclick="reducedMotionChecked();" id="reduced-motion-box" type="checkbox">
+                </div>
+            `;
+        } else if (tab === "experiments") {
+            document.getElementById("modal-v3-tab-experiments").classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_EXPERIMENTS_HEADER")}</h2>
+            `;
+        } else if (tab === "dismissible_content") {
+            document.getElementById("modal-v3-tab-dismissible_content").classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_DISMISSIBLE_CONTENT_HEADER")}</h2>
+            `;
+        } else if (tab === "api_test_fetch") {
+            document.getElementById("modal-v3-tab-api_test_fetch").classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_API_TEST_FETCH_HEADER")}</h2>
+            `;
+        } else if (tab === "local_storage") {
+            document.getElementById("modal-v3-tab-local_storage").classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_LOCAL_STORAGE_HEADER")}</h2>
+            `;
+        } else if (tab === "misc") {
+            document.getElementById("modal-v3-tab-misc").classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_LOCAL_STORAGE_HEADER")}</h2>
+            `;
+        } else {
+            console.error(tab + ' is not a valid tab');
+        }
+    }
+
+    function updateThemeStore(theme, hasButtons, raw) {
+        localStorage.sa_theme = theme;
+        localStorage.removeItem('community_theme_raw');
+        if (document.getElementById("community-theme-import")) {
+            document.getElementById("community-theme-import").remove();
+        }
+        try {
+            document.body.classList.remove('theme-dark');
+            document.body.classList.remove('theme-midnight');
+            document.body.classList.remove('theme-light');
+            document.body.classList.remove('theme-neongreen');
+            document.body.classList.remove('theme-neonpurple');
+        } catch (error) {
+        }
+        if (hasButtons === "true") {
+            try {
+                if (document.querySelector(".theme-selection-box-selected")) {
+                    document.querySelectorAll('.theme-selection-box-selected').forEach((el) => {
+                        el.classList.remove("theme-selection-box-selected");
+                    });
+                }
+            } catch (error) {
+            }
+            if (document.getElementById("theme-" + theme + "-button")) {
+                document.getElementById("theme-" + theme + "-button").classList.add('theme-selection-box-selected');
+            }
+        }
+        document.body.classList.add('theme-' + theme);
+        if (raw != null) {
+            localStorage.community_theme_raw = raw;
+            fetch(raw, {
+                method: "GET"
+            })
+            .then(response => response.text())
+            .then((data) => {
+                let communityThemeImport = document.createElement("style");
+
+                communityThemeImport.id = 'community-theme-import';
+                communityThemeImport.innerHTML = `${data}`;
+
+                document.body.appendChild(communityThemeImport);
+            })
+            .catch(error => {
+                console.error(error)
+            });
+
+            if (document.getElementById("theme-" + theme + "-button")) {
+                document.getElementById("theme-" + theme + "-button").classList.add('theme-selection-box-selected');
+            }
+        }
+    }
+
+    function updateThemeToCommunity() {
+        if (localStorage.community_theme_raw) {
+            fetch(localStorage.community_theme_raw, {
+                method: "GET"
+            })
+            .then(response => response.text())
+            .then((data) => {
+                let communityThemeImport = document.createElement("style");
+
+                communityThemeImport.id = 'community-theme-import';
+                communityThemeImport.innerHTML = `${data}`;
+
+                document.body.appendChild(communityThemeImport);
+            })
+            .catch(error => {
+                console.error(error)
+            });
+        }
+    }
+
+    updateThemeToCommunity();
 
     function optionsSidebarToggle() {
         if (document.getElementById('options-sidebar-container').classList.contains('options-sidebar-container-expanded')) {

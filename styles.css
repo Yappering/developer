@@ -27,6 +27,11 @@
     --profile-badge-background: #1f2024;
     --nameplate-null: #2B2D3196;
     --new-discord-sign-in-bg: #1f2024;
+    --discord-like-settings-bg: #36373E;
+    --discord-like-settings-sidebar: #2C2D32;
+    --modalv3-tab-text: #BCD4D7;
+    --modalv3-tab-category-text: #AEB6BB;
+    --modalv3-card-text: #C4C5C9;
 }
 
 .theme-midnight {
@@ -52,6 +57,8 @@
     --white: #ffffff;
     --profile-background: #111214;
     --profile-badge-background: #1f2024;
+    --discord-like-settings-bg: #0C0C0E;
+    --discord-like-settings-sidebar: #000000;
 }
 
 .theme-light {
@@ -78,6 +85,10 @@
     --profile-background: #ffffff;
     --profile-badge-background: #ffffff;
     --new-discord-sign-in-bg: #ffffff;
+    --discord-like-settings-bg: #ffffff;
+    --discord-like-settings-sidebar: #ffffff;
+    --modalv3-tab-text: #000000;
+    --modalv3-tab-category-text: #000000;
 }
 
 .theme-neongreen {
@@ -106,6 +117,8 @@
     --white: #ffffff;
     --profile-background: #111214;
     --profile-badge-background: #1f2024;
+    --discord-like-settings-bg: #0C0C0E;
+    --discord-like-settings-sidebar: #000000;
 }
 
 .theme-neonpurple {
@@ -134,6 +147,8 @@
     --white: #ffffff;
     --profile-background: #111214;
     --profile-badge-background: #1f2024;
+    --discord-like-settings-bg: #0C0C0E;
+    --discord-like-settings-sidebar: #000000;
 }
 
 body {
@@ -430,10 +445,10 @@ body {
 
 .ubar-status-color {
     position: absolute;
-    top: 36px;
-    left: 36px;
-    width: 15px;
-    height: 15px;
+    top: 37px;
+    left: 37px;
+    width: 13px;
+    height: 13px;
     background-color: #00A661;
     border-radius: 50px;
 }
@@ -451,8 +466,16 @@ body {
 .ubar-displayname {
     position: absolute;
     left: 60px;
-    top: -5px;
+    top: -8px;
     font-size: 18px;
+    color: var(--white);
+}
+
+.ubar-username {
+    position: absolute;
+    left: 60px;
+    top: 18px;
+    font-size: 14px;
     color: var(--white);
 }
 
@@ -3896,6 +3919,177 @@ data-share-product-card-button {
     width: 100%;
 }
 
+.modalv3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modalv3.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.modalv3-inner {
+    position: fixed;
+    z-index: 1001;
+    background-color: var(--discord-like-settings-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    width: 100%; /* Fixed width */
+    height: 100%; /* Fixed height */
+    overflow: hidden;
+}
+
+.modalv3-inner-right {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 800px;
+    height: 100%;
+}
+
+.modalv3-right-content-container {
+    max-width: 700px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.modalv3-content-card-1 {
+    position: relative;
+    width: 100%;
+}
+
+.modalv3-content-card-1 .modalv3-content-card-header {
+    margin: 0;
+}
+
+.modalv3-content-card-1 .modalv3-content-card-summary {
+    color: var(--modalv3-card-text);
+    margin: 0;
+}
+
+.modalv3-content-card-1 .modalv3-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    border-radius: 50%;
+    cursor: pointer;
+    scale: 2;
+}
+
+.modalv3-theme-selection-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    margin-top: 10px;
+    gap: 15px;
+}
+
+
+
+.modalv3-inner-left {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 35%;
+    height: 100%;
+    background-color: var(--discord-like-settings-sidebar);
+}
+
+.modalv3-side-tabs-container {
+    position: absolute;
+    width: 250px;
+    height: 95%;
+    right: 10px;
+    top: 0px;
+    padding-top: 20px;
+    margin-bottom: 60px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.modalv3-side-tabs-container-backer {
+    width: 300px;
+    height: 95%;
+    opacity: 0;
+}
+
+.modalv3-side-tabs-container .side-tabs-category-text {
+    color: var(--modalv3-tab-category-text);
+    margin-left: 7px;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.modalv3-side-tabs-container .side-tabs-button {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--background-secondary);
+    color: var(--modalv3-tab-text);
+    transition: background-color 0.1s, color 0.1s ease-in-out;
+}
+
+.modalv3-side-tabs-container .side-tabs-button:hover {
+    background-color: var(--interactive-active);
+    color: var(--white);
+}
+
+.modalv3-side-tabs-container .side-tabs-button-selected {
+    background-color: var(--interactive-active);
+    color: var(--white);
+}
+
+.modalv3-side-tabs-container .side-tabs-button .side-tabs-button-text {
+    margin-top: 9px;
+    font-size: 17px;
+}
+
+.container_c2b141 {
+    margin-top: 20px;
+    margin-left: 20px;
+    color: #C4C5C9;
+    height: 50px;
+    width: 34px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.container_c2b141:hover {
+    color: var(--white);
+}
+
+.closeButton_c2b141 {
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.closeButton_c2b141 svg {
+    margin-top: 6px;
+}
+
 .category-modalv2-inner {
     position: relative;
     z-index: 1001;
@@ -4792,6 +4986,11 @@ data-share-product-card-button {
 
 [disabled] {
     cursor: not-allowed;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: none;
 }
 
 .hidden {

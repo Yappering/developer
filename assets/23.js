@@ -260,3 +260,80 @@ HEARTBEAT_UPDATE_READY = "Update Ready!";
 LOREM_IPSUM_LONG = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 LOREM_IPSUM = "Lorem ipsum";
 APP_VERSION = "App Version: ";
+
+
+// Modal v3
+
+// Headers
+
+MODAL_V3_TAB_HEADER_USER_SETTINGS = "USER SETTINGS";
+MODAL_V3_TAB_HEADER_SITE_SETTINGS = "APP SETTINGS";
+MODAL_V3_TAB_HEADER_STAFF_ONLY = "STAFF ONLY";
+
+// Tabs
+
+MODAL_V3_TAB_TEXT_ACCOUNT = "Account";
+MODAL_V3_TAB_TEXT_PROFILE = "Profile";
+
+MODAL_V3_TAB_TEXT_APPEARANCE = "Appearance";
+MODAL_V3_TAB_TEXT_ACCESSIBILITY = "Accessibility";
+
+MODAL_V3_TAB_TEXT_EXPERIMENTS = "Experiments";
+MODAL_V3_TAB_TEXT_DISMISSIBLE_CONTENT = "Dismissible Content";
+MODAL_V3_TAB_TEXT_API_TEST_FETCH = "API Testing";
+MODAL_V3_TAB_TEXT_LOCAL_STORAGE = "Local Storage";
+MODAL_V3_TAB_TEXT_MISC = "Miscellaneous";
+
+// Pages
+
+// Account
+
+MODAL_V3_TAB_ACCOUNT_HEADER = "Account";
+
+// Profile
+
+MODAL_V3_TAB_PROFILE_HEADER = "Profile";
+
+// Appearance
+
+MODAL_V3_TAB_APPEARANCE_HEADER = "Appearance";
+
+MODAL_V3_TAB_APPEARANCE_THEME_HEADER = "Theme";
+MODAL_V3_TAB_APPEARANCE_THEME_SUMMARY = "Adjust the color of the interface for better visibility.";
+
+MODAL_V3_TAB_APPEARANCE_THEME_COLOR_HEADER = "Color Themes";
+MODAL_V3_TAB_APPEARANCE_THEME_COLOR_SUMMARY = "Adjust the color of the interface for better visibility.";
+
+MODAL_V3_TAB_APPEARANCE_THEME_CUSTOM_HEADER = "Custom Themes";
+MODAL_V3_TAB_APPEARANCE_THEME_CUSTOM_SUMMARY = "Your very own custom css.";
+
+MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_HEADER = "Community Made Themes";
+MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_SUMMARY = "Theme custom made by the community.";
+
+// Accessibility
+
+MODAL_V3_TAB_ACCESSIBILITY_HEADER = "Accessibility";
+
+MODAL_V3_TAB_ACCESSIBILITY_REDUCED_MOTION_HEADER = "Reduced Motion";
+MODAL_V3_TAB_ACCESSIBILITY_REDUCED_MOTION_SUMMARY = "Reduce the amount and intensity of animations,";
+MODAL_V3_TAB_ACCESSIBILITY_REDUCED_MOTION_SUMMARY2 = " hover effects and other moving effects across Shop Archives.";
+
+// Experiments
+
+MODAL_V3_TAB_EXPERIMENTS_HEADER = "Experiments";
+
+// Profile
+
+MODAL_V3_TAB_DISMISSIBLE_CONTENT_HEADER = "Dismissible Content";
+
+// API Test Fetch
+
+MODAL_V3_TAB_API_TEST_FETCH_HEADER = "API Testing";
+
+// Local Storage
+
+MODAL_V3_TAB_LOCAL_STORAGE_HEADER = "Storage";
+
+// Misc
+
+MODAL_V3_TAB_LOCAL_STORAGE_HEADER = "Miscellaneous";
