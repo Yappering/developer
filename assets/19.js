@@ -1,6 +1,6 @@
 
 
-app_version1 = "337"
+app_version1 = "338"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -698,7 +698,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                     previewName = localStorage.discord_displayname;
                                                 } else {
-                                                    previewName = 'Discord User'
+                                                    previewName = 'Silly Wumpus'
                                                 }
     
                                                 previewHolder.innerHTML = `
@@ -1690,7 +1690,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                     previewName = localStorage.discord_displayname;
                                                 } else {
-                                                    previewName = 'Discord User'
+                                                    previewName = 'Silly Wumpus'
                                                 }
     
                                                 previewHolder.innerHTML = `
@@ -2677,6 +2677,27 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     setPplusProfileEffectCache()
 
+    async function setCommunityThemesCache() {
+        url = api + COMMUNITY;
+        communityapiUrl = new URL(url);
+        communityapiUrl.searchParams.append("tab", "themes");
+        if (localStorage.staff_unpublished_community_features == "true") {
+            communityapiUrl.searchParams.append("include-unpublished", "true");
+        }
+        const response = await fetch(communityapiUrl, {
+            method: "GET",
+            headers: {
+                "Password": api_password,
+                "Authorization": discord_token,
+                "Token": api_token
+            }
+        });
+        const themesData = await response.json();
+        communityThemesCache = themesData;
+    }
+
+    setCommunityThemesCache()
+
     const params = new URLSearchParams(window.location.search);
 
     function setParams(params) {
@@ -2957,7 +2978,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                     previewName = localStorage.discord_displayname;
                                                 } else {
-                                                    previewName = 'Discord User'
+                                                    previewName = 'Silly Wumpus'
                                                 }
     
                                                 previewHolder.innerHTML = `
@@ -4009,7 +4030,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                                 previewName = localStorage.discord_displayname;
                                                             } else {
-                                                                previewName = 'Discord User'
+                                                                previewName = 'Silly Wumpus'
                                                             }
     
                                                             if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning" && product.category_sku_id === discord_categories.NAMEPLATE) {
@@ -5490,7 +5511,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                 previewName = localStorage.discord_displayname;
                                             } else {
-                                                previewName = 'Discord User'
+                                                previewName = 'Silly Wumpus'
                                             }
 
                                             previewHolder.innerHTML = `
@@ -6160,7 +6181,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                             previewName = localStorage.discord_displayname;
                                                         } else {
-                                                            previewName = 'Discord User'
+                                                            previewName = 'Silly Wumpus'
                                                         }
 
                                                         if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning" && product.category_sku_id === discord_categories.NAMEPLATE) {
@@ -11178,7 +11199,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                 previewName = localStorage.discord_displayname;
                                             } else {
-                                                previewName = 'Discord User'
+                                                previewName = 'Silly Wumpus'
                                             }
 
                                             previewHolder.innerHTML = `
@@ -12230,7 +12251,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                             previewName = localStorage.discord_displayname;
                                                         } else {
-                                                            previewName = 'Discord User'
+                                                            previewName = 'Silly Wumpus'
                                                         }
 
                                                         if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning" && product.category_sku_id === discord_categories.NAMEPLATE) {
@@ -15689,10 +15710,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         u_bar.classList.add("ubar-profile-and-settings")
         u_bar.innerHTML = `
             <img id="ubar-avatar" class="ubar-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-            <div class="ubar-status-bg"></div>
-            <div class="ubar-status-color"></div>
-            <p class="ubar-displayname" id="ubar-displayname">${localStorage.discord_displayname}</p>
-            <p class="ubar-username" id="ubar-username">${localStorage.discord_username}</p>
+            <p class="ubar-displayname" id="ubar-displayname">${localStorage.discord_displayname ? localStorage.discord_displayname : "Silly Wumpus"}</p>
+            <p class="ubar-username" id="ubar-username">${localStorage.discord_username ? localStorage.discord_username : "silly_wumpus"}</p>
             <svg title="User Options" x="0" y="0" onclick="openNewDiscordLikeSettings()" id="ubar-options-cog" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4483 8.3333H18.3333V11.6667H16.4492C16.2483 12.4425 15.9167 13.165 15.4708 13.8033L16.6667 15 15 16.6667 13.8042 15.47C13.1642 15.9158 12.4433 16.2483 11.6667 16.4483V18.3333H8.3333V16.4483C7.5575 16.2483 6.8358 15.9158 6.1967 15.47L5 16.6667 3.3333 15 4.53 13.8033C4.0842 13.1658 3.7517 12.4433 3.5517 11.6667H1.6667V8.3333H3.5517C3.7517 7.5567 4.0833 6.835 4.53 6.1967L3.3333 5 5 3.3333 6.1967 4.53C6.835 4.0833 7.5567 3.7517 8.3333 3.5517V1.6667H11.6667V3.5508C12.4433 3.7517 13.1642 4.0833 13.8042 4.5292L15 3.3325 16.6667 4.9992 15.47 6.1967C15.9158 6.835 16.2483 7.5575 16.4483 8.3333ZM10 13.3333C11.8409 13.3333 13.3333 11.8409 13.3333 10 13.3333 8.159 11.8409 6.6667 10 6.6667 8.159 6.6667 6.6667 8.159 6.6667 10 6.6667 11.8409 8.159 13.3333 10 13.3333Z" )=""></path></svg>
         `;
 
@@ -15700,109 +15719,115 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
     function openNewDiscordLikeSettings() {
-        openCategoryModal();
+        let modal = document.createElement("div");
 
-        async function openCategoryModal() {
-            let modal = document.createElement("div");
+        modal.classList.add('modalv3');
 
-            modal.classList.add('modalv3');
-
-            modal.innerHTML = `
-                <div class="modalv3-inner" style="color: var(--white);">
-                    <div class="modalv3-inner-left">
-                        <div class="modalv3-side-tabs-container-backer">
-                        
-                        </div>
-                        <div class="modalv3-side-tabs-container" id="modalv3-side-tabs-container">
-                        
-                        </div>
+        modal.innerHTML = `
+            <div class="modalv3-inner" style="color: var(--white);">
+                <div class="modalv3-inner-left">
+                    <div class="modalv3-side-tabs-container-backer">
+                    
                     </div>
-                    <div class="modalv3-inner-right">
-                        <div class="modalv3-right-content-container" id="modalv3-right-content-container">
-                            
-                        </div>
-                    </div>
-                    <div class="container_c2b141" data-discord-like-settings-close-button>
-                        <div class="closeButton_c2b141" aria-label="Close" role="button" tabindex="0">
-                            <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path>
-                            </svg>
-                        </div>
-                        <div class="keybind_c2b141" aria-hidden="true">ESC</div>
+                    <div class="modalv3-side-tabs-container" id="modalv3-side-tabs-container">
+                    
                     </div>
                 </div>
-            `;
+                <div class="modalv3-inner-right">
+                    <div class="modalv3-right-content-container" id="modalv3-right-content-container">
+                        
+                    </div>
+                </div>
+                <div class="container_c2b141" data-discord-like-settings-close-button>
+                    <div class="closeButton_c2b141" aria-label="Close" role="button" tabindex="0">
+                        <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path>
+                        </svg>
+                    </div>
+                    <div class="keybind_c2b141" aria-hidden="true">ESC</div>
+                </div>
+            </div>
+        `;
 
-            document.body.appendChild(modal);
+        document.body.appendChild(modal);
 
-            document.getElementById("modalv3-side-tabs-container").innerHTML = `
-                <p class="side-tabs-category-text">${getTextString("MODAL_V3_TAB_HEADER_USER_SETTINGS")}</p>
-                <button class="side-tabs-button" id="modal-v3-tab-account" onclick="setModalv3InnerContent('account')">
-                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_ACCOUNT")}</p>
-                </button>
-                <button class="side-tabs-button" id="modal-v3-tab-profile" onclick="setModalv3InnerContent('profile')">
-                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_PROFILE")}</p>
-                </button>
+        document.getElementById("modalv3-side-tabs-container").innerHTML = `
+            <p class="side-tabs-category-text">${getTextString("MODAL_V3_TAB_HEADER_USER_SETTINGS")}</p>
+            <button class="side-tabs-button" id="modal-v3-tab-account" onclick="setModalv3InnerContent('account')">
+                <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_ACCOUNT")}</p>
+            </button>
+            <button class="side-tabs-button" id="modal-v3-tab-profile" onclick="setModalv3InnerContent('profile')">
+                <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_PROFILE")}</p>
+            </button>
+            <hr>
+            <p class="side-tabs-category-text">${getTextString("MODAL_V3_TAB_HEADER_SITE_SETTINGS")}</p>
+            <button class="side-tabs-button" id="modal-v3-tab-appearance" onclick="setModalv3InnerContent('appearance')">
+                <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_APPEARANCE")}</p>
+            </button>
+            <button class="side-tabs-button" id="modal-v3-tab-accessibility" onclick="setModalv3InnerContent('accessibility')">
+                <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_ACCESSIBILITY")}</p>
+            </button>
+            <div id="staff-options-modalv3-container"></div>
+            <div id="login-logout-options-modalv3-container"></div>
+            <hr>
+            <div class="modalv3-side-tabs-app-info-container">
+                <p>Website made by: </p><a class="link" href="https://github.com/DTACat/">DTACat</a>
+                <p>${app_version2} ${app_version1}</p>
+            </div>
+        `;
+
+        if (localStorage.dev === "true") {
+            document.getElementById("staff-options-modalv3-container").innerHTML = `
                 <hr>
-                <p class="side-tabs-category-text">${getTextString("MODAL_V3_TAB_HEADER_SITE_SETTINGS")}</p>
-                <button class="side-tabs-button" id="modal-v3-tab-appearance" onclick="setModalv3InnerContent('appearance')">
-                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_APPEARANCE")}</p>
+                <p class="side-tabs-category-text">${getTextString("MODAL_V3_TAB_HEADER_STAFF_ONLY")}</p>
+                <button class="side-tabs-button" id="modal-v3-tab-experiments" onclick="setModalv3InnerContent('experiments')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_EXPERIMENTS")}</p>
                 </button>
-                <button class="side-tabs-button" id="modal-v3-tab-accessibility" onclick="setModalv3InnerContent('accessibility')">
-                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_ACCESSIBILITY")}</p>
+                <button class="side-tabs-button" id="modal-v3-tab-dismissible_content" onclick="setModalv3InnerContent('dismissible_content')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_DISMISSIBLE_CONTENT")}</p>
                 </button>
-                <div id="staff-options-modalv3-container"></div>
+                <button class="side-tabs-button" id="modal-v3-tab-api_test_fetch" onclick="setModalv3InnerContent('api_test_fetch')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_API_TEST_FETCH")}</p>
+                </button>
+                <button class="side-tabs-button" id="modal-v3-tab-local_storage" onclick="setModalv3InnerContent('local_storage')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_LOCAL_STORAGE")}</p>
+                </button>
+                <button class="side-tabs-button" id="modal-v3-tab-misc" onclick="setModalv3InnerContent('misc')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_MISC")}</p>
+                </button>
             `;
+        }
 
-            if (localStorage.dev === "true") {
-                document.getElementById("staff-options-modalv3-container").innerHTML = `
-                    <hr>
-                    <p class="side-tabs-category-text">${getTextString("MODAL_V3_TAB_HEADER_STAFF_ONLY")}</p>
-                    <button class="side-tabs-button" id="modal-v3-tab-experiments" onclick="setModalv3InnerContent('experiments')">
-                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_EXPERIMENTS")}</p>
-                    </button>
-                    <button class="side-tabs-button" id="modal-v3-tab-dismissible_content" onclick="setModalv3InnerContent('dismissible_content')">
-                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_DISMISSIBLE_CONTENT")}</p>
-                    </button>
-                    <button class="side-tabs-button" id="modal-v3-tab-api_test_fetch" onclick="setModalv3InnerContent('api_test_fetch')">
-                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_API_TEST_FETCH")}</p>
-                    </button>
-                    <button class="side-tabs-button" id="modal-v3-tab-local_storage" onclick="setModalv3InnerContent('local_storage')">
-                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_LOCAL_STORAGE")}</p>
-                    </button>
-                    <button class="side-tabs-button" id="modal-v3-tab-misc" onclick="setModalv3InnerContent('misc')">
-                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_MISC")}</p>
-                    </button>
-                `;
-            }
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 1);
 
-            setTimeout(() => {
-                modal.classList.add('show');
-            }, 1);
-
-            setModalv3InnerContent('account');
+        setModalv3InnerContent('account');
 
 
-            document.addEventListener("keydown", function (event) {
-                if (event.key === "Escape") {
-                    modal.classList.remove('show');
-                    setTimeout(() => {
-                        modal.remove();
-                    }, 300);
-                }
-            });
-
-            document.querySelector("[data-discord-like-settings-close-button]").addEventListener('click', (event) => {
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
                 modal.classList.remove('show');
                 setTimeout(() => {
                     modal.remove();
                 }, 300);
-            });
-        }
+            }
+        });
+
+        document.querySelector("[data-discord-like-settings-close-button]").addEventListener('click', (event) => {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.remove();
+            }, 300);
+        });
     }
 
     function setModalv3InnerContent(tab) {
+        if (!document.getElementById("modalv3-right-content-container")) {
+            openNewDiscordLikeSettings();
+        }
         const tabPageOutput = document.getElementById("modalv3-right-content-container");
+
         if (document.querySelector(".side-tabs-button-selected")) {
             document.querySelectorAll('.side-tabs-button-selected').forEach((el) => {
                 el.classList.remove("side-tabs-button-selected");
@@ -15813,11 +15838,75 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("modal-v3-tab-account").classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_ACCOUNT_HEADER")}</h2>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_SUMMARY")}</p>
+
+                    <div id="modalv3-account-account-details-container">
+
+                    </div>
+                </div>
             `;
+
+            const accountDetails = document.getElementById("modalv3-account-account-details-container");
+            
+            if (localStorage.discord_token) {
+                const discordProfile = JSON.parse(sessionStorage.discord_profile);
+                accountDetails.innerHTML = `
+                    <div class="modalv3-account-account-details">
+                        <div class="modalv3-account-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
+                        <div class="modalv3-account-banner-image" style="background-image: url(${localStorage.discord_banner});"></div>
+                        <div class="modalv3-account-banner-filler"></div>
+
+                        <div class="modalv3-account-avatar-preview-bg"></div>
+                        <img class="modalv3-account-avatar-preview" src="${localStorage.discord_avatar}">
+                        <p class="modalv3-account-displayname">${localStorage.discord_displayname}</p>
+                        <button class="modalv3-resync-profiles-button" onclick="updateDiscordProfileModalv3()">Resync Profile</button>
+
+                        <div class="modalv3-account-account-details-inners-padding">
+                            <div class="modalv3-account-account-details-inner">
+                                <div class="modalv3-account-account-details-card">
+                                    <p class="modalv3-account-displayname-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_DISPLAY_NAME")}</p>
+                                    <p class="modalv3-account-displayname-text">${localStorage.discord_displayname}</p>
+                                </div>
+                                <div class="modalv3-account-account-details-card">
+                                    <p class="modalv3-account-username-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_USERNAME")}</p>
+                                    <p class="modalv3-account-username-text">${localStorage.discord_username}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.getElementById("login-logout-options-modalv3-container").innerHTML = `
+                    <hr>
+                    <button class="side-tabs-button" id="modal-v3-tab-log_out" onclick="logoutOfDiscord()">
+                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_LOG_OUT")}</p>
+                    </button>
+                `;
+            } else {
+                accountDetails.style.marginTop = '20px';
+                accountDetails.style.marginBottom = '20px';
+                accountDetails.innerHTML = `
+                    <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_HEADER")}</h2>
+                    <h2 class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_SUMMARY")}</h2>
+                `;
+                document.getElementById("login-logout-options-modalv3-container").innerHTML = `
+                    <hr>
+                    <button class="side-tabs-button" id="modal-v3-tab-log_in" onclick="loginToDiscord()">
+                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_LOG_IN")}</p>
+                    </button>
+                `;
+            }
         } else if (tab === "profile") {
             document.getElementById("modal-v3-tab-profile").classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_PROFILE_HEADER")}</h2>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_SUMMARY")}</p>
+                    <div class=""></div>
+                    <div></div>
+                </div>
             `;
         } else if (tab === "appearance") {
             document.getElementById("modal-v3-tab-appearance").classList.add("side-tabs-button-selected");
@@ -15830,30 +15919,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <div class="modalv3-theme-selection-container" id="modalv3-theme-selection-container">
                     </div>
                 </div>
-                <hr>
-                <div class="modalv3-content-card-1">
-                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COLOR_HEADER")}</h2>
-                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COLOR_SUMMARY")}</p>
-
-                    <div class="modalv3-theme-selection-container" id="modalv3-color-theme-selection-container">
-                    </div>
-                </div>
-                <hr>
-                <div class="modalv3-content-card-1">
-                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_CUSTOM_HEADER")}</h2>
-                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_CUSTOM_SUMMARY")}</p>
-
-                    <div class="modalv3-theme-selection-container" id="modalv3-custom-theme-selection-container">
-                    </div>
-                </div>
-                <hr>
-                <div class="modalv3-content-card-1">
-                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_HEADER")}</h2>
-                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_SUMMARY")}</p>
-
-                    <div class="modalv3-theme-selection-container" id="modalv3-community-theme-selection-container">
-                    </div>
-                </div>
+                <div id="modal-v3-color-themes-experiment-output"></div>
+                <div id="modal-v3-custom-themes-experiment-output"></div>
+                <div id="modal-v3-community-themes-experiment-output"></div>
             `;
 
             document.getElementById("modalv3-theme-selection-container").innerHTML = `
@@ -15861,48 +15929,87 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <div class="theme-selection-box" title="Dark" id="theme-dark-button" onclick="updateThemeStore('dark', 'true', null);"></div>
                 <div class="theme-selection-box" title="Midnight" id="theme-midnight-button" onclick="updateThemeStore('midnight', 'true', null);"></div>
             `;
-            document.getElementById("modalv3-color-theme-selection-container").innerHTML = `
-                <div style="text-align: center;" class="theme-selection-box" title="Add Custon Theme" id="theme-custom-button" onclick="themeAddCustom();" bis_skin_checked="1">
-                    <svg class="circleIcon_db6521" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z" class=""></path></svg>
-                </div>
-            `;
-            document.getElementById("modalv3-custom-theme-selection-container").innerHTML = `
-                <div style="text-align: center;" class="theme-selection-box" title="Add Custon Theme" id="theme-custom-button" onclick="themeAddCustom();" bis_skin_checked="1">
-                    <svg class="circleIcon_db6521" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z" class=""></path></svg>
-                </div>
-            `;
-            document.getElementById("modalv3-community-theme-selection-container").innerHTML = ``;
-            fetch(api + COMMUNITY + '?tab=themes', {
-                method: "GET",
-                headers: {
-                    "Password": api_password,
-                    "Authorization": discord_token,
-                    "Token": api_token
+
+            if (localStorage.experiment_2025_04_theme_picker_v2_color === "Treatment 1: Enabled") {
+                document.getElementById("modal-v3-color-themes-experiment-output").innerHTML = `
+                    <hr>
+                    <div class="modalv3-content-card-1">
+                        <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COLOR_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COLOR_SUMMARY")}</p>
+
+                        <div class="modalv3-theme-selection-container" id="modalv3-color-theme-selection-container">
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById("modalv3-color-theme-selection-container").innerHTML = `
+                    <div style="text-align: center;" class="theme-selection-box" title="Add Custon Theme" id="theme-custom-button" onclick="themeAddCustom();" bis_skin_checked="1">
+                        <svg class="circleIcon_db6521" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z" class=""></path></svg>
+                    </div>
+                `;
+            }
+
+            if (localStorage.experiment_2025_04_theme_picker_v2_custom === "Treatment 1: Enabled") {
+                document.getElementById("modal-v3-custom-themes-experiment-output").innerHTML = `
+                    <hr>
+                    <div class="modalv3-content-card-1">
+                        <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_SUMMARY")}</p>
+
+                        <div class="modalv3-theme-selection-container" id="modalv3-custom-theme-selection-container">
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById("modalv3-custom-theme-selection-container").innerHTML = `
+                    <div style="text-align: center;" class="theme-selection-box" title="Add Custon Theme" id="theme-custom-button" onclick="themeAddCustom();" bis_skin_checked="1">
+                        <svg class="circleIcon_db6521" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z" class=""></path></svg>
+                    </div>
+                `;
+            }
+
+            if (localStorage.experiment_2025_04_theme_picker_v2_community === "Treatment 1: Enabled") {
+                document.getElementById("modal-v3-community-themes-experiment-output").innerHTML = `
+                    <hr>
+                    <div class="modalv3-content-card-1">
+                        <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_SUMMARY")}</p>
+
+                        <div class="modalv3-theme-selection-container" id="modalv3-community-theme-selection-container">
+                        </div>
+                    </div>
+                `;
+                fetchAndRenderCommunityThemes();
+            }
+            async function fetchAndRenderCommunityThemes() {
+                if (!communityThemesCache) {
+                    await setCommunityThemesCache();
                 }
-            })
-            .then(response => response.json())
-            .then((data) => {
-                data.forEach(theme => {
-                    let themeIcon = document.createElement("div");
 
-                    themeIcon.classList.add("theme-selection-box");
-                    themeIcon.id = 'theme-community-' + theme.id + '-button'
-                    themeIcon.title = theme.name;
-                    themeIcon.style.backgroundColor = theme.icon.color;
+                try {
+                    communityThemesCache.forEach(theme => {
+                        let themeIcon = document.createElement("div");
 
-                    themeIcon.onclick = function() {
-                        updateThemeStore('community-' + theme.id, 'true', theme.github.raw);
-                    };
+                        themeIcon.classList.add("theme-selection-box");
+                        themeIcon.id = 'theme-community-' + theme.id + '-button'
+                        themeIcon.title = theme.name;
+                        themeIcon.style.backgroundColor = theme.icon.color;
 
-                    document.getElementById("modalv3-community-theme-selection-container").appendChild(themeIcon);
-                });
-                if (document.getElementById("theme-" + localStorage.sa_theme + "-button")) {
-                    document.getElementById("theme-" + localStorage.sa_theme + "-button").classList.add('theme-selection-box-selected');
+                        themeIcon.onclick = function() {
+                            updateThemeStore('community-' + theme.id, 'true', theme.github.raw);
+                        };
+
+                        document.getElementById("modalv3-community-theme-selection-container").appendChild(themeIcon);
+                    });
+                    if (document.getElementById("theme-" + localStorage.sa_theme + "-button")) {
+                        document.getElementById("theme-" + localStorage.sa_theme + "-button").classList.add('theme-selection-box-selected');
+                    }
                 }
-            })
-            .catch(error => {
-                console.error(error)
-            });
+                catch(error) {
+                    document.getElementById("modalv3-community-theme-selection-container").innerHTML = `There was an error loading community themes`;
+                }
+            }
+
             if (document.getElementById("theme-" + localStorage.sa_theme + "-button")) {
                 document.getElementById("theme-" + localStorage.sa_theme + "-button").classList.add('theme-selection-box-selected');
             }
@@ -15922,6 +16029,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("modal-v3-tab-experiments").classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_EXPERIMENTS_HEADER")}</h2>
+
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_EXPERIMENTS_DISABLE_FORCE_ROLLOUT_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_EXPERIMENTS_DISABLE_FORCE_ROLLOUT_SUMMARY")}</p>
+
+                    <input class="modalv3-toggle" onclick="disabledExperimentForceRollout();" id="experiment-force-rollout" type="checkbox">
+                </div>
             `;
         } else if (tab === "dismissible_content") {
             document.getElementById("modal-v3-tab-dismissible_content").classList.add("side-tabs-button-selected");
@@ -15932,16 +16046,40 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("modal-v3-tab-api_test_fetch").classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_API_TEST_FETCH_HEADER")}</h2>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_API_TESTING_API_STATUS_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_API_TESTING_API_STATUS_SUMMARY")}</p>
+                </div>
+                <hr>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_API_TESTING_TEST_FETCH_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_API_TESTING_TEST_FETCH_SUMMARY")}</p>
+                </div>
+                <hr>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_HEADER")}</h2>
+                    <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_SUMMARY")}</p>
+                </div>
             `;
         } else if (tab === "local_storage") {
             document.getElementById("modal-v3-tab-local_storage").classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_LOCAL_STORAGE_HEADER")}</h2>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_SUMMARY")}</p>
+                </div>
+                <hr>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_STORAGE_SESSION_STORAGE_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_STORAGE_SESSION_STORAGE_SUMMARY")}</p>
+                </div>
             `;
         } else if (tab === "misc") {
             document.getElementById("modal-v3-tab-misc").classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
-                <h2>${getTextString("MODAL_V3_TAB_LOCAL_STORAGE_HEADER")}</h2>
+                <h2>${getTextString("MODAL_V3_TAB_MISC_HEADER")}</h2>
             `;
         } else {
             console.error(tab + ' is not a valid tab');
@@ -16673,6 +16811,16 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
     window.updateDiscordProfilePlaceholder = updateDiscordProfilePlaceholder;
+
+    async function updateDiscordProfileModalv3() {
+        await updateDiscordProfile(localStorage.discord_token);
+        setModalv3InnerContent('account');
+        if (apiUrl) {
+            fetchData(pageCheck());
+        }
+    }
+
+    window.updateDiscordProfileModalv3 = updateDiscordProfileModalv3;
 
     async function updateDiscordProfile(token) {
         try {

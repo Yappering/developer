@@ -32,6 +32,8 @@
     --modalv3-tab-text: #BCD4D7;
     --modalv3-tab-category-text: #AEB6BB;
     --modalv3-card-text: #C4C5C9;
+    --modalv3-hr-color: #414249;
+    --modalv3-hr-color2: #393A3F;
 }
 
 .theme-midnight {
@@ -3939,6 +3941,10 @@ data-share-product-card-button {
     transform: scale(1);
 }
 
+.modalv3 hr {
+    border: 1px solid var(--modalv3-hr-color);
+}
+
 .modalv3-inner {
     position: fixed;
     z-index: 1001;
@@ -3957,7 +3963,7 @@ data-share-product-card-button {
     left: 0;
     top: 0;
     width: 800px;
-    height: 100%;
+    height: 95%;
 }
 
 .modalv3-right-content-container {
@@ -3978,11 +3984,122 @@ data-share-product-card-button {
 
 .modalv3-content-card-1 .modalv3-content-card-header {
     margin: 0;
+    font-size: 20px;
+}
+
+.modalv3-content-card-1 .modalv3-content-card-sub-header {
+    margin: 0;
+    font-size: 18px;
 }
 
 .modalv3-content-card-1 .modalv3-content-card-summary {
     color: var(--modalv3-card-text);
     margin: 0;
+}
+
+.modalv3-account-account-details {
+    position: relative;
+    max-width: 700px;
+    margin-top: 20px;
+    height: 350px;
+    background-color: var(--background-tertiary);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modalv3-account-account-details-inners-padding {
+    margin-top: 60px;
+    padding: 20px;
+}
+
+.modalv3-account-account-details-inner {
+    max-width: 700px;
+    height: 150px;
+    background-color: var(--background-secondary);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modalv3-account-banner-filler {
+    width: 700px;
+    height: 100px;
+}
+
+.modalv3-account-banner-color {
+    position: absolute;
+    width: 700px;
+    height: 100px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.modalv3-account-banner-image {
+    position: absolute;
+    width: 700px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.modalv3-account-avatar-preview-bg {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    width: 110px;
+    height: 110px;
+    border-radius: 999px;
+    object-fit: cover;
+    display: block;
+    background-color: var(--background-tertiary);
+}
+
+.modalv3-account-avatar-preview {
+    position: absolute;
+    top: 70px;
+    left: 30px;
+    width: 90px;
+    height: 90px;
+    border-radius: 999px;
+    object-fit: cover;
+    display: block;
+}
+
+.modalv3-account-displayname {
+    position: absolute;
+    top: 95px;
+    left: 140px;
+    width: 400px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    pointer-events: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.modalv3-account-account-details-card {
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.modalv3-account-displayname-header {
+    margin: 0;
+}
+
+.modalv3-account-displayname-text {
+    margin: 0;
+    font-family: 'gg sans Normal', sans-serif;
+}
+
+.modalv3-account-username-header {
+    margin: 0;
+}
+
+.modalv3-account-username-text {
+    margin: 0;
+    font-family: 'gg sans Normal', sans-serif;
 }
 
 .modalv3-content-card-1 .modalv3-toggle {
@@ -3993,6 +4110,50 @@ data-share-product-card-button {
     cursor: pointer;
     scale: 2;
 }
+
+.modalv3-content-card-button-container {
+    max-width: 700px;
+}
+
+.modalv3-resync-profiles-button {
+    position: absolute;
+    display: block;
+    right: 20px;
+    top: 120px;
+    margin: 5px 0;
+    padding: 10px 30px;
+    background-color: var(--brand-500);
+    color: #fff;
+    border: 2px var(--6) solid;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+}
+
+.modalv3-resync-profiles-button:hover {
+    background-color: var(--brand-500-hover);
+}
+
+.modalv3-content-card-button {
+    display: block;
+    margin: 5px 0;
+    padding: 10px 30px;
+    background-color: var(--brand-500);
+    color: #fff;
+    border: 2px var(--6) solid;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+}
+
+.modalv3-content-card-button:hover {
+    background-color: var(--brand-500-hover);
+}
+
 
 .modalv3-theme-selection-container {
     display: grid;
@@ -4023,6 +4184,12 @@ data-share-product-card-button {
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+.modalv3-side-tabs-container hr {
+    width: 90%;
+    border-color: var(--modalv3-hr-color2);
+}
+
 .modalv3-side-tabs-container-backer {
     width: 300px;
     height: 95%;
@@ -4062,6 +4229,26 @@ data-share-product-card-button {
 .modalv3-side-tabs-container .side-tabs-button .side-tabs-button-text {
     margin-top: 9px;
     font-size: 17px;
+}
+
+.modalv3-side-tabs-app-info-container {
+    position: relative;
+}
+
+.modalv3-side-tabs-app-info-container p {
+    color: #C4C5C9;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.modalv3-side-tabs-app-info-container .link {
+    position: absolute;
+    top: 0px;
+    left: 95px;
+    color: #C4C5C9;
+    font-size: 12px;
+    margin-left: 10px;
+    text-decoration: underline !important;
 }
 
 .container_c2b141 {

@@ -18,6 +18,37 @@ EXPERIMENT_ID_6 = 1
 
 const experimentsList = [
     {
+        title: "Theme Picker V2 Color",
+        id: "2025-04_theme_picker_v2_color",
+        name: "experiment_2025_04_theme_picker_v2_color",
+        treatments: [
+            "Treatment -1: Disabled",
+            "Treatment 1: Enabled"
+        ],
+        rollout: "Treatment -1: Disabled"
+    },
+    {
+        title: "Theme Picker V2 Custom",
+        id: "2025-04_theme_picker_v2_custom",
+        name: "experiment_2025_04_theme_picker_v2_custom",
+        treatments: [
+            "Treatment -1: Disabled",
+            "Treatment 1: Enabled"
+        ],
+        rollout: "Treatment -1: Disabled"
+    },
+    {
+        title: "Theme Picker V2 Community",
+        id: "2025-04_theme_picker_v2_community",
+        name: "experiment_2025_04_theme_picker_v2_community",
+        treatments: [
+            "Treatment -1: Disabled",
+            "Treatment 1: Enabled"
+        ],
+        rollout: "Treatment -1: Disabled",
+        needs_api_token: "true"
+    },
+    {
         title: "Use api.yapper.shop for api",
         id: "2025-04_use_api_dot_yapper_dot_shop",
         name: "experiment_2025_04_use_api_dot_yapper_dot_shop",
@@ -38,7 +69,7 @@ const experimentsList = [
             "Treatment 1: Enabled",
             "Treatment 2: Enable v2"
         ],
-        rollout: "Treatment 2: Enable v2",
+        rollout: "Treatment -1: Disabled",
         needs_api_token: "true"
     },
     {
