@@ -1,6 +1,6 @@
 
 
-app_version1 = "338"
+app_version1 = "339"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -19,16 +19,8 @@ defaultAvatar6 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABr
 localStorage.experiment_2025_02_mobile_render = "Treatment 1: Use new mobile check";
 
 
-if (localStorage.sa_theme == "dark") {
-    document.body.classList.add('theme-dark');
-} else if (localStorage.sa_theme == "midnight") {
-    document.body.classList.add('theme-midnight');
-} else if (localStorage.sa_theme == "light") {
-    document.body.classList.add('theme-light');
-} else if (localStorage.sa_theme == "neongreen") {
-    document.body.classList.add('theme-neongreen');
-} else if (localStorage.sa_theme == "neonpurple") {
-    document.body.classList.add('theme-neonpurple');
+if (localStorage.sa_theme) {
+    document.body.classList.add('theme-' + localStorage.sa_theme);
 } else if (!localStorage.sa_theme) {
     localStorage.sa_theme = "dark";
     document.body.classList.add('theme-dark');
@@ -2697,6 +2689,65 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
     setCommunityThemesCache()
+    
+    async function checkIfValidDiscordToken() {
+        if (localStorage.discord_token && !sessionStorage.discord_profile) {
+            try {
+                if (localStorage.discord_token && !sessionStorage.discord_profile) {
+                    const userInfo = await fetch('https://discord.com/api/users/@me', {
+                        headers: { Authorization: `Bearer ${localStorage.discord_token}` }
+                    });
+          
+                    if (!userInfo.ok) {
+                        // If the response is not ok (e.g., 401 Unauthorized)
+                        setParams({ page: 'home', login: 'false' });
+                        actuallyLogOutOfDiscord();
+                        return;
+                    }
+          
+                    const user = await userInfo.json();
+                    sessionStorage.discord_profile = JSON.stringify(user, undefined, 4);
+                    localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
+                    localStorage.discord_username = user.username;
+                    if (user.global_name != null) {
+                        localStorage.discord_displayname = user.global_name;
+                    } else {
+                        localStorage.discord_displayname = user.username;
+                    }
+                    localStorage.discord_banner_color = user.banner_color;
+                    localStorage.discord_premium_type = user.premium_type;
+          
+                    if (user.banner != null) {
+                        localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=4096`;
+                    } else {
+                        localStorage.removeItem('discord_banner');
+                    }
+    
+                    if (staff_ids.includes(user.id)) {
+                        localStorage.dev = "true";
+                        console.log('yapper')
+                    }
+          
+                    console.log('success');
+                    setParams({ page: 'home', login: 'true' });
+                    location.reload();
+                }
+          
+                // Optional: additional check (but `sessionStorage.discord_profile` is a string, so this check won't work unless parsed)
+                const parsedProfile = JSON.parse(sessionStorage.discord_profile);
+                if (parsedProfile.code === 0) {
+                    setParams({ page: 'home', login: 'false' });
+                    actuallyLogOutOfDiscord();
+                }
+          
+            } catch (error) {
+                setParams({ page: 'home', login: 'false' });
+                actuallyLogOutOfDiscord();
+            }
+        }
+    }
+
+    checkIfValidDiscordToken();
 
     const params = new URLSearchParams(window.location.search);
 
@@ -15735,7 +15786,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 </div>
                 <div class="modalv3-inner-right">
                     <div class="modalv3-right-content-container" id="modalv3-right-content-container">
+                        <div class="modalv3-right-content-container-inner" id="modalv3-right-content-container-inner">
                         
+                        </div>
                     </div>
                 </div>
                 <div class="container_c2b141" data-discord-like-settings-close-button>
@@ -15823,10 +15876,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
     function setModalv3InnerContent(tab) {
-        if (!document.getElementById("modalv3-right-content-container")) {
+        if (!document.getElementById("modalv3-right-content-container-inner")) {
             openNewDiscordLikeSettings();
         }
-        const tabPageOutput = document.getElementById("modalv3-right-content-container");
+        const tabPageOutput = document.getElementById("modalv3-right-content-container-inner");
 
         if (document.querySelector(".side-tabs-button-selected")) {
             document.querySelectorAll('.side-tabs-button-selected').forEach((el) => {
@@ -15888,7 +15941,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 accountDetails.style.marginBottom = '20px';
                 accountDetails.innerHTML = `
                     <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_HEADER")}</h2>
-                    <h2 class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_SUMMARY")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_SUMMARY")}</p>
                 `;
                 document.getElementById("login-logout-options-modalv3-container").innerHTML = `
                     <hr>
@@ -15943,9 +15996,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 `;
 
                 document.getElementById("modalv3-color-theme-selection-container").innerHTML = `
-                    <div style="text-align: center;" class="theme-selection-box" title="Add Custon Theme" id="theme-custom-button" onclick="themeAddCustom();" bis_skin_checked="1">
-                        <svg class="circleIcon_db6521" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z" class=""></path></svg>
-                    </div>
+                    <div class="theme-selection-box" title="Blue" id="theme-color_blue-button" onclick="updateThemeStore('color_blue', 'true', null);"></div>
+                    <div class="theme-selection-box" title="Blue" id="theme-color_red-button" onclick="updateThemeStore('color_red', 'true', null);"></div>
+                    <div class="theme-selection-box" title="Blue" id="theme-color_green-button" onclick="updateThemeStore('color_green', 'true', null);"></div>
                 `;
             }
 
@@ -15980,6 +16033,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     </div>
                 `;
                 fetchAndRenderCommunityThemes();
+            } else if (localStorage.experiment_2025_04_theme_picker_v2_community === "Treatment 2: As banners") {
+                document.getElementById("modal-v3-community-themes-experiment-output").innerHTML = `
+                    <hr>
+                    <div class="modalv3-content-card-1">
+                        <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_SUMMARY")}</p>
+
+                        <div id="modalv3-community-theme-selection-container">
+                        </div>
+                    </div>
+                `;
+                fetchAndRenderCommunityThemesAsBanners();
             }
             async function fetchAndRenderCommunityThemes() {
                 if (!communityThemesCache) {
@@ -15993,11 +16058,53 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         themeIcon.classList.add("theme-selection-box");
                         themeIcon.id = 'theme-community-' + theme.id + '-button'
                         themeIcon.title = theme.name;
-                        themeIcon.style.backgroundColor = theme.icon.color;
+                        if (theme.icon.color_secondary != null) {
+                            themeIcon.style.backgroundImage = `linear-gradient(-45deg, ${theme.icon.color_secondary} 50%,${theme.icon.color_primary} 50%)`;
+                        }
+                        themeIcon.style.backgroundColor = theme.icon.color_primary;
 
                         themeIcon.onclick = function() {
                             updateThemeStore('community-' + theme.id, 'true', theme.github.raw);
                         };
+
+                        document.getElementById("modalv3-community-theme-selection-container").appendChild(themeIcon);
+                    });
+                    if (document.getElementById("theme-" + localStorage.sa_theme + "-button")) {
+                        document.getElementById("theme-" + localStorage.sa_theme + "-button").classList.add('theme-selection-box-selected');
+                    }
+                }
+                catch(error) {
+                    document.getElementById("modalv3-community-theme-selection-container").innerHTML = `There was an error loading community themes`;
+                }
+            }
+
+            async function fetchAndRenderCommunityThemesAsBanners() {
+                if (!communityThemesCache) {
+                    await setCommunityThemesCache();
+                }
+
+                try {
+                    communityThemesCache.forEach(theme => {
+                        let themeIcon = document.createElement("div");
+
+                        themeIcon.classList.add("modalv3-community-theme-banner");
+                        themeIcon.id = 'theme-community-' + theme.id + '-button'
+                        themeIcon.style.color = theme.text_color;
+                        if (theme.banner.src != null) {
+                            themeIcon.style.backgroundImage = `linear-gradient(-90deg,rgba(0, 0, 0, 0) 30%,${theme.banner.color_primary}), url('${theme.banner.src}')`;
+                        } else if (theme.banner.color_secondary != null) {
+                            themeIcon.style.backgroundImage = `linear-gradient(-90deg, ${theme.banner.color_secondary} 30%,${theme.banner.color_primary})`;
+                        } else {
+                            themeIcon.style.backgroundColor = theme.banner.color_primary;
+                        }
+
+                        themeIcon.onclick = function() {
+                            updateThemeStore('community-' + theme.id, 'true', theme.github.raw);
+                        };
+
+                        themeIcon.innerHTML = `
+                            <p class="modalv3-community-theme-banner-header">${theme.name}</p>
+                        `;
 
                         document.getElementById("modalv3-community-theme-selection-container").appendChild(themeIcon);
                     });
@@ -16092,14 +16199,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         if (document.getElementById("community-theme-import")) {
             document.getElementById("community-theme-import").remove();
         }
-        try {
-            document.body.classList.remove('theme-dark');
-            document.body.classList.remove('theme-midnight');
-            document.body.classList.remove('theme-light');
-            document.body.classList.remove('theme-neongreen');
-            document.body.classList.remove('theme-neonpurple');
-        } catch (error) {
-        }
         if (hasButtons === "true") {
             try {
                 if (document.querySelector(".theme-selection-box-selected")) {
@@ -16107,6 +16206,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         el.classList.remove("theme-selection-box-selected");
                     });
                 }
+                document.body.removeAttribute("class");
             } catch (error) {
             }
             if (document.getElementById("theme-" + theme + "-button")) {

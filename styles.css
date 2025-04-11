@@ -93,64 +93,46 @@
     --modalv3-tab-category-text: #000000;
 }
 
-.theme-neongreen {
-    --background-primary: #0c0c0c;
-    --background-secondary: #000000;
-    --background-tertiary: #000000;
-    --input-background: #1E1F22;
-    --shop-card-background: #000000;
-    --interactive-active: #003b00;
-    --button-danger-background: #DD383F;
-    --button-outline-danger-border: #DD383F;
-    --channels-default: #949BA4;
-    --status-danger: #F64046;
-    --brand-500: #050505;
-    --brand-500-hover: #003b00;
-    --1: #17c400;
-    --2: #000000;
-    --3: #00000096;
-    --4: #17c400;
-    --5: #050505;
-    --6: #17c400;
-    --7: #003b00;
-    --8: #b1b5bb;
-    --button-secondary-background: #4E5058;
-    --button-secondary-background-hover: #6D6F78;
-    --white: #ffffff;
-    --profile-background: #111214;
-    --profile-badge-background: #1f2024;
-    --discord-like-settings-bg: #0C0C0E;
-    --discord-like-settings-sidebar: #000000;
+.theme-color_blue {
+    --background-primary: #2d2d50;
+    --background-secondary: #191936;
+    --background-tertiary: #0d0d1f;
+    --shop-card-background: #070918;
+    --2: #454579;
+    --4: #0b1227;
+    --5: #0b1227;
+    --discord-like-settings-bg: #2d2d50;
+    --discord-like-settings-sidebar: #191936;
+    --modalv3-hr-color: #2a378a;
+    --modalv3-hr-color2: #283264;
 }
 
-.theme-neonpurple {
-    --background-primary: #0c0c0c;
-    --background-secondary: #000000;
-    --background-tertiary: #000000;
-    --input-background: #1E1F22;
-    --shop-card-background: #000000;
-    --interactive-active: #240025;
-    --button-danger-background: #DD383F;
-    --button-outline-danger-border: #DD383F;
-    --channels-default: #949BA4;
-    --status-danger: #F64046;
-    --brand-500: #050505;
-    --brand-500-hover: #240025;
-    --1: #be00c4;
-    --2: #000000;
-    --3: #00000096;
-    --4: #be00c4;
-    --5: #050505;
-    --6: #be00c4;
-    --7: #240025;
-    --8: #b1b5bb;
-    --button-secondary-background: #4E5058;
-    --button-secondary-background-hover: #6D6F78;
-    --white: #ffffff;
-    --profile-background: #111214;
-    --profile-badge-background: #1f2024;
-    --discord-like-settings-bg: #0C0C0E;
-    --discord-like-settings-sidebar: #000000;
+.theme-color_red {
+    --background-primary: #502d2d;
+    --background-secondary: #361919;
+    --background-tertiary: #1f0d0d;
+    --shop-card-background: #180707;
+    --2: #774343;
+    --4: #270b0b;
+    --5: #270b0b;
+    --discord-like-settings-bg: #502d2d;
+    --discord-like-settings-sidebar: #361919;
+    --modalv3-hr-color: #8a2a2a;
+    --modalv3-hr-color2: #642828;
+}
+
+.theme-color_green {
+    --background-primary: #35502d;
+    --background-secondary: #203619;
+    --background-tertiary: #0e1f0d;
+    --shop-card-background: #0a1807;
+    --2: #4d7241;
+    --4: #0c270b;
+    --5: #0c270b;
+    --discord-like-settings-bg: #35502d;
+    --discord-like-settings-sidebar: #19361b;
+    --modalv3-hr-color: #4d8a2a;
+    --modalv3-hr-color2: #346428;
 }
 
 body {
@@ -217,6 +199,18 @@ body {
 
 #theme-light-button {
     background-color: #d8d8d8;
+}
+
+#theme-color_blue-button {
+    background-color: #28277e;
+}
+
+#theme-color_red-button {
+    background-color: #a51616;
+}
+
+#theme-color_green-button {
+    background-color: #3a8a04;
 }
 
 #theme-neongreen-button {
@@ -3967,14 +3961,21 @@ data-share-product-card-button {
 }
 
 .modalv3-right-content-container {
-    max-width: 700px;
+    max-width: 800px;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
     top: 0px;
     overflow-y: auto;
     overflow-x: hidden;
-    padding-top: 20px;
+}
+
+.modalv3-right-content-container-inner {
+    max-width: 700px;
+    height: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0px;
 }
 
 .modalv3-content-card-1 {
@@ -4160,6 +4161,34 @@ data-share-product-card-button {
     grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
     margin-top: 10px;
     gap: 15px;
+}
+
+
+.modalv3-community-theme-banner {
+    max-width: 700px;
+    height: 120px;
+    margin: 20px 0;
+    display: flex;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: border-radius 0.2s ease;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.modalv3-community-theme-banner:hover {
+    border-radius: 15px;
+}
+
+.modalv3-community-theme-banner.theme-selection-box-selected {
+    width: auto;
+}
+
+.modalv3-community-theme-banner-header {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 

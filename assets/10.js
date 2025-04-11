@@ -43,7 +43,8 @@ const experimentsList = [
         name: "experiment_2025_04_theme_picker_v2_community",
         treatments: [
             "Treatment -1: Disabled",
-            "Treatment 1: Enabled"
+            "Treatment 1: Enabled",
+            "Treatment 2: As banners"
         ],
         rollout: "Treatment -1: Disabled",
         needs_api_token: "true"
