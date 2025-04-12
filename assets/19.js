@@ -1,6 +1,6 @@
 
 
-app_version1 = "340"
+app_version1 = "341"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -54,22 +54,22 @@ if (localStorage.discord_avatar && localStorage.discord_avatar != '') {
 }
 
 function setRandomDiscordAvatar() {
-    // localStorage.discord_avatar = ``;
-    // const randomAvatar = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+    localStorage.discord_avatar = ``;
+    const randomAvatar = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
 
-    // if (randomAvatar === 1) {
-    //     localStorage.discord_avatar = defaultAvatar1;
-    // } else if (randomAvatar === 2) {
-    //     localStorage.discord_avatar = defaultAvatar2;
-    // } else if (randomAvatar === 3) {
-    //     localStorage.discord_avatar = defaultAvatar3;
-    // } else if (randomAvatar === 4) {
-    //     localStorage.discord_avatar = defaultAvatar4;
-    // } else if (randomAvatar === 5) {
-    //     localStorage.discord_avatar = defaultAvatar5;
-    // } else if (randomAvatar === 6) {
-    //     localStorage.discord_avatar = defaultAvatar6;
-    // }
+    if (randomAvatar === 1) {
+        localStorage.discord_avatar = defaultAvatar1;
+    } else if (randomAvatar === 2) {
+        localStorage.discord_avatar = defaultAvatar2;
+    } else if (randomAvatar === 3) {
+        localStorage.discord_avatar = defaultAvatar3;
+    } else if (randomAvatar === 4) {
+        localStorage.discord_avatar = defaultAvatar4;
+    } else if (randomAvatar === 5) {
+        localStorage.discord_avatar = defaultAvatar5;
+    } else if (randomAvatar === 6) {
+        localStorage.discord_avatar = defaultAvatar6;
+    }
 }
 
 
