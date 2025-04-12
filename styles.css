@@ -34,6 +34,7 @@
     --modalv3-card-text: #C4C5C9;
     --modalv3-hr-color: #414249;
     --modalv3-hr-color2: #393A3F;
+    --modalv3-text-input-background: #25272b;
 }
 
 .theme-midnight {
@@ -91,6 +92,7 @@
     --discord-like-settings-sidebar: #ffffff;
     --modalv3-tab-text: #000000;
     --modalv3-tab-category-text: #000000;
+    --modalv3-text-input-background: #ffffff;
 }
 
 .theme-color_blue {
@@ -98,6 +100,7 @@
     --background-secondary: #191936;
     --background-tertiary: #0d0d1f;
     --shop-card-background: #070918;
+    --interactive-active: #211e49;
     --2: #454579;
     --4: #0b1227;
     --5: #0b1227;
@@ -105,6 +108,7 @@
     --discord-like-settings-sidebar: #191936;
     --modalv3-hr-color: #2a378a;
     --modalv3-hr-color2: #283264;
+    --modalv3-text-input-background: #22223d;
 }
 
 .theme-color_red {
@@ -112,6 +116,7 @@
     --background-secondary: #361919;
     --background-tertiary: #1f0d0d;
     --shop-card-background: #180707;
+    --interactive-active: #491e1e;
     --2: #774343;
     --4: #270b0b;
     --5: #270b0b;
@@ -119,6 +124,7 @@
     --discord-like-settings-sidebar: #361919;
     --modalv3-hr-color: #8a2a2a;
     --modalv3-hr-color2: #642828;
+    --modalv3-text-input-background: #3d2222;
 }
 
 .theme-color_green {
@@ -126,6 +132,7 @@
     --background-secondary: #203619;
     --background-tertiary: #0e1f0d;
     --shop-card-background: #0a1807;
+    --interactive-active: #27491e;
     --2: #4d7241;
     --4: #0c270b;
     --5: #0c270b;
@@ -133,6 +140,7 @@
     --discord-like-settings-sidebar: #19361b;
     --modalv3-hr-color: #4d8a2a;
     --modalv3-hr-color2: #346428;
+    --modalv3-text-input-background: #253d22;
 }
 
 body {
@@ -4103,6 +4111,82 @@ data-share-product-card-button {
     font-family: 'gg sans Normal', sans-serif;
 }
 
+
+.modalv3-profile-editor-container {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.modalv3-profile-editor-content-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 370px;
+    height: 500px;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.modalv3-profile-editor-content-card {
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.modalv3-profile-editor-option-header {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.modalv3-profile-editor-option-header-with-button {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.modalv3-profile-editor-text-input {
+    margin: 0;
+    width: 95%;
+    height: 30px;
+    background-color: var(--modalv3-text-input-background);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding-inline: 10px;
+}
+
+.modalv3-profile-editor-color-input {
+    width: 80px;
+    height: 55px;
+    background-color: var(--discord-like-settings-bg);
+    border: none;
+    cursor: pointer;
+}
+
+.modalv3-profile-editor-image-upload {
+    width: auto;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: var(--brand-500);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 5px;
+}
+
+.modalv3-profile-editor-image-upload:hover {
+    background-color: var(--brand-500-hover);
+}
+
+.modalv3-profile-editor-preview-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 500px;
+}
+
+
 .modalv3-content-card-1 .modalv3-toggle {
     position: absolute;
     right: 10px;
@@ -4192,6 +4276,137 @@ data-share-product-card-button {
 }
 
 
+.modalv3-experiment-container {
+    height: auto;
+    width: 100%;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modalv3-experiment-container p {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modalv3-experiment-title {
+    left: 10px;
+    color: var(--white);
+}
+
+.modalv3-experiment-id {
+    left: 10px;
+    color: var(--8);
+}
+
+.modalv3-experiment-api-notice {
+    left: 10px;
+    color: var(--8);
+}
+
+.modalv3-experiment-treatment-info-container {
+    position: relative;
+    height: 30px;
+}
+
+.modalv3-experiment-treatment-container {
+    left: 10px;
+    width: 72%;
+    height: 30px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: var(--white);
+    background-color: var(--modalv3-text-input-background);
+    cursor: pointer;
+}
+
+.modalv3-experiment-treatment-clear-button {
+    position: absolute;
+    right: 10px;
+    width: 20%;
+    height: 30px;
+    background-color: var(--brand-500);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+
+.modalv3-api-status-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    gap: 5px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: var(--background-tertiary);
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modalv3-api-status-card {
+    height: 100%;
+    width: 100%;
+    background-color: var(--background-secondary);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modalv3-api-status-card p {
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.modalv3-status-card-img {
+    width: 50%;
+    height: auto;
+}
+
+.modalv3-api-status-card-title {
+    font-size: 25px;
+}
+
+
+.modalv3-api-testfetch-text-input {
+    margin: 0;
+    width: auto;
+    height: 30px;
+    background-color: var(--modalv3-text-input-background);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding-inline: 10px;
+}
+
+.modalv3-api-testfetch-textarea-input {
+    margin: 0;
+    width: 100%;
+    height: 300px;
+    background-color: var(--modalv3-text-input-background);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding-inline: 10px;
+}
+
+.modalv3-api-testfetch-select-input {
+    margin: 0;
+    width: auto;
+    height: 30px;
+    background-color: var(--modalv3-text-input-background);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding-inline: 10px;
+}
+
 
 .modalv3-inner-left {
     position: relative;
@@ -4228,7 +4443,7 @@ data-share-product-card-button {
 .modalv3-side-tabs-container .side-tabs-category-text {
     color: var(--modalv3-tab-category-text);
     margin-left: 7px;
-    margin-bottom: 0;
+    margin-bottom: 4px;
     font-size: 14px;
 }
 
@@ -5205,6 +5420,16 @@ data-share-product-card-button {
 }
 
 button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+select:focus {
     outline: none;
     box-shadow: none;
 }
