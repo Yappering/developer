@@ -12,6 +12,11 @@
     --status-danger: #F64046;
     --brand-500: #615DED;
     --brand-500-hover: #4E4BC0;
+    --brand-green: #05814B;
+    --brand-green-hover: #036338;
+    --ratio-green: #2DA35F;
+    --ratio-orange: #BE813C;
+    --ratio-red: #E13E45;
     --2: #404248;
     --3: #2B2D3196;
     --4: #1E1F22;
@@ -4249,6 +4254,41 @@ data-share-product-card-button {
 }
 
 
+.modalv3-content-ratio-card-1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+    border-left: 5px solid var(--ratio-green);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.modalv3-content-ratio-card-2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+    border-left: 5px solid var(--ratio-orange);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.modalv3-content-ratio-card-3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+    border-left: 5px solid var(--ratio-red);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.modalv3-content-ratio-card-inner {
+    padding: 10px;
+}
+
+
 .modalv3-theme-selection-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
@@ -4265,7 +4305,6 @@ data-share-product-card-button {
     display: flex;
     border: 2px rgb(167, 167, 167) solid;
     border-radius: 20px;
-    cursor: pointer;
     transition: border-radius 0.2s ease;
     background-repeat: no-repeat;
     background-size: cover;
@@ -4275,6 +4314,16 @@ data-share-product-card-button {
 .modalv3-community-theme-banner.theme-selection-box-selected {
     width: auto;
     border: 2px white solid;
+}
+
+.modalv3-community-theme-banner.theme-selection-box-selected button {
+    background-color: var(--brand-green);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.modalv3-community-theme-banner.theme-selection-box-selected button:hover {
+    background-color: var(--brand-green-hover);
 }
 
 .modalv3-community-theme-banner-header {

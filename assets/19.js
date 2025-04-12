@@ -1,6 +1,6 @@
 
 
-app_version1 = "342"
+app_version1 = "343"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -15828,11 +15828,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             <button class="side-tabs-button" id="modal-v3-tab-appearance" onclick="setModalv3InnerContent('appearance')">
                 <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_APPEARANCE")}</p>
             </button>
-            <button class="side-tabs-button" id="modal-v3-tab-accessibility" onclick="setModalv3InnerContent('accessibility')">
-                <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_ACCESSIBILITY")}</p>
-            </button>
+
+            <div id="modalv3-side-tabs-accessibility-container"></div>
+
             <div id="staff-options-modalv3-container"></div>
+
             <div id="login-logout-options-modalv3-container"></div>
+
             <hr>
             <div class="modalv3-side-tabs-app-info-container">
                 <p>Website made by: </p><a class="link" href="https://github.com/DTACat/">DTACat</a>
@@ -15852,6 +15854,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("modalv3-side-tabs-reviews-container").innerHTML = `
                 <button class="side-tabs-button" id="modal-v3-tab-reviews" onclick="setModalv3InnerContent('reviews')">
                     <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_REVIEWS")}</p>
+                </button>
+            `;
+        }
+
+        if (localStorage.experiment_2025_04_accessibility_v2 === "Treatment 1: Enabled") {
+            document.getElementById("modalv3-side-tabs-accessibility-container").innerHTML = `
+                <button class="side-tabs-button" id="modal-v3-tab-accessibility" onclick="setModalv3InnerContent('accessibility')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_ACCESSIBILITY")}</p>
                 </button>
             `;
         }
@@ -15971,6 +15981,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 accountDetails.innerHTML = `
                     <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_HEADER")}</h2>
                     <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_SUMMARY")}</p>
+                    <button class="modalv3-content-card-button" onclick="loginToDiscord()">${getTextString("MODAL_V3_TAB_ACCOUNT_LOGIN_WITH_DISCORD_BUTTON")}</button>
                 `;
                 document.getElementById("login-logout-options-modalv3-container").innerHTML = `
                     <hr>
@@ -16037,7 +16048,49 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_REVIEWS_HEADER")}</h2>
                 <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_HEADER")}</h2>
+
+                    <div class="modalv3-content-ratio-card-1">
+                        <div class="modalv3-content-ratio-card-inner">
+                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_3")}</h2>
+                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_3_SUMMARY")}</p>
+                        </div>
+                    </div>
+                    <div class="modalv3-content-ratio-card-2">
+                        <div class="modalv3-content-ratio-card-inner">
+                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_2")}</h2>
+                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_2_SUMMARY")}</p>
+                        </div>
+                    </div>
+                    <div class="modalv3-content-ratio-card-3">
+                        <div class="modalv3-content-ratio-card-inner">
+                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_1")}</h2>
+                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_1_SUMMARY")}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modalv3-content-card-1">
                     <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_HEADER")}</h2>
+
+                    <div class="modalv3-content-ratio-card-1">
+                        <div class="modalv3-content-ratio-card-inner">
+                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_3")}</h2>
+                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_3_SUMMARY")}</p>
+                        </div>
+                    </div>
+                    <div class="modalv3-content-ratio-card-2">
+                        <div class="modalv3-content-ratio-card-inner">
+                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_2")}</h2>
+                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_2_SUMMARY")}</p>
+                        </div>
+                    </div>
+                    <div class="modalv3-content-ratio-card-3">
+                        <div class="modalv3-content-ratio-card-inner">
+                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_1")}</h2>
+                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_1_SUMMARY")}</p>
+                        </div>
+                    </div>
                 </div>
             `;
         } else if (tab === "appearance") {
@@ -16181,11 +16234,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <p class="modalv3-community-theme-banner-header">${theme.name}</p>
                             <button class="modalv3-apply-theme-button" onclick="updateThemeStore('community-${theme.id}', 'true', '${theme.github.raw}');">Apply</button>
                             <div class="modalv3-community-theme-banner-creddits-container">
-                                <div title="Copy Download Link">
-                                    <svg class="shareIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
-                                </div>
-                                <div title="View Raw">
-                                    <svg class="shareIcon_modal" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.7376 3.18925C15.4883 2.93731 15.0814 2.93686 14.8316 3.18824L14.0087 4.01625C13.7618 4.26471 13.7614 4.66581 14.0078 4.91476L20.3804 11.3527C20.6265 11.6013 20.6265 12.0017 20.3804 12.2503L14.0078 18.6882C13.7614 18.9373 13.7618 19.3383 14.0087 19.5867L14.8316 20.4148C15.0814 20.6662 15.4883 20.6658 15.7376 20.4138L23.815 12.2503C24.061 12.0016 24.061 11.6014 23.815 11.3528L15.7376 3.18925Z" fill="currentColor"></path><path d="M9.99171 4.91476C10.2381 4.66581 10.2377 4.26471 9.99081 4.01625L9.16787 3.18824C8.91804 2.93686 8.51118 2.93731 8.2619 3.18925L0.184466 11.3528C-0.0614893 11.6014 -0.061488 12.0016 0.184466 12.2503L8.2619 20.4138C8.51118 20.6658 8.91803 20.6662 9.16787 20.4148L9.99081 19.5867C10.2377 19.3383 10.2381 18.9373 9.99171 18.6882L3.61906 12.2503C3.37298 12.0017 3.37298 11.6013 3.61906 11.3527L9.99171 4.91476Z" fill="currentColor"></path></svg>
+                                <div title="Github">
+                                    <svg class="shareIcon_modal" onclick="window.open('https://github.com/${theme.github.user}/${theme.github.repo}');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.0001 2.4375C20.0001 1.725 19.9521 0.8505 19.6251 0C19.6251 0 17.4861 0.0149998 15.4686 1.926C14.5371 1.6545 13.5411 1.5 12.5001 1.5C11.4591 1.5 10.4631 1.6545 9.53157 1.926C7.51407 0.0149998 5.37507 0 5.37507 0C5.04957 0.8505 5.00007 1.725 5.00007 2.4375C5.00007 3.516 5.19207 4.1775 5.30757 4.5045C4.17807 5.7585 3.50007 7.311 3.50007 9C3.50007 12.279 5.98257 14.2965 9.50007 15C8.70957 15.6945 8.22507 16.665 8.07057 17.754C7.73607 17.916 7.25007 18 6.68757 18C6.23607 18 5.35857 17.787 4.54107 16.5135C4.21107 15.9975 3.50007 15 2.56257 15C2.37957 15 1.99407 14.988 2.00007 15.2715C2.00307 15.4065 2.21007 15.408 2.65257 15.8025C3.02307 16.134 3.36807 16.677 3.50007 17.25C3.71757 18.1905 4.58907 20.0625 6.68757 20.0625C7.43757 20.0625 8.00007 19.875 8.00007 19.875V23.3115C9.42057 23.757 10.9326 24 12.5001 24C14.0676 24 15.5796 23.757 17.0001 23.3115V18.375C17.0001 17.0265 16.4391 15.825 15.5001 15C19.0176 14.2965 21.5001 12.279 21.5001 9C21.5001 7.341 20.8461 5.8125 19.7511 4.5705C19.8456 4.278 20.0001 3.6 20.0001 2.4375Z" fill="currentColor"/></svg>
                                 </div>
                             </div>
                         `;
