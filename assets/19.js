@@ -1,6 +1,6 @@
 
 
-app_version1 = "343"
+app_version1 = "344"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -18,6 +18,13 @@ defaultAvatar6 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABr
 
 localStorage.experiment_2025_02_mobile_render = "Treatment 1: Use new mobile check";
 
+if (!localStorage.reviews_filter_type) {
+    localStorage.reviews_filter_type = "2";
+}
+
+if (!localStorage.reviews_privacy_type) {
+    localStorage.reviews_privacy_type = "1";
+}
 
 if (localStorage.sa_theme) {
     document.body.classList.add('theme-' + localStorage.sa_theme);
@@ -1064,7 +1071,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                                             if (product.emojiCopy === null) {
                                                 card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                    <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="Request item in our Discord server">Request to P+</button>
+                                                    <button class="card-button" onclick="location.href='https://discord.gg/SVKQEYeTsN';" title="Request item in our Discord server">Request to P+</button>
                                                 `;
                                             } else {
                                                 card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
@@ -5937,7 +5944,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             if (product.emojiCopy === null && product.type != 'plus_more') {
                                                 card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
                                                     <div class="card-multi-button-container" card-multi-button-container>
-                                                        <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI_v2")}</button>
+                                                        <button class="card-button" onclick="location.href='https://discord.gg/SVKQEYeTsN';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI_v2")}</button>
                                                         <button class="card-button" onclick="copyEmoji('${product.sku_id}'); copyNotice('copysku');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
                                                     </div>
                                                 `;
@@ -5952,7 +5959,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         } else {
                                             if (product.emojiCopy === null && product.type != 'plus_more') {
                                                 card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                    <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI")}</button>
+                                                    <button class="card-button" onclick="location.href='https://discord.gg/SVKQEYeTsN';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI")}</button>
                                                 `;
                                             } else if (product.type != 'plus_more') {
                                                 card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
@@ -6749,7 +6756,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToLink('https://discord.gg/Mcwh7hGcWb')`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToLink('https://discord.gg/SVKQEYeTsN')`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
                                                             `;
                                                         } else {
                                                             button_container.innerHTML = `
@@ -6759,7 +6766,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToLink('https://discord.gg/Mcwh7hGcWb')`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToLink('https://discord.gg/SVKQEYeTsN')`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
                                                             `;
                                                             modal.querySelector("[data-download-product-card-button]").innerHTML = `
                                                                 <svg class="downloadIcon_modal" onclick="window.open('https://item.yapper.shop/sku/${product.sku_id}/data.zip');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
@@ -8397,7 +8404,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             if (product.emojiCopy === null && product.type != 'plus_more') {
                                                 card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
                                                     <div class="card-multi-button-container" card-multi-button-container>
-                                                        <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI_v2")}</button>
+                                                        <button class="card-button" onclick="location.href='https://discord.gg/SVKQEYeTsN';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI_v2")}</button>
                                                         <button class="card-button" onclick="copyEmoji('${product.sku_id}'); copyNotice('copysku');" title="${getTextString("CARD_COPU_SKU_ID_TITLE")}">${getTextString("CARD_COPU_SKU_ID")}</button>
                                                     </div>
                                                 `;
@@ -8412,7 +8419,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         } else {
                                             if (product.emojiCopy === null && product.type != 'plus_more') {
                                                 card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
-                                                    <button class="card-button" onclick="location.href='https://discord.gg/Mcwh7hGcWb';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI")}</button>
+                                                    <button class="card-button" onclick="location.href='https://discord.gg/SVKQEYeTsN';" title="${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}">${getTextString("CARD_REQUEST_PPLUS_EMOJI")}</button>
                                                 `;
                                             } else if (product.type != 'plus_more') {
                                                 card.querySelector("[data-product-card-open-in-shop]").innerHTML = `
@@ -9106,7 +9113,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 3: Enable modals w/ p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 4: Enable modals w/ p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToLink('https://discord.gg/Mcwh7hGcWb')`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToLink('https://discord.gg/SVKQEYeTsN')`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
                                                             `;
                                                         } else {
                                                             button_container.innerHTML = `
@@ -9116,7 +9123,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else if (localStorage.experiment_2025_02_shop_card_modals === "Treatment 5: Enable modals w/ data downloads and p+" || localStorage.experiment_2025_02_shop_card_modals === "Treatment 6: Enable modals w/ data downloads and p+ on p+ page") {
                                                         if (typeof product.emojiCopy != 'undefined') {
                                                             button_container.innerHTML = `
-                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToLink('https://discord.gg/Mcwh7hGcWb')`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
+                                                                <button class="card-button ${product.emojiCopy ? '' : 'card-button-no-emoji'}" onclick="${product.emojiCopy ? `copyEmoji('${product.emojiCopy}'); copyNotice('copyemoji');` : `redirectToLink('https://discord.gg/SVKQEYeTsN')`}" title="${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI_TITLE")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI_TITLE")}`}">${product.emojiCopy ? `${getTextString("CARD_COPY_PPLUS_EMOJI")}` : `${getTextString("CARD_REQUEST_PPLUS_EMOJI")}`}</button>
                                                             `;
                                                             modal.querySelector("[data-download-product-card-button]").innerHTML = `
                                                                 <svg class="downloadIcon_modal" onclick="window.open('https://item.yapper.shop/sku/${product.sku_id}/data.zip');" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0547 0.999993L11.0547 11.59L7.7547 8.28999C7.66429 8.186 7.55337 8.10181 7.4289 8.04271C7.30442 7.98361 7.16907 7.95088 7.03134 7.94656C6.89362 7.94224 6.75648 7.96643 6.62855 8.01761C6.50061 8.0688 6.38464 8.14587 6.28789 8.24399C6.19115 8.34212 6.11573 8.45917 6.06637 8.58782C6.01701 8.71647 5.99476 8.85393 6.00104 8.99159C6.00731 9.12924 6.04196 9.26411 6.10282 9.38773C6.16368 9.51136 6.24943 9.62107 6.3547 9.70999L11.3547 14.71C11.5416 14.8932 11.7929 14.9959 12.0547 14.9959C12.3164 14.9959 12.5678 14.8932 12.7547 14.71L17.7547 9.70999C17.92 9.51987 18.0074 9.27437 17.9995 9.02257C17.9916 8.77078 17.889 8.53124 17.7121 8.35185C17.5352 8.17245 17.2972 8.06642 17.0455 8.05496C16.7939 8.04349 16.5471 8.12743 16.3547 8.28999L13.0547 11.6L13.0547 0.999993C13.0547 0.734776 12.9493 0.480422 12.7618 0.292885C12.5743 0.105349 12.3199 -7.13283e-06 12.0547 -7.10964e-06C11.7895 -7.08645e-06 11.5351 0.105349 11.3476 0.292885C11.1601 0.480422 11.0547 0.734776 11.0547 0.999993Z" fill="currentColor"/><path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H7C7.26522 14 7.51957 13.8946 7.70711 13.7071C7.89464 13.5196 8 13.2652 8 13C8 12.7348 7.89464 12.4804 7.70711 12.2929C7.51957 12.1054 7.26522 12 7 12H5C4.20435 12 3.44129 12.3161 2.87868 12.8787C2.31607 13.4413 2 14.2044 2 15V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V15C22 14.2044 21.6839 13.4413 21.1213 12.8787C20.5587 12.3161 19.7956 12 19 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13C16 13.2652 16.1054 13.5196 16.2929 13.7071C16.4804 13.8946 16.7348 14 17 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" fill="currentColor"/></svg>
@@ -15926,6 +15933,22 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
         document.getElementById("modalv3-right-content-container").scrollTo(0,0);
 
+        if (localStorage.discord_token) {
+            document.getElementById("login-logout-options-modalv3-container").innerHTML = `
+                <hr>
+                <button class="side-tabs-button" id="modal-v3-tab-log_out" onclick="logoutOfDiscord()">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_LOG_OUT")}</p>
+                </button>
+            `;
+        } else {
+            document.getElementById("login-logout-options-modalv3-container").innerHTML = `
+                <hr>
+                <button class="side-tabs-button" id="modal-v3-tab-log_in" onclick="loginToDiscord()">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_LOG_IN")}</p>
+                </button>
+            `;
+        }
+
         if (tab === "account") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
@@ -15969,12 +15992,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         </div>
                     </div>
                 `;
-                document.getElementById("login-logout-options-modalv3-container").innerHTML = `
-                    <hr>
-                    <button class="side-tabs-button" id="modal-v3-tab-log_out" onclick="logoutOfDiscord()">
-                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_LOG_OUT")}</p>
-                    </button>
-                `;
             } else {
                 accountDetails.style.marginTop = '20px';
                 accountDetails.style.marginBottom = '20px';
@@ -15982,12 +15999,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_HEADER")}</h2>
                     <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_SUMMARY")}</p>
                     <button class="modalv3-content-card-button" onclick="loginToDiscord()">${getTextString("MODAL_V3_TAB_ACCOUNT_LOGIN_WITH_DISCORD_BUTTON")}</button>
-                `;
-                document.getElementById("login-logout-options-modalv3-container").innerHTML = `
-                    <hr>
-                    <button class="side-tabs-button" id="modal-v3-tab-log_in" onclick="loginToDiscord()">
-                        <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_LOG_IN")}</p>
-                    </button>
                 `;
             }
         } else if (tab === "profile") {
@@ -16045,54 +16056,78 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             `;
         } else if (tab === "reviews") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
-            tabPageOutput.innerHTML = `
-                <h2>${getTextString("MODAL_V3_TAB_REVIEWS_HEADER")}</h2>
-                <div class="modalv3-content-card-1">
-                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_HEADER")}</h2>
+            if (localStorage.discord_token) {
+                tabPageOutput.innerHTML = `
+                    <h2>${getTextString("MODAL_V3_TAB_REVIEWS_HEADER")}</h2>
+                    <div class="modalv3-content-card-1">
+                        <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SUMMARY")}</p>
 
-                    <div class="modalv3-content-ratio-card-1">
-                        <div class="modalv3-content-ratio-card-inner">
-                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_3")}</h2>
-                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_3_SUMMARY")}</p>
+                        <div class="modalv3-content-ratio-card green" id="modalv3-ratio-card-reviews-filter-3" onclick="updateReviewsFilterStore('3');">
+                            <div class="modalv3-content-ratio-card-inner">
+                                <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_3")}</h2>
+                                <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_3_SUMMARY")}</p>
+                            </div>
+                        </div>
+                        <div class="modalv3-content-ratio-card orange" id="modalv3-ratio-card-reviews-filter-2" onclick="updateReviewsFilterStore('2');">
+                            <div class="modalv3-content-ratio-card-inner">
+                                <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_2")}</h2>
+                                <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_2_SUMMARY")}</p>
+                            </div>
+                        </div>
+                        <div class="modalv3-content-ratio-card red" id="modalv3-ratio-card-reviews-filter-1"  onclick="updateReviewsFilterStore('1');">
+                            <div class="modalv3-content-ratio-card-inner">
+                                <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_1")}</h2>
+                                <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_1_SUMMARY")}</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="modalv3-content-ratio-card-2">
-                        <div class="modalv3-content-ratio-card-inner">
-                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_2")}</h2>
-                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_2_SUMMARY")}</p>
-                        </div>
-                    </div>
-                    <div class="modalv3-content-ratio-card-3">
-                        <div class="modalv3-content-ratio-card-inner">
-                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_1")}</h2>
-                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SETTINGS_1_SUMMARY")}</p>
-                        </div>
-                    </div>
-                </div>
+                    <hr>
+                    <div class="modalv3-content-card-1">
+                        <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SUMMARY")}</p>
 
-                <div class="modalv3-content-card-1">
-                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_HEADER")}</h2>
+                        <div class="modalv3-content-ratio-card green" id="modalv3-ratio-card-reviews-privacy-3" onclick="updateReviewsPrivacyStore('3');">
+                            <div class="modalv3-content-ratio-card-inner">
+                                <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_3")}</h2>
+                                <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_3_SUMMARY")}</p>
+                            </div>
+                        </div>
+                        <div class="modalv3-content-ratio-card orange" id="modalv3-ratio-card-reviews-privacy-2" onclick="updateReviewsPrivacyStore('2');">
+                            <div class="modalv3-content-ratio-card-inner">
+                                <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_2")}</h2>
+                                <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_2_SUMMARY")}</p>
+                            </div>
+                        </div>
+                        <div class="modalv3-content-ratio-card red" id="modalv3-ratio-card-reviews-privacy-1"  onclick="updateReviewsPrivacyStore('1');">
+                            <div class="modalv3-content-ratio-card-inner">
+                                <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_1")}</h2>
+                                <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_1_SUMMARY")}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="modalv3-content-card-1">
+                        <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_DELETE_ALL_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_DELETE_ALL_SUMMARY")}</p>
 
-                    <div class="modalv3-content-ratio-card-1">
-                        <div class="modalv3-content-ratio-card-inner">
-                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_3")}</h2>
-                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_3_SUMMARY")}</p>
-                        </div>
+                        <button class="modalv3-content-card-button" onclick="fetchAPITestFetch()">Delete Data</button>
                     </div>
-                    <div class="modalv3-content-ratio-card-2">
-                        <div class="modalv3-content-ratio-card-inner">
-                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_2")}</h2>
-                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_2_SUMMARY")}</p>
-                        </div>
+                `;
+
+                updateReviewsFilterStore();
+                updateReviewsPrivacyStore();
+            } else {
+                tabPageOutput.innerHTML = `
+                    <h2>${getTextString("MODAL_V3_TAB_REVIEWS_HEADER")}</h2>
+                    <div class="modalv3-content-card-1">
+                        <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_DISCORD_ACCOUNT_NOT_LOGGED_IN_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_DISCORD_ACCOUNT_NOT_LOGGED_IN_SUMMARY")}</p>
+                        <button class="modalv3-content-card-button" onclick="loginToDiscord()">${getTextString("MODAL_V3_TAB_ACCOUNT_LOGIN_WITH_DISCORD_BUTTON")}</button>
                     </div>
-                    <div class="modalv3-content-ratio-card-3">
-                        <div class="modalv3-content-ratio-card-inner">
-                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_1")}</h2>
-                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_1_SUMMARY")}</p>
-                        </div>
-                    </div>
-                </div>
-            `;
+                `;
+            }
+
         } else if (tab === "appearance") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
@@ -16445,9 +16480,29 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         </select>
                     </div>
 
+                    <div class="modalv3-content-card-2">
+                        <p class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_API_TESTING_TEST_FETCH_PARAMS")}</p>
+                        <select class="modalv3-api-testfetch-select-input" id="modalv3-test-fetch-search-params-key">
+                        <option value="tab">tab</option>
+                        <option value="has-leaks">has-leaks</option>
+                        <option value="include-no-sku-items">include-no-sku-items</option>
+                        <option value="include-unpublished">include-unpublished</option>
+                        </select>
+                        <input type="text" class="modalv3-api-testfetch-text-input" id="modalv3-test-fetch-search-params-value" placeholder="Key">
+                        <button class="modalv3-testfetch-button-1" onclick="modalv3AddTestFetchParam()">Add</button>
+                    </div>
+
+                    <div id="modalv3-test-fetch-params-output">
+                        <div class="modalv3-api-testfetch-param-card">
+                            <input type="text" class="modalv3-api-testfetch-text-input test-fetch-param-key hidden" value="is-test-fetch" disabled>
+                            <input type="text" class="modalv3-api-testfetch-text-input test-fetch-param-value hidden" value="true" disabled>
+                            <p>?is-test-fetch=true</p>
+                        </div>
+                    </div>
+
                     <button class="modalv3-content-card-button" onclick="fetchAPITestFetch()">${getTextString("MODAL_V3_TAB_API_TESTING_TEST_FETCH_FETCH")}</button>
 
-                    <textarea readonly class="modalv3-api-testfetch-textarea-input" id="modalv3-test-fetch-output"></textarea>
+                    <textarea readonly class="modalv3-api-testfetch-textarea-input" id="modalv3-test-fetch-output" placeholder="Output..."></textarea>
 
                 </div>
                 <hr>
@@ -16584,6 +16639,48 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     }
 
+    function updateReviewsFilterStore(setFilter) {
+        const el3 = document.getElementById("modalv3-ratio-card-reviews-filter-3");
+        const el2 = document.getElementById("modalv3-ratio-card-reviews-filter-2");
+        const el1 = document.getElementById("modalv3-ratio-card-reviews-filter-1");
+
+        if (el3 && el3.classList.contains('modalv3-content-ratio-card-selected')) {
+            el3.classList.remove('modalv3-content-ratio-card-selected');
+        } else if (el2 && el2.classList.contains('modalv3-content-ratio-card-selected')) {
+            el2.classList.remove('modalv3-content-ratio-card-selected');
+        } else if (el1 && el1.classList.contains('modalv3-content-ratio-card-selected')) {
+            el1.classList.remove('modalv3-content-ratio-card-selected');
+        }
+
+        if (setFilter) {
+            localStorage.reviews_filter_type = setFilter;
+            document.getElementById("modalv3-ratio-card-reviews-filter-" + setFilter).classList.add('modalv3-content-ratio-card-selected');
+        } else {
+            document.getElementById("modalv3-ratio-card-reviews-filter-" + localStorage.reviews_filter_type).classList.add('modalv3-content-ratio-card-selected');
+        }
+    }
+
+    function updateReviewsPrivacyStore(setPrivacy) {
+        const el3 = document.getElementById("modalv3-ratio-card-reviews-privacy-3");
+        const el2 = document.getElementById("modalv3-ratio-card-reviews-privacy-2");
+        const el1 = document.getElementById("modalv3-ratio-card-reviews-privacy-1");
+
+        if (el3 && el3.classList.contains('modalv3-content-ratio-card-selected')) {
+            el3.classList.remove('modalv3-content-ratio-card-selected');
+        } else if (el2 && el2.classList.contains('modalv3-content-ratio-card-selected')) {
+            el2.classList.remove('modalv3-content-ratio-card-selected');
+        } else if (el1 && el1.classList.contains('modalv3-content-ratio-card-selected')) {
+            el1.classList.remove('modalv3-content-ratio-card-selected');
+        }
+
+        if (setPrivacy) {
+            localStorage.reviews_privacy_type = setPrivacy;
+            document.getElementById("modalv3-ratio-card-reviews-privacy-" + setPrivacy).classList.add('modalv3-content-ratio-card-selected');
+        } else {
+            document.getElementById("modalv3-ratio-card-reviews-privacy-" + localStorage.reviews_privacy_type).classList.add('modalv3-content-ratio-card-selected');
+        }
+    }
+
 
     function modalv3RefreshLocalStorageList() {
         const container = document.getElementById('modalv3-localstorage-output');
@@ -16699,6 +16796,25 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
 
+    function modalv3AddTestFetchParam() {
+        const key = document.getElementById("modalv3-test-fetch-search-params-key").value;
+        const value = document.getElementById('modalv3-test-fetch-search-params-value').value;
+  
+        const container = document.getElementById('modalv3-test-fetch-params-output');
+        const div = document.createElement('div');
+        div.className = 'modalv3-api-testfetch-param-card';
+        div.innerHTML = `
+            <input type="text" class="modalv3-api-testfetch-text-input test-fetch-param-key hidden" value="${key}" disabled>
+            <input type="text" class="modalv3-api-testfetch-text-input test-fetch-param-value hidden" value="${value}" disabled>
+            <p>&${key}=${value}</p>
+            <button class="modalv3-testfetch-button-1" onclick="this.parentElement.remove()">Delete</button>
+        `;
+        container.appendChild(div);
+
+        document.getElementById('modalv3-test-fetch-search-params-value').value = '';
+    }
+
+
     function fetchAPITestFetch() {
         const baseurl = document.getElementById("modalv3-test-fetch-base-url").value;
         const versionid = document.getElementById("modalv3-test-fetch-version").value;
@@ -16707,9 +16823,20 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
         url = baseurl + "/" + versionid + endpoint;
         testFetchURL = new URL(url);
-        testFetchURL.searchParams.append("is-test-fetch", "true");
 
-        fetch(testFetchURL, {
+        const keyInputs = document.querySelectorAll('.test-fetch-param-key');
+        const valueInputs = document.querySelectorAll('.test-fetch-param-value');
+
+        const params = new URLSearchParams();
+        for (let i = 0; i < keyInputs.length; i++) {
+            const key = keyInputs[i].value.trim();
+            const value = valueInputs[i].value.trim();
+            if (key) params.append(key, value);
+        }
+
+        const finalUrl = `${testFetchURL}?${params.toString()}`;
+
+        fetch(finalUrl, {
             method: "GET",
             headers: {
                 "Password": api_password,
@@ -16841,7 +16968,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 </div>
                 <p class="center-text" style="font-size: 30px; margin-top: 20px; margin-bottom: 0px; color: var(--white);">${getTextString("OPTIONS_SIDEBAR_YAPPER_HELP")}</p>
                 <div class="experiment-card-holder" id="yapper-article-container" style="width: 300px; margin-left: auto; margin-right: auto;">
-                    <button class="card-button" onclick="window.open('https://discord.gg/Mcwh7hGcWb');">${getTextString("OPTIONS_SIDEBAR_YAPPER_DISCORD_SERVER")}</button>
+                    <button class="card-button" onclick="window.open('https://discord.gg/SVKQEYeTsN');">${getTextString("OPTIONS_SIDEBAR_YAPPER_DISCORD_SERVER")}</button>
                     <button class="card-button" onclick="window.open('https://github.com/Yappering/');">${getTextString("OPTIONS_SIDEBAR_YAPPER_GITHUB")}</button>
                 </div>
                 ${getTextString("APP_VERSION")}${tcbx926n29}
@@ -17402,15 +17529,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 modal_back.remove();
             }, 300);
         });
-
-        modal.querySelector("[data-go-back-button]").addEventListener('click', () => {
-            modal.classList.remove('show');
-            modal_back.classList.remove('show');
-            setTimeout(() => {
-                modal.remove();
-                modal_back.remove();
-            }, 300);
-        });
     }
 
     function actuallyLogOutOfDiscord() {
@@ -17424,6 +17542,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         localStorage.removeItem('discord_banner');
         localStorage.removeItem('discord_premium_type');
         localStorage.dev = "false";
+        localStorage.reviews_filter_type = "2";
         location.reload();
     }
 

@@ -4238,7 +4238,7 @@ data-share-product-card-button {
 .modalv3-content-card-button {
     display: block;
     margin: 5px 0;
-    padding: 10px 30px;
+    padding: 10px 20px;
     background-color: var(--brand-500);
     color: #fff;
     border: 2px var(--6) solid;
@@ -4254,34 +4254,34 @@ data-share-product-card-button {
 }
 
 
-.modalv3-content-ratio-card-1 {
+.modalv3-content-ratio-card {
     margin-top: 10px;
     margin-bottom: 10px;
     width: 100%;
     height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.modalv3-content-ratio-card.green {
     border-left: 5px solid var(--ratio-green);
-    border-radius: 10px;
-    cursor: pointer;
 }
 
-.modalv3-content-ratio-card-2 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-    height: auto;
+.modalv3-content-ratio-card.orange {
     border-left: 5px solid var(--ratio-orange);
-    border-radius: 10px;
-    cursor: pointer;
 }
 
-.modalv3-content-ratio-card-3 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-    height: auto;
+.modalv3-content-ratio-card.red {
     border-left: 5px solid var(--ratio-red);
-    border-radius: 10px;
-    cursor: pointer;
+}
+
+.modalv3-content-ratio-card:hover {
+    background-color: #464e5560;
+}
+
+.modalv3-content-ratio-card-selected {
+    background-color: #464e5560;
 }
 
 .modalv3-content-ratio-card-inner {
@@ -4500,6 +4500,30 @@ data-share-product-card-button {
     border-radius: 5px;
     padding-inline: 10px;
 }
+
+.modalv3-testfetch-button-1 {
+    padding: 10px 30px;
+    background-color: var(--brand-500);
+    color: #fff;
+    border: 2px var(--6) solid;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+}
+
+.modalv3-testfetch-button-1:hover {
+    background-color: var(--brand-500-hover);
+}
+
+.modalv3-api-testfetch-param-card {
+    padding: 10px;
+    background-color: var(--discord-like-settings-sidebar);
+    margin-bottom: 3px;
+    border-radius: 5px;
+}
+
 
 
 .modalv3-localstorage-item-card {
