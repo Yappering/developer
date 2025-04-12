@@ -3964,12 +3964,12 @@ data-share-product-card-button {
     position: relative;
     left: 0;
     top: 0;
-    width: 800px;
-    height: 95%;
+    width: 100%;
+    height: 100%;
 }
 
 .modalv3-right-content-container {
-    max-width: 800px;
+    max-width: 100%;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -3979,10 +3979,12 @@ data-share-product-card-button {
 }
 
 .modalv3-right-content-container-inner {
+    position: relative;
     max-width: 700px;
-    height: 95%;
-    margin-left: auto;
-    margin-right: auto;
+    height: auto;
+    margin-top: 30px;
+    margin-left: 80px;
+    padding-bottom: 30px;
     top: 0px;
 }
 
@@ -4004,6 +4006,13 @@ data-share-product-card-button {
 .modalv3-content-card-1 .modalv3-content-card-summary {
     color: var(--modalv3-card-text);
     margin: 0;
+}
+
+.modalv3-content-card-2 {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .modalv3-account-account-details {
@@ -4249,11 +4258,13 @@ data-share-product-card-button {
 
 
 .modalv3-community-theme-banner {
+    position: relative;
     max-width: 700px;
     height: 120px;
     margin: 20px 0;
     display: flex;
-    border-radius: 30px;
+    border: 2px rgb(167, 167, 167) solid;
+    border-radius: 20px;
     cursor: pointer;
     transition: border-radius 0.2s ease;
     background-repeat: no-repeat;
@@ -4261,18 +4272,52 @@ data-share-product-card-button {
     background-position: center;
 }
 
-.modalv3-community-theme-banner:hover {
-    border-radius: 15px;
-}
-
 .modalv3-community-theme-banner.theme-selection-box-selected {
     width: auto;
+    border: 2px white solid;
 }
 
 .modalv3-community-theme-banner-header {
     font-size: 20px;
     margin-top: 20px;
     margin-left: 20px;
+}
+
+.modalv3-community-theme-banner-creddits-container {
+    position: absolute;
+    width: 200px;
+    height: 34px;
+    top: 10px;
+    right: 10px;
+    display: grid;
+    direction: rtl;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(29px, 1fr));
+}
+
+.modalv3-community-theme-banner-creddits-container svg {
+    border-radius: 50%;
+}
+
+.modalv3-apply-theme-button {
+    position: absolute;
+    margin: 5px 0;
+    padding: 10px 30px;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--brand-500);
+    color: #fff;
+    border: 2px var(--6) solid;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    height: 39px;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+}
+
+.modalv3-apply-theme-button:hover {
+    background-color: var(--brand-500-hover);
 }
 
 
@@ -4331,7 +4376,7 @@ data-share-product-card-button {
     border: none;
     outline: none;
     border-radius: 5px;
-    color: var(--white);
+    color: white;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
@@ -4342,7 +4387,7 @@ data-share-product-card-button {
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
     gap: 5px;
-    height: 200px;
+    height: auto;
     border-radius: 20px;
     background-color: var(--background-tertiary);
     padding: 10px;
@@ -4408,11 +4453,36 @@ data-share-product-card-button {
 }
 
 
+.modalv3-localstorage-item-card {
+    padding: 10px;
+    background-color: var(--discord-like-settings-sidebar);
+    margin-bottom: 3px;
+    border-radius: 5px;
+}
+
+.modalv3-localstorage-item-card button {
+    padding: 10px 30px;
+    background-color: var(--brand-500);
+    color: #fff;
+    border: 2px var(--6) solid;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+}
+
+.modalv3-localstorage-item-card button:hover {
+    background-color: var(--brand-500-hover);
+}
+
+
+
 .modalv3-inner-left {
     position: relative;
     left: 0;
     top: 0;
-    width: 35%;
+    width: 45%;
     height: 100%;
     background-color: var(--discord-like-settings-sidebar);
 }
@@ -4455,7 +4525,7 @@ data-share-product-card-button {
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    background-color: var(--background-secondary);
+    background-color: var(--discord-like-settings-sidebar);
     color: var(--modalv3-tab-text);
     transition: background-color 0.1s, color 0.1s ease-in-out;
 }
@@ -4496,8 +4566,9 @@ data-share-product-card-button {
 }
 
 .container_c2b141 {
-    margin-top: 20px;
-    margin-left: 20px;
+    position: absolute;
+    top: 20px;
+    left: 850px;
     color: #C4C5C9;
     height: 50px;
     width: 34px;
@@ -5430,6 +5501,11 @@ input:focus {
 }
 
 select:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+textarea:focus {
     outline: none;
     box-shadow: none;
 }

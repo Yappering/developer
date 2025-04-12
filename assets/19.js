@@ -1,6 +1,6 @@
 
 
-app_version1 = "341"
+app_version1 = "342"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -15796,20 +15796,20 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     
                     </div>
                 </div>
-                <div class="modalv3-inner-right">
+                <div class="modalv3-inner-right" id="modalv3-inner-right">
                     <div class="modalv3-right-content-container" id="modalv3-right-content-container">
                         <div class="modalv3-right-content-container-inner" id="modalv3-right-content-container-inner">
                         
                         </div>
+                        <div class="container_c2b141" data-discord-like-settings-close-button>
+                            <div class="closeButton_c2b141" aria-label="Close" role="button" tabindex="0">
+                                <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path>
+                                </svg>
+                            </div>
+                            <div class="keybind_c2b141" aria-hidden="true">ESC</div>
+                        </div>
                     </div>
-                </div>
-                <div class="container_c2b141" data-discord-like-settings-close-button>
-                    <div class="closeButton_c2b141" aria-label="Close" role="button" tabindex="0">
-                        <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path>
-                        </svg>
-                    </div>
-                    <div class="keybind_c2b141" aria-hidden="true">ESC</div>
                 </div>
             </div>
         `;
@@ -15822,6 +15822,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_ACCOUNT")}</p>
             </button>
             <div id="modalv3-side-tabs-profile-container"></div>
+            <div id="modalv3-side-tabs-reviews-container"></div>
             <hr>
             <p class="side-tabs-category-text">${getTextString("MODAL_V3_TAB_HEADER_SITE_SETTINGS")}</p>
             <button class="side-tabs-button" id="modal-v3-tab-appearance" onclick="setModalv3InnerContent('appearance')">
@@ -15843,6 +15844,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("modalv3-side-tabs-profile-container").innerHTML = `
                 <button class="side-tabs-button" id="modal-v3-tab-profile" onclick="setModalv3InnerContent('profile')">
                     <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_PROFILE")}</p>
+                </button>
+            `;
+        }
+
+        if (localStorage.experiment_2025_04_reviews_v2 === "Treatment 1: Enabled") {
+            document.getElementById("modalv3-side-tabs-reviews-container").innerHTML = `
+                <button class="side-tabs-button" id="modal-v3-tab-reviews" onclick="setModalv3InnerContent('reviews')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_REVIEWS")}</p>
                 </button>
             `;
         }
@@ -15905,8 +15914,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             });
         }
 
+        document.getElementById("modalv3-right-content-container").scrollTo(0,0);
+
         if (tab === "account") {
-            document.getElementById("modal-v3-tab-account").classList.add("side-tabs-button-selected");
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_ACCOUNT_HEADER")}</h2>
                 <div class="modalv3-content-card-1">
@@ -15969,7 +15980,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 `;
             }
         } else if (tab === "profile") {
-            document.getElementById("modal-v3-tab-profile").classList.add("side-tabs-button-selected");
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_PROFILE_HEADER")}</h2>
                 <div class="modalv3-content-card-1">
@@ -16021,8 +16032,16 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <input type="color" autocomplete="off" class="modalv3-profile-editor-color-input" oninput="changeBannerColorFromInput();" id="profile-banner-color-input" value="#829ff4">
                 </div>
             `;
+        } else if (tab === "reviews") {
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_REVIEWS_HEADER")}</h2>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_HEADER")}</h2>
+                </div>
+            `;
         } else if (tab === "appearance") {
-            document.getElementById("modal-v3-tab-appearance").classList.add("side-tabs-button-selected");
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_APPEARANCE_HEADER")}</h2>
                 <div class="modalv3-content-card-1">
@@ -16158,12 +16177,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             themeIcon.style.backgroundColor = theme.banner.color_primary;
                         }
 
-                        themeIcon.onclick = function() {
-                            updateThemeStore('community-' + theme.id, 'true', theme.github.raw);
-                        };
-
                         themeIcon.innerHTML = `
                             <p class="modalv3-community-theme-banner-header">${theme.name}</p>
+                            <button class="modalv3-apply-theme-button" onclick="updateThemeStore('community-${theme.id}', 'true', '${theme.github.raw}');">Apply</button>
+                            <div class="modalv3-community-theme-banner-creddits-container">
+                                <div title="Copy Download Link">
+                                    <svg class="shareIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.32 14.72a1 1 0 0 1 0-1.41l2.51-2.51a3.98 3.98 0 0 0-5.62-5.63l-2.52 2.51a1 1 0 0 1-1.41-1.41l2.52-2.52a5.98 5.98 0 0 1 8.45 8.46l-2.52 2.51a1 1 0 0 1-1.41 0ZM7.68 9.29a1 1 0 0 1 0 1.41l-2.52 2.51a3.98 3.98 0 1 0 5.63 5.63l2.51-2.52a1 1 0 0 1 1.42 1.42l-2.52 2.51a5.98 5.98 0 0 1-8.45-8.45l2.51-2.51a1 1 0 0 1 1.42 0Z" class=""></path><path fill="currentColor" d="M14.7 10.7a1 1 0 0 0-1.4-1.4l-4 4a1 1 0 1 0 1.4 1.4l4-4Z" class=""></path></svg>
+                                </div>
+                                <div title="View Raw">
+                                    <svg class="shareIcon_modal" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.7376 3.18925C15.4883 2.93731 15.0814 2.93686 14.8316 3.18824L14.0087 4.01625C13.7618 4.26471 13.7614 4.66581 14.0078 4.91476L20.3804 11.3527C20.6265 11.6013 20.6265 12.0017 20.3804 12.2503L14.0078 18.6882C13.7614 18.9373 13.7618 19.3383 14.0087 19.5867L14.8316 20.4148C15.0814 20.6662 15.4883 20.6658 15.7376 20.4138L23.815 12.2503C24.061 12.0016 24.061 11.6014 23.815 11.3528L15.7376 3.18925Z" fill="currentColor"></path><path d="M9.99171 4.91476C10.2381 4.66581 10.2377 4.26471 9.99081 4.01625L9.16787 3.18824C8.91804 2.93686 8.51118 2.93731 8.2619 3.18925L0.184466 11.3528C-0.0614893 11.6014 -0.061488 12.0016 0.184466 12.2503L8.2619 20.4138C8.51118 20.6658 8.91803 20.6662 9.16787 20.4148L9.99081 19.5867C10.2377 19.3383 10.2381 18.9373 9.99171 18.6882L3.61906 12.2503C3.37298 12.0017 3.37298 11.6013 3.61906 11.3527L9.99171 4.91476Z" fill="currentColor"></path></svg>
+                                </div>
+                            </div>
                         `;
 
                         document.getElementById("modalv3-community-theme-selection-container").appendChild(themeIcon);
@@ -16181,7 +16205,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 document.getElementById("theme-" + localStorage.sa_theme + "-button").classList.add('theme-selection-box-selected');
             }
         } else if (tab === "accessibility") {
-            document.getElementById("modal-v3-tab-accessibility").classList.add("side-tabs-button-selected");
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_ACCESSIBILITY_HEADER")}</h2>
                 <div class="modalv3-content-card-1">
@@ -16193,7 +16217,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 </div>
             `;
         } else if (tab === "experiments") {
-            document.getElementById("modal-v3-tab-experiments").classList.add("side-tabs-button-selected");
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_EXPERIMENTS_HEADER")}</h2>
 
@@ -16275,7 +16299,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 });
             }
         } else if (tab === "dismissible_content") {
-            document.getElementById("modal-v3-tab-dismissible_content").classList.add("side-tabs-button-selected");
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_DISMISSIBLE_CONTENT_HEADER")}</h2>
 
@@ -16334,7 +16358,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 });
             }
         } else if (tab === "api_test_fetch") {
-            document.getElementById("modal-v3-tab-api_test_fetch").classList.add("side-tabs-button-selected");
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_API_TEST_FETCH_HEADER")}</h2>
                 <div class="modalv3-content-card-1">
@@ -16349,21 +16373,27 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_API_TESTING_TEST_FETCH_HEADER")}</h2>
                     <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_API_TESTING_TEST_FETCH_SUMMARY")}</p>
 
-                    <p class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_API_TESTING_TEST_FETCH_BASE_URL")}</p>
-                    <input type="text" readonly class="modalv3-api-testfetch-text-input" id="modalv3-test-fetch-base-url" value="https://api.yapper.shop">
+                    <div class="modalv3-content-card-2">
+                        <p class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_API_TESTING_TEST_FETCH_BASE_URL")}</p>
+                        <input type="text" readonly class="modalv3-api-testfetch-text-input" id="modalv3-test-fetch-base-url" value="https://api.yapper.shop">
+                    </div>
 
-                    <p class="modalv3-content-card-sub-header" >${getTextString("MODAL_V3_TAB_API_TESTING_TEST_FETCH_API_VERSION")}</p>
-                    <select class="modalv3-api-testfetch-select-input" id="modalv3-test-fetch-version">
-                    <option value="v2">v2</option>
-                    </select>
+                    <div class="modalv3-content-card-2">
+                        <p class="modalv3-content-card-sub-header" >${getTextString("MODAL_V3_TAB_API_TESTING_TEST_FETCH_API_VERSION")}</p>
+                        <select class="modalv3-api-testfetch-select-input" id="modalv3-test-fetch-version">
+                        <option value="v2">v2</option>
+                        </select>
+                    </div>
 
-                    <p class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_API_TESTING_TEST_FETCH_ENDPOINT")}</p>
-                    <select class="modalv3-api-testfetch-select-input" id="modalv3-test-fetch-endpoint">
-                    <option value="/collectibles-shop">/collectibles-shop</option>
-                    <option value="/profile-effects">/profile-effects</option>
-                    <option value="/community">/community</option>
-                    <option value="/status">/status</option>
-                    </select>
+                    <div class="modalv3-content-card-2">
+                        <p class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_API_TESTING_TEST_FETCH_ENDPOINT")}</p>
+                        <select class="modalv3-api-testfetch-select-input" id="modalv3-test-fetch-endpoint">
+                        <option value="/collectibles-shop">/collectibles-shop</option>
+                        <option value="/profile-effects">/profile-effects</option>
+                        <option value="/community">/community</option>
+                        <option value="/status">/status</option>
+                        </select>
+                    </div>
 
                     <button class="modalv3-content-card-button" onclick="fetchAPITestFetch()">${getTextString("MODAL_V3_TAB_API_TESTING_TEST_FETCH_FETCH")}</button>
 
@@ -16374,6 +16404,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <div class="modalv3-content-card-1">
                     <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_HEADER")}</h2>
                     <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_SUMMARY")}</p>
+
+                    <div class="modalv3-content-card-2">
+                        <p class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_BASE_URL")}</p>
+                        <input type="text" class="modalv3-api-testfetch-text-input">
+                    </div>
+
+                    <div class="modalv3-content-card-2">
+                        <p class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_PORT")}</p>
+                        <input type="text" class="modalv3-api-testfetch-text-input">
+                    </div>
                 </div>
             `;
 
@@ -16450,28 +16491,163 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 `;
             });
         } else if (tab === "local_storage") {
-            document.getElementById("modal-v3-tab-local_storage").classList.add("side-tabs-button-selected");
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_LOCAL_STORAGE_HEADER")}</h2>
                 <div class="modalv3-content-card-1">
                     <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_HEADER")}</h2>
                     <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_SUMMARY")}</p>
+
+                    <div class="modalv3-localstorage-item-card">
+                        <input type="text" class="modalv3-api-testfetch-text-input" id="modalv3-localstorage-add-input-key" placeholder="${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_KEY_PLACEHOLDER")}">
+                        <input type="text" class="modalv3-api-testfetch-text-input" id="modalv3-localstorage-add-input-value" placeholder="${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_VALUE_PLACEHOLDER")}">
+                        <button onclick="modalv3AddLocalStorage()">${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_ADD")}</button>
+                    </div>
+                    <div id="modalv3-localstorage-output"></div>
                 </div>
                 <hr>
                 <div class="modalv3-content-card-1">
                     <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_STORAGE_SESSION_STORAGE_HEADER")}</h2>
                     <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_STORAGE_SESSION_STORAGE_SUMMARY")}</p>
+
+                    <div class="modalv3-localstorage-item-card">
+                        <input type="text" class="modalv3-api-testfetch-text-input" id="modalv3-sessionstorage-add-input-key" placeholder="${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_KEY_PLACEHOLDER")}">
+                        <input type="text" class="modalv3-api-testfetch-text-input" id="modalv3-sessionstorage-add-input-value" placeholder="${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_VALUE_PLACEHOLDER")}">
+                        <button onclick="modalv3AddSessionStorage()">${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_ADD")}</button>
+                    </div>
+                    <div id="modalv3-sessionstorage-output"></div>
                 </div>
             `;
+
+            modalv3RefreshLocalStorageList()
+            modalv3RefreshSessionStorageList()
         } else if (tab === "misc") {
-            document.getElementById("modal-v3-tab-misc").classList.add("side-tabs-button-selected");
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_MISC_HEADER")}</h2>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_MISC_H_HEADER")}</h2>
+                </div>
             `;
         } else {
             console.error(tab + ' is not a valid tab');
         }
     }
+
+
+    function modalv3RefreshLocalStorageList() {
+        const container = document.getElementById('modalv3-localstorage-output');
+        container.innerHTML = '';
+  
+        const keys = Object.keys(localStorage).sort();
+  
+        if (keys.length === 0) {
+            container.innerHTML = '<p>No items in localStorage.</p>';
+            return;
+        }
+  
+        keys.forEach(key => {
+            const value = localStorage.getItem(key);
+  
+            const div = document.createElement('div');
+            div.className = 'modalv3-localstorage-item-card';
+  
+            div.innerHTML = `
+                <input type="text" class="modalv3-api-testfetch-text-input" value="${key}" disabled>
+                <input type="text" class="modalv3-api-testfetch-text-input" id="value-local-${key}" value="${value}">
+                <button onclick="modalv3UpdateLocalStorage('${key}')">${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_UPDATE")}</button>
+                <button onclick="modalv3DeleteLocalStorage('${key}')">${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_DELETE")}</button>
+            `;
+  
+            container.appendChild(div);
+        });
+    }
+
+    function modalv3AddLocalStorage() {
+        const key = document.getElementById('modalv3-localstorage-add-input-key').value.trim();
+        const value = document.getElementById('modalv3-localstorage-add-input-value').value;
+  
+        if (!key) {
+            alert("Key cannot be empty.");
+            return;
+        }
+  
+        localStorage.setItem(key, value);
+        document.getElementById('modalv3-localstorage-add-input-key').value = '';
+        document.getElementById('modalv3-localstorage-add-input-value').value = '';
+        modalv3RefreshLocalStorageList();
+    }
+
+    function modalv3UpdateLocalStorage(key) {
+        const newValue = document.getElementById(`value-local-${key}`).value;
+        localStorage.setItem(key, newValue);
+        modalv3RefreshLocalStorageList();
+    }
+
+    function modalv3DeleteLocalStorage(key) {
+        if (confirm(`Delete key "${key}"?`)) {
+            localStorage.removeItem(key);
+            modalv3RefreshLocalStorageList();
+        }
+    }
+
+
+    function modalv3RefreshSessionStorageList() {
+        const container = document.getElementById('modalv3-sessionstorage-output');
+        container.innerHTML = '';
+  
+        const keys = Object.keys(sessionStorage).sort();
+  
+        if (keys.length === 0) {
+            container.innerHTML = '<p>No items in sessionStorage.</p>';
+            return;
+        }
+  
+        keys.forEach(key => {
+            const value = sessionStorage.getItem(key);
+  
+            const div = document.createElement('div');
+            div.className = 'modalv3-localstorage-item-card';
+  
+            div.innerHTML = `
+                <input type="text" class="modalv3-api-testfetch-text-input" value="${key}" disabled>
+                <input type="text" class="modalv3-api-testfetch-text-input" id="value-session-${key}" value="${value}">
+                <button onclick="modalv3UpdateSessionStorage('${key}')">${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_UPDATE")}</button>
+                <button onclick="modalv3DeleteSessionStorage('${key}')">${getTextString("MODAL_V3_TAB_STORAGE_LOCAL_STORAGE_DELETE")}</button>
+            `;
+  
+            container.appendChild(div);
+        });
+    }
+
+    function modalv3AddSessionStorage() {
+        const key = document.getElementById('modalv3-sessionstorage-add-input-key').value.trim();
+        const value = document.getElementById('modalv3-sessionstorage-add-input-value').value;
+  
+        if (!key) {
+            alert("Key cannot be empty.");
+            return;
+        }
+  
+        sessionStorage.setItem(key, value);
+        document.getElementById('modalv3-sessionstorage-add-input-key').value = '';
+        document.getElementById('modalv3-sessionstorage-add-input-value').value = '';
+        modalv3RefreshSessionStorageList();
+    }
+
+    function modalv3UpdateSessionStorage(key) {
+        const newValue = document.getElementById(`value-session-${key}`).value;
+        sessionStorage.setItem(key, newValue);
+        modalv3RefreshSessionStorageList();
+    }
+
+    function modalv3DeleteSessionStorage(key) {
+        if (confirm(`Delete key "${key}"?`)) {
+            sessionStorage.removeItem(key);
+            modalv3RefreshSessionStorageList();
+        }
+    }
+
 
     function fetchAPITestFetch() {
         const baseurl = document.getElementById("modalv3-test-fetch-base-url").value;

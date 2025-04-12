@@ -18,6 +18,16 @@ EXPERIMENT_ID_6 = 1
 
 const experimentsList = [
     {
+        title: "Reviews V2",
+        id: "2025-04_reviews_v2",
+        name: "experiment_2025_04_reviews_v2",
+        treatments: [
+            "Treatment -1: Disabled",
+            "Treatment 1: Enabled"
+        ],
+        rollout: "Treatment -1: Disabled"
+    },
+    {
         title: "Profile Tab V2",
         id: "2025-04_profile_tab_v2",
         name: "experiment_2025_04_profile_tab_v2",
