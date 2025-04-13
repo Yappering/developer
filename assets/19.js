@@ -1,6 +1,6 @@
 
 
-app_version1 = "349"
+app_version1 = "350"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10675,6 +10675,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         });
 
                                         function fillCategoryModalContentContainer(tab) {
+                                            if (document.getElementById("shop-category-modal-write-review-container")) {
+                                                document.getElementById("shop-category-modal-write-review-container").remove();
+                                            }
                                             if (tab === "assets") {
 
                                                 modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = ``;
@@ -10934,7 +10937,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 const year = date.getFullYear();
 
                                                                 if (localStorage.reviews_time_type === "uk") {
-                                                                    const formatted = `${day}/${month}/${year} (uk)`;
+                                                                    const formatted = `${day}/${month}/${year} (UK)`;
 
                                                                     let createdAtTag = document.createElement("p");
                                                                     
@@ -10943,7 +10946,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                                     reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(createdAtTag);
                                                                 } else {
-                                                                    const formatted = `${month}/${day}/${year} (us)`;
+                                                                    const formatted = `${month}/${day}/${year} (US)`;
 
                                                                     let createdAtTag = document.createElement("p");
                                                                     
@@ -10989,8 +10992,25 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     }
                                                     
                                                 }
+
+                                                let writeReviewContainer = document.createElement("div");
+    
+                                                writeReviewContainer.classList.add("shop-category-modal-write-review-container");
+                                                writeReviewContainer.id = 'shop-category-modal-write-review-container';
+                                                writeReviewContainer.innerHTML = `
+                                                    <p class="shop-category-modal-write-review-disclaimer" id="shop-category-modal-write-review-error-output"></p>
+                                                    <input placeholder="Write a review for ${apiCategory.name}...">
+                                                    <button onclick="postReview('${apiCategory.sku_id}', 5, 'This is my review text.');">Post Review</button>
+                                                    <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER")}</p>
+                                                    <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY1")}</p>
+                                                    <a class="shop-category-modal-write-review-disclaimer-link" href="https://yapper.shop/privacy-policy">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY2")}</a>
+                                                `;
+
+                                                modal.querySelector(".category-modalv2-inner-left").appendChild(writeReviewContainer);
                                             }
                                         }
+
+                                        window.fillCategoryModalContentContainer = fillCategoryModalContentContainer;
 
 
                                         modal.querySelector("[data-product-modal-sku-id]").textContent = `${getTextString("SHOP_CATEGORY_MODAL_SKU_ID")}${apiCategory.sku_id}`;
@@ -13698,6 +13718,47 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
         }
     }
+
+    const postReview = async (itemId, rating, reviewText) => {
+
+        const accessToken = localStorage.discord_token;
+
+        if (!accessToken) {
+            console.error('Access token is missing!');
+            return;
+        }
+
+        const response = await fetch(api + REVIEWSAPI, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                "Password": api_password,
+                "Authorization": discord_token,
+                "Token": api_token
+            },
+            body: JSON.stringify({
+                accessToken,
+                itemId,
+                rating,
+                reviewText
+            })
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            fillCategoryModalContentContainer('reviews');
+        } else {
+            if (document.getElementById("shop-category-modal-write-review-error-output")) {
+                document.getElementById("shop-category-modal-write-review-error-output").textContent = `${result.error}`;
+            }
+        }
+    };
+
+    // Example usage:
+    // postReview('item123', 5, 'This is my review text.');
+
+    window.postReview = postReview;
+
     
     // Function to copy the emoji to clipboard
     function copyEmoji(emoji) {
@@ -15876,8 +15937,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             <button class="side-tabs-button" id="modal-v3-tab-account" onclick="setModalv3InnerContent('account')">
                 <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_ACCOUNT")}</p>
             </button>
+
             <div id="modalv3-side-tabs-profile-container"></div>
+
             <div id="modalv3-side-tabs-reviews-container"></div>
+
             <hr>
             <p class="side-tabs-category-text">${getTextString("MODAL_V3_TAB_HEADER_SITE_SETTINGS")}</p>
             <button class="side-tabs-button" id="modal-v3-tab-appearance" onclick="setModalv3InnerContent('appearance')">

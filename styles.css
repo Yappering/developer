@@ -445,6 +445,54 @@ body {
     width: 97%;
 }
 
+.shop-category-modal-write-review-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.shop-category-modal-write-review-container input {
+    background-color: var(--input-background);
+    border-radius: 5px;
+    border: none;
+    width: 650px;
+    padding: 10px;
+    color: white;
+}
+
+.shop-category-modal-write-review-container button {
+    margin: 5px 0;
+    padding: 10px 20px;
+    background-color: var(--brand-500);
+    color: #fff;
+    border: 2px var(--6) solid;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+}
+
+.shop-category-modal-write-review-container button:hover {
+    background-color: var(--brand-500-hover);
+}
+
+.shop-category-modal-write-review-disclaimer {
+    margin: 0;
+    font-size: 13px;
+    color: var(--8);
+}
+
+.shop-category-modal-write-review-disclaimer-link {
+    position: absolute;
+    bottom: 0px;
+    left: 205px;
+    color: var(--white);
+    font-size: 13px;
+    margin-left: 10px;
+    text-decoration: underline !important;
+}
+
 .shop-modal-review-name-container {
     display: flex;
     height: 50px;
@@ -4795,6 +4843,10 @@ data-share-product-card-button {
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.category-modal-inner-content-container:has(.review-element) {
+    height: 450px;
 }
 
 .view-raw-modal-textbox {

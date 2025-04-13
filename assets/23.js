@@ -273,6 +273,10 @@ SHOP_CATEGORY_MODAL_REVIEWS_BE_THE_FIRST = "Be the first to Review this item!";
 
 SHOP_CATEGORY_MODAL_REVIEWS_ERROR = "There was an error loading reviews";
 
+SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER = "By clicking 'Post Review', your Discord user ID, username and avatar are stored securely along with your review.";
+SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY1 = "For more information, please see our ";
+SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY2 = "Privacy Policy";
+
 
 
 // Themes 
