@@ -242,7 +242,7 @@ const experimentsList = [
             "Treatment 4: Enabled",
             "Treatment 6: Settings like discord"
         ],
-        rollout: "Treatment 6: Settings like discord"
+        rollout: "Treatment 4: Enabled"
     },
     {
         title: "Profiles Plus Home",

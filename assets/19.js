@@ -1,6 +1,6 @@
 
 
-app_version1 = "344"
+app_version1 = "346"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -94,8 +94,8 @@ function setRandomDiscordUsername() {
     //     localStorage.discord_username = data.name;
     //     localStorage.discord_displayname = data.name;
     // })
-    localStorage.discord_displayname = 'Silly Wumpus';
-    localStorage.discord_username = 'silly_wumpus';
+    localStorage.discord_displayname = 'Default User';
+    localStorage.discord_username = 'default_user';
 
 }
 
@@ -708,7 +708,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                     previewName = localStorage.discord_displayname;
                                                 } else {
-                                                    previewName = 'Silly Wumpus'
+                                                    previewName = 'Default User'
                                                 }
     
                                                 previewHolder.innerHTML = `
@@ -1700,7 +1700,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                     previewName = localStorage.discord_displayname;
                                                 } else {
-                                                    previewName = 'Silly Wumpus'
+                                                    previewName = 'Default User'
                                                 }
     
                                                 previewHolder.innerHTML = `
@@ -3048,7 +3048,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                     previewName = localStorage.discord_displayname;
                                                 } else {
-                                                    previewName = 'Silly Wumpus'
+                                                    previewName = 'Default User'
                                                 }
     
                                                 previewHolder.innerHTML = `
@@ -4100,7 +4100,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                                 previewName = localStorage.discord_displayname;
                                                             } else {
-                                                                previewName = 'Silly Wumpus'
+                                                                previewName = 'Default User'
                                                             }
     
                                                             if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning" && product.category_sku_id === discord_categories.NAMEPLATE) {
@@ -5581,7 +5581,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                 previewName = localStorage.discord_displayname;
                                             } else {
-                                                previewName = 'Silly Wumpus'
+                                                previewName = 'Default User'
                                             }
 
                                             previewHolder.innerHTML = `
@@ -6251,7 +6251,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                             previewName = localStorage.discord_displayname;
                                                         } else {
-                                                            previewName = 'Silly Wumpus'
+                                                            previewName = 'Default User'
                                                         }
 
                                                         if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning" && product.category_sku_id === discord_categories.NAMEPLATE) {
@@ -11269,7 +11269,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                 previewName = localStorage.discord_displayname;
                                             } else {
-                                                previewName = 'Silly Wumpus'
+                                                previewName = 'Default User'
                                             }
 
                                             previewHolder.innerHTML = `
@@ -12321,7 +12321,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         if (localStorage.discord_displayname && localStorage.discord_displayname != '') {
                                                             previewName = localStorage.discord_displayname;
                                                         } else {
-                                                            previewName = 'Silly Wumpus'
+                                                            previewName = 'Default User'
                                                         }
 
                                                         if (localStorage.experiment_2025_03_early_nameplate_warning === "Treatment 2: Nameplate & Nameplate Test Warning" && product.category_sku_id === discord_categories.NAMEPLATE) {
@@ -15780,8 +15780,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         u_bar.classList.add("ubar-profile-and-settings")
         u_bar.innerHTML = `
             <img id="ubar-avatar" class="ubar-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
-            <p class="ubar-displayname" id="ubar-displayname">${localStorage.discord_displayname ? localStorage.discord_displayname : "Silly Wumpus"}</p>
-            <p class="ubar-username" id="ubar-username">${localStorage.discord_username ? localStorage.discord_username : "silly_wumpus"}</p>
+            <p class="ubar-displayname" id="ubar-displayname">${localStorage.discord_displayname ? localStorage.discord_displayname : "Default User"}</p>
+            <p class="ubar-username" id="ubar-username">${localStorage.discord_username ? localStorage.discord_username : "default_user"}</p>
             <svg title="User Options" x="0" y="0" onclick="openNewDiscordLikeSettings()" id="ubar-options-cog" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4483 8.3333H18.3333V11.6667H16.4492C16.2483 12.4425 15.9167 13.165 15.4708 13.8033L16.6667 15 15 16.6667 13.8042 15.47C13.1642 15.9158 12.4433 16.2483 11.6667 16.4483V18.3333H8.3333V16.4483C7.5575 16.2483 6.8358 15.9158 6.1967 15.47L5 16.6667 3.3333 15 4.53 13.8033C4.0842 13.1658 3.7517 12.4433 3.5517 11.6667H1.6667V8.3333H3.5517C3.7517 7.5567 4.0833 6.835 4.53 6.1967L3.3333 5 5 3.3333 6.1967 4.53C6.835 4.0833 7.5567 3.7517 8.3333 3.5517V1.6667H11.6667V3.5508C12.4433 3.7517 13.1642 4.0833 13.8042 4.5292L15 3.3325 16.6667 4.9992 15.47 6.1967C15.9158 6.835 16.2483 7.5575 16.4483 8.3333ZM10 13.3333C11.8409 13.3333 13.3333 11.8409 13.3333 10 13.3333 8.159 11.8409 6.6667 10 6.6667 8.159 6.6667 6.6667 8.159 6.6667 10 6.6667 11.8409 8.159 13.3333 10 13.3333Z" )=""></path></svg>
         `;
 
@@ -16024,8 +16024,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <img id="profileAvatarPreview" class="profile-avatar-preview" src="https://cdn.discordapp.com/assets/content/0f4ee362d733e1d6132719911c897fb4d167bc3eb98ac3265ad72eb7dceec551.png" alt="No image uploaded">
                     <div class="options-preview-profile-status-bg"></div>
                     <div class="options-preview-profile-status-color"></div>
-                    <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">Silly Wumpus</p>
-                    <p class="options-preview-profile-username" id="options-username-preview">silly_wumpus</p>
+                    <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">Default User</p>
+                    <p class="options-preview-profile-username" id="options-username-preview">default_user</p>
                 </div>
             `;
 
