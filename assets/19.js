@@ -1,6 +1,6 @@
 
 
-app_version1 = "344"
+app_version1 = "345"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -13992,7 +13992,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             `;
         } else if (params.get("page") === "login") {
             document.title = `${getTextString("DOCUMENT_TITLE_WEBSITE_NAME")}`;
-                document.body.innerHTML = `logging in...`;
+                let modal = document.createElement("div");
+
+                modal.classList.add('modalv3');
+                modal.classList.add('show');
+
+                modal.innerHTML = `
+                    <div class="modalv3-inner" style="color: var(--white);">
+                        logging in...
+                    </div>
+                `;
+
+                document.body.appendChild(modal);
                 window.addEventListener('DOMContentLoaded', () => {
                     const hash = window.location.hash;
                     const match = hash.match(/#token=([^&]+)/);
