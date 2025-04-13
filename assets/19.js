@@ -1,6 +1,6 @@
 
 
-app_version1 = "350"
+app_version1 = "351"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10879,6 +10879,46 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 .then(data => {
                                                     renderReviews(data);
 
+                                                    let hasReviewAlready = false;
+
+                                                    data.forEach(review => {
+                                                        if (review.users.user_id === localStorage.user_id) {
+                                                            hasReviewAlready = true;
+                                                        }
+                                                    });
+
+                                                    if (hasReviewAlready === false) {
+                                                        let writeReviewContainer = document.createElement("div");
+        
+                                                        writeReviewContainer.classList.add("shop-category-modal-write-review-container");
+                                                        writeReviewContainer.id = 'shop-category-modal-write-review-container';
+                                                        writeReviewContainer.innerHTML = `
+                                                            <p class="shop-category-modal-write-review-disclaimer" id="shop-category-modal-write-review-error-output"></p>
+                                                            <input id="shop-category-modal-write-review-post-input" placeholder="Write a review for ${apiCategory.name}...">
+                                                            <button onclick="postReview('${apiCategory.sku_id}', 5);">Post Review</button>
+                                                            <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER")}</p>
+                                                            <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY1")}</p>
+                                                            <a class="shop-category-modal-write-review-disclaimer-link" href="https://yapper.shop/privacy-policy">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY2")}</a>
+                                                        `;
+    
+                                                        modal.querySelector(".category-modalv2-inner-left").appendChild(writeReviewContainer);
+                                                    } else {
+                                                        let writeReviewContainer = document.createElement("div");
+        
+                                                        writeReviewContainer.classList.add("shop-category-modal-write-review-container");
+                                                        writeReviewContainer.id = 'shop-category-modal-write-review-container';
+                                                        writeReviewContainer.innerHTML = `
+                                                            <p class="shop-category-modal-write-review-disclaimer" id="shop-category-modal-write-review-error-output"></p>
+                                                            <input id="shop-category-modal-write-review-post-input" placeholder="Edit your review for ${apiCategory.name}...">
+                                                            <button onclick="postReview('${apiCategory.sku_id}', 5);">Edit Review</button>
+                                                            <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER")}</p>
+                                                            <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY1")}</p>
+                                                            <a class="shop-category-modal-write-review-disclaimer-link" href="https://yapper.shop/privacy-policy">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY2")}</a>
+                                                        `;
+    
+                                                        modal.querySelector(".category-modalv2-inner-left").appendChild(writeReviewContainer);
+                                                    }
+
                                                 })
                                                 .catch(error => {
                                                     modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = `
@@ -10911,7 +10951,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.users.username}</p>
                                                                     </div>
                                                                     <p style="color: var(--8)">${review.review_text}</p>
+                                                                    <div class="shop-modal-review-moderation-buttons" data-shop-modal-review-moderation-buttons></div>
                                                                 `;
+
+                                                                if (review.users.id === localStorage.discord_user_id || review_mod_ids.includes(localStorage.discord_user_id)) {
+                                                                    let deleteReviewIcon = document.createElement("div");
+
+                                                                    deleteReviewIcon.innerHTML = `
+                                                                        <svg class="closeIcon_modal" onclick="deleteReview('${review.id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
+                                                                    `;
+
+                                                                    reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(deleteReviewIcon);
+                                                                }
 
                                                                 if (review_mod_ids.includes(review.users.id)) {
                                                                     let moderatorNametag = document.createElement("p");
@@ -10992,21 +11043,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     }
                                                     
                                                 }
-
-                                                let writeReviewContainer = document.createElement("div");
-    
-                                                writeReviewContainer.classList.add("shop-category-modal-write-review-container");
-                                                writeReviewContainer.id = 'shop-category-modal-write-review-container';
-                                                writeReviewContainer.innerHTML = `
-                                                    <p class="shop-category-modal-write-review-disclaimer" id="shop-category-modal-write-review-error-output"></p>
-                                                    <input placeholder="Write a review for ${apiCategory.name}...">
-                                                    <button onclick="postReview('${apiCategory.sku_id}', 5, 'This is my review text.');">Post Review</button>
-                                                    <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER")}</p>
-                                                    <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY1")}</p>
-                                                    <a class="shop-category-modal-write-review-disclaimer-link" href="https://yapper.shop/privacy-policy">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY2")}</a>
-                                                `;
-
-                                                modal.querySelector(".category-modalv2-inner-left").appendChild(writeReviewContainer);
                                             }
                                         }
 
@@ -13719,9 +13755,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     }
 
-    const postReview = async (itemId, rating, reviewText) => {
+    const postReview = async (itemId, rating) => {
 
         const accessToken = localStorage.discord_token;
+
+        const reviewText = document.getElementById("shop-category-modal-write-review-post-input").value;
 
         if (!accessToken) {
             console.error('Access token is missing!');
@@ -13754,10 +13792,35 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     };
 
+    window.postReview = postReview;
+
+    function deleteReview(reviewId) {
+        const accessToken = discord_token;
+      
+        fetch(api + REVIEWSAPI, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Password": api_password,
+                "Authorization": discord_token,
+                "Token": api_token
+            },
+            body: JSON.stringify({
+                accessToken,
+                reviewId
+            })
+        })
+        .then(response => response.json())
+        .then((data) => {
+            fillCategoryModalContentContainer('reviews');
+        })
+        .catch(error => {
+            console.error(error)
+        });
+    }
+
     // Example usage:
     // postReview('item123', 5, 'This is my review text.');
-
-    window.postReview = postReview;
 
     
     // Function to copy the emoji to clipboard

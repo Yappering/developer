@@ -436,6 +436,7 @@ body {
 }
 
 .review-element {
+    position: relative;
     background-color: var(--background-tertiary);
     border-radius: 20px;
     padding-left: 20px;
@@ -4847,6 +4848,25 @@ data-share-product-card-button {
 
 .category-modal-inner-content-container:has(.review-element) {
     height: 450px;
+}
+
+[data-shop-modal-review-moderation-buttons] {
+    position: absolute;
+    width: 200px;
+    height: 34px;
+    top: 15px;
+    right: 15px;
+    display: grid;
+    direction: rtl;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(29px, 1fr));
+}
+
+[data-shop-modal-review-moderation-buttons] div {
+    height: 34px !important;
+    width: 34px !important;
+    border-radius: 50px;
+    overflow: hidden;
 }
 
 .view-raw-modal-textbox {
