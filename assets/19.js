@@ -1,6 +1,6 @@
 
 
-app_version1 = "348"
+app_version1 = "349"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -24,6 +24,10 @@ if (!localStorage.reviews_filter_type) {
 
 if (!localStorage.reviews_privacy_type) {
     localStorage.reviews_privacy_type = "1";
+}
+
+if (!localStorage.reviews_time_type) {
+    localStorage.reviews_time_type = "us";
 }
 
 if (localStorage.sa_theme) {
@@ -10921,6 +10925,34 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 starRating.setAttribute('data-shop-modal-review-star-container', '');
 
                                                                 reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(starRating);
+
+
+                                                                const date = new Date(review.created_at);
+
+                                                                const day = String(date.getDate()).padStart(2, '0');
+                                                                const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth is 0-indexed
+                                                                const year = date.getFullYear();
+
+                                                                if (localStorage.reviews_time_type === "uk") {
+                                                                    const formatted = `${day}/${month}/${year} (uk)`;
+
+                                                                    let createdAtTag = document.createElement("p");
+                                                                    
+                                                                    createdAtTag.classList.add("shop-modal-review-time-container");
+                                                                    createdAtTag.textContent = `${formatted}`;
+
+                                                                    reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(createdAtTag);
+                                                                } else {
+                                                                    const formatted = `${month}/${day}/${year} (us)`;
+
+                                                                    let createdAtTag = document.createElement("p");
+                                                                    
+                                                                    createdAtTag.classList.add("shop-modal-review-time-container");
+                                                                    createdAtTag.textContent = `${formatted}`;
+
+                                                                    reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(createdAtTag);
+                                                                }
+
         
                                                                 if (review.rating === 5) {
                                                                     reviewElement.querySelector("[data-shop-modal-review-star-container]").innerHTML = `
@@ -16100,25 +16132,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     </div>
                     <hr>
                     <div class="modalv3-content-card-1">
-                        <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_HEADER")}</h2>
-                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SUMMARY")}</p>
-
-                        <div class="modalv3-content-ratio-card green" id="modalv3-ratio-card-reviews-privacy-3" onclick="updateReviewsPrivacyStore('3');">
+                        <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_TIME_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_TIME_SUMMARY")}</p>
+                        <div class="modalv3-content-ratio-card green" id="modalv3-ratio-card-reviews-time-us" onclick="updateReviewsTimeFormatStore('us');">
                             <div class="modalv3-content-ratio-card-inner">
-                                <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_3")}</h2>
-                                <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_3_SUMMARY")}</p>
+                                <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_TIME_SETTINGS_2")}</h2>
+                                <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_TIME_SETTINGS_2_SUMMARY")}</p>
                             </div>
                         </div>
-                        <div class="modalv3-content-ratio-card orange" id="modalv3-ratio-card-reviews-privacy-2" onclick="updateReviewsPrivacyStore('2');">
+                        <div class="modalv3-content-ratio-card green" id="modalv3-ratio-card-reviews-time-uk" onclick="updateReviewsTimeFormatStore('uk');">
                             <div class="modalv3-content-ratio-card-inner">
-                                <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_2")}</h2>
-                                <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_2_SUMMARY")}</p>
-                            </div>
-                        </div>
-                        <div class="modalv3-content-ratio-card red" id="modalv3-ratio-card-reviews-privacy-1"  onclick="updateReviewsPrivacyStore('1');">
-                            <div class="modalv3-content-ratio-card-inner">
-                                <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_1")}</h2>
-                                <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_1_SUMMARY")}</p>
+                                <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_TIME_SETTINGS_1")}</h2>
+                                <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_TIME_SETTINGS_1_SUMMARY")}</p>
                             </div>
                         </div>
                     </div>
@@ -16132,7 +16157,35 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 `;
 
                 updateReviewsFilterStore();
-                updateReviewsPrivacyStore();
+
+                updateReviewsTimeFormatStore();
+
+                // updateReviewsPrivacyStore();
+
+                // <hr>
+                // <div class="modalv3-content-card-1">
+                //     <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_HEADER")}</h2>
+                //     <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SUMMARY")}</p>
+
+                //     <div class="modalv3-content-ratio-card green" id="modalv3-ratio-card-reviews-privacy-3" onclick="updateReviewsPrivacyStore('3');">
+                //         <div class="modalv3-content-ratio-card-inner">
+                //             <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_3")}</h2>
+                //             <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_3_SUMMARY")}</p>
+                //         </div>
+                //     </div>
+                //     <div class="modalv3-content-ratio-card orange" id="modalv3-ratio-card-reviews-privacy-2" onclick="updateReviewsPrivacyStore('2');">
+                //         <div class="modalv3-content-ratio-card-inner">
+                //             <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_2")}</h2>
+                //             <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_2_SUMMARY")}</p>
+                //         </div>
+                //     </div>
+                //     <div class="modalv3-content-ratio-card red" id="modalv3-ratio-card-reviews-privacy-1"  onclick="updateReviewsPrivacyStore('1');">
+                //         <div class="modalv3-content-ratio-card-inner">
+                //             <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_1")}</h2>
+                //             <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_PRIVACY_SETTINGS_1_SUMMARY")}</p>
+                //         </div>
+                //     </div>
+                // </div>
             } else {
                 tabPageOutput.innerHTML = `
                     <h2>${getTextString("MODAL_V3_TAB_REVIEWS_HEADER")}</h2>
@@ -16672,6 +16725,24 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("modalv3-ratio-card-reviews-filter-" + setFilter).classList.add('modalv3-content-ratio-card-selected');
         } else {
             document.getElementById("modalv3-ratio-card-reviews-filter-" + localStorage.reviews_filter_type).classList.add('modalv3-content-ratio-card-selected');
+        }
+    }
+
+    function updateReviewsTimeFormatStore(setTimeFormat) {
+        const el2 = document.getElementById("modalv3-ratio-card-reviews-time-us");
+        const el1 = document.getElementById("modalv3-ratio-card-reviews-time-uk");
+
+        if (el2 && el2.classList.contains('modalv3-content-ratio-card-selected')) {
+            el2.classList.remove('modalv3-content-ratio-card-selected');
+        } else if (el1 && el1.classList.contains('modalv3-content-ratio-card-selected')) {
+            el1.classList.remove('modalv3-content-ratio-card-selected');
+        }
+
+        if (setTimeFormat) {
+            localStorage.reviews_time_type = setTimeFormat;
+            document.getElementById("modalv3-ratio-card-reviews-time-" + setTimeFormat).classList.add('modalv3-content-ratio-card-selected');
+        } else {
+            document.getElementById("modalv3-ratio-card-reviews-time-" + localStorage.reviews_time_type).classList.add('modalv3-content-ratio-card-selected');
         }
     }
 

@@ -458,6 +458,11 @@ body {
     padding: 5px;
 }
 
+.shop-modal-review-name-container .shop-modal-review-time-container {
+    font-size: large;
+    font-weight: 900;
+}
+
 .shop-modal-review-name-container .shop-modal-review-nametag-moderator {
     margin-top: 15px;
     margin-bottom: auto;
