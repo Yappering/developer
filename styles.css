@@ -40,6 +40,8 @@
     --modalv3-hr-color: #414249;
     --modalv3-hr-color2: #393A3F;
     --modalv3-text-input-background: #25272b;
+    --category-modal-tab-bg: #2B2D31;
+    --category-modal-tab-selected-bg: #4e5057;
 }
 
 .theme-midnight {
@@ -67,6 +69,8 @@
     --profile-badge-background: #1f2024;
     --discord-like-settings-bg: #0C0C0E;
     --discord-like-settings-sidebar: #000000;
+    --category-modal-tab-bg: #000000;
+    --category-modal-tab-selected-bg: #3a3a3a;
 }
 
 .theme-light {
@@ -99,6 +103,8 @@
     --modalv3-tab-category-text: #000000;
     --modalv3-card-text: #353536;
     --modalv3-text-input-background: #ffffff;
+    --category-modal-tab-bg: #ffffff;
+    --category-modal-tab-selected-bg: #a1a1a1;
 }
 
 .theme-color_blue {
@@ -394,6 +400,32 @@ body {
     animation: modal-popup-anim1 1s;
 }
 
+
+.category-modal-content-container {
+    display: flex;
+    margin-top: 10px;
+    gap: 15px;
+    width: 300px;
+}
+
+.change-category-modal-content-button {
+    background-color: var(--category-modal-tab-bg);
+    width: auto;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.change-category-modal-content-button.selected {
+    background-color: var(--category-modal-tab-selected-bg);
+}
+
+.change-category-modal-content-button p {
+    margin: 0;
+    padding: 10px;
+    pointer-events: none;
+}
+
+
 .shop-modal-review-container {
     position: absolute;
     height: 200px;
@@ -410,10 +442,20 @@ body {
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 5px;
+    width: 97%;
 }
 
 .shop-modal-review-name-container {
     display: flex;
+    height: 50px;
+}
+
+.shop-modal-review-name-container .shop-modal-review-star-container {
+    margin-top: 13px;
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .shop-modal-review-name-container .shop-modal-review-nametag-moderator {
@@ -4734,10 +4776,20 @@ data-share-product-card-button {
 }
 
 .shop-category-modal-assets-container {
+    display: block;
     overflow-y: auto;
     overflow-x: hidden;
     height: 300px;
     width: 800px;
+}
+
+.category-modal-inner-content-container {
+    position: absolute;
+    margin-top: 70px;
+    height: 500px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .view-raw-modal-textbox {
