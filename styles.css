@@ -97,6 +97,7 @@
     --discord-like-settings-sidebar: #ffffff;
     --modalv3-tab-text: #000000;
     --modalv3-tab-category-text: #000000;
+    --modalv3-card-text: #353536;
     --modalv3-text-input-background: #ffffff;
 }
 
@@ -496,6 +497,7 @@ body {
     right: 10px;
     top: 20px;
     cursor: pointer;
+    color: var(--white);
 }
 
 .username-picker-container {
@@ -4525,6 +4527,22 @@ data-share-product-card-button {
 }
 
 
+.modalv3-review-item-card {
+    padding: 10px;
+    background-color: var(--discord-like-settings-sidebar);
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.modalv3-review-item-card p {
+    margin: 0;
+}
+
+.modalv3-review-card-title {
+    font-size: 20px;
+}
+
+
 
 .modalv3-localstorage-item-card {
     padding: 10px;
@@ -4623,7 +4641,7 @@ data-share-product-card-button {
 }
 
 .modalv3-side-tabs-app-info-container p {
-    color: #C4C5C9;
+    color: var(--modalv3-card-text);
     font-size: 12px;
     margin-left: 10px;
 }
@@ -4632,7 +4650,7 @@ data-share-product-card-button {
     position: absolute;
     top: 0px;
     left: 95px;
-    color: #C4C5C9;
+    color: var(--modalv3-card-text);
     font-size: 12px;
     margin-left: 10px;
     text-decoration: underline !important;
@@ -4642,7 +4660,7 @@ data-share-product-card-button {
     position: absolute;
     top: 20px;
     left: 850px;
-    color: #C4C5C9;
+    color: var(--modalv3-card-text);
     height: 50px;
     width: 34px;
     text-align: center;

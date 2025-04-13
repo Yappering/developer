@@ -1,6 +1,6 @@
 
 
-app_version1 = "346"
+app_version1 = "347"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2482,7 +2482,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         COLLECTIBLES_SHOP = "/collectibles-shop",
         PROFILE_EFFECTS = "/profile-effects",
         COMMUNITY = "/community",
-        APISTATUS = "/status"
+        APISTATUS = "/status",
+        REVIEWSAPI = "/reviews"
     ]
     if (app_version2 === "Dev") {
         LOGIN_CALLBACK = "/dev/callback"
@@ -2491,6 +2492,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
     staff_ids = ["1169899815983915121", "1049207768785100880", "194749476269719552"]
+
+    review_mod_ids = ["1169899815983915121", "1049207768785100880"]
 
     yapper_categories = [
         WINDOWKILL = "1",
@@ -7533,7 +7536,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             </div>
                                         `;
 
-                                        if (localStorage.experiment_2025_03_item_reviews === "Treatment 1: Enabled" || localStorage.experiment_2025_03_item_reviews === "Treatment 2: Simulate not logged in" || localStorage.experiment_2025_03_item_reviews === "Treatment 3: Simulate logged in") {
+                                        if (localStorage.experiment_2025_04_reviews_v2 === "Treatment 1: Enabled") {
                                             modal.querySelector("[data-shop-modal-review-title]").textContent = `${getTextString("SHOP_REVIEWS_TITLE")}`;
 
                                             let reviewLoadingElement = document.createElement("div");
@@ -7542,7 +7545,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             `;
                                             reviewLoadingElement.classList.add("review-element");
                                             modal.querySelector("[data-shop-modal-review-container]").appendChild(reviewLoadingElement);
-                                            fetch(`https://shop-archives-api.vercel.app/api/reviews?sku_id=${apiCategory.sku_id}`, {
+                                            fetch(`${localStorage.api_database_base_url}/reviews/${apiCategory.sku_id}`, {
                                                 method: "GET",
                                                 headers: {
                                                     "Password": api_password,
@@ -10641,7 +10644,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             </div>
                                         `;
 
-                                        if (localStorage.experiment_2025_03_item_reviews === "Treatment 1: Enabled" || localStorage.experiment_2025_03_item_reviews === "Treatment 2: Simulate not logged in" || localStorage.experiment_2025_03_item_reviews === "Treatment 3: Simulate logged in") {
+                                        if (localStorage.experiment_2025_04_reviews_v2 === "Treatment 1: Enabled") {
                                             modal.querySelector("[data-shop-modal-review-title]").textContent = `${getTextString("SHOP_REVIEWS_TITLE")}`;
 
                                             let reviewLoadingElement = document.createElement("div");
@@ -10650,7 +10653,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             `;
                                             reviewLoadingElement.classList.add("review-element");
                                             modal.querySelector("[data-shop-modal-review-container]").appendChild(reviewLoadingElement);
-                                            fetch(`https://shop-archives-api.vercel.app/api/reviews?sku_id=${apiCategory.sku_id}`, {
+
+                                            fetch(api + REVIEWSAPI + '/' + apiCategory.sku_id, {
                                                 method: "GET",
                                                 headers: {
                                                     "Password": api_password,
@@ -10703,49 +10707,42 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         
                                                     reviewElement.innerHTML = `
                                                         <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
-                                                            <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.reviewer.name}</p>
+                                                            <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.users.username}</p>
                                                         </div>
                                                         <div class="shop-modal-review-star-container" data-shop-modal-review-star-container></div>
-                                                        <p style="color: var(--8)">${review.review}</p>
+                                                        <p style="color: var(--8)">${review.review_text}</p>
                                                     `;
 
-                                                    if (review.reviewer.moderator === "true") {
+                                                    if (review_mod_ids.includes(review.users.id)) {
                                                         let moderatorNametag = document.createElement("p");
     
                                                         moderatorNametag.classList.add("shop-modal-review-nametag-moderator");
                                                         moderatorNametag.textContent = `${getTextString("SHOP_REVIEWS_NAMETAG_MODERATOR")}`;
                                                         
                                                         reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(moderatorNametag);
-                                                    } else if (review.reviewer.special === "true") {
-                                                        let moderatorNametag = document.createElement("p");
-    
-                                                        moderatorNametag.classList.add("shop-modal-review-nametag-special");
-                                                        moderatorNametag.textContent = `${getTextString("SHOP_REVIEWS_NAMETAG_SPECIAL")}`;
-                                                        
-                                                        reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(moderatorNametag);
                                                     }
         
-                                                    if (review.stars === "5") {
+                                                    if (review.rating === 5) {
                                                         reviewElement.querySelector("[data-shop-modal-review-star-container]").innerHTML = `
                                                             <img class="shop-modal-review-stars-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMTIwIDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTMxXzIxKSI+CjxwYXRoIGQ9Ik0xMiAwTDE0LjY5NDIgOC4yOTE4SDIzLjQxMjdMMTYuMzU5MyAxMy40MTY0TDE5LjA1MzQgMjEuNzA4MkwxMiAxNi41ODM2TDQuOTQ2NTggMjEuNzA4Mkw3LjY0MDc0IDEzLjQxNjRMMC41ODczMjIgOC4yOTE4SDkuMzA1ODNMMTIgMFoiIGZpbGw9IiNGRkVDM0UiLz4KPHBhdGggZD0iTTM2IDBMMzguNjk0MiA4LjI5MThINDcuNDEyN0w0MC4zNTkzIDEzLjQxNjRMNDMuMDUzNCAyMS43MDgyTDM2IDE2LjU4MzZMMjguOTQ2NiAyMS43MDgyTDMxLjY0MDcgMTMuNDE2NEwyNC41ODczIDguMjkxOEgzMy4zMDU4TDM2IDBaIiBmaWxsPSIjRkZFQzNFIi8+CjxwYXRoIGQ9Ik02MCAwTDYyLjY5NDIgOC4yOTE4SDcxLjQxMjdMNjQuMzU5MyAxMy40MTY0TDY3LjA1MzQgMjEuNzA4Mkw2MCAxNi41ODM2TDUyLjk0NjYgMjEuNzA4Mkw1NS42NDA3IDEzLjQxNjRMNDguNTg3MyA4LjI5MThINTcuMzA1OEw2MCAwWiIgZmlsbD0iI0ZGRUMzRSIvPgo8cGF0aCBkPSJNODQgMEw4Ni42OTQyIDguMjkxOEg5NS40MTI3TDg4LjM1OTMgMTMuNDE2NEw5MS4wNTM0IDIxLjcwODJMODQgMTYuNTgzNkw3Ni45NDY2IDIxLjcwODJMNzkuNjQwNyAxMy40MTY0TDcyLjU4NzMgOC4yOTE4SDgxLjMwNThMODQgMFoiIGZpbGw9IiNGRkVDM0UiLz4KPHBhdGggZD0iTTEwOCAwTDExMC42OTQgOC4yOTE4SDExOS40MTNMMTEyLjM1OSAxMy40MTY0TDExNS4wNTMgMjEuNzA4MkwxMDggMTYuNTgzNkwxMDAuOTQ3IDIxLjcwODJMMTAzLjY0MSAxMy40MTY0TDk2LjU4NzMgOC4yOTE4SDEwNS4zMDZMMTA4IDBaIiBmaWxsPSIjRkZFQzNFIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMTMxXzIxIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K"></img>
                                                         `;
-                                                    } else if (review.stars === "4") {
+                                                    } else if (review.rating === 4) {
                                                         reviewElement.querySelector("[data-shop-modal-review-star-container]").innerHTML = `
                                                             <img class="shop-modal-review-stars-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMTIwIDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTMxXzMyKSI+CjxwYXRoIGQ9Ik0xMiAwTDE0LjY5NDIgOC4yOTE4SDIzLjQxMjdMMTYuMzU5MyAxMy40MTY0TDE5LjA1MzQgMjEuNzA4MkwxMiAxNi41ODM2TDQuOTQ2NTggMjEuNzA4Mkw3LjY0MDc0IDEzLjQxNjRMMC41ODczMjIgOC4yOTE4SDkuMzA1ODNMMTIgMFoiIGZpbGw9IiNGRkVDM0UiLz4KPHBhdGggZD0iTTM2IDBMMzguNjk0MiA4LjI5MThINDcuNDEyN0w0MC4zNTkzIDEzLjQxNjRMNDMuMDUzNCAyMS43MDgyTDM2IDE2LjU4MzZMMjguOTQ2NiAyMS43MDgyTDMxLjY0MDcgMTMuNDE2NEwyNC41ODczIDguMjkxOEgzMy4zMDU4TDM2IDBaIiBmaWxsPSIjRkZFQzNFIi8+CjxwYXRoIGQ9Ik02MCAwTDYyLjY5NDIgOC4yOTE4SDcxLjQxMjdMNjQuMzU5MyAxMy40MTY0TDY3LjA1MzQgMjEuNzA4Mkw2MCAxNi41ODM2TDUyLjk0NjYgMjEuNzA4Mkw1NS42NDA3IDEzLjQxNjRMNDguNTg3MyA4LjI5MThINTcuMzA1OEw2MCAwWiIgZmlsbD0iI0ZGRUMzRSIvPgo8cGF0aCBkPSJNODQgMEw4Ni42OTQyIDguMjkxOEg5NS40MTI3TDg4LjM1OTMgMTMuNDE2NEw5MS4wNTM0IDIxLjcwODJMODQgMTYuNTgzNkw3Ni45NDY2IDIxLjcwODJMNzkuNjQwNyAxMy40MTY0TDcyLjU4NzMgOC4yOTE4SDgxLjMwNThMODQgMFoiIGZpbGw9IiNGRkVDM0UiLz4KPHBhdGggZD0iTTEwOCAwTDExMC42OTQgOC4yOTE4SDExOS40MTNMMTEyLjM1OSAxMy40MTY0TDExNS4wNTMgMjEuNzA4MkwxMDggMTYuNTgzNkwxMDAuOTQ3IDIxLjcwODJMMTAzLjY0MSAxMy40MTY0TDk2LjU4NzMgOC4yOTE4SDEwNS4zMDZMMTA4IDBaIiBmaWxsPSIjNTc1NzU3Ii8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMTMxXzMyIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K"></img>
                                                         `;
-                                                    } else if (review.stars === "3") {
+                                                    } else if (review.rating === 3) {
                                                         reviewElement.querySelector("[data-shop-modal-review-star-container]").innerHTML = `
                                                             <img class="shop-modal-review-stars-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMTIwIDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTMxXzM5KSI+CjxwYXRoIGQ9Ik0xMiAwTDE0LjY5NDIgOC4yOTE4SDIzLjQxMjdMMTYuMzU5MyAxMy40MTY0TDE5LjA1MzQgMjEuNzA4MkwxMiAxNi41ODM2TDQuOTQ2NTggMjEuNzA4Mkw3LjY0MDc0IDEzLjQxNjRMMC41ODczMjIgOC4yOTE4SDkuMzA1ODNMMTIgMFoiIGZpbGw9IiNGRkVDM0UiLz4KPHBhdGggZD0iTTM2IDBMMzguNjk0MiA4LjI5MThINDcuNDEyN0w0MC4zNTkzIDEzLjQxNjRMNDMuMDUzNCAyMS43MDgyTDM2IDE2LjU4MzZMMjguOTQ2NiAyMS43MDgyTDMxLjY0MDcgMTMuNDE2NEwyNC41ODczIDguMjkxOEgzMy4zMDU4TDM2IDBaIiBmaWxsPSIjRkZFQzNFIi8+CjxwYXRoIGQ9Ik02MCAwTDYyLjY5NDIgOC4yOTE4SDcxLjQxMjdMNjQuMzU5MyAxMy40MTY0TDY3LjA1MzQgMjEuNzA4Mkw2MCAxNi41ODM2TDUyLjk0NjYgMjEuNzA4Mkw1NS42NDA3IDEzLjQxNjRMNDguNTg3MyA4LjI5MThINTcuMzA1OEw2MCAwWiIgZmlsbD0iI0ZGRUMzRSIvPgo8cGF0aCBkPSJNODQgMEw4Ni42OTQyIDguMjkxOEg5NS40MTI3TDg4LjM1OTMgMTMuNDE2NEw5MS4wNTM0IDIxLjcwODJMODQgMTYuNTgzNkw3Ni45NDY2IDIxLjcwODJMNzkuNjQwNyAxMy40MTY0TDcyLjU4NzMgOC4yOTE4SDgxLjMwNThMODQgMFoiIGZpbGw9IiM1NzU3NTciLz4KPHBhdGggZD0iTTEwOCAwTDExMC42OTQgOC4yOTE4SDExOS40MTNMMTEyLjM1OSAxMy40MTY0TDExNS4wNTMgMjEuNzA4MkwxMDggMTYuNTgzNkwxMDAuOTQ3IDIxLjcwODJMMTAzLjY0MSAxMy40MTY0TDk2LjU4NzMgOC4yOTE4SDEwNS4zMDZMMTA4IDBaIiBmaWxsPSIjNTc1NzU3Ii8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMTMxXzM5Ij4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K"></img>
                                                         `;
-                                                    } else if (review.stars === "2") {
+                                                    } else if (review.rating === 2) {
                                                         reviewElement.querySelector("[data-shop-modal-review-star-container]").innerHTML = `
                                                             <img class="shop-modal-review-stars-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMTIwIDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTMxXzQ2KSI+CjxwYXRoIGQ9Ik0xMiAwTDE0LjY5NDIgOC4yOTE4SDIzLjQxMjdMMTYuMzU5MyAxMy40MTY0TDE5LjA1MzQgMjEuNzA4MkwxMiAxNi41ODM2TDQuOTQ2NTggMjEuNzA4Mkw3LjY0MDc0IDEzLjQxNjRMMC41ODczMjIgOC4yOTE4SDkuMzA1ODNMMTIgMFoiIGZpbGw9IiNGRkVDM0UiLz4KPHBhdGggZD0iTTM2IDBMMzguNjk0MiA4LjI5MThINDcuNDEyN0w0MC4zNTkzIDEzLjQxNjRMNDMuMDUzNCAyMS43MDgyTDM2IDE2LjU4MzZMMjguOTQ2NiAyMS43MDgyTDMxLjY0MDcgMTMuNDE2NEwyNC41ODczIDguMjkxOEgzMy4zMDU4TDM2IDBaIiBmaWxsPSIjRkZFQzNFIi8+CjxwYXRoIGQ9Ik02MCAwTDYyLjY5NDIgOC4yOTE4SDcxLjQxMjdMNjQuMzU5MyAxMy40MTY0TDY3LjA1MzQgMjEuNzA4Mkw2MCAxNi41ODM2TDUyLjk0NjYgMjEuNzA4Mkw1NS42NDA3IDEzLjQxNjRMNDguNTg3MyA4LjI5MThINTcuMzA1OEw2MCAwWiIgZmlsbD0iIzU3NTc1NyIvPgo8cGF0aCBkPSJNODQgMEw4Ni42OTQyIDguMjkxOEg5NS40MTI3TDg4LjM1OTMgMTMuNDE2NEw5MS4wNTM0IDIxLjcwODJMODQgMTYuNTgzNkw3Ni45NDY2IDIxLjcwODJMNzkuNjQwNyAxMy40MTY0TDcyLjU4NzMgOC4yOTE4SDgxLjMwNThMODQgMFoiIGZpbGw9IiM1NzU3NTciLz4KPHBhdGggZD0iTTEwOCAwTDExMC42OTQgOC4yOTE4SDExOS40MTNMMTEyLjM1OSAxMy40MTY0TDExNS4wNTMgMjEuNzA4MkwxMDggMTYuNTgzNkwxMDAuOTQ3IDIxLjcwODJMMTAzLjY0MSAxMy40MTY0TDk2LjU4NzMgOC4yOTE4SDEwNS4zMDZMMTA4IDBaIiBmaWxsPSIjNTc1NzU3Ii8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMTMxXzQ2Ij4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K"></img>
                                                         `;
-                                                    } else if (review.stars === "1") {
+                                                    } else if (review.rating === 1) {
                                                         reviewElement.querySelector("[data-shop-modal-review-star-container]").innerHTML = `
                                                             <img class="shop-modal-review-stars-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMTIwIDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTMxXzUzKSI+CjxwYXRoIGQ9Ik0xMiAwTDE0LjY5NDIgOC4yOTE4SDIzLjQxMjdMMTYuMzU5MyAxMy40MTY0TDE5LjA1MzQgMjEuNzA4MkwxMiAxNi41ODM2TDQuOTQ2NTggMjEuNzA4Mkw3LjY0MDc0IDEzLjQxNjRMMC41ODczMjIgOC4yOTE4SDkuMzA1ODNMMTIgMFoiIGZpbGw9IiNGRkVDM0UiLz4KPHBhdGggZD0iTTM2IDBMMzguNjk0MiA4LjI5MThINDcuNDEyN0w0MC4zNTkzIDEzLjQxNjRMNDMuMDUzNCAyMS43MDgyTDM2IDE2LjU4MzZMMjguOTQ2NiAyMS43MDgyTDMxLjY0MDcgMTMuNDE2NEwyNC41ODczIDguMjkxOEgzMy4zMDU4TDM2IDBaIiBmaWxsPSIjNTc1NzU3Ii8+CjxwYXRoIGQ9Ik02MCAwTDYyLjY5NDIgOC4yOTE4SDcxLjQxMjdMNjQuMzU5MyAxMy40MTY0TDY3LjA1MzQgMjEuNzA4Mkw2MCAxNi41ODM2TDUyLjk0NjYgMjEuNzA4Mkw1NS42NDA3IDEzLjQxNjRMNDguNTg3MyA4LjI5MThINTcuMzA1OEw2MCAwWiIgZmlsbD0iIzU3NTc1NyIvPgo8cGF0aCBkPSJNODQgMEw4Ni42OTQyIDguMjkxOEg5NS40MTI3TDg4LjM1OTMgMTMuNDE2NEw5MS4wNTM0IDIxLjcwODJMODQgMTYuNTgzNkw3Ni45NDY2IDIxLjcwODJMNzkuNjQwNyAxMy40MTY0TDcyLjU4NzMgOC4yOTE4SDgxLjMwNThMODQgMFoiIGZpbGw9IiM1NzU3NTciLz4KPHBhdGggZD0iTTEwOCAwTDExMC42OTQgOC4yOTE4SDExOS40MTNMMTEyLjM1OSAxMy40MTY0TDExNS4wNTMgMjEuNzA4MkwxMDggMTYuNTgzNkwxMDAuOTQ3IDIxLjcwODJMMTAzLjY0MSAxMy40MTY0TDk2LjU4NzMgOC4yOTE4SDEwNS4zMDZMMTA4IDBaIiBmaWxsPSIjNTc1NzU3Ii8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMTMxXzUzIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K"></img>
                                                         `;
-                                                    } else if (review.stars === "0") {
+                                                    } else if (review.rating === 0) {
                                                         reviewElement.querySelector("[data-shop-modal-review-star-container]").innerHTML = `
                                                             <img class="shop-modal-review-stars-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMTIwIDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTMyXzYwKSI+CjxwYXRoIGQ9Ik0xMiAwTDE0LjY5NDIgOC4yOTE4SDIzLjQxMjdMMTYuMzU5MyAxMy40MTY0TDE5LjA1MzQgMjEuNzA4MkwxMiAxNi41ODM2TDQuOTQ2NTggMjEuNzA4Mkw3LjY0MDc0IDEzLjQxNjRMMC41ODczMjIgOC4yOTE4SDkuMzA1ODNMMTIgMFoiIGZpbGw9IiM1NzU3NTciLz4KPHBhdGggZD0iTTM2IDBMMzguNjk0MiA4LjI5MThINDcuNDEyN0w0MC4zNTkzIDEzLjQxNjRMNDMuMDUzNCAyMS43MDgyTDM2IDE2LjU4MzZMMjguOTQ2NiAyMS43MDgyTDMxLjY0MDcgMTMuNDE2NEwyNC41ODczIDguMjkxOEgzMy4zMDU4TDM2IDBaIiBmaWxsPSIjNTc1NzU3Ii8+CjxwYXRoIGQ9Ik02MCAwTDYyLjY5NDIgOC4yOTE4SDcxLjQxMjdMNjQuMzU5MyAxMy40MTY0TDY3LjA1MzQgMjEuNzA4Mkw2MCAxNi41ODM2TDUyLjk0NjYgMjEuNzA4Mkw1NS42NDA3IDEzLjQxNjRMNDguNTg3MyA4LjI5MThINTcuMzA1OEw2MCAwWiIgZmlsbD0iIzU3NTc1NyIvPgo8cGF0aCBkPSJNODQgMEw4Ni42OTQyIDguMjkxOEg5NS40MTI3TDg4LjM1OTMgMTMuNDE2NEw5MS4wNTM0IDIxLjcwODJMODQgMTYuNTgzNkw3Ni45NDY2IDIxLjcwODJMNzkuNjQwNyAxMy40MTY0TDcyLjU4NzMgOC4yOTE4SDgxLjMwNThMODQgMFoiIGZpbGw9IiM1NzU3NTciLz4KPHBhdGggZD0iTTEwOCAwTDExMC42OTQgOC4yOTE4SDExOS40MTNMMTEyLjM1OSAxMy40MTY0TDExNS4wNTMgMjEuNzA4MkwxMDggMTYuNTgzNkwxMDAuOTQ3IDIxLjcwODJMMTAzLjY0MSAxMy40MTY0TDk2LjU4NzMgOC4yOTE4SDEwNS4zMDZMMTA4IDBaIiBmaWxsPSIjNTc1NzU3Ii8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMTMyXzYwIj4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K"></img>
                                                         `;
@@ -14132,17 +14129,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             `;
 
             open_help_modals_buttons_holder.appendChild(devtools_button);
-
-            let old_devtools_button = document.createElement("div");
-
-            old_devtools_button.id = 'open-dev-tools-button-1';
-            old_devtools_button.setAttribute("onclick","openOldDevModal();");
-            old_devtools_button.title = `Old Dev Tools`;
-            old_devtools_button.innerHTML = `
-                <svg x="0" y="0" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M2 20.59V19.4a1 1 0 0 1 .3-.7l2.4-2.42a1 1 0 0 1 .71-.29H6l9-9-.85-.85a1 1 0 0 1-.23-.34l-1.49-3.73a.5.5 0 0 1 .65-.65l3.73 1.5a1 1 0 0 1 .34.22l.64.64a1 1 0 0 1 1.42 0l1 1a1 1 0 0 1 0 1.42l1.58 1.58a1 1 0 0 1 0 1.42l-1.58 1.58a1 1 0 0 1-1.42 0L17 9l-9 9v.59a1 1 0 0 1-.3.7l-2.4 2.42a1 1 0 0 1-.71.29H3.4a1 1 0 0 1-.7-.3l-.42-.4a1 1 0 0 1-.29-.71Z" class=""></path><path fill="currentColor" d="M8.23 10.23c.2.2.51.2.7 0l1.3-1.3a.5.5 0 0 0 0-.7L6.5 4.5l.3-.3a1 1 0 0 0 0-1.4l-.5-.5c-.2-.2-.45-.3-.7-.22-.43.14-1.17.49-2.1 1.42a5.37 5.37 0 0 0-1.42 2.1c-.08.25.03.5.21.7l.5.5a1 1 0 0 0 1.42 0l.29-.3 3.73 3.73ZM13.77 15.06a.5.5 0 0 0 0 .7l1.73 1.74 1.44 2.4a1 1 0 0 0 .15.19l1.73 1.73c.1.1.26.1.36 0l2.64-2.64c.1-.1.1-.26 0-.36L20.1 17.1a1 1 0 0 0-.2-.15L17.5 15.5l-1.73-1.73a.5.5 0 0 0-.7 0l-1.3 1.3Z" class=""></path></svg>
-            `;
-
-            open_help_modals_buttons_holder.appendChild(old_devtools_button);
         }
     }
 
@@ -16512,16 +16498,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_SUMMARY")}</p>
 
                     <div class="modalv3-content-card-2">
-                        <p class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_BASE_URL")}</p>
-                        <input type="text" class="modalv3-api-testfetch-text-input">
-                    </div>
-
-                    <div class="modalv3-content-card-2">
-                        <p class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_PORT")}</p>
-                        <input type="text" class="modalv3-api-testfetch-text-input">
+                        <button class="modalv3-content-card-button" onclick="refreshAdminReviews();">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REFRESH_BUTTON")}</button>
+                        <div id="modalv3-api-testing-reviews-output">
+                        
+                        </div>
                     </div>
                 </div>
             `;
+
+            refreshAdminReviews();
 
             fetch(api + APISTATUS, {
                 method: "GET",
@@ -16796,6 +16781,70 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
 
+    function refreshAdminReviews() {
+        document.getElementById("modalv3-api-testing-reviews-output").innerHTML = ``;
+        fetch(api + REVIEWSAPI, {
+            method: "GET",
+            headers: {
+                "Password": api_password,
+                "Authorization": discord_token,
+                "Token": api_token
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(review => {
+                const div = document.createElement('div');
+                div.className = 'modalv3-review-item-card';
+      
+                div.innerHTML = `
+                    <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REVIEW_INFO")}</p>
+                    <p>${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REVIEW_INFO_ID")}${review.id}</p>
+                    <p>${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REVIEW_INFO_RATING")}${review.rating}</p>
+                    <p>${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REVIEW_INFO_REVIEW")}${review.review_text}</p>
+                    <p>${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REVIEW_INFO_DATE")}${review.created_at}</p>
+                    <hr>
+                    <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ITEM_INFO")}</p>
+                    <p>${review.items.name} (${review.items.id})</p>
+                    <hr>
+                    <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_USER_INFO")}</p>
+                    <p>${review.users.username} (${review.users.id})</p>
+                    <hr>
+                    <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ADMIN_INFO")}</p>
+                    <p>${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ADMIN_INFO_SUMMARY")}</p>
+                    <button class="modalv3-content-card-button" onclick="adminDeleteReview('${review.id}')">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ADMIN_DELETE_REVIEW")}</button>
+                `;
+      
+                document.getElementById("modalv3-api-testing-reviews-output").appendChild(div);
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
+
+    function adminDeleteReview(reviewId) {
+
+        const accessToken = discord_token;
+      
+        fetch(api + REVIEWSAPI, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Password": api_password,
+                "Authorization": discord_token,
+                "Token": api_token
+            },
+            body: JSON.stringify({
+                accessToken,
+                reviewId
+            })
+        })
+        .catch(error => {
+            console.error(error)
+        });
+    }
+
     function modalv3AddTestFetchParam() {
         const key = document.getElementById("modalv3-test-fetch-search-params-key").value;
         const value = document.getElementById('modalv3-test-fetch-search-params-value').value;
@@ -16813,7 +16862,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
         document.getElementById('modalv3-test-fetch-search-params-value').value = '';
     }
-
 
     function fetchAPITestFetch() {
         const baseurl = document.getElementById("modalv3-test-fetch-base-url").value;
