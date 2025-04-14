@@ -1,6 +1,6 @@
 
 
-app_version1 = "357"
+app_version1 = "358"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -16153,6 +16153,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <button class="side-tabs-button" id="modal-v3-tab-api_test_fetch" onclick="setModalv3InnerContent('api_test_fetch')">
                     <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_API_TEST_FETCH")}</p>
                 </button>
+                <button class="side-tabs-button" id="modal-v3-tab-reviews_database" onclick="setModalv3InnerContent('reviews_database')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_REVIEWS_DATABASE")}</p>
+                </button>
                 <button class="side-tabs-button" id="modal-v3-tab-local_storage" onclick="setModalv3InnerContent('local_storage')">
                     <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_LOCAL_STORAGE")}</p>
                 </button>
@@ -16793,22 +16796,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <textarea readonly class="modalv3-api-testfetch-textarea-input" id="modalv3-test-fetch-output" placeholder="Output..."></textarea>
 
                 </div>
-                <hr>
-                <div class="modalv3-content-card-1">
-                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_HEADER")}</h2>
-                    <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_HEADER")}</h2>
-                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_SUMMARY")}</p>
-
-                    <div class="modalv3-content-card-2">
-                        <button class="modalv3-content-card-button" onclick="refreshAdminReviews();">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REFRESH_BUTTON")}</button>
-                        <div id="modalv3-api-testing-reviews-output">
-                        
-                        </div>
-                    </div>
-                </div>
             `;
-
-            refreshAdminReviews();
 
             fetch(api + APISTATUS, {
                 method: "GET",
@@ -16882,6 +16870,25 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     </div>
                 `;
             });
+        } else if (tab === "reviews_database") {
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_HEADER")}</h2>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_SUMMARY")}</p>
+
+                    <div class="modalv3-content-card-2">
+                        <button class="modalv3-content-card-button" onclick="refreshAdminReviews();">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REFRESH_BUTTON")}</button>
+                        <div id="modalv3-api-testing-reviews-output">
+                        
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            refreshAdminReviews();
+
         } else if (tab === "local_storage") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
@@ -17116,26 +17123,75 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             data.forEach(review => {
                 const div = document.createElement('div');
                 div.className = 'modalv3-review-item-card';
+
+                const date = new Date(review.created_at);
+
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth is 0-indexed
+                const year = date.getFullYear();
+
+                const formatted = `${day}/${month}/${year}`;
+
+                div.id = review.id + '-review-admin-card';
       
                 div.innerHTML = `
                     <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REVIEW_INFO")}</p>
-                    <p>${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REVIEW_INFO_ID")}${review.id}</p>
-                    <p>${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REVIEW_INFO_RATING")}${review.rating}</p>
-                    <p>${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REVIEW_INFO_REVIEW")}${review.review_text}</p>
-                    <p>${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REVIEW_INFO_FLAG")}${review.review_flag_type}</p>
-                    <p>${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REVIEW_INFO_DATE")}${review.created_at}</p>
+                    <div class="modalv3-review-card-types-container">
+                        <div>
+                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_ID")}</p>
+                            <p>${review.id}</p>
+                        </div>
+                        <div>
+                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_RATING")}</p>
+                            <p>${review.rating}</p>
+                        </div>
+                        <div class="review-flag-type-0" data-review-flag-type>
+                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_FLAG")}</p>
+                            <p>${review.review_flag_type}</p>
+                        </div>
+                        <div>
+                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_DATE")}</p>
+                            <p>${formatted}</p>
+                        </div>
+                        <div class="review-review-text">
+                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_REVIEW")}</p>
+                            <p>${review.review_text}</p>
+                        </div>
+                    </div>
                     <hr>
                     <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ITEM_INFO")}</p>
-                    <p>${review.items.name} (${review.items.id})</p>
+                    <div class="modalv3-review-card-types-container">
+                        <div>
+                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ITEM_INFO_NAME")}</p>
+                            <p>${review.items.name}</p>
+                        </div>
+                        <div>
+                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ITEM_INFO_ID")}</p>
+                            <p>${review.items.id}</p>
+                        </div>
+                    </div>
                     <hr>
                     <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_USER_INFO")}</p>
-                    <p>${review.users.username} (${review.users.id})</p>
+                    <div class="modalv3-review-card-types-container">
+                        <div>
+                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_USER_INFO_NAME")}</p>
+                            <p>${review.users.username}</p>
+                        </div>
+                        <div>
+                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_USER_INFO_ID")}</p>
+                            <p>${review.users.id}</p>
+                        </div>
+                    </div>
                     <hr>
-                    <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ADMIN_INFO")}</p>
-                    <p>${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ADMIN_INFO_SUMMARY")}</p>
-                    <button class="modalv3-content-card-button" onclick="adminDeleteReview('${review.id}')">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ADMIN_DELETE_REVIEW")}</button>
-                    <button class="modalv3-content-card-button">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ADMIN_BAN_USER")}</button>
+                    <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ADMIN_INFO")}</p>
+                    <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ADMIN_INFO_SUMMARY")}</p>
+                    <button class="modalv3-content-card-button-bad" onclick="adminDeleteReview('${review.id}')">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ADMIN_DELETE_REVIEW")}</button>
                 `;
+
+                if (review.review_flag_type === 2) {
+                    div.querySelector("[data-review-flag-type]").classList.remove("review-flag-type-0");
+                    div.querySelector("[data-review-flag-type]").classList.add("review-flag-type-2");
+                }
       
                 document.getElementById("modalv3-api-testing-reviews-output").appendChild(div);
             });
@@ -17165,6 +17221,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         .catch(error => {
             console.error(error)
         });
+
+        if (document.getElementById(reviewId + "-review-admin-card")) {
+            document.getElementById(reviewId + "-review-admin-card").remove();
+        }
     }
 
     function modalv3AddTestFetchParam() {

@@ -9,6 +9,7 @@
     --shop-banner-background: #313338;
     --interactive-active: #404249;
     --button-danger-background: #DD383F;
+    --button-danger-hover: #c5323a;
     --button-outline-danger-border: #DD383F;
     --status-danger: #F64046;
     --brand-500: #615DED;
@@ -4392,6 +4393,24 @@ data-share-product-card-button {
     background-color: var(--brand-500-hover);
 }
 
+.modalv3-content-card-button-bad {
+    display: block;
+    margin: 5px 0;
+    padding: 10px 20px;
+    background-color: var(--button-danger-background);
+    color: #fff;
+    border: 2px var(--6) solid;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+}
+
+.modalv3-content-card-button-bad:hover {
+    background-color: var(--button-danger-hover);
+}
+
 
 .modalv3-content-ratio-card {
     margin-top: 10px;
@@ -4677,6 +4696,32 @@ data-share-product-card-button {
 
 .modalv3-review-card-title {
     font-size: 20px;
+}
+
+
+.modalv3-review-card-types-container {
+    position: relative;
+    display: flex;
+    gap: 10px;
+}
+
+.modalv3-review-card-types-container div {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--background-tertiary);
+    border-radius: 5px;
+}
+
+.modalv3-review-card-types-container .review-review-text {
+    max-width: 300px;
+}
+
+.modalv3-review-card-types-container .review-flag-type-0 {
+    background-color: var(--ratio-green);
+}
+
+.modalv3-review-card-types-container .review-flag-type-2 {
+    background-color: var(--ratio-red);
 }
 
 
