@@ -1,6 +1,6 @@
 
 
-app_version1 = "352"
+app_version1 = "353"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10904,9 +10904,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                             <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="Write a review for ${apiCategory.name}...">
                                                             <button data-post-review-button>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_POST_REVIEW")}</button>
-                                                            <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER")}</p>
-                                                            <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY1")}</p>
-                                                            <a class="shop-category-modal-write-review-disclaimer-link" href="https://yapper.shop/privacy-policy">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY2")}</a>
+                                                            <div class="shop-category-modal-write-review-disclaimer-container">
+                                                                <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER")}</p>
+                                                                <a class="shop-category-modal-write-review-disclaimer-link" href="https://yapper.shop/privacy-policy">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY")}</a>
+                                                            </div>
                                                         `;
 
                                                         writeReviewContainer.querySelector("[data-post-review-button]").onclick = function(){
@@ -10953,9 +10954,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                             <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="Edit your review for ${apiCategory.name}...">
                                                             <button data-post-review-button>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_EDIT_REVIEW")}</button>
-                                                            <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER")}</p>
-                                                            <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY1")}</p>
-                                                            <a class="shop-category-modal-write-review-disclaimer-link" href="https://yapper.shop/privacy-policy">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY2")}</a>
                                                         `;
 
                                                         writeReviewContainer.querySelector("[data-post-review-button]").onclick = function(){
@@ -11018,8 +11016,35 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 <p style="font-size: medium; font-weight: 200;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_BE_THE_FIRST")}</p>
                                                             </div>
                                                         `;
+
+                                                        if (apiCategory.sku_id === discord_categories.NAMEPLATE || apiCategory.sku_id === discord_categories.NAMEPLATE_TEST) {
+                                                            let reviewWarningElement = document.createElement("div");
+
+                                                            reviewWarningElement.classList.add("review-element");
+        
+                                                            reviewWarningElement.innerHTML = `
+                                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_WARNING")}</p>
+                                                                <p style="font-size: medium; font-weight: 200; width: 95%;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_WARNING_1")}</p>
+                                                            `;
+
+                                                            modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewWarningElement);
+                                                        }
                                                     } else {
                                                         const reviewContainer = modal.querySelector("[data-category-modal-inner-content-container]");
+
+                                                        if (apiCategory.sku_id === discord_categories.NAMEPLATE || apiCategory.sku_id === discord_categories.NAMEPLATE_TEST) {
+                                                            let reviewWarningElement = document.createElement("div");
+
+                                                            reviewWarningElement.classList.add("review-element");
+        
+                                                            reviewWarningElement.innerHTML = `
+                                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_WARNING")}</p>
+                                                                <p style="font-size: medium; font-weight: 200; width: 95%;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_WARNING_1")}</p>
+                                                            `;
+
+                                                            reviewContainer.appendChild(reviewWarningElement);
+                                                        }
+
                                                         datareview.forEach(review => {
                                                             if (localStorage.reviews_filter_type === "1"|| localStorage.reviews_filter_type === "2" && review.review_flag_type != 2) {
                                                                 let reviewElement = document.createElement("div");
@@ -13843,7 +13868,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     }
 
+
     const postReview = async (itemId, rating) => {
+
+        // By running this function you agreen to the Shop Archives Privacy Policy: https://yapper.shop/privacy-policy
+
+        // By running this function you agreen to the Shop Archives Privacy Policy: https://yapper.shop/privacy-policy
+
+        // By running this function you agreen to the Shop Archives Privacy Policy: https://yapper.shop/privacy-policy
 
         const accessToken = localStorage.discord_token;
 
@@ -13878,6 +13910,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 document.getElementById("shop-category-modal-write-review-error-output").textContent = `${result.error}`;
             }
         }
+
+        // By running this function you agreen to the Shop Archives Privacy Policy: https://yapper.shop/privacy-policy
+
+        // By running this function you agreen to the Shop Archives Privacy Policy: https://yapper.shop/privacy-policy
+
+        // By running this function you agreen to the Shop Archives Privacy Policy: https://yapper.shop/privacy-policy
     };
 
     window.postReview = postReview;

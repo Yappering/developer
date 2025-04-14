@@ -478,7 +478,13 @@ body {
     background-color: var(--brand-500-hover);
 }
 
+.shop-category-modal-write-review-disclaimer-container {
+    display: flex;
+}
+
 .shop-category-modal-write-review-disclaimer {
+    position: relative;
+    display: flex;
     margin: 0;
     font-size: 13px;
     color: var(--8);
@@ -487,16 +493,15 @@ body {
 .shop-category-modal-write-review-disclaimer-error {
     margin: 0;
     font-size: 13px;
-    color: var(--button-danger-background);
+    color: var(--button-danger-background) !important;
 }
 
 .shop-category-modal-write-review-disclaimer-link {
-    position: absolute;
-    bottom: 0px;
-    left: 205px;
+    position: relative;
+    display: flex;
     color: var(--white);
+    margin-left: 5px;
     font-size: 13px;
-    margin-left: 10px;
     text-decoration: underline !important;
 }
 
@@ -4850,6 +4855,10 @@ data-share-product-card-button {
     flex: 1;
     max-height: 100%; /* Make sure it doesn't exceed modal height */
     position: relative;
+}
+
+.category-modalv2-inner-left p {
+    color: var(--white);
 }
 
 .shop-category-modal-assets-container {
