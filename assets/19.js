@@ -1,6 +1,6 @@
 
 
-app_version1 = "353"
+app_version1 = "355"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10906,7 +10906,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             <button data-post-review-button>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_POST_REVIEW")}</button>
                                                             <div class="shop-category-modal-write-review-disclaimer-container">
                                                                 <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER")}</p>
-                                                                <a class="shop-category-modal-write-review-disclaimer-link" href="https://yapper.shop/privacy-policy">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY")}</a>
+                                                                <a class="shop-category-modal-write-review-disclaimer-link" href="https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY")}</a>
                                                             </div>
                                                         `;
 
@@ -13871,11 +13871,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     const postReview = async (itemId, rating) => {
 
-        // By running this function you agreen to the Shop Archives Privacy Policy: https://yapper.shop/privacy-policy
+        // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
 
-        // By running this function you agreen to the Shop Archives Privacy Policy: https://yapper.shop/privacy-policy
+        // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
 
-        // By running this function you agreen to the Shop Archives Privacy Policy: https://yapper.shop/privacy-policy
+        // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
 
         const accessToken = localStorage.discord_token;
 
@@ -13907,15 +13907,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             fillCategoryModalContentContainer('reviews');
         } else {
             if (document.getElementById("shop-category-modal-write-review-error-output")) {
-                document.getElementById("shop-category-modal-write-review-error-output").textContent = `${result.error}`;
+                document.getElementById("shop-category-modal-write-review-error-output").textContent = `${result.message}`;
             }
         }
 
-        // By running this function you agreen to the Shop Archives Privacy Policy: https://yapper.shop/privacy-policy
+        // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
 
-        // By running this function you agreen to the Shop Archives Privacy Policy: https://yapper.shop/privacy-policy
+        // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
 
-        // By running this function you agreen to the Shop Archives Privacy Policy: https://yapper.shop/privacy-policy
+        // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
     };
 
     window.postReview = postReview;
@@ -17168,6 +17168,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ADMIN_INFO")}</p>
                     <p>${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ADMIN_INFO_SUMMARY")}</p>
                     <button class="modalv3-content-card-button" onclick="adminDeleteReview('${review.id}')">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ADMIN_DELETE_REVIEW")}</button>
+                    <button class="modalv3-content-card-button">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ADMIN_BAN_USER")}</button>
                 `;
       
                 document.getElementById("modalv3-api-testing-reviews-output").appendChild(div);
