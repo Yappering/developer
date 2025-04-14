@@ -1,6 +1,6 @@
 
 
-app_version1 = "360"
+app_version1 = "361"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10591,8 +10591,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             </div>
                                         `;
 
-                                        if (localStorage.experiment_2025_04_reviews_v2 === "Treatment 1: Enabled") {
-                                            modal.querySelector("[data-shop-category-modal-tabs-tab-button-2]").style.display = 'unset';
+                                        if (localStorage.experiment_2025_04_reviews_v2 === "Treatment 1: Enabled" && localStorage.reviews_filter_type != "3") {
+                                            modal.querySelector("[data-shop-category-modal-tabs-tab-button-2]").style.display = 'flex';
                                         }
 
                                         fillCategoryModalContentContainer('assets');
@@ -10936,7 +10936,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         writeReviewContainer.classList.add("shop-category-modal-write-review-container");
                                                         writeReviewContainer.id = 'shop-category-modal-write-review-container';
                                                         writeReviewContainer.innerHTML = `
-                                                            <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="Log In with Discord to write reviews..." disabled>
                                                             <button onclick="loginToDiscord();">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_LOG_IN_REVIEW")}</button>
                                                         `;
     
@@ -10992,7 +10991,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         }
 
                                                         datareview.forEach(review => {
-                                                            if (localStorage.reviews_filter_type === "1"|| localStorage.reviews_filter_type === "2" && review.review_flag_type != 2) {
+                                                            if (localStorage.reviews_filter_type === "1" || localStorage.discord_user_id === review.users.id || localStorage.reviews_filter_type === "2" && review.review_flag_type != 2) {
                                                                 let reviewElement = document.createElement("div");
     
                                                                 reviewElement.classList.add("review-element");
