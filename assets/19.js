@@ -1,6 +1,6 @@
 
 
-app_version1 = "358"
+app_version1 = "360"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10576,6 +10576,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         </div>
                                                         <div class="change-category-modal-content-button" style="display: none;" data-shop-category-modal-tabs-tab-button-2>
                                                             <p>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_TAB")}</p>
+                                                            <p class="category-reviews-beta-tag">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_BETA_TAB")}</p>
                                                         </div>
                                                         <div class="category-modal-inner-content-container" data-category-modal-inner-content-container>
                                                         </div>
