@@ -1,6 +1,6 @@
 
 
-app_version1 = "361"
+app_version1 = "362"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2717,9 +2717,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     setCommunityThemesCache()
     
     async function checkIfValidDiscordToken() {
-        if (localStorage.discord_token && !sessionStorage.discord_profile) {
+        if (localStorage.discord_token && !localStorage.discord_profile) {
             try {
-                if (localStorage.discord_token && !sessionStorage.discord_profile) {
+                if (localStorage.discord_token && !localStorage.discord_profile) {
                     const userInfo = await fetch('https://discord.com/api/users/@me', {
                         headers: { Authorization: `Bearer ${localStorage.discord_token}` }
                     });
@@ -2732,7 +2732,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     }
           
                     const user = await userInfo.json();
-                    sessionStorage.discord_profile = JSON.stringify(user, undefined, 4);
+                    localStorage.discord_profile = JSON.stringify(user, undefined, 4);
                     localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
                     localStorage.discord_username = user.username;
                     if (user.global_name != null) {
@@ -2759,8 +2759,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     location.reload();
                 }
           
-                // Optional: additional check (but `sessionStorage.discord_profile` is a string, so this check won't work unless parsed)
-                const parsedProfile = JSON.parse(sessionStorage.discord_profile);
+                // Optional: additional check (but `localStorage.discord_profile` is a string, so this check won't work unless parsed)
+                const parsedProfile = JSON.parse(localStorage.discord_profile);
                 if (parsedProfile.code === 0) {
                     setParams({ page: 'home', login: 'false' });
                     actuallyLogOutOfDiscord();
@@ -7542,7 +7542,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         `;
 
                                         if (localStorage.experiment_2025_04_reviews_v2 === "Treatment 1: Enabled") {
-                                            modal.querySelector("[data-shop-category-modal-tabs-tab-button-2]").style.display = 'unset';
+                                            modal.querySelector("[data-shop-category-modal-tabs-tab-button-2]").style.display = 'flex';
                                         }
 
                                         fillCategoryModalContentContainer('assets');
@@ -7754,7 +7754,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             } else if (tab === "reviews") {
 
                                                 modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = `
-                                                    <div class="review-element" id="loading-category-reviews">
+                                                    <div class="review-element-warning" id="loading-category-reviews">
                                                         <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_PPLUS_WARNING")}</p>
                                                     </div>
                                                 `;
@@ -10804,7 +10804,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             } else if (tab === "reviews") {
 
                                                 modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = `
-                                                    <div class="review-element" id="loading-category-reviews">
+                                                    <div class="review-element-notice" id="loading-category-reviews">
                                                         <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_LOADING")}</p>
                                                     </div>
                                                 `;
@@ -10872,7 +10872,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 const value = parseInt(star.getAttribute('data-value'));
                                                                 star.classList.toggle('filled', value <= rating);
                                                             });
-                                                            console.error(writeReviewContainer.querySelector("[data-post-review-button]"))
                                                             writeReviewContainer.querySelector("[data-post-review-button]").onclick = function(){
                                                                 postReview(`${apiCategory.sku_id}`, selectedRating);
                                                             };
@@ -10922,7 +10921,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 const value = parseInt(star.getAttribute('data-value'));
                                                                 star.classList.toggle('filled', value <= rating);
                                                             });
-                                                            console.error(writeReviewContainer.querySelector("[data-post-review-button]"))
                                                             writeReviewContainer.querySelector("[data-post-review-button]").onclick = function(){
                                                                 postReview(`${apiCategory.sku_id}`, selectedRating);
                                                             };
@@ -10945,7 +10943,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 })
                                                 .catch(error => {
                                                     modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = `
-                                                        <div class="review-element" id="loading-category-reviews">
+                                                        <div class="review-element-warning" id="loading-category-reviews">
                                                             <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_ERROR")}</p>
                                                             <p style="font-size: medium; font-weight: 200;">${error}</p>
                                                         </div>
@@ -10956,20 +10954,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 function renderReviews(datareview) {
                                                     if (Array.isArray(datareview) && datareview.length === 0) {
                                                         modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = `
-                                                            <div class="review-element" id="loading-category-reviews">
+                                                            <div class="review-element-notice" id="loading-category-reviews">
                                                                 <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_NONE")}</p>
-                                                                <p style="font-size: medium; font-weight: 200;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_BE_THE_FIRST")}</p>
                                                             </div>
                                                         `;
 
                                                         if (apiCategory.sku_id === discord_categories.NAMEPLATE || apiCategory.sku_id === discord_categories.NAMEPLATE_TEST) {
                                                             let reviewWarningElement = document.createElement("div");
 
-                                                            reviewWarningElement.classList.add("review-element");
+                                                            reviewWarningElement.classList.add("review-element-warning");
         
                                                             reviewWarningElement.innerHTML = `
                                                                 <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_WARNING")}</p>
-                                                                <p style="font-size: medium; font-weight: 200; width: 95%;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_WARNING_1")}</p>
                                                             `;
 
                                                             modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewWarningElement);
@@ -10980,11 +10976,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         if (apiCategory.sku_id === discord_categories.NAMEPLATE || apiCategory.sku_id === discord_categories.NAMEPLATE_TEST) {
                                                             let reviewWarningElement = document.createElement("div");
 
-                                                            reviewWarningElement.classList.add("review-element");
+                                                            reviewWarningElement.classList.add("review-element-warning");
         
                                                             reviewWarningElement.innerHTML = `
                                                                 <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_WARNING")}</p>
-                                                                <p style="font-size: medium; font-weight: 200; width: 95%;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_WARNING_1")}</p>
                                                             `;
 
                                                             reviewContainer.appendChild(reviewWarningElement);
@@ -10997,10 +10992,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 reviewElement.classList.add("review-element");
         
                                                                 reviewElement.innerHTML = `
-                                                                    <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
-                                                                        <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.users.username}</p>
+                                                                    <div class="review-content-inenr">
+                                                                        <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
+                                                                            <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.users.username}</p>
+                                                                        </div>
+                                                                        <p class="shop-modal-review-review-text">${review.review_text}</p>
                                                                     </div>
-                                                                    <p style="color: var(--8)">${review.review_text}</p>
                                                                     <div class="shop-modal-review-moderation-buttons" data-shop-modal-review-moderation-buttons></div>
                                                                 `;
 
@@ -14279,7 +14276,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                 window.location.hash = '';
                                 localStorage.dismissible_newLogInWithDiscord = "Treatment 1: Seen";
                           
-                                if (!sessionStorage.discord_profile) {
+                                if (!localStorage.discord_profile) {
                                     const userInfo = await fetch('https://discord.com/api/users/@me', {
                                         headers: { Authorization: `Bearer ${token}` }
                                     });
@@ -14292,7 +14289,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                     }
                           
                                     const user = await userInfo.json();
-                                    sessionStorage.discord_profile = JSON.stringify(user, undefined, 4);
+                                    localStorage.discord_profile = JSON.stringify(user, undefined, 4);
                                     localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
                                     localStorage.discord_username = user.username;
                                     localStorage.discord_user_id = user.id;
@@ -14320,8 +14317,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                     location.reload();
                                 }
                           
-                                // Optional: additional check (but `sessionStorage.discord_profile` is a string, so this check won't work unless parsed)
-                                const parsedProfile = JSON.parse(sessionStorage.discord_profile);
+                                // Optional: additional check (but `localStorage.discord_profile` is a string, so this check won't work unless parsed)
+                                const parsedProfile = JSON.parse(localStorage.discord_profile);
                                 if (parsedProfile.code === 0) {
                                     setParams({ page: 'home', login: 'false' });
                                     actuallyLogOutOfDiscord();
@@ -16236,7 +16233,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             const accountDetails = document.getElementById("modalv3-account-account-details-container");
             
             if (localStorage.discord_token) {
-                const discordProfile = JSON.parse(sessionStorage.discord_profile);
+                const discordProfile = JSON.parse(localStorage.discord_profile);
                 accountDetails.innerHTML = `
                     <div class="modalv3-account-account-details">
                         <div class="modalv3-account-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
@@ -18019,7 +18016,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             }
   
             const user = await userInfo.json();
-            sessionStorage.discord_profile = JSON.stringify(user, undefined, 4);
+            localStorage.discord_profile = JSON.stringify(user, undefined, 4);
             localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
             localStorage.discord_username = user.username;
             if (user.global_name != null) {
@@ -18043,8 +18040,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
   
             console.log('success');
       
-            // Optional: additional check (but `sessionStorage.discord_profile` is a string, so this check won't work unless parsed)
-            const parsedProfile = JSON.parse(sessionStorage.discord_profile);
+            // Optional: additional check (but `localStorage.discord_profile` is a string, so this check won't work unless parsed)
+            const parsedProfile = JSON.parse(localStorage.discord_profile);
             if (parsedProfile.code === 0) {
                 setParams({ page: 'home', login: 'false' });
                 actuallyLogOutOfDiscord();

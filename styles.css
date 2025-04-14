@@ -418,20 +418,22 @@ body {
 .category-modal-content-container {
     display: flex;
     margin-top: 10px;
-    gap: 15px;
+    gap: 10px;
     width: 300px;
 }
 
 .change-category-modal-content-button {
     display: flex;
-    background-color: var(--category-modal-tab-bg);
     width: auto;
     cursor: pointer;
-    border-radius: 5px;
+    background-color: var(--category-modal-tab-bg);
+    border-radius: 5px 5px 0px 0px;
+    margin-left: 10px;
+    border-bottom: 3px solid var(--category-modal-tab-bg);
 }
 
 .change-category-modal-content-button.selected {
-    background-color: var(--category-modal-tab-selected-bg);
+    border-bottom: 3px solid var(--brand-500);
 }
 
 .change-category-modal-content-button p {
@@ -468,12 +470,42 @@ body {
 .review-element {
     position: relative;
     background-color: var(--background-tertiary);
-    border-radius: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.review-element .review-content-inenr {
     padding-left: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-top: 5px;
-    width: 97%;
+    padding-bottom: 10px;
+}
+
+.review-element-warning {
+    position: relative;
+    background-color: #bf464659;
+    border: 2px solid #BF4646;
+    border-radius: 10px;
+    margin-top: 14px;
+    width: 100%;
+}
+
+.review-element-warning p {
+    margin: 0;
+    padding: 20px;
+}
+
+.review-element-notice {
+    position: relative;
+    background-color: #615DED59;
+    border: 2px solid #615DED;
+    border-radius: 10px;
+    margin-top: 14px;
+    width: 100%;
+}
+
+.review-element-notice p {
+    margin: 0;
+    padding: 20px;
 }
 
 .shop-category-modal-write-review-container {
@@ -552,6 +584,13 @@ body {
 }
 
 
+.shop-modal-review-review-text {
+    color: var(--white);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
 .shop-modal-review-name-container {
     display: flex;
     height: 50px;
@@ -566,8 +605,8 @@ body {
 }
 
 .shop-modal-review-name-container .shop-modal-review-time-container {
-    font-size: large;
-    font-weight: 900;
+    font-size: 17px;
+    color: var(--8);
 }
 
 .shop-modal-review-name-container .shop-modal-review-nametag-moderator {
@@ -4945,15 +4984,18 @@ data-share-product-card-button {
 
 .category-modal-inner-content-container {
     position: absolute;
-    margin-top: 70px;
-    height: 500px;
-    width: 100%;
+    margin-top: 44px;
+    height: 540px;
+    width: 98%;
+    border-radius: 10px;
     overflow-x: hidden;
     overflow-y: auto;
+    background-color: var(--background-secondary);
+    padding: 10px;
 }
 
-.category-modal-inner-content-container:has(.review-element) {
-    height: 450px;
+.category-modal-inner-content-container:has(.review-element, .review-element-notice, .review-element-warning) {
+    height: 470px;
 }
 
 [data-shop-modal-review-moderation-buttons] {
