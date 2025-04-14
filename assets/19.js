@@ -1,6 +1,6 @@
 
 
-app_version1 = "355"
+app_version1 = "356"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -11081,7 +11081,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     let moderatorNametag = document.createElement("p");
     
                                                                     moderatorNametag.classList.add("shop-modal-review-nametag-moderator");
-                                                                    moderatorNametag.textContent = `${getTextString("SHOP_REVIEWS_NAMETAG_MODERATOR")}`;
+                                                                    moderatorNametag.textContent = `${getTextString("SHOP_CATEGORY_MODAL_NAMETAG_MODERATOR")}`;
 
                                                                     reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(moderatorNametag);
                                                                 }
@@ -11101,7 +11101,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 const year = date.getFullYear();
 
                                                                 if (localStorage.reviews_time_type === "uk") {
-                                                                    const formatted = `${day}/${month}/${year} (UK)`;
+                                                                    const formatted = `${day}/${month}/${year}`;
 
                                                                     let createdAtTag = document.createElement("p");
                                                                     
@@ -11110,7 +11110,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                                     reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(createdAtTag);
                                                                 } else {
-                                                                    const formatted = `${month}/${day}/${year} (US)`;
+                                                                    const formatted = `${month}/${day}/${year}`;
 
                                                                     let createdAtTag = document.createElement("p");
                                                                     
@@ -13918,6 +13918,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
     };
 
+    // Example usage:
+    // postReview('item123', 5, 'This is my review text.');
+
     window.postReview = postReview;
 
     function deleteReview(itemId) {
@@ -13945,8 +13948,26 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         });
     }
 
-    // Example usage:
-    // postReview('item123', 5, 'This is my review text.');
+
+    function deleteAllStoredUserData() {
+        const accessToken = discord_token;
+      
+        fetch(api + REVIEWSAPI + '/all', {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Password": api_password,
+                "Authorization": discord_token,
+                "Token": api_token
+            },
+            body: JSON.stringify({
+                accessToken
+            })
+        })
+        .catch(error => {
+            console.error(error)
+        });
+    }
 
     
     // Function to copy the emoji to clipboard
@@ -16405,7 +16426,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_DELETE_ALL_HEADER")}</h2>
                         <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_DELETE_ALL_SUMMARY")}</p>
 
-                        <button class="modalv3-content-card-button" onclick="fetchAPITestFetch()">Delete Data</button>
+                        <button class="modalv3-content-card-button" onclick="deleteAllStoredUserData()">Delete Data</button>
                     </div>
                 `;
 

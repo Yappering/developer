@@ -280,6 +280,8 @@ SHOP_CATEGORY_MODAL_REVIEWS_POST_REVIEW = "Post Review";
 SHOP_CATEGORY_MODAL_REVIEWS_EDIT_REVIEW = "Edit Review";
 SHOP_CATEGORY_MODAL_REVIEWS_LOG_IN_REVIEW = "Log In with Discord";
 
+SHOP_CATEGORY_MODAL_NAMETAG_MODERATOR = "ADMIN";
+
 SHOP_CATEGORY_MODAL_REVIEWS_WARNING = "Warning!";
 SHOP_CATEGORY_MODAL_REVIEWS_WARNING_1 = "Do NOT ask questions about nameplates in your review, your review will be deleted and you will be banned from posting reviews!";
 
