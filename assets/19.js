@@ -1,6 +1,6 @@
 
 
-app_version1 = "351"
+app_version1 = "352"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10882,24 +10882,108 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     let hasReviewAlready = false;
 
                                                     data.forEach(review => {
-                                                        if (review.users.user_id === localStorage.user_id) {
+                                                        if (review.users.id === localStorage.discord_user_id) {
                                                             hasReviewAlready = true;
                                                         }
                                                     });
 
-                                                    if (hasReviewAlready === false) {
+                                                    if (localStorage.discord_token && hasReviewAlready === false) {
                                                         let writeReviewContainer = document.createElement("div");
         
                                                         writeReviewContainer.classList.add("shop-category-modal-write-review-container");
                                                         writeReviewContainer.id = 'shop-category-modal-write-review-container';
                                                         writeReviewContainer.innerHTML = `
-                                                            <p class="shop-category-modal-write-review-disclaimer" id="shop-category-modal-write-review-error-output"></p>
-                                                            <input id="shop-category-modal-write-review-post-input" placeholder="Write a review for ${apiCategory.name}...">
-                                                            <button onclick="postReview('${apiCategory.sku_id}', 5);">Post Review</button>
+                                                            <p class="shop-category-modal-write-review-disclaimer-error" id="shop-category-modal-write-review-error-output"></p>
+                                                            <div id="star-rating" class="stars">
+                                                                <svg data-value="1" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_2)"><path d="M12 1L14.6942 9.2918H23.4127L16.3593 14.4164L19.0534 22.7082L12 17.5836L4.94658 22.7082L7.64074 14.4164L0.587322 9.2918H9.30583L12 1Z" fill="currentColor"/></g><defs><clipPath id="clip0_131_2"><rect width="24" height="24" fill="currentColor"/></clipPath></defs></svg>
+                                                                <svg data-value="2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_2)"><path d="M12 1L14.6942 9.2918H23.4127L16.3593 14.4164L19.0534 22.7082L12 17.5836L4.94658 22.7082L7.64074 14.4164L0.587322 9.2918H9.30583L12 1Z" fill="currentColor"/></g><defs><clipPath id="clip0_131_2"><rect width="24" height="24" fill="currentColor"/></clipPath></defs></svg>
+                                                                <svg data-value="3" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_2)"><path d="M12 1L14.6942 9.2918H23.4127L16.3593 14.4164L19.0534 22.7082L12 17.5836L4.94658 22.7082L7.64074 14.4164L0.587322 9.2918H9.30583L12 1Z" fill="currentColor"/></g><defs><clipPath id="clip0_131_2"><rect width="24" height="24" fill="currentColor"/></clipPath></defs></svg>
+                                                                <svg data-value="4" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_2)"><path d="M12 1L14.6942 9.2918H23.4127L16.3593 14.4164L19.0534 22.7082L12 17.5836L4.94658 22.7082L7.64074 14.4164L0.587322 9.2918H9.30583L12 1Z" fill="currentColor"/></g><defs><clipPath id="clip0_131_2"><rect width="24" height="24" fill="currentColor"/></clipPath></defs></svg>
+                                                                <svg data-value="5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_2)"><path d="M12 1L14.6942 9.2918H23.4127L16.3593 14.4164L19.0534 22.7082L12 17.5836L4.94658 22.7082L7.64074 14.4164L0.587322 9.2918H9.30583L12 1Z" fill="currentColor"/></g><defs><clipPath id="clip0_131_2"><rect width="24" height="24" fill="currentColor"/></clipPath></defs></svg>
+                                                            </div>
+
+                                                            <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="Write a review for ${apiCategory.name}...">
+                                                            <button data-post-review-button>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_POST_REVIEW")}</button>
                                                             <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER")}</p>
                                                             <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY1")}</p>
                                                             <a class="shop-category-modal-write-review-disclaimer-link" href="https://yapper.shop/privacy-policy">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY2")}</a>
                                                         `;
+
+                                                        writeReviewContainer.querySelector("[data-post-review-button]").onclick = function(){
+                                                            postReview(`${apiCategory.sku_id}`, 0);
+                                                        };
+
+
+                                                        const stars = writeReviewContainer.querySelectorAll('#star-rating svg');
+                                                        let selectedRating = 0;
+
+                                                        stars.forEach(star => {
+                                                            star.addEventListener('click', () => {
+                                                                selectedRating = parseInt(star.getAttribute('data-value'));
+                                                                updateStars(selectedRating);
+                                                            });
+                                                        });
+                                                    
+                                                        function updateStars(rating) {
+                                                            stars.forEach(star => {
+                                                                const value = parseInt(star.getAttribute('data-value'));
+                                                                star.classList.toggle('filled', value <= rating);
+                                                            });
+                                                            console.error(writeReviewContainer.querySelector("[data-post-review-button]"))
+                                                            writeReviewContainer.querySelector("[data-post-review-button]").onclick = function(){
+                                                                postReview(`${apiCategory.sku_id}`, selectedRating);
+                                                            };
+                                                        }
+    
+                                                        modal.querySelector(".category-modalv2-inner-left").appendChild(writeReviewContainer);
+                                                    } else if (localStorage.discord_token) {
+                                                        let writeReviewContainer = document.createElement("div");
+        
+                                                        writeReviewContainer.classList.add("shop-category-modal-write-review-container");
+                                                        writeReviewContainer.id = 'shop-category-modal-write-review-container';
+                                                        writeReviewContainer.innerHTML = `
+                                                            <p class="shop-category-modal-write-review-disclaimer-error" id="shop-category-modal-write-review-error-output"></p>
+                                                            <div id="star-rating" class="stars">
+                                                                <svg data-value="1" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_2)"><path d="M12 1L14.6942 9.2918H23.4127L16.3593 14.4164L19.0534 22.7082L12 17.5836L4.94658 22.7082L7.64074 14.4164L0.587322 9.2918H9.30583L12 1Z" fill="currentColor"/></g><defs><clipPath id="clip0_131_2"><rect width="24" height="24" fill="currentColor"/></clipPath></defs></svg>
+                                                                <svg data-value="2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_2)"><path d="M12 1L14.6942 9.2918H23.4127L16.3593 14.4164L19.0534 22.7082L12 17.5836L4.94658 22.7082L7.64074 14.4164L0.587322 9.2918H9.30583L12 1Z" fill="currentColor"/></g><defs><clipPath id="clip0_131_2"><rect width="24" height="24" fill="currentColor"/></clipPath></defs></svg>
+                                                                <svg data-value="3" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_2)"><path d="M12 1L14.6942 9.2918H23.4127L16.3593 14.4164L19.0534 22.7082L12 17.5836L4.94658 22.7082L7.64074 14.4164L0.587322 9.2918H9.30583L12 1Z" fill="currentColor"/></g><defs><clipPath id="clip0_131_2"><rect width="24" height="24" fill="currentColor"/></clipPath></defs></svg>
+                                                                <svg data-value="4" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_2)"><path d="M12 1L14.6942 9.2918H23.4127L16.3593 14.4164L19.0534 22.7082L12 17.5836L4.94658 22.7082L7.64074 14.4164L0.587322 9.2918H9.30583L12 1Z" fill="currentColor"/></g><defs><clipPath id="clip0_131_2"><rect width="24" height="24" fill="currentColor"/></clipPath></defs></svg>
+                                                                <svg data-value="5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_2)"><path d="M12 1L14.6942 9.2918H23.4127L16.3593 14.4164L19.0534 22.7082L12 17.5836L4.94658 22.7082L7.64074 14.4164L0.587322 9.2918H9.30583L12 1Z" fill="currentColor"/></g><defs><clipPath id="clip0_131_2"><rect width="24" height="24" fill="currentColor"/></clipPath></defs></svg>
+                                                            </div>
+
+                                                            <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="Edit your review for ${apiCategory.name}...">
+                                                            <button data-post-review-button>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_EDIT_REVIEW")}</button>
+                                                            <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER")}</p>
+                                                            <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY1")}</p>
+                                                            <a class="shop-category-modal-write-review-disclaimer-link" href="https://yapper.shop/privacy-policy">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY2")}</a>
+                                                        `;
+
+                                                        writeReviewContainer.querySelector("[data-post-review-button]").onclick = function(){
+                                                            postReview(`${apiCategory.sku_id}`, 0);
+                                                        };
+
+
+                                                        const stars = writeReviewContainer.querySelectorAll('#star-rating svg');
+                                                        let selectedRating = 0;
+
+                                                        stars.forEach(star => {
+                                                            star.addEventListener('click', () => {
+                                                                selectedRating = parseInt(star.getAttribute('data-value'));
+                                                                updateStars(selectedRating);
+                                                            });
+                                                        });
+                                                    
+                                                        function updateStars(rating) {
+                                                            stars.forEach(star => {
+                                                                const value = parseInt(star.getAttribute('data-value'));
+                                                                star.classList.toggle('filled', value <= rating);
+                                                            });
+                                                            console.error(writeReviewContainer.querySelector("[data-post-review-button]"))
+                                                            writeReviewContainer.querySelector("[data-post-review-button]").onclick = function(){
+                                                                postReview(`${apiCategory.sku_id}`, selectedRating);
+                                                            };
+                                                        }
+
     
                                                         modal.querySelector(".category-modalv2-inner-left").appendChild(writeReviewContainer);
                                                     } else {
@@ -10908,12 +10992,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         writeReviewContainer.classList.add("shop-category-modal-write-review-container");
                                                         writeReviewContainer.id = 'shop-category-modal-write-review-container';
                                                         writeReviewContainer.innerHTML = `
-                                                            <p class="shop-category-modal-write-review-disclaimer" id="shop-category-modal-write-review-error-output"></p>
-                                                            <input id="shop-category-modal-write-review-post-input" placeholder="Edit your review for ${apiCategory.name}...">
-                                                            <button onclick="postReview('${apiCategory.sku_id}', 5);">Edit Review</button>
-                                                            <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER")}</p>
-                                                            <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY1")}</p>
-                                                            <a class="shop-category-modal-write-review-disclaimer-link" href="https://yapper.shop/privacy-policy">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY2")}</a>
+                                                            <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="Log In with Discord to write reviews..." disabled>
+                                                            <button onclick="loginToDiscord();">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_LOG_IN_REVIEW")}</button>
                                                         `;
     
                                                         modal.querySelector(".category-modalv2-inner-left").appendChild(writeReviewContainer);
@@ -10954,11 +11034,19 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <div class="shop-modal-review-moderation-buttons" data-shop-modal-review-moderation-buttons></div>
                                                                 `;
 
-                                                                if (review.users.id === localStorage.discord_user_id || review_mod_ids.includes(localStorage.discord_user_id)) {
+                                                                if (review_mod_ids.includes(localStorage.discord_user_id)) {
                                                                     let deleteReviewIcon = document.createElement("div");
 
                                                                     deleteReviewIcon.innerHTML = `
-                                                                        <svg class="closeIcon_modal" onclick="deleteReview('${review.id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
+                                                                        <svg class="closeIcon_modal" onclick="adminDeleteReview('${review.id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
+                                                                    `;
+
+                                                                    reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(deleteReviewIcon);
+                                                                } else if (review.users.id === localStorage.discord_user_id) {
+                                                                    let deleteReviewIcon = document.createElement("div");
+
+                                                                    deleteReviewIcon.innerHTML = `
+                                                                        <svg class="closeIcon_modal" onclick="deleteReview('${apiCategory.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
                                                                     `;
 
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(deleteReviewIcon);
@@ -13794,7 +13882,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     window.postReview = postReview;
 
-    function deleteReview(reviewId) {
+    function deleteReview(itemId) {
         const accessToken = discord_token;
       
         fetch(api + REVIEWSAPI, {
@@ -13807,7 +13895,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             },
             body: JSON.stringify({
                 accessToken,
-                reviewId
+                itemId
             })
         })
         .then(response => response.json())

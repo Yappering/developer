@@ -452,11 +452,11 @@ body {
     left: 0;
 }
 
-.shop-category-modal-write-review-container input {
+.shop-category-modal-write-review-container #shop-category-modal-write-review-post-input {
     background-color: var(--input-background);
     border-radius: 5px;
     border: none;
-    width: 650px;
+    width: 490px;
     padding: 10px;
     color: white;
 }
@@ -484,6 +484,12 @@ body {
     color: var(--8);
 }
 
+.shop-category-modal-write-review-disclaimer-error {
+    margin: 0;
+    font-size: 13px;
+    color: var(--button-danger-background);
+}
+
 .shop-category-modal-write-review-disclaimer-link {
     position: absolute;
     bottom: 0px;
@@ -493,6 +499,23 @@ body {
     margin-left: 10px;
     text-decoration: underline !important;
 }
+
+.stars {
+    display: inline-block;
+    position: relative;
+    top: 5px;
+}
+
+.stars svg {
+    font-size: 2rem;
+    cursor: pointer;
+    color: gray;
+}
+
+.stars svg.filled {
+    color: gold;
+}
+
 
 .shop-modal-review-name-container {
     display: flex;
