@@ -1,6 +1,6 @@
 
 
-app_version1 = "365"
+app_version1 = "366"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10998,7 +10998,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 reviewElement.classList.add("review-element");
         
                                                                 reviewElement.innerHTML = `
-                                                                    <div class="review-content-inenr">
+                                                                    <div class="review-content-inner">
                                                                         <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
                                                                             <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.users.username}</p>
                                                                         </div>
@@ -11029,8 +11029,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     let reportReviewIcon = document.createElement("div");
 
                                                                     reportReviewIcon.innerHTML = `
-                                                                        <svg class="closeIcon_modal delete-review-icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M3 1a1 1 0 0 1 1 1v.82l8.67-1.45A2 2 0 0 1 15 3.35v1.47l5.67-.95A2 2 0 0 1 23 5.85v7.3a2 2 0 0 1-1.67 1.98l-9 1.5a2 2 0 0 1-1.78-.6c-.2-.21-.08-.54.18-.68a5.01 5.01 0 0 0 1.94-1.94c.18-.32-.1-.66-.46-.6L4 14.18V21a1 1 0 1 1-2 0V2a1 1 0 0 1 1-1Z" class=""></path></svg>
+                                                                        <svg data-report-review-button class="closeIcon_modal delete-review-icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M3 1a1 1 0 0 1 1 1v.82l8.67-1.45A2 2 0 0 1 15 3.35v1.47l5.67-.95A2 2 0 0 1 23 5.85v7.3a2 2 0 0 1-1.67 1.98l-9 1.5a2 2 0 0 1-1.78-.6c-.2-.21-.08-.54.18-.68a5.01 5.01 0 0 0 1.94-1.94c.18-.32-.1-.66-.46-.6L4 14.18V21a1 1 0 1 1-2 0V2a1 1 0 0 1 1-1Z" class=""></path></svg>
                                                                     `;
+
+                                                                    reportReviewIcon.querySelector("[data-report-review-button]").onclick = function(){
+                                                                        openReviewReportModal(review.id, review.review_text, review.users.username);
+                                                                    };
 
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(reportReviewIcon);
                                                                 }
@@ -11111,6 +11115,59 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 reviewContainer.appendChild(reviewElement);
                                                             }
                                                         });
+
+                                                        function openReviewReportModal(reviewID, reviewText, reviewUser) {
+                                                            let modal = document.createElement("div");
+                    
+                                                            modal.classList.add('modalv2');
+                    
+                                                            modal.innerHTML = `
+                                                                <div class="report-review-modalv2-inner">
+                                                                    <p class="report-review-modal-header">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_HEADER")}</p>
+                                                                    <p class="report-review-modal-summary">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_SUMMARY")}</p>
+                                                                    <p class="report-review-modal-summary" style="color: var(--8);">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_PREVIEW")}</p>
+                                                                    <div class="report-review-content-preview">
+                                                                        <div class="review-content-inner">
+                                                                            <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
+                                                                                <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${reviewUser}</p>
+                                                                            </div>
+                                                                            <p class="shop-modal-review-review-text">${reviewText}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            `;
+                    
+                                                            document.body.appendChild(modal);
+                    
+                                                            setTimeout(() => {
+                                                                modal.classList.add('show');
+                                                            }, 1);
+                                                            
+                    
+                                                            let modal_back = document.createElement("div");
+                    
+                                                            modal_back.classList.add('modalv2-back');
+                                                            modal_back.classList.add('modalv2-back-review-report');
+                                                            modal_back.id = 'modalv2-back';
+                    
+                                                            document.body.appendChild(modal_back);
+                    
+                                                            setTimeout(() => {
+                                                                modal_back.classList.add('show');
+                                                            }, 1);
+                    
+                    
+                                                            modal.addEventListener('click', (event) => {
+                                                                if (event.target === modal) {
+                                                                    modal.classList.remove('show');
+                                                                    modal_back.classList.remove('show');
+                                                                    setTimeout(() => {
+                                                                        modal.remove();
+                                                                        modal_back.remove();
+                                                                    }, 300);
+                                                                }
+                                                            });
+                                                        }
                                                     }
                                                     
                                                 }

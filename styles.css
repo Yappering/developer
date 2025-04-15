@@ -4,6 +4,7 @@
     --background-primary: #313338;
     --background-secondary: #2B2D31;
     --background-tertiary: #1E1F22;
+    --review-card-bg: #1E1F22;
     --input-background: #1E1F22;
     --shop-card-background: #111214;
     --shop-banner-background: #313338;
@@ -50,6 +51,7 @@
     --background-primary: #0c0c0c;
     --background-secondary: #000000;
     --background-tertiary: #000000;
+    --review-card-bg: #1E1F22;
     --input-background: #1E1F22;
     --shop-card-background: #000000;
     --interactive-active: #202020;
@@ -79,6 +81,7 @@
     --background-primary: #ffffff;
     --background-secondary: #ffffff;
     --background-tertiary: #ffffff;
+    --review-card-bg: #a1a1a1;
     --input-background: #ffffff;
     --shop-card-background: #ffffff;
     --interactive-active: #b1b1b1;
@@ -477,13 +480,13 @@ body {
 
 .review-element {
     position: relative;
-    background-color: var(--background-tertiary);
+    background-color: var(--review-card-bg);
     border-radius: 5px;
     margin-top: 10px;
     width: 100%;
 }
 
-.review-element .review-content-inenr {
+.review-element .review-content-inner {
     padding-left: 20px;
     padding-bottom: 10px;
 }
@@ -5069,6 +5072,51 @@ data-share-product-card-button {
     width: 1000px;
     height: 800px;
     overflow: hidden;
+}
+
+.modalv2:has(.report-review-modalv2-inner) {
+    z-index: 1003 !important;
+}
+
+.report-review-modalv2-inner {
+    position: relative;
+    z-index: 1003 !important;
+    background-color: var(--background-primary);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 450px;
+    height: 600px;
+    overflow: hidden;
+}
+
+.modalv2-back-review-report {
+    z-index: 1002 !important;
+}
+
+.report-review-modal-header {
+    font-size: 24px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.report-review-modal-summary {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.report-review-content-preview {
+    border: 2px solid var(--8);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.report-review-content-preview p {
+    margin: 0;
+}
+
+.report-review-content-preview .shop-modal-review-name-container {
+    height: 40px;
 }
 
 .modalv2 {
