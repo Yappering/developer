@@ -277,10 +277,6 @@ SHOP_CATEGORY_MODAL_REVIEWS_ERROR = "There was an error loading reviews";
 SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER = "By making a review, you agree to the Shop Archives ";
 SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY = "Privacy Policy.";
 
-SHOP_CATEGORY_MODAL_REVIEWS_POST_REVIEW = "Post Review";
-SHOP_CATEGORY_MODAL_REVIEWS_EDIT_REVIEW = "Edit Review";
-SHOP_CATEGORY_MODAL_REVIEWS_LOG_IN_REVIEW = "Log In with Discord to review this category";
-
 SHOP_CATEGORY_MODAL_NAMETAG_MODERATOR = "ADMIN";
 
 SHOP_CATEGORY_MODAL_REVIEWS_WARNING = "Do NOT ask questions about nameplates in your review, your review will be deleted and you will be banned from posting reviews!";

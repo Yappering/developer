@@ -470,7 +470,7 @@ body {
 .review-element {
     position: relative;
     background-color: var(--background-tertiary);
-    border-radius: 10px;
+    border-radius: 5px;
     margin-top: 10px;
     width: 100%;
 }
@@ -484,7 +484,7 @@ body {
     position: relative;
     background-color: #bf464659;
     border: 2px solid #BF4646;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-top: 14px;
     width: 100%;
 }
@@ -498,7 +498,7 @@ body {
     position: relative;
     background-color: #615DED59;
     border: 2px solid #615DED;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-top: 14px;
     width: 100%;
 }
@@ -510,6 +510,7 @@ body {
 
 .shop-category-modal-write-review-container {
     position: absolute;
+    width: 100%;
     bottom: 0;
     left: 0;
 }
@@ -518,9 +519,16 @@ body {
     background-color: var(--input-background);
     border-radius: 5px;
     border: none;
-    width: 490px;
+    width: 600px;
     padding: 10px;
     color: white;
+}
+
+.shop-category-modal-write-review-input-container {
+    position: relative;
+    width: 100%;
+    background-color: var(--input-background);
+    border-radius: 5px;
 }
 
 .shop-category-modal-write-review-container button {
@@ -567,10 +575,25 @@ body {
     text-decoration: underline !important;
 }
 
+.review-send-icon {
+    position: absolute;
+    top: 6px;
+    right: 7px;
+    color: var(--8);
+    height: 26px;
+    width: 26px;
+    cursor: pointer;
+}
+
+.review-send-icon:hover {
+    color: var(--white);
+}
+
 .stars {
     display: inline-block;
     position: relative;
-    top: 5px;
+    top: 6px;
+    left: 7px;
 }
 
 .stars svg {
@@ -4987,7 +5010,7 @@ data-share-product-card-button {
     margin-top: 44px;
     height: 540px;
     width: 98%;
-    border-radius: 10px;
+    border-radius: 5px;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: var(--background-secondary);
