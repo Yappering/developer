@@ -177,14 +177,14 @@ body {
     font-family: 'gg sans', sans-serif;
     font-family: 'gg sans Normal', sans-serif;
     font-family: 'gg sans Medium', sans-serif;
-    font-family: 'gg sans SemiBold', sans-serif; 
+    font-family: 'gg sans SemiBold', sans-serif;
 }
 
 .gg-sans {
     font-family: 'gg sans', sans-serif;
     font-family: 'gg sans Normal', sans-serif;
     font-family: 'gg sans Medium', sans-serif;
-    font-family: 'gg sans SemiBold', sans-serif;                                   
+    font-family: 'gg sans SemiBold', sans-serif;
 }
 
 .abcgintonord {
@@ -455,6 +455,14 @@ body {
     border-radius: 5px;
     width: 40px;
     height: 20px;
+}
+
+.delete-review-icon {
+    color: var(--button-danger-background) !important;
+}
+
+.delete-review-icon:hover {
+    color: var(--button-danger-hover) !important;
 }
 
 

@@ -1,6 +1,6 @@
 
 
-app_version1 = "364"
+app_version1 = "365"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10845,7 +10845,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <svg data-value="5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_2)"><path d="M12 1L14.6942 9.2918H23.4127L16.3593 14.4164L19.0534 22.7082L12 17.5836L4.94658 22.7082L7.64074 14.4164L0.587322 9.2918H9.30583L12 1Z" fill="currentColor"/></g><defs><clipPath id="clip0_131_2"><rect width="24" height="24" fill="currentColor"/></clipPath></defs></svg>
                                                                 </div>
 
-                                                                <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="Write a review for ${apiCategory.name}...">
+                                                                <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_WRITE")}${apiCategory.name}...">
                                                                 <svg data-post-review-button class="review-send-icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.02 14 11.4a.6.6 0 0 1 0 1.18L6.6 14l-2.94 5.87a1.48 1.48 0 0 0 1.99 1.98l17.03-8.52a1.48 1.48 0 0 0 0-2.64L5.65 2.16a1.48 1.48 0 0 0-1.99 1.98l2.94 5.88Z" class=""></path></svg>
                                                             </div>
                                                             <div class="shop-category-modal-write-review-disclaimer-container">
@@ -10896,7 +10896,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <svg data-value="5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_2)"><path d="M12 1L14.6942 9.2918H23.4127L16.3593 14.4164L19.0534 22.7082L12 17.5836L4.94658 22.7082L7.64074 14.4164L0.587322 9.2918H9.30583L12 1Z" fill="currentColor"/></g><defs><clipPath id="clip0_131_2"><rect width="24" height="24" fill="currentColor"/></clipPath></defs></svg>
                                                                 </div>
 
-                                                                <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="Edit your review for ${apiCategory.name}...">
+                                                                <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_EDIT")}${apiCategory.name}...">
                                                                 <svg data-post-review-button class="review-send-icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.02 14 11.4a.6.6 0 0 1 0 1.18L6.6 14l-2.94 5.87a1.48 1.48 0 0 0 1.99 1.98l17.03-8.52a1.48 1.48 0 0 0 0-2.64L5.65 2.16a1.48 1.48 0 0 0-1.99 1.98l2.94 5.88Z" class=""></path></svg>
                                                             </div>
                                                             <div class="shop-category-modal-write-review-disclaimer-container">
@@ -10939,7 +10939,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         writeReviewContainer.id = 'shop-category-modal-write-review-container';
                                                         writeReviewContainer.innerHTML = `
                                                             <div onclick="loginToDiscord();" class="shop-category-modal-write-review-input-container">
-                                                                <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="You must be logged in with Discord to review items..." disabled>
+                                                                <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_LOGIN")}" disabled>
                                                             </div>
                                                         `;
     
@@ -11011,7 +11011,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     let deleteReviewIcon = document.createElement("div");
 
                                                                     deleteReviewIcon.innerHTML = `
-                                                                        <svg class="closeIcon_modal" onclick="adminDeleteReview('${review.id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
+                                                                        <svg class="closeIcon_modal delete-review-icon" onclick="adminDeleteReview('${review.id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
                                                                     `;
 
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(deleteReviewIcon);
@@ -11019,10 +11019,20 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     let deleteReviewIcon = document.createElement("div");
 
                                                                     deleteReviewIcon.innerHTML = `
-                                                                        <svg class="closeIcon_modal" onclick="deleteReview('${apiCategory.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
+                                                                        <svg class="closeIcon_modal delete-review-icon" onclick="deleteReview('${apiCategory.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
                                                                     `;
 
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(deleteReviewIcon);
+                                                                }
+
+                                                                if (localStorage.experiment_2025_04_reviews_v2_report === "Treatment 1: Enabled" && review.report_type === 0) {
+                                                                    let reportReviewIcon = document.createElement("div");
+
+                                                                    reportReviewIcon.innerHTML = `
+                                                                        <svg class="closeIcon_modal delete-review-icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M3 1a1 1 0 0 1 1 1v.82l8.67-1.45A2 2 0 0 1 15 3.35v1.47l5.67-.95A2 2 0 0 1 23 5.85v7.3a2 2 0 0 1-1.67 1.98l-9 1.5a2 2 0 0 1-1.78-.6c-.2-.21-.08-.54.18-.68a5.01 5.01 0 0 0 1.94-1.94c.18-.32-.1-.66-.46-.6L4 14.18V21a1 1 0 1 1-2 0V2a1 1 0 0 1 1-1Z" class=""></path></svg>
+                                                                    `;
+
+                                                                    reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(reportReviewIcon);
                                                                 }
 
                                                                 if (review_mod_ids.includes(review.users.id)) {
@@ -17152,6 +17162,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_FLAG")}</p>
                             <p>${review.review_flag_type}</p>
                         </div>
+                        <div class="review-flag-type-0" data-review-report-type>
+                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_REPORT")}</p>
+                            <p>${review.report_type}</p>
+                        </div>
                         <div>
                             <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_DATE")}</p>
                             <p>${formatted}</p>
@@ -17194,6 +17208,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 if (review.review_flag_type === 2) {
                     div.querySelector("[data-review-flag-type]").classList.remove("review-flag-type-0");
                     div.querySelector("[data-review-flag-type]").classList.add("review-flag-type-2");
+                }
+
+                if (review.report_type != 0) {
+                    div.querySelector("[data-review-report-type]").classList.remove("review-flag-type-0");
+                    div.querySelector("[data-review-report-type]").classList.add("review-flag-type-2");
                 }
       
                 document.getElementById("modalv3-api-testing-reviews-output").appendChild(div);
