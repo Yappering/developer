@@ -1,6 +1,6 @@
 
 
-app_version1 = "369"
+app_version1 = "370"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -11041,6 +11041,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     };
 
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(reportReviewIcon);
+                                                                } else if (localStorage.experiment_2025_04_reviews_v2_report === "Treatment 1: Enabled" && review.report_type != 0 && review_mod_ids.includes(localStorage.discord_user_id)) {
+                                                                    let reportReviewIcon = document.createElement("div");
+
+                                                                    reportReviewIcon.innerHTML = `
+                                                                        <svg data-report-review-button class="closeIcon_modal delete-review-icon-good" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M3 1a1 1 0 0 1 1 1v.82l8.67-1.45A2 2 0 0 1 15 3.35v1.47l5.67-.95A2 2 0 0 1 23 5.85v7.3a2 2 0 0 1-1.67 1.98l-9 1.5a2 2 0 0 1-1.78-.6c-.2-.21-.08-.54.18-.68a5.01 5.01 0 0 0 1.94-1.94c.18-.32-.1-.66-.46-.6L4 14.18V21a1 1 0 1 1-2 0V2a1 1 0 0 1 1-1Z" class=""></path></svg>
+                                                                    `;
+
+                                                                    reportReviewIcon.querySelector("[data-report-review-button]").onclick = function(){
+                                                                        openReviewReportModal(review.id, review.review_text, review.users.username);
+                                                                    };
+
+                                                                    reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(reportReviewIcon);
                                                                 }
 
                                                                 if (review_mod_ids.includes(review.users.id)) {
@@ -11153,14 +11165,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                         </div>
                                                                         <div class="report-review-report-card-option other" onclick="selectReviewReportType(4)" id="report-review-report-card-option-4">
                                                                             <p>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_4")}</p>
+                                                                            <p class="report-review-report-card-option-summary">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_4_SUMMARY")}</p>
                                                                         </div>
                                                                         <div class="report-review-report-card-option other report-card-option-selected" onclick="selectReviewReportType(5)" id="report-review-report-card-option-5">
                                                                             <p>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_5")}</p>
                                                                         </div>
                                                                     </div>
+                                                                    <p class="report-review-report-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_DISCLAIMER")}</p>
+                                                                    <p class="report-review-report-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_DISCLAIMER1")}</p>
                                                                     <div class="report-review-bottom">
                                                                         <p class="shop-category-modal-write-review-disclaimer-error" id="shop-category-modal-report-review-error-output"></p>
                                                                         <button class="modalv3-content-card-button cancel-button">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_CANCEL")}</button>
+                                                                        <div data-dev-only-remove-report-button-container></div>
                                                                         <button class="modalv3-content-card-button report-button" data-reviews-send-report-button>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_REPORT")}</button>
                                                                     </div>
                                                                 </div>
@@ -11169,6 +11185,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             modal.querySelector("[data-reviews-send-report-button]").addEventListener('click', () => {
                                                                 reportReview(document.getElementById("report-review-report-card-inv-imput-review-id").value, document.getElementById("report-review-report-card-inv-imput").value);
                                                             });
+
+                                                            if (localStorage.dev === "true") {
+                                                                modal.querySelector("[data-dev-only-remove-report-button-container]").innerHTML = `
+                                                                    <button class="modalv3-content-card-button report-button" data-reviews-remove-report-button>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_REMOVE_REPORT")}</button>
+                                                                `;
+                                                                modal.querySelector("[data-reviews-remove-report-button]").addEventListener('click', () => {
+                                                                    reportReview(document.getElementById("report-review-report-card-inv-imput-review-id").value, 0);
+                                                                });
+                                                            }
                     
                                                             document.body.appendChild(modal);
                     
@@ -13967,13 +13992,20 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 const modal = document.getElementById("modalv2-report-review");
                 const modal_back = document.getElementById("modalv2-report-review-back");
 
-                modal.classList.remove('show');
-                modal_back.classList.remove('show');
-                setTimeout(() => {
-                    modal.remove();
-                    modal_back.remove();
-                }, 300);
-                fillCategoryModalContentContainer('reviews', true);
+                if (modal && modal_back) {
+                    modal.classList.remove('show');
+                    modal_back.classList.remove('show');
+                    setTimeout(() => {
+                        modal.remove();
+                        modal_back.remove();
+                    }, 300);
+                    fillCategoryModalContentContainer('reviews', true);
+                }
+                if (document.getElementById("review-panel-report-type-id-" + reviewId) && document.getElementById("review-panel-report-type-id-" + reviewId + "-text")) {
+                    document.getElementById("review-panel-report-type-id-" + reviewId).classList.remove("review-flag-type-2");
+                    document.getElementById("review-panel-report-type-id-" + reviewId).classList.add("review-flag-type-0");
+                    document.getElementById("review-panel-report-type-id-" + reviewId + "-text").textContent = "0";
+                }
             } else {
                 if (document.getElementById("shop-category-modal-report-review-error-output")) {
                     document.getElementById("shop-category-modal-report-review-error-output").textContent = data.message;
@@ -17324,9 +17356,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_FLAG")}</p>
                             <p>${review.review_flag_type}</p>
                         </div>
-                        <div class="review-flag-type-0" data-review-report-type>
+                        <div class="review-flag-type-0" id="review-panel-report-type-id-${review.id}" data-review-report-type>
                             <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_REPORT")}</p>
-                            <p>${review.report_type}</p>
+                            <p id="review-panel-report-type-id-${review.id}-text">${review.report_type}</p>
                         </div>
                         <div>
                             <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_DATE")}</p>
@@ -17365,6 +17397,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ADMIN_INFO")}</p>
                     <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ADMIN_INFO_SUMMARY")}</p>
                     <button class="modalv3-content-card-button-bad" onclick="adminDeleteReview('${review.id}')">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ADMIN_DELETE_REVIEW")}</button>
+                    <button class="modalv3-content-card-button-bad" onclick="reportReview('${review.id}', 0)">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ADMIN_RESET_REPORT_TYPE")}</button>
                 `;
 
                 if (review.review_flag_type === 2) {
