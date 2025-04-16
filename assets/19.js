@@ -1,6 +1,6 @@
 
 
-app_version1 = "370"
+app_version1 = "371"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -11014,6 +11014,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 if (review_mod_ids.includes(localStorage.discord_user_id)) {
                                                                     let deleteReviewIcon = document.createElement("div");
 
+                                                                    deleteReviewIcon.title = getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DELETE_HOVER");
+
                                                                     deleteReviewIcon.innerHTML = `
                                                                         <svg class="closeIcon_modal delete-review-icon" onclick="adminDeleteReview('${review.id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
                                                                     `;
@@ -11021,6 +11023,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(deleteReviewIcon);
                                                                 } else if (review.users.id === localStorage.discord_user_id) {
                                                                     let deleteReviewIcon = document.createElement("div");
+
+                                                                    deleteReviewIcon.title = getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DELETE_HOVER");
 
                                                                     deleteReviewIcon.innerHTML = `
                                                                         <svg class="closeIcon_modal delete-review-icon" onclick="deleteReview('${apiCategory.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
@@ -11031,6 +11035,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                                 if (localStorage.experiment_2025_04_reviews_v2_report === "Treatment 1: Enabled" && review.report_type === 0 && review.users.id != localStorage.discord_user_id) {
                                                                     let reportReviewIcon = document.createElement("div");
+
+                                                                    reportReviewIcon.title = getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_HOVER");
 
                                                                     reportReviewIcon.innerHTML = `
                                                                         <svg data-report-review-button class="closeIcon_modal delete-review-icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M3 1a1 1 0 0 1 1 1v.82l8.67-1.45A2 2 0 0 1 15 3.35v1.47l5.67-.95A2 2 0 0 1 23 5.85v7.3a2 2 0 0 1-1.67 1.98l-9 1.5a2 2 0 0 1-1.78-.6c-.2-.21-.08-.54.18-.68a5.01 5.01 0 0 0 1.94-1.94c.18-.32-.1-.66-.46-.6L4 14.18V21a1 1 0 1 1-2 0V2a1 1 0 0 1 1-1Z" class=""></path></svg>
@@ -11043,6 +11049,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(reportReviewIcon);
                                                                 } else if (localStorage.experiment_2025_04_reviews_v2_report === "Treatment 1: Enabled" && review.report_type != 0 && review_mod_ids.includes(localStorage.discord_user_id)) {
                                                                     let reportReviewIcon = document.createElement("div");
+
+                                                                    reportReviewIcon.title = getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_HOVER");
 
                                                                     reportReviewIcon.innerHTML = `
                                                                         <svg data-report-review-button class="closeIcon_modal delete-review-icon-good" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M3 1a1 1 0 0 1 1 1v.82l8.67-1.45A2 2 0 0 1 15 3.35v1.47l5.67-.95A2 2 0 0 1 23 5.85v7.3a2 2 0 0 1-1.67 1.98l-9 1.5a2 2 0 0 1-1.78-.6c-.2-.21-.08-.54.18-.68a5.01 5.01 0 0 0 1.94-1.94c.18-.32-.1-.66-.46-.6L4 14.18V21a1 1 0 1 1-2 0V2a1 1 0 0 1 1-1Z" class=""></path></svg>
@@ -11174,7 +11182,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <p class="report-review-report-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_DISCLAIMER")}</p>
                                                                     <p class="report-review-report-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_DISCLAIMER1")}</p>
                                                                     <div class="report-review-bottom">
-                                                                        <p class="shop-category-modal-write-review-disclaimer-error" id="shop-category-modal-report-review-error-output"></p>
+                                                                        <p class="shop-category-modal-report-review-error-output" id="shop-category-modal-report-review-error-output"></p>
                                                                         <button class="modalv3-content-card-button cancel-button">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_CANCEL")}</button>
                                                                         <div data-dev-only-remove-report-button-container></div>
                                                                         <button class="modalv3-content-card-button report-button" data-reviews-send-report-button>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_REPORT")}</button>

@@ -587,6 +587,15 @@ body {
     color: var(--button-danger-background) !important;
 }
 
+.shop-category-modal-report-review-error-output {
+    position: absolute;
+    margin: 0;
+    font-size: 13px;
+    top: -15px;
+    right: 0;
+    color: var(--button-danger-background) !important;
+}
+
 .shop-category-modal-write-review-disclaimer-link {
     position: relative;
     display: flex;
