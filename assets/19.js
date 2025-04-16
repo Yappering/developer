@@ -1,6 +1,6 @@
 
 
-app_version1 = "368"
+app_version1 = "369"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -11124,6 +11124,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             let modal = document.createElement("div");
                     
                                                             modal.classList.add('modalv2');
+                                                            modal.id = 'modalv2-report-review';
                     
                                                             modal.innerHTML = `
                                                                 <div class="report-review-modalv2-inner">
@@ -11141,19 +11142,19 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <input class="hidden" id="report-review-report-card-inv-imput-review-id" value="${reviewID}" disabled>
                                                                     <p class="report-review-modal-summary">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_SUMMARY")}</p>
                                                                     <div>
-                                                                        <div class="report-review-report-card-option" onclick="selectReviewRepoerType('1')" id="report-review-report-card-option-1">
+                                                                        <div class="report-review-report-card-option" onclick="selectReviewReportType(1)" id="report-review-report-card-option-1">
                                                                             <p>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_1")}</p>
                                                                         </div>
-                                                                        <div class="report-review-report-card-option" onclick="selectReviewRepoerType('2')" id="report-review-report-card-option-2">
+                                                                        <div class="report-review-report-card-option" onclick="selectReviewReportType(2)" id="report-review-report-card-option-2">
                                                                             <p>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_2")}</p>
                                                                         </div>
-                                                                        <div class="report-review-report-card-option" onclick="selectReviewRepoerType('3')" id="report-review-report-card-option-3">
+                                                                        <div class="report-review-report-card-option" onclick="selectReviewReportType(3)" id="report-review-report-card-option-3">
                                                                             <p>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_3")}</p>
                                                                         </div>
-                                                                        <div class="report-review-report-card-option other" onclick="selectReviewRepoerType('4')" id="report-review-report-card-option-4">
+                                                                        <div class="report-review-report-card-option other" onclick="selectReviewReportType(4)" id="report-review-report-card-option-4">
                                                                             <p>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_4")}</p>
                                                                         </div>
-                                                                        <div class="report-review-report-card-option other report-card-option-selected" onclick="selectReviewRepoerType('5')" id="report-review-report-card-option-5">
+                                                                        <div class="report-review-report-card-option other report-card-option-selected" onclick="selectReviewReportType(5)" id="report-review-report-card-option-5">
                                                                             <p>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_5")}</p>
                                                                         </div>
                                                                     </div>
@@ -11180,7 +11181,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     
                                                             modal_back.classList.add('modalv2-back');
                                                             modal_back.classList.add('modalv2-back-review-report');
-                                                            modal_back.id = 'modalv2-back';
+                                                            modal_back.id = 'modalv2-report-review-back';
                     
                                                             document.body.appendChild(modal_back);
                     
@@ -13928,14 +13929,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
 
-    function selectReviewRepoerType(type) {
+    function selectReviewReportType(type) {
         if (document.querySelector(".report-card-option-selected")) {
             document.querySelectorAll('.report-card-option-selected').forEach((el) => {
                 el.classList.remove("report-card-option-selected");
             });
         }
 
-        if (type === "1" || type === "2" || type === "3" || type === "4" || type === "5") {
+        if (type === 1 || type === 2 || type === 3 || type === 4 || type === 5) {
             document.getElementById("report-review-report-card-option-" + type).classList.add("report-card-option-selected");
             document.getElementById("report-review-report-card-inv-imput").value = type;
         } else {
@@ -13943,7 +13944,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     }
 
-    function reportReview(reviewID, reportType) {
+    function reportReview(reviewId, reportType) {
         const accessToken = discord_token;
       
         fetch(api + REVIEWSAPI + '/report', {
@@ -13956,14 +13957,27 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             },
             body: JSON.stringify({
                 accessToken,
-                reviewID,
-                reportType
+                reviewId,
+                reportType: Number(reportType)
             })
         })
         .then(response => response.json())
         .then((data) => {
-            if (document.getElementById("shop-category-modal-report-review-error-output")) {
-                document.getElementById("shop-category-modal-report-review-error-output").textContent = data.message;
+            if (data.success && data.success === true) {
+                const modal = document.getElementById("modalv2-report-review");
+                const modal_back = document.getElementById("modalv2-report-review-back");
+
+                modal.classList.remove('show');
+                modal_back.classList.remove('show');
+                setTimeout(() => {
+                    modal.remove();
+                    modal_back.remove();
+                }, 300);
+                fillCategoryModalContentContainer('reviews', true);
+            } else {
+                if (document.getElementById("shop-category-modal-report-review-error-output")) {
+                    document.getElementById("shop-category-modal-report-review-error-output").textContent = data.message;
+                }
             }
         })
         .catch(error => {

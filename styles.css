@@ -5043,7 +5043,13 @@ data-share-product-card-button {
     display: grid;
     direction: rtl;
     gap: 10px;
+    opacity: 0.1;
     grid-template-columns: repeat(auto-fill, minmax(29px, 1fr));
+    transition: opacity 0.2s ease;
+}
+
+.review-element:hover [data-shop-modal-review-moderation-buttons] {
+    opacity: 1;
 }
 
 [data-shop-modal-review-moderation-buttons] div {
