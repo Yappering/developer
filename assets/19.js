@@ -1,6 +1,6 @@
 
 
-app_version1 = "371"
+app_version1 = "372"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10622,6 +10622,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                         function fillCategoryModalContentContainer(tab, bypassCache) {
                                             if (document.getElementById("shop-category-modal-write-review-container") && categoryModalTabCache != "reviews" || document.getElementById("shop-category-modal-write-review-container") && bypassCache === true) {
+                                                document.getElementById("shop-category-modal-write-review-container").remove();
+                                            }
+                                            if (document.getElementById("shop-category-modal-write-review-container") && tab === "assets") {
                                                 document.getElementById("shop-category-modal-write-review-container").remove();
                                             }
                                             if (tab === "assets" && categoryModalTabCache != "assets") {
