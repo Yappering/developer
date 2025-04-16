@@ -1,6 +1,6 @@
 
 
-app_version1 = "372"
+app_version1 = "373"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -11036,7 +11036,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(deleteReviewIcon);
                                                                 }
 
-                                                                if (localStorage.experiment_2025_04_reviews_v2_report === "Treatment 1: Enabled" && review.report_type === 0 && review.users.id != localStorage.discord_user_id) {
+                                                                if (localStorage.experiment_2025_04_reviews_v2_report === "Treatment 1: Enabled" && review.report_type === 0 && review.users.id != localStorage.discord_user_id && localStorage.discord_token) {
                                                                     let reportReviewIcon = document.createElement("div");
 
                                                                     reportReviewIcon.title = getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_HOVER");
@@ -11050,7 +11050,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     };
 
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(reportReviewIcon);
-                                                                } else if (localStorage.experiment_2025_04_reviews_v2_report === "Treatment 1: Enabled" && review.report_type != 0 && review_mod_ids.includes(localStorage.discord_user_id)) {
+                                                                } else if (localStorage.experiment_2025_04_reviews_v2_report === "Treatment 1: Enabled" && review.report_type != 0 && review_mod_ids.includes(localStorage.discord_user_id) && localStorage.discord_token) {
                                                                     let reportReviewIcon = document.createElement("div");
 
                                                                     reportReviewIcon.title = getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_HOVER");
