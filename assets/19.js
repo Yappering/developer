@@ -1,6 +1,6 @@
 
 
-app_version1 = "374"
+app_version1 = "375"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -14040,6 +14040,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
 
         // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
+
+        if (document.getElementById("shop-category-modal-write-review-error-output")) {
+            document.getElementById("shop-category-modal-write-review-error-output").textContent = ``;
+        }
 
         const accessToken = localStorage.discord_token;
 
