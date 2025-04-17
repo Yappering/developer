@@ -1,6 +1,6 @@
 
 
-app_version1 = "375"
+app_version1 = "376"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -11003,6 +11003,27 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 let reviewElement = document.createElement("div");
     
                                                                 reviewElement.classList.add("review-element");
+
+                                                                let reviewTextOutput = review.review_text;
+
+
+                                                                if (review.id === 2) {
+                                                                    const randomNumber = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+
+                                                                    if (randomNumber === 1) {
+                                                                        reviewTextOutput = "I think you're crazy.";
+                                                                    } else if (randomNumber === 2) {
+                                                                        reviewTextOutput = "Fun review.";
+                                                                    } else if (randomNumber === 3) {
+                                                                        reviewTextOutput = "Boo.";
+                                                                    } else if (randomNumber === 4) {
+                                                                        reviewTextOutput = "h";
+                                                                    } else if (randomNumber === 5) {
+                                                                        reviewTextOutput = "Yes you read that right";
+                                                                    } else if (randomNumber === 6) {
+                                                                        reviewTextOutput = "No, this review isn't random";
+                                                                    }
+                                                                }
         
                                                                 reviewElement.innerHTML = `
                                                                     <div class="review-content-inner">
@@ -11010,7 +11031,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <img class="shop-modal-review-avatar-img" src="https://cdn.discordapp.com/avatars/${review.users.id}/${review.users.avatar}.webp?size=128"></img>
                                                                             <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.users.username}</p>
                                                                         </div>
-                                                                        <p class="shop-modal-review-review-text">${review.review_text}</p>
+                                                                        <p class="shop-modal-review-review-text">${reviewTextOutput}</p>
                                                                     </div>
                                                                     <div class="shop-modal-review-moderation-buttons" data-shop-modal-review-moderation-buttons></div>
                                                                 `;
