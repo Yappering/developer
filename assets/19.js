@@ -1,6 +1,6 @@
 
 
-app_version1 = "373"
+app_version1 = "374"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -11007,6 +11007,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 reviewElement.innerHTML = `
                                                                     <div class="review-content-inner">
                                                                         <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
+                                                                            <img class="shop-modal-review-avatar-img" src="https://cdn.discordapp.com/avatars/${review.users.id}/${review.users.avatar}.webp?size=128"></img>
                                                                             <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.users.username}</p>
                                                                         </div>
                                                                         <p class="shop-modal-review-review-text">${review.review_text}</p>
