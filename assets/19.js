@@ -1,6 +1,6 @@
 
 
-app_version1 = "379"
+app_version1 = "380"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10993,6 +10993,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     } else {
                                                         const reviewContainer = modal.querySelector("[data-category-modal-inner-content-container]");
 
+                                                        if (localStorage.staff_enable_override_review_content === "true") {
+                                                            let reviewOverrideWarningElement = document.createElement("div");
+
+                                                            reviewOverrideWarningElement.classList.add("review-element-notice");
+        
+                                                            reviewOverrideWarningElement.innerHTML = `
+                                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_OVERRIDE_WARNING")}</p>
+                                                            `;
+
+                                                            modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewOverrideWarningElement);
+                                                        }
+
                                                         if (apiCategory.sku_id === discord_categories.NAMEPLATE || apiCategory.sku_id === discord_categories.NAMEPLATE_TEST) {
                                                             let reviewWarningElement = document.createElement("div");
 
@@ -11038,10 +11050,16 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             <img class="shop-modal-review-avatar-img" src="https://cdn.discordapp.com/avatars/${review.users.id}/${review.users.avatar}.webp?size=128"></img>
                                                                             <p class="shop-modal-review-name" style="font-size: large; font-weight: 900;">${review.users.username}</p>
                                                                         </div>
-                                                                        <p class="shop-modal-review-review-text">${reviewTextOutput}</p>
+                                                                        <p class="shop-modal-review-review-text" data-review-content-text-output></p>
                                                                     </div>
                                                                     <div class="shop-modal-review-moderation-buttons" data-shop-modal-review-moderation-buttons></div>
                                                                 `;
+
+                                                                if (localStorage.staff_enable_override_review_content === "true") {
+                                                                    reviewElement.querySelector("[data-review-content-text-output]").textContent = localStorage.staff_raw_review_override_content;
+                                                                } else {
+                                                                    reviewElement.querySelector("[data-review-content-text-output]").textContent = reviewTextOutput;
+                                                                }
 
                                                                 if (review_mod_ids.includes(localStorage.discord_user_id)) {
                                                                     let deleteReviewIcon = document.createElement("div");
@@ -17191,9 +17209,19 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_MISC_HEADER")}</h2>
                 <div class="modalv3-content-card-1">
-                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_MISC_H_HEADER")}</h2>
+                    <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_MISC_REVIEW_CONTENT_OVERRIDE_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_MISC_REVIEW_CONTENT_OVERRIDE_SUMMARY")}</p>
+
+                    <input class="modalv3-toggle" onclick="overrideReviewTextContent();" id="override-review-text-content-checkbox" type="checkbox">
+                </div>
+                <div class="modalv3-content-card-2">
+                    <input type="text" class="modalv3-api-testfetch-text-input" oninput="overrideRawReviewTextContent();" id="modalv3-update-review-content-override" value="${localStorage.staff_raw_review_override_content}">
                 </div>
             `;
+
+            if (localStorage.staff_enable_override_review_content === "true") {
+                document.getElementById("override-review-text-content-checkbox").checked = true;
+            }
         } else {
             console.error(tab + ' is not a valid tab');
         }
@@ -17566,6 +17594,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         } else {
             localStorage.experiment_force_rollout = "false"
         }
+    }
+
+    function overrideReviewTextContent() {
+        if (localStorage.staff_enable_override_review_content === "true") {
+            localStorage.staff_enable_override_review_content = "false"
+        } else {
+            localStorage.staff_enable_override_review_content = "true"
+        }
+    }
+
+    function overrideRawReviewTextContent() {
+        localStorage.staff_raw_review_override_content = document.getElementById("modalv3-update-review-content-override").value;
     }
 
     function updateThemeStore(theme, hasButtons, raw) {

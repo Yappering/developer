@@ -492,7 +492,7 @@ body {
     position: relative;
     background-color: var(--review-card-bg);
     border-radius: 5px;
-    margin-top: 10px;
+    margin-bottom: 10px;
     width: 100%;
 }
 
@@ -507,7 +507,7 @@ body {
     background-color: #bf464659;
     border: 2px solid #BF4646;
     border-radius: 5px;
-    margin-top: 14px;
+    margin-bottom: 14px;
     width: 100%;
 }
 
@@ -521,7 +521,7 @@ body {
     background-color: #615DED59;
     border: 2px solid #615DED;
     border-radius: 5px;
-    margin-top: 14px;
+    margin-bottom: 14px;
     width: 100%;
 }
 
