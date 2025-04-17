@@ -1,6 +1,6 @@
 
 
-app_version1 = "378"
+app_version1 = "379"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2500,9 +2500,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     review_mod_ids = ["1169899815983915121", "1049207768785100880"]
 
     const BADGE_CONFIG = {
-        staff: { name: "Shop Archives Staff", class: "badge-staff" },
+        staff: { name: "Shop Archives Staff", class: "badge-staff", support: "https://github.com/ShopArchives/support/blob/main/article/1-badges.md#staff" },
         bug_hunter_gold: { name: "Shop Archives Bug Hunter", class: "badge-bug_hunter_gold" },
-        bug_hunter: { name: "Shop Archives Bug Hunter", class: "badge-bug_hunter" },
+        bug_hunter: { name: "Shop Archives Bug Hunter", class: "badge-bug_hunter", support: "https://github.com/ShopArchives/support/blob/main/article/1-badges.md#bug-hunter" },
         contributor: { name: "Github Contributor", class: "badge-contributor" },
     };
 
@@ -11104,6 +11104,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             let badgeElement = document.createElement("div");
                                                                             badgeElement.classList.add("shop-modal-review-badge", config.class);
                                                                             badgeElement.title = config.name;
+
+                                                                            badgeElement.addEventListener('click', () => {
+                                                                                window.open(config.support);
+                                                                            });
                                                                 
                                                                             reviewBadgesContainer.appendChild(badgeElement);
                                                                         }
