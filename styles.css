@@ -118,6 +118,7 @@
     --background-primary: #2d2d50;
     --background-secondary: #191936;
     --background-tertiary: #0d0d1f;
+    --review-card-bg: #0d0d1f;
     --input-background: #0d0d1f;
     --shop-card-background: #070918;
     --shop-banner-background: #2d2d50;
@@ -130,14 +131,14 @@
     --modalv3-hr-color: #2a378a;
     --modalv3-hr-color2: #283264;
     --modalv3-text-input-background: #22223d;
-    --category-modal-tab-bg: #262642;
-    --category-modal-tab-selected-bg: #3f3f70;
+    --category-modal-tab-bg: #191936;
 }
 
 .theme-color_red {
     --background-primary: #502d2d;
     --background-secondary: #361919;
     --background-tertiary: #1f0d0d;
+    --review-card-bg: #1f0d0d;
     --input-background: #1f0d0d;
     --shop-card-background: #180707;
     --shop-banner-background: #502d2d;
@@ -150,14 +151,14 @@
     --modalv3-hr-color: #8a2a2a;
     --modalv3-hr-color2: #642828;
     --modalv3-text-input-background: #3d2222;
-    --category-modal-tab-bg: #422626;
-    --category-modal-tab-selected-bg: #703f3f;
+    --category-modal-tab-bg: #361919;
 }
 
 .theme-color_green {
     --background-primary: #35502d;
     --background-secondary: #203619;
     --background-tertiary: #0e1f0d;
+    --review-card-bg: #0e1f0d;
     --input-background: #0e1f0d;
     --shop-card-background: #0a1807;
     --shop-banner-background: #35502d;
@@ -170,8 +171,7 @@
     --modalv3-hr-color: #4d8a2a;
     --modalv3-hr-color2: #346428;
     --modalv3-text-input-background: #253d22;
-    --category-modal-tab-bg: #2d4226;
-    --category-modal-tab-selected-bg: #4d703f;
+    --category-modal-tab-bg: #203619;
 }
 
 body {
@@ -543,7 +543,7 @@ body {
     border: none;
     width: 600px;
     padding: 10px;
-    color: white;
+    color: var(--white);
 }
 
 .shop-category-modal-write-review-input-container {
@@ -644,6 +644,11 @@ body {
     margin-bottom: 5px;
 }
 
+.shop-modal-review-review-text img {
+    height: 21px;
+    margin-bottom: -4px;
+}
+
 
 .shop-modal-review-name-container {
     display: flex;
@@ -714,7 +719,7 @@ body {
 }
 
 .badge-contributor {
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KPHBhdGggZD0iTTYuNDcyMTMgNEw0IDYuNDcyMTNWMTcuNTI3OUw2LjQ3MjE3IDIwSDE3LjUyNzhMMjAgMTcuNTI3OVY2LjQ3MjEzTDE3LjUyNzkgNEg2LjQ3MjEzWk0xMC44NTgyIDE2LjQyNTVIOC42NDU1MUM4LjY0NTUxIDE0LjU5NTIgNy4xNTY3IDEzLjEwNjQgNS4zMjY0MiAxMy4xMDY0VjEwLjg5MzZDNy4xNTY3IDEwLjg5MzYgOC42NDU1MSA5LjQwNDgzIDguNjQ1NTEgNy41NzQ1NEgxMC44NTgyQzEwLjg1ODIgOS4zOTA0MiA5Ljk2Njg0IDEwLjk5MDggOC42MTEyOSAxMkM5Ljk2Njg0IDEzLjAwOTMgMTAuODU4MiAxNC42MDk2IDEwLjg1ODIgMTYuNDI1NVpNMTguNjY2NyAxMy4xMDY0QzE2LjgzNjQgMTMuMTA2NCAxNS4zNDc2IDE0LjU5NTIgMTUuMzQ3NiAxNi40MjU1SDEzLjEzNDhDMTMuMTM0OCAxNC42MDk2IDE0LjAyNjMgMTMuMDA5MyAxNS4zODE4IDEyQzE0LjAyNjMgMTAuOTkwOCAxMy4xMzQ4IDkuMzkwNDIgMTMuMTM0OCA3LjU3NDU0SDE1LjM0NzZDMTUuMzQ3NiA5LjQwNDgzIDE2LjgzNjQgMTAuODkzNiAxOC42NjY3IDEwLjg5MzZWMTMuMTA2NFYxMy4xMDY0WiIgZmlsbD0iIzJFQTk2NyIvPgo8L3N2Zz4=);
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMTQwIj48cGF0aCBkPSJtMjEuNTggMTEuNC00LjI4LTcuMzktLjM1LS42aC05LjkxbC0uMzUuNi00LjI3IDcuMzktLjM1LjYuMzUuNiA0LjI3IDcuMzkuMzUuNmg5LjkybC4zNS0uNiA0LjI4LTcuMzkuMzUtLjZ6bS0xMy4wNy0xLjAzLTEuNjMgMS42MyAxLjYzIDEuNjN2Mi43M2wtNC4zNi00LjM2IDQuMzctNC4zN3YyLjc0em0zLjEyIDYuOTMtMi4wNC0uNjMgMy4xLTkuOTggMi4wNC42NHptMy44Ni0uOTN2LTIuNzNsMS42My0xLjY0LTEuNjMtMS42M3YtMi43NGw0LjM2IDQuMzd6IiBmaWxsPSIjM2U3MGRkIi8+PC9zdmc+);
     background-position: center;
     background-size: cover;
 }
@@ -1683,11 +1688,11 @@ body {
 
 .server-pill {
     left: auto;
-    width: 5px;
+    width: 4px;
     height: 50px;
     background-color: white;
     margin-top: -50px;
-    border-radius: 100px;
+    border-radius: 0px 100px 100px 0px;
 }
 
 .unread-pill {

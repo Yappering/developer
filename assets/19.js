@@ -1,6 +1,6 @@
 
 
-app_version1 = "381"
+app_version1 = "382"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2506,6 +2506,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         bug_hunter: { name: "Shop Archives Bug Hunter", class: "badge-bug_hunter", support: "https://github.com/ShopArchives/support/blob/main/article/1-badges.md#bug-hunter" },
         contributor: { name: "Github Contributor", class: "badge-contributor" },
     };
+
+    const CUSTOM_EMOJIS = {
+        ":thing:": "https://cdn.discordapp.com/emojis/1322807908471275561.webp?size=24",
+        ":yapping_head:": "https://cdn.discordapp.com/emojis/1243471467392274544.webp?size=24",
+        ":no_yapping:": "https://cdn.discordapp.com/emojis/1280620352338264207.webp?size=24"
+    };
+      
 
     yapper_categories = [
         WINDOWKILL = "1",
@@ -11025,25 +11032,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 reviewElement.classList.add("review-element");
 
                                                                 let reviewTextOutput = review.review_text;
-
-
-                                                                if (review.id === 2) {
-                                                                    const randomNumber = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
-
-                                                                    if (randomNumber === 1) {
-                                                                        reviewTextOutput = "I think you're crazy.";
-                                                                    } else if (randomNumber === 2) {
-                                                                        reviewTextOutput = "Fun review.";
-                                                                    } else if (randomNumber === 3) {
-                                                                        reviewTextOutput = "Boo.";
-                                                                    } else if (randomNumber === 4) {
-                                                                        reviewTextOutput = "h";
-                                                                    } else if (randomNumber === 5) {
-                                                                        reviewTextOutput = "Yes you read that right";
-                                                                    } else if (randomNumber === 6) {
-                                                                        reviewTextOutput = "No, this review isn't random";
-                                                                    }
-                                                                }
         
                                                                 reviewElement.innerHTML = `
                                                                     <div class="review-content-inner">
@@ -11056,10 +11044,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <div class="shop-modal-review-moderation-buttons" data-shop-modal-review-moderation-buttons></div>
                                                                 `;
 
-                                                                if (localStorage.staff_enable_override_review_content === "true") {
-                                                                    reviewElement.querySelector("[data-review-content-text-output]").textContent = localStorage.staff_raw_review_override_content;
+                                                                if (localStorage.experiment_2025_04_reviews_v2_custom_emojis_render === "Treatment 1: Enabled") {
+                                                                    reviewElement.querySelector("[data-review-content-text-output]").innerHTML = renderReviewTextWithEmojis(review.review_text);
                                                                 } else {
-                                                                    reviewElement.querySelector("[data-review-content-text-output]").textContent = reviewTextOutput;
+                                                                    if (localStorage.staff_enable_override_review_content === "true") {
+                                                                        reviewElement.querySelector("[data-review-content-text-output]").textContent = localStorage.staff_raw_review_override_content;
+                                                                    } else {
+                                                                        reviewElement.querySelector("[data-review-content-text-output]").textContent = reviewTextOutput;
+                                                                    }
                                                                 }
 
                                                                 if (review_mod_ids.includes(localStorage.discord_user_id)) {
@@ -14030,6 +14022,26 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     }
 
+
+    function renderReviewTextWithEmojis(reviewText) {
+        // Escape HTML special characters
+        const safeText = reviewText
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+      
+        // Replace :emoji: with <img>
+        const rendered = safeText.replace(/(:[a-zA-Z0-9_]+:)/g, (match) => {
+            const emojiUrl = CUSTOM_EMOJIS[match];
+            if (emojiUrl) {
+                return `<img src="${emojiUrl}" alt="${match}"/>`;
+            }
+            return match; // Leave as-is if emoji not found
+        });
+      
+        return rendered;
+    }
+      
 
     function selectReviewReportType(type) {
         if (document.querySelector(".report-card-option-selected")) {
@@ -17457,7 +17469,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         </div>
                         <div class="review-review-text">
                             <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_REVIEW")}</p>
-                            <p>${review.review_text}</p>
+                            <p data-review-panel-review-text-output></p>
                         </div>
                     </div>
                     <hr>
@@ -17490,6 +17502,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <button class="modalv3-content-card-button-bad" onclick="adminDeleteReview('${review.id}')">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ADMIN_DELETE_REVIEW")}</button>
                     <button class="modalv3-content-card-button-bad" onclick="reportReview('${review.id}', 0)">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ADMIN_RESET_REPORT_TYPE")}</button>
                 `;
+
+                div.querySelector("[data-review-panel-review-text-output]").textContent = review.review_text;
 
                 if (review.review_flag_type === 2) {
                     div.querySelector("[data-review-flag-type]").classList.remove("review-flag-type-0");
