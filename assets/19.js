@@ -1,6 +1,6 @@
 
 
-app_version1 = "384"
+app_version1 = "386"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -11107,31 +11107,32 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(reportReviewIcon);
                                                                 }
 
-                                                                if (review.users.badges != null) {
+                                                                if (Array.isArray(review.users.badges)) {
                                                                     let reviewBadgesContainer = document.createElement("div");
                                                                     reviewBadgesContainer.classList.add("shop-modal-review-badges-container");
-                                                                
-                                                                    for (const [badgeKey, config] of Object.entries(BADGE_CONFIG)) {
-                                                                        if (review.users.badges[badgeKey]) {
-                                                                            let badgeElement = document.createElement("div");
-                                                                            badgeElement.classList.add("shop-modal-review-badge", config.class);
-                                                                            badgeElement.title = config.name;
-
-                                                                            if (config.support) {
-                                                                                badgeElement.addEventListener('click', () => {
-                                                                                    window.open(config.support);
-                                                                                });
-                                                                                badgeElement.classList.add("clickable");
-                                                                            }
-                                                                
-                                                                            reviewBadgesContainer.appendChild(badgeElement);
+                                                                  
+                                                                    review.users.badges.forEach(badge => {
+                                                                        const badgeImg = document.createElement("img");
+                                                                        badgeImg.src = badge.src;
+                                                                        badgeImg.alt = badge.name;
+                                                                        badgeImg.title = badge.name;
+                                                                        badgeImg.classList.add("review-badge");
+                                                                        
+                                                                        if (badge.support) {
+                                                                            const badgeLink = document.createElement("a");
+                                                                            badgeLink.href = badge.support;
+                                                                            badgeLink.target = "_blank";
+                                                                            badgeLink.rel = "noopener noreferrer";
+                                                                            badgeLink.appendChild(badgeImg);
+                                                                            reviewBadgesContainer.appendChild(badgeLink);
+                                                                        } else {
+                                                                            reviewBadgesContainer.appendChild(badgeImg);
                                                                         }
-                                                                    }
-                                                                
-                                                                    reviewElement
-                                                                        .querySelector("[data-shop-modal-review-name-container]")
-                                                                        .appendChild(reviewBadgesContainer);
+                                                                    });
+                                                                  
+                                                                    reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(reviewBadgesContainer);
                                                                 }
+                                                                  
                                                                 
 
                                                                 let starRating = document.createElement("div");
