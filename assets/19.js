@@ -1,6 +1,6 @@
 
 
-app_version1 = "380"
+app_version1 = "381"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2501,6 +2501,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     const BADGE_CONFIG = {
         staff: { name: "Shop Archives Staff", class: "badge-staff", support: "https://github.com/ShopArchives/support/blob/main/article/1-badges.md#staff" },
+        collectible_dataminer: { name: "Collectibles Dataminer", class: "badge-collectible_dataminer", support: "https://github.com/ShopArchives/support/blob/main/article/1-badges.md#collectibles-dataminer" },
         bug_hunter_gold: { name: "Shop Archives Bug Hunter", class: "badge-bug_hunter_gold" },
         bug_hunter: { name: "Shop Archives Bug Hunter", class: "badge-bug_hunter", support: "https://github.com/ShopArchives/support/blob/main/article/1-badges.md#bug-hunter" },
         contributor: { name: "Github Contributor", class: "badge-contributor" },
@@ -11123,9 +11124,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                             badgeElement.classList.add("shop-modal-review-badge", config.class);
                                                                             badgeElement.title = config.name;
 
-                                                                            badgeElement.addEventListener('click', () => {
-                                                                                window.open(config.support);
-                                                                            });
+                                                                            if (config.support) {
+                                                                                badgeElement.addEventListener('click', () => {
+                                                                                    window.open(config.support);
+                                                                                });
+                                                                                badgeElement.classList.add("clickable");
+                                                                            }
                                                                 
                                                                             reviewBadgesContainer.appendChild(badgeElement);
                                                                         }
