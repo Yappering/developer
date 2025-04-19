@@ -1,6 +1,6 @@
 
 
-app_version1 = "388"
+app_version1 = "389"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10594,7 +10594,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                         </div>
                                                         <div class="change-category-modal-content-button" style="display: none;" data-shop-category-modal-tabs-tab-button-2>
                                                             <p>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_TAB")}</p>
-                                                            <p class="category-reviews-beta-tag">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_BETA_TAB")}</p>
+                                                            <p class="category-reviews-beta-tag" data-review-beta-tag>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_BETA_TAB")}</p>
                                                         </div>
                                                         <div class="category-modal-inner-content-container" data-category-modal-inner-content-container>
                                                         </div>
@@ -10608,6 +10608,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 </div>
                                             </div>
                                         `;
+
+                                        if (localStorage.experiment_2025_04_reviews_v2_hide_beta_tag === "Treatment 1: Enabled") {
+                                            modal.querySelector("[data-review-beta-tag]").style.display = 'none';
+                                        }
 
                                         if (localStorage.experiment_2025_04_reviews_v2 === "Treatment 1: Enabled" && localStorage.reviews_filter_type != "3") {
                                             modal.querySelector("[data-shop-category-modal-tabs-tab-button-2]").style.display = 'flex';
@@ -11046,7 +11050,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 `;
 
                                                                 if (localStorage.experiment_2025_04_reviews_v2_custom_emojis_render === "Treatment 1: Enabled") {
-                                                                    reviewElement.querySelector("[data-review-content-text-output]").innerHTML = renderReviewTextWithEmojis(review.review_text);
+                                                                    if (localStorage.staff_enable_override_review_content === "true") {
+                                                                        reviewElement.querySelector("[data-review-content-text-output]").innerHTML = renderReviewTextWithEmojis(localStorage.staff_raw_review_override_content);
+                                                                    } else {
+                                                                        reviewElement.querySelector("[data-review-content-text-output]").innerHTML = renderReviewTextWithEmojis(review.review_text);
+                                                                    }
                                                                 } else {
                                                                     if (localStorage.staff_enable_override_review_content === "true") {
                                                                         reviewElement.querySelector("[data-review-content-text-output]").textContent = localStorage.staff_raw_review_override_content;

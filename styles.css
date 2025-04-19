@@ -174,14 +174,39 @@
     --category-modal-tab-bg: #203619;
 }
 
-/* @font-face {
+@font-face {
     font-family: ABC Ginto Nord;
     src: url('https://cdn.yapper.shop/assets/fonts/097b737553f77c92.woff2') format('woff2');
-} */
+}
 
 @font-face {
     font-family: gg sans;
     src: url('https://cdn.yapper.shop/assets/fonts/ggsansSemibold.ttf') format('woff2');
+}
+
+@font-face {
+    font-family: gg sans four;
+    src: url('https://cdn.yapper.shop/assets/fonts/ggSansFour.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: gg sans five;
+    src: url('https://cdn.yapper.shop/assets/fonts/ggSansFive.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: gg sans six;
+    src: url('https://cdn.yapper.shop/assets/fonts/ggSansSix.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: gg sans seven;
+    src: url('https://cdn.yapper.shop/assets/fonts/ggSansSeven.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: gg sans eight;
+    src: url('https://cdn.yapper.shop/assets/fonts/ggSansEight.woff2') format('woff2');
 }
 
 body {
@@ -5275,6 +5300,7 @@ data-share-product-card-button {
     font-weight: 600;
     margin-top: 14px;
     margin-bottom: 14px;
+    color: var(--white);
 }
 
 .category-modal-text-name {
@@ -5282,6 +5308,7 @@ data-share-product-card-button {
     font-weight: 600;
     margin-top: 14px;
     margin-bottom: 14px;
+    color: var(--white);
 }
 
 .category-modal-text-summary {
@@ -5297,6 +5324,7 @@ data-share-product-card-button {
     font-weight: 600;
     margin-top: 14px;
     margin-bottom: 14px;
+    color: var(--white);
 }
 
 .category-modal-inner-content-container {
@@ -5340,6 +5368,7 @@ data-share-product-card-button {
     margin: 0;
     padding: 10px;
     pointer-events: none;
+    color: var(--white);
 }
 
 /* Assets */
@@ -5349,6 +5378,7 @@ data-share-product-card-button {
 .shop-category-modal-assets-title {
     font-size: large;
     font-weight: 600;
+    color: var(--white);
 }
 
 .shop-category-modal-assets-summary {
@@ -5402,7 +5432,7 @@ data-share-product-card-button {
     border-radius: 5px;
     width: 40px;
     height: 20px;
-    font-weight: 700;
+    font-family: gg sans seven;
 }
 
 .delete-review-icon {
@@ -5593,6 +5623,12 @@ data-share-product-card-button {
 }
 
 
+.shop-modal-review-name {
+    font-size: large;
+    font-weight: 600;
+    color: var(--white);
+}
+
 .shop-modal-review-name-container {
     display: flex;
     height: 40px;
@@ -5630,11 +5666,6 @@ data-share-product-card-button {
     padding: 2px;
     height: 25px;
     gap: 2px;
-}
-
-.shop-modal-review-name {
-    font-size: large;
-    font-weight: 600;
 }
 
 .shop-modal-review-badge {
