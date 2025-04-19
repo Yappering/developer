@@ -174,12 +174,22 @@
     --category-modal-tab-bg: #203619;
 }
 
+/* @font-face {
+    font-family: ABC Ginto Nord;
+    src: url('https://cdn.yapper.shop/assets/fonts/097b737553f77c92.woff2') format('woff2');
+} */
+
+@font-face {
+    font-family: gg sans;
+    src: url('https://cdn.yapper.shop/assets/fonts/ggsansSemibold.ttf') format('woff2');
+}
+
 body {
     background-color: #313338;
     color: white;
     transition: background-color 0.4s ease-in-out;
 
-    font-family: 'gg sans', sans-serif;
+    font-family: gg sans, sans-serif;
 }
 
 .gg-sans {

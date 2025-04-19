@@ -1,6 +1,6 @@
 
 
-app_version1 = "387"
+app_version1 = "388"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
