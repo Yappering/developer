@@ -179,9 +179,9 @@ body {
     color: white;
     transition: background-color 0.4s ease-in-out;
 
-    font-family: 'gg sans', sans-serif;
+    /* font-family: 'gg sans', sans-serif;
     font-family: 'gg sans Normal', sans-serif;
-    font-family: 'gg sans Medium', sans-serif;
+    font-family: 'gg sans Medium', sans-serif; */
     font-family: 'gg sans SemiBold', sans-serif;
 }
 
