@@ -1,6 +1,6 @@
 
 
-app_version1 = "389"
+app_version1 = "390"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10986,11 +10986,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                                                 function renderReviews(datareview) {
                                                     if (Array.isArray(datareview) && datareview.length === 0) {
-                                                        modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = `
-                                                            <div class="review-element-notice" id="loading-category-reviews">
-                                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_NONE")}</p>
-                                                            </div>
-                                                        `;
+                                                        modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = ``;
 
                                                         if (apiCategory.sku_id === discord_categories.NAMEPLATE || apiCategory.sku_id === discord_categories.NAMEPLATE_TEST) {
                                                             let reviewWarningElement = document.createElement("div");
@@ -11003,20 +10999,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                             modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewWarningElement);
                                                         }
+
+                                                        let reviewNoneElement = document.createElement("div");
+
+                                                        reviewNoneElement.classList.add("review-element-notice");
+        
+                                                        reviewNoneElement.innerHTML = `
+                                                            <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_NONE")}</p>
+                                                        `;
+
+                                                        modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewNoneElement);
                                                     } else {
                                                         const reviewContainer = modal.querySelector("[data-category-modal-inner-content-container]");
-
-                                                        if (localStorage.staff_enable_override_review_content === "true") {
-                                                            let reviewOverrideWarningElement = document.createElement("div");
-
-                                                            reviewOverrideWarningElement.classList.add("review-element-notice");
-        
-                                                            reviewOverrideWarningElement.innerHTML = `
-                                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_OVERRIDE_WARNING")}</p>
-                                                            `;
-
-                                                            modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewOverrideWarningElement);
-                                                        }
 
                                                         if (apiCategory.sku_id === discord_categories.NAMEPLATE || apiCategory.sku_id === discord_categories.NAMEPLATE_TEST) {
                                                             let reviewWarningElement = document.createElement("div");
@@ -11028,6 +11022,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             `;
 
                                                             reviewContainer.appendChild(reviewWarningElement);
+                                                        }
+
+                                                        if (localStorage.staff_enable_override_review_content === "true") {
+                                                            let reviewOverrideWarningElement = document.createElement("div");
+
+                                                            reviewOverrideWarningElement.classList.add("review-element-notice");
+        
+                                                            reviewOverrideWarningElement.innerHTML = `
+                                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_OVERRIDE_WARNING")}</p>
+                                                            `;
+
+                                                            modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewOverrideWarningElement);
                                                         }
 
                                                         datareview.forEach(review => {
@@ -11113,6 +11119,16 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     };
 
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(reportReviewIcon);
+                                                                }
+
+                                                                if (review.users.system === true) {
+                                                                    let moderatorNametag = document.createElement("p");
+    
+                                                                    moderatorNametag.classList.add("shop-modal-review-nametag-moderator");
+                                                                    moderatorNametag.textContent = `${getTextString("SHOP_CATEGORY_MODAL_NAMETAG_SYSTEM")}`;
+                                                                    moderatorNametag.title = `${getTextString("SHOP_CATEGORY_MODAL_NAMETAG_SYSTEM_TITLE")}`;
+
+                                                                    reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(moderatorNametag);
                                                                 }
 
                                                                 if (Array.isArray(review.users.badges)) {

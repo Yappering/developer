@@ -282,6 +282,9 @@ SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER = "By making a review, you agree to the S
 SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY = "Privacy Policy.";
 
 SHOP_CATEGORY_MODAL_NAMETAG_MODERATOR = "ADMIN";
+SHOP_CATEGORY_MODAL_NAMETAG_SYSTEM = "SYSTEM";
+
+SHOP_CATEGORY_MODAL_NAMETAG_SYSTEM_TITLE = "Official Shop Archives Message";
 
 SHOP_CATEGORY_MODAL_REVIEWS_WARNING = "Do NOT ask questions about nameplates in your review, your review will be deleted and you will be banned from posting reviews! Please report any reviews that break this rule.";
 SHOP_CATEGORY_MODAL_REVIEWS_OVERRIDE_WARNING = "All review text has been overridden locally";

@@ -5679,12 +5679,15 @@ data-share-product-card-button {
 }
 
 .shop-modal-review-name-container .shop-modal-review-nametag-moderator {
-    margin-top: 0px;
+    margin-top: 2px;
     margin-bottom: auto;
     background-color: #615DED;
     border-radius: 5px;
     padding: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     font-size: 15px !important;
+    font-family: gg sans seven;
 }
 
 .shop-modal-review-name-container .shop-modal-review-nametag-special {
@@ -5805,9 +5808,6 @@ data-share-product-card-button {
 .report-review-bottom .cancel-button:hover {
     background-color: var(--button-unimportant-bg-hover);
 }
-
-
-
 
 
 
