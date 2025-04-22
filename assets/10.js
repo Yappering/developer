@@ -18,6 +18,16 @@ EXPERIMENT_ID_6 = 1
 
 const experimentsList = [
     {
+        title: "Reviews V2 Warning System",
+        id: "2025-04_reviews_v2_warning_system",
+        name: "experiment_2025_04_reviews_v2_warning_system",
+        treatments: [
+            "Treatment -1: Disabled",
+            "Treatment 1: Enabled"
+        ],
+        rollout: "Treatment -1: Disabled"
+    },
+    {
         title: "Shop Category Modal Tabs Styles",
         id: "2025-04_shop_category_modal_tabs_styles",
         name: "experiment_2025_04_shop_category_modal_tabs_styles",

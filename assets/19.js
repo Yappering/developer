@@ -1,6 +1,6 @@
 
 
-app_version1 = "391"
+app_version1 = "393"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -10833,7 +10833,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                 modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = `
                                                     <div class="review-element-notice" id="loading-category-reviews">
-                                                        <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_LOADING")}</p>
+                                                        <p class="review-warning-notice-text" style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_LOADING")}</p>
                                                     </div>
                                                 `;
 
@@ -10989,41 +10989,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     if (Array.isArray(datareview) && datareview.length === 0) {
                                                         modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = ``;
 
-                                                        if (apiCategory.sku_id === discord_categories.NAMEPLATE || apiCategory.sku_id === discord_categories.NAMEPLATE_TEST) {
-                                                            let reviewWarningElement = document.createElement("div");
-
-                                                            reviewWarningElement.classList.add("review-element-warning");
-        
-                                                            reviewWarningElement.innerHTML = `
-                                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_WARNING")}</p>
-                                                            `;
-
-                                                            modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewWarningElement);
-                                                        }
-
                                                         let reviewNoneElement = document.createElement("div");
 
                                                         reviewNoneElement.classList.add("review-element-notice");
         
                                                         reviewNoneElement.innerHTML = `
-                                                            <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_NONE")}</p>
+                                                            <p class="review-warning-notice-text" style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_NONE")}</p>
                                                         `;
 
                                                         modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewNoneElement);
                                                     } else {
                                                         const reviewContainer = modal.querySelector("[data-category-modal-inner-content-container]");
-
-                                                        if (apiCategory.sku_id === discord_categories.NAMEPLATE || apiCategory.sku_id === discord_categories.NAMEPLATE_TEST) {
-                                                            let reviewWarningElement = document.createElement("div");
-
-                                                            reviewWarningElement.classList.add("review-element-warning");
-        
-                                                            reviewWarningElement.innerHTML = `
-                                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_WARNING")}</p>
-                                                            `;
-
-                                                            reviewContainer.appendChild(reviewWarningElement);
-                                                        }
 
                                                         if (localStorage.staff_enable_override_review_content === "true") {
                                                             let reviewOverrideWarningElement = document.createElement("div");
@@ -11031,7 +11007,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             reviewOverrideWarningElement.classList.add("review-element-notice");
         
                                                             reviewOverrideWarningElement.innerHTML = `
-                                                                <p style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_OVERRIDE_WARNING")}</p>
+                                                                <p class="review-warning-notice-text" style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_OVERRIDE_WARNING")}</p>
                                                             `;
 
                                                             modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewOverrideWarningElement);
@@ -11042,6 +11018,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 let reviewElement = document.createElement("div");
     
                                                                 reviewElement.classList.add("review-element");
+
+                                                                if (review.system_type === 1) {
+                                                                    reviewElement.classList.add("review-element-warning");
+                                                                    reviewElement.classList.add("review-element-system");
+                                                                } else if (review.system_type === 2) {
+                                                                    reviewElement.classList.add("review-element-notice");
+                                                                    reviewElement.classList.add("review-element-system");
+                                                                }
 
                                                                 let reviewTextOutput = review.review_text;
         
@@ -16422,9 +16406,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_ACCOUNT")}</p>
             </button>
 
-            <div id="modalv3-side-tabs-profile-container"></div>
-
             <div id="modalv3-side-tabs-reviews-container"></div>
+
+            <div id="modalv3-side-tabs-warnings-container"></div>
 
             <hr>
             <p class="side-tabs-category-text">${getTextString("MODAL_V3_TAB_HEADER_SITE_SETTINGS")}</p>
@@ -16445,10 +16429,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             </div>
         `;
 
-        if (localStorage.experiment_2025_04_profile_tab_v2 === "Treatment 1: Enabled") {
-            document.getElementById("modalv3-side-tabs-profile-container").innerHTML = `
-                <button class="side-tabs-button" id="modal-v3-tab-profile" onclick="setModalv3InnerContent('profile')">
-                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_PROFILE")}</p>
+        if (localStorage.experiment_2025_04_reviews_v2_warning_system === "Treatment 1: Enabled" && discord_token) {
+            document.getElementById("modalv3-side-tabs-warnings-container").innerHTML = `
+                <button class="side-tabs-button" id="modal-v3-tab-warnings" onclick="setModalv3InnerContent('warnings')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_WARNINGS")}</p>
                 </button>
             `;
         }
@@ -16597,59 +16581,20 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <button class="modalv3-content-card-button" onclick="loginToDiscord()">${getTextString("MODAL_V3_TAB_ACCOUNT_LOGIN_WITH_DISCORD_BUTTON")}</button>
                 `;
             }
-        } else if (tab === "profile") {
+        } else if (tab === "warnings") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
-                <h2>${getTextString("MODAL_V3_TAB_PROFILE_HEADER")}</h2>
+                <h2>${getTextString("MODAL_V3_TAB_WARNINGS_HEADER")}</h2>
                 <div class="modalv3-content-card-1">
-                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_HEADER")}</h2>
-                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_SUMMARY")}</p>
-                    <div class="modalv3-profile-editor-container">
-                        <div class="modalv3-profile-editor-content-container" id="modalv3-profile-editor-content-container"></div>
-                        <div class="modalv3-profile-editor-preview-container" id="modalv3-profile-editor-preview-container"></div>
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_WARNINGS_ACCOUNT_WARNINGS_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_WARNINGS_ACCOUNT_WARNINGS_SUMMARY")}</p>
+
+                    <div id="modalv3-warnings-warns-output-container">
                     </div>
                 </div>
             `;
 
-            document.getElementById("modalv3-profile-editor-preview-container").innerHTML = `
-                <p>Preview:</p>
-                <div class="modal-preview-profile2">
-                    <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: #829ff4;"></div>
-                    <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url();"></div>
-                    <div class="profile-avatar-preview-bg"></div>
-                    <img id="profileAvatarPreview" class="profile-avatar-preview" src="https://cdn.discordapp.com/assets/content/0f4ee362d733e1d6132719911c897fb4d167bc3eb98ac3265ad72eb7dceec551.png" alt="No image uploaded">
-                    <div class="options-preview-profile-status-bg"></div>
-                    <div class="options-preview-profile-status-color"></div>
-                    <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">Default User</p>
-                    <p class="options-preview-profile-username" id="options-username-preview">default_user</p>
-                </div>
-            `;
-
-            document.getElementById("modalv3-profile-editor-content-container").innerHTML = `
-                <div class="modalv3-profile-editor-content-card">
-                    <p class="modalv3-profile-editor-option-header">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_DISPLAY_NAME_HEADER")}</p>
-                    <input type="text" class="modalv3-profile-editor-text-input" value="${localStorage.discord_displayname}" placeholder="${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_DISPLAY_NAME_PLACEHOLDER")}">
-                </div>
-                <hr>
-                <div class="modalv3-profile-editor-content-card">
-                    <p class="modalv3-profile-editor-option-header-with-button">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_AVATAR_HEADER")}</p>
-                    <label class="modalv3-profile-editor-image-upload" for="profileAvatarInput">Upload Avatar</label>
-                    <input style="display: none;" type="file" id="profileAvatarInput" accept="image/*">
-                    <button id="removeProfileAvatarButton">Remove Avatar</button>
-                </div>
-                <hr>
-                <div class="modalv3-profile-editor-content-card">
-                    <p class="modalv3-profile-editor-option-header-with-button">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_BANNER_HEADER")}</p>
-                    <label class="modalv3-profile-editor-image-upload" for="profileBannerInput">Upload Banner</label>
-                    <input style="display: none;" type="file" id="profileBannerInput" accept="image/*">
-                    <button id="removeProfileBannerButton" style="display: none;">Remove Banner</button>
-                </div>
-                <hr>
-                <div class="modalv3-profile-editor-content-card">
-                    <p class="modalv3-profile-editor-option-header">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_BANNER_COLOR_HEADER")}</p>
-                    <input type="color" autocomplete="off" class="modalv3-profile-editor-color-input" oninput="changeBannerColorFromInput();" id="profile-banner-color-input" value="#829ff4">
-                </div>
-            `;
+            updateAndCacheReviewsWarnings();
         } else if (tab === "reviews") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             if (localStorage.discord_token) {
@@ -17308,6 +17253,63 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("modalv3-ratio-card-reviews-privacy-" + setPrivacy).classList.add('modalv3-content-ratio-card-selected');
         } else {
             document.getElementById("modalv3-ratio-card-reviews-privacy-" + localStorage.reviews_privacy_type).classList.add('modalv3-content-ratio-card-selected');
+        }
+    }
+
+    let userReviewsWarnsCache = null;
+
+    async function updateAndCacheReviewsWarnings() {
+        let warningsRaw = null;
+        if (userReviewsWarnsCache === null) {
+            warningsRaw = await fetch(api + REVIEWSAPI + "/users/" + localStorage.discord_user_id + "/warns", {
+                headers: { Authorization: `${localStorage.discord_token}`, Token: sessionStorage.getItem("api-token") }
+            });
+
+            const warnings = await warningsRaw.json();
+
+            console.log(warnings)
+            userReviewsWarnsCache = warnings;
+        }
+
+        if (document.getElementById("modalv3-warnings-warns-output-container")) {
+            if (Array.isArray(userReviewsWarnsCache) && userReviewsWarnsCache.length === 0) {
+
+            } else {
+                userReviewsWarnsCache.forEach(warn => {
+                    let warningCard = document.createElement("div");
+
+                    let formatted = null;
+
+                    if (localStorage.reviews_time_type === "uk") {
+                        const date = new Date(warn.created_at);
+
+                        const day = String(date.getDate()).padStart(2, '0');
+                        const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth is 0-indexed
+                        const year = date.getFullYear();
+
+                        formatted = `${day}/${month}/${year}`;
+                    } else {
+                        const date = new Date(warn.created_at);
+
+                        const day = String(date.getDate()).padStart(2, '0');
+                        const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth is 0-indexed
+                        const year = date.getFullYear();
+
+                        formatted = `${day}/${month}/${year}`;
+                    }
+
+    
+                    warningCard.classList.add('review-element-warning');
+                    warningCard.style.paddingLeft = '10px';
+                    warningCard.innerHTML = `
+                        <h2 style="margin: 0;">Warning!</h2>
+                        <p class="shop-modal-review-review-text">At: ${formatted}</p>
+                        <p class="shop-modal-review-review-text">Reason: ${warn.message}</p>
+                    `;
+    
+                    document.getElementById("modalv3-warnings-warns-output-container").appendChild(warningCard);
+                })
+            }
         }
     }
 

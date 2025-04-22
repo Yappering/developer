@@ -5484,7 +5484,7 @@ data-share-product-card-button {
     width: 100%;
 }
 
-.review-element-warning p {
+.review-element-warning .review-warning-notice-text {
     margin: 0;
     padding: 20px;
 }
@@ -5498,9 +5498,17 @@ data-share-product-card-button {
     width: 100%;
 }
 
-.review-element-notice p {
+.review-element-notice .review-warning-notice-text {
     margin: 0;
     padding: 20px;
+}
+
+.review-element-system .shop-modal-review-badges-container {
+    display: none !important;
+}
+
+.review-element-system .shop-modal-review-time-container {
+    display: none;
 }
 
 .shop-category-modal-write-review-container {
