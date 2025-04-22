@@ -1,6 +1,6 @@
 
 
-app_version1 = "393"
+app_version1 = "394"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -7442,7 +7442,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         const page = params.get("page");
             
                         for (const apiCategory of data) {
-                            if (page === "pplus") {
+                            if (page === "pplus" || page === "leaks_") {
                                 // Existing code for 'pplus' page
                                 const category = categoryTemplate.content.cloneNode(true).children[0];
                                 category.querySelector("[data-shop-category-banner]").id = apiCategory.sku_id;
@@ -14264,6 +14264,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 </div>
                 <div id="leaks-tab-loading">
                 </div>
+                <div id="leaks_-tab-loading">
+                </div>
                 <button class="dm-button" id="potions-tab" onclick="setParams({page: 'consumables'}); location.reload();">
                     <p class="dm-button-text">${getTextString("POTIONS_TAB_TITLE")}</p>
                 </button>
@@ -14431,6 +14433,23 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 url = api + COLLECTIBLES_SHOP;
                 apiUrl = new URL(url);
                 apiUrl.searchParams.append("tab", "leaks");
+                if (localStorage.unreleased_discord_collectibles == "true") {
+                    apiUrl.searchParams.append("include-unpublished", "true");
+                }
+            } else {
+                apiUrl = api + LEAKS;
+            }
+            createMainShopElement()
+            document.getElementById("top-bar-container").innerHTML = `
+                <h2 class="shop-tab-page-title">${getTextString("LEAKS_TAB_PAGE_TITLE")}</h2>
+                <div id="open-help-modals-buttons-holder-new"></div>
+            `;
+        } else if (params.get("page") === "leaks_") {
+            document.title = `${getTextString("LEAKS_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
+            if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
+                url = api + COLLECTIBLES_SHOP;
+                apiUrl = new URL(url);
+                apiUrl.searchParams.append("tab", "fake-leaks");
                 if (localStorage.unreleased_discord_collectibles == "true") {
                     apiUrl.searchParams.append("include-unpublished", "true");
                 }
@@ -14728,55 +14747,108 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     
     function leaksCheck() {
-        if (localStorage.override_leaks_button === "true") {
-            console.log(`Valid Leaks Check: Overridden`);
-            document.getElementById('leaks-tab-loading').innerHTML = `
-                <button class="dm-button" id="leaks-tab" onclick="setParams({page: 'leaks'}); location.reload();" title="New {apiCategory.name} Leaks">
-                    <p class="dm-button-text">${getTextString("LEAKS_TAB_TITLE")}</p>
-                    <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
-                </button>
-            `;
-            if (params.get("page") === "leaks") {
-                document.getElementById("leaks-tab").classList.add('dm-button-selected');
-            }
-        } else {
-            if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
-                url = api + COLLECTIBLES_SHOP;
-                apiLeaks = new URL(url);
-                apiLeaks.searchParams.append("tab", "leaks");
-                if (localStorage.unreleased_discord_collectibles == "true") {
-                    apiLeaks.searchParams.append("include-unpublished", "true");
+        if (localStorage.experiment_2025_04_see_you_next_year === "Treatment 1: Enabled") {
+            if (localStorage.override_leaks_button === "true") {
+                console.log(`Valid Leaks Check: Overridden`);
+                document.getElementById('leaks_-tab-loading').innerHTML = `
+                    <button class="dm-button" id="leaks_-tab" onclick="setParams({page: 'leaks_'}); location.reload();" title="New {apiCategory.name} Leaks">
+                        <p class="dm-button-text">${getTextString("LEAKS_TAB_TITLE")}</p>
+                        <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
+                    </button>
+                `;
+                if (params.get("page") === "leaks_") {
+                    document.getElementById("leaks_-tab").classList.add('dm-button-selected');
                 }
             } else {
-                apiLeaks = api + LEAKS;
-            }
-            fetch(apiLeaks, {
-                method: "GET",
-                headers: {
-                    "Password": api_password,
-                    "Authorization": discord_token,
-                    "Token": api_token
-                }
-            })
-            .then(response => response.json())
-            .then((data) => {
-                data.forEach(apiCategory => {
-                    console.log(`Valid Leaks Check: True`);
-                    document.getElementById('leaks-tab-loading').innerHTML = `
-                        <button class="dm-button" id="leaks-tab" onclick="setParams({page: 'leaks'}); location.reload();" title="New ${apiCategory.name} Leaks">
-                            <p class="dm-button-text">${getTextString("LEAKS_TAB_TITLE")}</p>
-                            <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
-                        </button>
-                    `;
-                    if (params.get("page") === "leaks") {
-                        document.getElementById("leaks-tab").classList.add('dm-button-selected');
+                if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
+                    url = api + COLLECTIBLES_SHOP;
+                    apiLeaks = new URL(url);
+                    apiLeaks.searchParams.append("tab", "fake-leaks");
+                    if (localStorage.unreleased_discord_collectibles == "true") {
+                        apiLeaks.searchParams.append("include-unpublished", "true");
                     }
+                } else {
+                    apiLeaks = api + LEAKS;
+                }
+                fetch(apiLeaks, {
+                    method: "GET",
+                    headers: {
+                        "Password": api_password,
+                        "Authorization": discord_token,
+                        "Token": api_token
+                    }
+                })
+                .then(response => response.json())
+                .then((data) => {
+                    data.forEach(apiCategory => {
+                        console.log(`Valid Leaks Check: True`);
+                        document.getElementById('leaks_-tab-loading').innerHTML = `
+                            <button class="dm-button" id="leaks_-tab" onclick="setParams({page: 'leaks_'}); location.reload();" title="New ${apiCategory.name} Leaks">
+                                <p class="dm-button-text">${getTextString("LEAKS_TAB_TITLE")}</p>
+                                <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
+                            </button>
+                        `;
+                        if (params.get("page") === "leaks_") {
+                            document.getElementById("leaks_-tab").classList.add('dm-button-selected');
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.log(`Valid Leaks Check: False`);
+                    document.getElementById('leaks-tab-loading').innerHTML = ``;
                 });
-            })
-            .catch(error => {
-                console.log(`Valid Leaks Check: False`);
-                document.getElementById('leaks-tab-loading').innerHTML = ``;
-            });
+            }
+        } else {
+            if (localStorage.override_leaks_button === "true") {
+                console.log(`Valid Leaks Check: Overridden`);
+                document.getElementById('leaks-tab-loading').innerHTML = `
+                    <button class="dm-button" id="leaks-tab" onclick="setParams({page: 'leaks'}); location.reload();" title="New {apiCategory.name} Leaks">
+                        <p class="dm-button-text">${getTextString("LEAKS_TAB_TITLE")}</p>
+                        <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
+                    </button>
+                `;
+                if (params.get("page") === "leaks") {
+                    document.getElementById("leaks-tab").classList.add('dm-button-selected');
+                }
+            } else {
+                if (localStorage.experiment_2025_02_fetch_from_vercel_endpoits === "Treatment 1: Enabled") {
+                    url = api + COLLECTIBLES_SHOP;
+                    apiLeaks = new URL(url);
+                    apiLeaks.searchParams.append("tab", "leaks");
+                    if (localStorage.unreleased_discord_collectibles == "true") {
+                        apiLeaks.searchParams.append("include-unpublished", "true");
+                    }
+                } else {
+                    apiLeaks = api + LEAKS;
+                }
+                fetch(apiLeaks, {
+                    method: "GET",
+                    headers: {
+                        "Password": api_password,
+                        "Authorization": discord_token,
+                        "Token": api_token
+                    }
+                })
+                .then(response => response.json())
+                .then((data) => {
+                    data.forEach(apiCategory => {
+                        console.log(`Valid Leaks Check: True`);
+                        document.getElementById('leaks-tab-loading').innerHTML = `
+                            <button class="dm-button" id="leaks-tab" onclick="setParams({page: 'leaks'}); location.reload();" title="New ${apiCategory.name} Leaks">
+                                <p class="dm-button-text">${getTextString("LEAKS_TAB_TITLE")}</p>
+                                <div class="dm-new-icon">${getTextString("DM_NEW")}</div>
+                            </button>
+                        `;
+                        if (params.get("page") === "leaks") {
+                            document.getElementById("leaks-tab").classList.add('dm-button-selected');
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.log(`Valid Leaks Check: False`);
+                    document.getElementById('leaks-tab-loading').innerHTML = ``;
+                });
+            }
         }
     }
 

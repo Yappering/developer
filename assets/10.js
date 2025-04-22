@@ -18,6 +18,16 @@ EXPERIMENT_ID_6 = 1
 
 const experimentsList = [
     {
+        title: "See You Next Year",
+        id: "2025-04_see_you_next_year",
+        name: "experiment_2025_04_see_you_next_year",
+        treatments: [
+            "Treatment -1: Disabled",
+            "Treatment 1: Enabled"
+        ],
+        rollout: "Treatment -1: Disabled"
+    },
+    {
         title: "Reviews V2 Warning System",
         id: "2025-04_reviews_v2_warning_system",
         name: "experiment_2025_04_reviews_v2_warning_system",
