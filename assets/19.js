@@ -1,6 +1,6 @@
 
 
-app_version1 = "390"
+app_version1 = "391"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2733,9 +2733,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     setCommunityThemesCache()
     
     async function checkIfValidDiscordToken() {
-        if (localStorage.discord_token && !localStorage.discord_profile) {
+        if (localStorage.discord_token && !localStorage.discord_profile || localStorage.discord_token && !localStorage.discord_user_id) {
             try {
-                if (localStorage.discord_token && !localStorage.discord_profile) {
+                if (localStorage.discord_token && !localStorage.discord_profile || localStorage.discord_token && !localStorage.discord_user_id) {
                     const userInfo = await fetch('https://discord.com/api/users/@me', {
                         headers: { Authorization: `Bearer ${localStorage.discord_token}` }
                     });
@@ -2751,6 +2751,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     localStorage.discord_profile = JSON.stringify(user, undefined, 4);
                     localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
                     localStorage.discord_username = user.username;
+                    localStorage.discord_user_id = user.id;
                     if (user.global_name != null) {
                         localStorage.discord_displayname = user.global_name;
                     } else {
@@ -16481,9 +16482,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <button class="side-tabs-button" id="modal-v3-tab-api_test_fetch" onclick="setModalv3InnerContent('api_test_fetch')">
                     <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_API_TEST_FETCH")}</p>
                 </button>
-                <button class="side-tabs-button" id="modal-v3-tab-reviews_database" onclick="setModalv3InnerContent('reviews_database')">
-                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_REVIEWS_DATABASE")}</p>
-                </button>
                 <button class="side-tabs-button" id="modal-v3-tab-local_storage" onclick="setModalv3InnerContent('local_storage')">
                     <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_LOCAL_STORAGE")}</p>
                 </button>
@@ -17199,25 +17197,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     </div>
                 `;
             });
-        } else if (tab === "reviews_database") {
-            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
-            tabPageOutput.innerHTML = `
-                <h2>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_HEADER")}</h2>
-                <div class="modalv3-content-card-1">
-                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_HEADER")}</h2>
-                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_SUMMARY")}</p>
-
-                    <div class="modalv3-content-card-2">
-                        <button class="modalv3-content-card-button" onclick="refreshAdminReviews();">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REFRESH_BUTTON")}</button>
-                        <div id="modalv3-api-testing-reviews-output">
-                        
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            refreshAdminReviews();
-
         } else if (tab === "local_storage") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
@@ -17447,110 +17426,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
 
-    function refreshAdminReviews() {
-        document.getElementById("modalv3-api-testing-reviews-output").innerHTML = ``;
-        fetch(api + REVIEWSAPI, {
-            method: "GET",
-            headers: {
-                "Password": api_password,
-                "Authorization": discord_token,
-                "Token": api_token
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(review => {
-                const div = document.createElement('div');
-                div.className = 'modalv3-review-item-card';
-
-                const date = new Date(review.created_at);
-
-                const day = String(date.getDate()).padStart(2, '0');
-                const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth is 0-indexed
-                const year = date.getFullYear();
-
-                const formatted = `${day}/${month}/${year}`;
-
-                div.id = review.id + '-review-admin-card';
-      
-                div.innerHTML = `
-                    <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_REVIEW_INFO")}</p>
-                    <div class="modalv3-review-card-types-container">
-                        <div>
-                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_ID")}</p>
-                            <p>${review.id}</p>
-                        </div>
-                        <div>
-                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_RATING")}</p>
-                            <p>${review.rating}</p>
-                        </div>
-                        <div class="review-flag-type-0" data-review-flag-type>
-                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_FLAG")}</p>
-                            <p>${review.review_flag_type}</p>
-                        </div>
-                        <div class="review-flag-type-0" id="review-panel-report-type-id-${review.id}" data-review-report-type>
-                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_REPORT")}</p>
-                            <p id="review-panel-report-type-id-${review.id}-text">${review.report_type}</p>
-                        </div>
-                        <div>
-                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_DATE")}</p>
-                            <p>${formatted}</p>
-                        </div>
-                        <div class="review-review-text">
-                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_REVIEW_INFO_REVIEW")}</p>
-                            <p data-review-panel-review-text-output></p>
-                        </div>
-                    </div>
-                    <hr>
-                    <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_ITEM_INFO")}</p>
-                    <div class="modalv3-review-card-types-container">
-                        <div>
-                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ITEM_INFO_NAME")}</p>
-                            <p>${review.items.name}</p>
-                        </div>
-                        <div>
-                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ITEM_INFO_ID")}</p>
-                            <p>${review.items.id}</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_API_TESTING_DATABASE_REVIEWS_USER_INFO")}</p>
-                    <div class="modalv3-review-card-types-container">
-                        <div>
-                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_USER_INFO_NAME")}</p>
-                            <p>${review.users.username}</p>
-                        </div>
-                        <div>
-                            <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_USER_INFO_ID")}</p>
-                            <p>${review.users.id}</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <p class="modalv3-review-card-title">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ADMIN_INFO")}</p>
-                    <p>${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ADMIN_INFO_SUMMARY")}</p>
-                    <button class="modalv3-content-card-button-bad" onclick="adminDeleteReview('${review.id}')">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ADMIN_DELETE_REVIEW")}</button>
-                    <button class="modalv3-content-card-button-bad" onclick="reportReview('${review.id}', 0)">${getTextString("MODAL_V3_TAB_REVIEWS_PANEL_ADMIN_RESET_REPORT_TYPE")}</button>
-                `;
-
-                div.querySelector("[data-review-panel-review-text-output]").textContent = review.review_text;
-
-                if (review.review_flag_type === 2) {
-                    div.querySelector("[data-review-flag-type]").classList.remove("review-flag-type-0");
-                    div.querySelector("[data-review-flag-type]").classList.add("review-flag-type-2");
-                }
-
-                if (review.report_type != 0) {
-                    div.querySelector("[data-review-report-type]").classList.remove("review-flag-type-0");
-                    div.querySelector("[data-review-report-type]").classList.add("review-flag-type-2");
-                }
-      
-                document.getElementById("modalv3-api-testing-reviews-output").appendChild(div);
-            });
-        })
-        .catch(error => {
-            console.error(error);
-        });
-    }
 
     function adminDeleteReview(reviewId) {
 
