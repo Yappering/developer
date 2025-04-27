@@ -1,6 +1,6 @@
 
 
-app_version1 = "395"
+app_version1 = "396"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -7434,6 +7434,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         `;
                     } else {
                         processCategories();
+
+                        if (document.getElementById("top-bar-other-things-container")) {
+                            document.getElementById("open-help-modals-buttons-holder-new").classList.add("with-search");
+                            document.getElementById("top-bar-other-things-container").innerHTML = `
+                                <input autocomplete="off" placeholder="${getTextString("ITEM_SEARCH_INPUT_PLACEHOLDER")}">
+                            `;
+                        }
                     }
                     // Define async function inside the .then block
                     async function processCategories() {
@@ -10687,6 +10694,20 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 </div>
                                             </div>
                                         `;
+
+                                        if (localStorage.ext_sty_category_tab === "2") {
+                                            modal.querySelector("[data-shop-category-modal-tabs-tab-button-1]").classList.remove("change-category-modal-content-button")
+                                            modal.querySelector("[data-shop-category-modal-tabs-tab-button-2]").classList.remove("change-category-modal-content-button")
+
+                                            modal.querySelector("[data-shop-category-modal-tabs-tab-button-1]").classList.add("change-category-modal-content-button-transparent")
+                                            modal.querySelector("[data-shop-category-modal-tabs-tab-button-2]").classList.add("change-category-modal-content-button-transparent")
+                                        } else if (localStorage.ext_sty_category_tab === "3") {
+                                            modal.querySelector("[data-shop-category-modal-tabs-tab-button-1]").classList.remove("change-category-modal-content-button")
+                                            modal.querySelector("[data-shop-category-modal-tabs-tab-button-2]").classList.remove("change-category-modal-content-button")
+
+                                            modal.querySelector("[data-shop-category-modal-tabs-tab-button-1]").classList.add("change-category-modal-content-button-legacy")
+                                            modal.querySelector("[data-shop-category-modal-tabs-tab-button-2]").classList.add("change-category-modal-content-button-legacy")
+                                        }
 
                                         if (localStorage.experiment_2025_04_reviews_v2_hide_beta_tag === "Treatment 1: Enabled") {
                                             modal.querySelector("[data-review-beta-tag]").style.display = 'none';
@@ -14472,6 +14493,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("FEATURED_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "year-recap") {
             document.title = `${getTextString("RECAP_2024_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14481,6 +14503,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("RECAP_2024_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "shop") {
             document.title = `${getTextString("SHOP_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14499,6 +14522,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("SHOP_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "orbs") {
             document.title = `${getTextString("ORB_SHOP_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14519,6 +14543,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("ORB_SHOP_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "leaks") {
             document.title = `${getTextString("LEAKS_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14536,6 +14561,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("LEAKS_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "leaks_") {
             document.title = `${getTextString("LEAKS_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14553,6 +14579,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("LEAKS_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "nameplates") {
             document.title = `${getTextString("NAMEPLATES_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14568,6 +14595,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("NAMEPLATES_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "consumables") {
             document.title = `${getTextString("POTIONS_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14586,6 +14614,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("POTIONS_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "miscellaneous") {
             document.title = `${getTextString("MISCELLANEOUS_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14607,6 +14636,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("MISCELLANEOUS_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "marketing") {
             document.title = `${getTextString("MARKETING_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14623,6 +14653,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("MARKETING_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "pplus-home") {
             document.title = `${getTextString("PROFILES_PLUS_FEATURED_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14641,6 +14672,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("PROFILES_PLUS_FEATURED_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "pplus") {
             document.title = `${getTextString("PROFILES_PLUS_BROWSE_ALL_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14664,6 +14696,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("PROFILES_PLUS_BROWSE_ALL_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "published_listings") {
             document.title = `${getTextString("PUBLISHED_LISTINGS_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14672,6 +14705,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("PUBLISHED_LISTINGS_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "orb_converter") {
             document.title = `${getTextString("ORB_CONVERTER_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14680,6 +14714,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("ORB_CONVERTER_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "item_tool") {
             document.title = `${getTextString("ITEM_DEBUG_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14688,6 +14723,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("top-bar-container").innerHTML = `
                 <h2 class="shop-tab-page-title">${getTextString("ITEM_DEBUG_TAB_PAGE_TITLE")}</h2>
                 <div id="open-help-modals-buttons-holder-new"></div>
+                <div id="top-bar-other-things-container"></div>
             `;
         } else if (params.get("page") === "login") {
             document.title = `${getTextString("DOCUMENT_TITLE_WEBSITE_NAME")}`;
@@ -14776,6 +14812,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             location.reload();
             console.log('a')
         }
+
 
         if (params.get("login") === "true") {
             copyNotice('logintrue');
@@ -16869,6 +16906,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <div id="modal-v3-color-themes-experiment-output"></div>
                 <div id="modal-v3-custom-themes-experiment-output"></div>
                 <div id="modal-v3-community-themes-experiment-output"></div>
+                <div id="modal-v3-extended-styles-experiment-output"></div>
             `;
 
             document.getElementById("modalv3-theme-selection-container").innerHTML = `
@@ -16915,19 +16953,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 `;
             }
 
-            if (localStorage.experiment_2025_04_theme_picker_v2_community === "Treatment 1: Enabled") {
-                document.getElementById("modal-v3-community-themes-experiment-output").innerHTML = `
-                    <hr>
-                    <div class="modalv3-content-card-1">
-                        <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_HEADER")}</h2>
-                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_THEME_COMMUNITY_SUMMARY")}</p>
-
-                        <div class="modalv3-theme-selection-container" id="modalv3-community-theme-selection-container">
-                        </div>
-                    </div>
-                `;
-                fetchAndRenderCommunityThemes();
-            } else if (localStorage.experiment_2025_04_theme_picker_v2_community === "Treatment 2: As banners") {
+            if (localStorage.experiment_2025_04_theme_picker_v2_community === "Treatment 2: As banners") {
                 document.getElementById("modal-v3-community-themes-experiment-output").innerHTML = `
                     <hr>
                     <div class="modalv3-content-card-1">
@@ -16939,37 +16965,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     </div>
                 `;
                 fetchAndRenderCommunityThemesAsBanners();
-            }
-            async function fetchAndRenderCommunityThemes() {
-                if (!communityThemesCache) {
-                    await setCommunityThemesCache();
-                }
-
-                try {
-                    communityThemesCache.forEach(theme => {
-                        let themeIcon = document.createElement("div");
-
-                        themeIcon.classList.add("theme-selection-box");
-                        themeIcon.id = 'theme-community-' + theme.id + '-button'
-                        themeIcon.title = theme.name;
-                        if (theme.icon.color_secondary != null) {
-                            themeIcon.style.backgroundImage = `linear-gradient(-45deg, ${theme.icon.color_secondary} 50%,${theme.icon.color_primary} 50%)`;
-                        }
-                        themeIcon.style.backgroundColor = theme.icon.color_primary;
-
-                        themeIcon.onclick = function() {
-                            updateThemeStore('community-' + theme.id, 'true', theme.github.raw);
-                        };
-
-                        document.getElementById("modalv3-community-theme-selection-container").appendChild(themeIcon);
-                    });
-                    if (document.getElementById("theme-" + localStorage.sa_theme + "-button")) {
-                        document.getElementById("theme-" + localStorage.sa_theme + "-button").classList.add('theme-selection-box-selected');
-                    }
-                }
-                catch(error) {
-                    document.getElementById("modalv3-community-theme-selection-container").innerHTML = `There was an error loading community themes`;
-                }
             }
 
             async function fetchAndRenderCommunityThemesAsBanners() {
@@ -17016,6 +17011,78 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             if (document.getElementById("theme-" + localStorage.sa_theme + "-button")) {
                 document.getElementById("theme-" + localStorage.sa_theme + "-button").classList.add('theme-selection-box-selected');
             }
+
+            if (localStorage.experiment_2025_04_extended_styles === "Treatment 1: Enabled") {
+                document.getElementById("modal-v3-extended-styles-experiment-output").innerHTML = `
+                    <hr>
+                    <div class="modalv3-content-card-1">
+                        <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_APPEARANCE_EXTENDED_STYLES_CATEGORY_TABS_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_EXTENDED_STYLES_CATEGORY_TABS_SUMMARY")}</p>
+
+                        <div class="modalv3-extended-styles-card-container" id="modalv3-extended-styles-card-container-category-tabs"></div>
+                    </div>
+                `;
+
+                document.getElementById("modalv3-extended-styles-card-container-category-tabs").innerHTML = `
+                    <div class="modalv3-extended-styles-card-1 selected" id="modalv3-extended-styles-category-tab-1" onclick="updateExtendedStylesCategoryTab('1');">
+                        <p>${getTextString("MODAL_V3_TAB_APPEARANCE_EXTENDED_STYLES_CATEGORY_TABS_DARK")}</p>
+                        <div class="modalv3-extended-styles-card-1-preview">
+                            <div class="category-modal-content-container">
+
+                                <div class="change-category-modal-content-button selected">
+                                    <p>${getTextString("MODAL_V3_TAB_APPEARANCE_EXTENDED_STYLES_CATEGORY_TABS_SELECTED")}</p>
+                                </div>
+
+                                <div class="change-category-modal-content-button" style="display: flex;">
+                                    <p>${getTextString("MODAL_V3_TAB_APPEARANCE_EXTENDED_STYLES_CATEGORY_TABS_OTHER")}</p>
+                                </div>
+
+                                <div class="modalv3-extended-styles-card-1-preview-category-modal-inner-content-container">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modalv3-extended-styles-card-1" id="modalv3-extended-styles-category-tab-2" onclick="updateExtendedStylesCategoryTab('2');">
+                        <p>${getTextString("MODAL_V3_TAB_APPEARANCE_EXTENDED_STYLES_CATEGORY_TABS_TRANSPARENT")}</p>
+                        <div class="modalv3-extended-styles-card-1-preview">
+                            <div class="category-modal-content-container">
+
+                                <div class="change-category-modal-content-button-transparent selected">
+                                    <p>${getTextString("MODAL_V3_TAB_APPEARANCE_EXTENDED_STYLES_CATEGORY_TABS_SELECTED")}</p>
+                                </div>
+
+                                <div class="change-category-modal-content-button-transparent" style="display: flex;">
+                                    <p>${getTextString("MODAL_V3_TAB_APPEARANCE_EXTENDED_STYLES_CATEGORY_TABS_OTHER")}</p>
+                                </div>
+
+                                <div class="modalv3-extended-styles-card-1-preview-category-modal-inner-content-container">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modalv3-extended-styles-card-1" id="modalv3-extended-styles-category-tab-3" onclick="updateExtendedStylesCategoryTab('3');">
+                        <p>${getTextString("MODAL_V3_TAB_APPEARANCE_EXTENDED_STYLES_CATEGORY_TABS_LEGACY")}</p>
+                        <div class="modalv3-extended-styles-card-1-preview">
+                            <div class="category-modal-content-container">
+
+                                <div class="change-category-modal-content-button-legacy selected">
+                                    <p>${getTextString("MODAL_V3_TAB_APPEARANCE_EXTENDED_STYLES_CATEGORY_TABS_SELECTED")}</p>
+                                </div>
+
+                                <div class="change-category-modal-content-button-legacy" style="display: flex;">
+                                    <p>${getTextString("MODAL_V3_TAB_APPEARANCE_EXTENDED_STYLES_CATEGORY_TABS_OTHER")}</p>
+                                </div>
+
+                                <div class="modalv3-extended-styles-card-1-preview-category-modal-inner-content-container">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                updateExtendedStylesCategoryTab();
+            }
+
         } else if (tab === "accessibility") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
@@ -17358,6 +17425,27 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             }
         } else {
             console.error(tab + ' is not a valid tab');
+        }
+    }
+
+    function updateExtendedStylesCategoryTab(setFilter) {
+        const el1 = document.getElementById("modalv3-extended-styles-category-tab-1");
+        const el2 = document.getElementById("modalv3-extended-styles-category-tab-2");
+        const el3 = document.getElementById("modalv3-extended-styles-category-tab-3");
+
+        if (el1 && el1.classList.contains('selected')) {
+            el1.classList.remove('selected');
+        } else if (el2 && el2.classList.contains('selected')) {
+            el2.classList.remove('selected');
+        } else if (el3 && el3.classList.contains('selected')) {
+            el3.classList.remove('selected');
+        }
+
+        if (setFilter) {
+            localStorage.ext_sty_category_tab = setFilter;
+            document.getElementById("modalv3-extended-styles-category-tab-" + setFilter).classList.add('selected');
+        } else {
+            document.getElementById("modalv3-extended-styles-category-tab-" + localStorage.ext_sty_category_tab).classList.add('selected');
         }
     }
 

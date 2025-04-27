@@ -46,7 +46,7 @@
     --modalv3-hr-color2: #393A3F;
     --modalv3-text-input-background: #25272b;
     --category-modal-tab-bg: #2B2D31;
-    --category-modal-tab-selected-bg: #4e5057;
+    --category-modal-tab-selected-bg: #4f5155;
 }
 
 .theme-midnight {
@@ -132,6 +132,7 @@
     --modalv3-hr-color2: #283264;
     --modalv3-text-input-background: #22223d;
     --category-modal-tab-bg: #191936;
+    --category-modal-tab-selected-bg: #434388;
 }
 
 .theme-color_red {
@@ -152,6 +153,7 @@
     --modalv3-hr-color2: #642828;
     --modalv3-text-input-background: #3d2222;
     --category-modal-tab-bg: #361919;
+    --category-modal-tab-selected-bg: #8d4646;
 }
 
 .theme-color_green {
@@ -172,6 +174,7 @@
     --modalv3-hr-color2: #346428;
     --modalv3-text-input-background: #253d22;
     --category-modal-tab-bg: #203619;
+    --category-modal-tab-selected-bg: #497a3c;
 }
 
 @font-face {
@@ -744,9 +747,33 @@ body {
     grid-template-columns: repeat(auto-fill, 29px);
 }
 
+#open-help-modals-buttons-holder-new.with-search {
+    right: 280px;
+}
+
 #open-help-modals-buttons-holder-new div {
     overflow: hidden;
 }
+
+#top-bar-other-things-container {
+    position: absolute;
+    top: 7px;
+    width: 180px;
+    height: 34px;
+    right: 90px;
+}
+
+#top-bar-other-things-container input {
+    margin-top: 1px;
+    width: 90%;
+    padding: 8px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    color: var(--white);
+    background-color: var(--input-background);
+}
+
 
 #seachfhgfkjsdfhkdj {
     width: 80px;
@@ -3882,6 +3909,66 @@ body {
 }
 
 
+
+.modalv3-extended-styles-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 5px;
+    background-color: var(--discord-like-settings-sidebar);
+    border-radius: 10px;
+    padding: 13px;
+}
+
+.modalv3-extended-styles-card-1 {
+    background-color: var(--background-tertiary);
+    border: 2px solid var(--background-tertiary);
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: border 0.1s ease;
+}
+
+.modalv3-extended-styles-card-1 p {
+    margin: 0;
+    margin-bottom: 10px;
+    pointer-events: none;
+}
+
+.modalv3-extended-styles-card-1-preview {
+    position: relative;
+    background-color: var(--background-primary);
+    border-radius: 5px;
+    pointer-events: none;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.modalv3-extended-styles-card-1-preview .category-modal-content-container {
+    position: relative;
+    top: 0px;
+}
+
+.modalv3-extended-styles-card-1-preview-category-modal-inner-content-container {
+    position: absolute;
+    margin-top: 44px;
+    height: 50px;
+    width: 110%;
+    background-color: var(--background-secondary);
+}
+
+.modalv3-extended-styles-card-1.selected {
+    background-color: var(--background-tertiary);
+    border: 2px solid var(--brand-500);
+    border-radius: 5px;
+    padding: 10px;
+    cursor: unset;
+}
+
+
+
+
+
 [data-shop-modal-review-moderation-buttons] {
     position: absolute;
     width: 200px;
@@ -5367,9 +5454,53 @@ data-share-product-card-button {
 
 .change-category-modal-content-button.selected {
     border-bottom: 3px solid var(--brand-500);
+    cursor: unset;
 }
 
 .change-category-modal-content-button p {
+    margin: 0;
+    padding: 10px;
+    pointer-events: none;
+    color: var(--white);
+}
+
+
+.change-category-modal-content-button-transparent {
+    display: flex;
+    width: auto;
+    cursor: pointer;
+    background-color: none;
+    border-radius: 5px 5px 0px 0px;
+    margin-left: 10px;
+    border-bottom: 3px solid #00000000;
+}
+
+.change-category-modal-content-button-transparent.selected {
+    border-bottom: 3px solid var(--brand-500);
+}
+
+.change-category-modal-content-button-transparent p {
+    margin: 0;
+    padding: 10px;
+    pointer-events: none;
+    color: var(--white);
+}
+
+
+.change-category-modal-content-button-legacy {
+    display: flex;
+    width: auto;
+    cursor: pointer;
+    background-color: var(--category-modal-tab-bg);
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.change-category-modal-content-button-legacy.selected {
+    background-color: var(--category-modal-tab-selected-bg);
+}
+
+.change-category-modal-content-button-legacy p {
     margin: 0;
     padding: 10px;
     pointer-events: none;

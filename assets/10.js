@@ -18,6 +18,16 @@ EXPERIMENT_ID_6 = 1
 
 const experimentsList = [
     {
+        title: "Item Search",
+        id: "2025-04_item_search",
+        name: "experiment_2025_04_item_search",
+        treatments: [
+            "Treatment -1: Disabled",
+            "Treatment 1: Enabled"
+        ],
+        rollout: "Treatment 1: Enabled"
+    },
+    {
         title: "Purchasable Items",
         id: "2025-04_purchasable_items",
         name: "experiment_2025_04_purchasable_items",
@@ -48,15 +58,14 @@ const experimentsList = [
         rollout: "Treatment -1: Disabled"
     },
     {
-        title: "Shop Category Modal Tabs Styles",
-        id: "2025-04_shop_category_modal_tabs_styles",
-        name: "experiment_2025_04_shop_category_modal_tabs_styles",
+        title: "Extended Styles",
+        id: "2025-04_extended_styles",
+        name: "experiment_2025_04_extended_styles",
         treatments: [
             "Treatment -1: Disabled",
-            "Treatment 1: Clear Background"
+            "Treatment 1: Enabled"
         ],
-        rollout: "Treatment -1: Disabled",
-        not_needed: "true"
+        rollout: "Treatment -1: Disabled"
     },
     {
         title: "Reviews V2 Hide Beta Tag",
