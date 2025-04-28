@@ -1,6 +1,6 @@
 
 
-app_version1 = "396"
+app_version1 = "397"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2528,7 +2528,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         DATA_EXTRACTION_PROCESS = "85",
         HOAX = "86"
     ]
-
 
     discord_categories = {
         FANTASY: "1144003461608906824",
@@ -16907,6 +16906,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <div id="modal-v3-custom-themes-experiment-output"></div>
                 <div id="modal-v3-community-themes-experiment-output"></div>
                 <div id="modal-v3-extended-styles-experiment-output"></div>
+                <div id="modal-v3-extended-styles-cards-experiment-output"></div>
             `;
 
             document.getElementById("modalv3-theme-selection-container").innerHTML = `
@@ -17012,7 +17012,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 document.getElementById("theme-" + localStorage.sa_theme + "-button").classList.add('theme-selection-box-selected');
             }
 
-            if (localStorage.experiment_2025_04_extended_styles === "Treatment 1: Enabled") {
+            if (localStorage.experiment_2025_04_extended_styles === "Treatment 1: Enabled" || localStorage.experiment_2025_04_extended_styles === "Treatment 2: Card Styles") {
                 document.getElementById("modal-v3-extended-styles-experiment-output").innerHTML = `
                     <hr>
                     <div class="modalv3-content-card-1">
@@ -17081,6 +17081,17 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 `;
 
                 updateExtendedStylesCategoryTab();
+            }
+
+            if (localStorage.experiment_2025_04_extended_styles === "Treatment 2: Card Styles") {
+                document.getElementById("modal-v3-extended-styles-cards-experiment-output").innerHTML = `
+                    <hr>
+                    <div class="modalv3-content-card-1">
+                        <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_APPEARANCE_EXTENDED_STYLES_SHOP_CARDS_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_APPEARANCE_EXTENDED_STYLES_SHOP_CARDS_SUMMARY")}</p>
+
+                    </div>
+                `;
             }
 
         } else if (tab === "accessibility") {

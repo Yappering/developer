@@ -63,7 +63,8 @@ const experimentsList = [
         name: "experiment_2025_04_extended_styles",
         treatments: [
             "Treatment -1: Disabled",
-            "Treatment 1: Enabled"
+            "Treatment 1: Enabled",
+            "Treatment 2: Card Styles"
         ],
         rollout: "Treatment -1: Disabled"
     },
