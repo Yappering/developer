@@ -1,6 +1,6 @@
 
 
-app_version1 = "397"
+app_version1 = "398"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -7446,7 +7446,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         const categoryTemplate = document.querySelector("[data-shop-category-template]");
                         const potionTemplate = document.querySelector("[data-potion-card-template]");
                         const categoryOutput = document.querySelector("[data-shop-output]");
-                        const page = params.get("page");
+                        const page = params.get("page"); 
             
                         for (const apiCategory of data) {
                             if (page === "pplus" || page === "leaks_") {
@@ -11639,10 +11639,50 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
             
                                 const cardOutput = category.querySelector("[data-shop-category-card-holder]");
+
+                                if (localStorage.ext_sty_shop_cards === "2") {
+                                    cardOutput.classList.remove("shop-category-card-holder");
+                                    cardOutput.classList.add("shop-category-card-holder-standard");
+                                } else {
+                                    cardOutput.classList.add("shop-category-card-holder");
+                                }
+
                                 if (cardOutput) {
                                     for (const product of apiCategory.products) {
                                         const cardTemplate = document.querySelector("[data-shop-item-card-template]");
                                         const card = cardTemplate.content.cloneNode(true).children[0];
+
+                                        if (localStorage.ext_sty_shop_cards === "2") {
+                                            card.classList.remove("shop-category-card");
+                                            card.classList.add("shop-category-card-standard");
+
+                                            if (product.styles && product.styles.background_colors != null) {
+                                                function decodePrimaryCard(decimal) {
+                                                    const r = (decimal >> 16) & 0xFF; // Extract Red (top 8 bits)
+                                                    const g = (decimal >> 8) & 0xFF;  // Extract Green (middle 8 bits)
+                                                    const b = decimal & 0xFF;         // Extract Blue (bottom 8 bits)
+                                                    return { r, g, b };
+                                                }
+    
+                                                function decodeSecondaryCard(decimal) {
+                                                    const r1 = (decimal >> 16) & 0xFF; // Extract Red (top 8 bits)
+                                                    const g1 = (decimal >> 8) & 0xFF;  // Extract Green (middle 8 bits)
+                                                    const b1 = decimal & 0xFF;         // Extract Blue (bottom 8 bits)
+                                                    return { r1, g1, b1 };
+                                                }
+                                                
+                                                // Example usage:
+                                                const cardPrimaryColorDecimal = product.styles.background_colors[0]; // example (like 0xFFA000)
+                                                const { r, g, b } = decodePrimaryCard(cardPrimaryColorDecimal);
+    
+                                                const cardSecondaryColorDecimal = product.styles.background_colors[1]; // example (like 0xFFA000)
+                                                const { r1, g1, b1 } = decodeSecondaryCard(cardSecondaryColorDecimal);
+                                                card.style.backgroundImage = `linear-gradient(rgb(${r}, ${g}, ${b}),rgb(${r1}, ${g1}, ${b1}))`;
+                                            }
+                                              
+                                        } else {
+                                            card.classList.add("shop-category-card");
+                                        }
 
                                         card.id = product.sku_id;
 
