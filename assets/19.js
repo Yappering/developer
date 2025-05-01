@@ -1,6 +1,6 @@
 
 
-app_version1 = "399"
+app_version1 = "400"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -14406,7 +14406,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
     
 
-    if (params.get("page") != "item_tool" && params.get("page") != "published_listings" && params.get("page") != "orb_converter" && params.get("page") != "year-recap") {
+    if (params.get("page") != "item_tool" && params.get("page") != "published_listings" && params.get("page") != "orb_converter" && params.get("page") != "year-recap" && params.get("page") != "login") {
         window.onload = fetchData;
     }
 
@@ -14780,80 +14780,132 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             `;
         } else if (params.get("page") === "login") {
             document.title = `${getTextString("DOCUMENT_TITLE_WEBSITE_NAME")}`;
-                document.body.innerHTML = `logging in...`;
-                window.addEventListener('DOMContentLoaded', () => {
-                    const hash = window.location.hash;
-                    const match = hash.match(/#token=([^&]+)/);
+                if (localStorage.experiment_2025_05_account_creator === "Treatment 1: Enabled") {
+                    document.body.innerHTML = `
+                        <div class="ac-tier-picker">
+                            <div class="ac-tier-container">
+                                <div class="ac-tier-card" id="ac-tier-card-1" onclick="changeACType('1')">
+                                    <h1>${getTextString("ACCOUNT_CREATOR_BASIC_HEADER")}</h1>
+                                </div>
+                                <div class="ac-tier-card" id="ac-tier-card-2" onclick="changeACType('2')">
+                                    <p class="ac-tier-card-beta-tag">BETA</p>
+                                    <h1>${getTextString("ACCOUNT_CREATOR_STANDARD_HEADER")}</h1>
+                                </div>
 
-                    if (match) {
-                        async function login() {
-                            try {
-                                const token = match[1];
-                                localStorage.setItem('discord_token', token);
-                                window.location.hash = '';
-                                localStorage.dismissible_newLogInWithDiscord = "Treatment 1: Seen";
-                          
-                                if (!localStorage.discord_profile) {
-                                    const userInfo = await fetch('https://discord.com/api/users/@me', {
-                                        headers: { Authorization: `Bearer ${token}` }
-                                    });
-                          
-                                    if (!userInfo.ok) {
-                                        // If the response is not ok (e.g., 401 Unauthorized)
-                                        setParams({ page: 'home', login: 'false' });
-                                        actuallyLogOutOfDiscord();
-                                        return;
-                                    }
-                          
-                                    const user = await userInfo.json();
-                                    localStorage.discord_profile = JSON.stringify(user, undefined, 4);
-                                    localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
-                                    localStorage.discord_username = user.username;
-                                    localStorage.discord_user_id = user.id;
-                                    if (user.global_name != null) {
-                                        localStorage.discord_displayname = user.global_name;
-                                    } else {
-                                        localStorage.discord_displayname = user.username;
-                                    }
-                                    localStorage.discord_banner_color = user.banner_color;
-                                    localStorage.discord_premium_type = user.premium_type;
-                          
-                                    if (user.banner != null) {
-                                        localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=4096`;
-                                    } else {
-                                        localStorage.removeItem('discord_banner');
-                                    }
+                            </div>
+                        </div>
 
-                                    if (staff_ids.includes(user.id)) {
-                                        localStorage.dev = "true";
-                                        console.log('yapper')
-                                    }
-                          
-                                    console.log('success');
-                                    setParams({ page: 'home', login: 'true' });
-                                    location.reload();
-                                }
-                          
-                                // Optional: additional check (but `localStorage.discord_profile` is a string, so this check won't work unless parsed)
-                                const parsedProfile = JSON.parse(localStorage.discord_profile);
-                                if (parsedProfile.code === 0) {
+                        <div class="ac-perks-holder">
+                            <div class="ac-perks-container" id="ac-perks-container">
+                                
+                            </div>
+                        </div>
+                    `;
+
+                    changeACType('1');
+
+
+                    window.addEventListener('DOMContentLoaded', () => {
+                        const hash = window.location.hash;
+                        const match = hash.match(/#token=([^&]+)/);
+
+                        if (match) {
+                            async function login() {
+                                try {
+                                    const token = match[1];
+                                    localStorage.setItem('discord_token', token);
+                                    window.location.hash = '';
+                                    localStorage.dismissible_newLogInWithDiscord = "Treatment 1: Seen";
+                                    
+                                
+                                } catch (error) {
                                     setParams({ page: 'home', login: 'false' });
                                     actuallyLogOutOfDiscord();
                                 }
-                          
-                            } catch (error) {
-                                setParams({ page: 'home', login: 'false' });
-                                actuallyLogOutOfDiscord();
                             }
+
                         }
-                          
-                        login();
-                          
-                    } else {
-                        setParams({page: 'home', login: 'false'});
-                        location.reload();
-                    }
-                });
+                        // else {
+                        //     setParams({page: 'home', login: 'false'});
+                        //     location.reload();
+                        // }
+                    });
+                } else {
+                    document.body.innerHTML = `logging in...`;
+                    window.addEventListener('DOMContentLoaded', () => {
+                        const hash = window.location.hash;
+                        const match = hash.match(/#token=([^&]+)/);
+
+                        if (match) {
+                            async function login() {
+                                try {
+                                    const token = match[1];
+                                    localStorage.setItem('discord_token', token);
+                                    window.location.hash = '';
+                                    localStorage.dismissible_newLogInWithDiscord = "Treatment 1: Seen";
+                                
+                                    if (!localStorage.discord_profile) {
+                                        const userInfo = await fetch('https://discord.com/api/users/@me', {
+                                            headers: { Authorization: `Bearer ${token}` }
+                                        });
+                                    
+                                        if (!userInfo.ok) {
+                                            // If the response is not ok (e.g., 401 Unauthorized)
+                                            setParams({ page: 'home', login: 'false' });
+                                            actuallyLogOutOfDiscord();
+                                            return;
+                                        }
+                                    
+                                        const user = await userInfo.json();
+                                        localStorage.discord_profile = JSON.stringify(user, undefined, 4);
+                                        localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
+                                        localStorage.discord_username = user.username;
+                                        localStorage.discord_user_id = user.id;
+                                        if (user.global_name != null) {
+                                            localStorage.discord_displayname = user.global_name;
+                                        } else {
+                                            localStorage.discord_displayname = user.username;
+                                        }
+                                        localStorage.discord_banner_color = user.banner_color;
+                                        localStorage.discord_premium_type = user.premium_type;
+                                    
+                                        if (user.banner != null) {
+                                            localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=4096`;
+                                        } else {
+                                            localStorage.removeItem('discord_banner');
+                                        }
+
+                                        if (staff_ids.includes(user.id)) {
+                                            localStorage.dev = "true";
+                                            console.log('yapper')
+                                        }
+                                    
+                                        console.log('success');
+                                        setParams({ page: 'home', login: 'true' });
+                                        location.reload();
+                                    }
+                                
+                                    // Optional: additional check (but `localStorage.discord_profile` is a string, so this check won't work unless parsed)
+                                    const parsedProfile = JSON.parse(localStorage.discord_profile);
+                                    if (parsedProfile.code === 0) {
+                                        setParams({ page: 'home', login: 'false' });
+                                        actuallyLogOutOfDiscord();
+                                    }
+                                
+                                } catch (error) {
+                                    setParams({ page: 'home', login: 'false' });
+                                    actuallyLogOutOfDiscord();
+                                }
+                            }
+
+                            login();
+
+                        } else {
+                            setParams({page: 'home', login: 'false'});
+                            location.reload();
+                        }
+                    });
+                }
         } else if (params.get("page")) {
             setParams({page: 'home',err: '404'});
             document.title = `${getTextString("FEATURED_TAB_DOCUMENT_TITLE")}${getTextString("DOCUMENT_TITLE_SITE_NAME")}`;
@@ -14877,7 +14929,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
         const open_help_modals_buttons_holder = document.getElementById('open-help-modals-buttons-holder-new');
 
-        if (localStorage.experiment_2025_02_extra_options != "Treatment 6: Settings like discord") {
+        if (localStorage.experiment_2025_02_extra_options != "Treatment 6: Settings like discord" && open_help_modals_buttons_holder) {
             if (localStorage.discord_token) {
                 let user_button = document.createElement("div");
     
@@ -14911,7 +14963,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             open_help_modals_buttons_holder.appendChild(options_button);
         }
 
-        if (localStorage.dev == "true") {
+        if (localStorage.dev == "true" && open_help_modals_buttons_holder) {
             let devtools_button = document.createElement("div");
 
             devtools_button.id = 'open-dev-tools-button-1';
@@ -14925,7 +14977,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             open_help_modals_buttons_holder.appendChild(devtools_button);
         }
 
-        if (localStorage.experiment_2025_05_m === "Treatment 1: Enabled") {
+        if (localStorage.experiment_2025_05_m === "Treatment 1: Enabled" && open_help_modals_buttons_holder) {
             let system_warning_button = document.createElement("div");
 
             system_warning_button.id = 'system-warning-button';
@@ -14941,6 +14993,66 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
     pageCheck();
+
+    function changeACType(type) {
+        if (document.getElementById("ac-tier-card-1") && document.getElementById("ac-tier-card-2")) {
+            
+            if (type === "1") {
+                document.getElementById("ac-tier-card-1").classList.add("selected");
+                document.getElementById("ac-tier-card-2").classList.remove("selected");
+                document.getElementById("ac-perks-container").innerHTML = `
+                    <h2>${getTextString("ACCOUNT_CREATOR_BASIC_LOG_IN_TITLE")}</h2>
+                    <p class="desc">${getTextString("ACCOUNT_CREATOR_BASIC_LOG_IN_DESC")}</p>
+                    <div class="ac-perks-list">
+                        <div>
+                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
+                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_1")}</p>
+                        </div>
+                        <div>
+                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
+                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_2")}</p>
+                        </div>
+                        <div>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg"><path d="M17.3005 18.7C17.493 18.8444 17.7312 18.9146 17.9713 18.8975C18.2114 18.8804 18.4373 18.7773 18.6076 18.6071C18.7778 18.4369 18.8809 18.211 18.8979 17.9709C18.915 17.7308 18.8449 17.4926 18.7005 17.3L13.4205 12L18.7205 6.70002C18.883 6.50757 18.967 6.26086 18.9555 6.0092C18.944 5.75754 18.838 5.51948 18.6586 5.34261C18.4792 5.16575 18.2397 5.0631 17.9879 5.05521C17.7361 5.04731 17.4906 5.13474 17.3005 5.30002L12.0005 10.58L6.70045 5.28002C6.508 5.11745 6.26129 5.03352 6.00963 5.04498C5.75797 5.05645 5.51991 5.16248 5.34305 5.34187C5.16618 5.52127 5.06354 5.7608 5.05564 6.0126C5.04774 6.2644 5.13517 6.5099 5.30045 6.70002L10.5805 12L5.28045 17.3C5.17646 17.3904 5.09227 17.5013 5.03317 17.6258C4.97407 17.7503 4.94133 17.8856 4.93701 18.0234C4.9327 18.1611 4.95689 18.2982 5.00807 18.4262C5.05925 18.5541 5.13633 18.6701 5.23445 18.7668C5.33257 18.8636 5.44963 18.939 5.57828 18.9883C5.70693 19.0377 5.84439 19.06 5.98204 19.0537C6.1197 19.0474 6.25457 19.0128 6.37819 18.9519C6.50182 18.891 6.61153 18.8053 6.70045 18.7L12.0005 13.42L17.3005 18.72V18.7Z" fill="var(--white)"/></svg>
+                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_3")}</p>
+                        </div>
+                        <div>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg"><path d="M17.3005 18.7C17.493 18.8444 17.7312 18.9146 17.9713 18.8975C18.2114 18.8804 18.4373 18.7773 18.6076 18.6071C18.7778 18.4369 18.8809 18.211 18.8979 17.9709C18.915 17.7308 18.8449 17.4926 18.7005 17.3L13.4205 12L18.7205 6.70002C18.883 6.50757 18.967 6.26086 18.9555 6.0092C18.944 5.75754 18.838 5.51948 18.6586 5.34261C18.4792 5.16575 18.2397 5.0631 17.9879 5.05521C17.7361 5.04731 17.4906 5.13474 17.3005 5.30002L12.0005 10.58L6.70045 5.28002C6.508 5.11745 6.26129 5.03352 6.00963 5.04498C5.75797 5.05645 5.51991 5.16248 5.34305 5.34187C5.16618 5.52127 5.06354 5.7608 5.05564 6.0126C5.04774 6.2644 5.13517 6.5099 5.30045 6.70002L10.5805 12L5.28045 17.3C5.17646 17.3904 5.09227 17.5013 5.03317 17.6258C4.97407 17.7503 4.94133 17.8856 4.93701 18.0234C4.9327 18.1611 4.95689 18.2982 5.00807 18.4262C5.05925 18.5541 5.13633 18.6701 5.23445 18.7668C5.33257 18.8636 5.44963 18.939 5.57828 18.9883C5.70693 19.0377 5.84439 19.06 5.98204 19.0537C6.1197 19.0474 6.25457 19.0128 6.37819 18.9519C6.50182 18.891 6.61153 18.8053 6.70045 18.7L12.0005 13.42L17.3005 18.72V18.7Z" fill="var(--white)"/></svg>
+                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_4")}</p>
+                        </div>
+                    </div>
+                    <button class="ac-login-button">Continue</button>
+                `;
+            } else if (type === "2") {
+                document.getElementById("ac-tier-card-1").classList.remove("selected");
+                document.getElementById("ac-tier-card-2").classList.add("selected");
+                document.getElementById("ac-perks-container").innerHTML = `
+                    <h2>${getTextString("ACCOUNT_CREATOR_STANDARD_LOG_IN_TITLE")}</h2>
+                    <p class="desc">${getTextString("ACCOUNT_CREATOR_STANDARD_LOG_IN_DESC")}</p>
+                    <div class="ac-perks-list">
+                        <div>
+                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
+                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_1")}</p>
+                        </div>
+                        <div>
+                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
+                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_2")}</p>
+                        </div>
+                        <div>
+                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
+                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_3")}</p>
+                        </div>
+                        <div>
+                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
+                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_4")}</p>
+                        </div>
+                    </div>
+                    <button class="ac-login-button">Continue</button>
+                `;
+            }
+
+        }
+    }
 
 
     

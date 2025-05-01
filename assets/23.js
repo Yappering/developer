@@ -265,6 +265,25 @@ LOREM_IPSUM = "Lorem ipsum";
 APP_VERSION = "App Version: ";
 
 
+
+
+// Account Creator
+
+ACCOUNT_CREATOR_BASIC_HEADER = "Basic";
+ACCOUNT_CREATOR_STANDARD_HEADER = "Standard";
+
+ACCOUNT_CREATOR_BASIC_LOG_IN_TITLE = "Basic Log In";
+ACCOUNT_CREATOR_BASIC_LOG_IN_DESC = "Keep things simple.";
+
+ACCOUNT_CREATOR_STANDARD_LOG_IN_TITLE = "Standard Log In";
+ACCOUNT_CREATOR_STANDARD_LOG_IN_DESC = "Full time Shop Archives user.";
+
+ACCOUNT_CREATOR_PERKS_1 = "Preview your Discord profile across the website.";
+ACCOUNT_CREATOR_PERKS_2 = "See and Write reviews for categories.";
+ACCOUNT_CREATOR_PERKS_3 = "More user settings.";
+ACCOUNT_CREATOR_PERKS_4 = "Early access to beta features.";
+
+
 // Cateogry Modal
 
 SHOP_CATEGORY_MODAL_ASSETS_TAB = "Assets";

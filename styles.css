@@ -6005,6 +6005,167 @@ data-share-product-card-button {
 
 
 
+/* Account Creator */
+
+.ac-tier-picker {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.ac-tier-container {
+    position: relative;
+    z-index: 1001;
+    background-color: var(--background-tertiary);
+    padding: 20px;
+    padding-left: 12px;
+    padding-top: 12px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    width: 800px;
+    height: 450px;
+    overflow: hidden;
+}
+
+.ac-tier-card {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: var(--background-secondary);
+    border-radius: 10px;
+    border: 3px solid #00000000;
+    cursor: pointer;
+    text-align: center;
+}
+
+.ac-tier-card.selected {
+    border: 3px solid var(--brand-green);
+    cursor: unset;
+}
+
+.ac-tier-card h1 {
+    user-select: none;
+}
+
+.ac-tier-card-beta-tag {
+    display: flex;
+    position: absolute;
+    right: 0px;
+    padding: 2px !important;
+    padding-left: 5px !important;
+    padding-right: 3px !important;
+    margin: 0;
+    margin-top: 8px !important;
+    margin-right: 10px !important;
+    background-color: var(--brand-500);
+    color: white !important;
+    border-radius: 5px;
+    width: 40px;
+    height: 20px;
+    font-family: gg sans seven;
+}
+
+
+.ac-perks-holder {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.ac-perks-container {
+    position: relative;
+    z-index: 1001;
+    background-color: var(--background-tertiary);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 1200px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.ac-perks-container h2 {
+    margin: 0;
+}
+
+.ac-perks-container .desc {
+    margin: 0;
+    color: var(--8);
+}
+
+.ac-perks-list {
+    z-index: 1001;
+    background-color: var(--background-secondary);
+    border-radius: 7px;
+    margin-top: 5px;
+    width: 100%;
+    height: 135px;
+    overflow: hidden;
+}
+
+.ac-perks-list p {
+    margin: 0;
+    margin-top: 7px;
+    margin-left: 10px;
+}
+
+.ac-perks-list div {
+    display: block;
+    position: relative;
+    width: 500px;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.ac-perks-list div svg {
+    position: absolute;
+}
+
+.ac-perks-list div p {
+    margin-left: 30px;
+}
+
+.ac-login-button {
+    display: block;
+    position: absolute;
+    margin: 5px 0; /* Space between buttons */
+    padding: 10px 20px;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--brand-500); /* Adjust based on your design */
+    color: #fff;
+    border: 2px var(--6) solid;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 200px;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+}
+
+.ac-login-button:hover {
+    background-color: var(--brand-500-hover);
+}
+
+
+
+
+
+
+
 /* width */
 ::-webkit-scrollbar {
     width: 5px;

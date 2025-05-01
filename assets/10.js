@@ -18,6 +18,17 @@ EXPERIMENT_ID_6 = 1
 
 const experimentsList = [
     {
+        title: "Account Creator",
+        id: "2025-05_account_creator",
+        name: "experiment_2025_05_account_creator",
+        treatments: [
+            "Treatment -1: Disabled",
+            "Treatment 1: Enabled"
+        ],
+        rollout: "Treatment -1: Disabled",
+        needs_api_token: "true"
+    },
+    {
         title: "m",
         id: "2025-05_m",
         name: "experiment_2025_05_m",
@@ -25,7 +36,8 @@ const experimentsList = [
             "Treatment -1: Disabled",
             "Treatment 1: Enabled"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment -1: Disabled",
+        needs_api_token: "true"
     },
     {
         title: "Item Search",
@@ -45,7 +57,8 @@ const experimentsList = [
             "Treatment -1: Disabled",
             "Treatment 1: Enabled"
         ],
-        rollout: "Treatment 1: Enabled"
+        rollout: "Treatment 1: Enabled",
+        needs_api_token: "true"
     },
     {
         title: "See You Next Year",
@@ -55,7 +68,8 @@ const experimentsList = [
             "Treatment -1: Disabled",
             "Treatment 1: Enabled"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment -1: Disabled",
+        needs_api_token: "true"
     },
     {
         title: "Reviews V2 Warning System",
@@ -65,7 +79,8 @@ const experimentsList = [
             "Treatment -1: Disabled",
             "Treatment 1: Enabled"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment -1: Disabled",
+        needs_api_token: "true"
     },
     {
         title: "Extended Styles",
