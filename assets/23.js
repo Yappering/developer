@@ -283,6 +283,9 @@ ACCOUNT_CREATOR_PERKS_2 = "See and Write reviews for categories.";
 ACCOUNT_CREATOR_PERKS_3 = "More user settings.";
 ACCOUNT_CREATOR_PERKS_4 = "Early access to beta features.";
 
+ACCOUNT_CREATOR_LOGIN_DISCLAIMER1 = "Discord will log you out automatically.";
+ACCOUNT_CREATOR_LOGIN_DISCLAIMER2 = "Log me out after";
+
 
 // Cateogry Modal
 

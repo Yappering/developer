@@ -1,6 +1,6 @@
 
 
-app_version1 = "400"
+app_version1 = "401"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -14786,13 +14786,20 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <div class="ac-tier-container">
                                 <div class="ac-tier-card" id="ac-tier-card-1" onclick="changeACType('1')">
                                     <h1>${getTextString("ACCOUNT_CREATOR_BASIC_HEADER")}</h1>
+                                    <p class="desc">${getTextString("ACCOUNT_CREATOR_BASIC_LOG_IN_DESC")}</p>
+                                    <img src="https://cdn.yapper.shop/assets/186.png"></img>
                                 </div>
-                                <div class="ac-tier-card" id="ac-tier-card-2" onclick="changeACType('2')">
+                                <div class="ac-tier-card ac-tier-card-standard" id="ac-tier-card-2" onclick="changeACType('2')">
                                     <p class="ac-tier-card-beta-tag">BETA</p>
                                     <h1>${getTextString("ACCOUNT_CREATOR_STANDARD_HEADER")}</h1>
+                                    <p class="desc">${getTextString("ACCOUNT_CREATOR_STANDARD_LOG_IN_DESC")}</p>
+                                    <img src="https://cdn.yapper.shop/assets/178.png"></img>
                                 </div>
 
                             </div>
+                        </div>
+
+                        <div class="ac-error-container" id="ac-error-container">
                         </div>
 
                         <div class="ac-perks-holder">
@@ -14824,11 +14831,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                 }
                             }
 
+                            login();
                         }
-                        // else {
-                        //     setParams({page: 'home', login: 'false'});
-                        //     location.reload();
-                        // }
                     });
                 } else {
                     document.body.innerHTML = `logging in...`;
@@ -14994,8 +14998,45 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     pageCheck();
 
+    async function createAccountWithDiscord(type, expires_at) {
+        const errorOutput = document.getElementById("ac-error-container");
+
+        errorOutput.innerHTML = ``;
+
+        const login = await fetch('https://api.yapper.shop/v2/user-login', {
+            method: "POST",
+            headers: { Authorization: discord_token },
+            body: JSON.stringify({
+                type,
+                expires_at
+            })
+        });
+
+        if (!login.ok) {
+            const errors = await login.json();
+
+            if (errors && errors.message && errors.error) {
+                errorOutput.innerHTML = `
+                <div class="ac-error">
+                        <p>${errors.error}, ${errors.message}</p>
+                    </div>
+                `;
+            }
+            return
+        }
+
+        const loginInfo = await login.json();
+
+        localStorage.shop_archives_token = loginInfo.token;
+        location.reload();
+    }
+
+    window.createAccountWithDiscord = createAccountWithDiscord;
+
     function changeACType(type) {
         if (document.getElementById("ac-tier-card-1") && document.getElementById("ac-tier-card-2")) {
+
+            document.getElementById("ac-error-container").innerHTML = ``;
             
             if (type === "1") {
                 document.getElementById("ac-tier-card-1").classList.add("selected");
@@ -15021,7 +15062,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <p>${getTextString("ACCOUNT_CREATOR_PERKS_4")}</p>
                         </div>
                     </div>
-                    <button class="ac-login-button">Continue</button>
+                    <div class="ac-log-me-out-after-container">
+                        <label class="ac-log-me-out-after-label" for="ac-log-me-out-after-input" style="color: var(--8);">${getTextString("ACCOUNT_CREATOR_LOGIN_DISCLAIMER1")}</label>
+                        <select class="ac-log-me-out-after-input" id="ac-log-me-out-after-input" style="opacity: 0;" disabled>
+                            <option value="30">30 Days (1 month)</option>
+                        </select>
+                    </div>
+                    <button class="ac-login-button" onclick="createAccountWithDiscord('1', null)">Basic Log In</button>
                 `;
             } else if (type === "2") {
                 document.getElementById("ac-tier-card-1").classList.remove("selected");
@@ -15047,8 +15094,23 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <p>${getTextString("ACCOUNT_CREATOR_PERKS_4")}</p>
                         </div>
                     </div>
-                    <button class="ac-login-button">Continue</button>
+                    <div class="ac-log-me-out-after-container">
+                        <label class="ac-log-me-out-after-label" for="ac-log-me-out-after-input">${getTextString("ACCOUNT_CREATOR_LOGIN_DISCLAIMER2")}</label>
+                        <select class="ac-log-me-out-after-input" id="ac-log-me-out-after-input">
+                            <option value="30">30 Days (1 month)</option>
+                            <option value="60">60 Days (2 months)</option>
+                            <option value="90">90 Days (3 months)</option>
+                        </select>
+                    </div>
+                    <button class="ac-login-button" id="ac-login-button">Standard Log In</button>
                 `;
+
+                if (document.getElementById("ac-login-button") && document.getElementById("ac-log-me-out-after-input")) {
+
+                    document.getElementById("ac-login-button").addEventListener('click', (a) => {
+                        createAccountWithDiscord('2', `${document.getElementById("ac-log-me-out-after-input").value}`)
+                    });
+                }
             }
 
         }
