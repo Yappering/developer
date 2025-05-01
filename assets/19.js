@@ -1,6 +1,6 @@
 
 
-app_version1 = "398"
+app_version1 = "399"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2580,7 +2580,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         HOLIDAYS: "1349486948942745691",
         SHENANIGANS: "1352407446500675708",
         CHIBI_CAFE: "1354894010849820852",
-        GGEZ: "1357589632723849316"
+        GGEZ: "1357589632723849316",
+        HELLO: "1365410896222097539"
     };
 
     discord_app_ids = {
@@ -7434,7 +7435,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     } else {
                         processCategories();
 
-                        if (document.getElementById("top-bar-other-things-container")) {
+                        if (document.getElementById("top-bar-other-things-container") && localStorage.experiment_2025_04_item_search === "Treatment 1: Enabled") {
                             document.getElementById("open-help-modals-buttons-holder-new").classList.add("with-search");
                             document.getElementById("top-bar-other-things-container").innerHTML = `
                                 <input autocomplete="off" placeholder="${getTextString("ITEM_SEARCH_INPUT_PLACEHOLDER")}">
@@ -10954,6 +10955,19 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         
                                                         reviewNoneElement.innerHTML = `
                                                             <p class="review-warning-notice-text" style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISABLED")}</p>
+                                                        `;
+
+                                                        modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewNoneElement);
+
+                                                    } else if (data.message && data.message === "This service is temporarily unavailable, down for maintenance.") {
+                                                        modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = ``;
+
+                                                        let reviewNoneElement = document.createElement("div");
+
+                                                        reviewNoneElement.classList.add("review-element-warning");
+        
+                                                        reviewNoneElement.innerHTML = `
+                                                            <p class="review-warning-notice-text" style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_UNAVAILABLE")}</p>
                                                         `;
 
                                                         modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewNoneElement);
@@ -14901,6 +14915,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             let devtools_button = document.createElement("div");
 
             devtools_button.id = 'open-dev-tools-button-1';
+            devtools_button.classList.add("top-bar-button");
             devtools_button.setAttribute("onclick","openDevModal();");
             devtools_button.title = `Dev Tools`;
             devtools_button.innerHTML = `
@@ -14908,6 +14923,20 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             `;
 
             open_help_modals_buttons_holder.appendChild(devtools_button);
+        }
+
+        if (localStorage.experiment_2025_05_m === "Treatment 1: Enabled") {
+            let system_warning_button = document.createElement("div");
+
+            system_warning_button.id = 'system-warning-button';
+            system_warning_button.classList.add("top-bar-button");
+            system_warning_button.setAttribute("onclick","openNewDiscordLikeSettings();");
+            system_warning_button.title = `Notice`;
+            system_warning_button.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_321_2)"><g clip-path="url(#clip1_321_2)"><path d="M1.76898 23.3335C0.540981 23.3335 -0.000352135 22.4415 0.564981 21.3515L10.971 1.31481C11.537 0.224814 12.463 0.224814 13.029 1.31481L23.435 21.3521C24.0016 22.4415 23.4596 23.3335 22.2316 23.3335H1.76898Z" fill="white"/><path d="M10.3887 19.3021C10.3887 18.4134 11.112 17.6901 12.0013 17.6901C12.89 17.6901 13.6133 18.4134 13.6133 19.3021C13.6133 20.1914 12.8893 20.9147 12.0013 20.9147C11.112 20.9147 10.3887 20.1914 10.3887 19.3021ZM10.5127 7.10675C10.5127 6.23875 11.1533 5.70142 12.0007 5.70142C12.828 5.70142 13.4893 6.25942 13.4893 7.10675V15.0654C13.4893 15.9127 12.828 16.4707 12.0007 16.4707C11.1533 16.4707 10.5127 15.9327 10.5127 15.0654V7.10675Z" fill="black"/></g></g><defs><clipPath id="clip0_321_2"><rect width="24" height="24" fill="white"/></clipPath><clipPath id="clip1_321_2"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>
+            `;
+
+            open_help_modals_buttons_holder.appendChild(system_warning_button);
         }
     }
 
@@ -16647,6 +16676,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_ACCOUNT")}</p>
             </button>
 
+            <div id="modalv3-side-tabs-profile-container"></div>
+
             <div id="modalv3-side-tabs-reviews-container"></div>
 
             <div id="modalv3-side-tabs-warnings-container"></div>
@@ -16670,10 +16701,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             </div>
         `;
 
-        if (localStorage.experiment_2025_04_reviews_v2_warning_system === "Treatment 1: Enabled" && discord_token) {
-            document.getElementById("modalv3-side-tabs-warnings-container").innerHTML = `
-                <button class="side-tabs-button" id="modal-v3-tab-warnings" onclick="setModalv3InnerContent('warnings')">
-                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_WARNINGS")}</p>
+        if (localStorage.experiment_2025_04_profile_tab_v2 === "Treatment 1: Enabled") {
+            document.getElementById("modalv3-side-tabs-profile-container").innerHTML = `
+                <button class="side-tabs-button" id="modal-v3-tab-profile" onclick="setModalv3InnerContent('profile')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_PROFILE")}</p>
                 </button>
             `;
         }
@@ -16682,6 +16713,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("modalv3-side-tabs-reviews-container").innerHTML = `
                 <button class="side-tabs-button" id="modal-v3-tab-reviews" onclick="setModalv3InnerContent('reviews')">
                     <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_REVIEWS")}</p>
+                </button>
+            `;
+        }
+
+        if (localStorage.experiment_2025_04_reviews_v2_warning_system === "Treatment 1: Enabled" && discord_token) {
+            document.getElementById("modalv3-side-tabs-warnings-container").innerHTML = `
+                <button class="side-tabs-button" id="modal-v3-tab-warnings" onclick="setModalv3InnerContent('warnings')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_WARNINGS")}</p>
                 </button>
             `;
         }
@@ -16761,7 +16800,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_LOG_OUT")}</p>
                 </button>
             `;
-        } else {
+        } else if (localStorage.experiment_2025_05_m != "Treatment 1: Enabled") {
             document.getElementById("login-logout-options-modalv3-container").innerHTML = `
                 <hr>
                 <button class="side-tabs-button" id="modal-v3-tab-log_in" onclick="loginToDiscord()">
@@ -16786,7 +16825,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
             const accountDetails = document.getElementById("modalv3-account-account-details-container");
             
-            if (localStorage.discord_token) {
+            if (localStorage.experiment_2025_05_m === "Treatment 1: Enabled") {
+                accountDetails.style.marginTop = '20px';
+                accountDetails.style.marginBottom = '20px';
+                accountDetails.innerHTML = `
+                    <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_UNAVAILABLE_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_UNAVAILABLE_SUMMARY")}</p>
+                `;
+            } else if (localStorage.discord_token) {
                 const discordProfile = JSON.parse(localStorage.discord_profile);
                 accountDetails.innerHTML = `
                     <div class="modalv3-account-account-details">
@@ -16822,6 +16868,166 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <button class="modalv3-content-card-button" onclick="loginToDiscord()">${getTextString("MODAL_V3_TAB_ACCOUNT_LOGIN_WITH_DISCORD_BUTTON")}</button>
                 `;
             }
+        } else if (tab === "profile") {
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_PROFILE_HEADER")}</h2>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_SUMMARY")}</p>
+                    <div class="modalv3-profile-editor-container">
+                        <div class="modalv3-profile-editor-content-container" id="modalv3-profile-editor-content-container"></div>
+                        <div class="modalv3-profile-editor-preview-container" id="modalv3-profile-editor-preview-container"></div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById("modalv3-profile-editor-preview-container").innerHTML = `
+                <p>Preview:</p>
+                <div class="modal-preview-profile2">
+                    <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
+                    <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(${localStorage.discord_banner});"></div>
+                    <div class="profile-avatar-preview-bg"></div>
+                    <img id="profileAvatarPreview" class="profile-avatar-preview" src="${localStorage.discord_avatar}" alt="No image uploaded">
+                    <div class="options-preview-profile-status-bg"></div>
+                    <div class="options-preview-profile-status-color"></div>
+                    <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${localStorage.discord_displayname}</p>
+                    <p class="options-preview-profile-username" id="options-username-preview"></p>
+                </div>
+            `;
+
+            document.getElementById("modalv3-profile-editor-content-container").innerHTML = `
+                <div id="modalv3-profile-tab-sign-in-notice">
+                    
+                </div>
+                <div class="modalv3-profile-editor-content-card">
+                    <p class="modalv3-profile-editor-option-header">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_DISPLAY_NAME_HEADER")}</p>
+                    <input type="text" class="modalv3-profile-editor-text-input" value="${localStorage.discord_displayname}" placeholder="${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_DISPLAY_NAME_PLACEHOLDER")}" autocomplete="off" oninput="changeUsernameFromInput();" id="profile-username-text-input">
+                </div>
+                <hr>
+                <div class="modalv3-profile-editor-content-card">
+                    <p class="modalv3-profile-editor-option-header-with-button">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_AVATAR_HEADER")}</p>
+                    <label for="profileAvatarInput" class="modalv3-profile-editor-image-upload">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_AVATAR")}</label>
+                    <input type="file" id="profileAvatarInput" class="profile-avatar-file-input" accept="image/*">
+                    <button id="removeProfileAvatarButton" class="modalv3-profile-editor-image-remove">${getTextString("OPTIONS_EXTRA_PROFILE_REMOVE_AVATAR")}</button>
+                    <div id="options-avatar-img-input-option-error"></div>
+                </div>
+                <hr>
+                <div class="modalv3-profile-editor-content-card">
+                    <p class="modalv3-profile-editor-option-header-with-button">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_BANNER_HEADER")}</p>
+                    <label for="profileBannerInput" class="modalv3-profile-editor-image-upload">${getTextString("OPTIONS_EXTRA_PROFILE_CHANGE_BANNER")}</label>
+                    <input type="file" id="profileBannerInput" class="profile-avatar-file-input" accept="image/*">
+                    <button id="removeProfileBannerButton" class="modalv3-profile-editor-image-remove">${getTextString("OPTIONS_EXTRA_PROFILE_REMOVE_BANNER")}</button>
+                    <div id="options-banner-img-input-option-error"></div>
+                </div>
+                <hr>
+                <div class="modalv3-profile-editor-content-card">
+                    <p class="modalv3-profile-editor-option-header">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_BANNER_COLOR_HEADER")}</p>
+                    <input type="color" autocomplete="off" class="modalv3-profile-editor-color-input" oninput="changeBannerColorFromInput();" id="profile-banner-color-input" value="${localStorage.discord_banner_color}">
+                </div>
+            `;
+
+            if (discord_token) {
+                document.getElementById("modalv3-profile-tab-sign-in-notice").innerHTML = `
+                    <div class="modalv3-profile-tab-sign-in-notice">
+                        <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_LOGGED_IN_TITLE")}</p>
+                        <p class="modalv3-profile-tab-sign-in-notice-summary">${getTextString("MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_LOGGED_IN_SUMMARY")}</p>
+                    </div>
+                `;
+            }
+
+            document.getElementById("options-username-preview").textContent = localStorage.discord_username.toLowerCase();
+
+            const avatarImageInput = document.getElementById("profileAvatarInput");
+            const avatarImagePreview = document.getElementById("profileAvatarPreview");
+            const removeAvatarImageButton = document.getElementById("removeProfileAvatarButton");
+
+            // Load saved image from localStorage on page load
+            document.addEventListener("DOMContentLoaded", () => {
+                const savedImage = localStorage.getItem("discord_avatar");
+                if (savedImage) {
+                    avatarImagePreview.src = savedImage;
+                }
+            });
+
+            // Handle image upload
+            avatarImageInput.addEventListener("change", function () {
+                document.getElementById("options-avatar-img-input-option-error").classList.remove('options-img-input-option-error')
+                document.getElementById("options-avatar-img-input-option-error").innerHTML = ``;
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        const dataUrl = event.target.result;
+                        try {
+                            localStorage.setItem("discord_avatar", dataUrl);
+                            avatarImagePreview.src = dataUrl;
+                        } catch(error) {
+                            document.getElementById("options-avatar-img-input-option-error").classList.add('options-img-input-option-error')
+                            document.getElementById("options-avatar-img-input-option-error").innerHTML = `
+                                <p>${getTextString("OPTIONS_EXTRA_PROFILE_FILE_TOO_BIG")}</p>
+                            `;
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Handle image removal
+            removeAvatarImageButton.addEventListener("click", function () {
+                setRandomDiscordAvatar()
+                avatarImagePreview.src = localStorage.discord_avatar;
+            });
+
+
+            const bannerImageInput = document.getElementById("profileBannerInput");
+            const bannerImagePreview = document.getElementById("profileBannerPreview");
+            const removeBannerImageButton = document.getElementById("removeProfileBannerButton");
+
+
+            if (localStorage.discord_banner === ``) {
+                removeBannerImageButton.style.display = 'none';
+            }
+
+            // Load saved image from localStorage on page load
+            document.addEventListener("DOMContentLoaded", () => {
+                const savedImage = localStorage.getItem("discord_banner");
+                if (savedImage) {
+                    bannerImagePreview.style.backgroundImage = `url(${savedImage})`;
+                }
+            });
+
+            // Handle image upload
+            bannerImageInput.addEventListener("change", function () {
+                document.getElementById("options-banner-img-input-option-error").classList.remove('options-img-input-option-error')
+                document.getElementById("options-banner-img-input-option-error").innerHTML = ``;
+                removeBannerImageButton.style.display = 'flex';
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        const dataUrl = event.target.result;
+                        try {
+                            localStorage.setItem("discord_banner", dataUrl);
+                            bannerImagePreview.style.backgroundImage = `url(${dataUrl})`;
+                        } catch(error) {
+                            document.getElementById("options-banner-img-input-option-error").classList.add('options-img-input-option-error')
+                            document.getElementById("options-banner-img-input-option-error").innerHTML = `
+                                <p>${getTextString("OPTIONS_EXTRA_PROFILE_FILE_TOO_BIG")}</p>
+                            `;
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Handle image removal
+            removeBannerImageButton.addEventListener("click", function () {
+                removeBannerImageButton.style.display = 'none';
+                localStorage.discord_banner = ``
+                bannerImagePreview.style.backgroundImage = '';
+            });
+
         } else if (tab === "warnings") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
@@ -16838,7 +17044,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             updateAndCacheReviewsWarnings();
         } else if (tab === "reviews") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
-            if (localStorage.discord_token) {
+            if (localStorage.experiment_2025_05_m === "Treatment 1: Enabled") {
+                tabPageOutput.innerHTML = `
+                    <h2>${getTextString("MODAL_V3_TAB_REVIEWS_HEADER")}</h2>
+                    <div class="modalv3-content-card-1">
+                        <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_REVIEWS_UNAVAILABLE_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_UNAVAILABLE_SUMMARY")}</p>
+                    </div>
+                `;
+            } else if (localStorage.discord_token) {
                 tabPageOutput.innerHTML = `
                     <h2>${getTextString("MODAL_V3_TAB_REVIEWS_HEADER")}</h2>
                     <div class="modalv3-content-card-1">

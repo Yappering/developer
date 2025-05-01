@@ -18,6 +18,16 @@ EXPERIMENT_ID_6 = 1
 
 const experimentsList = [
     {
+        title: "m",
+        id: "2025-05_m",
+        name: "experiment_2025_05_m",
+        treatments: [
+            "Treatment -1: Disabled",
+            "Treatment 1: Enabled"
+        ],
+        rollout: "Treatment -1: Disabled"
+    },
+    {
         title: "Item Search",
         id: "2025-04_item_search",
         name: "experiment_2025_04_item_search",
@@ -128,8 +138,7 @@ const experimentsList = [
             "Treatment -1: Disabled",
             "Treatment 1: Enabled"
         ],
-        rollout: "Treatment -1: Disabled",
-        not_needed: "true"
+        rollout: "Treatment -1: Disabled"
     },
     {
         title: "Theme Picker V2 Color",

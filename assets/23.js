@@ -270,11 +270,12 @@ APP_VERSION = "App Version: ";
 SHOP_CATEGORY_MODAL_ASSETS_TAB = "Assets";
 SHOP_CATEGORY_MODAL_REVIEWS_TAB = "Reviews";
 SHOP_CATEGORY_MODAL_REVIEWS_BETA_TAB = "BETA";
+SHOP_CATEGORY_MODAL_ADMIN_TAB = "Admin";
 
 SHOP_CATEGORY_MODAL_REVIEWS_LOADING = "Loading Reviews...";
 SHOP_CATEGORY_MODAL_REVIEWS_NONE = "No Reviews yet.";
 SHOP_CATEGORY_MODAL_REVIEWS_DISABLED = "Reviews have been disabled for this category.";
-SHOP_CATEGORY_MODAL_REVIEWS_BE_THE_FIRST = "Be the first to Review this item!";
+SHOP_CATEGORY_MODAL_REVIEWS_UNAVAILABLE = "Reviews have been temporarily disabled (Down for maintenance).";
 
 SHOP_CATEGORY_MODAL_REVIEWS_ERROR = "There was an error loading reviews";
 
@@ -340,6 +341,7 @@ MODAL_V3_TAB_HEADER_STAFF_ONLY = "DEVELOPER ONLY";
 MODAL_V3_TAB_TEXT_ACCOUNT = "Account";
 MODAL_V3_TAB_TEXT_WARNINGS = "Warnings";
 MODAL_V3_TAB_TEXT_REVIEWS = "Reviews";
+MODAL_V3_TAB_TEXT_PROFILE = "Profile";
 
 MODAL_V3_TAB_TEXT_APPEARANCE = "Appearance";
 MODAL_V3_TAB_TEXT_ACCESSIBILITY = "Accessibility";
@@ -366,10 +368,32 @@ MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_SUMMARY = "The Discord account linked to Sh
 MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_HEADER = "You are curently not logged in.";
 MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_SUMMARY = "Log in with Discord to view your account details.";
 
+MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_UNAVAILABLE_HEADER = "Account Settings Temporarily Unavailable";
+MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_UNAVAILABLE_SUMMARY = "We are currently updating the account system, please use the new Profile tab if you want to change your profile.";
+
 MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_DISPLAY_NAME = "Display Name";
 MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_USERNAME = "Username";
 
 MODAL_V3_TAB_ACCOUNT_LOGIN_WITH_DISCORD_BUTTON = "Log In with Discord";
+
+// Profile
+
+MODAL_V3_TAB_PROFILE_HEADER = "Profile";
+
+MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_HEADER = "Edit Profile";
+MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_SUMMARY = "Your Profile will be seen around the website.";
+
+MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_LOGGED_IN_TITLE = "You are logged in!";
+MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_LOGGED_IN_SUMMARY = "You will need to resync profiles if you want to revert back to your Discord profile.";
+
+MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_DISPLAY_NAME_HEADER = "Display Name / Username";
+MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_DISPLAY_NAME_PLACEHOLDER = "Please Enter A Display Name";
+
+MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_AVATAR_HEADER = "Change Avatar";
+
+MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_BANNER_HEADER = "Change Banner";
+
+MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_CHANGE_BANNER_COLOR_HEADER = "Banner Color";
 
 // Warning
 
@@ -384,6 +408,9 @@ MODAL_V3_TAB_REVIEWS_HEADER = "Reviews";
 
 MODAL_V3_TAB_REVIEWS_DISCORD_ACCOUNT_NOT_LOGGED_IN_HEADER = "You are curently not logged in.";
 MODAL_V3_TAB_REVIEWS_DISCORD_ACCOUNT_NOT_LOGGED_IN_SUMMARY = "Log in with Discord to change your review settings.";
+
+MODAL_V3_TAB_REVIEWS_UNAVAILABLE_HEADER = "Reviews Settings Temporarily Unavailable";
+MODAL_V3_TAB_REVIEWS_UNAVAILABLE_SUMMARY = "We are currently updating the reviews system.";
 
 MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_HEADER = "Filter";
 MODAL_V3_TAB_REVIEWS_REVIEWS_FILTER_SUMMARY = "Filters what reviews are shown.";

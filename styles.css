@@ -724,11 +724,12 @@ body {
     border-radius: 13px;
 }
 
-#open-dev-tools-button-1, #open-dev-tools-button-1 svg {
+.top-bar-button, .top-bar-button svg {
     height: 34px !important;
     width: 34px !important;
     scale: 0.85;
     cursor: pointer;
+    z-index: 5;
 }
 
 *:has(.mobile-client) #open-options-tools-button-1 {
@@ -3309,6 +3310,30 @@ body {
 }
 
 
+
+.modalv3-profile-tab-sign-in-notice {
+    position: relative;
+    background-color: #615DED59;
+    border: 2px solid #615DED;
+    border-radius: 5px;
+    margin-bottom: 14px;
+    width: 100%;
+}
+
+.modalv3-profile-tab-sign-in-notice-title {
+    margin: 0;
+    padding: 10px;
+    padding-bottom: 5px;
+    font-size: large;
+}
+
+.modalv3-profile-tab-sign-in-notice-summary {
+    margin: 0;
+    padding: 10px;
+    padding-top: 5px;
+}
+
+
 .modalv3-profile-editor-container {
     position: relative;
     top: 0;
@@ -3322,7 +3347,7 @@ body {
     width: 370px;
     height: 500px;
     padding: 10px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .modalv3-profile-editor-content-card {
@@ -3369,10 +3394,29 @@ body {
     cursor: pointer;
     transition: background-color 0.2s ease;
     border-radius: 5px;
+    color: var(--white);
+    border: none;
 }
 
 .modalv3-profile-editor-image-upload:hover {
     background-color: var(--brand-500-hover);
+}
+
+.modalv3-profile-editor-image-remove {
+    width: auto;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: var(--button-danger-background);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 5px;
+    color: var(--white);
+    border: none;
+}
+
+.modalv3-profile-editor-image-remove:hover {
+    background-color: var(--button-danger-hover);
 }
 
 .modalv3-profile-editor-preview-container {
