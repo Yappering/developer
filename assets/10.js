@@ -102,7 +102,7 @@ const experimentsList = [
             "Treatment 1: Enabled",
             "Treatment 2: Card Styles"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment 1: Enabled"
     },
     {
         title: "Reviews V2 Hide Beta Tag",
@@ -164,7 +164,7 @@ const experimentsList = [
             "Treatment -1: Disabled",
             "Treatment 1: Enabled"
         ],
-        rollout: "Treatment -1: Disabled"
+        rollout: "Treatment 1: Enabled"
     },
     {
         title: "Theme Picker V2 Color",

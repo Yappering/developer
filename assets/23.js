@@ -281,10 +281,13 @@ ACCOUNT_CREATOR_STANDARD_LOG_IN_DESC = "Full time Shop Archives user.";
 ACCOUNT_CREATOR_PERKS_1 = "Preview your Discord profile across the website.";
 ACCOUNT_CREATOR_PERKS_2 = "See and Write reviews for categories.";
 ACCOUNT_CREATOR_PERKS_3 = "More user settings.";
-ACCOUNT_CREATOR_PERKS_4 = "Early access to beta features.";
+ACCOUNT_CREATOR_PERKS_4 = "Beta Program (Early access to new features).";
 
 ACCOUNT_CREATOR_LOGIN_DISCLAIMER1 = "Discord will log you out automatically.";
 ACCOUNT_CREATOR_LOGIN_DISCLAIMER2 = "Log me out after";
+
+ACCOUNT_CREATOR_DISCLAIMER = "By clicking 'Log In', you agree to the Shop Archives ";
+ACCOUNT_CREATOR_DISCLAIMER_PRIVACY_POLICY = "Privacy Policy.";
 
 
 // Cateogry Modal

@@ -6086,14 +6086,14 @@ data-share-product-card-button {
     right: 0px;
     padding: 2px !important;
     padding-left: 5px !important;
-    padding-right: 3px !important;
+    padding-right: 5px !important;
     margin: 0;
     margin-top: 8px !important;
     margin-right: 10px !important;
     background-color: var(--brand-500);
     color: white !important;
     border-radius: 5px;
-    width: 40px;
+    width: auto;
     height: 20px;
     font-family: gg sans seven;
 }
@@ -6164,6 +6164,30 @@ data-share-product-card-button {
     margin-left: 30px;
 }
 
+.ac-perks-list-disclaimer-container {
+    display: flex;
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+}
+
+.ac-perks-list-disclaimer {
+    position: relative;
+    display: flex;
+    margin: 0;
+    font-size: 13px;
+    color: var(--8);
+}
+
+.ac-perks-list-disclaimer-link {
+    position: relative;
+    display: flex;
+    color: var(--white);
+    margin-left: 5px;
+    font-size: 13px;
+    text-decoration: underline !important;
+}
+
 .ac-login-button {
     display: block;
     position: absolute;
@@ -6176,7 +6200,7 @@ data-share-product-card-button {
     border: 2px var(--6) solid;
     border-radius: 4px;
     cursor: pointer;
-    width: 200px;
+    width: auto;
     transition: background-color 0.2s ease;
     z-index: 5;
 }

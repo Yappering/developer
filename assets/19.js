@@ -1,6 +1,6 @@
 
 
-app_version1 = "404"
+app_version1 = "405"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -8,6 +8,7 @@ let modalIsAlreadyOpen = false;
 let discordProfileEffectsCache = null;
 let pplusProfileEffectsCache = null;
 let communityThemesCache = null;
+let atMeUsercache = null;
 
 defaultAvatar1 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAY1BMVEVYZfJib/OMlfahqPeWn/eBi/XLz/vq6/7////19f5tePTq7P22vPnV2Pyrsvirsvl3gvT09f7Axfp3gfRtePNsePPg4v22vPq2u/qCi/WhqPjf4/zf4v2Xn/essvjLzvuXnvdbidFTAAAETElEQVR4AezBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAIDZudMtV1UlDuCFRKlWIEJ6uOwbzXn/lzzzYc/GWiT6zya/79WrLeYSc5Vq9IFWa3Sr6JehWt0ZZn5RtFJvmHnodPsrPLx1/B9PKx1ziLOPnIRRO84EXaAP/CWnR3pArTWcybpA5G8NsX20pw+cSbpAngEeOQenY+Cf8KIZ4FuDfSV4Ko/7hS7wNjYH7W3MvNeHtn2jvxn+OXcgaP0x8KJo43vgnwqu85EXDfGVULWON9G1BOmDN/M/AnTgDSWC0xve0KAITeSsykFw4qzOQWB4YwNBOfLmPAHpeXsvr5XOgJkjGA3vIlU6A2bvOHvAnXwiCMrwTl5UpUtg5us7BAB2gcg78nXugaC6QORd+bo7AEAXiLwzX+8SANEFNHPdXcAwV90FDgxA037+zwAc7aZlCKnSNTDrADZBdU6DBwbha5wCAabBkWGkSqfAzFa6C8xeADYB9Y2ByEBsbSMAYAy0zHWPActQLPQuKBh3DiwiDRlwzwFOv9JfTpORh5x5rVfQc8CQiLLJiEMaA1oW6XgVq+grVh4yY56JA68x07fm8hCIhXCUPn823zgkG/HK4Rf6kYv8YBt5BQ03BQyv9CMq8M/JQ7IItw+e6cd8QQjKTqCX3OMTtOdCCNZOoCnqkrYgZEFD2/FF/08qDAE4Dji+TtHPKHknVmBboVB2i9HI9zIGahZUhaVqVxCyQEEVQ7rSBMj3QiPUUTCWJkC+8zrQVjzmELBYG2H5jDYUFqAiQDlMtAwKQgjr+nwoq9O2BSEQJQFVWKeNBSEQ6+BYeG3BFIUAHIfasmsLh7IQgLcjDZd0AWXEIZRDMDYCuuj73g95yJGxEuBLPmr6VBSyzMO9Fpzko3kqeA1r8W4GHOWNKQ/JIl4COL4SZf2lPAQhAY4lYrv860rlIVmHlYAsuBhjFwpCwO4LOkb0TMAzAc8EPBPwTMAGngl4JuCZgMig4jMB27AMykJUhCr4ekwzKI10T9hpwzcz6DNSUbRdORzThW/CJSKagd4LjKurof1suFCYVR54MDckpsBXDLk3pliQgxBTHneBrwiaNtOfeUUKCnMQYlKC32x2r7SlmSUpoOQdi5xtoqx1DNP8WW9kKSCVvAu8QnC2USR4/I2bP5vDmhS80pdOjXULw8dc7HSiL6ljYLTmz/ooKvJTdkqTt9G5s/mHczH6qXlV9I32Ehi0+QVfQbn7HryHhvY033V1Tuu3CRncOIj3rL3EV9pf7+53ced0bY+MIZm7ndEt9uNnkxN8OSWhAvjjZ8ktnIoKaMDHF0yH8S416C4Rpv7bU094pWJ9QFv4BJOBvnkFzjWKMvhu4G78IibMIz2EFM3KFUAwCEI+ID9MDia6kd/+enpFj+YE+af+aA8OZAAAAAAG+Vvf46sAAAAAAAAAAAAAAAAAAAAAAFYCeHSjWah9hFcAAAAASUVORK5CYII=`;
 defaultAvatar2 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAhFBMVEV1fop9hpGgpq+ytr2prraXnqfT19vu7/H////29/iGjpju7/DCxszc3+K6vsS6v8WOlqD39/fLztPLz9OPlqDl5+nDx8ygpq6xtr6xtr3m5+iOlp/Dxsvc3+Hd3+GorraGjpnT19rT1tv29/eOlqHU19p+hpGprrWxt72or7bLz9Kfpq+ibmTzAAAEY0lEQVR4AezBAQEAAAQAIPB/swkMqAIAAAAAAAAAAAAAAAAAAAAAgBNZPfFWy86dLimOw3AAV5qYEXFicMKxHIFs03e///PtvaouagjRGMKfNr/vmhorsiMbpwcm+UZjN4PhD2YedR5TZpnZDgfmOww+L/h/jjoaS0iRG7pdk0HBQlECmeevisGEbpDJf7DQlUDJh2xlbm30noWmBGQFuOUcTMeej3CqFeCQzTOCl8i8bymBbPKQDlxeCecGqTH/Dc/ycUVK0LKx51ZVXs08H+WLoSu5la0yQmUK7sXQEKQ592ZOgFLukSE4meUe2YTQlCyinARTFnFOAss9swRlzL1zBCTj/o2ySFdAURCMBV+FiXQFFLP4esADvxGExPKVjJJIX4HCxbcJACyBkq/IxdkDQZVAyVfl4i4AgBIo+cpcvK8AiBJYMsddApY56hJIGcCSrmfFAAq6GsMQTKTvQDEEaILiXAZTBuEAlsAYl8E1wzCRLoEij7QLFKNYmwBhIp0BIo9tBgDMAcMc9xzYMJQcugvytl55VtCHWNx9wHaZ0d+mO6sP6Z7mBnQfYA2R2Fl1yMKCHov8zp3kycHKoQ9x3Mkj9Wv/i9s0FxCC9CJca8cv3JlDxBPecfgz/cwzt9j+etO5hFsCbEM/89I2e/QhoqI+2YBzGnfWEGHRuoBRQ6R9nu0hQJ3AIqgkNwEhLR6oPy7o/2MCQwC2AwWfltAxL/oifgFrhfZhtxitvpexAKug7nnU+gKqw2sO6DDk8bwJKKF6wZRPq8IToO28XqkvDnMK5FiNMB1n9SErqGZ4xeGvQV0IYV2f34ed05qgEIAjgZfAc9oyIATiPbgOvLZgA0IgtkMm7NpCGhCC8evIgkNKILHqEJIQjEZgGfR971wfMmasBLiQj5regkLaObifBd/p0Ls+xHBXOd7NgLH+YepDRIWXAK4yIpE9B4QAJaBgjcq0/3Wl8BDxiJUA4Yuqqob+YiGi7i0BiO4JuCfgnoB7Au4J6ME9AfcE3BNQMqjqnoAYrgkDnAc4BuWoH0sGtUS6J7xdWj4bu5wBHIqqL+yYZz6Lrek47wzOL0M7+kfjLAfyLpGJB3NDYrfnE2wq5VLagNF/GJl3nk/wS+pNM+PuKZAc6EefKP5m87ahPjnWpICMq1lllRsSpmCYxy8aq0sBJcbVnjvw23yR0OHwcR6/cPsuKcjoq+kir1d8lH3O0yl9lYw9oz1+0ZSqQ34SU5O6/KOuV/Zfdf3x4dJFltAB8+wZ9PErvoKqL7vxtp90TY5Pmlyy5ZI2QcDNg+qSZy9VQ9fX1Je7uDM91SNjMPZie/QN9vDFrtZ8OaXwsgcfvjB1y64owBJp+PrlsLrIGfSzIUzN4a7HNxSs2cO8+PSLwfLsJ3Dbh4QEfBlsz/xDjHcTQicHAPIGONck8LJBvpkc7OhMduxzk9CtmUL+U3+2BwcyAAAAAIP8re/xVQAAAAAAAAAAAAAAAAAAAAAAKwFiKavpSRGzHgAAAABJRU5ErkJggg==`;
@@ -14266,18 +14267,43 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         })
         .then(response => response.json())
         .then((data) => {
-            modal.innerHTML = `
-                <div class="modal-profile-inner">
-                    <div class="modal-preview-profile2">
-                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${data.banner_color};"></div>
-                        <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(https://cdn.discordapp.com/banners/${data.id}/${data.banner}.png?size=128);"></div>
-                        <div class="profile-avatar-preview-bg"></div>
-                        <img id="profileAvatarPreview" class="profile-avatar-preview" src="https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.webp?size=128">
-                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${data.global_name}</p>
-                        <p class="options-preview-profile-username" id="options-username-preview">${data.username}</p>
+            if (data.message) {
+                modal.innerHTML = `
+                    <div class="modal-profile-inner">
+                        <div class="modal-preview-profile2">
+                            <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color"></div>
+                            <div id="profileBannerPreview" class="options-preview-profile-banner"></div>
+                            <div class="profile-avatar-preview-bg"></div>
+                            <img id="profileAvatarPreview" class="profile-avatar-preview" src="">
+                            <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${data.message}</p>
+                            <p class="options-preview-profile-username" id="options-username-preview">${data.error}</p>
+                        </div>
                     </div>
-                </div>
-            `;
+                `;
+            } else {
+                modal.innerHTML = `
+                    <div class="modal-profile-inner">
+                        <div class="modal-preview-profile2">
+                            <div popout-profile-banner-color class="options-preview-profile-banner-color" style="background-color: #859CF0;"></div>
+                            <div class="options-preview-profile-banner" style="background-image: url(https://cdn.discordapp.com/banners/${data.id}/${data.banner}.png?size=480);"></div>
+                            <div class="profile-avatar-preview-bg"></div>
+                            <img class="profile-avatar-preview" src="https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.webp?size=128">
+                            <p popout-profile-displayname class="options-preview-profile-displayname">${data.global_name}</p>
+                            <p popout-profile-username class="options-preview-profile-username">${data.username}</p>
+                        </div>
+                    </div>
+                `;
+
+                if (data.banner_color) {
+                    modal.querySelector("[popout-profile-banner-color]").style.backgroundColor = data.banner_color;
+                }
+
+                if (data.global_name === null) {
+                    modal.querySelector("[popout-profile-displayname]").textContent = data.username;
+                }
+
+                modal.querySelector("[popout-profile-username]").textContent = data.username;
+            }
         })
         .catch(error => {
             console.error(error);
@@ -14884,7 +14910,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                     <img src="https://cdn.yapper.shop/assets/187.png"></img>
                                 </div>
                                 <div class="ac-tier-card ac-tier-card-standard" id="ac-tier-card-2" onclick="changeACType('2')">
-                                    <p class="ac-tier-card-beta-tag">BETA</p>
+                                    <p class="ac-tier-card-beta-tag">NEW</p>
                                     <h1>${getTextString("ACCOUNT_CREATOR_STANDARD_HEADER")}</h1>
                                     <p class="desc">${getTextString("ACCOUNT_CREATOR_STANDARD_LOG_IN_DESC")}</p>
                                     <img src="https://cdn.yapper.shop/assets/188.png"></img>
@@ -15193,7 +15219,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <option value="30">30 Days (1 month)</option>
                         </select>
                     </div>
-                    <button class="ac-login-button" onclick="createAccountWithDiscord('1', null)">Basic Log In</button>
+                    <button class="ac-login-button" onclick="createAccountWithDiscord('1', null)">Log In</button>
                 `;
             } else if (type === "2") {
                 document.getElementById("ac-tier-card-1").classList.remove("selected");
@@ -15228,7 +15254,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <option value="90">90 Days (3 months)</option>
                         </select>
                     </div>
-                    <button class="ac-login-button" id="ac-login-button">Standard Log In</button>
+                    <button class="ac-login-button" id="ac-login-button">Log In</button>
+                    <div class="ac-perks-list-disclaimer-container">
+                        <p class="ac-perks-list-disclaimer">${getTextString("ACCOUNT_CREATOR_DISCLAIMER")}</p>
+                        <a class="ac-perks-list-disclaimer-link" href="https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md">${getTextString("ACCOUNT_CREATOR_DISCLAIMER_PRIVACY_POLICY")}</a>
+                    </div>
                 `;
 
                 if (document.getElementById("ac-login-button") && document.getElementById("ac-log-me-out-after-input")) {
@@ -17126,13 +17156,19 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             const accountDetails = document.getElementById("modalv3-account-account-details-container");
             
             if (localStorage.experiment_2025_05_m === "Treatment 1: Enabled") {
-                accountDetails.style.marginTop = '20px';
-                accountDetails.style.marginBottom = '20px';
-                accountDetails.innerHTML = `
-                    <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_UNAVAILABLE_HEADER")}</h2>
-                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_UNAVAILABLE_SUMMARY")}</p>
+                tabPageOutput.innerHTML = `
+                    <h2>${getTextString("MODAL_V3_TAB_ACCOUNT_HEADER")}</h2>
+                    <div class="modalv3-content-card-1">
+                        <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_SUMMARY")}</p>
+
+                        <div id="modalv3-account-account-details-container" style="margin-top: 20px; margin-bottom: 20px;">
+                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_UNAVAILABLE_HEADER")}</h2>
+                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_UNAVAILABLE_SUMMARY")}</p>
+                        </div>
+                    </div>
                 `;
-            } else if (localStorage.discord_token) {
+            } else if (localStorage.discord_token && localStorage.account_type != "2") {
                 const discordProfile = JSON.parse(localStorage.discord_profile);
                 accountDetails.innerHTML = `
                     <div class="modalv3-account-account-details">
@@ -17159,13 +17195,91 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         </div>
                     </div>
                 `;
+            } else if (localStorage.discord_token && localStorage.account_type === "2") {
+
+                if (!atMeUsercache) {
+                    fetch(api + `/users/@me`, {
+                        method: "GET",
+                        headers: {
+                            "Authorization": localStorage.shop_archives_token
+                        }
+                    })
+                    .then(response => response.json())
+                    .then((data) => {
+                        renderAtMeAccountPage(data);
+                        atMeUsercache = data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        accountDetails.innerHTML = `
+                            error
+                        `;
+                    });
+                } else {
+                    renderAtMeAccountPage(atMeUsercache)
+                }
+
+                function renderAtMeAccountPage(atMe) {
+                    if (atMe.message) {
+                        accountDetails.innerHTML = `
+                            error
+                        `;
+                    } else {
+                        accountDetails.innerHTML = `
+                            <div class="modalv3-account-account-details">
+                                <div class="modalv3-account-banner-color" data-modalv3-banner-color style="background-color: #859CF0;"></div>
+                                <div class="modalv3-account-banner-image" style="background-image: url(https://cdn.discordapp.com/banners/${atMe.id}/${atMe.banner}.png?size=480);"></div>
+                                <div class="modalv3-account-banner-filler"></div>
+
+                                <div class="modalv3-account-avatar-preview-bg"></div>
+                                <img class="modalv3-account-avatar-preview" src="https://cdn.discordapp.com/avatars/${atMe.id}/${atMe.avatar}.webp?size=128">
+                                <p class="modalv3-account-displayname" data-modalv3-account-displayname></p>
+                                <button class="modalv3-resync-profiles-button" onclick="updateDiscordProfileModalv3()">Resync Profile</button>
+
+                                <div class="modalv3-account-account-details-inners-padding">
+                                    <div class="modalv3-account-account-details-inner">
+                                        <div class="modalv3-account-account-details-card">
+                                            <p class="modalv3-account-displayname-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_DISPLAY_NAME")}</p>
+                                            <p class="modalv3-account-displayname-text" data-modalv3-account-displayname2></p>
+                                        </div>
+                                        <div class="modalv3-account-account-details-card">
+                                            <p class="modalv3-account-username-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_USERNAME")}</p>
+                                            <p class="modalv3-account-username-text" data-modalv3-account-username2></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+
+                        if (atMe.banner_color) {
+                            accountDetails.querySelector("[data-modalv3-banner-color]").style.backgroundColor = atMe.banner_color;
+                        }
+        
+                        if (atMe.global_name === null) {
+                            accountDetails.querySelector("[data-modalv3-account-displayname]").textContent = atMe.username;
+                        } else {
+                            accountDetails.querySelector("[data-modalv3-account-displayname]").textContent = atMe.global_name;
+                        }
+
+                        if (atMe.global_name === null) {
+                            accountDetails.querySelector("[data-modalv3-account-displayname2]").textContent = atMe.username;
+                        } else {
+                            accountDetails.querySelector("[data-modalv3-account-displayname2]").textContent = atMe.global_name;
+                        }
+
+                        accountDetails.querySelector("[data-modalv3-account-username2]").textContent = atMe.username;
+                    }
+                }
             } else {
-                accountDetails.style.marginTop = '20px';
-                accountDetails.style.marginBottom = '20px';
-                accountDetails.innerHTML = `
-                    <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_HEADER")}</h2>
-                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_SUMMARY")}</p>
-                    <button class="modalv3-content-card-button" onclick="loginToDiscord()">${getTextString("MODAL_V3_TAB_ACCOUNT_LOGIN_WITH_DISCORD_BUTTON")}</button>
+                tabPageOutput.innerHTML = `
+                    <h2>${getTextString("MODAL_V3_TAB_ACCOUNT_HEADER")}</h2>
+                    <div class="modalv3-content-card-1">
+                        <div id="modalv3-account-account-details-container" style="margin-top: 20px; margin-bottom: 20px;">
+                            <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_HEADER")}</h2>
+                            <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_NOT_LOGGED_IN_SUMMARY")}</p>
+                            <button class="modalv3-content-card-button" onclick="loginToDiscord()">${getTextString("MODAL_V3_TAB_ACCOUNT_LOGIN_WITH_DISCORD_BUTTON")}</button>
+                        </div>
+                    </div>
                 `;
             }
         } else if (tab === "profile") {
