@@ -1,6 +1,6 @@
 
 
-app_version1 = "402"
+app_version1 = "403"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -14789,13 +14789,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                 <div class="ac-tier-card" id="ac-tier-card-1" onclick="changeACType('1')">
                                     <h1>${getTextString("ACCOUNT_CREATOR_BASIC_HEADER")}</h1>
                                     <p class="desc">${getTextString("ACCOUNT_CREATOR_BASIC_LOG_IN_DESC")}</p>
-                                    <img src="https://cdn.yapper.shop/assets/186.png"></img>
+                                    <img src="https://cdn.yapper.shop/assets/187.png"></img>
                                 </div>
                                 <div class="ac-tier-card ac-tier-card-standard" id="ac-tier-card-2" onclick="changeACType('2')">
                                     <p class="ac-tier-card-beta-tag">BETA</p>
                                     <h1>${getTextString("ACCOUNT_CREATOR_STANDARD_HEADER")}</h1>
                                     <p class="desc">${getTextString("ACCOUNT_CREATOR_STANDARD_LOG_IN_DESC")}</p>
-                                    <img src="https://cdn.yapper.shop/assets/178.png"></img>
+                                    <img src="https://cdn.yapper.shop/assets/188.png"></img>
                                 </div>
 
                             </div>

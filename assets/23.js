@@ -403,7 +403,7 @@ MODAL_V3_TAB_ACCOUNT_LOGIN_WITH_DISCORD_BUTTON = "Log In with Discord";
 MODAL_V3_TAB_PROFILE_HEADER = "Profile";
 
 MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_HEADER = "Edit Profile";
-MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_SUMMARY = "Your Profile will be seen around the website.";
+MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_SUMMARY = "Your Profile will be seen around the website (only visible to you).";
 
 MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_LOGGED_IN_TITLE = "You are logged in!";
 MODAL_V3_TAB_PROFILE_DISCORD_PROFILE_LOGGED_IN_SUMMARY = "You will need to resync profiles if you want to revert back to your Discord profile.";

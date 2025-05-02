@@ -6071,7 +6071,8 @@ data-share-product-card-button {
 
 .ac-tier-card img {
     user-select: none;
-    max-width: 300px;
+    max-width: 340px;
+    margin-top: 40px;
 }
 
 .ac-tier-card .desc {
