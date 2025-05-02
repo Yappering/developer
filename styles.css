@@ -6237,6 +6237,44 @@ data-share-product-card-button {
 
 
 
+/* Reviews Profile Modal */
+
+.modal-profile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal-profile.show {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.modal-profile-inner {
+    position: relative;
+    z-index: 1001;
+    background-color: var(--profile-background);
+    margin-right: 1140px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    width: 280px; /* Fixed width */
+    height: 400px; /* Fixed height */
+    overflow: hidden;
+}
+
+
+
+
 
 
 /* width */

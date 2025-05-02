@@ -1,6 +1,6 @@
 
 
-app_version1 = "403"
+app_version1 = "404"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -11162,12 +11162,26 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     <div class="review-content-inner">
                                                                         <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
                                                                             <img class="shop-modal-review-avatar-img" src="https://cdn.discordapp.com/avatars/${review.users.id}/${review.users.avatar}.webp?size=128"></img>
-                                                                            <p class="shop-modal-review-name">${review.users.username}</p>
+                                                                            <p class="shop-modal-review-name" data-shop-modal-review-name></p>
                                                                         </div>
                                                                         <p class="shop-modal-review-review-text" data-review-content-text-output></p>
                                                                     </div>
                                                                     <div class="shop-modal-review-moderation-buttons" data-shop-modal-review-moderation-buttons></div>
                                                                 `;
+
+                                                                if (localStorage.experiment_2025_05_reviews_v2_user_profile === "Treatment 1: Enabled") {
+                                                                    reviewElement.querySelector("[data-shop-modal-review-name]").classList.add("clickable");
+
+                                                                    reviewElement.querySelector("[data-shop-modal-review-name]").addEventListener("click", () => {
+                                                                        fetchUserProfileInfo(review.users.id);
+                                                                    });
+                                                                }
+
+                                                                if (review.users.global_name && review.users.global_name != null) {
+                                                                    reviewElement.querySelector("[data-shop-modal-review-name]").textContent = review.users.global_name;
+                                                                } else {
+                                                                    reviewElement.querySelector("[data-shop-modal-review-name]").textContent = review.users.username;
+                                                                }
 
                                                                 if (localStorage.experiment_2025_04_reviews_v2_custom_emojis_render === "Treatment 1: Enabled") {
                                                                     if (localStorage.staff_enable_override_review_content === "true") {
@@ -14202,6 +14216,84 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 });
 
         }
+    }
+
+    async function fetchUserProfileInfo(userID) {
+        let modal = document.createElement("div");
+
+        modal.classList.add('modal-profile');
+
+        modal.innerHTML = `
+            <div class="modal-profile-inner">Loading User Profile...</div>
+        `;
+
+        document.body.appendChild(modal);
+
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 1);
+
+        let modal_back = document.createElement("div");
+
+        modal_back.classList.add('modalv2-back');
+        modal_back.id = 'modalv2-back';
+
+        document.body.appendChild(modal_back);
+
+        modal_back.style.opacity = '0';
+
+        setTimeout(() => {
+            modal_back.classList.add('show');
+        }, 1);
+
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.classList.remove('show');
+                modal_back.classList.remove('show');
+                setTimeout(() => {
+                    modal.remove();
+                    modal_back.remove();
+                }, 300);
+            }
+        });
+
+        fetch(api + `/users/${userID}/profile`, {
+            method: "GET",
+            headers: {
+                "Authorization": localStorage.shop_archives_token
+            }
+        })
+        .then(response => response.json())
+        .then((data) => {
+            modal.innerHTML = `
+                <div class="modal-profile-inner">
+                    <div class="modal-preview-profile2">
+                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color" style="background-color: ${data.banner_color};"></div>
+                        <div id="profileBannerPreview" class="options-preview-profile-banner" style="background-image: url(https://cdn.discordapp.com/banners/${data.id}/${data.banner}.png?size=128);"></div>
+                        <div class="profile-avatar-preview-bg"></div>
+                        <img id="profileAvatarPreview" class="profile-avatar-preview" src="https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.webp?size=128">
+                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">${data.global_name}</p>
+                        <p class="options-preview-profile-username" id="options-username-preview">${data.username}</p>
+                    </div>
+                </div>
+            `;
+        })
+        .catch(error => {
+            console.error(error);
+            modal.innerHTML = `
+                <div class="modal-profile-inner">
+                    <div class="modal-preview-profile2">
+                        <div class="options-preview-profile-banner-color" id="options-preview-profile-banner-color"></div>
+                        <div id="profileBannerPreview" class="options-preview-profile-banner"></div>
+                        <div class="profile-avatar-preview-bg"></div>
+                        <img id="profileAvatarPreview" class="profile-avatar-preview" src="">
+                        <p class="options-preview-profile-displayname" id="options-preview-profile-displayname">Unknown User</p>
+                        <p class="options-preview-profile-username" id="options-username-preview">unknownuser</p>
+                    </div>
+                </div>
+            `;
+        });
     }
 
 
