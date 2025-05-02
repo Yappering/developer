@@ -1,6 +1,6 @@
 
 
-app_version1 = "401"
+app_version1 = "402"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2791,7 +2791,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     }
 
-    checkIfValidDiscordToken();
+    if (localStorage.experiment_2025_05_account_creator != "Treatment 1: Enabled") {
+        checkIfValidDiscordToken();
+    }
 
     const params = new URLSearchParams(window.location.search);
 
@@ -15005,7 +15007,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
         const login = await fetch('https://api.yapper.shop/v2/user-login', {
             method: "POST",
-            headers: { Authorization: discord_token },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `${localStorage.discord_token}`
+            },
             body: JSON.stringify({
                 type,
                 expires_at
@@ -15017,7 +15022,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
             if (errors && errors.message && errors.error) {
                 errorOutput.innerHTML = `
-                <div class="ac-error">
+                    <div class="ac-error">
                         <p>${errors.error}, ${errors.message}</p>
                     </div>
                 `;
@@ -15027,11 +15032,39 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
         const loginInfo = await login.json();
 
-        localStorage.shop_archives_token = loginInfo.token;
+        if (type === "2") {
+            localStorage.shop_archives_token = loginInfo.token;
+
+            localStorage.discord_profile = JSON.stringify(loginInfo.user, undefined, 4);
+            localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${loginInfo.user.id}/${loginInfo.user.avatar}.webp?size=4096`;
+            localStorage.discord_username = loginInfo.user.username;
+            localStorage.discord_user_id = loginInfo.user.id;
+            if (loginInfo.user.global_name != null) {
+                localStorage.discord_displayname = loginInfo.user.global_name;
+            } else {
+                localStorage.discord_displayname = loginInfo.user.username;
+            }
+            localStorage.discord_banner_color = loginInfo.user.banner_color;
+            localStorage.discord_premium_type = loginInfo.user.premium_type;
+            
+            if (loginInfo.user.banner != null) {
+                localStorage.discord_banner = `https://cdn.discordapp.com/banners/${loginInfo.user.id}/${loginInfo.user.banner}.png?size=4096`;
+            } else {
+                localStorage.removeItem('discord_banner');
+            }
+
+            if (staff_ids.includes(loginInfo.user.id)) {
+                localStorage.dev = "true";
+            }
+        }
+
+        localStorage.account_type = type;
+        setParams({ page: 'home', login: 'true' });
         location.reload();
     }
 
     window.createAccountWithDiscord = createAccountWithDiscord;
+
 
     function changeACType(type) {
         if (document.getElementById("ac-tier-card-1") && document.getElementById("ac-tier-card-2")) {
@@ -15097,6 +15130,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <div class="ac-log-me-out-after-container">
                         <label class="ac-log-me-out-after-label" for="ac-log-me-out-after-input">${getTextString("ACCOUNT_CREATOR_LOGIN_DISCLAIMER2")}</label>
                         <select class="ac-log-me-out-after-input" id="ac-log-me-out-after-input">
+                            <option value="1">1 Day (testing)</option>
                             <option value="30">30 Days (1 month)</option>
                             <option value="60">60 Days (2 months)</option>
                             <option value="90">90 Days (3 months)</option>
