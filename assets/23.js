@@ -61,6 +61,7 @@ OPTIONS_EXTRA_PROFILE_REMOVE_AVATAR = "Remove Avatar";
 OPTIONS_EXTRA_PROFILE_CHANGE_BANNER = "Upload Banner";
 OPTIONS_EXTRA_PROFILE_REMOVE_BANNER = "Remove Banner";
 OPTIONS_EXTRA_PROFILE_FILE_TOO_BIG = "File too large!";
+OPTIONS_EXTRA_PROFILE_FILE_TOO_BIG_SUMMARY = "The file you uploaded is too large.";
 OPTIONS_EXTRA_PROFILE_ERROR_1 = "Cannot edit profile when logged in.";
 OPTIONS_EXTRA_PROFILE_ERROR_2 = "Your profile is synced with your Discord profile.";
 OPTIONS_EXTRA_PROFILE_ERROR_3 = "Preview:";
@@ -279,7 +280,7 @@ ACCOUNT_CREATOR_STANDARD_LOG_IN_TITLE = "Standard Log In";
 ACCOUNT_CREATOR_STANDARD_LOG_IN_DESC = "Full time Shop Archives user.";
 
 ACCOUNT_CREATOR_PERKS_1 = "Preview your Discord profile across the website.";
-ACCOUNT_CREATOR_PERKS_2 = "See and Write reviews for categories.";
+ACCOUNT_CREATOR_PERKS_2 = "Write reviews for categories.";
 ACCOUNT_CREATOR_PERKS_3 = "More user settings.";
 ACCOUNT_CREATOR_PERKS_4 = "Beta Program (Early access to new features).";
 

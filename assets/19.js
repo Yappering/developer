@@ -1,6 +1,6 @@
 
 
-app_version1 = "405"
+app_version1 = "406"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -18,6 +18,10 @@ defaultAvatar5 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABr
 defaultAvatar6 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAZlBMVEXrRZ/sUKXxf73zl8nyi8Pwc7f5xOH96PP////+8/ntXKv86PP2rdX60Of1os/vZ7H+9Pn3udvuaLHzi8P73O32rtX0lsnzlsnwdLf95/P4xOH4xeH4udvsUaXxgL383O3yisPvaLFF0RjvAAAET0lEQVR4AezBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAIDZuc/FVnUYDuBiJbLBKs5ooLvv/5B3X3UTdJzAP4f8PldtLTxkM47K8qKk0fKiyn6jtlfFas3MbnSbfM3M9aqofofGN4H/JzSSaEhoLjkJN0VgZegCvuX3QnFDF6hq1qxsXSDyZ3WsLq31LStLF9AZ4JJzsJGWfyC2GeCTuvEEL9NxP9AF/E2+LaSJSqTYVpWnf9T8s1ASNC8tD4pN3A38SBtWEnlQHT2hqgJPYlURpD1PZk+ASp5QRXB8zROqM0ITWS1yEGxYLXMQ1DyxmqAIT04IiOfpOb/QGVAFgpHzLKqFzoBqh1MDzuSWIGQ1z8RlC10ClSxvEwDYBSLPSJZZA0F1gcizkmV3AIAuEHlmstwlAKILHHh2ssRdAEwXKBnALc1nxwACzaZjCNVC10C1WmYRBDANlgxCljgFAkyDG4ZRLXQKVM1Cq0DlllcEAIyByECahY4A5ZY2AgDGwJ6hNNBVkFuHnWMDe0iNuw8IB09/25S9PWR8mj3oPqDv3gf15pC8Bz0WueNRmuzTzGEPEcw9sfvFbZqkh0AshBtr+5WcOETd4B2H39N37u0b2wegScAwBfSevvPo+Gf2EBXh6mCh70lCCEol4C3P8Rmu50AIViXwlNQl9wkhA3KajiT9P11iCMB2IPBxGf3k0d6JH8FKIcdHPdPP1vZaZg01Cz4mHlWHhJABGdRhyOq0CYhQteCWj4upCbBXXiVNRTCHQANVCNdDM5o9ZAdVDO84fRm0hRCP8Ix1GFBZ5lBDCMCRwGPiOW1MCgFYBzeJjy3UCSEQ26Eu7bGFMi0E4O7IE6d0gaw2h5CGYBQCh6T3e/f2EGGsBEjKI4yH1JABAndb8IU+e7GHVHA3CCOPJvaLaQ9RES8BHD2R8vcJIUAJCGwRq+GvK6WHqBVWAlQbYoyr9mwhKsyQABzXBFwTcE3ANQHXBFwTcE3ANQETiAwqXhOwhMeEAc4DhEHJDGeCUG6Bbg5zOPR8Mv1hB3Moanhgp7vnkwjdyHFXodwZ0qNNLz0ncpLpwIN5QqJ0fEStvbGLCTlwsdO/2fIR7pYm43c8PgX2HGjrM8M3m4OnKQlbUkCdBDbZNR2pKjDM5Ve+t6WAsk6C4xFcaJ4yMjR/4suvxI1Jgaf3Nk9N2PGP1vfNdkPvZdIy2uVXPhoO+d/bdFtpYgi79b9CiFG2Tz6jT6r7lkEvv+EtqHDejXef05yEj3o9U8mlZYLCHAfxnGcv0dP8fDjfgzubYzUyhq4/2x59j918VQbDm1MWjw68+aoLA7uiBAfA5humw3iWM+hVR5h87E//BXjv0BY+w2Rwe/ITuJBnpOC7QTjxjRgnr4RPDwB0BTjNIHC6Qb6YHLzQibz83fqMLs0G8lf92R4cyAAAAAAM8re+x1cBAAAAAAAAAAAAAAAAAAAAAKwEXiSjy96AYeIAAAAASUVORK5CYII=`;
 
 localStorage.experiment_2025_02_mobile_render = "Treatment 1: Use new mobile check";
+
+if (!localStorage.ext_sty_category_tab) {
+    localStorage.ext_sty_category_tab = "1";
+}
 
 if (!localStorage.reviews_filter_type) {
     localStorage.reviews_filter_type = "2";
@@ -92,15 +96,13 @@ if (localStorage.discord_username && localStorage.discord_username != '') {
 }
 
 function setRandomDiscordUsername() {
-    // localStorage.discord_username = ``;
-    // fetch('https://apis.kahoot.it/namerator')
-    // .then(response => response.json())
-    // .then((data) => {
-    //     localStorage.discord_username = data.name;
-    //     localStorage.discord_displayname = data.name;
-    // })
-    localStorage.discord_displayname = 'Default User';
-    localStorage.discord_username = 'default_user';
+    localStorage.discord_username = ``;
+    fetch('https://apis.kahoot.it/namerator')
+    .then(response => response.json())
+    .then((data) => {
+        localStorage.discord_username = data.name.toLowerCase();
+        localStorage.discord_displayname = data.name;
+    })
 
 }
 
@@ -15174,6 +15176,30 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             if (staff_ids.includes(loginInfo.user.id)) {
                 localStorage.dev = "true";
             }
+        } else if (type === "1") {
+
+            localStorage.discord_profile = JSON.stringify(loginInfo, undefined, 4);
+            
+            localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${loginInfo.id}/${loginInfo.avatar}.webp?size=4096`;
+            localStorage.discord_username = loginInfo.username;
+            localStorage.discord_user_id = loginInfo.id;
+            if (loginInfo.global_name != null) {
+                localStorage.discord_displayname = loginInfo.global_name;
+            } else {
+                localStorage.discord_displayname = loginInfo.username;
+            }
+            localStorage.discord_banner_color = loginInfo.banner_color;
+            localStorage.discord_premium_type = loginInfo.premium_type;
+            
+            if (loginInfo.banner != null) {
+                localStorage.discord_banner = `https://cdn.discordapp.com/banners/${loginInfo.id}/${loginInfo.banner}.png?size=4096`;
+            } else {
+                localStorage.removeItem('discord_banner');
+            }
+
+            if (staff_ids.includes(loginInfo.id)) {
+                localStorage.dev = "true";
+            }
         }
 
         localStorage.account_type = type;
@@ -15196,21 +15222,23 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <h2>${getTextString("ACCOUNT_CREATOR_BASIC_LOG_IN_TITLE")}</h2>
                     <p class="desc">${getTextString("ACCOUNT_CREATOR_BASIC_LOG_IN_DESC")}</p>
                     <div class="ac-perks-list">
-                        <div>
-                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
-                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_1")}</p>
-                        </div>
-                        <div>
-                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
-                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_2")}</p>
-                        </div>
-                        <div>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg"><path d="M17.3005 18.7C17.493 18.8444 17.7312 18.9146 17.9713 18.8975C18.2114 18.8804 18.4373 18.7773 18.6076 18.6071C18.7778 18.4369 18.8809 18.211 18.8979 17.9709C18.915 17.7308 18.8449 17.4926 18.7005 17.3L13.4205 12L18.7205 6.70002C18.883 6.50757 18.967 6.26086 18.9555 6.0092C18.944 5.75754 18.838 5.51948 18.6586 5.34261C18.4792 5.16575 18.2397 5.0631 17.9879 5.05521C17.7361 5.04731 17.4906 5.13474 17.3005 5.30002L12.0005 10.58L6.70045 5.28002C6.508 5.11745 6.26129 5.03352 6.00963 5.04498C5.75797 5.05645 5.51991 5.16248 5.34305 5.34187C5.16618 5.52127 5.06354 5.7608 5.05564 6.0126C5.04774 6.2644 5.13517 6.5099 5.30045 6.70002L10.5805 12L5.28045 17.3C5.17646 17.3904 5.09227 17.5013 5.03317 17.6258C4.97407 17.7503 4.94133 17.8856 4.93701 18.0234C4.9327 18.1611 4.95689 18.2982 5.00807 18.4262C5.05925 18.5541 5.13633 18.6701 5.23445 18.7668C5.33257 18.8636 5.44963 18.939 5.57828 18.9883C5.70693 19.0377 5.84439 19.06 5.98204 19.0537C6.1197 19.0474 6.25457 19.0128 6.37819 18.9519C6.50182 18.891 6.61153 18.8053 6.70045 18.7L12.0005 13.42L17.3005 18.72V18.7Z" fill="var(--white)"/></svg>
-                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_3")}</p>
-                        </div>
-                        <div>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg"><path d="M17.3005 18.7C17.493 18.8444 17.7312 18.9146 17.9713 18.8975C18.2114 18.8804 18.4373 18.7773 18.6076 18.6071C18.7778 18.4369 18.8809 18.211 18.8979 17.9709C18.915 17.7308 18.8449 17.4926 18.7005 17.3L13.4205 12L18.7205 6.70002C18.883 6.50757 18.967 6.26086 18.9555 6.0092C18.944 5.75754 18.838 5.51948 18.6586 5.34261C18.4792 5.16575 18.2397 5.0631 17.9879 5.05521C17.7361 5.04731 17.4906 5.13474 17.3005 5.30002L12.0005 10.58L6.70045 5.28002C6.508 5.11745 6.26129 5.03352 6.00963 5.04498C5.75797 5.05645 5.51991 5.16248 5.34305 5.34187C5.16618 5.52127 5.06354 5.7608 5.05564 6.0126C5.04774 6.2644 5.13517 6.5099 5.30045 6.70002L10.5805 12L5.28045 17.3C5.17646 17.3904 5.09227 17.5013 5.03317 17.6258C4.97407 17.7503 4.94133 17.8856 4.93701 18.0234C4.9327 18.1611 4.95689 18.2982 5.00807 18.4262C5.05925 18.5541 5.13633 18.6701 5.23445 18.7668C5.33257 18.8636 5.44963 18.939 5.57828 18.9883C5.70693 19.0377 5.84439 19.06 5.98204 19.0537C6.1197 19.0474 6.25457 19.0128 6.37819 18.9519C6.50182 18.891 6.61153 18.8053 6.70045 18.7L12.0005 13.42L17.3005 18.72V18.7Z" fill="var(--white)"/></svg>
-                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_4")}</p>
+                        <div class="ac-perks-list-card">
+                            <div>
+                                <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
+                                <p>${getTextString("ACCOUNT_CREATOR_PERKS_1")}</p>
+                            </div>
+                            <div>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg"><path d="M17.3005 18.7C17.493 18.8444 17.7312 18.9146 17.9713 18.8975C18.2114 18.8804 18.4373 18.7773 18.6076 18.6071C18.7778 18.4369 18.8809 18.211 18.8979 17.9709C18.915 17.7308 18.8449 17.4926 18.7005 17.3L13.4205 12L18.7205 6.70002C18.883 6.50757 18.967 6.26086 18.9555 6.0092C18.944 5.75754 18.838 5.51948 18.6586 5.34261C18.4792 5.16575 18.2397 5.0631 17.9879 5.05521C17.7361 5.04731 17.4906 5.13474 17.3005 5.30002L12.0005 10.58L6.70045 5.28002C6.508 5.11745 6.26129 5.03352 6.00963 5.04498C5.75797 5.05645 5.51991 5.16248 5.34305 5.34187C5.16618 5.52127 5.06354 5.7608 5.05564 6.0126C5.04774 6.2644 5.13517 6.5099 5.30045 6.70002L10.5805 12L5.28045 17.3C5.17646 17.3904 5.09227 17.5013 5.03317 17.6258C4.97407 17.7503 4.94133 17.8856 4.93701 18.0234C4.9327 18.1611 4.95689 18.2982 5.00807 18.4262C5.05925 18.5541 5.13633 18.6701 5.23445 18.7668C5.33257 18.8636 5.44963 18.939 5.57828 18.9883C5.70693 19.0377 5.84439 19.06 5.98204 19.0537C6.1197 19.0474 6.25457 19.0128 6.37819 18.9519C6.50182 18.891 6.61153 18.8053 6.70045 18.7L12.0005 13.42L17.3005 18.72V18.7Z" fill="var(--white)"/></svg>
+                                <p>${getTextString("ACCOUNT_CREATOR_PERKS_2")}</p>
+                            </div>
+                            <div>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg"><path d="M17.3005 18.7C17.493 18.8444 17.7312 18.9146 17.9713 18.8975C18.2114 18.8804 18.4373 18.7773 18.6076 18.6071C18.7778 18.4369 18.8809 18.211 18.8979 17.9709C18.915 17.7308 18.8449 17.4926 18.7005 17.3L13.4205 12L18.7205 6.70002C18.883 6.50757 18.967 6.26086 18.9555 6.0092C18.944 5.75754 18.838 5.51948 18.6586 5.34261C18.4792 5.16575 18.2397 5.0631 17.9879 5.05521C17.7361 5.04731 17.4906 5.13474 17.3005 5.30002L12.0005 10.58L6.70045 5.28002C6.508 5.11745 6.26129 5.03352 6.00963 5.04498C5.75797 5.05645 5.51991 5.16248 5.34305 5.34187C5.16618 5.52127 5.06354 5.7608 5.05564 6.0126C5.04774 6.2644 5.13517 6.5099 5.30045 6.70002L10.5805 12L5.28045 17.3C5.17646 17.3904 5.09227 17.5013 5.03317 17.6258C4.97407 17.7503 4.94133 17.8856 4.93701 18.0234C4.9327 18.1611 4.95689 18.2982 5.00807 18.4262C5.05925 18.5541 5.13633 18.6701 5.23445 18.7668C5.33257 18.8636 5.44963 18.939 5.57828 18.9883C5.70693 19.0377 5.84439 19.06 5.98204 19.0537C6.1197 19.0474 6.25457 19.0128 6.37819 18.9519C6.50182 18.891 6.61153 18.8053 6.70045 18.7L12.0005 13.42L17.3005 18.72V18.7Z" fill="var(--white)"/></svg>
+                                <p>${getTextString("ACCOUNT_CREATOR_PERKS_3")}</p>
+                            </div>
+                            <div>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg"><path d="M17.3005 18.7C17.493 18.8444 17.7312 18.9146 17.9713 18.8975C18.2114 18.8804 18.4373 18.7773 18.6076 18.6071C18.7778 18.4369 18.8809 18.211 18.8979 17.9709C18.915 17.7308 18.8449 17.4926 18.7005 17.3L13.4205 12L18.7205 6.70002C18.883 6.50757 18.967 6.26086 18.9555 6.0092C18.944 5.75754 18.838 5.51948 18.6586 5.34261C18.4792 5.16575 18.2397 5.0631 17.9879 5.05521C17.7361 5.04731 17.4906 5.13474 17.3005 5.30002L12.0005 10.58L6.70045 5.28002C6.508 5.11745 6.26129 5.03352 6.00963 5.04498C5.75797 5.05645 5.51991 5.16248 5.34305 5.34187C5.16618 5.52127 5.06354 5.7608 5.05564 6.0126C5.04774 6.2644 5.13517 6.5099 5.30045 6.70002L10.5805 12L5.28045 17.3C5.17646 17.3904 5.09227 17.5013 5.03317 17.6258C4.97407 17.7503 4.94133 17.8856 4.93701 18.0234C4.9327 18.1611 4.95689 18.2982 5.00807 18.4262C5.05925 18.5541 5.13633 18.6701 5.23445 18.7668C5.33257 18.8636 5.44963 18.939 5.57828 18.9883C5.70693 19.0377 5.84439 19.06 5.98204 19.0537C6.1197 19.0474 6.25457 19.0128 6.37819 18.9519C6.50182 18.891 6.61153 18.8053 6.70045 18.7L12.0005 13.42L17.3005 18.72V18.7Z" fill="var(--white)"/></svg>
+                                <p>${getTextString("ACCOUNT_CREATOR_PERKS_4")}</p>
+                            </div>
                         </div>
                     </div>
                     <div class="ac-log-me-out-after-container">
@@ -15219,6 +15247,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <option value="30">30 Days (1 month)</option>
                         </select>
                     </div>
+                    <div class="ac-perks-bottom-block"></div>
                     <button class="ac-login-button" onclick="createAccountWithDiscord('1', null)">Log In</button>
                 `;
             } else if (type === "2") {
@@ -15228,32 +15257,34 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <h2>${getTextString("ACCOUNT_CREATOR_STANDARD_LOG_IN_TITLE")}</h2>
                     <p class="desc">${getTextString("ACCOUNT_CREATOR_STANDARD_LOG_IN_DESC")}</p>
                     <div class="ac-perks-list">
-                        <div>
-                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
-                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_1")}</p>
-                        </div>
-                        <div>
-                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
-                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_2")}</p>
-                        </div>
-                        <div>
-                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
-                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_3")}</p>
-                        </div>
-                        <div>
-                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
-                            <p>${getTextString("ACCOUNT_CREATOR_PERKS_4")}</p>
+                        <div class="ac-perks-list-card">
+                            <div>
+                                <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
+                                <p>${getTextString("ACCOUNT_CREATOR_PERKS_1")}</p>
+                            </div>
+                            <div>
+                                <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
+                                <p>${getTextString("ACCOUNT_CREATOR_PERKS_2")}</p>
+                            </div>
+                            <div>
+                                <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
+                                <p>${getTextString("ACCOUNT_CREATOR_PERKS_3")}</p>
+                            </div>
+                            <div>
+                                <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="var(--white)" fill-rule="evenodd" d="M18.7 7.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4l3.3 3.29 7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" class=""></path></svg>
+                                <p>${getTextString("ACCOUNT_CREATOR_PERKS_4")}</p>
+                            </div>
                         </div>
                     </div>
                     <div class="ac-log-me-out-after-container">
                         <label class="ac-log-me-out-after-label" for="ac-log-me-out-after-input">${getTextString("ACCOUNT_CREATOR_LOGIN_DISCLAIMER2")}</label>
                         <select class="ac-log-me-out-after-input" id="ac-log-me-out-after-input">
-                            <option value="1">1 Day (testing)</option>
                             <option value="30">30 Days (1 month)</option>
                             <option value="60">60 Days (2 months)</option>
                             <option value="90">90 Days (3 months)</option>
                         </select>
                     </div>
+                    <div class="ac-perks-bottom-block"></div>
                     <button class="ac-login-button" id="ac-login-button">Log In</button>
                     <div class="ac-perks-list-disclaimer-container">
                         <p class="ac-perks-list-disclaimer">${getTextString("ACCOUNT_CREATOR_DISCLAIMER")}</p>
@@ -17366,7 +17397,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
             // Handle image upload
             avatarImageInput.addEventListener("change", function () {
-                document.getElementById("options-avatar-img-input-option-error").classList.remove('options-img-input-option-error')
                 document.getElementById("options-avatar-img-input-option-error").innerHTML = ``;
                 const file = this.files[0];
                 if (file) {
@@ -17377,9 +17407,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             localStorage.setItem("discord_avatar", dataUrl);
                             avatarImagePreview.src = dataUrl;
                         } catch(error) {
-                            document.getElementById("options-avatar-img-input-option-error").classList.add('options-img-input-option-error')
                             document.getElementById("options-avatar-img-input-option-error").innerHTML = `
-                                <p>${getTextString("OPTIONS_EXTRA_PROFILE_FILE_TOO_BIG")}</p>
+                                <div class="modalv3-profile-tab-file-too-large-warning">
+                                    <p class="modalv3-profile-tab-file-too-large-warning-title">${getTextString("OPTIONS_EXTRA_PROFILE_FILE_TOO_BIG")}</p>
+                                    <p class="modalv3-profile-tab-file-too-large-warning-summary">${getTextString("OPTIONS_EXTRA_PROFILE_FILE_TOO_BIG_SUMMARY")}</p>
+                                </div>
                             `;
                         }
                     };
@@ -17391,6 +17423,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             removeAvatarImageButton.addEventListener("click", function () {
                 setRandomDiscordAvatar()
                 avatarImagePreview.src = localStorage.discord_avatar;
+                document.getElementById("options-avatar-img-input-option-error").innerHTML = ``;
             });
 
 
@@ -17413,9 +17446,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
             // Handle image upload
             bannerImageInput.addEventListener("change", function () {
-                document.getElementById("options-banner-img-input-option-error").classList.remove('options-img-input-option-error')
                 document.getElementById("options-banner-img-input-option-error").innerHTML = ``;
-                removeBannerImageButton.style.display = 'flex';
+                removeBannerImageButton.style.display = 'unset';
                 const file = this.files[0];
                 if (file) {
                     const reader = new FileReader();
@@ -17425,21 +17457,24 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             localStorage.setItem("discord_banner", dataUrl);
                             bannerImagePreview.style.backgroundImage = `url(${dataUrl})`;
                         } catch(error) {
-                            document.getElementById("options-banner-img-input-option-error").classList.add('options-img-input-option-error')
                             document.getElementById("options-banner-img-input-option-error").innerHTML = `
-                                <p>${getTextString("OPTIONS_EXTRA_PROFILE_FILE_TOO_BIG")}</p>
+                                <div class="modalv3-profile-tab-file-too-large-warning">
+                                    <p class="modalv3-profile-tab-file-too-large-warning-title">${getTextString("OPTIONS_EXTRA_PROFILE_FILE_TOO_BIG")}</p>
+                                    <p class="modalv3-profile-tab-file-too-large-warning-summary">${getTextString("OPTIONS_EXTRA_PROFILE_FILE_TOO_BIG_SUMMARY")}</p>
+                                </div>
                             `;
                         }
                     };
                     reader.readAsDataURL(file);
                 }
             });
-
+            
             // Handle image removal
             removeBannerImageButton.addEventListener("click", function () {
                 removeBannerImageButton.style.display = 'none';
                 localStorage.discord_banner = ``
                 bannerImagePreview.style.backgroundImage = '';
+                document.getElementById("options-banner-img-input-option-error").innerHTML = ``;
             });
 
         } else if (tab === "warnings") {
