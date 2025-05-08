@@ -1,6 +1,6 @@
 
 
-app_version1 = "406"
+app_version1 = "407"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2794,10 +2794,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     }
 
-    if (localStorage.experiment_2025_05_account_creator != "Treatment 1: Enabled") {
-        checkIfValidDiscordToken();
-    }
-
     const params = new URLSearchParams(window.location.search);
 
     function setParams(params) {
@@ -2851,6 +2847,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         } else {
             createShopCategoryLoadingElement()
         }
+    }
+
+    if (localStorage.experiment_2025_05_account_creator != "Treatment 1: Enabled") {
+        checkIfValidDiscordToken();
+    } else if (params.get("page") != "login" && localStorage.discord_token && !localStorage.discord_profile) {
+        console.log("hoax????")
+        actuallyLogOutOfDiscord();
     }
     
     // Function to fetch and display shop data
@@ -10988,7 +10991,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             }
                                                         });
 
-                                                        if (localStorage.discord_token && hasReviewAlready === false) {
+                                                        if (localStorage.experiment_2025_05_m === "Treatment 1: Enabled") {
+
+                                                        } else if (localStorage.discord_token && hasReviewAlready === false && localStorage.account_type === "2") {
                                                             let writeReviewContainer = document.createElement("div");
         
                                                             writeReviewContainer.classList.add("shop-category-modal-write-review-container");
@@ -11006,10 +11011,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                                     <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_WRITE")}${apiCategory.name}...">
                                                                     <svg data-post-review-button class="review-send-icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.02 14 11.4a.6.6 0 0 1 0 1.18L6.6 14l-2.94 5.87a1.48 1.48 0 0 0 1.99 1.98l17.03-8.52a1.48 1.48 0 0 0 0-2.64L5.65 2.16a1.48 1.48 0 0 0-1.99 1.98l2.94 5.88Z" class=""></path></svg>
-                                                                </div>
-                                                                <div class="shop-category-modal-write-review-disclaimer-container">
-                                                                    <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER")}</p>
-                                                                    <a class="shop-category-modal-write-review-disclaimer-link" href="https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY")}</a>
                                                                 </div>
                                                             `;
 
@@ -11039,7 +11040,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             }
     
                                                             modal.querySelector(".category-modalv2-inner-left").appendChild(writeReviewContainer);
-                                                        } else if (localStorage.discord_token) {
+                                                        } else if (localStorage.discord_token && localStorage.account_type === "2") {
                                                             let writeReviewContainer = document.createElement("div");
         
                                                             writeReviewContainer.classList.add("shop-category-modal-write-review-container");
@@ -11057,10 +11058,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                                     <input autocomplete="off" id="shop-category-modal-write-review-post-input" placeholder="${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_EDIT")}${apiCategory.name}...">
                                                                     <svg data-post-review-button class="review-send-icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.02 14 11.4a.6.6 0 0 1 0 1.18L6.6 14l-2.94 5.87a1.48 1.48 0 0 0 1.99 1.98l17.03-8.52a1.48 1.48 0 0 0 0-2.64L5.65 2.16a1.48 1.48 0 0 0-1.99 1.98l2.94 5.88Z" class=""></path></svg>
-                                                                </div>
-                                                                <div class="shop-category-modal-write-review-disclaimer-container">
-                                                                    <p class="shop-category-modal-write-review-disclaimer">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER")}</p>
-                                                                    <a class="shop-category-modal-write-review-disclaimer-link" href="https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY")}</a>
                                                                 </div>
                                                             `;
 
@@ -11118,7 +11115,19 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 });
     
                                                 function renderReviews(datareview) {
-                                                    if (Array.isArray(datareview) && datareview.length === 0) {
+                                                    if (localStorage.experiment_2025_05_m === "Treatment 1: Enabled") {
+                                                        modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = ``;
+
+                                                        let reviewNoneElement = document.createElement("div");
+
+                                                        reviewNoneElement.classList.add("review-element-warning");
+        
+                                                        reviewNoneElement.innerHTML = `
+                                                            <p class="review-warning-notice-text" style="font-size: large; font-weight: 900;">${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_UNAVAILABLE")}</p>
+                                                        `;
+
+                                                        modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewNoneElement);
+                                                    } else if (Array.isArray(datareview) && datareview.length === 0) {
                                                         modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = ``;
 
                                                         let reviewNoneElement = document.createElement("div");
@@ -14912,7 +14921,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                     <img src="https://cdn.yapper.shop/assets/187.png"></img>
                                 </div>
                                 <div class="ac-tier-card ac-tier-card-standard" id="ac-tier-card-2" onclick="changeACType('2')">
-                                    <p class="ac-tier-card-beta-tag">NEW</p>
+                                    <p class="ac-tier-card-beta-tag">BETA</p>
                                     <h1>${getTextString("ACCOUNT_CREATOR_STANDARD_HEADER")}</h1>
                                     <p class="desc">${getTextString("ACCOUNT_CREATOR_STANDARD_LOG_IN_DESC")}</p>
                                     <img src="https://cdn.yapper.shop/assets/188.png"></img>
@@ -15248,6 +15257,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         </select>
                     </div>
                     <div class="ac-perks-bottom-block"></div>
+                    <button class="ac-login-button cancel-button" onclick="setParams({page: 'home'}); location.reload();">Cancel</button>
                     <button class="ac-login-button" onclick="createAccountWithDiscord('1', null)">Log In</button>
                 `;
             } else if (type === "2") {
@@ -15285,6 +15295,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         </select>
                     </div>
                     <div class="ac-perks-bottom-block"></div>
+                    <button class="ac-login-button cancel-button" onclick="setParams({page: 'home'}); location.reload();">Cancel</button>
                     <button class="ac-login-button" id="ac-login-button">Log In</button>
                     <div class="ac-perks-list-disclaimer-container">
                         <p class="ac-perks-list-disclaimer">${getTextString("ACCOUNT_CREATOR_DISCLAIMER")}</p>
@@ -17182,6 +17193,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                     </div>
                 </div>
+
+                <div id="modalv3-account-beta-program-card-container">
+
+                </div>
             `;
 
             const accountDetails = document.getElementById("modalv3-account-account-details-container");
@@ -17203,24 +17218,24 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 const discordProfile = JSON.parse(localStorage.discord_profile);
                 accountDetails.innerHTML = `
                     <div class="modalv3-account-account-details">
-                        <div class="modalv3-account-banner-color" style="background-color: ${localStorage.discord_banner_color};"></div>
-                        <div class="modalv3-account-banner-image" style="background-image: url(${localStorage.discord_banner});"></div>
+                        <div class="modalv3-account-banner-color" style="background-color: ${discordProfile.banner_color};"></div>
+                        <div class="modalv3-account-banner-image" style="background-image: url(https://cdn.discordapp.com/banners/${discordProfile.id}/${discordProfile.banner}.webp?size=480);"></div>
                         <div class="modalv3-account-banner-filler"></div>
 
                         <div class="modalv3-account-avatar-preview-bg"></div>
-                        <img class="modalv3-account-avatar-preview" src="${localStorage.discord_avatar}">
-                        <p class="modalv3-account-displayname">${localStorage.discord_displayname}</p>
+                        <img class="modalv3-account-avatar-preview" src="https://cdn.discordapp.com/avatars/${discordProfile.id}/${discordProfile.avatar}.webp?size=128">
+                        <p class="modalv3-account-displayname">${discordProfile.global_name}</p>
                         <button class="modalv3-resync-profiles-button" onclick="updateDiscordProfileModalv3()">Resync Profile</button>
 
                         <div class="modalv3-account-account-details-inners-padding">
                             <div class="modalv3-account-account-details-inner">
                                 <div class="modalv3-account-account-details-card">
                                     <p class="modalv3-account-displayname-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_DISPLAY_NAME")}</p>
-                                    <p class="modalv3-account-displayname-text">${localStorage.discord_displayname}</p>
+                                    <p class="modalv3-account-displayname-text">${discordProfile.global_name}</p>
                                 </div>
                                 <div class="modalv3-account-account-details-card">
                                     <p class="modalv3-account-username-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_USERNAME")}</p>
-                                    <p class="modalv3-account-username-text">${localStorage.discord_username}</p>
+                                    <p class="modalv3-account-username-text">${discordProfile.username}</p>
                                 </div>
                             </div>
                         </div>
@@ -19213,53 +19228,108 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     window.updateDiscordProfileModalv3 = updateDiscordProfileModalv3;
 
     async function updateDiscordProfile(token) {
-        try {
-            const userInfo = await fetch('https://discord.com/api/users/@me', {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-  
-            if (!userInfo.ok) {
-                // If the response is not ok (e.g., 401 Unauthorized)
-                setParams({ page: 'home', login: 'false' });
-                actuallyLogOutOfDiscord();
-                return;
-            }
-  
-            const user = await userInfo.json();
-            localStorage.discord_profile = JSON.stringify(user, undefined, 4);
-            localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
-            localStorage.discord_username = user.username;
-            if (user.global_name != null) {
-                localStorage.discord_displayname = user.global_name;
-            } else {
-                localStorage.discord_displayname = user.username;
-            }
-            localStorage.discord_banner_color = user.banner_color;
-            localStorage.discord_premium_type = user.premium_type;
-  
-            if (user.banner != null) {
-                localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=4096`;
-            } else {
-                localStorage.removeItem('discord_banner');
-            }
+        if (localStorage.account_type === "2") {
+            try {
+                const userInfo = await fetch('https://api.yapper.shop/v2/users/@me', {
+                    method: "POST",
+                    headers: { Authorization: `${localStorage.shop_archives_token}` }
+                });
+      
+                if (!userInfo.ok) {
+                    // If the response is not ok (e.g., 401 Unauthorized)
+                    setParams({ page: 'home', login: 'false' });
+                    actuallyLogOutOfDiscord();
+                    return;
+                }
+      
+                const user = await userInfo.json();
+                localStorage.discord_profile = JSON.stringify(user, undefined, 4);
+                localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
+                localStorage.discord_username = user.username;
+                if (user.global_name != null) {
+                    localStorage.discord_displayname = user.global_name;
+                } else {
+                    localStorage.discord_displayname = user.username;
+                }
+                localStorage.discord_banner_color = user.banner_color;
+                localStorage.discord_premium_type = user.premium_type;
+      
+                if (user.banner != null) {
+                    localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=4096`;
+                } else {
+                    localStorage.removeItem('discord_banner');
+                }
 
-            if (staff_ids.includes(user.id)) {
-                localStorage.dev = "true";
-                console.log('yapper')
-            }
-  
-            console.log('success');
+                const atMe = await fetch('https://api.yapper.shop/v2/users/@me', {
+                    headers: { Authorization: `${localStorage.shop_archives_token}` }
+                });
+
+                const atMe2 = await atMe.json();
+
+                atMeUsercache = atMe2;
       
-            // Optional: additional check (but `localStorage.discord_profile` is a string, so this check won't work unless parsed)
-            const parsedProfile = JSON.parse(localStorage.discord_profile);
-            if (parsedProfile.code === 0) {
+                console.log('success');
+          
+                // Optional: additional check (but `localStorage.discord_profile` is a string, so this check won't work unless parsed)
+                const parsedProfile = JSON.parse(localStorage.discord_profile);
+                if (parsedProfile.code === 0) {
+                    setParams({ page: 'home', login: 'false' });
+                    actuallyLogOutOfDiscord();
+                }
+          
+            } catch (error) {
                 setParams({ page: 'home', login: 'false' });
                 actuallyLogOutOfDiscord();
             }
+        } else {
+            try {
+                const userInfo = await fetch('https://discord.com/api/users/@me', {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
       
-        } catch (error) {
-            setParams({ page: 'home', login: 'false' });
-            actuallyLogOutOfDiscord();
+                if (!userInfo.ok) {
+                    // If the response is not ok (e.g., 401 Unauthorized)
+                    setParams({ page: 'home', login: 'false' });
+                    actuallyLogOutOfDiscord();
+                    return;
+                }
+      
+                const user = await userInfo.json();
+                localStorage.discord_profile = JSON.stringify(user, undefined, 4);
+                localStorage.discord_avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=4096`;
+                localStorage.discord_username = user.username;
+                if (user.global_name != null) {
+                    localStorage.discord_displayname = user.global_name;
+                } else {
+                    localStorage.discord_displayname = user.username;
+                }
+                localStorage.discord_banner_color = user.banner_color;
+                localStorage.discord_premium_type = user.premium_type;
+      
+                if (user.banner != null) {
+                    localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=4096`;
+                } else {
+                    localStorage.removeItem('discord_banner');
+                }
+    
+                if (staff_ids.includes(user.id)) {
+                    localStorage.dev = "true";
+                    console.log('yapper')
+                }
+      
+                console.log('success');
+          
+                // Optional: additional check (but `localStorage.discord_profile` is a string, so this check won't work unless parsed)
+                const parsedProfile = JSON.parse(localStorage.discord_profile);
+                if (parsedProfile.code === 0) {
+                    setParams({ page: 'home', login: 'false' });
+                    actuallyLogOutOfDiscord();
+                }
+          
+            } catch (error) {
+                setParams({ page: 'home', login: 'false' });
+                actuallyLogOutOfDiscord();
+            }
         }
     }
 

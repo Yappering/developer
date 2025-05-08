@@ -307,7 +307,7 @@ SHOP_CATEGORY_MODAL_REVIEWS_ERROR = "There was an error loading reviews";
 
 SHOP_CATEGORY_MODAL_REVIEWS_WRITE = "Write a review for ";
 SHOP_CATEGORY_MODAL_REVIEWS_EDIT = "Edit your review for ";
-SHOP_CATEGORY_MODAL_REVIEWS_LOGIN = "You must be logged in with Discord to write reviews...";
+SHOP_CATEGORY_MODAL_REVIEWS_LOGIN = "You must have a Standard account to write reviews...";
 
 SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER = "By making a review, you agree to the Shop Archives ";
 SHOP_CATEGORY_MODAL_REVIEWS_DISCLAIMER_PRIVACY_POLICY = "Privacy Policy.";
@@ -365,9 +365,9 @@ MODAL_V3_TAB_HEADER_STAFF_ONLY = "DEVELOPER ONLY";
 // Tabs
 
 MODAL_V3_TAB_TEXT_ACCOUNT = "Account";
-MODAL_V3_TAB_TEXT_WARNINGS = "Warnings";
-MODAL_V3_TAB_TEXT_REVIEWS = "Reviews";
 MODAL_V3_TAB_TEXT_PROFILE = "Profile";
+MODAL_V3_TAB_TEXT_REVIEWS = "Reviews";
+MODAL_V3_TAB_TEXT_WARNINGS = "Warnings";
 
 MODAL_V3_TAB_TEXT_APPEARANCE = "Appearance";
 MODAL_V3_TAB_TEXT_ACCESSIBILITY = "Accessibility";

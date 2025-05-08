@@ -338,6 +338,7 @@ body {
 .sidebar {
     height: 100%;
     width: fit-content;
+    z-index: 6;
 }
 
 #clickable-side-tabs-container {
@@ -348,9 +349,9 @@ body {
 .top-bar {
     height: 50px;
     width: 100%;
+    right: 5px;
     position: fixed;
     background-color: var(--3);
-    margin-left: 70px;
     z-index: 5;
 }
 
@@ -741,7 +742,7 @@ body {
     top: 7px;
     width: 200px;
     height: 34px;
-    right: 85px;
+    right: 7px;
     display: grid;
     direction: rtl;
     gap: 5px;
@@ -761,7 +762,7 @@ body {
     top: 7px;
     width: 180px;
     height: 34px;
-    right: 90px;
+    right: 7px;
 }
 
 #top-bar-other-things-container input {
@@ -3195,6 +3196,7 @@ body {
 .modalv3-content-card-1 .modalv3-content-card-summary {
     color: var(--modalv3-card-text);
     margin: 0;
+    max-width: 650px;
 }
 
 .modalv3-content-card-2 {
@@ -4720,7 +4722,7 @@ body {
 }
 
 .shop-tab-page-title {
-    margin-left: 260px;
+    margin-left: 335px;
     margin-top: 10px;
     font-weight: 600;
 }
@@ -6067,6 +6069,7 @@ data-share-product-card-button {
     border: 3px solid #00000000;
     cursor: pointer;
     text-align: center;
+    overflow: hidden;
 }
 
 .ac-tier-card-standard:not(.selected) {
@@ -6119,6 +6122,18 @@ data-share-product-card-button {
     width: auto;
     height: 20px;
     font-family: gg sans seven;
+}
+
+.ac-tier-card-disclaimer {
+    position: absolute;
+    bottom: 0;
+    background-color: var(--button-danger-background);
+    width: 380px;
+    padding: 5px;
+}
+
+.ac-tier-card-disclaimer p {
+    margin: 0;
 }
 
 
@@ -6244,6 +6259,15 @@ data-share-product-card-button {
 
 .ac-login-button:hover {
     background-color: var(--brand-500-hover);
+}
+
+.ac-login-button.cancel-button {
+    background-color: var(--button-unimportant-bg);
+    margin-right: 85px;
+}
+
+.ac-login-button.cancel-button:hover {
+    background-color: var(--button-unimportant-bg-hover);
 }
 
 .ac-log-me-out-after-container {
