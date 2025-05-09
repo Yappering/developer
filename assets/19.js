@@ -1,6 +1,6 @@
 
 
-app_version1 = "408"
+app_version1 = "409"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -17187,6 +17187,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_HEADER")}</h2>
                     <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_ACCOUNT_DISCORD_ACCOUNT_SUMMARY")}</p>
 
+                    <div id="modalv3-account-account-outdated-container">
+                    </div>
+
                     <div id="modalv3-account-account-details-container">
 
                     </div>
@@ -17196,6 +17199,15 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                 </div>
             `;
+
+            if (localStorage.experiment_2025_05_account_creator === "Treatment 1: Enabled" && localStorage.discord_token && !localStorage.account_type && document.getElementById("modalv3-account-account-outdated-container")) {
+                document.getElementById("modalv3-account-account-outdated-container").innerHTML = `
+                    <div class="modalv3-profile-tab-file-too-large-warning">
+                        <p class="modalv3-profile-tab-sign-in-notice-title">Account outdated!</p>
+                        <p class="modalv3-profile-tab-sign-in-notice-summary">You logged in to Shop Archives before the new account system, if you ignore this warning some things may break. Please log in again.</p>
+                    </div>
+                `;
+            }
 
             const accountDetails = document.getElementById("modalv3-account-account-details-container");
             
@@ -19192,6 +19204,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         localStorage.removeItem('discord_banner_color');
         localStorage.removeItem('discord_banner');
         localStorage.removeItem('discord_premium_type');
+        localStorage.removeItem('admin_level');
+        localStorage.removeItem('account_type');
         localStorage.dev = "false";
         localStorage.reviews_filter_type = "2";
         location.reload();
