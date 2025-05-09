@@ -1,6 +1,6 @@
 
 
-app_version1 = "409"
+app_version1 = "410"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -17568,13 +17568,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                 <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_TIME_SETTINGS_1_SUMMARY")}</p>
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="modalv3-content-card-1">
-                        <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_DELETE_ALL_HEADER")}</h2>
-                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_REVIEWS_REVIEWS_DELETE_ALL_SUMMARY")}</p>
-
-                        <button class="modalv3-content-card-button" onclick="deleteAllStoredUserData()">Delete Data</button>
                     </div>
                 `;
 
