@@ -1,6 +1,6 @@
 
 
-app_version1 = "407"
+app_version1 = "408"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2458,6 +2458,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     const api_password = localStorage.getItem("api-password");
     const discord_token = localStorage.getItem("discord_token");
+    const shop_archives_token = localStorage.getItem("shop_archives_token");
     const api_token = sessionStorage.getItem("api-token");
 
     // api = 'https://raw.githubusercontent.com/Yappering/api/main/v2';
@@ -2735,6 +2736,23 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
     setCommunityThemesCache()
+
+    if (!atMeUsercache && shop_archives_token) {
+        fetch(api + `/users/@me`, {
+            method: "GET",
+            headers: {
+                "Authorization": shop_archives_token
+            }
+        })
+        .then(response => response.json())
+        .then((data) => {
+            atMeUsercache = data;
+            localStorage.admin_level = data.admin_level;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
     
     async function checkIfValidDiscordToken() {
         if (localStorage.discord_token && !localStorage.discord_profile || localStorage.discord_token && !localStorage.discord_user_id) {
@@ -11209,23 +11227,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     }
                                                                 }
 
-                                                                if (review_mod_ids.includes(localStorage.discord_user_id)) {
+                                                                if (review.users.id === localStorage.discord_user_id || localStorage.admin_level != "0") {
                                                                     let deleteReviewIcon = document.createElement("div");
 
                                                                     deleteReviewIcon.title = getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DELETE_HOVER");
 
                                                                     deleteReviewIcon.innerHTML = `
-                                                                        <svg class="closeIcon_modal delete-review-icon" onclick="adminDeleteReview('${review.id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
-                                                                    `;
-
-                                                                    reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(deleteReviewIcon);
-                                                                } else if (review.users.id === localStorage.discord_user_id) {
-                                                                    let deleteReviewIcon = document.createElement("div");
-
-                                                                    deleteReviewIcon.title = getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DELETE_HOVER");
-
-                                                                    deleteReviewIcon.innerHTML = `
-                                                                        <svg class="closeIcon_modal delete-review-icon" onclick="deleteReview('${apiCategory.sku_id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
+                                                                        <svg class="closeIcon_modal delete-review-icon" onclick="deleteReview('${review.id}');" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
                                                                     `;
 
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(deleteReviewIcon);
@@ -14446,12 +14454,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                "Password": api_password,
-                "Authorization": discord_token,
-                "Token": api_token
+                "Authorization": shop_archives_token
             },
             body: JSON.stringify({
-                accessToken,
                 itemId,
                 rating,
                 reviewText
@@ -14479,21 +14484,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     window.postReview = postReview;
 
-    function deleteReview(itemId) {
-        const accessToken = discord_token;
+    function deleteReview(reviewId) {
       
-        fetch(api + REVIEWSAPI, {
+        fetch(api + REVIEWSAPI + `/delete/${reviewId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-                "Password": api_password,
-                "Authorization": discord_token,
-                "Token": api_token
-            },
-            body: JSON.stringify({
-                accessToken,
-                itemId
-            })
+                "Authorization": shop_archives_token
+            }
         })
         .then(response => response.json())
         .then((data) => {
