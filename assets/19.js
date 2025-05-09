@@ -1,6 +1,6 @@
 
 
-app_version1 = "410"
+app_version1 = "411"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -96,13 +96,13 @@ if (localStorage.discord_username && localStorage.discord_username != '') {
 }
 
 function setRandomDiscordUsername() {
-    localStorage.discord_username = ``;
-    fetch('https://apis.kahoot.it/namerator')
-    .then(response => response.json())
-    .then((data) => {
-        localStorage.discord_username = data.name.toLowerCase();
-        localStorage.discord_displayname = data.name;
-    })
+    localStorage.discord_username = `default_user`;
+    // fetch('https://apis.kahoot.it/namerator')
+    // .then(response => response.json())
+    // .then((data) => {
+    //     localStorage.discord_username = data.name.toLowerCase();
+    //     localStorage.discord_displayname = data.name;
+    // })
 
 }
 
