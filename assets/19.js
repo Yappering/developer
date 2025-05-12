@@ -1,6 +1,6 @@
 
 
-app_version1 = "411"
+app_version1 = "412"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -9,6 +9,9 @@ let discordProfileEffectsCache = null;
 let pplusProfileEffectsCache = null;
 let communityThemesCache = null;
 let atMeUsercache = null;
+let claimablesShopcache = null;
+let myXPBalancecache = null;
+let myClaimablesClaimedCache = null;
 
 defaultAvatar1 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAY1BMVEVYZfJib/OMlfahqPeWn/eBi/XLz/vq6/7////19f5tePTq7P22vPnV2Pyrsvirsvl3gvT09f7Axfp3gfRtePNsePPg4v22vPq2u/qCi/WhqPjf4/zf4v2Xn/essvjLzvuXnvdbidFTAAAETElEQVR4AezBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAIDZudMtV1UlDuCFRKlWIEJ6uOwbzXn/lzzzYc/GWiT6zya/79WrLeYSc5Vq9IFWa3Sr6JehWt0ZZn5RtFJvmHnodPsrPLx1/B9PKx1ziLOPnIRRO84EXaAP/CWnR3pArTWcybpA5G8NsX20pw+cSbpAngEeOQenY+Cf8KIZ4FuDfSV4Ko/7hS7wNjYH7W3MvNeHtn2jvxn+OXcgaP0x8KJo43vgnwqu85EXDfGVULWON9G1BOmDN/M/AnTgDSWC0xve0KAITeSsykFw4qzOQWB4YwNBOfLmPAHpeXsvr5XOgJkjGA3vIlU6A2bvOHvAnXwiCMrwTl5UpUtg5us7BAB2gcg78nXugaC6QORd+bo7AEAXiLwzX+8SANEFNHPdXcAwV90FDgxA037+zwAc7aZlCKnSNTDrADZBdU6DBwbha5wCAabBkWGkSqfAzFa6C8xeADYB9Y2ByEBsbSMAYAy0zHWPActQLPQuKBh3DiwiDRlwzwFOv9JfTpORh5x5rVfQc8CQiLLJiEMaA1oW6XgVq+grVh4yY56JA68x07fm8hCIhXCUPn823zgkG/HK4Rf6kYv8YBt5BQ03BQyv9CMq8M/JQ7IItw+e6cd8QQjKTqCX3OMTtOdCCNZOoCnqkrYgZEFD2/FF/08qDAE4Dji+TtHPKHknVmBboVB2i9HI9zIGahZUhaVqVxCyQEEVQ7rSBMj3QiPUUTCWJkC+8zrQVjzmELBYG2H5jDYUFqAiQDlMtAwKQgjr+nwoq9O2BSEQJQFVWKeNBSEQ6+BYeG3BFIUAHIfasmsLh7IQgLcjDZd0AWXEIZRDMDYCuuj73g95yJGxEuBLPmr6VBSyzMO9Fpzko3kqeA1r8W4GHOWNKQ/JIl4COL4SZf2lPAQhAY4lYrv860rlIVmHlYAsuBhjFwpCwO4LOkb0TMAzAc8EPBPwTMAGngl4JuCZgMig4jMB27AMykJUhCr4ekwzKI10T9hpwzcz6DNSUbRdORzThW/CJSKagd4LjKurof1suFCYVR54MDckpsBXDLk3pliQgxBTHneBrwiaNtOfeUUKCnMQYlKC32x2r7SlmSUpoOQdi5xtoqx1DNP8WW9kKSCVvAu8QnC2USR4/I2bP5vDmhS80pdOjXULw8dc7HSiL6ljYLTmz/ooKvJTdkqTt9G5s/mHczH6qXlV9I32Ehi0+QVfQbn7HryHhvY033V1Tuu3CRncOIj3rL3EV9pf7+53ced0bY+MIZm7ndEt9uNnkxN8OSWhAvjjZ8ktnIoKaMDHF0yH8S416C4Rpv7bU094pWJ9QFv4BJOBvnkFzjWKMvhu4G78IibMIz2EFM3KFUAwCEI+ID9MDia6kd/+enpFj+YE+af+aA8OZAAAAAAG+Vvf46sAAAAAAAAAAAAAAAAAAAAAAFYCeHSjWah9hFcAAAAASUVORK5CYII=`;
 defaultAvatar2 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAhFBMVEV1fop9hpGgpq+ytr2prraXnqfT19vu7/H////29/iGjpju7/DCxszc3+K6vsS6v8WOlqD39/fLztPLz9OPlqDl5+nDx8ygpq6xtr6xtr3m5+iOlp/Dxsvc3+Hd3+GorraGjpnT19rT1tv29/eOlqHU19p+hpGprrWxt72or7bLz9Kfpq+ibmTzAAAEY0lEQVR4AezBAQEAAAQAIPB/swkMqAIAAAAAAAAAAAAAAAAAAAAAgBNZPfFWy86dLimOw3AAV5qYEXFicMKxHIFs03e///PtvaouagjRGMKfNr/vmhorsiMbpwcm+UZjN4PhD2YedR5TZpnZDgfmOww+L/h/jjoaS0iRG7pdk0HBQlECmeevisGEbpDJf7DQlUDJh2xlbm30noWmBGQFuOUcTMeej3CqFeCQzTOCl8i8bymBbPKQDlxeCecGqTH/Dc/ycUVK0LKx51ZVXs08H+WLoSu5la0yQmUK7sXQEKQ592ZOgFLukSE4meUe2YTQlCyinARTFnFOAss9swRlzL1zBCTj/o2ySFdAURCMBV+FiXQFFLP4esADvxGExPKVjJJIX4HCxbcJACyBkq/IxdkDQZVAyVfl4i4AgBIo+cpcvK8AiBJYMsddApY56hJIGcCSrmfFAAq6GsMQTKTvQDEEaILiXAZTBuEAlsAYl8E1wzCRLoEij7QLFKNYmwBhIp0BIo9tBgDMAcMc9xzYMJQcugvytl55VtCHWNx9wHaZ0d+mO6sP6Z7mBnQfYA2R2Fl1yMKCHov8zp3kycHKoQ9x3Mkj9Wv/i9s0FxCC9CJca8cv3JlDxBPecfgz/cwzt9j+etO5hFsCbEM/89I2e/QhoqI+2YBzGnfWEGHRuoBRQ6R9nu0hQJ3AIqgkNwEhLR6oPy7o/2MCQwC2AwWfltAxL/oifgFrhfZhtxitvpexAKug7nnU+gKqw2sO6DDk8bwJKKF6wZRPq8IToO28XqkvDnMK5FiNMB1n9SErqGZ4xeGvQV0IYV2f34ed05qgEIAjgZfAc9oyIATiPbgOvLZgA0IgtkMm7NpCGhCC8evIgkNKILHqEJIQjEZgGfR971wfMmasBLiQj5regkLaObifBd/p0Ls+xHBXOd7NgLH+YepDRIWXAK4yIpE9B4QAJaBgjcq0/3Wl8BDxiJUA4Yuqqob+YiGi7i0BiO4JuCfgnoB7Au4J6ME9AfcE3BNQMqjqnoAYrgkDnAc4BuWoH0sGtUS6J7xdWj4bu5wBHIqqL+yYZz6Lrek47wzOL0M7+kfjLAfyLpGJB3NDYrfnE2wq5VLagNF/GJl3nk/wS+pNM+PuKZAc6EefKP5m87ahPjnWpICMq1lllRsSpmCYxy8aq0sBJcbVnjvw23yR0OHwcR6/cPsuKcjoq+kir1d8lH3O0yl9lYw9oz1+0ZSqQ34SU5O6/KOuV/Zfdf3x4dJFltAB8+wZ9PErvoKqL7vxtp90TY5Pmlyy5ZI2QcDNg+qSZy9VQ9fX1Je7uDM91SNjMPZie/QN9vDFrtZ8OaXwsgcfvjB1y64owBJp+PrlsLrIGfSzIUzN4a7HNxSs2cO8+PSLwfLsJ3Dbh4QEfBlsz/xDjHcTQicHAPIGONck8LJBvpkc7OhMduxzk9CtmUL+U3+2BwcyAAAAAIP8re/xVQAAAAAAAAAAAAAAAAAAAAAAKwFiKavpSRGzHgAAAABJRU5ErkJggg==`;
@@ -2491,26 +2494,16 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         PROFILE_EFFECTS = "/profile-effects",
         COMMUNITY = "/community",
         APISTATUS = "/status",
-        REVIEWSAPI = "/reviews"
+        REVIEWSAPI = "/reviews",
+        CLAIMABLES_SHOP = "/claimables-shop",
+        XP_BALANCE = "/xp-balance",
+        CLAIMABLES_CLAIMED = "/claimables-claimed"
     ]
     if (app_version2 === "Dev") {
         LOGIN_CALLBACK = "/dev/callback"
     } else {
         LOGIN_CALLBACK = "/callback"
     }
-
-    staff_ids = ["1169899815983915121", "1049207768785100880", "194749476269719552"]
-
-    review_mod_ids = ["1169899815983915121", "1049207768785100880"]
-
-    const BADGE_CONFIG = {
-        custom_1: { name: "Flower Girl", class: "badge-custom_1" },
-        staff: { name: "Shop Archives Staff", class: "badge-staff", support: "https://github.com/ShopArchives/support/blob/main/article/1-badges.md#staff" },
-        collectible_dataminer: { name: "Collectibles Dataminer", class: "badge-collectible_dataminer", support: "https://github.com/ShopArchives/support/blob/main/article/1-badges.md#collectibles-dataminer" },
-        bug_hunter_gold: { name: "Shop Archives Bug Hunter", class: "badge-bug_hunter_gold", support: "https://github.com/ShopArchives/support/blob/main/article/1-badges.md#bug-hunter" },
-        bug_hunter: { name: "Shop Archives Bug Hunter", class: "badge-bug_hunter", support: "https://github.com/ShopArchives/support/blob/main/article/1-badges.md#bug-hunter" },
-        contributor: { name: "Github Contributor", class: "badge-contributor" },
-    };
 
     const CUSTOM_EMOJIS = {
         ":thing:": "https://cdn.discordapp.com/emojis/1322807908471275561.webp?size=24",
@@ -2532,6 +2525,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         DATA_EXTRACTION_PROCESS = "85",
         HOAX = "86"
     ]
+
+    claimable_types = {
+        REWARD: 0,
+        PURCHASE: 1
+    };
 
     discord_categories = {
         FANTASY: "1144003461608906824",
@@ -2585,7 +2583,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         SHENANIGANS: "1352407446500675708",
         CHIBI_CAFE: "1354894010849820852",
         GGEZ: "1357589632723849316",
-        HELLO: "1365410896222097539"
+        HELLO: "1365410896222097539",
+        COZY_VALLEY: "1369434230962262128",
+        RC_TEST: "1370467303782617118"
     };
 
     discord_app_ids = {
@@ -2748,6 +2748,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         .then((data) => {
             atMeUsercache = data;
             localStorage.admin_level = data.admin_level;
+
+            if (Array.isArray(data.rollouts)) {
+                data.rollouts.forEach(rollout => {
+                    
+                    localStorage.setItem(rollout.name, rollout.rollout);
+    
+                });
+            }
         })
         .catch(error => {
             console.error(error);
@@ -2786,11 +2794,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=4096`;
                     } else {
                         localStorage.removeItem('discord_banner');
-                    }
-    
-                    if (staff_ids.includes(user.id)) {
-                        localStorage.dev = "true";
-                        console.log('yapper')
                     }
           
                     console.log('success');
@@ -11191,6 +11194,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 reviewElement.innerHTML = `
                                                                     <div class="review-content-inner">
                                                                         <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
+                                                                            <img class="shop-modal-review-avatar-deco-img" src="${review.users.avatar_decoration_data ? `https://cdn.discordapp.com/avatar-decoration-presets/${review.users.avatar_decoration_data.asset}.png?size=40&amp;passthrough=true` : "https://cdn.yapper.shop/assets/31.png"}">
                                                                             <img class="shop-modal-review-avatar-img" src="https://cdn.discordapp.com/avatars/${review.users.id}/${review.users.avatar}.webp?size=128"></img>
                                                                             <p class="shop-modal-review-name" data-shop-modal-review-name></p>
                                                                         </div>
@@ -11239,7 +11243,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(deleteReviewIcon);
                                                                 }
 
-                                                                if (localStorage.experiment_2025_04_reviews_v2_report === "Treatment 1: Enabled" && review.report_type === 0 && review.users.id != localStorage.discord_user_id && localStorage.discord_token) {
+                                                                if (localStorage.experiment_2025_04_reviews_v2_report === "Treatment 1: Enabled" && review.report_type === 0 && review.users.id != localStorage.discord_user_id && localStorage.account_type === "2") {
                                                                     let reportReviewIcon = document.createElement("div");
 
                                                                     reportReviewIcon.title = getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_HOVER");
@@ -11253,7 +11257,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     };
 
                                                                     reviewElement.querySelector("[data-shop-modal-review-moderation-buttons]").appendChild(reportReviewIcon);
-                                                                } else if (localStorage.experiment_2025_04_reviews_v2_report === "Treatment 1: Enabled" && review.report_type != 0 && review_mod_ids.includes(localStorage.discord_user_id) && localStorage.discord_token) {
+                                                                } else if (localStorage.experiment_2025_04_reviews_v2_report === "Treatment 1: Enabled" && review.report_type != 0 && localStorage.admin_level != "0" && localStorage.account_type === "2") {
                                                                     let reportReviewIcon = document.createElement("div");
 
                                                                     reportReviewIcon.title = getTextString("SHOP_CATEGORY_MODAL_REVIEWS_REPORT_HOVER");
@@ -11277,6 +11281,18 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     moderatorNametag.title = `${getTextString("SHOP_CATEGORY_MODAL_NAMETAG_SYSTEM_TITLE")}`;
 
                                                                     reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(moderatorNametag);
+                                                                }
+
+                                                                if (review.users.primary_guild) {
+                                                                    let reviewServerTagContainer = document.createElement("div");
+    
+                                                                    reviewServerTagContainer.classList.add("shop-modal-review-server-tag-container");
+                                                                    reviewServerTagContainer.innerHTML = `
+                                                                        <img src="https://cdn.discordapp.com/clan-badges/${review.users.primary_guild.identity_guild_id}/${review.users.primary_guild.badge}.png?size=24"></img>
+                                                                        <p>${review.users.primary_guild.tag}</p>
+                                                                    `;
+
+                                                                    reviewElement.querySelector("[data-shop-modal-review-name-container]").appendChild(reviewServerTagContainer);
                                                                 }
 
                                                                 if (Array.isArray(review.users.badges)) {
@@ -11650,6 +11666,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 modal.remove();
                                                 modal_back.remove();
                                             }, 300);
+                                            removeParams('itemSkuId');
+                                            modalIsAlreadyOpen = false;
                                         });
                                     }
                                 }
@@ -14378,19 +14396,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
     function reportReview(reviewId, reportType) {
-        const accessToken = discord_token;
       
-        fetch(api + REVIEWSAPI + '/report', {
+        fetch(api + REVIEWSAPI + `/report/${reviewId}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Password": api_password,
-                "Authorization": discord_token,
-                "Token": api_token
+                "Authorization": shop_archives_token
             },
             body: JSON.stringify({
-                accessToken,
-                reviewId,
                 reportType: Number(reportType)
             })
         })
@@ -15007,11 +15020,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         } else {
                                             localStorage.removeItem('discord_banner');
                                         }
-
-                                        if (staff_ids.includes(user.id)) {
-                                            localStorage.dev = "true";
-                                            console.log('yapper')
-                                        }
                                     
                                         console.log('success');
                                         setParams({ page: 'home', login: 'true' });
@@ -15179,10 +15187,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             } else {
                 localStorage.removeItem('discord_banner');
             }
-
-            if (staff_ids.includes(loginInfo.user.id)) {
-                localStorage.dev = "true";
-            }
         } else if (type === "1") {
 
             localStorage.discord_profile = JSON.stringify(loginInfo, undefined, 4);
@@ -15202,10 +15206,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 localStorage.discord_banner = `https://cdn.discordapp.com/banners/${loginInfo.id}/${loginInfo.banner}.png?size=4096`;
             } else {
                 localStorage.removeItem('discord_banner');
-            }
-
-            if (staff_ids.includes(loginInfo.id)) {
-                localStorage.dev = "true";
             }
         }
 
@@ -17060,11 +17060,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
             <div id="modalv3-side-tabs-accessibility-container"></div>
 
+            <div id="xp-perks-options-modalv3-container"></div>
+
             <div id="staff-options-modalv3-container"></div>
 
             <div id="login-logout-options-modalv3-container"></div>
-
+        
             <hr>
+            
             <div class="modalv3-side-tabs-app-info-container">
                 <p>Website made by: </p><a class="link" href="https://github.com/DTACat/">DTACat</a>
                 <p>${app_version2} ${app_version1}</p>
@@ -17103,6 +17106,22 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             `;
         }
 
+        if (localStorage.experiment_2025_05_xp_system === "Treatment 1: Enabled") {
+            document.getElementById("xp-perks-options-modalv3-container").innerHTML = `
+                <hr>
+                <p class="side-tabs-category-text">${getTextString("MODAL_V3_TAB_HEADER_XP_PERKS")}</p>
+                <button class="side-tabs-button" id="modal-v3-tab-xp_events" onclick="setModalv3InnerContent('xp_events')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_XP_EVENTS")}</p>
+                </button>
+                <button class="side-tabs-button" id="modal-v3-tab-xp_general" onclick="setModalv3InnerContent('xp_general')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_XP_GENERAL")}</p>
+                </button>
+                <button class="side-tabs-button" id="modal-v3-tab-xp_inventory" onclick="setModalv3InnerContent('xp_inventory')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_XP_INVENTORY")}</p>
+                </button>
+            `;
+        }
+
         if (localStorage.dev === "true") {
             document.getElementById("staff-options-modalv3-container").innerHTML = `
                 <hr>
@@ -17115,6 +17134,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 </button>
                 <button class="side-tabs-button" id="modal-v3-tab-api_test_fetch" onclick="setModalv3InnerContent('api_test_fetch')">
                     <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_API_TEST_FETCH")}</p>
+                </button>
+                <button class="side-tabs-button" id="modal-v3-tab-claimables_purchase" onclick="setModalv3InnerContent('claimables_purchase')">
+                    <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_CLAIMABLES_PURCHASE")}</p>
                 </button>
                 <button class="side-tabs-button" id="modal-v3-tab-local_storage" onclick="setModalv3InnerContent('local_storage')">
                     <p class="side-tabs-button-text">${getTextString("MODAL_V3_TAB_TEXT_LOCAL_STORAGE")}</p>
@@ -17149,7 +17171,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         });
     }
 
-    function setModalv3InnerContent(tab) {
+    async function setModalv3InnerContent(tab) {
         if (!document.getElementById("modalv3-right-content-container-inner")) {
             openNewDiscordLikeSettings();
         }
@@ -17827,6 +17849,396 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     <input class="modalv3-toggle" onclick="reducedMotionChecked();" id="reduced-motion-box" type="checkbox">
                 </div>
             `;
+        } else if (tab === "xp_events") {
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_XP_EVENTS_HEADER")}</h2>
+            `;
+        } else if (tab === "xp_general") {
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_XP_SHOP_HEADER")}</h2>
+
+                <div id="modalv3-failed-to-load-xp-shop">
+                </div>
+
+                <div id="modalv3-failed-to-load-xp-balance">
+                </div>
+
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_XP_SHOP_XP_LEVEL_HEADER")}</h2>
+
+                    <div class="my-xp-balance-container">
+                        <div class="my-xp-balance-container-inner">
+                            <h2 class="my-xp-balance" id="modalv3-xp-balance-text"> ... </h2>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_XP_SHOP_CLAIMABLES_FEATURED")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_XP_SHOP_CLAIMABLES_FEATURED_SUMMARY")}</p>
+
+                    <p class="modalv3-xp-card-featured-title" id="modalv3-xp-perks-loading">Loading Perks...</p>
+
+                    <div style="display: none;" id="modalv3-xp-perks-featured-output" class="xp-card-featured-container">
+                    </div>
+                </div>
+                <hr style="opacity: 0;">
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_XP_SHOP_CLAIMABLES_ADDITIONAL")}</h2>
+
+                    <div style="display: none;" id="modalv3-xp-perks-shop-output" class="xp-card-shop-container">
+                    </div>
+                </div>
+            `;
+
+            if (!atMeUsercache) {
+                try {
+
+                    const userInfo = await fetch('https://api.yapper.shop/v2/users/@me', {
+                        headers: { Authorization: `${shop_archives_token}` }
+                    });
+          
+                    if (!userInfo.ok) {
+                        document.getElementById("modalv3-failed-to-load-xp-shop").innerHTML = `
+                            <div class="modalv3-profile-tab-file-too-large-warning">
+                                <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_SHOP_ERROR_2")}</p>
+                            </div>
+                            <hr style="opacity: 0;">
+                        `;
+                    }
+
+                    const me = await userInfo.json();
+
+                    if (me.message) {
+                        document.getElementById("modalv3-failed-to-load-xp-shop").innerHTML = `
+                            <div class="modalv3-profile-tab-file-too-large-warning">
+                                <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_SHOP_ERROR_2")}</p>
+                                <p class="modalv3-profile-tab-sign-in-notice-summary">${data.error}, ${data.message}</p>
+                            </div>
+                            <hr style="opacity: 0;">
+                        `;
+                    } else {
+                        atMeUsercache = me;
+                    }
+              
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+
+            if (!myClaimablesClaimedCache) {
+                try {
+
+                    const userInfo = await fetch(api + CLAIMABLES_CLAIMED, {
+                        headers: { Authorization: `${shop_archives_token}` }
+                    });
+          
+                    if (!userInfo.ok) {
+                        document.getElementById("modalv3-failed-to-load-xp-shop").innerHTML = `
+                            <div class="modalv3-profile-tab-file-too-large-warning">
+                                <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_SHOP_ERROR_2")}</p>
+                            </div>
+                            <hr style="opacity: 0;">
+                        `;
+                    }
+
+                    const claimablesClaimed = await userInfo.json();
+
+                    if (claimablesClaimed.message) {
+                        document.getElementById("modalv3-failed-to-load-xp-shop").innerHTML = `
+                            <div class="modalv3-profile-tab-file-too-large-warning">
+                                <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_SHOP_ERROR_2")}</p>
+                                <p class="modalv3-profile-tab-sign-in-notice-summary">${claimablesClaimed.error}, ${claimablesClaimed.message}</p>
+                            </div>
+                            <hr style="opacity: 0;">
+                        `;
+                    } else {
+                        myClaimablesClaimedCache = claimablesClaimed;
+                    }
+              
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+
+            if (!claimablesShopcache) {
+                fetch(api + CLAIMABLES_SHOP, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": shop_archives_token
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        document.getElementById("modalv3-failed-to-load-xp-shop").innerHTML = `
+                            <div class="modalv3-profile-tab-file-too-large-warning">
+                                <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_SHOP_ERROR_2")}</p>
+                                <p class="modalv3-profile-tab-sign-in-notice-summary">${data.error}, ${data.message}</p>
+                            </div>
+                            <hr style="opacity: 0;">
+                        `;
+                    } else {
+                        claimablesShopcache = data;
+                        renderXPShop(data);
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    document.getElementById("modalv3-failed-to-load-xp-shop").innerHTML = `
+                        <div class="modalv3-profile-tab-file-too-large-warning">
+                            <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_SHOP_ERROR_2")}</p>
+                            <p class="modalv3-profile-tab-sign-in-notice-summary">${error}</p>
+                        </div>
+                        <hr style="opacity: 0;">
+                    `;
+                });
+            } else {
+                renderXPShop(claimablesShopcache)
+            }
+
+            if (!myXPBalancecache) {
+                fetch(api + XP_BALANCE, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": shop_archives_token
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        document.getElementById("modalv3-failed-to-load-xp-balance").innerHTML = `
+                            <div class="modalv3-profile-tab-file-too-large-warning">
+                                <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_SHOP_ERROR_3")}</p>
+                                <p class="modalv3-profile-tab-sign-in-notice-summary">${data.error}, ${data.message}</p>
+                            </div>
+                            <hr style="opacity: 0;">
+                        `;
+                    } else {
+                        myXPBalancecache = data;
+                        rendermyXPBalanceShop(data);
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    document.getElementById("modalv3-failed-to-load-xp-balance").innerHTML = `
+                        <div class="modalv3-profile-tab-file-too-large-warning">
+                            <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_SHOP_ERROR_3")}</p>
+                            <p class="modalv3-profile-tab-sign-in-notice-summary"${error}</p>
+                        </div>
+                        <hr style="opacity: 0;">
+                    `;
+                });
+            } else {
+                rendermyXPBalanceShop(myXPBalancecache)
+            }
+
+            function renderXPShop(data) {
+                document.getElementById("modalv3-xp-perks-featured-output").innerHTML = ``;
+                document.getElementById("modalv3-xp-perks-shop-output").innerHTML = ``;
+    
+                data.featured.forEach(featured => {
+                    let featuredCard = document.createElement("div");
+    
+                    featuredCard.classList.add("xp-card-featured");
+
+                    let itemPrice = `${featured.price.toLocaleString()} XP`;
+
+                    let alreadyClaimed = false;
+
+                    let nonoClaim = false;
+
+                    if (myClaimablesClaimedCache != null) {
+                        myClaimablesClaimedCache.forEach(claimed => {
+                            if (claimed.id === featured.id) {
+                                itemPrice = "Already Claimed"
+                                alreadyClaimed = true;
+                            }
+                        });
+                    }
+    
+                    featuredCard.innerHTML = `
+                        <p class="modalv3-xp-card-featured-title">${featured.name}</p>
+                        <p class="modalv3-xp-card-featured-summary">${featured.summary}</p>
+                        <div data-possible-review-preview></div>
+                        <div class="review-element-padding"></div>
+                        <p class="modalv3-xp-card-featured-price">${itemPrice}</p>
+                    `;
+
+                    const today = new Date();
+                    const year = today.getFullYear();
+                    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                    const day = String(today.getDate()).padStart(2, '0');
+                    let formattedDate = `${day}/${month}/${year}`
+
+                    if (localStorage.reviews_time_type === "us") {
+                        formattedDate = `${month}/${day}/${year}`
+                    }
+    
+                    if (featured.id === "2" && atMeUsercache.primary_guild) {
+
+                        featuredCard.querySelector("[data-possible-review-preview]").innerHTML = `
+                            <div class="review-element">
+                                <div class="review-content-inner">
+                                    <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
+                                        <img class="shop-modal-review-avatar-deco-img" src="https://cdn.yapper.shop/assets/31.png">
+                                        <img class="shop-modal-review-avatar-img" src="https://cdn.discordapp.com/avatars/${atMeUsercache.id}/${atMeUsercache.avatar}.webp?size=128">
+                                        <p class="shop-modal-review-name">${atMeUsercache.global_name}</p>
+                                        <div class="shop-modal-review-server-tag-container">
+                                            <img src="https://cdn.discordapp.com/clan-badges/${atMeUsercache.primary_guild.identity_guild_id}/${atMeUsercache.primary_guild.badge}.png?size=24"></img>
+                                            <p>${atMeUsercache.primary_guild.tag}</p>
+                                        </div>
+                                    <div class="shop-modal-review-star-container">
+                                    <img class="shop-modal-review-stars-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMTIwIDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTMxXzM5KSI+CjxwYXRoIGQ9Ik0xMiAwTDE0LjY5NDIgOC4yOTE4SDIzLjQxMjdMMTYuMzU5MyAxMy40MTY0TDE5LjA1MzQgMjEuNzA4MkwxMiAxNi41ODM2TDQuOTQ2NTggMjEuNzA4Mkw3LjY0MDc0IDEzLjQxNjRMMC41ODczMjIgOC4yOTE4SDkuMzA1ODNMMTIgMFoiIGZpbGw9IiNGRkVDM0UiLz4KPHBhdGggZD0iTTM2IDBMMzguNjk0MiA4LjI5MThINDcuNDEyN0w0MC4zNTkzIDEzLjQxNjRMNDMuMDUzNCAyMS43MDgyTDM2IDE2LjU4MzZMMjguOTQ2NiAyMS43MDgyTDMxLjY0MDcgMTMuNDE2NEwyNC41ODczIDguMjkxOEgzMy4zMDU4TDM2IDBaIiBmaWxsPSIjRkZFQzNFIi8+CjxwYXRoIGQ9Ik02MCAwTDYyLjY5NDIgOC4yOTE4SDcxLjQxMjdMNjQuMzU5MyAxMy40MTY0TDY3LjA1MzQgMjEuNzA4Mkw2MCAxNi41ODM2TDUyLjk0NjYgMjEuNzA4Mkw1NS42NDA3IDEzLjQxNjRMNDguNTg3MyA4LjI5MThINTcuMzA1OEw2MCAwWiIgZmlsbD0iI0ZGRUMzRSIvPgo8cGF0aCBkPSJNODQgMEw4Ni42OTQyIDguMjkxOEg5NS40MTI3TDg4LjM1OTMgMTMuNDE2NEw5MS4wNTM0IDIxLjcwODJMODQgMTYuNTgzNkw3Ni45NDY2IDIxLjcwODJMNzkuNjQwNyAxMy40MTY0TDcyLjU4NzMgOC4yOTE4SDgxLjMwNThMODQgMFoiIGZpbGw9IiM1NzU3NTciLz4KPHBhdGggZD0iTTEwOCAwTDExMC42OTQgOC4yOTE4SDExOS40MTNMMTEyLjM1OSAxMy40MTY0TDExNS4wNTMgMjEuNzA4MkwxMDggMTYuNTgzNkwxMDAuOTQ3IDIxLjcwODJMMTAzLjY0MSAxMy40MTY0TDk2LjU4NzMgOC4yOTE4SDEwNS4zMDZMMTA4IDBaIiBmaWxsPSIjNTc1NzU3Ii8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMTMxXzM5Ij4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K">
+                                </div>
+                                <p class="shop-modal-review-time-container">${formattedDate}</p>
+                                </div>
+                                <p class="shop-modal-review-review-text">${featured.preview_text}</p>
+                                </div>
+                            </div>
+                        `;
+
+                    } else if (featured.id === "2" && !atMeUsercache.primary_guild) {
+    
+                        let featuredCardBlock = document.createElement("div");
+    
+                        featuredCardBlock.classList.add("xp-card-featured-block");
+
+                        featuredCardBlock.innerHTML = `
+                            <div class="profile-no-text-container">
+                                <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: white;">${getTextString("MODAL_V3_TAB_XP_SHOP_CANT_CLAIM_1")}</p>
+                                <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("MODAL_V3_TAB_XP_SHOP_CANT_CLAIM_2")}</p>
+                                <a class="link" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More</a>
+                            </div>
+                        `;
+
+                        featuredCard.appendChild(featuredCardBlock);
+
+                        nonoClaim = true;
+    
+                    } else if (featured.id === "3") {
+    
+                        featuredCard.querySelector("[data-possible-review-preview]").innerHTML = `
+                            <div class="review-element review-color-preview">
+                                <div class="review-content-inner">
+                                    <div class="shop-modal-review-name-container">
+                                        <img class="shop-modal-review-avatar-img" src="https://cdn.discordapp.com/avatars/${atMeUsercache.id}/${atMeUsercache.avatar}.webp?size=128">
+                                        <p class="shop-modal-review-name">${atMeUsercache.global_name}</p>
+                                    <div class="shop-modal-review-star-container">
+                                    <img class="shop-modal-review-stars-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMTIwIDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTMxXzM5KSI+CjxwYXRoIGQ9Ik0xMiAwTDE0LjY5NDIgOC4yOTE4SDIzLjQxMjdMMTYuMzU5MyAxMy40MTY0TDE5LjA1MzQgMjEuNzA4MkwxMiAxNi41ODM2TDQuOTQ2NTggMjEuNzA4Mkw3LjY0MDc0IDEzLjQxNjRMMC41ODczMjIgOC4yOTE4SDkuMzA1ODNMMTIgMFoiIGZpbGw9IiNGRkVDM0UiLz4KPHBhdGggZD0iTTM2IDBMMzguNjk0MiA4LjI5MThINDcuNDEyN0w0MC4zNTkzIDEzLjQxNjRMNDMuMDUzNCAyMS43MDgyTDM2IDE2LjU4MzZMMjguOTQ2NiAyMS43MDgyTDMxLjY0MDcgMTMuNDE2NEwyNC41ODczIDguMjkxOEgzMy4zMDU4TDM2IDBaIiBmaWxsPSIjRkZFQzNFIi8+CjxwYXRoIGQ9Ik02MCAwTDYyLjY5NDIgOC4yOTE4SDcxLjQxMjdMNjQuMzU5MyAxMy40MTY0TDY3LjA1MzQgMjEuNzA4Mkw2MCAxNi41ODM2TDUyLjk0NjYgMjEuNzA4Mkw1NS42NDA3IDEzLjQxNjRMNDguNTg3MyA4LjI5MThINTcuMzA1OEw2MCAwWiIgZmlsbD0iI0ZGRUMzRSIvPgo8cGF0aCBkPSJNODQgMEw4Ni42OTQyIDguMjkxOEg5NS40MTI3TDg4LjM1OTMgMTMuNDE2NEw5MS4wNTM0IDIxLjcwODJMODQgMTYuNTgzNkw3Ni45NDY2IDIxLjcwODJMNzkuNjQwNyAxMy40MTY0TDcyLjU4NzMgOC4yOTE4SDgxLjMwNThMODQgMFoiIGZpbGw9IiM1NzU3NTciLz4KPHBhdGggZD0iTTEwOCAwTDExMC42OTQgOC4yOTE4SDExOS40MTNMMTEyLjM1OSAxMy40MTY0TDExNS4wNTMgMjEuNzA4MkwxMDggMTYuNTgzNkwxMDAuOTQ3IDIxLjcwODJMMTAzLjY0MSAxMy40MTY0TDk2LjU4NzMgOC4yOTE4SDEwNS4zMDZMMTA4IDBaIiBmaWxsPSIjNTc1NzU3Ii8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMTMxXzM5Ij4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K">
+                                </div>
+                                <p class="shop-modal-review-time-container">${formattedDate}</p>
+                                </div>
+                                <p class="shop-modal-review-review-text">${featured.preview_text}</p>
+                                </div>
+                            </div>
+                        `;
+    
+                    } else if (featured.id === "5" && atMeUsercache.avatar_decoration_data) {
+
+                        featuredCard.querySelector("[data-possible-review-preview]").innerHTML = `
+                            <div class="review-element">
+                                <div class="review-content-inner">
+                                    <div class="shop-modal-review-name-container">
+                                        <img class="shop-modal-review-avatar-deco-img" src="${atMeUsercache.avatar_decoration_data ? `https://cdn.discordapp.com/avatar-decoration-presets/${atMeUsercache.avatar_decoration_data.asset}.png?size=40&amp;passthrough=true` : "https://cdn.yapper.shop/assets/31.png"}">
+                                        <img class="shop-modal-review-avatar-img" src="https://cdn.discordapp.com/avatars/${atMeUsercache.id}/${atMeUsercache.avatar}.webp?size=128">
+                                        <p class="shop-modal-review-name">${atMeUsercache.global_name}</p>
+                                    <div class="shop-modal-review-star-container">
+                                    <img class="shop-modal-review-stars-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMTIwIDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTMxXzM5KSI+CjxwYXRoIGQ9Ik0xMiAwTDE0LjY5NDIgOC4yOTE4SDIzLjQxMjdMMTYuMzU5MyAxMy40MTY0TDE5LjA1MzQgMjEuNzA4MkwxMiAxNi41ODM2TDQuOTQ2NTggMjEuNzA4Mkw3LjY0MDc0IDEzLjQxNjRMMC41ODczMjIgOC4yOTE4SDkuMzA1ODNMMTIgMFoiIGZpbGw9IiNGRkVDM0UiLz4KPHBhdGggZD0iTTM2IDBMMzguNjk0MiA4LjI5MThINDcuNDEyN0w0MC4zNTkzIDEzLjQxNjRMNDMuMDUzNCAyMS43MDgyTDM2IDE2LjU4MzZMMjguOTQ2NiAyMS43MDgyTDMxLjY0MDcgMTMuNDE2NEwyNC41ODczIDguMjkxOEgzMy4zMDU4TDM2IDBaIiBmaWxsPSIjRkZFQzNFIi8+CjxwYXRoIGQ9Ik02MCAwTDYyLjY5NDIgOC4yOTE4SDcxLjQxMjdMNjQuMzU5MyAxMy40MTY0TDY3LjA1MzQgMjEuNzA4Mkw2MCAxNi41ODM2TDUyLjk0NjYgMjEuNzA4Mkw1NS42NDA3IDEzLjQxNjRMNDguNTg3MyA4LjI5MThINTcuMzA1OEw2MCAwWiIgZmlsbD0iI0ZGRUMzRSIvPgo8cGF0aCBkPSJNODQgMEw4Ni42OTQyIDguMjkxOEg5NS40MTI3TDg4LjM1OTMgMTMuNDE2NEw5MS4wNTM0IDIxLjcwODJMODQgMTYuNTgzNkw3Ni45NDY2IDIxLjcwODJMNzkuNjQwNyAxMy40MTY0TDcyLjU4NzMgOC4yOTE4SDgxLjMwNThMODQgMFoiIGZpbGw9IiM1NzU3NTciLz4KPHBhdGggZD0iTTEwOCAwTDExMC42OTQgOC4yOTE4SDExOS40MTNMMTEyLjM1OSAxMy40MTY0TDExNS4wNTMgMjEuNzA4MkwxMDggMTYuNTgzNkwxMDAuOTQ3IDIxLjcwODJMMTAzLjY0MSAxMy40MTY0TDk2LjU4NzMgOC4yOTE4SDEwNS4zMDZMMTA4IDBaIiBmaWxsPSIjNTc1NzU3Ii8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMTMxXzM5Ij4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K">
+                                </div>
+                                <p class="shop-modal-review-time-container">${formattedDate}</p>
+                                </div>
+                                <p class="shop-modal-review-review-text">${featured.preview_text}</p>
+                                </div>
+                            </div>
+                        `;
+                    } else if (featured.id === "5" && !atMeUsercache.avatar_decoration_data) {
+    
+                        let featuredCardBlock = document.createElement("div");
+    
+                        featuredCardBlock.classList.add("xp-card-featured-block");
+
+                        featuredCardBlock.innerHTML = `
+                            <div class="profile-no-text-container">
+                                <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: white;">${getTextString("MODAL_V3_TAB_XP_SHOP_CANT_CLAIM_1")}</p>
+                                <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("MODAL_V3_TAB_XP_SHOP_CANT_CLAIM_2")}</p>
+                                <a class="link" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More</a>
+                            </div>
+                        `;
+
+                        featuredCard.appendChild(featuredCardBlock);
+
+                        nonoClaim = true;
+    
+                    }
+
+                    if (alreadyClaimed === false && nonoClaim === false) {
+                        featuredCard.addEventListener('click', () => {
+                            openClaimablesPurchaseModal(featured.id)
+                        });
+                        featuredCard.classList.add("clickable");
+                    }
+    
+                    document.getElementById("modalv3-xp-perks-featured-output").appendChild(featuredCard);
+    
+                });
+                
+                data.shop.forEach(claimable => {
+                    let shopCard = document.createElement("div");
+
+                    shopCard.classList.add("xp-card-shop");
+    
+                    let itemPrice = `${claimable.price.toLocaleString()} XP`;
+
+                    let alreadyClaimed = false;
+
+                    if (myClaimablesClaimedCache != null) {
+                        myClaimablesClaimedCache.forEach(claimed => {
+                            if (claimed.id === claimable.id) {
+                                itemPrice = "Already Claimed"
+                                alreadyClaimed = true;
+                            }
+                        });
+                    }
+
+                    if (itemPrice != "Already Claimed") {
+                        shopCard.classList.add("clickable");
+                    }
+
+                    if (alreadyClaimed === false) {
+                        shopCard.addEventListener('click', () => {
+                            openClaimablesPurchaseModal(claimable.id)
+                        });
+                    }
+    
+                    shopCard.innerHTML = `
+                        <p class="modalv3-xp-card-featured-title">${claimable.name}</p>
+                        <p class="modalv3-xp-card-featured-summary">${claimable.summary}</p>
+                        <p class="modalv3-xp-card-featured-price">${itemPrice}</p>
+                    `;
+    
+                    document.getElementById("modalv3-xp-perks-shop-output").appendChild(shopCard);
+    
+                });
+
+                document.getElementById("modalv3-xp-perks-featured-output").style.display = `grid`;
+                document.getElementById("modalv3-xp-perks-shop-output").style.display = `grid`;
+                document.getElementById("modalv3-xp-perks-loading").style.display = `none`;
+            }
+
+            window.renderXPShop = renderXPShop;
+
+            function rendermyXPBalanceShop(data) {
+                document.getElementById("modalv3-xp-balance-text").textContent = ` ${data.xp_balance.toLocaleString()} `;
+            }
+
+        } else if (tab === "xp_inventory") {
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_XP_INVENTORY_HEADER")}</h2>
+            `;
         } else if (tab === "experiments") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
@@ -18106,6 +18518,25 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     </div>
                 `;
             });
+        } else if (tab === "claimables_purchase") {
+            document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
+            tabPageOutput.innerHTML = `
+                <h2>${getTextString("MODAL_V3_TAB_CLAIMABLES_PURCHASE_HEADER")}</h2>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_CLAIMABLES_PURCHASE_TITLE_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_CLAIMABLES_PURCHASE_TITLE_SUMMARY")}</p>
+
+                    <div class="modalv3-content-card-2">
+                        <p class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_CLAIMABLES_PURCHASE_OPEN_MODAL_TITLE")}</p>
+                        <input autocomplete="off" type="text" class="modalv3-api-testfetch-text-input" id="modalv3-claimable-id-test" placeholder="${getTextString("MODAL_V3_TAB_CLAIMABLES_PURCHASE_OPEN_MODAL_TITLE")}">
+                    </div>
+
+                    <button class="modalv3-content-card-button" id="modalv3-claimable-id-button">${getTextString("MODAL_V3_TAB_CLAIMABLES_PURCHASE_OPEN_MODAL_OPEN")}</button>
+                </div>
+            `;
+            document.getElementById("modalv3-claimable-id-button").addEventListener("click", function () {
+                openClaimablesPurchaseModal(document.getElementById("modalv3-claimable-id-test").value);
+            });
         } else if (tab === "local_storage") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
@@ -18159,6 +18590,282 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             console.error(tab + ' is not a valid tab');
         }
     }
+
+    window.setModalv3InnerContent = setModalv3InnerContent;
+
+    async function openClaimablesPurchaseModal(claimableId) {
+
+        let disclaimerString = '';
+
+        if (claimableId === "2") {
+            disclaimerString = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_2");
+        } else if (claimableId === "3") {
+            disclaimerString = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_3");
+        } else if (claimableId === "4") {
+            disclaimerString = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_4");
+        } else if (claimableId === "5") {
+            disclaimerString = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_5");
+        }
+
+        if (!claimableId) {
+            claimableId = null;
+        }
+
+        let modal = document.createElement("div");
+
+        modal.classList.add('modalv2');
+
+        modal.innerHTML = `
+            <div class="modalv2-inner claimables-purchase">
+                <div data-modal-top-product-buttons>
+                    <div title="Close" data-close-product-card-button>
+                        <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                    </div>
+                </div>
+                <img src="https://cdn.discordapp.com/app-assets/1096190356233670716/1116154530145505300.png?size=4096"></img>
+                <div class="claimable-modal-img-block">
+                </div>
+                <p class="title">${getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_HEADER")}</p>
+                <div class="claimable-modal-preview">
+                    <p class="sub-header" style="opacity: 0; width: 1px;">Dummy_Text</p>
+                    <p class="sub-header" style="left: 15px; top: 15px; position: absolute;" data-claimable-purchase-modal-name-preview>Loading...</p>
+                    <p class="sub-header" style="right: 15px; top: 15px; position: absolute;" data-claimable-purchase-modal-price-preview></p>
+                </div>
+                <div class="claimable-modal-preview">
+                    <p class="sub-header" data-claimable-purchase-your-xp>You have ... XP</p>
+                </div>
+
+                <p class="sub-text-bold">${getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_1")}</p>
+                <p class="sub-text">${disclaimerString}</p>
+
+                <div class="report-review-bottom">
+                    <p class="shop-category-modal-report-review-error-output" id="shop-claim-item-modal-error-output" data-shop-claim-item-modal-error-output></p>
+                    <button class="modalv3-content-card-button purchase-button" style="display: nonel" data-claimable-purchase-button>Claim for ... XP</button>
+                </div>
+            </div>
+        `;
+
+        if (!myXPBalancecache) {
+            try {
+
+                const userInfo = await fetch(api + XP_BALANCE, {
+                    headers: { Authorization: `${shop_archives_token}` }
+                });
+      
+                if (!userInfo.ok) {
+                    
+                }
+
+                const xpBalance = await userInfo.json();
+
+                if (xpBalance.message) {
+                    
+                } else {
+                    myXPBalancecache = xpBalance;
+                    rendermyXPBalanceModal(xpBalance);
+                }
+          
+            } catch (error) {
+                console.error(error)
+            }
+        } else {
+            rendermyXPBalanceModal(myXPBalancecache)
+        }
+
+        function rendermyXPBalanceModal(data) {
+            modal.querySelector("[data-claimable-purchase-your-xp]").textContent = `You have ${data.xp_balance.toLocaleString()} XP`;
+        }
+
+        fetch(api + '/claimables/published/' + claimableId, {
+            method: "GET",
+            headers: {
+                "Authorization": shop_archives_token
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                modal.classList.remove('show');
+                modal_back.classList.remove('show');
+                setTimeout(() => {
+                    modal.remove();
+                    modal_back.remove();
+                }, 300);
+            } else {
+                modal.querySelector("[data-claimable-purchase-modal-name-preview]").textContent = data.name;
+                modal.querySelector("[data-claimable-purchase-modal-price-preview]").textContent = data.xp_price.toLocaleString() + ' XP';
+                modal.querySelector("[data-claimable-purchase-button]").textContent = `Claim for ${data.xp_price.toLocaleString()} XP`;
+                modal.querySelector("[data-claimable-purchase-button]").style.display = 'unset';
+
+                if (myXPBalancecache.xp_balance < data.xp_price) {
+                    modal.querySelector("[data-claimable-purchase-button]").disabled = true;
+                    modal.querySelector("[data-shop-claim-item-modal-error-output]").textContent = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_NOT_ENOUGH_ERROR");
+                }
+                modal.querySelector("[data-claimable-purchase-button]").addEventListener('click', () => {
+                    modal.querySelector("[data-claimable-purchase-button]").disabled = true;
+                    modal.querySelector("[data-claimable-purchase-button]").textContent = `...`;
+                    claimPerkWithXP(data.id, modal, modal_back)
+                });
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            modal.classList.remove('show');
+            modal_back.classList.remove('show');
+            setTimeout(() => {
+                modal.remove();
+                modal_back.remove();
+            }, 300);
+        });
+
+        document.body.appendChild(modal);
+
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 1);
+
+        let modal_back = document.createElement("div");
+
+        modal_back.classList.add('modalv2-back');
+        modal_back.id = 'modalv2-back';
+
+        document.body.appendChild(modal_back);
+
+        setTimeout(() => {
+            modal_back.classList.add('show');
+        }, 1);
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.classList.remove('show');
+                modal_back.classList.remove('show');
+                setTimeout(() => {
+                    modal.remove();
+                    modal_back.remove();
+                }, 300);
+            }
+        });
+
+        modal.querySelector("[data-close-product-card-button]").addEventListener('click', () => {
+            modal.classList.remove('show');
+            modal_back.classList.remove('show');
+            setTimeout(() => {
+                modal.remove();
+                modal_back.remove();
+            }, 300);
+        });
+    }
+
+    async function claimPerkWithXP(perkId, modal, modal_back) {
+        document.getElementById("shop-claim-item-modal-error-output").textContent = '';
+
+        try {
+
+            const userInfo = await fetch(api + '/claimables/purchase/' + perkId, {
+                method: "POST",
+                headers: { Authorization: `${shop_archives_token}` }
+            });
+  
+            if (!userInfo.ok) {
+                
+            }
+
+            const purchase = await userInfo.json();
+
+            if (purchase.message) {
+                document.getElementById("shop-claim-item-modal-error-output").textContent = purchase.message;
+            } else {
+                await updateXPBalance();
+                await updateClaimablesClaimed();
+                await updatePerksShop();
+
+                modal.classList.remove('show');
+                modal_back.classList.remove('show');
+                setTimeout(() => {
+                    modal.remove();
+                    modal_back.remove();
+                }, 300);
+            }
+      
+        } catch (error) {
+            console.error(error)
+            document.getElementById("shop-claim-item-modal-error-output").textContent = error;
+        }
+    }
+
+    async function updateXPBalance() {
+        try {
+
+            const userInfo = await fetch(api + XP_BALANCE, {
+                headers: { Authorization: `${shop_archives_token}` }
+            });
+  
+            if (!userInfo.ok) {
+            }
+
+            const data = await userInfo.json();
+
+            if (data.message) {
+                
+            } else {
+                myXPBalancecache = data;
+                if (document.getElementById("modalv3-xp-balance-text")) {
+                    document.getElementById("modalv3-xp-balance-text").textContent = data.xp_balance.toLocaleString();
+                }
+            }
+      
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    async function updatePerksShop() {
+        try {
+
+            const userInfo = await fetch(api + CLAIMABLES_SHOP, {
+                headers: { Authorization: `${shop_archives_token}` }
+            });
+  
+            if (!userInfo.ok) {
+            }
+
+            const data = await userInfo.json();
+
+            if (data.message) {
+                
+            } else {
+                claimablesShopcache = data;
+                renderXPShop(data)
+            }
+      
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    async function updateClaimablesClaimed() {
+        try {
+
+            const userInfo = await fetch(api + CLAIMABLES_CLAIMED, {
+                headers: { Authorization: `${shop_archives_token}` }
+            });
+  
+            if (!userInfo.ok) {
+            }
+
+            const data = await userInfo.json();
+
+            if (data.message) {
+                
+            } else {
+                myClaimablesClaimedCache = data;
+            }
+      
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
 
     function updateExtendedStylesCategoryTab(setFilter) {
         const el1 = document.getElementById("modalv3-extended-styles-category-tab-1");
@@ -19315,11 +20022,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     localStorage.discord_banner = `https://cdn.discordapp.com/banners/${user.id}/${user.banner}.png?size=4096`;
                 } else {
                     localStorage.removeItem('discord_banner');
-                }
-    
-                if (staff_ids.includes(user.id)) {
-                    localStorage.dev = "true";
-                    console.log('yapper')
                 }
       
                 console.log('success');
