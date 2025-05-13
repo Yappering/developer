@@ -1,6 +1,6 @@
 
 
-app_version1 = "412"
+app_version1 = "413"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -12,6 +12,7 @@ let atMeUsercache = null;
 let claimablesShopcache = null;
 let myXPBalancecache = null;
 let myClaimablesClaimedCache = null;
+let claimablesPromotionsCache = null;
 
 defaultAvatar1 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAY1BMVEVYZfJib/OMlfahqPeWn/eBi/XLz/vq6/7////19f5tePTq7P22vPnV2Pyrsvirsvl3gvT09f7Axfp3gfRtePNsePPg4v22vPq2u/qCi/WhqPjf4/zf4v2Xn/essvjLzvuXnvdbidFTAAAETElEQVR4AezBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAIDZudMtV1UlDuCFRKlWIEJ6uOwbzXn/lzzzYc/GWiT6zya/79WrLeYSc5Vq9IFWa3Sr6JehWt0ZZn5RtFJvmHnodPsrPLx1/B9PKx1ziLOPnIRRO84EXaAP/CWnR3pArTWcybpA5G8NsX20pw+cSbpAngEeOQenY+Cf8KIZ4FuDfSV4Ko/7hS7wNjYH7W3MvNeHtn2jvxn+OXcgaP0x8KJo43vgnwqu85EXDfGVULWON9G1BOmDN/M/AnTgDSWC0xve0KAITeSsykFw4qzOQWB4YwNBOfLmPAHpeXsvr5XOgJkjGA3vIlU6A2bvOHvAnXwiCMrwTl5UpUtg5us7BAB2gcg78nXugaC6QORd+bo7AEAXiLwzX+8SANEFNHPdXcAwV90FDgxA037+zwAc7aZlCKnSNTDrADZBdU6DBwbha5wCAabBkWGkSqfAzFa6C8xeADYB9Y2ByEBsbSMAYAy0zHWPActQLPQuKBh3DiwiDRlwzwFOv9JfTpORh5x5rVfQc8CQiLLJiEMaA1oW6XgVq+grVh4yY56JA68x07fm8hCIhXCUPn823zgkG/HK4Rf6kYv8YBt5BQ03BQyv9CMq8M/JQ7IItw+e6cd8QQjKTqCX3OMTtOdCCNZOoCnqkrYgZEFD2/FF/08qDAE4Dji+TtHPKHknVmBboVB2i9HI9zIGahZUhaVqVxCyQEEVQ7rSBMj3QiPUUTCWJkC+8zrQVjzmELBYG2H5jDYUFqAiQDlMtAwKQgjr+nwoq9O2BSEQJQFVWKeNBSEQ6+BYeG3BFIUAHIfasmsLh7IQgLcjDZd0AWXEIZRDMDYCuuj73g95yJGxEuBLPmr6VBSyzMO9Fpzko3kqeA1r8W4GHOWNKQ/JIl4COL4SZf2lPAQhAY4lYrv860rlIVmHlYAsuBhjFwpCwO4LOkb0TMAzAc8EPBPwTMAGngl4JuCZgMig4jMB27AMykJUhCr4ekwzKI10T9hpwzcz6DNSUbRdORzThW/CJSKagd4LjKurof1suFCYVR54MDckpsBXDLk3pliQgxBTHneBrwiaNtOfeUUKCnMQYlKC32x2r7SlmSUpoOQdi5xtoqx1DNP8WW9kKSCVvAu8QnC2USR4/I2bP5vDmhS80pdOjXULw8dc7HSiL6ljYLTmz/ooKvJTdkqTt9G5s/mHczH6qXlV9I32Ehi0+QVfQbn7HryHhvY033V1Tuu3CRncOIj3rL3EV9pf7+53ced0bY+MIZm7ndEt9uNnkxN8OSWhAvjjZ8ktnIoKaMDHF0yH8S416C4Rpv7bU094pWJ9QFv4BJOBvnkFzjWKMvhu4G78IibMIz2EFM3KFUAwCEI+ID9MDia6kd/+enpFj+YE+af+aA8OZAAAAAAG+Vvf46sAAAAAAAAAAAAAAAAAAAAAAFYCeHSjWah9hFcAAAAASUVORK5CYII=`;
 defaultAvatar2 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAAhFBMVEV1fop9hpGgpq+ytr2prraXnqfT19vu7/H////29/iGjpju7/DCxszc3+K6vsS6v8WOlqD39/fLztPLz9OPlqDl5+nDx8ygpq6xtr6xtr3m5+iOlp/Dxsvc3+Hd3+GorraGjpnT19rT1tv29/eOlqHU19p+hpGprrWxt72or7bLz9Kfpq+ibmTzAAAEY0lEQVR4AezBAQEAAAQAIPB/swkMqAIAAAAAAAAAAAAAAAAAAAAAgBNZPfFWy86dLimOw3AAV5qYEXFicMKxHIFs03e///PtvaouagjRGMKfNr/vmhorsiMbpwcm+UZjN4PhD2YedR5TZpnZDgfmOww+L/h/jjoaS0iRG7pdk0HBQlECmeevisGEbpDJf7DQlUDJh2xlbm30noWmBGQFuOUcTMeej3CqFeCQzTOCl8i8bymBbPKQDlxeCecGqTH/Dc/ycUVK0LKx51ZVXs08H+WLoSu5la0yQmUK7sXQEKQ592ZOgFLukSE4meUe2YTQlCyinARTFnFOAss9swRlzL1zBCTj/o2ySFdAURCMBV+FiXQFFLP4esADvxGExPKVjJJIX4HCxbcJACyBkq/IxdkDQZVAyVfl4i4AgBIo+cpcvK8AiBJYMsddApY56hJIGcCSrmfFAAq6GsMQTKTvQDEEaILiXAZTBuEAlsAYl8E1wzCRLoEij7QLFKNYmwBhIp0BIo9tBgDMAcMc9xzYMJQcugvytl55VtCHWNx9wHaZ0d+mO6sP6Z7mBnQfYA2R2Fl1yMKCHov8zp3kycHKoQ9x3Mkj9Wv/i9s0FxCC9CJca8cv3JlDxBPecfgz/cwzt9j+etO5hFsCbEM/89I2e/QhoqI+2YBzGnfWEGHRuoBRQ6R9nu0hQJ3AIqgkNwEhLR6oPy7o/2MCQwC2AwWfltAxL/oifgFrhfZhtxitvpexAKug7nnU+gKqw2sO6DDk8bwJKKF6wZRPq8IToO28XqkvDnMK5FiNMB1n9SErqGZ4xeGvQV0IYV2f34ed05qgEIAjgZfAc9oyIATiPbgOvLZgA0IgtkMm7NpCGhCC8evIgkNKILHqEJIQjEZgGfR971wfMmasBLiQj5regkLaObifBd/p0Ls+xHBXOd7NgLH+YepDRIWXAK4yIpE9B4QAJaBgjcq0/3Wl8BDxiJUA4Yuqqob+YiGi7i0BiO4JuCfgnoB7Au4J6ME9AfcE3BNQMqjqnoAYrgkDnAc4BuWoH0sGtUS6J7xdWj4bu5wBHIqqL+yYZz6Lrek47wzOL0M7+kfjLAfyLpGJB3NDYrfnE2wq5VLagNF/GJl3nk/wS+pNM+PuKZAc6EefKP5m87ahPjnWpICMq1lllRsSpmCYxy8aq0sBJcbVnjvw23yR0OHwcR6/cPsuKcjoq+kir1d8lH3O0yl9lYw9oz1+0ZSqQ34SU5O6/KOuV/Zfdf3x4dJFltAB8+wZ9PErvoKqL7vxtp90TY5Pmlyy5ZI2QcDNg+qSZy9VQ9fX1Je7uDM91SNjMPZie/QN9vDFrtZ8OaXwsgcfvjB1y64owBJp+PrlsLrIGfSzIUzN4a7HNxSs2cO8+PSLwfLsJ3Dbh4QEfBlsz/xDjHcTQicHAPIGONck8LJBvpkc7OhMduxzk9CtmUL+U3+2BwcyAAAAAIP8re/xVQAAAAAAAAAAAAAAAAAAAAAAKwFiKavpSRGzHgAAAABJRU5ErkJggg==`;
@@ -2496,8 +2497,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         APISTATUS = "/status",
         REVIEWSAPI = "/reviews",
         CLAIMABLES_SHOP = "/claimables-shop",
-        XP_BALANCE = "/xp-balance",
-        CLAIMABLES_CLAIMED = "/claimables-claimed"
+        XP_BALANCE = "/users/@me/xp-balance",
+        CLAIMABLES_CLAIMED = "/users/@me/claimables-claimed",
+        CLAIMABLES_PROMOTIONS = "/users/@me/claimables-promotions"
     ]
     if (app_version2 === "Dev") {
         LOGIN_CALLBACK = "/dev/callback"
@@ -10711,6 +10713,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             <p>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_TAB")}</p>
                                                             <p class="category-reviews-beta-tag" data-review-beta-tag>${getTextString("SHOP_CATEGORY_MODAL_REVIEWS_BETA_TAB")}</p>
                                                         </div>
+                                                        <div class="change-category-modal-content-button" style="display: none;" data-shop-category-modal-tabs-tab-button-3>
+                                                            <p>${getTextString("SHOP_CATEGORY_MODAL_REWARDS_TAB")}</p>
+                                                            <p class="category-rewards-new-tag" data-review-beta-tag>${getTextString("SHOP_CATEGORY_MODAL_REWARDS_NEW_TAB")}</p>
+                                                        </div>
                                                         <div class="category-modal-inner-content-container" data-category-modal-inner-content-container>
                                                         </div>
                                                     </div>
@@ -10738,6 +10744,44 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                             modal.querySelector("[data-shop-category-modal-tabs-tab-button-2]").classList.add("change-category-modal-content-button-legacy")
                                         }
 
+                                        if (shop_archives_token && localStorage.experiment_2025_05_xp_system === "Treatment 1: Enabled") {
+                                            if (!claimablesPromotionsCache) {
+                                                fetch(api + CLAIMABLES_PROMOTIONS, {
+                                                    method: "GET",
+                                                    headers: {
+                                                        "Authorization": shop_archives_token
+                                                    }
+                                                }) // Replace with your API URL
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    if (data.message) {
+        
+                                                    } else {
+                                                        claimablesPromotionsCache = data;
+                                                        if (Array.isArray(data) && modal.querySelector("[data-shop-category-modal-tabs-tab-button-3]")) {
+                                                            data.forEach(promo => {
+                                                                if (promo.category_sku_id === apiCategory.sku_id) {
+                                                                    modal.querySelector("[data-shop-category-modal-tabs-tab-button-3]").style.display = 'flex';
+                                                                }
+                                                            });
+                                                        }
+                                                    }
+        
+                                                })
+                                                .catch(error => {
+                                                    console.error(error);
+                                                });
+                                            } else {
+                                                if (Array.isArray(claimablesPromotionsCache) && modal.querySelector("[data-shop-category-modal-tabs-tab-button-3]")) {
+                                                    claimablesPromotionsCache.forEach(promo => {
+                                                        if (promo.category_sku_id === apiCategory.sku_id) {
+                                                            modal.querySelector("[data-shop-category-modal-tabs-tab-button-3]").style.display = 'flex';
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                        }
+
                                         if (localStorage.experiment_2025_04_reviews_v2_hide_beta_tag === "Treatment 1: Enabled") {
                                             modal.querySelector("[data-review-beta-tag]").style.display = 'none';
                                         }
@@ -10750,10 +10794,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                         const tab_button_1 = modal.querySelector("[data-shop-category-modal-tabs-tab-button-1]");
                                         const tab_button_2 = modal.querySelector("[data-shop-category-modal-tabs-tab-button-2]");
+                                        const tab_button_3 = modal.querySelector("[data-shop-category-modal-tabs-tab-button-3]");
 
                                         tab_button_1.addEventListener('click', () => {
                                             if (tab_button_2.classList.contains("selected")) {
                                                 tab_button_2.classList.remove("selected");
+                                            } else if (tab_button_3.classList.contains("selected")) {
+                                                tab_button_3.classList.remove("selected");
                                             }
                                             tab_button_1.classList.add("selected");
                                             fillCategoryModalContentContainer('assets');
@@ -10763,17 +10810,30 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         tab_button_2.addEventListener('click', () => {
                                             if (tab_button_1.classList.contains("selected")) {
                                                 tab_button_1.classList.remove("selected");
+                                            } else if (tab_button_3.classList.contains("selected")) {
+                                                tab_button_3.classList.remove("selected");
                                             }
                                             tab_button_2.classList.add("selected");
                                             fillCategoryModalContentContainer('reviews');
                                             categoryModalTabCache = "reviews";
                                         });
 
-                                        function fillCategoryModalContentContainer(tab, bypassCache) {
+                                        tab_button_3.addEventListener('click', () => {
+                                            if (tab_button_1.classList.contains("selected")) {
+                                                tab_button_1.classList.remove("selected");
+                                            } else if (tab_button_2.classList.contains("selected")) {
+                                                tab_button_2.classList.remove("selected");
+                                            }
+                                            tab_button_3.classList.add("selected");
+                                            fillCategoryModalContentContainer('xp_rewards');
+                                            categoryModalTabCache = "xp_rewards";
+                                        });
+
+                                        function fillCategoryModalContentContainer(tab, bypassCache, bypassCache2) {
                                             if (document.getElementById("shop-category-modal-write-review-container") && categoryModalTabCache != "reviews" || document.getElementById("shop-category-modal-write-review-container") && bypassCache === true) {
                                                 document.getElementById("shop-category-modal-write-review-container").remove();
                                             }
-                                            if (document.getElementById("shop-category-modal-write-review-container") && tab === "assets") {
+                                            if (document.getElementById("shop-category-modal-write-review-container") && tab != "reviews") {
                                                 document.getElementById("shop-category-modal-write-review-container").remove();
                                             }
                                             if (tab === "assets" && categoryModalTabCache != "assets") {
@@ -11001,7 +11061,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                         modal.querySelector("[data-category-modal-inner-content-container]").appendChild(reviewNoneElement);
 
-                                                    } else {
+                                                    } else if (tab === "reviews" && categoryModalTabCache === "reviews") {
                                                         renderReviews(data);
 
                                                         let hasReviewAlready = false;
@@ -11500,6 +11560,49 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                     }
                                                     
                                                 }
+                                            } else if (tab === "xp_rewards" && categoryModalTabCache != "xp_rewards" || bypassCache2 === true) {
+                                                modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = ``;
+
+                                                if (Array.isArray(claimablesPromotionsCache)) {
+                                                    claimablesPromotionsCache.forEach(promo => {
+                                                        
+                                                        if (promo.already_claimed === false) {
+                                                            modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = ``;
+
+                                                            let promoBanner = document.createElement("div");
+
+                                                            promoBanner.classList.add("xp-reward-promo-card");
+        
+                                                            promoBanner.innerHTML = `
+                                                                <div class="inner">
+                                                                    <p class="title">Claim your free ${promo.xp_reward} XP!</p>
+                                                                    <p class="sub">You have ${promo.xp_reward} XP waiting for you!</p>
+                                                                    <a class="link" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More about XP</a>
+                                                                    <button class="button" onclick="openClaimablesRewardClaimModal('${promo.claimable_id}')">Claim ${promo.xp_reward} XP</button>
+                                                                </div>
+                                                            `;
+
+                                                            modal.querySelector("[data-category-modal-inner-content-container]").appendChild(promoBanner);
+                                                        } else {
+                                                            modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = ``;
+
+                                                            let promoBanner = document.createElement("div");
+
+                                                            promoBanner.classList.add("xp-reward-promo-card");
+        
+                                                            promoBanner.innerHTML = `
+                                                                <div class="inner">
+                                                                    <p class="title">You claimed ${promo.xp_reward} XP.</p>
+                                                                    <p class="sub">You already claimed this reward.</p>
+                                                                    <a class="link" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More about XP</a>
+                                                                </div>
+                                                            `;
+
+                                                            modal.querySelector("[data-category-modal-inner-content-container]").appendChild(promoBanner);
+                                                        }
+                                                    });
+                                                }
+
                                             } else {
                                                 console.log("already on that tab")
                                             }
@@ -14444,12 +14547,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     const postReview = async (itemId, rating) => {
 
-        // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
-
-        // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
-
-        // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
-
         if (document.getElementById("shop-category-modal-write-review-error-output")) {
             document.getElementById("shop-category-modal-write-review-error-output").textContent = ``;
         }
@@ -14484,12 +14581,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 document.getElementById("shop-category-modal-write-review-error-output").textContent = `${result.message}`;
             }
         }
-
-        // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
-
-        // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
-
-        // By running this function you agreen to the Shop Archives Privacy Policy: https://github.com/Yappering/terms-and-privacy/blob/main/privacy-policy.md
+    
     };
 
     // Example usage:
@@ -17853,7 +17945,129 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_XP_EVENTS_HEADER")}</h2>
+
+                <div id="modalv3-failed-to-load-xp-events-balance">
+                </div>
+
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_XP_EVENTS_EVENTS_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_XP_EVENTS_EVENTS_SUMMARY")}</p>
+
+                    <p class="modalv3-xp-card-featured-title" id="modalv3-xp-events-loading">Loading Events...</p>
+
+                    <hr style="opacity: 0;">
+
+                    <div style="display: none;" id="modalv3-xp-events-output">
+                    </div>
+                </div>
             `;
+
+            if (!claimablesPromotionsCache) {
+                try {
+
+                    const userInfo = await fetch(api + CLAIMABLES_PROMOTIONS, {
+                        headers: { Authorization: `${shop_archives_token}` }
+                    });
+          
+                    if (!userInfo.ok) {
+                        document.getElementById("modalv3-failed-to-load-xp-events-balance").innerHTML = `
+                            <div class="modalv3-profile-tab-file-too-large-warning">
+                                <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_EVENTS_ERROR_1")}</p>
+                            </div>
+                            <hr style="opacity: 0;">
+                        `;
+                    }
+
+                    const data = await userInfo.json();
+
+                    if (data.message) {
+                        document.getElementById("modalv3-failed-to-load-xp-events-balance").innerHTML = `
+                            <div class="modalv3-profile-tab-file-too-large-warning">
+                                <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_EVENTS_ERROR_1")}</p>
+                                <p class="modalv3-profile-tab-sign-in-notice-summary">${data.error}, ${data.message}</p>
+                            </div>
+                            <hr style="opacity: 0;">
+                        `;
+                    } else {
+                        claimablesPromotionsCache = data;
+                    }
+              
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+
+            function fetchXpEvents() {
+                document.getElementById("modalv3-xp-events-output").innerHTML = ``;
+                if (Array.isArray(claimablesPromotionsCache) && claimablesPromotionsCache.length != 0) {
+                    claimablesPromotionsCache.forEach(promo => {
+                        
+                        if (promo.already_claimed === false) {
+    
+                            let promoBanner = document.createElement("div");
+    
+                            promoBanner.classList.add("xp-reward-promo-card");
+    
+                            if (promo.category_sku_id) {
+                                promoBanner.innerHTML = `
+                                    <div class="inner">
+                                        <p class="title">${promo.name}</p>
+                                        <p class="sub">You have ${promo.xp_reward.toLocaleString()} XP waiting for you!</p>
+                                        <a class="link" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More about XP</a>
+                                        <button class="button" onclick="setParams({page: 'leaks', scrollTo: '${promo.category_sku_id}'}); location.reload();">Take me there</button>
+                                    </div>
+                                `;
+                            } else {
+                                promoBanner.innerHTML = `
+                                    <div class="inner">
+                                        <p class="title">${promo.name}</p>
+                                        <p class="sub">You have ${promo.xp_reward.toLocaleString()} XP waiting for you!</p>
+                                        <a class="link" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More about XP</a>
+                                        <button class="button" onclick="openClaimablesRewardClaimModal('${promo.claimable_id}')">Claim ${promo.xp_reward.toLocaleString()} XP</button>
+                                    </div>
+                                `;
+                            }
+    
+                            document.getElementById("modalv3-xp-events-output").appendChild(promoBanner);
+                        } else {
+    
+                            let promoBanner = document.createElement("div");
+    
+                            promoBanner.classList.add("xp-reward-promo-card");
+    
+                            promoBanner.innerHTML = `
+                                <div class="inner">
+                                    <p class="title">${promo.name}</p>
+                                    <p class="sub">You already claimed this ${promo.xp_reward} XP reward.</p>
+                                    <a class="link" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More about XP</a>
+                                </div>
+                            `;
+    
+                            document.getElementById("modalv3-xp-events-output").appendChild(promoBanner);
+                        }
+                    });
+    
+                    document.getElementById("modalv3-xp-events-output").style.display = 'unset';
+                    document.getElementById("modalv3-xp-events-loading").style.display = 'none';
+                } else {
+                    document.getElementById("modalv3-xp-events-output").style.display = 'unset';
+                    document.getElementById("modalv3-xp-events-loading").style.display = 'none';
+
+                    document.getElementById("modalv3-xp-events-output").innerHTML = `
+                        <div class="xp-inventory-card">
+                            <div class="inner">
+                                <p class="title">All is quiet...</p>
+                                <p class="sub">There are currently no events happening right now, check back later.</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            window.fetchXpEvents = fetchXpEvents;
+
+            fetchXpEvents();
+            
         } else if (tab === "xp_general") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
@@ -17909,9 +18123,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                         `;
                     }
 
-                    const me = await userInfo.json();
+                    const data = await userInfo.json();
 
-                    if (me.message) {
+                    if (data.message) {
                         document.getElementById("modalv3-failed-to-load-xp-shop").innerHTML = `
                             <div class="modalv3-profile-tab-file-too-large-warning">
                                 <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_SHOP_ERROR_2")}</p>
@@ -17920,7 +18134,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <hr style="opacity: 0;">
                         `;
                     } else {
-                        atMeUsercache = me;
+                        atMeUsercache = data;
                     }
               
                 } catch (error) {
@@ -18238,7 +18452,156 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
                 <h2>${getTextString("MODAL_V3_TAB_XP_INVENTORY_HEADER")}</h2>
+
+                <div id="modalv3-failed-to-load-xp-inventory-balance">
+                </div>
+
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_XP_INVENTORY_CLAIMS_HEADER")}</h2>
+
+                    <p class="modalv3-xp-card-featured-title" id="modalv3-xp-inventory-loading">Loading Inventory...</p>
+
+                    <hr style="opacity: 0;">
+
+                    <div style="display: none;" id="modalv3-xp-inventory-output">
+                    </div>
+                </div>
+                <hr>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_XP_INVENTORY_REWARDS_HEADER")}</h2>
+
+                    <hr style="opacity: 0;">
+
+                    <div style="display: none;" id="modalv3-xp-inventory-output2">
+                    </div>
+                </div>
             `;
+
+            if (!myClaimablesClaimedCache) {
+                try {
+
+                    const userInfo = await fetch(api + CLAIMABLES_CLAIMED, {
+                        headers: { Authorization: `${shop_archives_token}` }
+                    });
+          
+                    if (!userInfo.ok) {
+                        document.getElementById("modalv3-failed-to-load-xp-inventory-balance").innerHTML = `
+                            <div class="modalv3-profile-tab-file-too-large-warning">
+                                <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_INVENTORY_ERROR_1")}</p>
+                            </div>
+                            <hr style="opacity: 0;">
+                        `;
+                    }
+
+                    const data = await userInfo.json();
+
+                    if (data.message) {
+                        document.getElementById("modalv3-failed-to-load-xp-inventory-balance").innerHTML = `
+                            <div class="modalv3-profile-tab-file-too-large-warning">
+                                <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_INVENTORY_ERROR_1")}</p>
+                                <p class="modalv3-profile-tab-sign-in-notice-summary">${data.error}, ${data.message}</p>
+                            </div>
+                            <hr style="opacity: 0;">
+                        `;
+                    } else {
+                        myClaimablesClaimedCache = data;
+                    }
+              
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+
+            function fetchXpInventory() {
+                document.getElementById("modalv3-xp-inventory-output").innerHTML = ``;
+                if (Array.isArray(myClaimablesClaimedCache)) {
+
+                    myClaimablesClaimedCache.sort((a, b) => new Date(b.claim_date) - new Date(a.claim_date));
+
+                    myClaimablesClaimedCache.forEach(claimable => {
+
+                        let formatted = null;
+
+                        if (localStorage.reviews_time_type === "uk") {
+                            const date = new Date(claimable.claim_date);
+
+                            const day = String(date.getDate()).padStart(2, '0');
+                            const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth is 0-indexed
+                            const year = date.getFullYear();
+
+                            formatted = `${day}/${month}/${year}`;
+                        } else {
+                            const date = new Date(claimable.claim_date);
+
+                            const day = String(date.getDate()).padStart(2, '0');
+                            const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth is 0-indexed
+                            const year = date.getFullYear();
+
+                            formatted = `${day}/${month}/${year}`;
+                        }
+                        
+                        if (claimable.type === 1) {
+    
+                            let promoBanner = document.createElement("div");
+    
+                            promoBanner.classList.add("xp-inventory-card");
+    
+                            promoBanner.innerHTML = `
+                                <div class="inner">
+                                    <p class="title">${claimable.name}</p>
+                                    <p class="sub">You claimed this item on ${formatted}.</p>
+                                    <p class="remove">-${claimable.price.toLocaleString()} XP</p>
+                                </div>
+                            `;
+    
+                            document.getElementById("modalv3-xp-inventory-output").appendChild(promoBanner);
+                        } else if (claimable.type === 0) {
+    
+                            let promoBanner = document.createElement("div");
+    
+                            promoBanner.classList.add("xp-inventory-card");
+    
+                            promoBanner.innerHTML = `
+                                <div class="inner">
+                                    <p class="title">${claimable.name}</p>
+                                    <p class="sub">You claimed this reward on ${formatted}.</p>
+                                    <p class="add">+${claimable.price.toLocaleString()} XP</p>
+                                </div>
+                            `;
+    
+                            document.getElementById("modalv3-xp-inventory-output2").appendChild(promoBanner);
+                        }
+                    });
+    
+                    document.getElementById("modalv3-xp-inventory-output").style.display = 'unset';
+                    document.getElementById("modalv3-xp-inventory-output2").style.display = 'unset';
+                    document.getElementById("modalv3-xp-inventory-loading").style.display = 'none';
+                }
+                if (!myClaimablesClaimedCache.find(item => item.type === 0)) {
+                    document.getElementById("modalv3-xp-inventory-output2").innerHTML = `
+                        <div class="xp-inventory-card">
+                            <div class="inner">
+                                <p class="title">No Claimed Rewards.</p>
+                                <p class="sub">You don't have any claimed rewards.</p>
+                            </div>
+                        </div>
+                    `;
+                }
+                if (!myClaimablesClaimedCache.find(item => item.type === 1)) {
+                    document.getElementById("modalv3-xp-inventory-output").innerHTML = `
+                        <div class="xp-inventory-card">
+                            <div class="inner">
+                                <p class="title">No Claimed Items.</p>
+                                <p class="sub">You don't have any claimed items.</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            window.fetchXpInventory = fetchXpInventory;
+
+            fetchXpInventory();
         } else if (tab === "experiments") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
             tabPageOutput.innerHTML = `
@@ -18533,9 +18896,24 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                     <button class="modalv3-content-card-button" id="modalv3-claimable-id-button">${getTextString("MODAL_V3_TAB_CLAIMABLES_PURCHASE_OPEN_MODAL_OPEN")}</button>
                 </div>
+                <hr>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_CLAIMABLES_REWARD_CLAIM_TITLE_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_CLAIMABLES_REWARD_CLAIM_TITLE_SUMMARY")}</p>
+
+                    <div class="modalv3-content-card-2">
+                        <p class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_CLAIMABLES_REWARD_CLAIM_OPEN_MODAL_TITLE")}</p>
+                        <input autocomplete="off" type="text" class="modalv3-api-testfetch-text-input" id="modalv3-claimable-reward-id-test" placeholder="${getTextString("MODAL_V3_TAB_CLAIMABLES_PURCHASE_OPEN_MODAL_TITLE")}">
+                    </div>
+
+                    <button class="modalv3-content-card-button" id="modalv3-claimable-reward-id-button">${getTextString("MODAL_V3_TAB_CLAIMABLES_REWARD_CLAIM_OPEN_MODAL_OPEN")}</button>
+                </div>
             `;
             document.getElementById("modalv3-claimable-id-button").addEventListener("click", function () {
                 openClaimablesPurchaseModal(document.getElementById("modalv3-claimable-id-test").value);
+            });
+            document.getElementById("modalv3-claimable-reward-id-button").addEventListener("click", function () {
+                openClaimablesRewardClaimModal(document.getElementById("modalv3-claimable-reward-id-test").value);
             });
         } else if (tab === "local_storage") {
             document.getElementById("modal-v3-tab-" + tab).classList.add("side-tabs-button-selected");
@@ -18593,6 +18971,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     window.setModalv3InnerContent = setModalv3InnerContent;
 
+
     async function openClaimablesPurchaseModal(claimableId) {
 
         let disclaimerString = '';
@@ -18614,6 +18993,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         let modal = document.createElement("div");
 
         modal.classList.add('modalv2');
+
+        modal.style.zIndex = '601';
 
         modal.innerHTML = `
             <div class="modalv2-inner claimables-purchase">
@@ -18729,6 +19110,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         modal_back.classList.add('modalv2-back');
         modal_back.id = 'modalv2-back';
 
+        modal_back.style.zIndex = '600';
+
         document.body.appendChild(modal_back);
 
         setTimeout(() => {
@@ -18793,6 +19176,160 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         }
     }
 
+
+    async function openClaimablesRewardClaimModal(claimableId) {
+
+        if (!claimableId) {
+            claimableId = null;
+        }
+
+        let modal = document.createElement("div");
+
+        modal.classList.add('modalv2');
+
+        modal.style.zIndex = '601';
+
+        modal.innerHTML = `
+            <div class="modalv2-inner claimables-reward">
+                <div data-modal-top-product-buttons>
+                    <div title="Close" data-close-product-card-button>
+                        <svg class="closeIcon_modal" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                    </div>
+                </div>
+                <img src="https://cdn.discordapp.com/app-assets/1096190356233670716/1116154530145505300.png?size=4096"></img>
+                <div class="claimable-reward-modal-img-block">
+                </div>
+                <p class="big-text" data-claimable-purchase-modal-price-preview2>... XP</p>
+                <p class="title">${getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_REWARD_MODAL_HEADER")}</p>
+                <p class="sub-header" data-claimable-purchase-modal-price-preview>${getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_REWARD_MODAL_SUMMARY")} ... XP</p>
+                <a class="link" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More about XP</a>
+
+                <div class="report-review-bottom">
+                    <p class="shop-category-modal-report-review-error-output" id="shop-claim-item-modal-error-output" data-shop-claim-item-modal-error-output></p>
+                    <button class="modalv3-content-card-button select-button" style="display: nonel" data-claimable-purchase-button>Claim ... XP</button>
+                </div>
+            </div>
+        `;
+
+        fetch(api + '/claimables/published/' + claimableId, {
+            method: "GET",
+            headers: {
+                "Authorization": shop_archives_token
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                modal.classList.remove('show');
+                modal_back.classList.remove('show');
+                setTimeout(() => {
+                    modal.remove();
+                    modal_back.remove();
+                }, 300);
+            } else {
+                modal.querySelector("[data-claimable-purchase-modal-price-preview]").textContent = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_REWARD_MODAL_SUMMARY") + data.xp_reward.toLocaleString() + ' XP';
+                modal.querySelector("[data-claimable-purchase-modal-price-preview2]").textContent = data.xp_reward.toLocaleString() + ' XP';
+                modal.querySelector("[data-claimable-purchase-button]").textContent = `Claim ${data.xp_reward.toLocaleString()} XP`;
+                modal.querySelector("[data-claimable-purchase-button]").style.display = 'unset';
+
+                modal.querySelector("[data-claimable-purchase-button]").addEventListener('click', () => {
+                    modal.querySelector("[data-claimable-purchase-button]").disabled = true;
+                    modal.querySelector("[data-claimable-purchase-button]").textContent = `...`;
+                    claimFreeXPReward(data.id, modal, modal_back)
+                });
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            modal.classList.remove('show');
+            modal_back.classList.remove('show');
+            setTimeout(() => {
+                modal.remove();
+                modal_back.remove();
+            }, 300);
+        });
+
+        document.body.appendChild(modal);
+
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 1);
+
+        let modal_back = document.createElement("div");
+
+        modal_back.classList.add('modalv2-back');
+        modal_back.id = 'modalv2-back';
+
+        modal_back.style.zIndex = '600';
+
+        document.body.appendChild(modal_back);
+
+        setTimeout(() => {
+            modal_back.classList.add('show');
+        }, 1);
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.classList.remove('show');
+                modal_back.classList.remove('show');
+                setTimeout(() => {
+                    modal.remove();
+                    modal_back.remove();
+                }, 300);
+            }
+        });
+
+        modal.querySelector("[data-close-product-card-button]").addEventListener('click', () => {
+            modal.classList.remove('show');
+            modal_back.classList.remove('show');
+            setTimeout(() => {
+                modal.remove();
+                modal_back.remove();
+            }, 300);
+        });
+    }
+
+    window.openClaimablesRewardClaimModal = openClaimablesRewardClaimModal;
+
+    async function claimFreeXPReward(perkId, modal, modal_back) {
+        document.getElementById("shop-claim-item-modal-error-output").textContent = '';
+
+        try {
+
+            const userInfo = await fetch(api + '/claim-free-xp-reward/' + perkId, {
+                method: "POST",
+                headers: { Authorization: `${shop_archives_token}` }
+            });
+  
+            if (!userInfo.ok) {
+                
+            }
+
+            const purchase = await userInfo.json();
+
+            if (purchase.message) {
+                document.getElementById("shop-claim-item-modal-error-output").textContent = purchase.message;
+            } else {
+                await updateXPBalance();
+                await updateClaimablesClaimed();
+                await updatePerksShop();
+                await updateClaimablesPromotions();
+
+                modal.classList.remove('show');
+                modal_back.classList.remove('show');
+                setTimeout(() => {
+                    modal.remove();
+                    modal_back.remove();
+                }, 300);
+            }
+      
+        } catch (error) {
+            console.error(error)
+            document.getElementById("shop-claim-item-modal-error-output").textContent = error;
+        }
+    }
+    
+
     async function updateXPBalance() {
         try {
 
@@ -18835,7 +19372,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 
             } else {
                 claimablesShopcache = data;
-                renderXPShop(data)
+                try {
+                    renderXPShop(data);
+                } catch (error) {
+                }
             }
       
         } catch (error) {
@@ -18859,6 +19399,37 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 
             } else {
                 myClaimablesClaimedCache = data;
+            }
+      
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    async function updateClaimablesPromotions() {
+        try {
+
+            const userInfo = await fetch(api + CLAIMABLES_PROMOTIONS, {
+                headers: { Authorization: `${shop_archives_token}` }
+            });
+  
+            if (!userInfo.ok) {
+            }
+
+            const data = await userInfo.json();
+
+            if (data.message) {
+                
+            } else {
+                claimablesPromotionsCache = data;
+                try {
+                    fillCategoryModalContentContainer('xp_rewards', null, true);
+                } catch (error) {
+                }
+                try {
+                    fetchXpEvents();
+                } catch (error) {
+                }
             }
       
         } catch (error) {
