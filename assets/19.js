@@ -1,6 +1,6 @@
 
 
-app_version1 = "416"
+app_version1 = "417"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2761,7 +2761,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 });
             }
 
-            if (localStorage.dismissible_new100FreeXP != "Treatment 1: Seen" && data.claimed_100_free_xp === false) {
+            if (localStorage.experiment_2025_05_xp_system === "Treatment 1: Enabled" && localStorage.dismissible_new100FreeXP != "Treatment 1: Seen" && data.claimed_100_free_xp === false) {
                 let new100FreeXPDismissible = document.createElement("div");
                 
                 new100FreeXPDismissible.innerHTML = `
