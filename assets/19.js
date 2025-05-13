@@ -1,6 +1,6 @@
 
 
-app_version1 = "413"
+app_version1 = "414"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2753,8 +2753,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
             if (Array.isArray(data.rollouts)) {
                 data.rollouts.forEach(rollout => {
-                    
-                    localStorage.setItem(rollout.name, rollout.rollout);
+
+                    if (localStorage.experiment_force_rollout != "false") {
+                        localStorage.setItem(rollout.name, rollout.rollout);
+                    }
     
                 });
             }

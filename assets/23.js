@@ -561,7 +561,7 @@ MODAL_V3_TAB_XP_SHOP_CANT_CLAIM_2 = "You do not meet the requirements to claim t
 MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_1 = "Claiming this item means you have a limited licence to use this item on Shop Archives. This item is non-refundable.";
 MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_2 = "Once you've claimed this item, your Discord server tag will be applied to all your existing and future reviews. Note that if you don't have a Discord server tag applied on your profile, this item is useless.";
 MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_3 = "Review colors will not actually be animated. Once you've claimed this item, you'll be able to pick a color before sending your review.";
-MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_4 = "Once you've claimed this item, you'll be able to write reviews with up to 500 characters.";
+MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_4 = "Once you've claimed this item, you'll be able to write reviews with up to 200 characters.";
 MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_5 = "Once you've claimed this item, your Discord avatar decoration will be applied to all your existing and future reviews. Note that if you don't have a Discord avatar decoration applied on your profile, this item is useless.";
 
 // XP Inventory
