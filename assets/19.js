@@ -1,6 +1,6 @@
 
 
-app_version1 = "414"
+app_version1 = "415"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -20479,6 +20479,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         localStorage.removeItem('discord_premium_type');
         localStorage.removeItem('admin_level');
         localStorage.removeItem('account_type');
+        localStorage.removeItem('shop_archives_token');
         localStorage.dev = "false";
         localStorage.reviews_filter_type = "2";
         location.reload();

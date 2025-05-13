@@ -530,8 +530,8 @@ MODAL_V3_TAB_XP_EVENTS_HEADER = "Events";
 
 MODAL_V3_TAB_XP_EVENTS_ERROR_1 = "There was an error loading XP Events!";
 
-MODAL_V3_TAB_XP_EVENTS_EVENTS_HEADER = "Running events";
-MODAL_V3_TAB_XP_EVENTS_EVENTS_SUMMARY = "Events happening right now.";
+MODAL_V3_TAB_XP_EVENTS_EVENTS_HEADER = "Active Events";
+MODAL_V3_TAB_XP_EVENTS_EVENTS_SUMMARY = "Events can let you earn free XP, keep an eye out for new events!";
 
 // XP Shop
 
