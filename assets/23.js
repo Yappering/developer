@@ -662,6 +662,12 @@ MODAL_V3_TAB_MISC_HEADER = "Miscellaneous";
 MODAL_V3_TAB_MISC_REVIEW_CONTENT_OVERRIDE_HEADER = "Override Review Content";
 MODAL_V3_TAB_MISC_REVIEW_CONTENT_OVERRIDE_SUMMARY = "Override the review text for all review";
 
+MODAL_V3_TAB_MISC_UNPUBLISHED_XP_EVENTS_HEADER = "Unpublished XP Events";
+MODAL_V3_TAB_MISC_UNPUBLISHED_XP_EVENTS_SUMMARY = "If you have already loaded XP events you must reload for this to take effect";
+
+MODAL_V3_TAB_MISC_UNPUBLISHED_XP_SHOP_HEADER = "Unpublished XP Shop";
+MODAL_V3_TAB_MISC_UNPUBLISHED_XP_SHOP_SUMMARY = "If you have already loaded the XP shop you must reload for this to take effect";
+
 
 // Dismissible Content
 

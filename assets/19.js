@@ -1,6 +1,6 @@
 
 
-app_version1 = "417"
+app_version1 = "418"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2786,7 +2786,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 document.body.appendChild(new100FreeXPDismissible);
         
             }
-            
+
         })
         .catch(error => {
             console.error(error);
@@ -10775,7 +10775,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                         if (shop_archives_token && localStorage.experiment_2025_05_xp_system === "Treatment 1: Enabled") {
                                             if (!claimablesPromotionsCache) {
-                                                fetch(api + CLAIMABLES_PROMOTIONS, {
+
+                                                url = api + CLAIMABLES_PROMOTIONS;
+                                                fetchUrl = new URL(url);
+                                                if (localStorage.staff_unpublished_xp_events == "true") {
+                                                    fetchUrl.searchParams.append("include-unpublished", "true");
+                                                }
+
+                                                fetch(fetchUrl, {
                                                     method: "GET",
                                                     headers: {
                                                         "Authorization": shop_archives_token
@@ -11595,8 +11602,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                 if (Array.isArray(claimablesPromotionsCache)) {
                                                     claimablesPromotionsCache.forEach(promo => {
                                                         
-                                                        if (promo.already_claimed === false) {
-                                                            modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = ``;
+                                                        if (promo.already_claimed === false && promo.category_sku_id === apiCategory.sku_id) {
 
                                                             let promoBanner = document.createElement("div");
 
@@ -11612,8 +11618,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             `;
 
                                                             modal.querySelector("[data-category-modal-inner-content-container]").appendChild(promoBanner);
-                                                        } else {
-                                                            modal.querySelector("[data-category-modal-inner-content-container]").innerHTML = ``;
+                                                        } else if (promo.category_sku_id === apiCategory.sku_id) {
 
                                                             let promoBanner = document.createElement("div");
 
@@ -17994,7 +17999,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             if (!claimablesPromotionsCache) {
                 try {
 
-                    const userInfo = await fetch(api + CLAIMABLES_PROMOTIONS, {
+                    url = api + CLAIMABLES_PROMOTIONS;
+                    fetchUrl = new URL(url);
+                    if (localStorage.staff_unpublished_xp_events == "true") {
+                        fetchUrl.searchParams.append("include-unpublished", "true");
+                    }
+
+                    const userInfo = await fetch(fetchUrl, {
                         headers: { Authorization: `${shop_archives_token}` }
                     });
           
@@ -18067,7 +18078,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             promoBanner.innerHTML = `
                                 <div class="inner">
                                     <p class="title">${promo.name}</p>
-                                    <p class="sub">You already claimed this ${promo.xp_reward} XP reward.</p>
+                                    <p class="sub">You already claimed this reward for ${promo.xp_reward.toLocaleString()} XP.</p>
                                     <a class="link" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More about XP</a>
                                 </div>
                             `;
@@ -18207,7 +18218,14 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             }
 
             if (!claimablesShopcache) {
-                fetch(api + CLAIMABLES_SHOP, {
+
+                url = api + CLAIMABLES_SHOP;
+                fetchUrl = new URL(url);
+                if (localStorage.staff_unpublished_xp_shop == "true") {
+                    fetchUrl.searchParams.append("include-unpublished", "true");
+                }
+
+                fetch(fetchUrl, {
                     method: "GET",
                     headers: {
                         "Authorization": shop_archives_token
@@ -18328,7 +18346,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                     <div class="shop-modal-review-name-container" data-shop-modal-review-name-container>
                                         <img class="shop-modal-review-avatar-deco-img" src="https://cdn.yapper.shop/assets/31.png">
                                         <img class="shop-modal-review-avatar-img" src="https://cdn.discordapp.com/avatars/${atMeUsercache.id}/${atMeUsercache.avatar}.webp?size=128">
-                                        <p class="shop-modal-review-name">${atMeUsercache.global_name}</p>
+                                        <p class="shop-modal-review-name">${atMeUsercache.global_name ? atMeUsercache.global_name : atMeUsercache.username}</p>
                                         <div class="shop-modal-review-server-tag-container">
                                             <img src="https://cdn.discordapp.com/clan-badges/${atMeUsercache.primary_guild.identity_guild_id}/${atMeUsercache.primary_guild.badge}.png?size=24"></img>
                                             <p>${atMeUsercache.primary_guild.tag}</p>
@@ -18368,7 +18386,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                 <div class="review-content-inner">
                                     <div class="shop-modal-review-name-container">
                                         <img class="shop-modal-review-avatar-img" src="https://cdn.discordapp.com/avatars/${atMeUsercache.id}/${atMeUsercache.avatar}.webp?size=128">
-                                        <p class="shop-modal-review-name">${atMeUsercache.global_name}</p>
+                                        <p class="shop-modal-review-name">${atMeUsercache.global_name ? atMeUsercache.global_name : atMeUsercache.username}</p>
                                     <div class="shop-modal-review-star-container">
                                     <img class="shop-modal-review-stars-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMTIwIDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTMxXzM5KSI+CjxwYXRoIGQ9Ik0xMiAwTDE0LjY5NDIgOC4yOTE4SDIzLjQxMjdMMTYuMzU5MyAxMy40MTY0TDE5LjA1MzQgMjEuNzA4MkwxMiAxNi41ODM2TDQuOTQ2NTggMjEuNzA4Mkw3LjY0MDc0IDEzLjQxNjRMMC41ODczMjIgOC4yOTE4SDkuMzA1ODNMMTIgMFoiIGZpbGw9IiNGRkVDM0UiLz4KPHBhdGggZD0iTTM2IDBMMzguNjk0MiA4LjI5MThINDcuNDEyN0w0MC4zNTkzIDEzLjQxNjRMNDMuMDUzNCAyMS43MDgyTDM2IDE2LjU4MzZMMjguOTQ2NiAyMS43MDgyTDMxLjY0MDcgMTMuNDE2NEwyNC41ODczIDguMjkxOEgzMy4zMDU4TDM2IDBaIiBmaWxsPSIjRkZFQzNFIi8+CjxwYXRoIGQ9Ik02MCAwTDYyLjY5NDIgOC4yOTE4SDcxLjQxMjdMNjQuMzU5MyAxMy40MTY0TDY3LjA1MzQgMjEuNzA4Mkw2MCAxNi41ODM2TDUyLjk0NjYgMjEuNzA4Mkw1NS42NDA3IDEzLjQxNjRMNDguNTg3MyA4LjI5MThINTcuMzA1OEw2MCAwWiIgZmlsbD0iI0ZGRUMzRSIvPgo8cGF0aCBkPSJNODQgMEw4Ni42OTQyIDguMjkxOEg5NS40MTI3TDg4LjM1OTMgMTMuNDE2NEw5MS4wNTM0IDIxLjcwODJMODQgMTYuNTgzNkw3Ni45NDY2IDIxLjcwODJMNzkuNjQwNyAxMy40MTY0TDcyLjU4NzMgOC4yOTE4SDgxLjMwNThMODQgMFoiIGZpbGw9IiM1NzU3NTciLz4KPHBhdGggZD0iTTEwOCAwTDExMC42OTQgOC4yOTE4SDExOS40MTNMMTEyLjM1OSAxMy40MTY0TDExNS4wNTMgMjEuNzA4MkwxMDggMTYuNTgzNkwxMDAuOTQ3IDIxLjcwODJMMTAzLjY0MSAxMy40MTY0TDk2LjU4NzMgOC4yOTE4SDEwNS4zMDZMMTA4IDBaIiBmaWxsPSIjNTc1NzU3Ii8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMTMxXzM5Ij4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K">
                                 </div>
@@ -18387,7 +18405,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                     <div class="shop-modal-review-name-container">
                                         <img class="shop-modal-review-avatar-deco-img" src="${atMeUsercache.avatar_decoration_data ? `https://cdn.discordapp.com/avatar-decoration-presets/${atMeUsercache.avatar_decoration_data.asset}.png?size=40&amp;passthrough=true` : "https://cdn.yapper.shop/assets/31.png"}">
                                         <img class="shop-modal-review-avatar-img" src="https://cdn.discordapp.com/avatars/${atMeUsercache.id}/${atMeUsercache.avatar}.webp?size=128">
-                                        <p class="shop-modal-review-name">${atMeUsercache.global_name}</p>
+                                        <p class="shop-modal-review-name">${atMeUsercache.global_name ? atMeUsercache.global_name : atMeUsercache.username}</p>
                                     <div class="shop-modal-review-star-container">
                                     <img class="shop-modal-review-stars-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMTIwIDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfMTMxXzM5KSI+CjxwYXRoIGQ9Ik0xMiAwTDE0LjY5NDIgOC4yOTE4SDIzLjQxMjdMMTYuMzU5MyAxMy40MTY0TDE5LjA1MzQgMjEuNzA4MkwxMiAxNi41ODM2TDQuOTQ2NTggMjEuNzA4Mkw3LjY0MDc0IDEzLjQxNjRMMC41ODczMjIgOC4yOTE4SDkuMzA1ODNMMTIgMFoiIGZpbGw9IiNGRkVDM0UiLz4KPHBhdGggZD0iTTM2IDBMMzguNjk0MiA4LjI5MThINDcuNDEyN0w0MC4zNTkzIDEzLjQxNjRMNDMuMDUzNCAyMS43MDgyTDM2IDE2LjU4MzZMMjguOTQ2NiAyMS43MDgyTDMxLjY0MDcgMTMuNDE2NEwyNC41ODczIDguMjkxOEgzMy4zMDU4TDM2IDBaIiBmaWxsPSIjRkZFQzNFIi8+CjxwYXRoIGQ9Ik02MCAwTDYyLjY5NDIgOC4yOTE4SDcxLjQxMjdMNjQuMzU5MyAxMy40MTY0TDY3LjA1MzQgMjEuNzA4Mkw2MCAxNi41ODM2TDUyLjk0NjYgMjEuNzA4Mkw1NS42NDA3IDEzLjQxNjRMNDguNTg3MyA4LjI5MThINTcuMzA1OEw2MCAwWiIgZmlsbD0iI0ZGRUMzRSIvPgo8cGF0aCBkPSJNODQgMEw4Ni42OTQyIDguMjkxOEg5NS40MTI3TDg4LjM1OTMgMTMuNDE2NEw5MS4wNTM0IDIxLjcwODJMODQgMTYuNTgzNkw3Ni45NDY2IDIxLjcwODJMNzkuNjQwNyAxMy40MTY0TDcyLjU4NzMgOC4yOTE4SDgxLjMwNThMODQgMFoiIGZpbGw9IiM1NzU3NTciLz4KPHBhdGggZD0iTTEwOCAwTDExMC42OTQgOC4yOTE4SDExOS40MTNMMTEyLjM1OSAxMy40MTY0TDExNS4wNTMgMjEuNzA4MkwxMDggMTYuNTgzNkwxMDAuOTQ3IDIxLjcwODJMMTAzLjY0MSAxMy40MTY0TDk2LjU4NzMgOC4yOTE4SDEwNS4zMDZMMTA4IDBaIiBmaWxsPSIjNTc1NzU3Ii8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMTMxXzM5Ij4KPHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K">
                                 </div>
@@ -18988,10 +19006,30 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <div class="modalv3-content-card-2">
                     <input type="text" class="modalv3-api-testfetch-text-input" oninput="overrideRawReviewTextContent();" id="modalv3-update-review-content-override" value="${localStorage.staff_raw_review_override_content}">
                 </div>
+                <hr>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_MISC_UNPUBLISHED_XP_EVENTS_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_MISC_UNPUBLISHED_XP_EVENTS_SUMMARY")}</p>
+
+                    <input class="modalv3-toggle" onclick="toggleStaffUnpublishedXPEvents();" id="unpublished-xp-events-checkbox" type="checkbox">
+                </div>
+                <hr>
+                <div class="modalv3-content-card-1">
+                    <h2 class="modalv3-content-card-sub-header">${getTextString("MODAL_V3_TAB_MISC_UNPUBLISHED_XP_SHOP_HEADER")}</h2>
+                    <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_MISC_UNPUBLISHED_XP_SHOP_SUMMARY")}</p>
+
+                    <input class="modalv3-toggle" onclick="toggleStaffUnpublishedXPShop();" id="unpublished-xp-shop-checkbox" type="checkbox">
+                </div>
             `;
 
             if (localStorage.staff_enable_override_review_content === "true") {
                 document.getElementById("override-review-text-content-checkbox").checked = true;
+            }
+            if (localStorage.staff_unpublished_xp_events === "true") {
+                document.getElementById("unpublished-xp-events-checkbox").checked = true;
+            }
+            if (localStorage.staff_unpublished_xp_shop === "true") {
+                document.getElementById("unpublished-xp-shop-checkbox").checked = true;
             }
         } else {
             console.error(tab + ' is not a valid tab');
@@ -18999,6 +19037,28 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
     window.setModalv3InnerContent = setModalv3InnerContent;
+
+
+    // Misc Staff
+
+    function toggleStaffUnpublishedXPEvents() {
+        if (localStorage.staff_unpublished_xp_events === "true") {
+            localStorage.staff_unpublished_xp_events = "false"
+        } else {
+            localStorage.staff_unpublished_xp_events = "true"
+        }
+    }
+
+    function toggleStaffUnpublishedXPShop() {
+        if (localStorage.staff_unpublished_xp_shop === "true") {
+            localStorage.staff_unpublished_xp_shop = "false"
+        } else {
+            localStorage.staff_unpublished_xp_shop = "true"
+        }
+    }
+
+
+
 
 
     async function openClaimablesPurchaseModal(claimableId) {
@@ -19388,7 +19448,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     async function updatePerksShop() {
         try {
 
-            const userInfo = await fetch(api + CLAIMABLES_SHOP, {
+            url = api + CLAIMABLES_SHOP;
+            fetchUrl = new URL(url);
+            if (localStorage.staff_unpublished_xp_shop == "true") {
+                fetchUrl.searchParams.append("include-unpublished", "true");
+            }
+
+            const userInfo = await fetch(fetchUrl, {
                 headers: { Authorization: `${shop_archives_token}` }
             });
   
@@ -19438,7 +19504,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     async function updateClaimablesPromotions() {
         try {
 
-            const userInfo = await fetch(api + CLAIMABLES_PROMOTIONS, {
+            url = api + CLAIMABLES_PROMOTIONS;
+            fetchUrl = new URL(url);
+            if (localStorage.staff_unpublished_xp_events == "true") {
+                fetchUrl.searchParams.append("include-unpublished", "true");
+            }
+
+            const userInfo = await fetch(fetchUrl, {
                 headers: { Authorization: `${shop_archives_token}` }
             });
   
