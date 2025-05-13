@@ -2786,6 +2786,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 document.body.appendChild(new100FreeXPDismissible);
         
             }
+            
         })
         .catch(error => {
             console.error(error);
