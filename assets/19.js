@@ -1,6 +1,6 @@
 
 
-app_version1 = "415"
+app_version1 = "416"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2759,6 +2759,32 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     }
     
                 });
+            }
+
+            if (localStorage.dismissible_new100FreeXP != "Treatment 1: Seen" && data.claimed_100_free_xp === false) {
+                let new100FreeXPDismissible = document.createElement("div");
+                
+                new100FreeXPDismissible.innerHTML = `
+                    <div class="new100FreeXPDismissible-inner">
+                        <hr style="opacity: 0;">
+                        <svg class="closeIcon_modal_discord_login" onclick="closenew100FreeXPDismissibleCoachtip()" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M17.3 18.7a1 1 0 0 0 1.4-1.4L13.42 12l5.3-5.3a1 1 0 0 0-1.42-1.4L12 10.58l-5.3-5.3a1 1 0 0 0-1.4 1.42L10.58 12l-5.3 5.3a1 1 0 1 0 1.42 1.4L12 13.42l5.3 5.3Z" class=""></path></svg>
+                        <hr style="opacity: 0;">
+                        <p class="center-text options-medium-title" style="margin-top: 0px;">${getTextString("DISMISSIBLE_CONTENT_NEW_CLAIM_100_XP_MODAL_TITLE")}</p>
+                        <hr style="opacity: 0;">
+                        <p class="center-text options-summary-text">${getTextString("DISMISSIBLE_CONTENT_NEW_CLAIM_100_XP_MODAL_SUMMARY_1")}</p>
+                        <hr style="opacity: 0;">
+                        <button class="card-button" onclick="setModalv3InnerContent('xp_events'); closenew100FreeXPDismissibleCoachtip();">${getTextString("DISMISSIBLE_CONTENT_NEW_CLAIM_100_XP_MODAL_TAKE_ME_THERE")}</button>
+                        <button class="card-button" onclick="closenew100FreeXPDismissibleCoachtip()">${getTextString("DISMISSIBLE_CONTENT_NEW_CLAIM_100_XP_MODAL_LATER")}</button>
+                    </div>
+                    <div class="new100FreeXPDismissible-pointer"></div>
+                `;
+                
+                new100FreeXPDismissible.classList.add('new100FreeXPDismissible');
+                
+                new100FreeXPDismissible.id = `new100FreeXPDismissible`;
+                
+                document.body.appendChild(new100FreeXPDismissible);
+        
             }
         })
         .catch(error => {
@@ -20489,6 +20515,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         if (document.getElementById('newLogInWithDiscordDismissible')) {
             localStorage.dismissible_newLogInWithDiscord = "Treatment 1: Seen";
             document.getElementById('newLogInWithDiscordDismissible').remove();
+        }
+    }
+
+    function closenew100FreeXPDismissibleCoachtip() {
+        if (document.getElementById('new100FreeXPDismissible')) {
+            localStorage.dismissible_new100FreeXP = "Treatment 1: Seen";
+            document.getElementById('new100FreeXPDismissible').remove();
         }
     }
 
