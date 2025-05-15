@@ -6278,7 +6278,7 @@ data-share-product-card-button {
 
 .xp-inventory-card {
     position: relative;
-    background-color: var(--background-tertiary);
+    background-color: var(--background-secondary);
     border-radius: 5px;
     margin-bottom: 14px;
     width: 100%;
@@ -6292,12 +6292,14 @@ data-share-product-card-button {
     margin: 0;
     font-size: 22px;
     font-weight: 900;
+    color: var(--white);
 }
 
 .xp-inventory-card .inner .sub {
     margin: 0;
     font-size: 16px;
     font-weight: 900;
+    color: var(--8);
 }
 
 .xp-inventory-card .inner .add {
@@ -6317,6 +6319,75 @@ data-share-product-card-button {
     top: 30px;
     right: 20px;
 }
+
+
+
+/* XP Rewards Category Modal */
+
+.xp-reward-event-link {
+    margin: 0;
+    font-size: 15px;
+    text-decoration: underline !important;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.xp-reward-event-card {
+    position: relative;
+    background-image: var(--xp-reward-claim-bg);
+    border-radius: 5px;
+    margin-bottom: 14px;
+    width: 100%;
+}
+
+.xp-reward-event-card.claimed {
+    background: var(--background-secondary);
+}
+
+.xp-reward-event-card .inner {
+    padding: 20px;
+}
+
+.xp-reward-event-card .inner .title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--white);
+}
+
+.xp-reward-event-card .inner .sub {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--8);
+}
+
+.xp-reward-event-card .inner .button {
+    position: absolute;
+    display: block;
+    margin: 5px 0;
+    padding: 10px 20px;
+    background-color: var(--brand-500);
+    color: #fff;
+    border: 2px var(--6) solid;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    top: 22.5px;
+    right: 20px;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+}
+
+.xp-reward-event-card .inner .button:hover {
+    background-color: var(--brand-500-hover);
+}
+
+.xp-reward-event-card.claimed .inner .button {
+    background-color: var(--brand-green-hover);
+    cursor: unset;
+}
+
 
 
 
