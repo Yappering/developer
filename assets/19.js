@@ -1,6 +1,6 @@
 
 
-app_version1 = "420"
+app_version1 = "421"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -18095,9 +18095,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
                                         const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
+                                        const date = `ENDS IN ${days}d ${hours}h ${minutes}m ${seconds}s`;
                     
                                         promoBanner.querySelector("[data-xp-event-expires-at]").innerHTML = `
-                                            <p class="xp-event-expires-at-text">ENDS IN ${days}d ${hours}h ${minutes}m ${seconds}s</p>
+                                            <p class="xp-event-expires-at-text">${date.replace("0d 0h 0m", "").replace("0d 0h", "").replace("0d", "")}</p>
                                         `;
                                     }
                                 }
@@ -18137,9 +18138,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
                                         const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
+                                        const date = `ENDS IN ${days}d ${hours}h ${minutes}m ${seconds}s`;
                     
                                         promoBanner.querySelector("[data-xp-event-expires-at]").innerHTML = `
-                                            <p class="xp-event-expires-at-text">ENDS IN ${days}d ${hours}h ${minutes}m ${seconds}s</p>
+                                            <p class="xp-event-expires-at-text">${date.replace("0d 0h 0m", "").replace("0d 0h", "").replace("0d", "")}</p>
                                         `;
                                     }
                                 }
@@ -18674,11 +18676,20 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     
                             promoBanner.innerHTML = `
                                 <div class="inner">
+                                    <div data-xp-inventory-tag-text></div>
                                     <p class="title">${claimable.name}</p>
                                     <p class="sub">You claimed this item on ${formatted}.</p>
-                                    <p class="remove">-${claimable.price.toLocaleString()} XP</p>
+                                    <p class="remove" data-xp-inventory-price>-${claimable.price.toLocaleString()} XP</p>
                                 </div>
                             `;
+
+                            if (claimable.refunded === true) {
+                                promoBanner.querySelector("[data-xp-inventory-tag-text]").innerHTML = `
+                                    <p class="xp-inventory-tag-text">REFUNDED</p>
+                                `;
+                                promoBanner.querySelector("[data-xp-inventory-price]").classList.remove("remove");
+                                promoBanner.querySelector("[data-xp-inventory-price]").classList.add("normal");
+                            }
     
                             document.getElementById("modalv3-xp-inventory-output").appendChild(promoBanner);
                         } else if (claimable.type === 0) {

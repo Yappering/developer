@@ -6307,7 +6307,8 @@ data-share-product-card-button {
     font-size: 25px;
     position: absolute;
     color: var(--ratio-green);
-    top: 30px;
+    top: 50%;
+    transform: translateY(-50%);
     right: 20px;
 }
 
@@ -6316,8 +6317,34 @@ data-share-product-card-button {
     font-size: 25px;
     position: absolute;
     color: var(--button-danger-background);
-    top: 30px;
+    top: 50%;
+    transform: translateY(-50%);
     right: 20px;
+}
+
+.xp-inventory-card .inner .normal {
+    margin: 0;
+    font-size: 25px;
+    position: absolute;
+    color: var(--white);
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+}
+
+
+.xp-inventory-tag-text {
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0;
+    margin-bottom: 5px;
+    background-color: var(--brand-green);
+    color: white;
+    border-radius: 5px;
+    width: fit-content;
+    height: 20px;
+    font-family: gg sans seven;
 }
 
 
@@ -6401,6 +6428,7 @@ data-share-product-card-button {
     background-color: var(--brand-green-hover);
     cursor: unset;
 }
+
 
 
 
