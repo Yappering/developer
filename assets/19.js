@@ -1,6 +1,6 @@
 
 
-app_version1 = "419"
+app_version1 = "420"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -18048,18 +18048,20 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
             function fetchXpEvents() {
                 document.getElementById("modalv3-xp-events-output").innerHTML = ``;
+                document.getElementById("modalv3-xp-events-output2").innerHTML = ``;
                 if (Array.isArray(claimablesPromotionsCache) && claimablesPromotionsCache.length != 0) {
                     claimablesPromotionsCache.forEach(promo => {
+
+                        let promoBanner = document.createElement("div");
+    
+                        promoBanner.classList.add("xp-reward-event-card");
                         
                         if (promo.already_claimed === false) {
-    
-                            let promoBanner = document.createElement("div");
-    
-                            promoBanner.classList.add("xp-reward-event-card");
-    
+
                             if (promo.category_sku_id) {
                                 promoBanner.innerHTML = `
                                     <div class="inner">
+                                        <div data-xp-event-expires-at></div>
                                         <p class="title">${promo.name}</p>
                                         <p class="sub">You have ${promo.xp_reward.toLocaleString()} XP waiting for you!</p>
                                         <button class="button" onclick="setParams({page: 'leaks', scrollTo: '${promo.category_sku_id}'}); location.reload();">Take me there</button>
@@ -18068,29 +18070,83 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             } else {
                                 promoBanner.innerHTML = `
                                     <div class="inner">
+                                        <div data-xp-event-expires-at></div>
                                         <p class="title">${promo.name}</p>
                                         <p class="sub">You have ${promo.xp_reward.toLocaleString()} XP waiting for you!</p>
                                         <button class="button" onclick="openClaimablesRewardClaimModal('${promo.claimable_id}')">Claim ${promo.xp_reward.toLocaleString()} XP</button>
                                     </div>
                                 `;
                             }
+
+                            const expiresAt = new Date(promo.expires_at);
+                            
+                            if (promo.expires_at && !isNaN(expiresAt.getTime())) {
+                    
+                                function updateTimer() {
+                                    const now = new Date();
+                                    const timeDiff = expiresAt - now;
+                    
+                                    if (timeDiff <= 0) {
+                                        promoBanner.classList.add("hidden");
+                                        clearInterval(timerInterval);
+                                    } else {
+                                        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                                        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                    
+                                        promoBanner.querySelector("[data-xp-event-expires-at]").innerHTML = `
+                                            <p class="xp-event-expires-at-text">ENDS IN ${days}d ${hours}h ${minutes}m ${seconds}s</p>
+                                        `;
+                                    }
+                                }
+                    
+                                const timerInterval = setInterval(updateTimer, 1000);
+                                updateTimer();
+                            }
     
                             document.getElementById("modalv3-xp-events-output").appendChild(promoBanner);
                         } else {
-    
-                            let promoBanner = document.createElement("div");
-    
-                            promoBanner.classList.add("xp-reward-event-card");
 
                             promoBanner.classList.add("claimed");
     
                             promoBanner.innerHTML = `
                                 <div class="inner">
+                                    <div data-xp-event-expires-at></div>
                                     <p class="title">${promo.name}</p>
                                     <p class="sub">You already claimed this reward for ${promo.xp_reward.toLocaleString()} XP.</p>
                                     <button class="button" disabled>Claimed</button>
                                 </div>
                             `;
+
+                            const expiresAt = new Date(promo.expires_at);
+                            
+                            if (promo.expires_at && !isNaN(expiresAt.getTime())) {
+                    
+                                function updateTimer() {
+                                    const now = new Date();
+                                    const timeDiff = expiresAt - now;
+                    
+                                    if (timeDiff <= 0) {
+                                        promoBanner.classList.add("hidden");
+                                        clearInterval(timerInterval);
+                                    } else {
+                                        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                                        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                                        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                    
+                                        promoBanner.querySelector("[data-xp-event-expires-at]").innerHTML = `
+                                            <p class="xp-event-expires-at-text">ENDS IN ${days}d ${hours}h ${minutes}m ${seconds}s</p>
+                                        `;
+                                    }
+                                }
+                    
+                                const timerInterval = setInterval(updateTimer, 1000);
+                                updateTimer();
+                            }
     
                             document.getElementById("modalv3-xp-events-output2").appendChild(promoBanner);
                         }
