@@ -1,6 +1,6 @@
 
 
-app_version1 = "422"
+app_version1 = "423"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -11110,7 +11110,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                                                         if (localStorage.experiment_2025_05_m === "Treatment 1: Enabled") {
 
-                                                        } else if (localStorage.discord_token && hasReviewAlready === false && localStorage.account_type === "2") {
+                                                        } else if (shop_archives_token && hasReviewAlready === false) {
                                                             let writeReviewContainer = document.createElement("div");
         
                                                             writeReviewContainer.classList.add("shop-category-modal-write-review-container");
@@ -11157,7 +11157,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                             }
     
                                                             modal.querySelector(".category-modalv2-inner-left").appendChild(writeReviewContainer);
-                                                        } else if (localStorage.discord_token && localStorage.account_type === "2") {
+                                                        } else if (shop_archives_token) {
                                                             let writeReviewContainer = document.createElement("div");
         
                                                             writeReviewContainer.classList.add("shop-category-modal-write-review-container");
@@ -11327,7 +11327,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                     }
                                                                 }
 
-                                                                if (review.users.id === localStorage.discord_user_id || localStorage.admin_level != "0") {
+                                                                if (review.users.id === localStorage.discord_user_id || localStorage.admin_level && localStorage.admin_level != "0") {
                                                                     let deleteReviewIcon = document.createElement("div");
 
                                                                     deleteReviewIcon.title = getTextString("SHOP_CATEGORY_MODAL_REVIEWS_DELETE_HOVER");

@@ -434,7 +434,7 @@ MODAL_V3_TAB_WARNINGS_ACCOUNT_WARNINGS_SUMMARY = "You will receive warnings if y
 
 MODAL_V3_TAB_REVIEWS_HEADER = "Reviews";
 
-MODAL_V3_TAB_REVIEWS_DISCORD_ACCOUNT_NOT_LOGGED_IN_SUMMARY = "Filters what reviews are shown. Log in with Discord to change your review settings.";
+MODAL_V3_TAB_REVIEWS_DISCORD_ACCOUNT_NOT_LOGGED_IN_SUMMARY = "Filters what reviews are shown. You must have a Standard account to change your review settings.";
 
 MODAL_V3_TAB_REVIEWS_UNAVAILABLE_HEADER = "Reviews Settings Temporarily Unavailable";
 MODAL_V3_TAB_REVIEWS_UNAVAILABLE_SUMMARY = "We are currently updating the reviews system.";
