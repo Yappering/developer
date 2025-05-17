@@ -1,6 +1,6 @@
 
 
-app_version1 = "424"
+app_version1 = "425"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -11612,7 +11612,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 <div class="inner">
                                                                     <p class="title">Claim your free ${promo.xp_reward} XP!</p>
                                                                     <p class="sub">You have ${promo.xp_reward} XP waiting for you!</p>
-                                                                    <a class="link" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More about XP</a>
+                                                                    <a class="link" href="https://support.yapper.shop/#page=3">Learn More about XP</a>
                                                                     <button class="button" onclick="openClaimablesRewardClaimModal('${promo.claimable_id}')">Claim ${promo.xp_reward} XP</button>
                                                                 </div>
                                                             `;
@@ -11628,7 +11628,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                                                 <div class="inner">
                                                                     <p class="title">You claimed ${promo.xp_reward} XP.</p>
                                                                     <p class="sub">You already claimed this reward.</p>
-                                                                    <a class="link" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More about XP</a>
+                                                                    <a class="link" href="https://support.yapper.shop/#page=3">Learn More about XP</a>
                                                                 </div>
                                                             `;
 
@@ -17993,7 +17993,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <div class="modalv3-content-card-1">
                     <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_XP_EVENTS_EVENTS_HEADER")}</h2>
                     <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_XP_EVENTS_EVENTS_SUMMARY")}</p>
-                    <a class="xp-reward-event-link" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More about XP</a>
+                    <a class="xp-reward-event-link" href="https://support.yapper.shop/#page=3">Learn More about XP</a>
 
                     <hr style="opacity: 0;">
 
@@ -18115,7 +18115,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         const date = `ENDS IN ${days}d ${hours}h ${minutes}m ${seconds}s`;
                     
                                         promoBanner.querySelector("[data-xp-event-expires-at]").innerHTML = `
-                                            <p class="xp-event-expires-at-text">${date.replace("0d 0h 0m", "").replace("0d 0h", "").replace("0d", "")}</p>
+                                            <p class="xp-event-expires-at-text">${date.replace(" 0d 0h 0m", "").replace(" 0d 0h", "").replace(" 0d", "")}</p>
                                         `;
                                     }
                                 }
@@ -18158,7 +18158,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         const date = `ENDS IN ${days}d ${hours}h ${minutes}m ${seconds}s`;
                     
                                         promoBanner.querySelector("[data-xp-event-expires-at]").innerHTML = `
-                                            <p class="xp-event-expires-at-text">${date.replace("0d 0h 0m", "").replace("0d 0h", "").replace("0d", "")}</p>
+                                            <p class="xp-event-expires-at-text">${date.replace(" 0d 0h 0m", "").replace(" 0d 0h", "").replace(" 0d", "")}</p>
                                         `;
                                     }
                                 }
@@ -18480,7 +18480,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <div class="profile-no-text-container">
                                 <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: white;">${getTextString("MODAL_V3_TAB_XP_SHOP_CANT_CLAIM_1")}</p>
                                 <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("MODAL_V3_TAB_XP_SHOP_CANT_CLAIM_2")}</p>
-                                <a class="link" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More</a>
+                                <a class="link" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;" href="https://support.yapper.shop/#page=3">Learn More</a>
                             </div>
                         `;
 
@@ -18534,7 +18534,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                             <div class="profile-no-text-container">
                                 <p class="center-text" style="font-size: 20px; margin-top: 20px; margin-bottom: 0px; color: white;">${getTextString("MODAL_V3_TAB_XP_SHOP_CANT_CLAIM_1")}</p>
                                 <p class="center-text" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;">${getTextString("MODAL_V3_TAB_XP_SHOP_CANT_CLAIM_2")}</p>
-                                <a class="link" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More</a>
+                                <a class="link" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;" href="https://support.yapper.shop/#page=3">Learn More</a>
                             </div>
                         `;
 
@@ -19439,7 +19439,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 <p class="big-text" data-claimable-purchase-modal-price-preview2>... XP</p>
                 <p class="title">${getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_REWARD_MODAL_HEADER")}</p>
                 <p class="sub-header" data-claimable-purchase-modal-price-preview>${getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_REWARD_MODAL_SUMMARY")} ... XP</p>
-                <a class="link" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;" href="https://github.com/ShopArchives/support/blob/main/article/3-xp-and-perks.md">Learn More about XP</a>
+                <a class="link" style="font-size: 15px; margin-top: 0px; margin-bottom: 0px; color: white;" href="https://support.yapper.shop/#page=3">Learn More about XP</a>
 
                 <div class="report-review-bottom">
                     <p class="shop-category-modal-report-review-error-output" id="shop-claim-item-modal-error-output" data-shop-claim-item-modal-error-output></p>
