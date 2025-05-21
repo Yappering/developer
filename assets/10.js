@@ -18,6 +18,17 @@ EXPERIMENT_ID_6 = 1
 
 const experimentsList = [
     {
+        title: "XP Redeem Gift Codes",
+        id: "2025-05_redeem_gift_codes",
+        name: "experiment_2025_05_redeem_gift_codes",
+        treatments: [
+            "Treatment -1: Disabled",
+            "Treatment 1: Enabled"
+        ],
+        rollout: "Treatment -1: Disabled",
+        needs_api_token: "true"
+    },
+    {
         title: "XP System",
         id: "2025-05_xp_system",
         name: "experiment_2025_05_xp_system",

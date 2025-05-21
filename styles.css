@@ -6329,6 +6329,52 @@ data-share-product-card-button {
 
 
 
+.modalv3-xp-inventory-claim-code-container {
+    display: flex;
+    gap: 10px;
+}
+
+.modalv3-xp-inventory-claim-code-container input {
+    width: 100%;
+    margin: 0;
+    background-color: var(--modalv3-text-input-background);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding-inline: 10px;
+}
+
+.modalv3-xp-inventory-claim-code-container button {
+    display: block;
+    padding: 10px 20px;
+    background-color: var(--brand-500);
+    color: #fff;
+    border: 2px var(--6) solid;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+}
+
+.modalv3-xp-inventory-claim-code-container button:hover {
+    background-color: var(--brand-500-hover);
+}
+
+.modalv3-xp-inventory-claim-code-container button:disabled {
+    background-color: var(--brand-500-hover);
+    cursor: not-allowed;
+}
+
+.modalv3-xp-inventory-claim-code {
+    margin: 0;
+}
+
+.modalv3-xp-inventory-claim-code.invalid {
+    margin: 0;
+    color: var(--button-danger-background);
+}
+
 .xp-inventory-card {
     position: relative;
     background-color: var(--background-secondary);

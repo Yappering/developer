@@ -1,6 +1,6 @@
 
 
-app_version1 = "425"
+app_version1 = "426"
 app_version2 = "Dev"
 tcbx926n29 = app_version2 + " " + app_version1;
 
@@ -2499,7 +2499,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         CLAIMABLES_SHOP = "/claimables-shop",
         XP_BALANCE = "/users/@me/xp-balance",
         CLAIMABLES_CLAIMED = "/users/@me/claimables-claimed",
-        CLAIMABLES_PROMOTIONS = "/users/@me/claimables-promotions"
+        CLAIMABLES_PROMOTIONS = "/users/@me/claimables-promotions",
+        REDEEM_GIFT_CODE = "/redeem-gift-code/"
     ]
     if (app_version2 === "Dev") {
         LOGIN_CALLBACK = "/dev/callback"
@@ -2587,7 +2588,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         GGEZ: "1357589632723849316",
         HELLO: "1365410896222097539",
         COZY_VALLEY: "1369434230962262128",
-        RC_TEST: "1370467303782617118"
+        RC_TEST: "1370467303782617118",
+        LEAF: "1373015260595884082"
     };
 
     discord_app_ids = {
@@ -2991,7 +2993,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         `;
                                     } else {
                                         category.querySelector("[data-preview-new-categoey-button]").innerHTML = `
-                                            <button class="home-page-preview-button" onclick="setParams({page: 'shop'}); addParams({itemSkuId: '${apiCategory.sku_id}'}); location.reload();">${getTextString("SHOP_CATEGORY_SHOP_THE_COLLECTION_1")}${apiCategory.name}${getTextString("SHOP_CATEGORY_SHOP_THE_COLLECTION_2")}</button>
+                                            <button class="home-page-preview-button" onclick="setParams({page: 'shop'}); addParams({scrollTo: '${apiCategory.sku_id}'}); location.reload();">${getTextString("SHOP_CATEGORY_SHOP_THE_COLLECTION_1")}${apiCategory.name}${getTextString("SHOP_CATEGORY_SHOP_THE_COLLECTION_2")}</button>
                                         `;
                                     }
                                 
@@ -5413,7 +5415,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                                         oneImage.src = subblock.banner_url;
                                         oneImage.alt = subblock.name;
     
-                                        featureblock.setAttribute("onclick",`setParams({page: '${subblock.page}'}); addParams({itemSkuId: '${subblock.sku_id}'}); location.reload();`);
+                                        featureblock.setAttribute("onclick",`setParams({page: '${subblock.page}'}); addParams({scrollTo: '${subblock.sku_id}'}); location.reload();`);
     
                                         featureBlockContainer.append(featureblock);
     
@@ -18613,7 +18615,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
                 <h2>${getTextString("MODAL_V3_TAB_XP_INVENTORY_HEADER")}</h2>
 
-                <div id="modalv3-failed-to-load-xp-inventory-balance">
+                <div id="modalv3-failed-to-load-xp-inventory">
+                </div>
+
+                <div id="modalv3-xp-inventory-redeem-gift">
                 </div>
 
                 <div class="modalv3-content-card-1">
@@ -18644,6 +18649,30 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 </div>
             `;
 
+            if (localStorage.experiment_2025_05_redeem_gift_codes === "Treatment 1: Enabled") {
+                document.getElementById("modalv3-xp-inventory-redeem-gift").innerHTML = `
+                    <div class="modalv3-content-card-1">
+                        <h2 class="modalv3-content-card-header">${getTextString("MODAL_V3_TAB_XP_INVENTORY_REDEEM_HEADER")}</h2>
+                        <p class="modalv3-content-card-summary">${getTextString("MODAL_V3_TAB_XP_INVENTORY_REDEEM_SUMMARY")}</p>
+
+                        <div class="modalv3-xp-inventory-claim-code-container">
+                            <input type="text" id="xp-inventory-claim-code-input" placeholder="${getTextString("MODAL_V3_TAB_XP_INVENTORY_REDEEM_PLACEHOLDER")}" autocomplete="off">
+                            <button id="xp-inventory-claim-code-button">Redeem</button>
+                        </div>
+                        <p class="modalv3-xp-inventory-claim-code" id="xp-inventory-claim-code-loading"></p>
+                    </div>
+                    <hr>
+                `;
+
+                document.getElementById("xp-inventory-claim-code-button").addEventListener("click", function () {
+                    document.getElementById("xp-inventory-claim-code-loading").classList.remove("invalid");
+                    document.getElementById("xp-inventory-claim-code-loading").textContent = '';
+                    document.getElementById("xp-inventory-claim-code-button").disabled = true;
+                    document.getElementById("xp-inventory-claim-code-button").textContent = '...';
+                    redeemXPGiftCode(document.getElementById("xp-inventory-claim-code-input").value);
+                });
+            }
+
             if (localStorage.dismissible_XPnotice != "Treatment 1: Seen") {
                 document.getElementById("modalv3-xp-notice-container").innerHTML = `
                     <div class="modalv3-profile-tab-sign-in-notice" id="XPnotice">
@@ -18662,7 +18691,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     });
           
                     if (!userInfo.ok) {
-                        document.getElementById("modalv3-failed-to-load-xp-inventory-balance").innerHTML = `
+                        document.getElementById("modalv3-failed-to-load-xp-inventory").innerHTML = `
                             <div class="modalv3-profile-tab-file-too-large-warning">
                                 <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_INVENTORY_ERROR_1")}</p>
                             </div>
@@ -18673,7 +18702,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                     const data = await userInfo.json();
 
                     if (data.message) {
-                        document.getElementById("modalv3-failed-to-load-xp-inventory-balance").innerHTML = `
+                        document.getElementById("modalv3-failed-to-load-xp-inventory").innerHTML = `
                             <div class="modalv3-profile-tab-file-too-large-warning">
                                 <p class="modalv3-profile-tab-sign-in-notice-title">${getTextString("MODAL_V3_TAB_XP_INVENTORY_ERROR_1")}</p>
                                 <p class="modalv3-profile-tab-sign-in-notice-summary">${data.error}, ${data.message}</p>
@@ -19208,18 +19237,70 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
 
 
+    async function redeemXPGiftCode(giftCode) {
+        if (giftCode.length != 0) {
+            try {
 
-    async function openClaimablesPurchaseModal(claimableId) {
+                const userInfo = await fetch(api + REDEEM_GIFT_CODE + giftCode, {
+                    headers: { Authorization: `${shop_archives_token}` }
+                });
+      
+                if (!userInfo.ok) {
+                    document.getElementById("xp-inventory-claim-code-loading").classList.add("invalid");
+                    document.getElementById("xp-inventory-claim-code-loading").textContent = 'Invalid Code';
+                    document.getElementById("xp-inventory-claim-code-button").disabled = false;
+                    document.getElementById("xp-inventory-claim-code-button").textContent = 'Redeem';
+                }
+    
+                const data = await userInfo.json();
+    
+                if (data.message === "Invalid Gift Code.") {
+                    document.getElementById("xp-inventory-claim-code-loading").classList.add("invalid");
+                    document.getElementById("xp-inventory-claim-code-loading").textContent = `Invalid Gift Code.`;
+                    document.getElementById("xp-inventory-claim-code-button").disabled = false;
+                    document.getElementById("xp-inventory-claim-code-button").textContent = 'Redeem';
+                } else if (data.message) {
+                    document.getElementById("xp-inventory-claim-code-loading").classList.add("invalid");
+                    document.getElementById("xp-inventory-claim-code-loading").textContent = `${data.error}, ${data.message}`;
+                    document.getElementById("xp-inventory-claim-code-button").disabled = false;
+                    document.getElementById("xp-inventory-claim-code-button").textContent = 'Redeem';
+                } else {
+                    if (data.type === 0) {
+                        openClaimablesRewardClaimModal(data.id, data, giftCode)
+                    } else if (data.type === 1) {
+                        openClaimablesPurchaseModal(data.id, data, giftCode)
+                    }
+
+                    document.getElementById("xp-inventory-claim-code-loading").textContent = ``;
+                    document.getElementById("xp-inventory-claim-code-input").value = ``;
+                    document.getElementById("xp-inventory-claim-code-button").disabled = false;
+                    document.getElementById("xp-inventory-claim-code-button").textContent = 'Redeem';
+                }
+          
+            } catch (error) {
+                console.error(error)
+            }
+        } else {
+            document.getElementById("xp-inventory-claim-code-loading").classList.add("invalid");
+            document.getElementById("xp-inventory-claim-code-loading").textContent = `Invalid Gift Code.`;
+            document.getElementById("xp-inventory-claim-code-button").disabled = false;
+            document.getElementById("xp-inventory-claim-code-button").textContent = 'Redeem';
+        }
+    }
+
+
+
+    async function openClaimablesPurchaseModal(claimableId, existingClaimableData, giftCode) {
 
         let disclaimerString = '';
 
-        if (claimableId === "2") {
+        if (claimableId === "2" || claimableId === 2) {
             disclaimerString = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_2");
-        } else if (claimableId === "3") {
+        } else if (claimableId === "3" || claimableId === 3) {
             disclaimerString = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_3");
-        } else if (claimableId === "4") {
+        } else if (claimableId === "4" || claimableId === 4) {
             disclaimerString = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_4");
-        } else if (claimableId === "5") {
+        } else if (claimableId === "5" || claimableId === 5) {
             disclaimerString = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_5");
         }
 
@@ -19294,47 +19375,55 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             modal.querySelector("[data-claimable-purchase-your-xp]").textContent = `You have ${data.xp_balance.toLocaleString()} XP`;
         }
 
-        fetch(api + '/claimables/published/' + claimableId, {
-            method: "GET",
-            headers: {
-                "Authorization": shop_archives_token
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message) {
+        if (existingClaimableData) {
+            renderModalContent(existingClaimableData);
+        } else {
+            fetch(api + '/claimables/published/' + claimableId, {
+                method: "GET",
+                headers: {
+                    "Authorization": shop_archives_token
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    modal.classList.remove('show');
+                    modal_back.classList.remove('show');
+                    setTimeout(() => {
+                        modal.remove();
+                        modal_back.remove();
+                    }, 300);
+                } else {
+                    renderModalContent(data);
+                }
+            })
+            .catch(error => {
+                console.error(error);
                 modal.classList.remove('show');
                 modal_back.classList.remove('show');
                 setTimeout(() => {
                     modal.remove();
                     modal_back.remove();
                 }, 300);
-            } else {
-                modal.querySelector("[data-claimable-purchase-modal-name-preview]").textContent = data.name;
-                modal.querySelector("[data-claimable-purchase-modal-price-preview]").textContent = data.xp_price.toLocaleString() + ' XP';
-                modal.querySelector("[data-claimable-purchase-button]").textContent = `Claim for ${data.xp_price.toLocaleString()} XP`;
-                modal.querySelector("[data-claimable-purchase-button]").style.display = 'unset';
+            });
+        }
 
-                if (myXPBalancecache.xp_balance < data.xp_price) {
-                    modal.querySelector("[data-claimable-purchase-button]").disabled = true;
-                    modal.querySelector("[data-shop-claim-item-modal-error-output]").textContent = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_NOT_ENOUGH_ERROR");
-                }
-                modal.querySelector("[data-claimable-purchase-button]").addEventListener('click', () => {
-                    modal.querySelector("[data-claimable-purchase-button]").disabled = true;
-                    modal.querySelector("[data-claimable-purchase-button]").textContent = `...`;
-                    claimPerkWithXP(data.id, modal, modal_back)
-                });
+        function renderModalContent(data) {
+            modal.querySelector("[data-claimable-purchase-modal-name-preview]").textContent = data.name;
+            modal.querySelector("[data-claimable-purchase-modal-price-preview]").textContent = data.xp_price.toLocaleString() + ' XP';
+            modal.querySelector("[data-claimable-purchase-button]").textContent = `Claim for ${data.xp_price.toLocaleString()} XP`;
+            modal.querySelector("[data-claimable-purchase-button]").style.display = 'unset';
+
+            if (myXPBalancecache.xp_balance < data.xp_price) {
+                modal.querySelector("[data-claimable-purchase-button]").disabled = true;
+                modal.querySelector("[data-shop-claim-item-modal-error-output]").textContent = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_MODAL_NOT_ENOUGH_ERROR");
             }
-        })
-        .catch(error => {
-            console.error(error);
-            modal.classList.remove('show');
-            modal_back.classList.remove('show');
-            setTimeout(() => {
-                modal.remove();
-                modal_back.remove();
-            }, 300);
-        });
+            modal.querySelector("[data-claimable-purchase-button]").addEventListener('click', () => {
+                modal.querySelector("[data-claimable-purchase-button]").disabled = true;
+                modal.querySelector("[data-claimable-purchase-button]").textContent = `...`;
+                claimPerkWithXP(data.id, modal, modal_back, giftCode)
+            });
+        }
 
         document.body.appendChild(modal);
 
@@ -19376,14 +19465,24 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
         });
     }
 
-    async function claimPerkWithXP(perkId, modal, modal_back) {
+    async function claimPerkWithXP(perkId, modal, modal_back, giftCode) {
         document.getElementById("shop-claim-item-modal-error-output").textContent = '';
+
+        if (!giftCode) {
+            giftCode = null;
+        }
 
         try {
 
             const userInfo = await fetch(api + '/claimables/purchase/' + perkId, {
                 method: "POST",
-                headers: { Authorization: `${shop_archives_token}` }
+                headers: {
+                    Authorization: `${shop_archives_token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    giftCode
+                })
             });
   
             if (!userInfo.ok) {
@@ -19414,7 +19513,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     }
 
 
-    async function openClaimablesRewardClaimModal(claimableId) {
+    async function openClaimablesRewardClaimModal(claimableId, existingClaimableData, giftCode) {
 
         if (!claimableId) {
             claimableId = null;
@@ -19448,43 +19547,51 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             </div>
         `;
 
-        fetch(api + '/claimables/published/' + claimableId, {
-            method: "GET",
-            headers: {
-                "Authorization": shop_archives_token
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message) {
+        if (existingClaimableData) {
+            renderModalContent(existingClaimableData);
+        } else {
+            fetch(api + '/claimables/published/' + claimableId, {
+                method: "GET",
+                headers: {
+                    "Authorization": shop_archives_token
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    modal.classList.remove('show');
+                    modal_back.classList.remove('show');
+                    setTimeout(() => {
+                        modal.remove();
+                        modal_back.remove();
+                    }, 300);
+                } else {
+                    renderModalContent(data)
+                }
+            })
+            .catch(error => {
+                console.error(error);
                 modal.classList.remove('show');
                 modal_back.classList.remove('show');
                 setTimeout(() => {
                     modal.remove();
                     modal_back.remove();
                 }, 300);
-            } else {
-                modal.querySelector("[data-claimable-purchase-modal-price-preview]").textContent = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_REWARD_MODAL_SUMMARY") + data.xp_reward.toLocaleString() + ' XP';
-                modal.querySelector("[data-claimable-purchase-modal-price-preview2]").textContent = data.xp_reward.toLocaleString() + ' XP';
-                modal.querySelector("[data-claimable-purchase-button]").textContent = `Claim ${data.xp_reward.toLocaleString()} XP`;
-                modal.querySelector("[data-claimable-purchase-button]").style.display = 'unset';
+            });
+        }
 
-                modal.querySelector("[data-claimable-purchase-button]").addEventListener('click', () => {
-                    modal.querySelector("[data-claimable-purchase-button]").disabled = true;
-                    modal.querySelector("[data-claimable-purchase-button]").textContent = `...`;
-                    claimFreeXPReward(data.id, modal, modal_back)
-                });
-            }
-        })
-        .catch(error => {
-            console.error(error);
-            modal.classList.remove('show');
-            modal_back.classList.remove('show');
-            setTimeout(() => {
-                modal.remove();
-                modal_back.remove();
-            }, 300);
-        });
+        function renderModalContent(data) {
+            modal.querySelector("[data-claimable-purchase-modal-price-preview]").textContent = getTextString("MODAL_V3_TAB_XP_SHOP_CLAIM_REWARD_MODAL_SUMMARY") + data.xp_reward.toLocaleString() + ' XP';
+            modal.querySelector("[data-claimable-purchase-modal-price-preview2]").textContent = data.xp_reward.toLocaleString() + ' XP';
+            modal.querySelector("[data-claimable-purchase-button]").textContent = `Claim ${data.xp_reward.toLocaleString()} XP`;
+            modal.querySelector("[data-claimable-purchase-button]").style.display = 'unset';
+
+            modal.querySelector("[data-claimable-purchase-button]").addEventListener('click', () => {
+                modal.querySelector("[data-claimable-purchase-button]").disabled = true;
+                modal.querySelector("[data-claimable-purchase-button]").textContent = `...`;
+                claimFreeXPReward(data.id, modal, modal_back, giftCode)
+            });
+        }
 
         document.body.appendChild(modal);
 
@@ -19528,14 +19635,24 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
     window.openClaimablesRewardClaimModal = openClaimablesRewardClaimModal;
 
-    async function claimFreeXPReward(perkId, modal, modal_back) {
+    async function claimFreeXPReward(perkId, modal, modal_back, giftCode) {
         document.getElementById("shop-claim-item-modal-error-output").textContent = '';
+
+        if (!giftCode) {
+            giftCode = null;
+        }
 
         try {
 
             const userInfo = await fetch(api + '/claim-free-xp-reward/' + perkId, {
                 method: "POST",
-                headers: { Authorization: `${shop_archives_token}` }
+                headers: {
+                    Authorization: `${shop_archives_token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    giftCode
+                })
             });
   
             if (!userInfo.ok) {
@@ -19642,6 +19759,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
                 
             } else {
                 myClaimablesClaimedCache = data;
+                try {
+                    fetchXpInventory();
+                } catch (error) {
+                }
             }
       
         } catch (error) {
